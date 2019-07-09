@@ -1,0 +1,80 @@
+PODS:
+  - Alamofire (4.8.2)
+  - AvailableHapticFeedback (1.0.0)
+  - Cosmos (19.0.3)
+  - Crashlytics (3.13.1):
+    - Fabric (~> 1.10.1)
+  - Fabric (1.10.1)
+  - GoogleMaps (3.0.3):
+    - GoogleMaps/Maps (= 3.0.3)
+  - GoogleMaps/Base (3.0.3)
+  - GoogleMaps/Maps (3.0.3):
+    - GoogleMaps/Base
+  - GooglePlaces (3.0.3):
+    - GoogleMaps/Base (= 3.0.3)
+  - IQDropDownTextField (1.1.1)
+  - IQKeyboardManagerSwift (6.3.0)
+  - lottie-ios (3.1.0)
+  - MiniLayout (1.4.1)
+  - MultiSlider (1.9.2):
+    - AvailableHapticFeedback
+    - MiniLayout
+  - SideMenuSwift (2.0.0)
+  - SkyFloatingLabelTextField (3.7.0)
+  - SwiftMessages (7.0.0):
+    - SwiftMessages/App (= 7.0.0)
+  - SwiftMessages/App (7.0.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - Cosmos
+  - Crashlytics
+  - Fabric
+  - GoogleMaps (= 3.0.3)
+  - GooglePlaces (= 3.0.3)
+  - IQDropDownTextField
+  - IQKeyboardManagerSwift
+  - lottie-ios
+  - MultiSlider
+  - SideMenuSwift
+  - SkyFloatingLabelTextField
+  - SwiftMessages
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - AvailableHapticFeedback
+    - Cosmos
+    - Crashlytics
+    - Fabric
+    - GoogleMaps
+    - GooglePlaces
+    - IQDropDownTextField
+    - IQKeyboardManagerSwift
+    - lottie-ios
+    - MiniLayout
+    - MultiSlider
+    - SideMenuSwift
+    - SkyFloatingLabelTextField
+    - SwiftMessages
+
+SPEC CHECKSUMS:
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  AvailableHapticFeedback: dbd483684e693281b85e671d95ac3593dfbad34f
+  Cosmos: a6fb17284281fa12cf4c85c2efecd440a215ec44
+  Crashlytics: 5aa8e90dcbf2f34898b4f5a0037787531246cca0
+  Fabric: f6f21452846788bb44595d73e9909d79d328e617
+  GoogleMaps: fd5c9fa58871781b9fb94d4936f19c69fe60ce32
+  GooglePlaces: f09e76993c9c3ee4af8f4f7f535bb94d6aa3b649
+  IQDropDownTextField: 3d2e5728a2b83ff5dbb14cb9b497a80005124cbe
+  IQKeyboardManagerSwift: a8228c257614af98743b4cd8584637025f36358f
+  lottie-ios: 9467723922dfff46f6d4e3019c32594a62440b7c
+  MiniLayout: bd42e3763700c3002f39ff3b36dc8a027ea5078a
+  MultiSlider: ddc092e8aacaf4b82d816f0d3134e04d5c7709d3
+  SideMenuSwift: 1bee5a0e54c6df7d8106f749b82567eae5c6d974
+  SkyFloatingLabelTextField: 4b46db0ab1ccde0919cded29c656e6b4805eda04
+  SwiftMessages: a952f7a9103d9aeab93730a2861d2d8fcdd8758f
+
+PODFILE CHECKSUM: 3cb9075622095141880ce40d4629a99bc87b3078
+
+COCOAPODS: 1.5.3

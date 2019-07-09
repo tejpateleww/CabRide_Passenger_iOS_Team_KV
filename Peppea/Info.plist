@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>$(PRODUCT_NAME)</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0.0</string>
+	<key>CFBundleVersion</key>
+	<string>1.0.0</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>googlechromes</string>
+		<string>comgooglemaps</string>
+	</array>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>NSLocationUsageDescription</key>
+	<string>We use location to get you nearby taxis</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We use location to get you nearby taxis</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>proxima-nova-black.otf</string>
+		<string>proxima-nova-bold-italic.otf</string>
+		<string>proxima-nova-bold.otf</string>
+		<string>proxima-nova-condensed-light-italic.otf</string>
+		<string>proxima-nova-condensed-light.otf</string>
+		<string>proxima-nova-condensed-regular-italic.otf</string>
+		<string>proxima-nova-condensed-semibold-italic.otf</string>
+		<string>proxima-nova-condensed-semibold.otf</string>
+		<string>proxima-nova-condensed.otf</string>
+		<string>proxima-nova-extrabold.otf</string>
+		<string>proxima-nova-light-italic.otf</string>
+		<string>proxima-nova-light.otf</string>
+		<string>proxima-nova-regular-italic.otf</string>
+		<string>proxima-nova-semibold-italic.otf</string>
+		<string>proxima-nova-semibold.otf</string>
+		<string>proxima-nova.otf</string>
+	</array>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+	<key>UIMainStoryboardFile</key>
+	<string>Main</string>
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>armv7</string>
+	</array>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+</dict>
+</plist>
