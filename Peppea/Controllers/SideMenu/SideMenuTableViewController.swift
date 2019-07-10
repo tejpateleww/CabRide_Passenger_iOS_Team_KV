@@ -28,7 +28,7 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
         NotificationCenter.default.addObserver(self, selector: #selector(self.SetRating), name: NSNotification.Name(rawValue: "rating"), object: nil)
 //        NotificationCenter.default.addObserver(self, selector: #selector(self.setProfileData), name: NSNotification.Name(rawValue: "UpdateProfile"), object: nil)
 //        self.setProfileData()
-        arrMenuTitle = ["My Bookings","Payment Options","Favourites","Invite Friends","Pass","Help","Logout"]
+        arrMenuTitle = ["My Trips", "Payments", "Wallet", "Favourite", "Bulk Mile", "Invite Friends", "Bid My Trip", "Flat Rate", "Logout"]//["My Bookings","Payment Options","Favourites","Invite Friends","Pass","Help","Logout"]
     }
     
     override func didReceiveMemoryWarning() {
@@ -68,11 +68,13 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
         return cellMenu
     }
 
-    /*
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-
+        let HomePage = self.parent?.children.first?.children.first as? HomeViewController
+        
+        /*
         let HomePage = self.parent?.childViewControllers.first?.childViewControllers.first as? HomeViewController
 
         if arrMenuTitle[indexPath.row] == "New Booking" {
@@ -160,73 +162,97 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
             let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "SettingPasscodeVC") as! SettingPasscodeVC
             HomePage?.navigationController?.pushViewController(NextPage, animated: true)
         }
-        else if arrMenuTitle[indexPath.row] == "Become a \(appName) Driver"
+        else
+        else
+
+ */
+        if arrMenuTitle[indexPath.row] == "Wallet"
         {
-
-            let myUrl = appURL
-            if let url = URL(string: "\(myUrl)"), !url.absoluteString.isEmpty {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-            }
-
-            // or outside scope use this
-            guard let url = URL(string: "\(myUrl)"), !url.absoluteString.isEmpty else {
-                return
-            }
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-
+            let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "ReceiveMoneyViewController") as! ReceiveMoneyViewController
+            HomePage?.navigationController?.pushViewController(NextPage, animated: true)
+            sideMenuController?.hideMenu()
+            return
         }
-        else if (arrMenuTitle[indexPath.row] == "Logout")
+        
+        if arrMenuTitle[indexPath.row] == "Flat Rate"
         {
-            RMUniversalAlert.show(in: self, withTitle:appName, message: "Are you sure you want to logout?".localized, cancelButtonTitle: nil, destructiveButtonTitle: nil, otherButtonTitles: ["Logout".localized, "Cancel".localized], tap: {(alert, buttonIndex) in
-                if (buttonIndex == 2)
-                {
-
-                    HomePage?.stopTimertoUpdateLocation()
-                    (UIApplication.shared.delegate as! AppDelegate).GoToLogout()
-                }
-            })
-
+            let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "FlatRateListViewController") as! FlatRateListViewController
+            HomePage?.navigationController?.pushViewController(NextPage, animated: true)
+            sideMenuController?.hideMenu()
+            return
         }
-
-
-        sideMenuController?.hideMenu()
+        if arrMenuTitle[indexPath.row] == "Bid My Trip"
+        {
+//            let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "BidListContainerViewController") as! BidListContainerViewController
+//            HomePage?.navigationController?.pushViewController(NextPage, animated: true)
+//            sideMenuController?.hideMenu()
+//            return
+        }
+        if arrMenuTitle[indexPath.row] == "Bulk Mile"
+        {
+            let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "BulkMileVC") as! BulkMileVC
+            HomePage?.navigationController?.pushViewController(NextPage, animated: true)
+            sideMenuController?.hideMenu()
+            return
+        }
+        
+        if (arrMenuTitle[indexPath.row] == "Logout")
+        {
+            let alert = UIAlertController(title: "Logout", message: "Are you sure you want to logout?", preferredStyle: .alert)
+            
+            let ok = UIAlertAction(title: "OK", style: .default) { (action) in
+                //                    (UIApplication.shared.delegate as! AppDelegate).GoToLogout()
+            }
+            
+            let cancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+            
+            alert.addAction(ok)
+            alert.addAction(cancel)
+            
+            self.present(alert, animated: true, completion: nil)
+            sideMenuController?.hideMenu()
+            return
+        }
+        
         
     }
 
 
+
     func removeAllSocketFromMemory()
     {
-        let socket = (UIApplication.shared.delegate as! AppDelegate).socket
-        socket?.off(SocketData.kReceiveGetEstimateFare)
-        socket?.off(SocketData.kNearByDriverList)
-        socket?.off(SocketData.kAskForTipsToPassengerForBookLater)
-        socket?.off(SocketData.kAskForTipsToPassenger)
-        socket?.off(SocketData.kAcceptBookingRequestNotification)
-        socket?.off(SocketData.kRejectBookingRequestNotification)
-        socket?.off(SocketData.kCancelTripByDriverNotficication)
-        socket?.off(SocketData.kPickupPassengerNotification)
-        socket?.off(SocketData.kBookingCompletedNotification)
-        socket?.off(SocketData.kAcceptAdvancedBookingRequestNotification)
-        socket?.off(SocketData.kRejectAdvancedBookingRequestNotification)
-        socket?.off(SocketData.kAdvancedBookingPickupPassengerNotification)
-        socket?.off(SocketData.kReceiveHoldingNotificationToPassenger)
-        socket?.off(SocketData.kAdvancedBookingTripHoldNotification)
-        socket?.off(SocketData.kReceiveDriverLocationToPassenger)
-        socket?.off(SocketData.kAdvancedBookingDetails)
-        socket?.off(SocketData.kInformPassengerForAdvancedTrip)
-        socket?.off(SocketData.kAcceptAdvancedBookingRequestNotify)
-        socket?.off(SocketData.kArrivedDriverBookNowRequest)
-        socket?.off(SocketData.kArrivedDriverBookLaterRequest)
-        socket?.off(SocketData.kReceiveTollFeeToDriverBookLater)
-        socket?.off(SocketData.kReceiveTollFeeToDriver)
-        socket?.disconnect()
+//        let socket = (UIApplication.shared.delegate as! AppDelegate).socket
+////        socket?.off(SocketData.kReceiveGetEstimateFare)
+////        socket?.off(SocketData.kNearByDriverList)
+////        socket?.off(SocketData.kAskForTipsToPassengerForBookLater)
+////        socket?.off(SocketData.kAskForTipsToPassenger)
+////        socket?.off(SocketData.kAcceptBookingRequestNotification)
+////        socket?.off(SocketData.kRejectBookingRequestNotification)
+////        socket?.off(SocketData.kCancelTripByDriverNotficication)
+////        socket?.off(SocketData.kPickupPassengerNotification)
+////        socket?.off(SocketData.kBookingCompletedNotification)
+////        socket?.off(SocketData.kAcceptAdvancedBookingRequestNotification)
+////        socket?.off(SocketData.kRejectAdvancedBookingRequestNotification)
+////        socket?.off(SocketData.kAdvancedBookingPickupPassengerNotification)
+////        socket?.off(SocketData.kReceiveHoldingNotificationToPassenger)
+////        socket?.off(SocketData.kAdvancedBookingTripHoldNotification)
+////        socket?.off(SocketData.kReceiveDriverLocationToPassenger)
+////        socket?.off(SocketData.kAdvancedBookingDetails)
+////        socket?.off(SocketData.kInformPassengerForAdvancedTrip)
+////        socket?.off(SocketData.kAcceptAdvancedBookingRequestNotify)
+////        socket?.off(SocketData.kArrivedDriverBookNowRequest)
+////        socket?.off(SocketData.kArrivedDriverBookLaterRequest)
+////        socket?.off(SocketData.kReceiveTollFeeToDriverBookLater)
+////        socket?.off(SocketData.kReceiveTollFeeToDriver)
+//        socket?.disconnect()
     }
 
- */
+ 
     
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return 45
     }
     
 
@@ -251,15 +277,15 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
         }
     }
     
-    
+  */
     @IBAction func btnProfilePickClicked(_ sender: Any)
     {
 
-        let HomePage = self.parent?.childViewControllers.first?.childViewControllers.first as? HomeViewController
-        let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "EditProfileViewController") as! EditProfileViewController
+        let HomePage = self.parent?.children.first?.children.first as? HomeViewController
+        let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
         HomePage?.navigationController?.pushViewController(NextPage, animated: true)
         sideMenuController?.hideMenu()
 
     }
-*/
+
 }

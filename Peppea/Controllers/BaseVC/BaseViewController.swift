@@ -20,14 +20,17 @@ class BaseViewController: UIViewController {
 
     func setNavBarWithMenu(Title:String, IsNeedRightButton:Bool){
 
-        if Title == "Home" {
+        if Title == "Home"
+        {
             //            let titleImage = UIImageView(frame: CGRect(x: 10, y: 0, width: 100, height: 30))
             //            titleImage.contentMode = .scaleAspectFit
             //            titleImage.image = UIImage(named: "Title_logo")
             ////            titleImage.backgroundColor  = themeYellowColor
             //             self.navigationItem.titleView = titleImage
             self.title = title?.uppercased()
-        } else {
+        }
+        else
+        {
             self.navigationItem.title = Title.uppercased()
         }
 
@@ -54,7 +57,7 @@ class BaseViewController: UIViewController {
     }
 
     func setNavBarWithBack(Title:String, IsNeedRightButton:Bool) {
-        //        self.navigationController?.navigationBar.isTranslucent = false
+                self.navigationController?.navigationBar.isTranslucent = true
 
         if Title == "Home" {
             let titleImage = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
@@ -71,17 +74,17 @@ class BaseViewController: UIViewController {
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : ThemeColor]
         //        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         //        self.navigationController?.navigationBar.shadowImage = UIImage()
-        let leftNavBarButton = UIBarButtonItem(image: UIImage(named: "icon_BackWhite"), style: .plain, target: self, action: #selector(self.btnBackAction))
+        let leftNavBarButton = UIBarButtonItem(image: UIImage(named: "iconLeftArrow"), style: .plain, target: self, action: #selector(self.btnBackAction))
         self.navigationItem.leftBarButtonItem = nil
         self.navigationItem.leftBarButtonItem = leftNavBarButton
         self.navigationItem.leftBarButtonItem?.tintColor = .black
         self.navigationController?.view.backgroundColor = .white
 
         self.navigationController?.navigationBar.layer.masksToBounds = false
-        self.navigationController?.navigationBar.layer.shadowColor = UIColor.lightGray.cgColor
-        self.navigationController?.navigationBar.layer.shadowOpacity = 0.8
-        self.navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 0, height: 2.0)
-        self.navigationController?.navigationBar.layer.shadowRadius = 2
+//        self.navigationController?.navigationBar.layer.shadowColor = UIColor.lightGray.cgColor
+//        self.navigationController?.navigationBar.layer.shadowOpacity = 0.8
+//        self.navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 0, height: 2.0)
+//        self.navigationController?.navigationBar.layer.shadowRadius = 2
 
 
         if IsNeedRightButton == true {
@@ -105,7 +108,8 @@ class BaseViewController: UIViewController {
 
     // MARK:- Navigation Bar Button Action Methods
 
-    @objc func OpenMenuAction(){
+    @objc func OpenMenuAction()
+    {
         sideMenuController?.revealMenu()
     }
 

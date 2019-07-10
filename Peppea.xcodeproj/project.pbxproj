@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		0650348A2AC06055B9F453D4 /* Pods_Peppea.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0810AD09B74A352FE6C277E6 /* Pods_Peppea.framework */; };
+		4600BEFD22D5E24F00306486 /* ReceiveMoneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4600BEFC22D5E24F00306486 /* ReceiveMoneyViewController.swift */; };
+		4666B47922D48F7D0084A230 /* FlatRateListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4666B47722D48F7D0084A230 /* FlatRateListViewController.swift */; };
+		4666B47A22D48F7D0084A230 /* FlatRateViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4666B47822D48F7D0084A230 /* FlatRateViewCell.swift */; };
+		4666B47D22D49F180084A230 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4666B47C22D49F180084A230 /* ProfileViewController.swift */; };
 		B1DE158E22D34818001045B1 /* ChangePwVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DE158D22D34818001045B1 /* ChangePwVC.swift */; };
 		B1DE159022D358A0001045B1 /* BulkMileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DE158F22D358A0001045B1 /* BulkMileVC.swift */; };
 		B1DE159422D35920001045B1 /* BulkMileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DE159222D35920001045B1 /* BulkMileTableViewCell.swift */; };
@@ -82,6 +86,11 @@
 		0568EF05446C647550DA45F6 /* Pods-Peppea.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Peppea.release.xcconfig"; path = "Pods/Target Support Files/Pods-Peppea/Pods-Peppea.release.xcconfig"; sourceTree = "<group>"; };
 		0810AD09B74A352FE6C277E6 /* Pods_Peppea.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Peppea.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3113B5679CB8CBDE7AAC41BE /* Pods-Peppea.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Peppea.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Peppea/Pods-Peppea.debug.xcconfig"; sourceTree = "<group>"; };
+		4600BEFC22D5E24F00306486 /* ReceiveMoneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveMoneyViewController.swift; sourceTree = "<group>"; };
+		4666B47722D48F7D0084A230 /* FlatRateListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlatRateListViewController.swift; sourceTree = "<group>"; };
+		4666B47822D48F7D0084A230 /* FlatRateViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlatRateViewCell.swift; sourceTree = "<group>"; };
+		4666B47C22D49F180084A230 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		46DC622F22D4705D009D4BE0 /* Location.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = Location.gpx; path = ../../../../../../Location.gpx; sourceTree = "<group>"; };
 		B1DE158D22D34818001045B1 /* ChangePwVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePwVC.swift; sourceTree = "<group>"; };
 		B1DE158F22D358A0001045B1 /* BulkMileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulkMileVC.swift; sourceTree = "<group>"; };
 		B1DE159222D35920001045B1 /* BulkMileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulkMileTableViewCell.swift; sourceTree = "<group>"; };
@@ -166,6 +175,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4600BEFB22D5E1EB00306486 /* Wallet */ = {
+			isa = PBXGroup;
+			children = (
+				4600BEFC22D5E24F00306486 /* ReceiveMoneyViewController.swift */,
+			);
+			path = Wallet;
+			sourceTree = "<group>";
+		};
+		4666B47622D48F7D0084A230 /* FlatRate */ = {
+			isa = PBXGroup;
+			children = (
+				4666B47722D48F7D0084A230 /* FlatRateListViewController.swift */,
+				4666B47822D48F7D0084A230 /* FlatRateViewCell.swift */,
+			);
+			path = FlatRate;
+			sourceTree = "<group>";
+		};
+		4666B47B22D49F0B0084A230 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				4666B47C22D49F180084A230 /* ProfileViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		92BC9B349AE5C1EFF324C378 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -272,6 +306,7 @@
 			isa = PBXGroup;
 			children = (
 				EE9F3F7222C7845300426377 /* JSON Files */,
+				46DC622F22D4705D009D4BE0 /* Location.gpx */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -503,6 +538,9 @@
 		EEE2B7FC22C62376004F1C00 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4600BEFB22D5E1EB00306486 /* Wallet */,
+				4666B47B22D49F0B0084A230 /* Profile */,
+				4666B47622D48F7D0084A230 /* FlatRate */,
 				B1DE159622D361B0001045B1 /* MyMileVC */,
 				B1DE159122D358A8001045B1 /* BulkMile */,
 				B1E233DB22D31B3C00CEA568 /* AutomaticExpenseVC */,
@@ -766,11 +804,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4666B47922D48F7D0084A230 /* FlatRateListViewController.swift in Sources */,
 				B1E233D622D311BB00CEA568 /* BidListContainerViewController.swift in Sources */,
 				EEE2B7FE22C628BA004F1C00 /* LoginViewController.swift in Sources */,
 				EE9D6F7422C6300F00EAD756 /* Constants.swift in Sources */,
 				EE9F3F5E22C7366900426377 /* RegistrationNewViewController.swift in Sources */,
 				B1DE159B22D3647A001045B1 /* MyMileTableViewCell.swift in Sources */,
+				4666B47D22D49F180084A230 /* ProfileViewController.swift in Sources */,
 				EEBF159E22CA0E1F004CB7FB /* CarCollectionViewController.swift in Sources */,
 				B1DE158E22D34818001045B1 /* ChangePwVC.swift in Sources */,
 				EEE2B80922C629F0004F1C00 /* ThemeTextField.swift in Sources */,
@@ -791,6 +831,7 @@
 				B1E233D222D3109800CEA568 /* PostABidViewController.swift in Sources */,
 				EE9D6F7F22C6435600EAD756 /* Extensions.swift in Sources */,
 				EEE2B81122C62A70004F1C00 /* Singleton.swift in Sources */,
+				4666B47A22D48F7D0084A230 /* FlatRateViewCell.swift in Sources */,
 				B1E233D822D3120000CEA568 /* MyBidListViewController.swift in Sources */,
 				B1E233DA22D3123300CEA568 /* OpenBidListViewController.swift in Sources */,
 				B1DE159022D358A0001045B1 /* BulkMileVC.swift in Sources */,
@@ -798,6 +839,7 @@
 				EE9F3F6A22C76B4A00426377 /* Register.swift in Sources */,
 				EEE7D73522CF8EEB0076B0C3 /* ChooseServiceViewController.swift in Sources */,
 				EE9F3F6C22C76CB900426377 /* Login.swift in Sources */,
+				4600BEFD22D5E24F00306486 /* ReceiveMoneyViewController.swift in Sources */,
 				EE8A61CC22C654C0000718ED /* MessageBarController.swift in Sources */,
 				B1DE15A022D3760D001045B1 /* HeaderView.swift in Sources */,
 				EE9F3F6E22C7756C00426377 /* HomeViewController.swift in Sources */,

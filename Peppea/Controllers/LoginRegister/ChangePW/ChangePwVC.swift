@@ -8,7 +8,8 @@
 
 import UIKit
 
-class ChangePwVC: UIViewController {
+class ChangePwVC: BaseViewController
+{
 
     @IBOutlet weak var btnSubmit: UIButton!
     @IBOutlet weak var txtConfirmPw: ThemeTextFieldLoginRegister!
@@ -18,6 +19,7 @@ class ChangePwVC: UIViewController {
         super.viewDidLoad()
         btnSubmit.backgroundColor = ThemeColor
         
+        self.setNavBarWithBack(Title: "Change Password", IsNeedRightButton: false)
         
     }
     

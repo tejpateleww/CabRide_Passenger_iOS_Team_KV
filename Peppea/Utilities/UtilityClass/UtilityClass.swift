@@ -106,6 +106,8 @@ class UtilityClass : NSObject
         }
 
     }
+    
+    
 
     class func setCornerRadiusButton(button : UIButton , borderColor : UIColor , bgColor : UIColor, textColor : UIColor)
     {

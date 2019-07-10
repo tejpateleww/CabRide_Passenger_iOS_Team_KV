@@ -25,6 +25,7 @@ class DriverRatingAndTipViewController: UIViewController {
 
         setupView()
 
+       
         // Do any additional setup after loading the view.
     }
 
