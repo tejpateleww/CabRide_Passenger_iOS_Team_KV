@@ -1254,16 +1254,16 @@ automatic expense for warding</string>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="tyb-me-JOH">
-                                <rect key="frame" x="64" y="15" width="70" height="26"/>
+                                <rect key="frame" x="64" y="14" width="70" height="28"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rahul Patel" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yJh-Su-hlF">
-                                        <rect key="frame" x="0.0" y="0.0" width="54" height="11"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="56.5" height="13"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="11"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4cr-3a-zcN">
-                                        <rect key="frame" x="0.0" y="11" width="70" height="15"/>
+                                        <rect key="frame" x="0.0" y="13" width="70" height="15"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconSelectedstar" translatesAutoresizingMaskIntoConstraints="NO" id="B6q-Dv-6GZ">
                                                 <rect key="frame" x="0.0" y="0.0" width="15" height="15"/>
@@ -1272,7 +1272,7 @@ automatic expense for warding</string>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y1t-9A-aSA">
-                                                <rect key="frame" x="20" y="1" width="19.5" height="14"/>
+                                                <rect key="frame" x="20" y="-1.5" width="19.5" height="16.5"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -1566,16 +1566,16 @@ automatic expense for warding</string>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FE1-XC-SNi">
-                                <rect key="frame" x="10" y="50" width="355" height="191"/>
+                                <rect key="frame" x="10" y="50" width="355" height="196.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How was your trip with Thomas?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MIw-li-p0c">
-                                        <rect key="frame" x="10" y="5" width="335" height="17"/>
+                                        <rect key="frame" x="10" y="5" width="335" height="20"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qhz-3b-BLb" customClass="CosmosView" customModule="Cosmos">
-                                        <rect key="frame" x="92.5" y="27" width="170" height="30"/>
+                                        <rect key="frame" x="92.5" y="30" width="170" height="30"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="170" id="jez-PQ-hUg"/>
@@ -1583,13 +1583,13 @@ automatic expense for warding</string>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add a tip" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VLz-sp-uV3">
-                                        <rect key="frame" x="152" y="67" width="51.5" height="13"/>
+                                        <rect key="frame" x="151" y="70" width="53" height="15.5"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="13"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="do0-AI-zz1">
-                                        <rect key="frame" x="102.5" y="90" width="150" height="40"/>
+                                        <rect key="frame" x="102.5" y="95.5" width="150" height="40"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zTj-Oa-emD">
                                                 <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
@@ -1612,7 +1612,7 @@ automatic expense for warding</string>
                                         </constraints>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mhb-ZO-9k2" customClass="ThemeButton" customModule="Peppea" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="141" width="335" height="40"/>
+                                        <rect key="frame" x="10" y="146.5" width="335" height="40"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="chW-eD-ibI"/>
@@ -1684,7 +1684,7 @@ automatic expense for warding</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4Le-XH-onM">
-                                <rect key="frame" x="0.0" y="20" width="375" height="387"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="384"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="WalletCell" textLabel="YeD-dl-Uw6" imageView="r18-oe-UaD" rowHeight="55" style="IBUITableViewCellStyleDefault" id="phB-bg-fx4">
@@ -1740,16 +1740,16 @@ automatic expense for warding</string>
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I5c-4l-pWj">
-                                <rect key="frame" x="0.0" y="407" width="375" height="260"/>
+                                <rect key="frame" x="0.0" y="404" width="375" height="263"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Payment Methods" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LOD-1s-LJm">
-                                        <rect key="frame" x="10" y="10" width="355" height="16"/>
+                                        <rect key="frame" x="10" y="10" width="355" height="19"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Card Holder" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F6e-yw-vaM" customClass="ThemeTextField" customModule="Peppea" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="36" width="355" height="44"/>
+                                        <rect key="frame" x="10" y="39" width="355" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="UlS-cP-S9c"/>
                                         </constraints>
@@ -1758,7 +1758,7 @@ automatic expense for warding</string>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Card Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Din-Jc-3QN" customClass="ThemeTextField" customModule="Peppea" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="86" width="355" height="44"/>
+                                        <rect key="frame" x="10" y="89" width="355" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="ylY-us-XbU"/>
                                         </constraints>
@@ -1767,7 +1767,7 @@ automatic expense for warding</string>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Exp. Date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fYe-KZ-77I" customClass="ThemeTextField" customModule="Peppea" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="136" width="172.5" height="44"/>
+                                        <rect key="frame" x="10" y="139" width="172.5" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="4xF-2p-ctU"/>
                                         </constraints>
@@ -1776,7 +1776,7 @@ automatic expense for warding</string>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="CVV" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hkV-dQ-Lqw" customClass="ThemeTextField" customModule="Peppea" customModuleProvider="target">
-                                        <rect key="frame" x="192.5" y="136" width="172.5" height="44"/>
+                                        <rect key="frame" x="192.5" y="139" width="172.5" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="NR0-Df-wVU"/>
                                         </constraints>
@@ -1785,7 +1785,7 @@ automatic expense for warding</string>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u8c-cw-iSq" customClass="ThemeButton" customModule="Peppea" customModuleProvider="target">
-                                        <rect key="frame" x="18" y="200" width="339" height="40"/>
+                                        <rect key="frame" x="18" y="203" width="339" height="40"/>
                                         <color key="backgroundColor" red="0.0039215686269999999" green="0.0078431372550000003" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="FFO-JS-m62"/>
@@ -1923,10 +1923,11 @@ automatic expense for warding</string>
             </objects>
             <point key="canvasLocation" x="1430" y="4254"/>
         </scene>
-        <!--View Controller-->
+        <!--HistoryListViewController-->
         <scene sceneID="Upg-3Y-4QC">
             <objects>
-                <viewController id="q6a-fI-cP1" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3p4-As-fPm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="HistoryListViewController" id="q6a-fI-cP1" userLabel="HistoryListViewController" customClass="HistoryListViewController" customModule="Peppea" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zLH-Kh-Jpq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1934,18 +1935,112 @@ automatic expense for warding</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tAr-a3-HJj">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconBird" translatesAutoresizingMaskIntoConstraints="NO" id="JpE-Zd-HhR">
-                                        <rect key="frame" x="112.5" y="258.5" width="150" height="150"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="JpE-Zd-HhR" secondAttribute="height" multiplier="1:1" id="bYm-TZ-N52"/>
-                                            <constraint firstAttribute="height" constant="150" id="gAw-9c-Re9"/>
-                                        </constraints>
-                                    </imageView>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iJr-jJ-Eqg">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryTableViewCell" rowHeight="70" id="uDt-Il-2dM" userLabel="HistoryTableViewCell" customClass="HistoryTableViewCell" customModule="Peppea" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="375" height="70"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uDt-Il-2dM" id="AAd-JL-zJm">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xtL-Dm-Y8o">
+                                                            <rect key="frame" x="10" y="5" width="355" height="60"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Booking Id #213658" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1YO-ku-5xY">
+                                                                    <rect key="frame" x="10" y="10" width="141.5" height="18"/>
+                                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2019-05-25 11:00 AM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DrF-MZ-L98">
+                                                                    <rect key="frame" x="10" y="33" width="115.5" height="17"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="KES 250.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Car-R7-mEF">
+                                                                    <rect key="frame" x="267.5" y="10" width="77.5" height="17"/>
+                                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cash" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rcc-bx-3nc">
+                                                                    <rect key="frame" x="318.5" y="32" width="26.5" height="18"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstItem="1YO-ku-5xY" firstAttribute="leading" secondItem="xtL-Dm-Y8o" secondAttribute="leading" constant="10" id="2HT-XE-G2F"/>
+                                                                <constraint firstItem="Car-R7-mEF" firstAttribute="top" secondItem="xtL-Dm-Y8o" secondAttribute="top" constant="10" id="AOg-Xu-Fiz"/>
+                                                                <constraint firstAttribute="bottom" secondItem="rcc-bx-3nc" secondAttribute="bottom" constant="10" id="C4D-dQ-fnf"/>
+                                                                <constraint firstAttribute="trailing" secondItem="rcc-bx-3nc" secondAttribute="trailing" constant="10" id="M3K-Dg-Cif"/>
+                                                                <constraint firstItem="rcc-bx-3nc" firstAttribute="top" secondItem="Car-R7-mEF" secondAttribute="bottom" constant="5" id="NJ4-BN-okI"/>
+                                                                <constraint firstItem="DrF-MZ-L98" firstAttribute="top" secondItem="1YO-ku-5xY" secondAttribute="bottom" constant="5" id="NRt-lj-3WC"/>
+                                                                <constraint firstItem="1YO-ku-5xY" firstAttribute="top" secondItem="xtL-Dm-Y8o" secondAttribute="top" constant="10" id="SjB-g2-cvy"/>
+                                                                <constraint firstItem="DrF-MZ-L98" firstAttribute="leading" secondItem="xtL-Dm-Y8o" secondAttribute="leading" constant="10" id="TOB-bE-yVZ"/>
+                                                                <constraint firstAttribute="trailing" secondItem="Car-R7-mEF" secondAttribute="trailing" constant="10" id="g6f-r7-D5T"/>
+                                                                <constraint firstAttribute="bottom" secondItem="DrF-MZ-L98" secondAttribute="bottom" constant="10" id="mTt-0g-WlK"/>
+                                                            </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                    <real key="value" value="5"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                                    <real key="value" value="0.40000000000000002"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                                    <size key="value" width="2" height="2"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                                    <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                                    <real key="value" value="0.40000000000000002"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                    <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                    <real key="value" value="0.5"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </view>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="xtL-Dm-Y8o" secondAttribute="bottom" constant="5" id="cTr-BU-sij"/>
+                                                        <constraint firstAttribute="trailing" secondItem="xtL-Dm-Y8o" secondAttribute="trailing" constant="10" id="n3y-2m-fjT"/>
+                                                        <constraint firstItem="xtL-Dm-Y8o" firstAttribute="top" secondItem="AAd-JL-zJm" secondAttribute="top" constant="5" id="rer-bv-000"/>
+                                                        <constraint firstItem="xtL-Dm-Y8o" firstAttribute="leading" secondItem="AAd-JL-zJm" secondAttribute="leading" constant="10" id="sng-gU-kl2"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="lblAmount" destination="Car-R7-mEF" id="AFW-TI-dMt"/>
+                                                    <outlet property="lblBookingID" destination="1YO-ku-5xY" id="dHP-ZU-xyh"/>
+                                                    <outlet property="lblDateTime" destination="DrF-MZ-L98" id="Rp6-js-bsI"/>
+                                                    <outlet property="lblPaymentType" destination="rcc-bx-3nc" id="Eq4-Nj-5ee"/>
+                                                    <outlet property="viewCell" destination="xtL-Dm-Y8o" id="yQv-wp-YDV"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="q6a-fI-cP1" id="Fdj-se-2He"/>
+                                            <outlet property="delegate" destination="q6a-fI-cP1" id="EfG-NF-YcQ"/>
+                                        </connections>
+                                    </tableView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="JpE-Zd-HhR" firstAttribute="centerX" secondItem="tAr-a3-HJj" secondAttribute="centerX" id="BHF-oG-tmj"/>
-                                    <constraint firstItem="JpE-Zd-HhR" firstAttribute="centerY" secondItem="tAr-a3-HJj" secondAttribute="centerY" id="OvN-th-7r6"/>
+                                    <constraint firstItem="iJr-jJ-Eqg" firstAttribute="leading" secondItem="tAr-a3-HJj" secondAttribute="leading" id="M6L-dI-Lii"/>
+                                    <constraint firstItem="iJr-jJ-Eqg" firstAttribute="top" secondItem="tAr-a3-HJj" secondAttribute="top" id="dy2-jq-Fq7"/>
+                                    <constraint firstAttribute="trailing" secondItem="iJr-jJ-Eqg" secondAttribute="trailing" id="iLy-Nr-AZM"/>
+                                    <constraint firstAttribute="bottom" secondItem="iJr-jJ-Eqg" secondAttribute="bottom" id="n2S-8f-9oh"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1958,10 +2053,12 @@ automatic expense for warding</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SgH-bK-A2e"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="iJr-jJ-Eqg" id="6SV-Ec-BJy"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3p4-As-fPm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2262" y="4254"/>
+            <point key="canvasLocation" x="2261.5999999999999" y="4253.5232383808097"/>
         </scene>
         <!--ProfileViewController-->
         <scene sceneID="bHp-Xg-e4d">
@@ -2985,7 +3082,7 @@ automatic expense for warding</string>
                                                                         </constraints>
                                                                     </view>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Premium" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r56-jN-Mj9">
-                                                                        <rect key="frame" x="5" y="85" width="94" height="11"/>
+                                                                        <rect key="frame" x="5" y="85" width="94" height="13"/>
                                                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="11"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>

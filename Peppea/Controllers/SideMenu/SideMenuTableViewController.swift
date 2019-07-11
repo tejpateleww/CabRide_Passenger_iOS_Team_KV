@@ -166,6 +166,17 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
         else
 
  */
+        
+        
+        
+        if arrMenuTitle[indexPath.row] == "Payments"
+        {
+            let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "HistoryListViewController") as! HistoryListViewController
+            HomePage?.navigationController?.pushViewController(NextPage, animated: true)
+            sideMenuController?.hideMenu()
+            return
+        }
+        
         if arrMenuTitle[indexPath.row] == "Wallet"
         {
             let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "ReceiveMoneyViewController") as! ReceiveMoneyViewController
