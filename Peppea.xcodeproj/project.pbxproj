@@ -14,6 +14,8 @@
 		4666B47922D48F7D0084A230 /* FlatRateListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4666B47722D48F7D0084A230 /* FlatRateListViewController.swift */; };
 		4666B47A22D48F7D0084A230 /* FlatRateViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4666B47822D48F7D0084A230 /* FlatRateViewCell.swift */; };
 		4666B47D22D49F180084A230 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4666B47C22D49F180084A230 /* ProfileViewController.swift */; };
+		46C469B822D70DA3007BA89B /* TransferToBankVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C469B622D70DA3007BA89B /* TransferToBankVC.swift */; };
+		46C469B922D70DA3007BA89B /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C469B722D70DA3007BA89B /* WalletViewController.swift */; };
 		B1DE158E22D34818001045B1 /* ChangePwVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DE158D22D34818001045B1 /* ChangePwVC.swift */; };
 		B1DE159022D358A0001045B1 /* BulkMileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DE158F22D358A0001045B1 /* BulkMileVC.swift */; };
 		B1DE159422D35920001045B1 /* BulkMileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DE159222D35920001045B1 /* BulkMileTableViewCell.swift */; };
@@ -94,6 +96,8 @@
 		4666B47722D48F7D0084A230 /* FlatRateListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlatRateListViewController.swift; sourceTree = "<group>"; };
 		4666B47822D48F7D0084A230 /* FlatRateViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlatRateViewCell.swift; sourceTree = "<group>"; };
 		4666B47C22D49F180084A230 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		46C469B622D70DA3007BA89B /* TransferToBankVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransferToBankVC.swift; sourceTree = "<group>"; };
+		46C469B722D70DA3007BA89B /* WalletViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
 		46DC622F22D4705D009D4BE0 /* Location.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = Location.gpx; path = ../../../../../../Location.gpx; sourceTree = "<group>"; };
 		B1DE158D22D34818001045B1 /* ChangePwVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePwVC.swift; sourceTree = "<group>"; };
 		B1DE158F22D358A0001045B1 /* BulkMileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulkMileVC.swift; sourceTree = "<group>"; };
@@ -183,6 +187,8 @@
 			isa = PBXGroup;
 			children = (
 				4600BEFC22D5E24F00306486 /* ReceiveMoneyViewController.swift */,
+				46C469B622D70DA3007BA89B /* TransferToBankVC.swift */,
+				46C469B722D70DA3007BA89B /* WalletViewController.swift */,
 			);
 			path = Wallet;
 			sourceTree = "<group>";
@@ -862,8 +868,10 @@
 				EE9F3F6222C74E5900426377 /* ThemeButton.swift in Sources */,
 				EEE2B80F22C62A27004F1C00 /* UtilityClass.swift in Sources */,
 				EE8A61C822C652F5000718ED /* RegisterViewController.swift in Sources */,
+				46C469B922D70DA3007BA89B /* WalletViewController.swift in Sources */,
 				B1E233E322D3226600CEA568 /* DriverOffersListViewCell.swift in Sources */,
 				EE9D6F7222C62F7200EAD756 /* ContentTableViewCell.swift in Sources */,
+				46C469B822D70DA3007BA89B /* TransferToBankVC.swift in Sources */,
 				B1E233DD22D31B7B00CEA568 /* AutomaticExpenseVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

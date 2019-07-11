@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VSA-VF-b3R">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hie-4Z-Tl3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -1540,7 +1540,7 @@ automatic expense for warding</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rbd-R6-rHo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1431" y="1480"/>
+            <point key="canvasLocation" x="1430" y="1503"/>
         </scene>
         <!--Driver Rating And Tip View Controller-->
         <scene sceneID="dqe-9W-dhS">
@@ -1673,44 +1673,44 @@ automatic expense for warding</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hao-7j-cgf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3094" y="1687"/>
+            <point key="canvasLocation" x="1286" y="2336"/>
         </scene>
-        <!--Wallet-->
+        <!--WalletViewController-->
         <scene sceneID="fC9-UA-iW6">
             <objects>
-                <viewController storyboardIdentifier="WalletViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WNR-DS-7ZG" customClass="WalletViewController" customModule="Peppea" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WalletViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WNR-DS-7ZG" userLabel="WalletViewController" customClass="WalletViewController" customModule="Peppea" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EAa-Ot-hXf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NK0-sr-Sq7">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EN2-EG-JpQ">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="120.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="129.5"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0yM-WV-NL9">
-                                                <rect key="frame" x="59" y="38.5" width="44" height="44"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconWallet" translatesAutoresizingMaskIntoConstraints="NO" id="0yM-WV-NL9">
+                                                <rect key="frame" x="59" y="42" width="45" height="45"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="44" id="dEH-k0-fbp"/>
+                                                    <constraint firstAttribute="width" constant="45" id="dEH-k0-fbp"/>
                                                     <constraint firstAttribute="width" secondItem="0yM-WV-NL9" secondAttribute="height" multiplier="1:1" id="hct-bB-3iY"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Balance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SCa-P3-lEZ">
-                                                <rect key="frame" x="133" y="30.5" width="80" height="16"/>
+                                                <rect key="frame" x="134" y="34" width="80" height="16"/>
                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="13"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Euq-qX-qa1">
-                                                <rect key="frame" x="133" y="61" width="30" height="30"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconCurrencyBlack" translatesAutoresizingMaskIntoConstraints="NO" id="Euq-qX-qa1">
+                                                <rect key="frame" x="134" y="64.5" width="25" height="25"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="30" id="ddh-9q-by0"/>
+                                                    <constraint firstAttribute="width" constant="25" id="ddh-9q-by0"/>
                                                     <constraint firstAttribute="width" secondItem="Euq-qX-qa1" secondAttribute="height" multiplier="1:1" id="s5r-Aq-ihU"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1500.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yd4-PB-ula">
-                                                <rect key="frame" x="171" y="64" width="77" height="24"/>
+                                                <rect key="frame" x="167" y="65" width="77" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -1731,26 +1731,26 @@ automatic expense for warding</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aut-Fg-vmX">
-                                        <rect key="frame" x="0.0" y="120.5" width="375" height="241.5"/>
+                                        <rect key="frame" x="0.0" y="129.5" width="375" height="258.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZpQ-vG-hwp">
-                                                <rect key="frame" x="8" y="8" width="122.5" height="100.5"/>
+                                                <rect key="frame" x="20" y="8" width="110.5" height="108.5"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Npf-Fi-iYD">
-                                                        <rect key="frame" x="35.5" y="11.5" width="52" height="48"/>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconSendMoney" translatesAutoresizingMaskIntoConstraints="NO" id="Npf-Fi-iYD">
+                                                        <rect key="frame" x="33" y="17" width="45" height="41.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="Npf-Fi-iYD" secondAttribute="height" multiplier="13:12" id="Xer-F5-ZGe"/>
-                                                            <constraint firstAttribute="width" constant="52" id="ZSr-Cf-1wl"/>
+                                                            <constraint firstAttribute="width" constant="45" id="ZSr-Cf-1wl"/>
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send Money" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1QH-6u-p93">
-                                                        <rect key="frame" x="22.5" y="74.5" width="78" height="16"/>
-                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                                        <rect key="frame" x="21.5" y="73.5" width="67.5" height="13.5"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="11"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ply-eZ-6G9">
-                                                        <rect key="frame" x="0.0" y="0.0" width="122.5" height="100.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="110.5" height="108.5"/>
                                                         <connections>
                                                             <action selector="btnSendMoneyTapped:" destination="WNR-DS-7ZG" eventType="touchUpInside" id="h3x-YA-DYL"/>
                                                         </connections>
@@ -1774,19 +1774,19 @@ automatic expense for warding</string>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Rw-j0-Keq">
-                                                <rect key="frame" x="8" y="133" width="122.5" height="100.5"/>
+                                                <rect key="frame" x="20" y="142" width="110.5" height="108.5"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mqq-ip-KGz">
-                                                        <rect key="frame" x="35.5" y="11" width="52" height="48"/>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IconTransferToBank" translatesAutoresizingMaskIntoConstraints="NO" id="Mqq-ip-KGz">
+                                                        <rect key="frame" x="33" y="17.5" width="45" height="41.5"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transfer to Bank" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HBj-8Q-sKL">
-                                                        <rect key="frame" x="9.5" y="74" width="104" height="16"/>
-                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                                        <rect key="frame" x="10" y="74" width="90.5" height="13.5"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="11"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CAL-cM-f4F">
-                                                        <rect key="frame" x="0.0" y="0.0" width="122.5" height="100.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="110.5" height="108.5"/>
                                                         <connections>
                                                             <action selector="btnTransferToBankTapped:" destination="WNR-DS-7ZG" eventType="touchUpInside" id="WZy-La-rHb"/>
                                                         </connections>
@@ -1810,23 +1810,23 @@ automatic expense for warding</string>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="THi-n9-s3a">
-                                                <rect key="frame" x="244.5" y="8" width="122.5" height="100.5"/>
+                                                <rect key="frame" x="244.5" y="8" width="110.5" height="108.5"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ij4-jT-NTi">
-                                                        <rect key="frame" x="35" y="9.5" width="52" height="52"/>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconReceiveMoeny" translatesAutoresizingMaskIntoConstraints="NO" id="Ij4-jT-NTi">
+                                                        <rect key="frame" x="32.5" y="15.5" width="45" height="45"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="Ij4-jT-NTi" secondAttribute="height" multiplier="1:1" id="2na-Sv-TEY"/>
-                                                            <constraint firstAttribute="width" constant="52" id="deE-Kx-iKg"/>
+                                                            <constraint firstAttribute="width" constant="45" id="deE-Kx-iKg"/>
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Receive Money" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zc8-8V-JGH" userLabel="Receive Money">
-                                                        <rect key="frame" x="13.5" y="76.5" width="95" height="16"/>
-                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                                        <rect key="frame" x="14" y="75.5" width="82" height="13.5"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="11"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sWs-Ca-LbI">
-                                                        <rect key="frame" x="0.0" y="0.0" width="122.5" height="100.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="110.5" height="108.5"/>
                                                         <connections>
                                                             <action selector="btnReceiveMoney:" destination="WNR-DS-7ZG" eventType="touchUpInside" id="5c1-UP-cuU"/>
                                                         </connections>
@@ -1850,25 +1850,25 @@ automatic expense for warding</string>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgSliderImage" translatesAutoresizingMaskIntoConstraints="NO" id="Tqk-ur-bza">
-                                                <rect key="frame" x="140.5" y="74" width="94" height="93.5"/>
+                                                <rect key="frame" x="140.5" y="82.5" width="94" height="93.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="Tqk-ur-bza" secondAttribute="height" multiplier="1:1" id="7kT-3P-0oq"/>
                                                 </constraints>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZSS-TZ-SnT">
-                                                <rect key="frame" x="244.5" y="133" width="122.5" height="100.5"/>
+                                                <rect key="frame" x="244.5" y="142" width="110.5" height="108.5"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bWu-fX-J38">
-                                                        <rect key="frame" x="35" y="9" width="52" height="52"/>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconHistory" translatesAutoresizingMaskIntoConstraints="NO" id="bWu-fX-J38">
+                                                        <rect key="frame" x="32.5" y="15.5" width="45" height="45"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pc1-oQ-POJ">
-                                                        <rect key="frame" x="37.5" y="76" width="47" height="16"/>
-                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                                        <rect key="frame" x="35" y="75.5" width="40" height="13.5"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="11"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ls-wd-vLZ">
-                                                        <rect key="frame" x="0.0" y="0.0" width="122.5" height="100.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="110.5" height="108.5"/>
                                                         <connections>
                                                             <action selector="btnHistoryTapped:" destination="WNR-DS-7ZG" eventType="touchUpInside" id="gT5-wc-gXC"/>
                                                         </connections>
@@ -1895,32 +1895,32 @@ automatic expense for warding</string>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="ZpQ-vG-hwp" firstAttribute="bottom" secondItem="Tqk-ur-bza" secondAttribute="centerY" multiplier="0.9" id="8fK-bU-QHQ"/>
+                                            <constraint firstItem="2Rw-j0-Keq" firstAttribute="trailing" secondItem="ZpQ-vG-hwp" secondAttribute="trailing" id="8wm-2R-kfi"/>
                                             <constraint firstAttribute="bottom" secondItem="2Rw-j0-Keq" secondAttribute="bottom" constant="8" id="97F-kL-lzF"/>
                                             <constraint firstItem="Mqq-ip-KGz" firstAttribute="width" secondItem="Npf-Fi-iYD" secondAttribute="width" id="A5g-EK-C5e"/>
                                             <constraint firstItem="THi-n9-s3a" firstAttribute="top" secondItem="ZpQ-vG-hwp" secondAttribute="top" id="BfZ-58-b8A"/>
                                             <constraint firstItem="ZSS-TZ-SnT" firstAttribute="height" secondItem="ZpQ-vG-hwp" secondAttribute="height" id="NsY-G7-CPv"/>
                                             <constraint firstItem="ZSS-TZ-SnT" firstAttribute="bottom" secondItem="2Rw-j0-Keq" secondAttribute="bottom" id="P4C-XI-AKc"/>
-                                            <constraint firstItem="THi-n9-s3a" firstAttribute="width" secondItem="ZpQ-vG-hwp" secondAttribute="width" id="QSb-vD-Blq"/>
+                                            <constraint firstItem="ZSS-TZ-SnT" firstAttribute="leading" secondItem="sWs-Ca-LbI" secondAttribute="leading" id="PiG-25-BNY"/>
                                             <constraint firstItem="ZpQ-vG-hwp" firstAttribute="trailing" secondItem="Tqk-ur-bza" secondAttribute="leading" constant="-10" id="R75-yB-KiE"/>
                                             <constraint firstItem="ZSS-TZ-SnT" firstAttribute="trailing" secondItem="THi-n9-s3a" secondAttribute="trailing" id="ROG-mH-gO3"/>
                                             <constraint firstItem="Tqk-ur-bza" firstAttribute="width" secondItem="aut-Fg-vmX" secondAttribute="width" multiplier="0.25" id="Wdu-BV-HSV"/>
-                                            <constraint firstItem="ZpQ-vG-hwp" firstAttribute="leading" secondItem="aut-Fg-vmX" secondAttribute="leading" constant="8" id="Yxp-dM-Ea6"/>
+                                            <constraint firstItem="ZpQ-vG-hwp" firstAttribute="leading" secondItem="aut-Fg-vmX" secondAttribute="leading" constant="20" id="Yxp-dM-Ea6"/>
                                             <constraint firstItem="Mqq-ip-KGz" firstAttribute="height" secondItem="Npf-Fi-iYD" secondAttribute="height" id="ZHa-8O-Xhm"/>
                                             <constraint firstItem="bWu-fX-J38" firstAttribute="width" secondItem="Ij4-jT-NTi" secondAttribute="width" id="ZQJ-la-DD0"/>
-                                            <constraint firstAttribute="trailing" secondItem="THi-n9-s3a" secondAttribute="trailing" constant="8" id="Zdb-bk-xIg"/>
+                                            <constraint firstAttribute="trailing" secondItem="THi-n9-s3a" secondAttribute="trailing" constant="20" id="Zdb-bk-xIg"/>
                                             <constraint firstItem="ZpQ-vG-hwp" firstAttribute="top" secondItem="aut-Fg-vmX" secondAttribute="top" constant="8" id="byo-dp-99a"/>
                                             <constraint firstItem="Tqk-ur-bza" firstAttribute="centerX" secondItem="aut-Fg-vmX" secondAttribute="centerX" id="eBo-wT-a7i"/>
                                             <constraint firstItem="2Rw-j0-Keq" firstAttribute="height" secondItem="ZpQ-vG-hwp" secondAttribute="height" id="gSu-Xj-gbz"/>
                                             <constraint firstItem="THi-n9-s3a" firstAttribute="height" secondItem="ZpQ-vG-hwp" secondAttribute="height" id="j2n-gi-8tY"/>
-                                            <constraint firstItem="2Rw-j0-Keq" firstAttribute="width" secondItem="ZpQ-vG-hwp" secondAttribute="width" id="jW9-Fl-oEC"/>
                                             <constraint firstItem="Tqk-ur-bza" firstAttribute="centerY" secondItem="aut-Fg-vmX" secondAttribute="centerY" id="kIH-zr-aNc"/>
                                             <constraint firstItem="bWu-fX-J38" firstAttribute="height" secondItem="Ij4-jT-NTi" secondAttribute="height" id="kky-hJ-Aft"/>
-                                            <constraint firstItem="ZSS-TZ-SnT" firstAttribute="width" secondItem="ZpQ-vG-hwp" secondAttribute="width" id="tyK-Uk-ypF"/>
                                             <constraint firstItem="2Rw-j0-Keq" firstAttribute="leading" secondItem="ZpQ-vG-hwp" secondAttribute="leading" id="xB9-JV-egb"/>
+                                            <constraint firstItem="THi-n9-s3a" firstAttribute="leading" secondItem="Tqk-ur-bza" secondAttribute="trailing" constant="10" id="y0o-vx-347"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0jT-i6-4F6">
-                                        <rect key="frame" x="0.0" y="362" width="375" height="168.5"/>
+                                        <rect key="frame" x="0.0" y="388" width="375" height="181.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Money" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f01-qa-wjw">
                                                 <rect key="frame" x="8" y="15" width="87" height="20.5"/>
@@ -1928,8 +1928,8 @@ automatic expense for warding</string>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xzJ-KT-8zP">
-                                                <rect key="frame" x="8" y="43.5" width="55" height="30"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconVisaCard" translatesAutoresizingMaskIntoConstraints="NO" id="xzJ-KT-8zP">
+                                                <rect key="frame" x="8" y="43.5" width="55" height="30.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="xzJ-KT-8zP" secondAttribute="height" multiplier="29:16" id="SuB-d2-WgG"/>
                                                     <constraint firstAttribute="width" constant="55" id="dyl-52-ueH"/>
@@ -1942,13 +1942,13 @@ automatic expense for warding</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="XXXX XXXX XXXX 8976" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sFs-YE-JHW">
-                                                <rect key="frame" x="71" y="59.5" width="128" height="14"/>
+                                                <rect key="frame" x="71" y="60" width="128" height="14"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HhM-9U-06Y">
-                                                <rect key="frame" x="123" y="111" width="129" height="49"/>
+                                                <rect key="frame" x="123" y="124" width="129" height="49"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="00e-mt-hY2">
                                                         <rect key="frame" x="0.0" y="48" width="129" height="1"/>
@@ -1957,15 +1957,15 @@ automatic expense for warding</string>
                                                             <constraint firstAttribute="height" constant="1" id="c8x-Zm-MAG"/>
                                                         </constraints>
                                                     </view>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OjD-8w-G5a">
-                                                        <rect key="frame" x="33" y="8" width="24" height="33"/>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconCurrencyGray" translatesAutoresizingMaskIntoConstraints="NO" id="OjD-8w-G5a">
+                                                        <rect key="frame" x="37" y="19" width="16" height="22"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="OjD-8w-G5a" secondAttribute="height" multiplier="8:11" id="OFZ-wc-ex6"/>
-                                                            <constraint firstAttribute="width" constant="24" id="aQV-Cr-fhS"/>
+                                                            <constraint firstAttribute="width" constant="16" id="aQV-Cr-fhS"/>
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D6G-oU-0vY">
-                                                        <rect key="frame" x="67" y="14" width="35" height="21"/>
+                                                        <rect key="frame" x="63" y="19.5" width="35" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -2003,7 +2003,7 @@ automatic expense for warding</string>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Gg-3O-lm8">
-                                        <rect key="frame" x="19" y="550" width="337.5" height="37"/>
+                                        <rect key="frame" x="19" y="594" width="337.5" height="37"/>
                                         <color key="backgroundColor" red="0.17715445160000001" green="0.17732077839999999" blue="0.17718020079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="3Gg-3O-lm8" secondAttribute="height" multiplier="338:37" id="eMR-e4-eiG"/>
@@ -2055,7 +2055,7 @@ automatic expense for warding</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wOo-dr-1Fy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5071.1999999999998" y="1804.9475262368817"/>
+            <point key="canvasLocation" x="2324" y="3467"/>
         </scene>
         <!--Transfer To BankVC-->
         <scene sceneID="waH-AU-EYO">
@@ -2071,28 +2071,28 @@ automatic expense for warding</string>
                             <view autoresizesSubviews="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dTx-Au-hzB">
                                 <rect key="frame" x="0.0" y="20" width="375" height="200"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="93U-k3-eSf">
-                                        <rect key="frame" x="59" y="70" width="60" height="60"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconWallet" translatesAutoresizingMaskIntoConstraints="NO" id="93U-k3-eSf">
+                                        <rect key="frame" x="59" y="67.5" width="65" height="65"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="93U-k3-eSf" secondAttribute="height" multiplier="1:1" id="G3y-Cv-tBf"/>
-                                            <constraint firstAttribute="width" constant="60" id="MV7-8Z-mgE"/>
+                                            <constraint firstAttribute="width" constant="65" id="MV7-8Z-mgE"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Balance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N2Z-Jf-Wdh">
-                                        <rect key="frame" x="149" y="70" width="118.5" height="25.5"/>
+                                        <rect key="frame" x="154" y="67.5" width="118.5" height="25.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="21"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TKb-4w-efC">
-                                        <rect key="frame" x="149" y="100" width="30" height="30"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconCurrencyBlack" translatesAutoresizingMaskIntoConstraints="NO" id="TKb-4w-efC">
+                                        <rect key="frame" x="154" y="102.5" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="TKb-4w-efC" secondAttribute="height" multiplier="1:1" id="INA-EY-s3s"/>
                                             <constraint firstAttribute="width" constant="30" id="J0D-6r-jex"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1500.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8bz-hQ-Tnl">
-                                        <rect key="frame" x="187" y="103" width="76.5" height="24"/>
+                                        <rect key="frame" x="192" y="105.5" width="76.5" height="24"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -2202,7 +2202,7 @@ automatic expense for warding</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QZ0-Ah-5HO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5934" y="1776"/>
+            <point key="canvasLocation" x="3175" y="3467"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="wzS-hm-1hu">
@@ -2407,7 +2407,7 @@ automatic expense for warding</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconBird" translatesAutoresizingMaskIntoConstraints="NO" id="4aY-KU-T7B">
-                                        <rect key="frame" x="179.5" y="325.5" width="16" height="16"/>
+                                        <rect key="frame" x="100.5" y="284" width="174" height="99"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconDummyQR" translatesAutoresizingMaskIntoConstraints="NO" id="gT5-bh-dke">
                                         <rect key="frame" x="75" y="221" width="225" height="225"/>
@@ -2450,12 +2450,11 @@ automatic expense for warding</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zbR-Fs-wfP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1430" y="4254"/>
+            <point key="canvasLocation" x="550" y="3466"/>
         </scene>
         <!--HistoryListViewController-->
         <scene sceneID="Upg-3Y-4QC">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3p4-As-fPm" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="HistoryListViewController" id="q6a-fI-cP1" userLabel="HistoryListViewController" customClass="HistoryListViewController" customModule="Peppea" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zLH-Kh-Jpq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -2586,8 +2585,9 @@ automatic expense for warding</string>
                         <outlet property="tableView" destination="iJr-jJ-Eqg" id="6SV-Ec-BJy"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3p4-As-fPm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2261.5999999999999" y="4253.5232383808097"/>
+            <point key="canvasLocation" x="1430" y="3468"/>
         </scene>
         <!--ProfileViewController-->
         <scene sceneID="bHp-Xg-e4d">
@@ -5481,28 +5481,11 @@ automatic expense for warding</string>
             </objects>
             <point key="canvasLocation" x="1430" y="2761"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="rr4-1d-nLB">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IBA-xx-P1t" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="pe7-3G-HfY">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="WNR-DS-7ZG" kind="relationship" relationship="rootViewController" id="Saf-32-Rh5"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uhD-vP-016" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4132" y="1804.9475262368817"/>
-        </scene>
     </scenes>
     <resources>
         <image name="Diners Club" width="16" height="16"/>
         <image name="Dropoff" width="16" height="16"/>
+        <image name="IconTransferToBank" width="40" height="40"/>
         <image name="MiniSelect" width="170" height="170"/>
         <image name="Pickup" width="16" height="16"/>
         <image name="SelectedCircle" width="20" height="20"/>
@@ -5513,16 +5496,23 @@ automatic expense for warding</string>
         <image name="iconBreakdownServices" width="16" height="16"/>
         <image name="iconCall" width="45" height="45"/>
         <image name="iconChat" width="45" height="45"/>
+        <image name="iconCurrencyBlack" width="33" height="33"/>
+        <image name="iconCurrencyGray" width="33" height="33"/>
         <image name="iconDropoffPinRound" width="85" height="85"/>
         <image name="iconDummyProfilePic" width="170" height="170"/>
         <image name="iconDummyQR" width="170.66667175292969" height="170.66667175292969"/>
         <image name="iconHammer" width="16" height="16"/>
+        <image name="iconHistory" width="30" height="30"/>
         <image name="iconLine" width="16" height="16"/>
         <image name="iconPickupRound" width="85" height="85"/>
         <image name="iconPin" width="45" height="45"/>
         <image name="iconPromoCode" width="32" height="32"/>
+        <image name="iconReceiveMoeny" width="40" height="40"/>
         <image name="iconSelectedstar" width="42" height="42"/>
+        <image name="iconSendMoney" width="40" height="40"/>
         <image name="iconToAndFromAddress" width="13" height="60"/>
+        <image name="iconVisaCard" width="30" height="30"/>
+        <image name="iconWallet" width="40" height="40"/>
         <image name="icon_ArrowDown" width="16" height="16"/>
         <image name="icon_Cross" width="16" height="16"/>
         <image name="iconcard" width="64" height="64"/>
