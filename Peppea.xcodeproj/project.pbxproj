@@ -11,6 +11,23 @@
 		4600BEFD22D5E24F00306486 /* ReceiveMoneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4600BEFC22D5E24F00306486 /* ReceiveMoneyViewController.swift */; };
 		4600BF0022D613B000306486 /* HistoryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4600BEFF22D613B000306486 /* HistoryListViewController.swift */; };
 		4600BF0222D6140200306486 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4600BF0122D6140200306486 /* HistoryTableViewCell.swift */; };
+		463DEFC922D851E6002365F8 /* SendMoneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463DEFC822D851E6002365F8 /* SendMoneyViewController.swift */; };
+		463DEFCC22D86AE2002365F8 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463DEFCB22D86AE2002365F8 /* PaymentViewController.swift */; };
+		463DEFCE22D86D7C002365F8 /* PaymentWalletTypeListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463DEFCD22D86D7C002365F8 /* PaymentWalletTypeListCell.swift */; };
+		463DEFD022D86E15002365F8 /* PaymentCardTypeListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463DEFCF22D86E15002365F8 /* PaymentCardTypeListCell.swift */; };
+		463DEFD422D877E4002365F8 /* CreditCardValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463DEFD222D877E4002365F8 /* CreditCardValidator.swift */; };
+		463DEFD522D877E4002365F8 /* CreditCardValidationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463DEFD322D877E4002365F8 /* CreditCardValidationType.swift */; };
+		463DEFE322D8AEA6002365F8 /* MyTripDescriptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 463DEFD922D8AEA6002365F8 /* MyTripDescriptionTableViewCell.xib */; };
+		463DEFE422D8AEA6002365F8 /* MyTripTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 463DEFDA22D8AEA6002365F8 /* MyTripTableViewCell.xib */; };
+		463DEFE522D8AEA6002365F8 /* FooterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 463DEFDB22D8AEA6002365F8 /* FooterTableViewCell.xib */; };
+		463DEFE622D8AEA6002365F8 /* MyTripDescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463DEFDC22D8AEA6002365F8 /* MyTripDescriptionTableViewCell.swift */; };
+		463DEFE722D8AEA6002365F8 /* MyTripTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463DEFDD22D8AEA6002365F8 /* MyTripTableViewCell.swift */; };
+		463DEFE822D8AEA6002365F8 /* MyTripsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463DEFDE22D8AEA6002365F8 /* MyTripsViewController.swift */; };
+		463DEFE922D8AEA6002365F8 /* MyTrips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463DEFE022D8AEA6002365F8 /* MyTrips.swift */; };
+		463DEFEA22D8AEA6002365F8 /* MyTrips.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 463DEFE222D8AEA6002365F8 /* MyTrips.storyboard */; };
+		463DEFEE22D8B01B002365F8 /* TitleHeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463DEFEC22D8B01B002365F8 /* TitleHeaderCollectionViewCell.swift */; };
+		463DEFEF22D8B01B002365F8 /* HeaderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463DEFED22D8B01B002365F8 /* HeaderTableViewController.swift */; };
+		463DEFF122D8C13A002365F8 /* HistoryFilterPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463DEFF022D8C13A002365F8 /* HistoryFilterPopUpViewController.swift */; };
 		4666B47922D48F7D0084A230 /* FlatRateListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4666B47722D48F7D0084A230 /* FlatRateListViewController.swift */; };
 		4666B47A22D48F7D0084A230 /* FlatRateViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4666B47822D48F7D0084A230 /* FlatRateViewCell.swift */; };
 		4666B47D22D49F180084A230 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4666B47C22D49F180084A230 /* ProfileViewController.swift */; };
@@ -93,6 +110,24 @@
 		4600BEFC22D5E24F00306486 /* ReceiveMoneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveMoneyViewController.swift; sourceTree = "<group>"; };
 		4600BEFF22D613B000306486 /* HistoryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryListViewController.swift; sourceTree = "<group>"; };
 		4600BF0122D6140200306486 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
+		463DEFC822D851E6002365F8 /* SendMoneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMoneyViewController.swift; sourceTree = "<group>"; };
+		463DEFCB22D86AE2002365F8 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
+		463DEFCD22D86D7C002365F8 /* PaymentWalletTypeListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentWalletTypeListCell.swift; sourceTree = "<group>"; };
+		463DEFCF22D86E15002365F8 /* PaymentCardTypeListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCardTypeListCell.swift; sourceTree = "<group>"; };
+		463DEFD222D877E4002365F8 /* CreditCardValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCardValidator.swift; sourceTree = "<group>"; };
+		463DEFD322D877E4002365F8 /* CreditCardValidationType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCardValidationType.swift; sourceTree = "<group>"; };
+		463DEFD622D87972002365F8 /* Peppea-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Peppea-Bridging-Header.h"; sourceTree = "<group>"; };
+		463DEFD922D8AEA6002365F8 /* MyTripDescriptionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyTripDescriptionTableViewCell.xib; sourceTree = "<group>"; };
+		463DEFDA22D8AEA6002365F8 /* MyTripTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyTripTableViewCell.xib; sourceTree = "<group>"; };
+		463DEFDB22D8AEA6002365F8 /* FooterTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FooterTableViewCell.xib; sourceTree = "<group>"; };
+		463DEFDC22D8AEA6002365F8 /* MyTripDescriptionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTripDescriptionTableViewCell.swift; sourceTree = "<group>"; };
+		463DEFDD22D8AEA6002365F8 /* MyTripTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTripTableViewCell.swift; sourceTree = "<group>"; };
+		463DEFDE22D8AEA6002365F8 /* MyTripsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTripsViewController.swift; sourceTree = "<group>"; };
+		463DEFE022D8AEA6002365F8 /* MyTrips.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTrips.swift; sourceTree = "<group>"; };
+		463DEFE222D8AEA6002365F8 /* MyTrips.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MyTrips.storyboard; sourceTree = "<group>"; };
+		463DEFEC22D8B01B002365F8 /* TitleHeaderCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleHeaderCollectionViewCell.swift; sourceTree = "<group>"; };
+		463DEFED22D8B01B002365F8 /* HeaderTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderTableViewController.swift; sourceTree = "<group>"; };
+		463DEFF022D8C13A002365F8 /* HistoryFilterPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryFilterPopUpViewController.swift; sourceTree = "<group>"; };
 		4666B47722D48F7D0084A230 /* FlatRateListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlatRateListViewController.swift; sourceTree = "<group>"; };
 		4666B47822D48F7D0084A230 /* FlatRateViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlatRateViewCell.swift; sourceTree = "<group>"; };
 		4666B47C22D49F180084A230 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -189,6 +224,7 @@
 				4600BEFC22D5E24F00306486 /* ReceiveMoneyViewController.swift */,
 				46C469B622D70DA3007BA89B /* TransferToBankVC.swift */,
 				46C469B722D70DA3007BA89B /* WalletViewController.swift */,
+				463DEFC822D851E6002365F8 /* SendMoneyViewController.swift */,
 			);
 			path = Wallet;
 			sourceTree = "<group>";
@@ -198,8 +234,67 @@
 			children = (
 				4600BEFF22D613B000306486 /* HistoryListViewController.swift */,
 				4600BF0122D6140200306486 /* HistoryTableViewCell.swift */,
+				463DEFF022D8C13A002365F8 /* HistoryFilterPopUpViewController.swift */,
 			);
 			path = History;
+			sourceTree = "<group>";
+		};
+		463DEFCA22D86AB6002365F8 /* Payment */ = {
+			isa = PBXGroup;
+			children = (
+				463DEFCB22D86AE2002365F8 /* PaymentViewController.swift */,
+				463DEFCD22D86D7C002365F8 /* PaymentWalletTypeListCell.swift */,
+				463DEFCF22D86E15002365F8 /* PaymentCardTypeListCell.swift */,
+			);
+			path = Payment;
+			sourceTree = "<group>";
+		};
+		463DEFD122D877E4002365F8 /* CreditCardValidator */ = {
+			isa = PBXGroup;
+			children = (
+				463DEFD222D877E4002365F8 /* CreditCardValidator.swift */,
+				463DEFD322D877E4002365F8 /* CreditCardValidationType.swift */,
+			);
+			path = CreditCardValidator;
+			sourceTree = "<group>";
+		};
+		463DEFD722D8AEA6002365F8 /* MyTrips */ = {
+			isa = PBXGroup;
+			children = (
+				463DEFD822D8AEA6002365F8 /* Cells */,
+				463DEFDE22D8AEA6002365F8 /* MyTripsViewController.swift */,
+				463DEFDF22D8AEA6002365F8 /* Model */,
+			);
+			path = MyTrips;
+			sourceTree = "<group>";
+		};
+		463DEFD822D8AEA6002365F8 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				463DEFD922D8AEA6002365F8 /* MyTripDescriptionTableViewCell.xib */,
+				463DEFDA22D8AEA6002365F8 /* MyTripTableViewCell.xib */,
+				463DEFDB22D8AEA6002365F8 /* FooterTableViewCell.xib */,
+				463DEFDC22D8AEA6002365F8 /* MyTripDescriptionTableViewCell.swift */,
+				463DEFDD22D8AEA6002365F8 /* MyTripTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		463DEFDF22D8AEA6002365F8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				463DEFE022D8AEA6002365F8 /* MyTrips.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		463DEFEB22D8B01B002365F8 /* HeaderCollectionTableView */ = {
+			isa = PBXGroup;
+			children = (
+				463DEFEC22D8B01B002365F8 /* TitleHeaderCollectionViewCell.swift */,
+				463DEFED22D8B01B002365F8 /* HeaderTableViewController.swift */,
+			);
+			path = HeaderCollectionTableView;
 			sourceTree = "<group>";
 		};
 		4666B47622D48F7D0084A230 /* FlatRate */ = {
@@ -291,6 +386,7 @@
 		EE8A61C922C654AE000718ED /* ThirdPartyLibraries */ = {
 			isa = PBXGroup;
 			children = (
+				463DEFD122D877E4002365F8 /* CreditCardValidator */,
 				EE8A61CA22C654C0000718ED /* MessageBarController */,
 			);
 			path = ThirdPartyLibraries;
@@ -326,6 +422,7 @@
 			children = (
 				EE9F3F7222C7845300426377 /* JSON Files */,
 				46DC622F22D4705D009D4BE0 /* Location.gpx */,
+				463DEFD622D87972002365F8 /* Peppea-Bridging-Header.h */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -539,6 +636,7 @@
 		EEE2B7FA22C6235F004F1C00 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
+				463DEFE222D8AEA6002365F8 /* MyTrips.storyboard */,
 				EEE2B7EE22C62305004F1C00 /* LaunchScreen.storyboard */,
 				EEE2B7E922C62304004F1C00 /* Main.storyboard */,
 				EEE2B7F722C6234B004F1C00 /* LoginRegister.storyboard */,
@@ -557,6 +655,8 @@
 		EEE2B7FC22C62376004F1C00 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				463DEFD722D8AEA6002365F8 /* MyTrips */,
+				463DEFCA22D86AB6002365F8 /* Payment */,
 				4600BEFE22D6138500306486 /* History */,
 				4600BEFB22D5E1EB00306486 /* Wallet */,
 				4666B47B22D49F0B0084A230 /* Profile */,
@@ -604,6 +704,7 @@
 		EEE2B81222C62A75004F1C00 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				463DEFEB22D8B01B002365F8 /* HeaderCollectionTableView */,
 				EE9D6F8022C6449F00EAD756 /* Fonts */,
 				EEE2B81322C62A7F004F1C00 /* ThemeObjects */,
 				EEE2B81422C62A8B004F1C00 /* UtilityClass */,
@@ -714,8 +815,11 @@
 				EE9D6F9822C6449F00EAD756 /* proxima-nova-condensed-light-italic.otf in Resources */,
 				EEA454B122CC8FC80094941A /* carList.json in Resources */,
 				EE9D6F9922C6449F00EAD756 /* proxima-nova-semibold-italic.otf in Resources */,
+				463DEFE522D8AEA6002365F8 /* FooterTableViewCell.xib in Resources */,
 				B1DE159C22D3647A001045B1 /* MyMileTableViewCell.xib in Resources */,
 				EE9D6F9422C6449F00EAD756 /* proxima-nova-light.otf in Resources */,
+				463DEFE422D8AEA6002365F8 /* MyTripTableViewCell.xib in Resources */,
+				463DEFEA22D8AEA6002365F8 /* MyTrips.storyboard in Resources */,
 				EE9D6FA022C6449F00EAD756 /* proxima-nova-black.otf in Resources */,
 				EE9D6F9722C6449F00EAD756 /* proxima-nova-regular-italic.otf in Resources */,
 				EE9D6F9222C6449F00EAD756 /* proxima-nova-condensed-semibold-italic.otf in Resources */,
@@ -731,6 +835,7 @@
 				B1DE159522D35920001045B1 /* BulkMileTableViewCell.xib in Resources */,
 				EE9D6F9A22C6449F00EAD756 /* proxima-nova-bold.otf in Resources */,
 				EEE2B7ED22C62305004F1C00 /* Assets.xcassets in Resources */,
+				463DEFE322D8AEA6002365F8 /* MyTripDescriptionTableViewCell.xib in Resources */,
 				EEE2B7EB22C62304004F1C00 /* Main.storyboard in Resources */,
 				B1DE159E22D37263001045B1 /* HeaderView.xib in Resources */,
 				EE9D6F7822C6341300EAD756 /* Loading.json in Resources */,
@@ -747,7 +852,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Peppea/Pods-Peppea-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Peppea/Pods-Peppea-resources.sh",
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
 				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
 			);
@@ -758,7 +863,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Peppea/Pods-Peppea-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Peppea/Pods-Peppea-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		26D655D3C368E25FF4A61147 /* [CP] Check Pods Manifest.lock */ = {
@@ -785,14 +890,16 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Peppea/Pods-Peppea-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Peppea/Pods-Peppea-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AvailableHapticFeedback/AvailableHapticFeedback.framework",
 				"${BUILT_PRODUCTS_DIR}/Cosmos/Cosmos.framework",
+				"${BUILT_PRODUCTS_DIR}/FormTextField/FormTextField.framework",
 				"${BUILT_PRODUCTS_DIR}/IQDropDownTextField/IQDropDownTextField.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/MiniLayout/MiniLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/MultiSlider/MultiSlider.framework",
+				"${BUILT_PRODUCTS_DIR}/QRCodeReader.swift/QRCodeReader.framework",
 				"${BUILT_PRODUCTS_DIR}/SideMenuSwift/SideMenuSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework",
@@ -803,10 +910,12 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AvailableHapticFeedback.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cosmos.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FormTextField.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQDropDownTextField.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MiniLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MultiSlider.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QRCodeReader.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenuSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMessages.framework",
@@ -814,7 +923,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Peppea/Pods-Peppea-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Peppea/Pods-Peppea-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -831,18 +940,25 @@
 				EE9F3F5E22C7366900426377 /* RegistrationNewViewController.swift in Sources */,
 				B1DE159B22D3647A001045B1 /* MyMileTableViewCell.swift in Sources */,
 				4666B47D22D49F180084A230 /* ProfileViewController.swift in Sources */,
+				463DEFCE22D86D7C002365F8 /* PaymentWalletTypeListCell.swift in Sources */,
+				463DEFCC22D86AE2002365F8 /* PaymentViewController.swift in Sources */,
 				4600BF0022D613B000306486 /* HistoryListViewController.swift in Sources */,
 				EEBF159E22CA0E1F004CB7FB /* CarCollectionViewController.swift in Sources */,
+				463DEFD422D877E4002365F8 /* CreditCardValidator.swift in Sources */,
 				B1DE158E22D34818001045B1 /* ChangePwVC.swift in Sources */,
 				EEE2B80922C629F0004F1C00 /* ThemeTextField.swift in Sources */,
 				EEE2B7E622C62304004F1C00 /* AppDelegate.swift in Sources */,
+				463DEFE822D8AEA6002365F8 /* MyTripsViewController.swift in Sources */,
 				EEA454B322CC913D0094941A /* CarsCollectionViewCell.swift in Sources */,
 				EE9F3F7422C7846500426377 /* BaseViewController.swift in Sources */,
 				EEA454B922CCEC390094941A /* DriverInfoPageViewController.swift in Sources */,
 				EEA454B622CCE8510094941A /* ForgotPasswordViewController.swift in Sources */,
+				463DEFEE22D8B01B002365F8 /* TitleHeaderCollectionViewCell.swift in Sources */,
+				463DEFE622D8AEA6002365F8 /* MyTripDescriptionTableViewCell.swift in Sources */,
 				B1E233D422D3111D00CEA568 /* BidDetailsViewController.swift in Sources */,
 				B1E233E122D3220600CEA568 /* MyBidListViewCell.swift in Sources */,
 				B1DE159822D361D3001045B1 /* MyMileVC.swift in Sources */,
+				463DEFEF22D8B01B002365F8 /* HeaderTableViewController.swift in Sources */,
 				EEE2B80422C628F2004F1C00 /* RegisterContainerViewController.swift in Sources */,
 				EE9F3F6522C769CA00426377 /* RequestModel.swift in Sources */,
 				EE9D6F7022C62D6F00EAD756 /* SideMenuTableViewController.swift in Sources */,
@@ -857,7 +973,10 @@
 				B1E233D822D3120000CEA568 /* MyBidListViewController.swift in Sources */,
 				B1E233DA22D3123300CEA568 /* OpenBidListViewController.swift in Sources */,
 				B1DE159022D358A0001045B1 /* BulkMileVC.swift in Sources */,
+				463DEFF122D8C13A002365F8 /* HistoryFilterPopUpViewController.swift in Sources */,
 				B1DE159422D35920001045B1 /* BulkMileTableViewCell.swift in Sources */,
+				463DEFD522D877E4002365F8 /* CreditCardValidationType.swift in Sources */,
+				463DEFD022D86E15002365F8 /* PaymentCardTypeListCell.swift in Sources */,
 				EE9F3F6A22C76B4A00426377 /* Register.swift in Sources */,
 				EEE7D73522CF8EEB0076B0C3 /* ChooseServiceViewController.swift in Sources */,
 				EE9F3F6C22C76CB900426377 /* Login.swift in Sources */,
@@ -865,12 +984,15 @@
 				EE8A61CC22C654C0000718ED /* MessageBarController.swift in Sources */,
 				B1DE15A022D3760D001045B1 /* HeaderView.swift in Sources */,
 				EE9F3F6E22C7756C00426377 /* HomeViewController.swift in Sources */,
+				463DEFE722D8AEA6002365F8 /* MyTripTableViewCell.swift in Sources */,
 				EE9F3F6222C74E5900426377 /* ThemeButton.swift in Sources */,
 				EEE2B80F22C62A27004F1C00 /* UtilityClass.swift in Sources */,
+				463DEFC922D851E6002365F8 /* SendMoneyViewController.swift in Sources */,
 				EE8A61C822C652F5000718ED /* RegisterViewController.swift in Sources */,
 				46C469B922D70DA3007BA89B /* WalletViewController.swift in Sources */,
 				B1E233E322D3226600CEA568 /* DriverOffersListViewCell.swift in Sources */,
 				EE9D6F7222C62F7200EAD756 /* ContentTableViewCell.swift in Sources */,
+				463DEFE922D8AEA6002365F8 /* MyTrips.swift in Sources */,
 				46C469B822D70DA3007BA89B /* TransferToBankVC.swift in Sources */,
 				B1E233DD22D31B7B00CEA568 /* AutomaticExpenseVC.swift in Sources */,
 			);
@@ -1029,6 +1151,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.PepPea.passenger;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Peppea/Resources/Peppea-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1049,6 +1172,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.PepPea.passenger;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Peppea/Resources/Peppea-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

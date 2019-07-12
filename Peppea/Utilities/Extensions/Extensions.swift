@@ -177,7 +177,101 @@ extension String {
 }
 
 extension UIView {
-
+    
+    //-------------------------------------
+    // MARK:- Instantiate View
+    //-------------------------------------
+    
+    class func fromNib<T: UIView>() -> T {
+        return Bundle.main.loadNibNamed(String(describing: T.self), owner: nil, options: nil)![0] as! T
+    }
+    
+    //-------------------------------------------
+    // MARK:- identifier Variable for View, Cells
+    //-------------------------------------------
+    
+    static var identifier: String{
+        return String(describing: self)
+    }
+    
+    //-------------------------------------
+    // MARK:- Remove All Subviews
+    //-------------------------------------
+    
+    func removeAllSubviews(){
+        self.subviews.forEach({
+            $0.removeFromSuperview()
+        })
+    }
+    //-------------------------------------
+    // MARK:- Add Subview with animation
+    //-------------------------------------
+    func customAddSubview(_ view: UIView){
+        self.isHidden = false
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        self.autoresizingMask = [.flexibleHeight]
+        self.bounds.size = view.frame.size
+        view.frame = self.bounds
+        
+        UIView.transition(with: self,
+                          duration: 0.4,
+                          options: .curveEaseInOut,
+                          animations: {
+                            self.removeAllSubviews()
+                            self.addSubview(view)
+        }, completion: nil)
+        
+    }
+    func addSubviewWithTransition(_ view: UIView, mainView: UIView){
+        
+        self.isHidden = false
+        let xOffset: CGFloat = self.frame.minX
+        
+        self.autoresizingMask = [.flexibleLeftMargin,.flexibleRightMargin,.flexibleWidth, .flexibleHeight]
+        view.autoresizingMask = [.flexibleLeftMargin,.flexibleRightMargin,.flexibleWidth, .flexibleHeight]
+        view.bounds.size.width = self.bounds.width
+        self.bounds.size.height = max(self.bounds.height, view.bounds.height)
+        
+        let tempView = UIView(frame: CGRect(x: xOffset + self.bounds.width, y: 62,
+                                            width: self.bounds.width, height: view.frame.height))
+        
+        view.frame.origin.x = 0
+        tempView.frame.origin.x = xOffset
+        self.frame.origin.x = -xOffset - self.bounds.width
+        tempView.addSubview(view)
+        mainView.addSubview(tempView)
+        
+        UIView.animate(withDuration: 0.7, animations: {
+            self.layoutIfNeeded()
+        }) { (_) in
+            tempView.removeFromSuperview()
+            self.removeAllSubviews()
+            self.bounds.size.height = view.bounds.height
+            self.frame.origin.x = xOffset
+            self.addSubview(view)
+        }
+        
+    }
+    
+    func addVisualFormatConstraints(format: String, views: UIView...){
+        var viewsDictionary = [String: UIView]()
+        
+        for (index, view) in views.enumerated(){
+            let key = "v\(index)"
+            view.translatesAutoresizingMaskIntoConstraints = false
+            viewsDictionary[key] = view
+        }
+        let constraint = NSLayoutConstraint.constraints(withVisualFormat: format, options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: viewsDictionary)
+        addConstraints(constraint)
+    }
+    
+    func roundCorners(_ corners: UIRectCorner, radius: CGFloat) {
+        let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        let mask = CAShapeLayer()
+        mask.path = path.cgPath
+        self.layer.mask = mask
+    }
+    
     @IBInspectable
     var cornerRadius: CGFloat {
         get {

@@ -104,21 +104,20 @@ class RegistrationNewViewController: UIViewController,UIImagePickerControllerDel
         if(sender.tag == 1) // Male
         {
             didSelectMale = true
+            gender = "Male"
         }
         else if (sender.tag == 2) // Female
         {
             didSelectMale = false
+            gender = "Female"
         }
 
     }
 
     // MARK: - Pick Image
-    func TapToProfilePicture() {
+    func TapToProfilePicture()
+    {
 
-
-
-        
-        
         let alert = UIAlertController(title: "Choose Options", message: nil, preferredStyle: .alert)
         
         let Gallery = UIAlertAction(title: "Gallery", style: .default, handler: { ACTION in
@@ -253,7 +252,7 @@ class RegistrationNewViewController: UIViewController,UIImagePickerControllerDel
             strPhoneNumber = (registerVC.txtPhoneNumber.text)!
             strEmail = (registerVC.txtEmail.text)!
             strPassword = (registerVC.txtPassword.text)!
-
+            (UIApplication.shared.delegate as! AppDelegate).GoToHome()
             //            webServiceCallForRegister()
         } else {
             UtilityClass.showAlert(title: "", message: Validator.1, alertTheme: .error)

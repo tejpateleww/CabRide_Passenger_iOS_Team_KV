@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zAi-Fq-jbR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Oxz-R4-M5h">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -27,7 +27,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="odC-MN-XJF">
-                                <rect key="frame" x="18" y="25" width="30" height="30"/>
+                                <rect key="frame" x="10" y="25" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="odC-MN-XJF" secondAttribute="height" multiplier="1:1" id="R5u-8K-cXw"/>
                                     <constraint firstAttribute="height" constant="30" id="isN-9Q-U6q"/>
@@ -157,7 +157,7 @@
                             <constraint firstItem="itg-RC-QlL" firstAttribute="leading" secondItem="8vf-Ap-qI4" secondAttribute="leading" id="3ua-o6-NUd"/>
                             <constraint firstItem="wts-Pg-s5p" firstAttribute="centerX" secondItem="8vf-Ap-qI4" secondAttribute="centerX" id="58e-RP-E7z"/>
                             <constraint firstItem="8vf-Ap-qI4" firstAttribute="trailing" secondItem="CK4-Ri-0v7" secondAttribute="trailing" id="9ZX-h7-UVW"/>
-                            <constraint firstItem="odC-MN-XJF" firstAttribute="leading" secondItem="8vf-Ap-qI4" secondAttribute="leading" constant="18" id="G9v-6L-tIF"/>
+                            <constraint firstItem="odC-MN-XJF" firstAttribute="leading" secondItem="8vf-Ap-qI4" secondAttribute="leading" constant="10" id="G9v-6L-tIF"/>
                             <constraint firstAttribute="bottom" secondItem="itg-RC-QlL" secondAttribute="bottom" id="Ol8-8Z-lQ6"/>
                             <constraint firstItem="8bK-kF-3Qh" firstAttribute="centerX" secondItem="8vf-Ap-qI4" secondAttribute="centerX" id="ZSS-nu-3Yp"/>
                             <constraint firstItem="itg-RC-QlL" firstAttribute="top" secondItem="CEb-fG-nup" secondAttribute="top" id="cmQ-Vg-1vE"/>
@@ -181,7 +181,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I54-Ga-0Vc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1262" y="-849"/>
+            <point key="canvasLocation" x="-780" y="-756"/>
         </scene>
         <!--Forgot Password View Controller-->
         <scene sceneID="vBQ-zK-dsj">
@@ -192,7 +192,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3GH-ue-8HA">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u8Z-Xf-9sM">
                                         <rect key="frame" x="8" y="20" width="30" height="30"/>
@@ -201,8 +201,11 @@
                                             <constraint firstAttribute="width" secondItem="u8Z-Xf-9sM" secondAttribute="height" multiplier="1:1" id="xcA-X9-ia1"/>
                                         </constraints>
                                         <state key="normal" image="iconLeftArrow"/>
+                                        <connections>
+                                            <action selector="btnGoBack:" destination="zAi-Fq-jbR" eventType="touchUpInside" id="aZU-wH-oRT"/>
+                                        </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forget Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uOZ-MB-lTY">
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forget Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uOZ-MB-lTY">
                                         <rect key="frame" x="123.5" y="24.5" width="128" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -232,9 +235,12 @@
                                                 <real key="value" value="17"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="btnREsetPAsswordClicked:" destination="zAi-Fq-jbR" eventType="touchUpInside" id="sIY-Qy-1ho"/>
+                                        </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="Byy-pd-A7g" firstAttribute="width" secondItem="3GH-ue-8HA" secondAttribute="width" multiplier="0.7" id="5c6-Ub-VQ8"/>
                                     <constraint firstItem="iUJ-SD-fas" firstAttribute="centerX" secondItem="Drx-yS-EBE" secondAttribute="centerX" id="J3D-rw-Xkh"/>
@@ -257,7 +263,7 @@
                             <constraint firstItem="keT-I6-6Ab" firstAttribute="bottom" secondItem="3GH-ue-8HA" secondAttribute="bottom" id="1Xq-we-9K9"/>
                             <constraint firstItem="3GH-ue-8HA" firstAttribute="leading" secondItem="keT-I6-6Ab" secondAttribute="leading" id="HA7-7a-JXh"/>
                             <constraint firstItem="keT-I6-6Ab" firstAttribute="trailing" secondItem="3GH-ue-8HA" secondAttribute="trailing" id="PhT-GA-jF6"/>
-                            <constraint firstItem="3GH-ue-8HA" firstAttribute="top" secondItem="e03-6h-H6L" secondAttribute="top" id="h0N-Lx-Qwp"/>
+                            <constraint firstItem="3GH-ue-8HA" firstAttribute="top" secondItem="e03-6h-H6L" secondAttribute="top" constant="20" id="h0N-Lx-Qwp"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="keT-I6-6Ab"/>
                     </view>
@@ -269,7 +275,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Aaf-9S-u2F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-468" y="-850"/>
+            <point key="canvasLocation" x="-3636" y="679"/>
         </scene>
         <!--Change PwVC-->
         <scene sceneID="LMc-Xq-Uvx">
@@ -366,7 +372,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UZs-18-j5h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="233" y="-840"/>
+            <point key="canvasLocation" x="-2951" y="679"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="13G-Jl-Sd7">
@@ -414,7 +420,6 @@
                                     <constraint firstItem="2EH-PE-dAZ" firstAttribute="width" secondItem="oCg-OU-SXd" secondAttribute="width" id="CPa-Lb-0NV"/>
                                     <constraint firstItem="Rbe-Hn-eTi" firstAttribute="top" secondItem="2EH-PE-dAZ" secondAttribute="bottom" constant="30" id="Kyw-Xa-VSJ"/>
                                     <constraint firstItem="Rbe-Hn-eTi" firstAttribute="width" secondItem="oCg-OU-SXd" secondAttribute="width" multiplier="0.9" id="Q8x-4Q-wdF"/>
-                                    <constraint firstItem="bOk-lD-GJ0" firstAttribute="width" secondItem="bOk-lD-GJ0" secondAttribute="height" multiplier="1:1" id="QOR-6s-Y8y"/>
                                     <constraint firstItem="bOk-lD-GJ0" firstAttribute="top" secondItem="oCg-OU-SXd" secondAttribute="top" constant="28" id="XAh-zz-AsY"/>
                                     <constraint firstItem="2EH-PE-dAZ" firstAttribute="centerX" secondItem="oCg-OU-SXd" secondAttribute="centerX" id="gbv-vU-mdF"/>
                                     <constraint firstAttribute="bottom" secondItem="Rbe-Hn-eTi" secondAttribute="bottom" constant="8" id="j9X-Ri-2kc"/>
@@ -434,7 +439,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6ha-cy-2MR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="959.20000000000005" y="-850.52473763118451"/>
+            <point key="canvasLocation" x="-2287" y="679"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="MhA-Hn-3pm">
@@ -577,7 +582,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tj6-8Q-avd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2100" y="-44"/>
+            <point key="canvasLocation" x="-1521" y="10"/>
         </scene>
         <!--CustomSideMenuViewController-->
         <scene sceneID="szh-wC-7bG">
@@ -802,7 +807,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wx7-0p-cpg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-665.625" y="-44.366197183098592"/>
+            <point key="canvasLocation" x="33" y="10"/>
         </scene>
         <!--RegisterOTP Varification View Controller-->
         <scene sceneID="A7y-zl-hIm">
@@ -872,7 +877,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CvP-RO-sl5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1352" y="-44"/>
+            <point key="canvasLocation" x="-774" y="10"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8fh-hd-wka">
@@ -890,7 +895,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wtf-1s-7PS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4207" y="-849"/>
+            <point key="canvasLocation" x="-3636" y="-756"/>
         </scene>
         <!--Splash View Controller-->
         <scene sceneID="nSH-c2-s7f">
@@ -930,7 +935,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AoJ-VS-1J7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3158" y="-849"/>
+            <point key="canvasLocation" x="-2951" y="-756"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="6xs-6m-rks">
@@ -1023,7 +1028,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wk8-Ke-Ffz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2285" y="-1517"/>
+            <point key="canvasLocation" x="-4543" y="10"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="EcJ-lR-QsX">
@@ -1094,7 +1099,6 @@
                                                         </state>
                                                         <connections>
                                                             <action selector="btnForgotPassword:" destination="7N9-T9-nqT" eventType="touchUpInside" id="Udq-HH-jiM"/>
-                                                            <segue destination="iqO-wQ-8Ga" kind="show" id="wgk-Zs-vz1"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="15L-y5-uyY" customClass="ThemeButton" customModule="Peppea" customModuleProvider="target">
@@ -1270,7 +1274,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gVh-vw-4FG" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2230.434782608696" y="-849.10714285714278"/>
+            <point key="canvasLocation" x="-2286" y="-756"/>
         </scene>
     </scenes>
     <resources>

@@ -19,10 +19,19 @@ class HistoryListViewController: BaseViewController, UITableViewDataSource, UITa
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.setNavBarWithBack(Title: "History", IsNeedRightButton: true)
+      
+        
+        
         // Do any additional setup after loading the view.
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let rightNavBarButton = UIBarButtonItem(image: UIImage(named: "iconFilter"), style: .plain, target: self, action: #selector(self.btnFilterClicked(_:)))
+        
+        self.navigationItem.rightBarButtonItem = rightNavBarButton
+          self.setNavBarWithBack(Title: "History", IsNeedRightButton: false)
+         self.navigationItem.rightBarButtonItem?.tintColor = .black
+    }
 
     /*
     // MARK: - Navigation
@@ -33,6 +42,11 @@ class HistoryListViewController: BaseViewController, UITableViewDataSource, UITa
         // Pass the selected object to the new view controller.
     }
     */
+    
+    @IBAction func btnFilterClicked(_ sender: Any)
+    {
+        
+    }
     
     // MARK: - Table view data source
     func numberOfSections(in tableView: UITableView) -> Int {

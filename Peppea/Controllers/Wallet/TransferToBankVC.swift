@@ -8,12 +8,26 @@
 
 import UIKit
 
-class TransferToBankVC: UIViewController {
+class TransferToBankVC: BaseViewController
+{
 
-    override func viewDidLoad() {
+    
+    @IBOutlet weak var lblWalletAmount: UILabel!
+    
+    @IBOutlet weak var btnTransferToBank: UIButton!
+    @IBOutlet weak var txtPrice: UITextField!
+    @IBOutlet weak var txtAccountHolderName: ThemeTextFieldLoginRegister!
+    @IBOutlet weak var txtBankName: ThemeTextFieldLoginRegister!
+    
+    @IBOutlet weak var txtBankAccountNo: ThemeTextFieldLoginRegister!
+    @IBOutlet weak var txtBankCode: ThemeTextFieldLoginRegister!
+    
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.setNavBarWithBack(Title: "Transfer To Bank", IsNeedRightButton: false)
+        
     }
     
 
@@ -26,5 +40,11 @@ class TransferToBankVC: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    
+    @IBAction func btnTransferToBankClicked(_ sender: Any)
+    {
+        
+    }
+    
 }

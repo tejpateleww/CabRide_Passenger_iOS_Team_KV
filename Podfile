@@ -18,6 +18,9 @@ pod 'SwiftMessages'
 pod 'GoogleMaps', '= 3.0.3'
 pod 'GooglePlaces', '= 3.0.3'
 pod 'Cosmos'
+pod 'QRCodeReader.swift'
+pod 'CardIO'
+pod 'FormTextField'
   # Pods for Peppea
 
 end

@@ -23,7 +23,26 @@ class ChangePwVC: BaseViewController
         
     }
     
-
+    @IBAction func changePasswordClick(_ sender: UIButton) {
+        if ValidationForChangePwd() {
+            
+        }
+        
+    }
+    func ValidationForChangePwd() -> Bool {
+        
+        if (txtNewPw.text!.count == 0) {
+            return false
+        } else if (txtConfirmPw.text!.count == 0) {
+            
+            //            UtilityClass.showAlert(AppNAME, message: "Please enter new password", vc: self)
+            return false
+        }
+        
+        return true
+    }
+    
+    
    
 
 }

@@ -87,39 +87,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.keyWindow?.rootViewController = NavHomeVC
 
     }
-/*
+
     func GoToLogout() {
 
-        for (key, value) in UserDefaults.standard.dictionaryRepresentation() {
-            print("\(key) = \(value) \n")
-
-            if key == "Token" || key  == "i18n_language" {
-
-            }
-            else {
-                UserDefaults.standard.removeObject(forKey: key)
-            }
-        }
-        //        UserDefaults.standard.set(false, forKey: kIsSocketEmited)
-        //        UserDefaults.standard.synchronize()
-
-        SingletonClass.sharedInstance.strPassengerID = ""
-        UserDefaults.standard.removeObject(forKey: "profileData")
-        SingletonClass.sharedInstance.isUserLoggedIN = false
-        //                self.performSegue(withIdentifier: "unwindToContainerVC", sender: self)
-        UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
-
-        UserDefaults.standard.removeObject(forKey: "Passcode")
-        SingletonClass.sharedInstance.setPasscode = ""
-
-        UserDefaults.standard.removeObject(forKey: "isPasscodeON")
-        SingletonClass.sharedInstance.isPasscodeON = false
-
-        SingletonClass.sharedInstance.isPasscodeON = false
+//        for (key, value) in UserDefaults.standard.dictionaryRepresentation() {
+//            print("\(key) = \(value) \n")
+//
+//            if key == "Token" || key  == "i18n_language" {
+//
+//            }
+//            else {
+//                UserDefaults.standard.removeObject(forKey: key)
+//            }
+//        }
+//        //        UserDefaults.standard.set(false, forKey: kIsSocketEmited)
+//        //        UserDefaults.standard.synchronize()
+//
+//        SingletonClass.sharedInstance.strPassengerID = ""
+//        UserDefaults.standard.removeObject(forKey: "profileData")
+//        SingletonClass.sharedInstance.isUserLoggedIN = false
+//        //                self.performSegue(withIdentifier: "unwindToContainerVC", sender: self)
+//        UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
+//
+//        UserDefaults.standard.removeObject(forKey: "Passcode")
+//        SingletonClass.sharedInstance.setPasscode = ""
+//
+//        UserDefaults.standard.removeObject(forKey: "isPasscodeON")
+//        SingletonClass.sharedInstance.isPasscodeON = false
+//
+//        SingletonClass.sharedInstance.isPasscodeON = false
         self.GoToLogin()
     }
 
- */
+ 
 
 }
 

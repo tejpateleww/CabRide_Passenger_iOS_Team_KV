@@ -35,7 +35,7 @@ class LoginViewController: UIViewController {
 
     func setupView()
     {
-        btnForgotPassword.setTitle("Forgot Password!", for: .normal)
+        btnForgotPassword.setTitle("Forgot Password?", for: .normal)
 
         UtilityClass.viewCornerRadius(view: btnSignUp, borderWidth: 1.0, borderColor: ThemeColor)
 
@@ -85,6 +85,8 @@ class LoginViewController: UIViewController {
 
     }
     @IBAction func btnForgotPassword(_ sender: Any) {
+        let viewController = self.storyboard?.instantiateViewController(withIdentifier: "ForgotPasswordViewController") as! ForgotPasswordViewController
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 
     func validations() -> (Bool,String)

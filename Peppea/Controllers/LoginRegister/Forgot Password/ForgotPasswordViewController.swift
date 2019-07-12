@@ -8,18 +8,22 @@
 
 import UIKit
 
-class ForgotPasswordViewController: UIViewController {
+class ForgotPasswordViewController: BaseViewController
+{
     @IBOutlet weak var lblForgetPW: UILabel!
     
     @IBOutlet weak var txtEmail: ThemeTextFieldLoginRegister!
     @IBOutlet weak var btnResetPw: UIButton!
-    override func viewDidLoad() {
+    
+    
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.setNavBarWithBack(Title: "Forgot Password", IsNeedRightButton: false)
     }
     
-    func uiSettings(){
+    func uiSettings()
+    {
         btnResetPw.backgroundColor = ThemeColor
         lblForgetPW.font = UIFont.semiBold(ofSize: 20)
        
@@ -29,5 +33,9 @@ class ForgotPasswordViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
 
-   
+    @IBAction func btnREsetPAsswordClicked(_ sender: Any)
+    {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
 }

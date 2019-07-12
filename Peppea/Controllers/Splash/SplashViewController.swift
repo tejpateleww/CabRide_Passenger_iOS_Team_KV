@@ -15,7 +15,7 @@ class SplashViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//         (UIApplication.shared.delegate as! AppDelegate).GoToLogin()
+         (UIApplication.shared.delegate as! AppDelegate).GoToLogin()
 //        (UIApplication.shared.delegate as! AppDelegate).GoToHome()
 
 

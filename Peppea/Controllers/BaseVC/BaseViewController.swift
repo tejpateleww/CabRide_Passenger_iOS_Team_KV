@@ -47,13 +47,13 @@ class BaseViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = nil
         self.navigationItem.leftBarButtonItem = leftNavBarButton
 
-        if IsNeedRightButton == true {
-            let rightNavBarButton = UIBarButtonItem(image: UIImage(named: "icon_Call"), style: .plain, target: self, action: #selector(self.btnCallAction))
-            self.navigationItem.rightBarButtonItem = nil
-            self.navigationItem.rightBarButtonItem = rightNavBarButton
-        } else {
-            self.navigationItem.rightBarButtonItem = nil
-        }
+//        if IsNeedRightButton == true {
+//            let rightNavBarButton = UIBarButtonItem(image: UIImage(named: "icon_Call"), style: .plain, target: self, action: #selector(self.btnCallAction))
+//            self.navigationItem.rightBarButtonItem = nil
+//            self.navigationItem.rightBarButtonItem = rightNavBarButton
+//        } else {
+//            self.navigationItem.rightBarButtonItem = nil
+//        }
     }
 
     func setNavBarWithBack(Title:String, IsNeedRightButton:Bool) {
@@ -87,13 +87,15 @@ class BaseViewController: UIViewController {
 //        self.navigationController?.navigationBar.layer.shadowRadius = 2
 
 
-        if IsNeedRightButton == true {
-            let rightNavBarButton = UIBarButtonItem(image: UIImage(named: "icon_Call"), style: .plain, target: self, action: #selector(self.btnCallAction))
-            self.navigationItem.rightBarButtonItem = nil
-            self.navigationItem.rightBarButtonItem = rightNavBarButton
-        } else {
-            self.navigationItem.rightBarButtonItem = nil
-        }
+//        if IsNeedRightButton == true {
+//            let rightNavBarButton = UIBarButtonItem(image: UIImage(named: "icon_Call"), style: .plain, target: self, action: #selector(self.btnCallAction))
+//            self.navigationItem.rightBarButtonItem = nil
+//            self.navigationItem.rightBarButtonItem = rightNavBarButton
+//        }
+//        else
+//        {
+////            self.navigationItem.rightBarButtonItem = nil
+//        }
         if UserDefaults.standard.value(forKey: "i18n_language") != nil {
             if let language = UserDefaults.standard.value(forKey: "i18n_language") as? String {
                 if language == "sw" {

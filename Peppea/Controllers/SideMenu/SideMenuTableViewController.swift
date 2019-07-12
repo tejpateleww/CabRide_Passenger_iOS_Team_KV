@@ -167,11 +167,19 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
 
  */
         
-        
+        if arrMenuTitle[indexPath.row] == "My Trips"
+        {
+            
+            let storyboradTrip = UIStoryboard(name: "MyTrips", bundle: nil)
+            let NextPage = storyboradTrip.instantiateViewController(withIdentifier: "MyTripsViewController") as! MyTripsViewController
+            HomePage?.navigationController?.pushViewController(NextPage, animated: true)
+            sideMenuController?.hideMenu()
+            return
+        }
         
         if arrMenuTitle[indexPath.row] == "Payments"
         {
-            let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "HistoryListViewController") as! HistoryListViewController
+            let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "PaymentViewController") as! PaymentViewController
             HomePage?.navigationController?.pushViewController(NextPage, animated: true)
             sideMenuController?.hideMenu()
             return
@@ -212,7 +220,7 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
             let alert = UIAlertController(title: "Logout", message: "Are you sure you want to logout?", preferredStyle: .alert)
             
             let ok = UIAlertAction(title: "OK", style: .default) { (action) in
-                //                    (UIApplication.shared.delegate as! AppDelegate).GoToLogout()
+                                    (UIApplication.shared.delegate as! AppDelegate).GoToLogout()
             }
             
             let cancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BulkMileVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class BulkMileVC: BaseViewController,UITableViewDelegate,UITableViewDataSource {
     
     
 
@@ -16,6 +16,7 @@ class BulkMileVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
        
+        self.setNavBarWithBack(Title: "Bulk Mile", IsNeedRightButton: false)
       cardTableView.register(UINib(nibName: "BulkMileTableViewCell", bundle: nil), forCellReuseIdentifier: "BulkMileTableViewCell")
     }
     

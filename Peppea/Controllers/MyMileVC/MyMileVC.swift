@@ -13,7 +13,10 @@ class MyMileVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
 
     @IBOutlet weak var mymileTableView: UITableView!
-    override func viewDidLoad() {
+    
+    
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         setNavigationItem()
         mymileTableView.register(UINib(nibName: "MyMileTableViewCell", bundle: nil), forCellReuseIdentifier: "MyMileTableViewCell")
