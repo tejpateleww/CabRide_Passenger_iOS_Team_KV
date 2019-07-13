@@ -102,7 +102,7 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
         dict["Type"] = "iconDiscover" as AnyObject
         self.aryCardData.append(dict)
         
-        viewPaymentPopup.roundCorners([.topRight,.topLeft], radius: 12)
+//        viewPaymentPopup.roundCorners([.topRight,.topLeft], radius: 12)
       
     }
     
@@ -228,7 +228,7 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
     {
         txtValidThrough.inputType = .integer
         txtValidThrough.formatter = CardExpirationDateFormatter()
-        txtValidThrough.placeholder = "Expiration Date (MM/YY)"
+        txtValidThrough.placeholder = "Exp. Date (MM/YY)"
         
         //        var validation = Validation()
         validation.minimumLength = 1

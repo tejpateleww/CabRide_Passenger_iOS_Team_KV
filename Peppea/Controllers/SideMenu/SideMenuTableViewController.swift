@@ -28,7 +28,7 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
         NotificationCenter.default.addObserver(self, selector: #selector(self.SetRating), name: NSNotification.Name(rawValue: "rating"), object: nil)
 //        NotificationCenter.default.addObserver(self, selector: #selector(self.setProfileData), name: NSNotification.Name(rawValue: "UpdateProfile"), object: nil)
 //        self.setProfileData()
-        arrMenuTitle = ["My Trips", "Payments", "Wallet", "Favourite", "Bulk Mile", "Invite Friends", "Bid My Trip", "Flat Rate", "Logout"]//["My Bookings","Payment Options","Favourites","Invite Friends","Pass","Help","Logout"]
+        arrMenuTitle = ["My Trips", "Payments", "Wallet", "Favourite", "Bulk Mile", "Invite Friends", "Bid My Trip", "Flat Rate","Peppea Business", "Logout"]//["My Bookings","Payment Options","Favourites","Invite Friends","Pass","Help","Logout"]
     }
     
     override func didReceiveMemoryWarning() {
@@ -167,6 +167,15 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
 
  */
         
+        if arrMenuTitle[indexPath.row] == "Peppea Business"
+        {
+            
+            let storyboradTrip = UIStoryboard(name: "LoginRegister", bundle: nil)
+            let NextPage = storyboradTrip.instantiateViewController(withIdentifier: "PeppeaBusinessBannerViewController") as! PeppeaBusinessBannerViewController
+            HomePage?.navigationController?.pushViewController(NextPage, animated: true)
+            sideMenuController?.hideMenu()
+            return
+        }
         if arrMenuTitle[indexPath.row] == "My Trips"
         {
             
@@ -180,6 +189,13 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
         if arrMenuTitle[indexPath.row] == "Payments"
         {
             let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "PaymentViewController") as! PaymentViewController
+            HomePage?.navigationController?.pushViewController(NextPage, animated: true)
+            sideMenuController?.hideMenu()
+            return
+        }
+        if arrMenuTitle[indexPath.row] == "Invite Friends"
+        {
+            let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "InviteDriverViewController") as! InviteDriverViewController
             HomePage?.navigationController?.pushViewController(NextPage, animated: true)
             sideMenuController?.hideMenu()
             return
@@ -202,11 +218,21 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
         }
         if arrMenuTitle[indexPath.row] == "Bid My Trip"
         {
-//            let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "BidListContainerViewController") as! BidListContainerViewController
-//            HomePage?.navigationController?.pushViewController(NextPage, animated: true)
-//            sideMenuController?.hideMenu()
-//            return
+            let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "BidListContainerViewController") as! BidListContainerViewController
+            HomePage?.navigationController?.pushViewController(NextPage, animated: true)
+            sideMenuController?.hideMenu()
+            return
+            
+       
         }
+        if arrMenuTitle[indexPath.row] == "Favourite"
+        {
+        let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "ChatViewController") as! ChatViewController
+        HomePage?.navigationController?.pushViewController(NextPage, animated: true)
+        sideMenuController?.hideMenu()
+        return
+        }
+        
         if arrMenuTitle[indexPath.row] == "Bulk Mile"
         {
             let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "BulkMileVC") as! BulkMileVC

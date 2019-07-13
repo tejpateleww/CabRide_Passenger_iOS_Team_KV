@@ -20,6 +20,8 @@ class ThemeTextFieldLoginRegister: SkyFloatingLabelTextField {
         self.placeholderColor = ThemeColor
         self.textColor = ThemeColor
         self.font = UIFont.regular(ofSize: 15)
+        self.titleFormatter = { $0 }
+        
     }
 
 }

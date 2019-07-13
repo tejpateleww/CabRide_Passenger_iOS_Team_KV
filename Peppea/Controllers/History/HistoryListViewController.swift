@@ -45,7 +45,8 @@ class HistoryListViewController: BaseViewController, UITableViewDataSource, UITa
     
     @IBAction func btnFilterClicked(_ sender: Any)
     {
-        
+        let viewController = self.storyboard?.instantiateViewController(withIdentifier: "HistoryFilterPopUpViewController") as! HistoryFilterPopUpViewController
+        self.navigationController?.present(viewController, animated: true, completion: nil)
     }
     
     // MARK: - Table view data source

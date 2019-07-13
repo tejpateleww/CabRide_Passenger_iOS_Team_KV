@@ -31,8 +31,26 @@
 		4666B47922D48F7D0084A230 /* FlatRateListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4666B47722D48F7D0084A230 /* FlatRateListViewController.swift */; };
 		4666B47A22D48F7D0084A230 /* FlatRateViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4666B47822D48F7D0084A230 /* FlatRateViewCell.swift */; };
 		4666B47D22D49F180084A230 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4666B47C22D49F180084A230 /* ProfileViewController.swift */; };
+		468E991422D9B6EF00072361 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468E991222D9B6EF00072361 /* ChatViewController.swift */; };
+		468E991522D9B6EF00072361 /* EmptyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468E991322D9B6EF00072361 /* EmptyTableViewCell.swift */; };
+		468E991822D9DBC300072361 /* PeppeaBusinessBannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468E991722D9DBC300072361 /* PeppeaBusinessBannerViewController.swift */; };
+		468E991A22D9DBDA00072361 /* PeppeaBusinessSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468E991922D9DBDA00072361 /* PeppeaBusinessSetupViewController.swift */; };
+		468E992722D9F26900072361 /* QRCodeDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468E991B22D9F25D00072361 /* QRCodeDetails.swift */; };
+		468E992822D9F26900072361 /* ChangePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468E991C22D9F25D00072361 /* ChangePassword.swift */; };
+		468E992922D9F26900072361 /* WalletHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468E991D22D9F25F00072361 /* WalletHistory.swift */; };
+		468E992A22D9F26900072361 /* UpdateVehicleInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468E991E22D9F26000072361 /* UpdateVehicleInfo.swift */; };
+		468E992B22D9F26900072361 /* ForgotPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468E991F22D9F26100072361 /* ForgotPassword.swift */; };
+		468E992C22D9F26900072361 /* CardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468E992022D9F26200072361 /* CardList.swift */; };
+		468E992D22D9F26900072361 /* AddCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468E992122D9F26300072361 /* AddCard.swift */; };
+		468E992E22D9F26900072361 /* AddMoney.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468E992222D9F26400072361 /* AddMoney.swift */; };
+		468E992F22D9F26900072361 /* RemoveCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468E992322D9F26500072361 /* RemoveCard.swift */; };
+		468E993022D9F26900072361 /* UpdateAccountData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468E992422D9F26700072361 /* UpdateAccountData.swift */; };
+		468E993122D9F26900072361 /* TransferMoneyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468E992522D9F26700072361 /* TransferMoneyModel.swift */; };
+		468E993222D9F26900072361 /* UpdatePersonalInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468E992622D9F26800072361 /* UpdatePersonalInfo.swift */; };
+		468E993422DA078000072361 /* UpcomingRideConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468E993322DA078000072361 /* UpcomingRideConfirmationViewController.swift */; };
 		46C469B822D70DA3007BA89B /* TransferToBankVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C469B622D70DA3007BA89B /* TransferToBankVC.swift */; };
 		46C469B922D70DA3007BA89B /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C469B722D70DA3007BA89B /* WalletViewController.swift */; };
+		46E8CE9022D9AD6D001BEFCD /* InviteDriverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E8CE8F22D9AD6D001BEFCD /* InviteDriverViewController.swift */; };
 		B1DE158E22D34818001045B1 /* ChangePwVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DE158D22D34818001045B1 /* ChangePwVC.swift */; };
 		B1DE159022D358A0001045B1 /* BulkMileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DE158F22D358A0001045B1 /* BulkMileVC.swift */; };
 		B1DE159422D35920001045B1 /* BulkMileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DE159222D35920001045B1 /* BulkMileTableViewCell.swift */; };
@@ -131,9 +149,27 @@
 		4666B47722D48F7D0084A230 /* FlatRateListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlatRateListViewController.swift; sourceTree = "<group>"; };
 		4666B47822D48F7D0084A230 /* FlatRateViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlatRateViewCell.swift; sourceTree = "<group>"; };
 		4666B47C22D49F180084A230 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		468E991222D9B6EF00072361 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		468E991322D9B6EF00072361 /* EmptyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyTableViewCell.swift; sourceTree = "<group>"; };
+		468E991722D9DBC300072361 /* PeppeaBusinessBannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeppeaBusinessBannerViewController.swift; sourceTree = "<group>"; };
+		468E991922D9DBDA00072361 /* PeppeaBusinessSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeppeaBusinessSetupViewController.swift; sourceTree = "<group>"; };
+		468E991B22D9F25D00072361 /* QRCodeDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeDetails.swift; sourceTree = "<group>"; };
+		468E991C22D9F25D00072361 /* ChangePassword.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePassword.swift; sourceTree = "<group>"; };
+		468E991D22D9F25F00072361 /* WalletHistory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletHistory.swift; sourceTree = "<group>"; };
+		468E991E22D9F26000072361 /* UpdateVehicleInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateVehicleInfo.swift; sourceTree = "<group>"; };
+		468E991F22D9F26100072361 /* ForgotPassword.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPassword.swift; sourceTree = "<group>"; };
+		468E992022D9F26200072361 /* CardList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardList.swift; sourceTree = "<group>"; };
+		468E992122D9F26300072361 /* AddCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCard.swift; sourceTree = "<group>"; };
+		468E992222D9F26400072361 /* AddMoney.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMoney.swift; sourceTree = "<group>"; };
+		468E992322D9F26500072361 /* RemoveCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoveCard.swift; sourceTree = "<group>"; };
+		468E992422D9F26700072361 /* UpdateAccountData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateAccountData.swift; sourceTree = "<group>"; };
+		468E992522D9F26700072361 /* TransferMoneyModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransferMoneyModel.swift; sourceTree = "<group>"; };
+		468E992622D9F26800072361 /* UpdatePersonalInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdatePersonalInfo.swift; sourceTree = "<group>"; };
+		468E993322DA078000072361 /* UpcomingRideConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingRideConfirmationViewController.swift; sourceTree = "<group>"; };
 		46C469B622D70DA3007BA89B /* TransferToBankVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransferToBankVC.swift; sourceTree = "<group>"; };
 		46C469B722D70DA3007BA89B /* WalletViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
 		46DC622F22D4705D009D4BE0 /* Location.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = Location.gpx; path = ../../../../../../Location.gpx; sourceTree = "<group>"; };
+		46E8CE8F22D9AD6D001BEFCD /* InviteDriverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteDriverViewController.swift; sourceTree = "<group>"; };
 		B1DE158D22D34818001045B1 /* ChangePwVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePwVC.swift; sourceTree = "<group>"; };
 		B1DE158F22D358A0001045B1 /* BulkMileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulkMileVC.swift; sourceTree = "<group>"; };
 		B1DE159222D35920001045B1 /* BulkMileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulkMileTableViewCell.swift; sourceTree = "<group>"; };
@@ -314,6 +350,32 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+		468E991122D9B6EF00072361 /* ChatViewController */ = {
+			isa = PBXGroup;
+			children = (
+				468E991222D9B6EF00072361 /* ChatViewController.swift */,
+				468E991322D9B6EF00072361 /* EmptyTableViewCell.swift */,
+			);
+			path = ChatViewController;
+			sourceTree = "<group>";
+		};
+		468E991622D9DBB000072361 /* PeppeaBusiness */ = {
+			isa = PBXGroup;
+			children = (
+				468E991722D9DBC300072361 /* PeppeaBusinessBannerViewController.swift */,
+				468E991922D9DBDA00072361 /* PeppeaBusinessSetupViewController.swift */,
+			);
+			path = PeppeaBusiness;
+			sourceTree = "<group>";
+		};
+		46E8CE8E22D9AD6D001BEFCD /* InviteFriend */ = {
+			isa = PBXGroup;
+			children = (
+				46E8CE8F22D9AD6D001BEFCD /* InviteDriverViewController.swift */,
+			);
+			path = InviteFriend;
+			sourceTree = "<group>";
+		};
 		92BC9B349AE5C1EFF324C378 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -478,6 +540,18 @@
 		EE9F3F6722C769D700426377 /* RequestModel */ = {
 			isa = PBXGroup;
 			children = (
+				468E992122D9F26300072361 /* AddCard.swift */,
+				468E992222D9F26400072361 /* AddMoney.swift */,
+				468E992022D9F26200072361 /* CardList.swift */,
+				468E991C22D9F25D00072361 /* ChangePassword.swift */,
+				468E991F22D9F26100072361 /* ForgotPassword.swift */,
+				468E991B22D9F25D00072361 /* QRCodeDetails.swift */,
+				468E992322D9F26500072361 /* RemoveCard.swift */,
+				468E992522D9F26700072361 /* TransferMoneyModel.swift */,
+				468E992422D9F26700072361 /* UpdateAccountData.swift */,
+				468E992622D9F26800072361 /* UpdatePersonalInfo.swift */,
+				468E991E22D9F26000072361 /* UpdateVehicleInfo.swift */,
+				468E991D22D9F25F00072361 /* WalletHistory.swift */,
 				EE9F3F6922C76B4A00426377 /* Register.swift */,
 				EE9F3F6B22C76CB900426377 /* Login.swift */,
 			);
@@ -499,6 +573,7 @@
 				EEA454BB22CCED380094941A /* Home VC */,
 				EEBF159F22CA0E22004CB7FB /* Car Collection */,
 				EE35158622CE34A50035D0AC /* DriverInfoAndRating */,
+				468E993322DA078000072361 /* UpcomingRideConfirmationViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -655,6 +730,9 @@
 		EEE2B7FC22C62376004F1C00 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				468E991622D9DBB000072361 /* PeppeaBusiness */,
+				468E991122D9B6EF00072361 /* ChatViewController */,
+				46E8CE8E22D9AD6D001BEFCD /* InviteFriend */,
 				463DEFD722D8AEA6002365F8 /* MyTrips */,
 				463DEFCA22D86AB6002365F8 /* Payment */,
 				4600BEFE22D6138500306486 /* History */,
@@ -944,6 +1022,7 @@
 				463DEFCC22D86AE2002365F8 /* PaymentViewController.swift in Sources */,
 				4600BF0022D613B000306486 /* HistoryListViewController.swift in Sources */,
 				EEBF159E22CA0E1F004CB7FB /* CarCollectionViewController.swift in Sources */,
+				468E992922D9F26900072361 /* WalletHistory.swift in Sources */,
 				463DEFD422D877E4002365F8 /* CreditCardValidator.swift in Sources */,
 				B1DE158E22D34818001045B1 /* ChangePwVC.swift in Sources */,
 				EEE2B80922C629F0004F1C00 /* ThemeTextField.swift in Sources */,
@@ -953,6 +1032,7 @@
 				EE9F3F7422C7846500426377 /* BaseViewController.swift in Sources */,
 				EEA454B922CCEC390094941A /* DriverInfoPageViewController.swift in Sources */,
 				EEA454B622CCE8510094941A /* ForgotPasswordViewController.swift in Sources */,
+				468E992C22D9F26900072361 /* CardList.swift in Sources */,
 				463DEFEE22D8B01B002365F8 /* TitleHeaderCollectionViewCell.swift in Sources */,
 				463DEFE622D8AEA6002365F8 /* MyTripDescriptionTableViewCell.swift in Sources */,
 				B1E233D422D3111D00CEA568 /* BidDetailsViewController.swift in Sources */,
@@ -962,30 +1042,46 @@
 				EEE2B80422C628F2004F1C00 /* RegisterContainerViewController.swift in Sources */,
 				EE9F3F6522C769CA00426377 /* RequestModel.swift in Sources */,
 				EE9D6F7022C62D6F00EAD756 /* SideMenuTableViewController.swift in Sources */,
+				468E992F22D9F26900072361 /* RemoveCard.swift in Sources */,
 				EE469B5C22C7344E0075A8A3 /* RegisterOTPVarificationViewController.swift in Sources */,
+				468E993222D9F26900072361 /* UpdatePersonalInfo.swift in Sources */,
 				EEE2B80622C62929004F1C00 /* SplashViewController.swift in Sources */,
 				EE35158522CE34A00035D0AC /* DriverRatingAndTipViewController.swift in Sources */,
 				B1E233D222D3109800CEA568 /* PostABidViewController.swift in Sources */,
+				468E993422DA078000072361 /* UpcomingRideConfirmationViewController.swift in Sources */,
 				EE9D6F7F22C6435600EAD756 /* Extensions.swift in Sources */,
+				468E992B22D9F26900072361 /* ForgotPassword.swift in Sources */,
+				468E992D22D9F26900072361 /* AddCard.swift in Sources */,
 				4600BF0222D6140200306486 /* HistoryTableViewCell.swift in Sources */,
 				EEE2B81122C62A70004F1C00 /* Singleton.swift in Sources */,
 				4666B47A22D48F7D0084A230 /* FlatRateViewCell.swift in Sources */,
+				468E992822D9F26900072361 /* ChangePassword.swift in Sources */,
 				B1E233D822D3120000CEA568 /* MyBidListViewController.swift in Sources */,
+				468E992722D9F26900072361 /* QRCodeDetails.swift in Sources */,
+				468E991522D9B6EF00072361 /* EmptyTableViewCell.swift in Sources */,
+				468E992E22D9F26900072361 /* AddMoney.swift in Sources */,
 				B1E233DA22D3123300CEA568 /* OpenBidListViewController.swift in Sources */,
 				B1DE159022D358A0001045B1 /* BulkMileVC.swift in Sources */,
 				463DEFF122D8C13A002365F8 /* HistoryFilterPopUpViewController.swift in Sources */,
 				B1DE159422D35920001045B1 /* BulkMileTableViewCell.swift in Sources */,
 				463DEFD522D877E4002365F8 /* CreditCardValidationType.swift in Sources */,
 				463DEFD022D86E15002365F8 /* PaymentCardTypeListCell.swift in Sources */,
+				468E991A22D9DBDA00072361 /* PeppeaBusinessSetupViewController.swift in Sources */,
 				EE9F3F6A22C76B4A00426377 /* Register.swift in Sources */,
 				EEE7D73522CF8EEB0076B0C3 /* ChooseServiceViewController.swift in Sources */,
 				EE9F3F6C22C76CB900426377 /* Login.swift in Sources */,
 				4600BEFD22D5E24F00306486 /* ReceiveMoneyViewController.swift in Sources */,
+				468E991822D9DBC300072361 /* PeppeaBusinessBannerViewController.swift in Sources */,
+				468E993122D9F26900072361 /* TransferMoneyModel.swift in Sources */,
 				EE8A61CC22C654C0000718ED /* MessageBarController.swift in Sources */,
+				468E992A22D9F26900072361 /* UpdateVehicleInfo.swift in Sources */,
 				B1DE15A022D3760D001045B1 /* HeaderView.swift in Sources */,
+				468E991422D9B6EF00072361 /* ChatViewController.swift in Sources */,
+				468E993022D9F26900072361 /* UpdateAccountData.swift in Sources */,
 				EE9F3F6E22C7756C00426377 /* HomeViewController.swift in Sources */,
 				463DEFE722D8AEA6002365F8 /* MyTripTableViewCell.swift in Sources */,
 				EE9F3F6222C74E5900426377 /* ThemeButton.swift in Sources */,
+				46E8CE9022D9AD6D001BEFCD /* InviteDriverViewController.swift in Sources */,
 				EEE2B80F22C62A27004F1C00 /* UtilityClass.swift in Sources */,
 				463DEFC922D851E6002365F8 /* SendMoneyViewController.swift in Sources */,
 				EE8A61C822C652F5000718ED /* RegisterViewController.swift in Sources */,
