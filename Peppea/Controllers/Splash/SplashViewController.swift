@@ -44,12 +44,24 @@ class SplashViewController: UIViewController {
         
         var strParam = String()
         
-        strParam = NetworkEnvironment.baseURL + ApiKey.Init.rawValue + "/ios_customer/\(kAPPVesion)"
+        strParam = NetworkEnvironment.baseURL + ApiKey.Init.rawValue + "ios_customer/\(kAPPVesion)"
 //
         UserWebserviceSubclass.initApi(strURL: strParam) { (json, status) in
             if status
             {
-//                (UIApplication.shared.delegate as! AppDelegate).GoToLogin()
+                //                (UIApplication.shared.delegate as! AppDelegate).GoToLogin()
+                
+                let VehicleListModelDetails = VehicleListModel.init(fromJson: json)
+                do
+                {
+                    try UserDefaults.standard.set(object: VehicleListModelDetails, forKey: "carList")//(loginModelDetails, forKey: "userProfile")
+                }
+                catch
+                {
+                    UtilityClass.hideHUD()
+                    AlertMessage.showMessageForError("error")
+                }
+                
                 let isLogin = UserDefaults.standard.bool(forKey: "isUserLogin")
                 
                 if isLogin == true
