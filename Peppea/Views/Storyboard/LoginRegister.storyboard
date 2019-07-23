@@ -308,14 +308,26 @@
                                             <constraint firstAttribute="width" secondItem="Cv6-Hm-xCn" secondAttribute="height" multiplier="2:1" id="r9D-hP-0Uw"/>
                                         </constraints>
                                     </imageView>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pus-26-OJK" customClass="ThemeTextFieldLoginRegister" customModule="Peppea" customModuleProvider="target">
-                                        <rect key="frame" x="19" y="262" width="337.5" height="30"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Old Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e83-Fp-mNo" customClass="ThemeTextFieldLoginRegister" customModule="Peppea" customModuleProvider="target">
+                                        <rect key="frame" x="19" y="237" width="337.5" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pus-26-OJK" customClass="ThemeTextFieldLoginRegister" customModule="Peppea" customModuleProvider="target">
+                                        <rect key="frame" x="19" y="292" width="337.5" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yg6-Of-qYw" customClass="ThemeTextFieldLoginRegister" customModule="Peppea" customModuleProvider="target">
+                                        <rect key="frame" x="19" y="347" width="337.5" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hTb-L0-tPK">
-                                        <rect key="frame" x="56.5" y="397" width="262.5" height="34"/>
+                                        <rect key="frame" x="56.5" y="427" width="262.5" height="34"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" title="Submit">
@@ -326,27 +338,28 @@
                                                 <real key="value" value="17"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="changePasswordClick:" destination="lRL-0D-3ga" eventType="touchUpInside" id="6Hs-xI-2jy"/>
+                                        </connections>
                                     </button>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yg6-Of-qYw" customClass="ThemeTextFieldLoginRegister" customModule="Peppea" customModuleProvider="target">
-                                        <rect key="frame" x="19" y="317" width="337.5" height="30"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="pus-26-OJK" firstAttribute="centerX" secondItem="Cv6-Hm-xCn" secondAttribute="centerX" id="0Eb-uR-Z38"/>
                                     <constraint firstItem="hTb-L0-tPK" firstAttribute="centerX" secondItem="yg6-Of-qYw" secondAttribute="centerX" id="3CC-rX-Ou4"/>
+                                    <constraint firstItem="e83-Fp-mNo" firstAttribute="trailing" secondItem="pus-26-OJK" secondAttribute="trailing" id="8Gg-fn-pTp"/>
                                     <constraint firstItem="Cv6-Hm-xCn" firstAttribute="top" secondItem="f8Q-7N-SBG" secondAttribute="bottom" constant="40" id="8MQ-bu-65n"/>
                                     <constraint firstItem="hTb-L0-tPK" firstAttribute="top" secondItem="yg6-Of-qYw" secondAttribute="bottom" constant="50" id="DFc-ai-tSg"/>
                                     <constraint firstItem="yg6-Of-qYw" firstAttribute="centerX" secondItem="pus-26-OJK" secondAttribute="centerX" id="DQd-MJ-49g"/>
                                     <constraint firstItem="f8Q-7N-SBG" firstAttribute="centerX" secondItem="hDV-xl-wjq" secondAttribute="centerX" id="DRT-ol-7xa"/>
                                     <constraint firstItem="yg6-Of-qYw" firstAttribute="top" secondItem="pus-26-OJK" secondAttribute="bottom" constant="25" id="E7E-4R-EaM"/>
                                     <constraint firstItem="pus-26-OJK" firstAttribute="width" secondItem="hDV-xl-wjq" secondAttribute="width" multiplier="0.9" id="EL2-Fl-2lc"/>
-                                    <constraint firstItem="pus-26-OJK" firstAttribute="top" secondItem="Cv6-Hm-xCn" secondAttribute="bottom" constant="45" id="EWk-rx-XcE"/>
+                                    <constraint firstItem="pus-26-OJK" firstAttribute="top" secondItem="e83-Fp-mNo" secondAttribute="bottom" constant="25" id="EWk-rx-XcE"/>
+                                    <constraint firstItem="e83-Fp-mNo" firstAttribute="height" secondItem="pus-26-OJK" secondAttribute="height" id="IsK-9t-cLc"/>
                                     <constraint firstItem="Cv6-Hm-xCn" firstAttribute="width" secondItem="hDV-xl-wjq" secondAttribute="width" multiplier="0.7" id="WCX-jP-cxY"/>
                                     <constraint firstItem="Cv6-Hm-xCn" firstAttribute="centerX" secondItem="hDV-xl-wjq" secondAttribute="centerX" id="cdm-Zt-Gfz"/>
+                                    <constraint firstItem="e83-Fp-mNo" firstAttribute="top" secondItem="Cv6-Hm-xCn" secondAttribute="bottom" constant="20" id="hYf-kP-rdg"/>
+                                    <constraint firstItem="e83-Fp-mNo" firstAttribute="leading" secondItem="pus-26-OJK" secondAttribute="leading" id="kCE-VV-0RS"/>
                                     <constraint firstItem="HPt-Gz-QUC" firstAttribute="top" secondItem="hDV-xl-wjq" secondAttribute="top" constant="20" symbolic="YES" id="kLn-Wi-wXR"/>
                                     <constraint firstItem="hTb-L0-tPK" firstAttribute="width" secondItem="hDV-xl-wjq" secondAttribute="width" multiplier="0.7" id="qGV-co-KL2"/>
                                     <constraint firstItem="HPt-Gz-QUC" firstAttribute="leading" secondItem="hDV-xl-wjq" secondAttribute="leading" constant="8" id="qY8-KR-bRd"/>
@@ -368,6 +381,7 @@
                         <outlet property="btnSubmit" destination="hTb-L0-tPK" id="mLL-Si-FOT"/>
                         <outlet property="txtConfirmPw" destination="yg6-Of-qYw" id="L3O-8W-4fA"/>
                         <outlet property="txtNewPw" destination="pus-26-OJK" id="fK0-5E-JWH"/>
+                        <outlet property="txtOldPw" destination="e83-Fp-mNo" id="UV1-FH-Gd4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UZs-18-j5h" userLabel="First Responder" sceneMemberID="firstResponder"/>

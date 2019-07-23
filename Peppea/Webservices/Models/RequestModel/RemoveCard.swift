@@ -8,6 +8,6 @@
 
 import Foundation
 class RemoveCard : RequestModel {
-    var driver_id: String = ""
+    var customer_id: String = ""
     var card_id:String = ""
 }

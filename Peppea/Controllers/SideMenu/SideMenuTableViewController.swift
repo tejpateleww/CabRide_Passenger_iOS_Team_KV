@@ -17,6 +17,10 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
     var ProfileData = NSDictionary()
     var arrMenuTitle = [String]()
 
+    
+     var selectedIndex = 0
+    var loginModelDetails : LoginModel = LoginModel()
+    var logoutRequestModel : logoutModel = logoutModel()
     //-------------------------------------------------------------
     // MARK: - Base Methods
     //-------------------------------------------------------------
@@ -24,6 +28,7 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.SetRating), name: NSNotification.Name(rawValue: "rating"), object: nil)
 //        NotificationCenter.default.addObserver(self, selector: #selector(self.setProfileData), name: NSNotification.Name(rawValue: "UpdateProfile"), object: nil)
@@ -36,16 +41,52 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
         // Dispose of any resources that can be recreated.
     }
 
-
-    @objc func SetRating() {
-        if let Rating = ProfileData.object(forKey: "rating") as? String {
-            self.lblRating.text = Rating
-        } else {
-            //            self.lblRating.text = SingletonClass.sharedInstance.passengerRating
+    override func viewWillAppear(_ animated: Bool)
+    {
+        super.viewWillAppear(animated)
+        
+        if(UserDefaults.standard.object(forKey: "userProfile") == nil)
+        {
+            return
         }
+        
+      
+        
+        do{
+            loginModelDetails = try UserDefaults.standard.get(objectType: LoginModel.self, forKey: "userProfile")!
+        }
+        catch
+        {
+            AlertMessage.showMessageForError("error")
+            return
+        }
+        setData()
+    }
+    func setData()
+    {
+        var profile = loginModelDetails.loginData
+        
+        lblName.text = profile!.firstName + " " + profile!.lastName
+        lblRating.text = profile?.email
+        let strImage = imagBaseURL + profile!.profileImage
+        self.imgProfile.sd_setImage(with: URL(string: strImage), completed: nil)// .sd_setImage(with: URL(string: strImage), for: .normal, completed: nil)
+    }
+    @objc func SetRating()
+    {
+//        if let Rating = ProfileData.object(forKey: "rating") as? String {
+//            self.lblRating.text = Rating
+//        } else {
+//            //            self.lblRating.text = SingletonClass.sharedInstance.passengerRating
+//        }
     }
 
-
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        self.imgProfile.layer.cornerRadius = self.imgProfile.frame.size.width/2
+        self.imgProfile.layer.masksToBounds = true
+        self.imgProfile.contentMode = .scaleAspectFill
+        
+    }
     
     // MARK: - Table view data source
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -203,7 +244,8 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
         
         if arrMenuTitle[indexPath.row] == "Wallet"
         {
-            let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "WalletViewController") as! WalletViewController
+            let storyboradWallet = UIStoryboard(name: "Wallet", bundle: nil)
+            let NextPage = storyboradWallet.instantiateViewController(withIdentifier: "WalletViewController") as! WalletViewController
             HomePage?.navigationController?.pushViewController(NextPage, animated: true)
             sideMenuController?.hideMenu()
             return
@@ -218,7 +260,8 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
         }
         if arrMenuTitle[indexPath.row] == "Bid My Trip"
         {
-            let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "BidListContainerViewController") as! BidListContainerViewController
+            let storyboradBid = UIStoryboard(name: "Bid", bundle: nil)
+            let NextPage = storyboradBid.instantiateViewController(withIdentifier: "BidListContainerViewController") as! BidListContainerViewController
             HomePage?.navigationController?.pushViewController(NextPage, animated: true)
             sideMenuController?.hideMenu()
             return
@@ -227,10 +270,10 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
         }
         if arrMenuTitle[indexPath.row] == "Favourite"
         {
-        let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "ChatViewController") as! ChatViewController
-        HomePage?.navigationController?.pushViewController(NextPage, animated: true)
-        sideMenuController?.hideMenu()
-        return
+            let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "ChatViewController") as! ChatViewController
+            HomePage?.navigationController?.pushViewController(NextPage, animated: true)
+            sideMenuController?.hideMenu()
+            return
         }
         
         if arrMenuTitle[indexPath.row] == "Bulk Mile"
@@ -246,7 +289,8 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
             let alert = UIAlertController(title: "Logout", message: "Are you sure you want to logout?", preferredStyle: .alert)
             
             let ok = UIAlertAction(title: "OK", style: .default) { (action) in
-                                    (UIApplication.shared.delegate as! AppDelegate).GoToLogout()
+//                                    (UIApplication.shared.delegate as! AppDelegate).GoToLogout()
+                self.webserviceForLogout()
             }
             
             let cancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
@@ -262,8 +306,32 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
         
     }
 
-
-
+    func webserviceForLogout()
+    {
+        
+        let profile = loginModelDetails.loginData
+        logoutRequestModel.customer_id = (profile?.id)!
+        logoutRequestModel.device_token = "64546546464646465465464"
+        
+        
+        UtilityClass.showHUD(with: self.view)
+        let strURL = logoutRequestModel.customer_id + "/" + logoutRequestModel.device_token
+        UserWebserviceSubclass.Logout(strURL: strURL) { (json, status) in
+            UtilityClass.hideHUD()
+            
+            if status{
+                
+                UserDefaults.standard.set(false, forKey: "isUserLogin")
+                self.removeAllSocketFromMemory()
+                (UIApplication.shared.delegate as! AppDelegate).GoToLogout()
+            }
+            else
+            {
+                UtilityClass.hideHUD()
+                AlertMessage.showMessageForError(json["message"].stringValue)
+            }
+        }
+    }
     func removeAllSocketFromMemory()
     {
 //        let socket = (UIApplication.shared.delegate as! AppDelegate).socket

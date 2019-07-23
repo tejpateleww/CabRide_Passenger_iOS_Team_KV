@@ -18,10 +18,13 @@ class WalletViewController: BaseViewController, UIPickerViewDelegate, UIPickerVi
     @IBOutlet weak var txtAmount: UITextField!
     @IBOutlet weak var txtSelectPaymentMethod: UITextField!
     
-    var aryCards = [[String : AnyObject]]()
+    var aryCards = [CardsList]()
     
     var CardID = String()
     var paymentType = String()
+    var cardDetailModel : AddCardModel = AddCardModel()
+    var addMoneyReqModel : AddMoney = AddMoney()
+    var LoginDetail : LoginModel = LoginModel()
     
     
     @IBOutlet weak var lblTotalWalletBalance: UILabel!
@@ -29,7 +32,25 @@ class WalletViewController: BaseViewController, UIPickerViewDelegate, UIPickerVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        if(UserDefaults.standard.object(forKey: "userProfile") == nil)
+        {
+            return
+        }
 
+        do{
+            LoginDetail = try UserDefaults.standard.get(objectType: LoginModel.self, forKey: "userProfile")!
+            self.lblTotalWalletBalance.text = SingletonClass.sharedInstance.walletBalance//LoginDetail.loginData.walletBalance
+            cardDetailModel = try UserDefaults.standard.get(objectType: AddCardModel.self, forKey: "cards")!
+            self.aryCards = cardDetailModel.cards
+        }
+        catch
+        {
+            AlertMessage.showMessageForError("error")
+            return
+        }
+        
         pickerView.delegate = self
         
         self.setNavBarWithBack(Title: "Wallet", IsNeedRightButton: true)
@@ -37,7 +58,7 @@ class WalletViewController: BaseViewController, UIPickerViewDelegate, UIPickerVi
         self.lblBankCardName.text = "Select Payment Method"
         self.lblCardNumber.isHidden = true
         iconSelectedPaymentMethod.image = UIImage.init(named: "")
-        
+        /*
         var dict = [String:AnyObject]()
         dict["CardNum"] = "HDFC BANK" as AnyObject
         dict["CardNum2"] = "XXXX XXXX XXXX 8967" as AnyObject
@@ -75,9 +96,13 @@ class WalletViewController: BaseViewController, UIPickerViewDelegate, UIPickerVi
         self.aryCards.append(dict2)
         self.aryCards.append(dict3)
         
-        
+        */
     }
-    
+    override func viewWillAppear(_ animated: Bool)
+    {
+        super.viewWillAppear(animated)
+        self.lblTotalWalletBalance.text = SingletonClass.sharedInstance.walletBalance//LoginDetail.loginData.walletBalance
+    }
 
     @IBAction func btnSendMoneyTapped(_ sender: Any)
     {
@@ -104,7 +129,35 @@ class WalletViewController: BaseViewController, UIPickerViewDelegate, UIPickerVi
     }
     @IBAction func btnTopUpTapped(_ sender: Any)
     {
-        
+        if txtAmount.text?.count == 0
+        {
+             AlertMessage.showMessageForError("Please enter amount.")
+        }
+        else if self.CardID == "" //|| self.CardID == nil
+        {
+            AlertMessage.showMessageForError("Please select Payment method.")
+        }
+        else
+        {
+            addMoneyReqModel.card_id = self.CardID
+            addMoneyReqModel.amount = self.txtAmount.text ?? ""
+            addMoneyReqModel.customer_id = LoginDetail.loginData.id
+            UtilityClass.showHUD(with: self.view)
+            UserWebserviceSubclass.AddMoneytoWallet(addMoneyModel: addMoneyReqModel) { (json, status) in
+                UtilityClass.hideHUD()
+                if status
+                {
+                    self.lblTotalWalletBalance.text = json["wallet_balance"].stringValue
+                    SingletonClass.sharedInstance.walletBalance = json["wallet_balance"].stringValue
+                    AlertMessage.showMessageForSuccess(json["message"].stringValue)
+                    self.txtAmount.text = ""
+                }
+                else
+                {
+                    AlertMessage.showMessageForError("error")
+                }
+            }
+        }
     }
     
     @IBAction func txtSelectPaymentMethod(_ sender: UITextField) {
@@ -145,43 +198,51 @@ class WalletViewController: BaseViewController, UIPickerViewDelegate, UIPickerVi
         myImageView.contentMode = .scaleAspectFit
         
         var rowString = String()
-        
+        /*
+ "id": "7",
+ "card_no": "XoKZoqSXlWRkY21cWFyElw==",
+ "formated_card_no": "xxxx xxxx xxxx 4242",
+ "card_holder_name": "mayurH",
+ "card_type": "visa",
+ "exp_date_month": "02",
+ "exp_date_year": "20"
+ */
         
         switch row {
             
         case 0:
-            rowString = data["CardNum2"] as! String
-            myImageView.image = UIImage(named: setCardIcon(str: data["Type"] as! String))
+            rowString = data.formatedCardNo
+            myImageView.image = UIImage(named: setCardIcon(str: data.cardType))
         case 1:
-            rowString = data["CardNum2"] as! String
-            myImageView.image = UIImage(named: setCardIcon(str: data["Type"] as! String))
+            rowString = data.formatedCardNo
+            myImageView.image = UIImage(named: setCardIcon(str: data.cardType))
         case 2:
-            rowString = data["CardNum2"] as! String
-            myImageView.image = UIImage(named: setCardIcon(str: data["Type"] as! String))
+            rowString = data.formatedCardNo
+            myImageView.image = UIImage(named: setCardIcon(str: data.cardType))
         case 3:
-            rowString = data["CardNum2"] as! String
-            myImageView.image = UIImage(named: setCardIcon(str: data["Type"] as! String))
+            rowString = data.formatedCardNo
+            myImageView.image = UIImage(named: setCardIcon(str: data.cardType))
         case 4:
-            rowString = data["CardNum2"] as! String
-            myImageView.image = UIImage(named: setCardIcon(str: data["Type"] as! String))
+            rowString = data.formatedCardNo
+            myImageView.image = UIImage(named: setCardIcon(str: data.cardType))
         case 5:
-            rowString = data["CardNum2"] as! String
-            myImageView.image = UIImage(named: setCardIcon(str: data["Type"] as! String))
+            rowString = data.formatedCardNo
+            myImageView.image = UIImage(named: setCardIcon(str: data.cardType))
         case 6:
-            rowString = data["CardNum2"] as! String
-            myImageView.image = UIImage(named: setCardIcon(str: data["Type"] as! String))
+            rowString = data.formatedCardNo
+            myImageView.image = UIImage(named: setCardIcon(str: data.cardType))
         case 7:
-            rowString = data["CardNum2"] as! String
-            myImageView.image = UIImage(named: setCardIcon(str: data["Type"] as! String))
+            rowString = data.formatedCardNo
+            myImageView.image = UIImage(named: setCardIcon(str: data.cardType))
         case 8:
-            rowString = data["CardNum2"] as! String
-            myImageView.image = UIImage(named: setCardIcon(str: data["Type"] as! String))
+            rowString = data.formatedCardNo
+            myImageView.image = UIImage(named: setCardIcon(str: data.cardType))
         case 9:
-            rowString = data["CardNum2"] as! String
-            myImageView.image = UIImage(named: setCardIcon(str: data["Type"] as! String))
+            rowString = data.formatedCardNo
+            myImageView.image = UIImage(named: setCardIcon(str: data.cardType))
         case 10:
-            rowString = data["CardNum2"] as! String
-            myImageView.image = UIImage(named: setCardIcon(str: data["Type"] as! String))
+            rowString = data.formatedCardNo
+            myImageView.image = UIImage(named: setCardIcon(str: data.cardType))
         default:
             rowString = "Error: too many rows"
             myImageView.image = nil
@@ -198,59 +259,19 @@ class WalletViewController: BaseViewController, UIPickerViewDelegate, UIPickerVi
     
     var isAddCardSelected = Bool()
     
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
+    {
         
         let data = aryCards[row]
         
-        iconSelectedPaymentMethod.image = UIImage.init(named: data["Type"] as! String) //UIImage(named: setCardIcon(str: data["Type"] as! String))
-        //        txtSelectPaymentMethod.text = data["CardNum2"] as? String
-        
-        //        if data["CardNum"] as! String == "Add a Card" {
-        //
-        //            isAddCardSelected = true
-        ////            self.addNewCard()
-        //        }
-        //
-        
-        //        dict["CardNum"] = "HDFC BANK" as AnyObject
-        //        dict["CardNum2"] = "XXXX XXXX XXXX 8967" as AnyObject
-        //        dict["Type"] = "iconVisaCard" as AnyObject
-        self.lblBankCardName.text = data["CardNum"] as! String
+        iconSelectedPaymentMethod.image = UIImage(named: setCardIcon(str: data.cardType)) //UIImage(named: setCardIcon(str: data["Type"] as! String))
+   
+        self.lblBankCardName.text = data.cardHolderName
         self.lblCardNumber.isHidden = false
-        self.lblCardNumber.text = data["CardNum2"] as! String
-        
-        
-        let type = data["CardNum"] as! String
-        
-        if type  == "wallet"
-        {
-            paymentType = "wallet"
-            self.lblBankCardName.text = data["CardNum"] as! String
-            self.lblCardNumber.isHidden = true
-        }
-        else if type == "cash"
-        {
-            paymentType = "cash"
-            self.lblBankCardName.text = data["CardNum"] as! String
-            self.lblCardNumber.isHidden = true
-        }
-        else if type == "card"
-        {
-            paymentType = "card"
-        }
-        else {
-            //            paymentType = "pesapal"
-        }
-        
-        
-        //        if paymentType == "card" {
-        //
-        //            if data["Id"] as? String != "" {
-        //                CardID = data["Id"] as! String
-        //            }
-        //        }
-        
-        // do something with selected row
+        self.lblCardNumber.text = data.formatedCardNo
+        self.CardID = data.id
+       
+        paymentType = "card"
     }
     
 }

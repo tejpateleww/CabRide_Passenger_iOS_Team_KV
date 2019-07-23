@@ -9,5 +9,5 @@
 import Foundation
 
 class CardList : RequestModel {
-    var driver_id: String = ""
+    var customer_id: String = ""
 }

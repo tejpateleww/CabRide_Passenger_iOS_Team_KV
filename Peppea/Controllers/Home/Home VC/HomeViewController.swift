@@ -25,15 +25,23 @@ enum HomeViews{
     case none
 }
 
-class HomeViewController: BaseViewController {
+class HomeViewController: BaseViewController,GMSMapViewDelegate {
 
 
     //MARK:- IBOutles
+    @IBOutlet weak var btnCurrentLocation: UIButton!
+
+    @IBOutlet weak var btnViewTop: UIButton!
+    var LoginDetail : LoginModel = LoginModel()
+    var addCardReqModel : AddCard = AddCard()
+    var CardListReqModel : CardList = CardList()
+    var doublePickupLat = Double()
+    var doublePickupLng = Double()
     @IBOutlet weak var txtPickupLocation: UITextField!
     @IBOutlet weak var txtDropLocation: UITextField!
     @IBOutlet weak var btnBookLater: UIButton!
     @IBOutlet weak var mapViewContainer: UIView!
-
+    var currentLocationMarkerText = String()
     @IBOutlet weak var viewPickupLocation: UIView!
     @IBOutlet weak var viewDropOffLocation: UIView!
     @IBOutlet weak var containerView: UIView!
@@ -82,14 +90,14 @@ class HomeViewController: BaseViewController {
         {
             self.btnBookLater.isHidden = hideBookLaterButtonFromDroplocationField
 
-            //            if(hideBookLaterButtonFromDroplocationField == false)
-            //            {
-            //                self.containerView.isHidden = true
-            //            }
-            //            else
-            //            {
-            //                self.containerView.isHidden = false
-            //            }
+            if(hideBookLaterButtonFromDroplocationField == false)
+            {
+                self.containerView.isHidden = true
+            }
+            else
+            {
+                self.containerView.isHidden = false
+            }
         }
     }
 
@@ -119,8 +127,10 @@ class HomeViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+//        self.btnViewTop.addTarget(self, action: #selector(setBottomViewOnclickofViewTop), for: .touchUpInside)
 
+        self.webserviceForCardList()
         self.setupGoogleMaps()
         self.setupLocationManager()
         self.setupNavigationController()
@@ -200,7 +210,42 @@ class HomeViewController: BaseViewController {
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.requestWhenInUseAuthorization()
     }
-
+    func webserviceForCardList()
+    {
+//        self.aryCardData.removeAll()
+        
+        if(UserDefaults.standard.object(forKey: "userProfile") == nil)
+        {
+            return
+        }
+        do {
+            LoginDetail = try UserDefaults.standard.get(objectType: LoginModel.self, forKey: "userProfile")!
+        } catch {
+            AlertMessage.showMessageForError("error")
+            return
+        }
+        
+        CardListReqModel.customer_id = LoginDetail.loginData.id
+        UserWebserviceSubclass.CardInList(cardListModel: CardListReqModel) { (json, status) in
+            if status
+            {
+                let CardListDetails = AddCardModel.init(fromJson: json)
+                do
+                {
+                    try UserDefaults.standard.set(object: CardListDetails, forKey: "cards")
+                }
+                catch
+                {
+                    UtilityClass.hideHUD()
+                    AlertMessage.showMessageForError("error")
+                }
+            }
+            else
+            {
+                AlertMessage.showMessageForError("error")
+            }
+        }
+    }
     //MARK:- Other Methods
     @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
 
@@ -221,11 +266,24 @@ class HomeViewController: BaseViewController {
         }
     }
 
+//    @objc func setBottomViewOnclickofViewTop()
+//    {
+//        if self.isExpandCategory == false
+//        {
+//            self.isExpandCategory = true
+//        }
+//        else
+//        {
+//            self.isExpandCategory = false
+//        }
+//    }
     //MARK:- Pulse Methods
 
-    func createPulse() {
+    func createPulse()
+    {
 
-        for _ in 0...2 {
+        for _ in 0...2
+        {
             let circularPath = UIBezierPath(arcCenter: .zero, radius: ((self.markerContainerView?.superview?.frame.size.width )! )/2, startAngle: 0, endAngle: 2 * .pi , clockwise: true)
             let pulsatingLayer = CAShapeLayer()
             pulsatingLayer.path = circularPath.cgPath
@@ -290,7 +348,31 @@ class HomeViewController: BaseViewController {
             return 360 + degree
         }
     }
-
+    func currentLocationAction()
+    {
+        
+        clearMap()
+        
+//        self.destinationLocationMarker.map = nil
+//        self.currentLocationMarker.map = nil
+//        self.strLocationType = self.currentLocationMarkerText
+        mapView.delegate = self
+        
+        let camera = GMSCameraPosition.camera(withLatitude: defaultLocation.coordinate.latitude,
+                                              longitude: defaultLocation.coordinate.longitude,
+                                              zoom: zoomLevel)
+        
+        mapView.camera = camera
+        
+//        MarkerCurrntLocation.isHidden = false
+        
+        self.doublePickupLat = (defaultLocation.coordinate.latitude)
+        self.doublePickupLng = (defaultLocation.coordinate.longitude)
+        
+        let strLati: String = "\(self.doublePickupLat)"
+        let strlongi: String = "\(self.doublePickupLng)"
+        getAddressForLatLng(latitude: strLati, Longintude: strlongi, markerType: locationType(rawValue: currentLocationMarkerText)!)
+    }
     //MARK:- Setup Pickup and Destination Location
 
     func placepickerMethodForLocation(isPickupLocation : Bool)
@@ -302,7 +384,10 @@ class HomeViewController: BaseViewController {
         acController.autocompleteBounds = bounds
         present(acController, animated: true, completion: nil)
     }
-
+    @IBAction func btnCurrentLocation(_ sender: UIButton)
+    {
+        currentLocationAction()
+    }
     @IBAction func txtLocation(_ sender: ThemeTextField)
     {
         if(sender.tag == 1)
@@ -326,10 +411,13 @@ class HomeViewController: BaseViewController {
 
     private func processResponse(withPlacemarks placemarks: [CLPlacemark]?, error: Error?, markerType: locationType) {
         // Update View
-        if let error = error {
+        if let error = error
+        {
             print("Unable to Reverse Geocode Location (\(error))")
 
-        } else {
+        }
+        else
+        {
             if let placemarks = placemarks, let placemark = placemarks.first {
                 var addressString:String = ""
                 if let thoroughfare = placemark.thoroughfare, let City = placemark.locality, let State = placemark.administrativeArea, let Postalcode = placemark.postalCode , let country = placemark.country {
@@ -531,6 +619,17 @@ extension HomeViewController: GMSAutocompleteViewControllerDelegate {
 
     func wasCancelled(_ viewController: GMSAutocompleteViewController) {
         dismiss(animated: true, completion: nil)
+    }
+    func clearMap() {
+        
+        self.mapView.clear()
+//        self.driverMarker = nil
+        self.mapView.delegate = self
+        
+//        self.destinationLocationMarker.map = nil
+        
+        //        self.mapView?.stopRendering()
+        //        self.mapView = nil
     }
 }
 

@@ -46,14 +46,21 @@ class PostABidViewController: BaseViewController,UIImagePickerControllerDelegate
     @IBOutlet weak var collectionviewCars: UICollectionView!
     @IBOutlet var viewSelectVehicle: UIView!
 
+    @IBOutlet weak var iconLine: UIImageView!
     @IBOutlet weak var imgPaymentOption: UIImageView!
-    override func viewDidLoad() {
+    
+    
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
        // self.setNavBarWithMenuORBack(Title: "Post a Bid".localized, LetfBtn: kIconBack, IsNeedRightButton: false, isTranslucent: false)
         setupButtonAndTextfield()
-
+        
+        iconLine.image = UIImage.init(named: "iconLine")?.withRenderingMode(.alwaysTemplate)
+        iconLine.tintColor = UIColor.black
+        
         //arrNumberOfOnlineCars = SingletonClass.sharedInstance.arrCarLists as? [[String : AnyObject]]
 
         txtVehicleType?.inputView = viewSelectVehicle
@@ -721,10 +728,10 @@ class PostABidViewController: BaseViewController,UIImagePickerControllerDelegate
 
         switch str {
         case "visa":
-            CardIcon = "Visa"
+            CardIcon = "iconVisaCard"
             return CardIcon
         case "mastercard":
-            CardIcon = "MasterCard"
+            CardIcon = "iconMasterCard"
             return CardIcon
         case "amex":
             CardIcon = "Amex"
@@ -733,7 +740,7 @@ class PostABidViewController: BaseViewController,UIImagePickerControllerDelegate
             CardIcon = "Diners Club"
             return CardIcon
         case "discover":
-            CardIcon = "Discover"
+            CardIcon = "iconDiscover"
             return CardIcon
         case "jcb":
             CardIcon = "JCB"

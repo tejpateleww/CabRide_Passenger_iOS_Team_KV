@@ -19,7 +19,8 @@ class FlatRateListViewController: BaseViewController,UITableViewDelegate, UITabl
 //    @IBOutlet var btnMountainDestination: UIButton!
     
     @IBOutlet var tblView: UITableView!
-    var arrFlatRateListCityDEstination = [[String : AnyObject]]()
+    var arrFlatRateListCityDEstination = [FlatRateData]()
+    
     var arrFlatRateListMountainDEstination = [[String : AnyObject]]()
 //    var delegateFlatRate : delegateforFlatRateSelection!
     
@@ -60,7 +61,7 @@ class FlatRateListViewController: BaseViewController,UITableViewDelegate, UITabl
         
 //        if btnCityDestination.isSelected
 //        {
-//            return arrFlatRateListCityDEstination.count
+            return arrFlatRateListCityDEstination.count
 //        }
 //        else
 //        {
@@ -79,7 +80,7 @@ class FlatRateListViewController: BaseViewController,UITableViewDelegate, UITabl
         //            return 1
         //        }
         
-        return 3
+//        return 3
         
     }
     
@@ -96,12 +97,12 @@ class FlatRateListViewController: BaseViewController,UITableViewDelegate, UITabl
 //        cell.viewPrice.clipsToBounds = true
 //        if btnCityDestination.isSelected
 //        {
-//            let dictTemp = arrFlatRateListCityDEstination[indexPath.row]
+            let dictTemp = arrFlatRateListCityDEstination[indexPath.row]
 //
-//            cell.lblPickupLocation.text = dictTemp["PickupLocation"] as! String
-//            cell.lblDropOffLocation.text = dictTemp["DropoffLocation"] as! String
+            cell.lblPickupLocation.text = dictTemp.pickupLocation
+            cell.lblDropOffLocation.text = dictTemp.dropoffLocation
 //
-//            var flatRatePrice = String()
+            var flatRatePrice = "$ " + dictTemp.rate
 //
 //            if let price = dictTemp["Price"] as? Int
 //            {
@@ -111,7 +112,7 @@ class FlatRateListViewController: BaseViewController,UITableViewDelegate, UITabl
 //            {
 //                flatRatePrice = "$ \(tripprice)"
 //            }
-//            cell.btnPrice.setTitle(flatRatePrice, for: .normal)
+            cell.btnPrice.setTitle(flatRatePrice, for: .normal)
 //        }
 //        else
 //        {
@@ -155,28 +156,32 @@ class FlatRateListViewController: BaseViewController,UITableViewDelegate, UITabl
     }
     */
 
-    
     func webserviceforFlatRateList()
     {
-       /*
-        webserviceForFlatRateList("" as AnyObject) { (result, status) in
+//        getFixRateList
+        UtilityClass.showHUD(with: self.view)
+        UserWebserviceSubclass.getFixRateList(strURL: "") { (json, status) in
+             UtilityClass.hideHUD()
             if status
             {
-                print(result)
-                
-                
-                
-                self.arrFlatRateListCityDEstination = result["city_destionation"] as! [[String : AnyObject]]
-                self.arrFlatRateListMountainDEstination = result["mountain_destionation"] as! [[String : AnyObject]]
-                self.tblView.reloadData()
+                let FlatRateListDetails = FlatRateListModel.init(fromJson: json)
+                do
+                {
+                    try self.arrFlatRateListCityDEstination = FlatRateListDetails.Ratedata
+                    self.tblView.reloadData()
+                }
+                catch
+                {
+                    UtilityClass.hideHUD()
+                    AlertMessage.showMessageForError("error")
+                }
             }
             else
             {
-                print(result)
+                 UtilityClass.hideHUD()
             }
-        }*/
+        }
     }
-    
 //    @IBAction func btnMountainDEstinationClicked(_ sender: Any)
 //    {
 //        btnMountainDestination.isSelected = true

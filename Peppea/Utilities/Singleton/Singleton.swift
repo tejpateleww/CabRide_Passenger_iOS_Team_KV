@@ -7,3 +7,19 @@
 //
 
 import Foundation
+
+class SingletonClass: NSObject
+{
+    static let sharedInstance = SingletonClass()
+    
+    var RegisterOTP = String()
+    var walletBalance = String()
+}
+class SingletonRegistration: NSObject
+{
+    static let sharedRegistration = SingletonRegistration()
+    
+    var Email = String()
+    var MobileNo = String()
+    var Password = String()
+}

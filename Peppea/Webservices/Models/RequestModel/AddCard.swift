@@ -8,7 +8,7 @@
 
 import Foundation
 class AddCard : RequestModel {
-    var driver_id: String = ""
+    var customer_id: String = ""
     var card_no: String = ""
     var card_holder_name: String = ""
     var exp_date_month: String = ""

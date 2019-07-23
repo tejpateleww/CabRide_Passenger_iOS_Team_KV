@@ -8,9 +8,10 @@
 
 import UIKit
 import FormTextField
+import SwipeCellKit
 
 
-class PaymentViewController: BaseViewController,UITableViewDelegate, UITableViewDataSource
+class PaymentViewController: BaseViewController,UITableViewDelegate, UITableViewDataSource,SwipeTableViewCellDelegate
 {
 
     
@@ -31,19 +32,25 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
     var strYear = String()
     var strCVV = String()
     
+    @IBOutlet weak var btnAddCard: ThemeButton!
     var aryTempMonth = [String]()
     var aryTempYear = [String]()
-    
     
     @IBOutlet weak var txtCardNumber: FormTextField!
     @IBOutlet weak var txtValidThrough: FormTextField!
     @IBOutlet weak var txtCVVNumber: FormTextField!
     @IBOutlet weak var txtCArdHolderName: UITextField!
     
+    var LoginDetail : LoginModel = LoginModel()
+    var addCardReqModel : AddCard = AddCard()
+    var CardListReqModel : CardList = CardList()
+    var RemoveCardReqModel : RemoveCard = RemoveCard()
+    
+    
     var aryMonth = [String]()
     var aryYear = [String]()
     
-    var aryCardData = [[String : AnyObject]]()
+    var aryCardData = [CardsList]()//[[String : AnyObject]]()
     var aryOtherPayment = [[String : AnyObject]]()
     
     override func viewDidLoad()
@@ -56,7 +63,7 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
         
         aryTempMonth = ["01","02","03","04","05","06","07","08","09","10","11","12"]
         
-       
+      
         
         let date = Date()
         let calendar = Calendar.current
@@ -84,6 +91,8 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
         dict3["Type"] = "iconMPesa" as AnyObject
         self.aryOtherPayment.append(dict3)
         
+        /*
+         
         var dict = [String:AnyObject]()
         dict["CardNum"] = "HDFC BANK" as AnyObject
         dict["CardNum2"] = "XXXX XXXX XXXX 8967" as AnyObject
@@ -101,15 +110,25 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
         dict["CardNum2"] = "XXXX XXXX XXXX 2211" as AnyObject
         dict["Type"] = "iconDiscover" as AnyObject
         self.aryCardData.append(dict)
-        
+        */
 //        viewPaymentPopup.roundCorners([.topRight,.topLeft], radius: 12)
+        if(UserDefaults.standard.object(forKey: "userProfile") == nil)
+        {
+            return
+        }
+        do {
+            LoginDetail = try UserDefaults.standard.get(objectType: LoginModel.self, forKey: "userProfile")!
+        } catch {
+            AlertMessage.showMessageForError("error")
+            return
+        }
       
     }
     
     override func viewWillAppear(_ animated: Bool)
     {
         super.viewWillAppear(animated)
-        
+         self.webserviceForCardList()
         self.setNavBarWithBack(Title: "Payment", IsNeedRightButton: false)
         cardNum()
         
@@ -380,36 +399,7 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
             let cell = tableView.dequeueReusableCell(withIdentifier: "PaymentWalletTypeListCell") as! PaymentWalletTypeListCell
             
             cell.selectionStyle = .none
-            
-            //        cell.viewAddress.layer.cornerRadius = 10
-            //        cell.viewAddress.clipsToBounds = true
-            //        cell.viewPrice.layer.cornerRadius = 5
-            //        cell.viewPrice.clipsToBounds = true
-            //        if btnCityDestination.isSelected
-            //        {
-            //            let dictTemp = arrFlatRateListCityDEstination[indexPath.row]
-            //
-            //            cell.lblPickupLocation.text = dictTemp["PickupLocation"] as! String
-            //            cell.lblDropOffLocation.text = dictTemp["DropoffLocation"] as! String
-            //
-            //            var flatRatePrice = String()
-            //
-            //            if let price = dictTemp["Price"] as? Int
-            //            {
-            //                flatRatePrice = "$ \(String(price))"
-            //            }
-            //            else if let tripprice = dictTemp["Price"] as? String
-            //            {
-            //                flatRatePrice = "$ \(tripprice)"
-            //            }
-            //            cell.btnPrice.setTitle(flatRatePrice, for: .normal)
-            //        }
-            //        else
-            //        {
-            //             let dictTemp = arrFlatRateListCityDEstination[indexPath.row]
-            //            cell.lblPickupLocation.text = dictTemp["PickupLocation"] as! String
-            //            cell.lblDropOffLocation.text = dictTemp["DropoffLocation"] as! String
-            //        }
+  
             let data = aryOtherPayment[indexPath.row]
             cell.iconWallet.image = UIImage.init(named: data["Type"] as! String)
             cell.lblTitle.text = data["CardNum"] as! String
@@ -421,21 +411,162 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
             let cell = tableView.dequeueReusableCell(withIdentifier: "PaymentCardTypeListCell") as! PaymentCardTypeListCell
             let data = aryCardData[indexPath.row]
             cell.selectionStyle = .none
-            cell.iconCard.image = UIImage.init(named: data["Type"] as! String)
-            cell.lblTitle.text = data["CardNum"] as! String
-        
-            cell.lblCardNumber.text = data["CardNum2"] as! String
+            cell.delegate = self
+
+            cell.iconCard.image = UIImage(named: setCardIcon(str: data.cardType))//UIImage.init(named: data["Type"] as! String)
+            cell.lblTitle.text = data.cardHolderName
+            cell.lblCardNumber.text = data.formatedCardNo
             return cell
         }
-        
-        
     }
-    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        guard orientation == .right else { return nil }
+        
+        var strCardID = String()
+        
+        if indexPath.section != 0
+        {
+            let data = aryCardData[indexPath.row]
+            strCardID = data.id
+        }
+        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
+            // handle action by updating model with deletion
+            self.webserviceForDeleteCardFromList(strCardID)
+        }
+        
+        // customize the action appearance
+        deleteAction.image = UIImage(named: "delete")
+        
+        return [deleteAction]
+    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         self.tblView.deselectRow(at: indexPath, animated: true)
     }
     
+    
+    @IBAction func btnAddCardClicked(_ sender: Any)
+    {
+        self.webserviceforAddnewCard()
+    }
+    
+    func webserviceForDeleteCardFromList(_ strCardId : String)
+    {
+        RemoveCardReqModel.card_id = strCardId
+        RemoveCardReqModel.customer_id = LoginDetail.loginData.id
+        UtilityClass.showHUD(with: self.view)
+        
+        UserWebserviceSubclass.RemoveCardFromList(removeCardModel: RemoveCardReqModel) { (json, status) in
+            UtilityClass.hideHUD()
+            if status
+            {
+                self.webserviceForCardList()
+            }
+            else
+            {
+                AlertMessage.showMessageForError("error")
+            }
+        }
+        
+    }
+    func webserviceForCardList()
+    {
+        self.aryCardData.removeAll()
+        CardListReqModel.customer_id = LoginDetail.loginData.id
+//        UtilityClass.showHUD(with: self.view)
+        UserWebserviceSubclass.CardInList(cardListModel: CardListReqModel) { (json, status) in
+//            UtilityClass.hideHUD()
+            if status
+            {
+//                UtilityClass.hideHUD()
+                let CardListDetails = AddCardModel.init(fromJson: json)
+                do
+                {
+                   try self.aryCardData = CardListDetails.cards
+                    try UserDefaults.standard.set(object: CardListDetails, forKey: "cards")
+                    self.tblView.reloadData()
+                }
+                catch
+                {
+                    UtilityClass.hideHUD()
+                    AlertMessage.showMessageForError("error")
+                }
+            }
+            else
+            {
+                AlertMessage.showMessageForError("error")
+            }
+        }
+    }
    
+    
+    func webserviceforAddnewCard()
+    {
+        
+        /*
+         customer_id:2
+         card_no:4242424242424242
+         card_holder_name:mayurH
+         exp_date_month:02
+         exp_date_year:20
+         cvv:123
+         */
+       
+        addCardReqModel.customer_id = LoginDetail.loginData.id
+        addCardReqModel.card_no = txtCardNumber.text ?? ""
+        addCardReqModel.card_holder_name = txtCArdHolderName.text ?? ""
+        addCardReqModel.exp_date_month = (txtValidThrough.text?.components(separatedBy: "/"))?.first ?? ""
+        addCardReqModel.exp_date_year = (txtValidThrough.text?.components(separatedBy: "/"))?.last ?? ""
+        addCardReqModel.cvv = txtCVVNumber.text ?? ""
+        
+        if(self.validations().0 == false)
+        {
+            AlertMessage.showMessageForError(self.validations().1)
+        }
+        else
+        {
+            UtilityClass.showHUD(with: self.view)
+            
+            UserWebserviceSubclass.addCardInList(addCardModel: addCardReqModel) { (json, status) in
+                UtilityClass.hideHUD()
+                if status
+                {
+                    
+                    self.txtCardNumber.text = ""
+                    self.txtCArdHolderName.text = ""
+                    self.txtValidThrough.text = ""
+                    self.txtCVVNumber.text = ""
+                    self.webserviceForCardList()
+                }
+                else
+                {
+                    AlertMessage.showMessageForError("error")
+                }
+            }
+        }
+    }
+    
+    func validations() -> (Bool,String)
+    {
+        
+        if(addCardReqModel.card_holder_name.isBlank)
+        {
+            return (false,"Please enter card holder name")
+        }
+        else if(addCardReqModel.card_no.isBlank)
+        {
+            return (false,"Please enter card number")
+        }
+        else if(addCardReqModel.exp_date_year.isBlank)
+        {
+            return (false,"Please enter ex. date")
+        }
+        else if(addCardReqModel.cvv.isBlank)
+        {
+            return (false,"Please enter your CVV")
+        }
 
+        
+        return (true,"")
+    }
 }

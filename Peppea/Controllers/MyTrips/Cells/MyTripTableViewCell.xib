@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MyTripTableViewCell" customModule="Pappea_Driver" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MyTripTableViewCell" customModule="Peppea" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="170"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -97,7 +97,45 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="aDk-rD-cPu">
+                                <view contentMode="scaleToFill" verticalHuggingPriority="241" translatesAutoresizingMaskIntoConstraints="NO" id="OAP-nJ-Wp8">
+                                    <rect key="frame" x="10" y="0.0" width="10" height="60"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconPickupRound" translatesAutoresizingMaskIntoConstraints="NO" id="yyT-qK-yxf">
+                                            <rect key="frame" x="0.0" y="0.0" width="10" height="10"/>
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="10" id="4fC-Af-fIX"/>
+                                                <constraint firstAttribute="width" constant="10" id="GlY-uk-4Qh"/>
+                                            </constraints>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconLine" translatesAutoresizingMaskIntoConstraints="NO" id="0lu-2i-1Wb">
+                                            <rect key="frame" x="4.5" y="10" width="1" height="40"/>
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="1" id="2IX-YV-ckf"/>
+                                            </constraints>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconDropoffPinRound" translatesAutoresizingMaskIntoConstraints="NO" id="2IC-A1-Nc6">
+                                            <rect key="frame" x="0.0" y="50" width="10" height="10"/>
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="10" id="4AW-ii-1qp"/>
+                                        <constraint firstItem="2IC-A1-Nc6" firstAttribute="leading" secondItem="OAP-nJ-Wp8" secondAttribute="leading" id="90h-es-pJE"/>
+                                        <constraint firstAttribute="trailing" secondItem="yyT-qK-yxf" secondAttribute="trailing" id="Muw-Yu-HNp"/>
+                                        <constraint firstItem="yyT-qK-yxf" firstAttribute="top" secondItem="OAP-nJ-Wp8" secondAttribute="top" id="RJj-xa-ac2"/>
+                                        <constraint firstItem="0lu-2i-1Wb" firstAttribute="top" secondItem="yyT-qK-yxf" secondAttribute="bottom" id="VVI-ZY-fhf"/>
+                                        <constraint firstItem="0lu-2i-1Wb" firstAttribute="centerX" secondItem="OAP-nJ-Wp8" secondAttribute="centerX" id="bZf-bL-iDt"/>
+                                        <constraint firstItem="yyT-qK-yxf" firstAttribute="width" secondItem="2IC-A1-Nc6" secondAttribute="width" id="cEP-sh-uOa"/>
+                                        <constraint firstAttribute="bottom" secondItem="2IC-A1-Nc6" secondAttribute="bottom" id="h2t-P8-btV"/>
+                                        <constraint firstItem="yyT-qK-yxf" firstAttribute="leading" secondItem="OAP-nJ-Wp8" secondAttribute="leading" id="hWe-b5-oEg"/>
+                                        <constraint firstAttribute="trailing" secondItem="2IC-A1-Nc6" secondAttribute="trailing" id="hmG-G7-9gk"/>
+                                        <constraint firstItem="2IC-A1-Nc6" firstAttribute="top" secondItem="0lu-2i-1Wb" secondAttribute="bottom" id="m8h-bT-ZtK"/>
+                                        <constraint firstItem="yyT-qK-yxf" firstAttribute="height" secondItem="2IC-A1-Nc6" secondAttribute="height" id="zaA-1z-ygv"/>
+                                    </constraints>
+                                </view>
+                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="aDk-rD-cPu">
                                     <rect key="frame" x="0.0" y="0.0" width="24" height="60"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="24" id="mcV-Z9-TeZ"/>
@@ -107,6 +145,7 @@
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
+                                <constraint firstItem="OAP-nJ-Wp8" firstAttribute="leading" secondItem="aDk-rD-cPu" secondAttribute="leading" constant="10" id="3yQ-RT-cZZ"/>
                                 <constraint firstItem="eZw-2V-1Zt" firstAttribute="top" secondItem="prJ-Dc-weo" secondAttribute="top" id="4It-TL-IwB"/>
                                 <constraint firstItem="gtg-u9-pUg" firstAttribute="leading" secondItem="aDk-rD-cPu" secondAttribute="trailing" constant="10" id="EBN-8T-oV1"/>
                                 <constraint firstAttribute="trailing" secondItem="gtg-u9-pUg" secondAttribute="trailing" id="N3Y-FB-Sns"/>
@@ -117,7 +156,9 @@
                                 <constraint firstAttribute="trailing" secondItem="W0F-mb-qJn" secondAttribute="trailing" id="iEe-7n-uHo"/>
                                 <constraint firstItem="eZw-2V-1Zt" firstAttribute="leading" secondItem="aDk-rD-cPu" secondAttribute="trailing" constant="10" id="m9W-gz-X6e"/>
                                 <constraint firstItem="gtg-u9-pUg" firstAttribute="top" secondItem="eZw-2V-1Zt" secondAttribute="bottom" constant="10" id="om6-hO-gJp"/>
+                                <constraint firstItem="OAP-nJ-Wp8" firstAttribute="top" secondItem="aDk-rD-cPu" secondAttribute="top" id="rdg-sR-wr4"/>
                                 <constraint firstAttribute="trailing" secondItem="eZw-2V-1Zt" secondAttribute="trailing" id="sRq-5T-LCO"/>
+                                <constraint firstItem="OAP-nJ-Wp8" firstAttribute="bottom" secondItem="aDk-rD-cPu" secondAttribute="bottom" id="sqz-II-lH7"/>
                                 <constraint firstItem="aDk-rD-cPu" firstAttribute="top" secondItem="eZw-2V-1Zt" secondAttribute="top" id="x2e-1u-hqo"/>
                             </constraints>
                         </view>
@@ -159,6 +200,9 @@
         </view>
     </objects>
     <resources>
-        <image name="Logo" width="170" height="170"/>
+        <image name="Logo" width="298" height="154"/>
+        <image name="iconDropoffPinRound" width="85" height="85"/>
+        <image name="iconLine" width="0.5" height="42.5"/>
+        <image name="iconPickupRound" width="85" height="85"/>
     </resources>
 </document>

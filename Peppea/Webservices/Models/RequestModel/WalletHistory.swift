@@ -10,5 +10,5 @@ import Foundation
 
 
 class WalletHistory : RequestModel {
-    var driver_id: String = ""
+    var customer_id: String = ""
 }

@@ -8,6 +8,7 @@
 
 import UIKit
 import SkyFloatingLabelTextField
+import SDWebImage
 
 
 class ProfileViewController: BaseViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -23,7 +24,12 @@ class ProfileViewController: BaseViewController,UIImagePickerControllerDelegate,
     @IBOutlet weak var txtAddress: SkyFloatingLabelTextField!
     @IBOutlet weak var txtMobile: SkyFloatingLabelTextField!
     @IBOutlet weak var txtDOB: SkyFloatingLabelTextField!
+    var gender = String()
     
+//    var loginModelDetails: LoginModel = LoginModel()
+    var loginModelDetails : LoginModel = LoginModel()
+    var registerModelDetails : RegisterResponseModel = RegisterResponseModel()
+    var updateProfile : UpdatePersonalInfo = UpdatePersonalInfo()
     var strDateOfBirth = String()
     
     @IBOutlet weak var iconRadioMale: UIImageView!
@@ -55,7 +61,7 @@ class ProfileViewController: BaseViewController,UIImagePickerControllerDelegate,
     override func viewDidLoad()
     {
         super.viewDidLoad()
-
+        gender = "male"
         self.btnMale.isSelected = true
 //        self.iconRadioMale.image = UIImage.init(named: "SelectedCircle")
 //        self.iconRadioFemale.image = UIImage.init(named: "UnSelectedCircle")
@@ -70,30 +76,142 @@ class ProfileViewController: BaseViewController,UIImagePickerControllerDelegate,
          txtAddress.titleFormatter = { $0 }
          txtMobile.titleFormatter = { $0 }
          txtDOB.titleFormatter = { $0 }
+        
+        
+        if(UserDefaults.standard.object(forKey: "userProfile") == nil)
+        {
+            return
+        }
+        
+        do {
+            loginModelDetails = try UserDefaults.standard.get(objectType: LoginModel.self, forKey: "userProfile")!
+        } catch {
+            AlertMessage.showMessageForError("error")
+            return
+        }
+        setData()
     }
-    override func viewWillLayoutSubviews() {
+    override func viewWillLayoutSubviews()
+    {
         super.viewWillLayoutSubviews()
         self.btnProfilePic.layer.cornerRadius = self.btnProfilePic.frame.size.width/2
         self.btnProfilePic.layer.masksToBounds = true
         self.btnProfilePic.contentMode = .scaleAspectFill
     
     }
+    func setData()
+    {
+        
+        if(UserDefaults.standard.object(forKey: "userProfile") == nil)
+        {
+            return
+        }
+        
+        do{
+            loginModelDetails = try UserDefaults.standard.get(objectType: LoginModel.self, forKey: "userProfile")!
+        }
+        catch
+        {
+            AlertMessage.showMessageForError("error")
+            return
+        }
+        var profile = loginModelDetails.loginData
+        lblEmail.text = profile!.firstName + " " + profile!.lastName
+        lblMobile.text = profile?.mobileNo
+        
+        txtFirstName.text = profile?.firstName
+        txtLastName.text = profile?.lastName
+        txtAddress.text = profile?.address
+        txtMobile.text = profile?.mobileNo
+        txtDOB.text = profile?.dob
+        
+        if profile?.gender.lowercased() == "male" {
+            didSelectMale = true
+            gender = "male"
+        } else {
+            didSelectMale = false
+            gender = "female"
+        }
+        let strImage = imagBaseURL + profile!.profileImage
+        btnProfilePic.sd_setImage(with: URL(string: strImage), for: .normal, completed: nil)
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
-    */
+
 
     @IBAction func btnSaveClicked(_ sender: Any)
     {
+        updateProfile.first_name = txtFirstName.text ?? ""
+        updateProfile.last_name = txtLastName.text ?? ""
+        updateProfile.address = txtAddress.text ?? ""
+        updateProfile.dob = txtDOB.text ?? ""
+        updateProfile.gender = gender
         
+        if(self.validations().0 == false)
+        {
+            AlertMessage.showMessageForError(self.validations().1)
+        }
+        else
+        {
+            self.webserviceForUpdateProfile(updateProfile: updateProfile, image: self.btnProfilePic.imageView!.image!)
+        }
+    }
+    func validations() -> (Bool,String)
+    {
+        
+        if(updateProfile.first_name.isBlank)
+        {
+            return (false,"Please enter first name")
+        }
+        else if(updateProfile.last_name.isBlank)
+        {
+            return (false,"Please enter last name")
+        }
+        else if(updateProfile.address.isBlank)
+        {
+            return (false,"Please enter address")
+        }
+        else if(updateProfile.dob.isBlank)
+        {
+            return (false,"Please enter date of birth")
+        }
+        return (true,"")
     }
 
+    func webserviceForUpdateProfile(updateProfile : UpdatePersonalInfo, image : UIImage)
+    {
+        UtilityClass.showHUD(with: UIApplication.shared.keyWindow)
+         var profile = loginModelDetails.loginData
+        
+        updateProfile.customer_id = profile!.id
+        UserWebserviceSubclass.updatePersonal(updateProfile: updateProfile, image: image, imageParamName: "profile_image") { (json, status) in
+            UtilityClass.hideHUD()
+            
+            if status{
+                
+                
+                let registerModelDetails = LoginModel.init(fromJson: json)
+                do
+                {
+                    try UserDefaults.standard.set(object: registerModelDetails, forKey: "userProfile")//(loginModelDetails, forKey: "userProfile")
+                    SingletonClass.sharedInstance.walletBalance = registerModelDetails.loginData.walletBalance
+                    self.lblEmail.text = registerModelDetails.loginData.firstName + " " + registerModelDetails.loginData.lastName
+                    self.lblMobile.text = registerModelDetails.loginData.mobileNo
+                    AlertMessage.showMessageForSuccess(json["message"].stringValue)
+                    self.navigationController?.popViewController(animated: true)
+                }
+                catch
+                {
+                    AlertMessage.showMessageForError("error")
+                }
+            }
+            else
+            {
+                AlertMessage.showMessageForError(json["message"].stringValue)
+            }
+        }
+
+     
+    }
     
     @IBAction func btnProfilePicClicked(_ sender: Any)
     {
@@ -102,29 +220,25 @@ class ProfileViewController: BaseViewController,UIImagePickerControllerDelegate,
     
     @IBAction func btnMaleClicked(_ sender: UIButton)
     {
-//        self.iconRadioMale.image = UIImage.init(named: "SelectedCircle")
-//        self.iconRadioFemale.image = UIImage.init(named: "UnSelectedCircle")
+
         if(sender.tag == 1) // Male
         {
+             gender = "male"
             didSelectMale = true
         }
         else if (sender.tag == 2) // Female
         {
+             gender = "female"
             didSelectMale = false
         }
     }
     @IBAction func btnFemaleClicked(_ sender: Any)
     {
-//        self.iconRadioFemale.image = UIImage.init(named: "SelectedCircle")
-//        self.iconRadioMale.image = UIImage.init(named: "UnSelectedCircle")
     }
     
     // MARK: - Pick Image
-    func TapToProfilePicture() {
-        
-        
-        
-        
+    func TapToProfilePicture()
+    {
         
         let alert = UIAlertController(title: "Choose Options", message: nil, preferredStyle: .alert)
         
@@ -206,7 +320,6 @@ class ProfileViewController: BaseViewController,UIImagePickerControllerDelegate,
         dateFormaterView.dateFormat = "yyyy-MM-dd"
         txtDOB.text = dateFormaterView.string(from: sender.date)
         strDateOfBirth = txtDOB.text!
-        
     }
     
     @IBAction func btnChangePasswordClicked(_ sender: Any)

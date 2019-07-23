@@ -44,10 +44,22 @@ class RegisterOTPVarificationViewController: UIViewController {
     
     @IBAction func btnNext(_ sender: UIButton) {
 
-        let registrationContainerVC = self.navigationController?.viewControllers[1]  as! RegisterContainerViewController
-        registrationContainerVC.scrollObject.setContentOffset(CGPoint(x: self.view.frame.size.width * 2, y: 0), animated: true)
-        registrationContainerVC.selectPageControlIndex(Index: 2)
-        self.txtOTP.text = ""
+        let strOTP = txtOTP.text
+        
+        if strOTP == SingletonClass.sharedInstance.RegisterOTP
+        {
+            let registrationContainerVC = self.navigationController?.viewControllers[1]  as! RegisterContainerViewController
+            registrationContainerVC.scrollObject.setContentOffset(CGPoint(x: self.view.frame.size.width * 2, y: 0), animated: true)
+            registrationContainerVC.selectPageControlIndex(Index: 2)
+            self.txtOTP.text = ""
+            SingletonClass.sharedInstance.RegisterOTP = ""
+        }
+        else
+        {
+//            UtilityClass.showAlert(title: "", message: "Please enter valid OTP code", alertTheme: .error)//AlertMessage.showMessageForError("Please enter valid OTP code")
+            AlertMessage.showMessageForError("Please enter valid OTP code")
+        }
+      
 
         /*
         if SingletonClass.sharedInstance.otpCode == txtOTP.text {

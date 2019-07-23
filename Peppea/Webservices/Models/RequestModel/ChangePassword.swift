@@ -8,7 +8,7 @@
 
 import Foundation
 class ChangePassword : RequestModel {
-    var driver_id: String = ""
+    var customer_id: String = ""
     var old_password: String = ""
     var new_password: String = ""
  }

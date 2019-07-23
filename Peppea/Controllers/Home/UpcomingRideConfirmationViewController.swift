@@ -10,10 +10,18 @@ import UIKit
 
 class UpcomingRideConfirmationViewController: UIViewController {
 
+    
+    @IBOutlet weak var viewPopUp: UIView!
+    @IBOutlet weak var lblFromLocation: UILabel!
+    @IBOutlet weak var lblToLocation: UILabel!
+    @IBOutlet weak var lblBookingDate: UILabel!
+    @IBOutlet weak var lblCode: UILabel!
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
 
+        viewPopUp.roundCorners([.topLeft, .topRight], radius: 10)
         // Do any additional setup after loading the view.
     }
     
@@ -27,5 +35,11 @@ class UpcomingRideConfirmationViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    @IBAction func btnOkClicked(_ sender: Any)
+    {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 
 }

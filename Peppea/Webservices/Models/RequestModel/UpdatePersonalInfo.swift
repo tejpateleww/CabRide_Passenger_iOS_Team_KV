@@ -8,14 +8,12 @@
 
 import Foundation
 
-class UpdatePersonalInfo : RequestModel {
-
-    var driver_id: String = ""
-    var car_type: String = ""
+class UpdatePersonalInfo : RequestModel
+{
+    var customer_id: String = ""
     var first_name: String = ""
     var last_name: String = ""
     var gender: String = ""
-    var payment_method: String = ""
     var address: String = ""
     var dob: String = ""
 }

@@ -16,8 +16,8 @@ class BidListContainerViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = "Bid List"
-      //  self.setNavBarWithBackWithAdd(Title: "Bid List")
+        
+        self.setNavBarWithBack(Title: "Bid List", IsNeedRightButton: false)
 
         // Do any additional setup after loading the view.
     }

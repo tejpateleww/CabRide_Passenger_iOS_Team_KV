@@ -17,7 +17,9 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0.0</string>
 	<key>CFBundleVersion</key>
-	<string>1.0.0</string>
+	<string>1.0.2</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>googlechromes</string>
@@ -25,10 +27,18 @@
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>You can capture photos to upload your profile picture and car photos.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>App would like to use your current location to journal places you go.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>App would like to use your current location to journal places you go.</string>
 	<key>NSLocationUsageDescription</key>
 	<string>We use location to get you nearby taxis</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>We use location to get you nearby taxis</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>You can select photos to upload your profile picture and car photos.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>proxima-nova-black.otf</string>
@@ -47,6 +57,11 @@
 		<string>proxima-nova-semibold-italic.otf</string>
 		<string>proxima-nova-semibold.otf</string>
 		<string>proxima-nova.otf</string>
+	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>remote-notification</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

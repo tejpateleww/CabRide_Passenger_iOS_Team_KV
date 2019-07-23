@@ -26,6 +26,7 @@ class MyBidListViewCell: UITableViewCell {
     @IBOutlet weak var lblDistanceTitle: UILabel!
     @IBOutlet weak var lblPriceTitle: UILabel!
     
+    @IBOutlet weak var iconLine: UIImageView!
     
     @IBOutlet weak var lblPickupDate: UILabel!
     @IBOutlet weak var lblDeadhead: UILabel!
@@ -34,12 +35,20 @@ class MyBidListViewCell: UITableViewCell {
     
     
     @IBOutlet weak var btnViewDetails: UIButton!
-    override func awakeFromNib() {
+    override func awakeFromNib()
+    {
         super.awakeFromNib()
         // Initialization code
+        
+        if iconLine != nil
+        {
+            iconLine.image = UIImage.init(named: "iconLine")?.withRenderingMode(.alwaysTemplate)
+            iconLine.tintColor = UIColor.black
+        }
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool)
+    {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state

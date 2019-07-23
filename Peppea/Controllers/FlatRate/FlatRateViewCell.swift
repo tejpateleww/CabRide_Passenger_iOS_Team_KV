@@ -17,6 +17,7 @@ class FlatRateViewCell: UITableViewCell {
     
     @IBOutlet var viewAddress: UIView!
     @IBOutlet var viewPrice: UIView!
+    @IBOutlet weak var iconLine: UIImageView!
     
     @IBOutlet var btnPrice: UIButton!
     
@@ -24,6 +25,9 @@ class FlatRateViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        iconLine.image = UIImage.init(named: "iconLine")?.withRenderingMode(.alwaysTemplate)
+        iconLine.tintColor = UIColor.black
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

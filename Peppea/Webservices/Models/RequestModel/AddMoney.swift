@@ -8,7 +8,7 @@
 
 import Foundation
 class AddMoney : RequestModel {
-    var driver_id: String = ""
+    var customer_id: String = ""
     var card_id: String = ""
     var amount: String = ""
 }
