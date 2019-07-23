@@ -12,23 +12,31 @@ class ReceiveMoneyViewController: BaseViewController
 {
 
     
-    
+    var loginModelDetails : LoginModel = LoginModel()
+    @IBOutlet weak var lblUserName: UILabel!
+    @IBOutlet weak var imgQRCode: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.setNavBarWithBack(Title: "Receive Money", IsNeedRightButton: false)
+        
+        
+        if(UserDefaults.standard.object(forKey: "userProfile") == nil)
+        {
+            return
+        }
         // Do any additional setup after loading the view.
+        do{
+            loginModelDetails = try UserDefaults.standard.get(objectType: LoginModel.self, forKey: "userProfile")!
+        }
+        catch
+        {
+            AlertMessage.showMessageForError("error")
+            return
+        }
+        let profile = loginModelDetails.loginData
+        let finalStrImg = imagBaseURL + profile!.qrCode
+        self.imgQRCode.sd_setImage(with: URL(string: finalStrImg), completed: nil)//https://parksmart.online/
+        self.lblUserName.text = profile!.firstName + " " + profile!.lastName
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

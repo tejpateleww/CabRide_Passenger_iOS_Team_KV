@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import SwipeCellKit
 
-class PaymentCardTypeListCell: UITableViewCell {
+class PaymentCardTypeListCell: SwipeTableViewCell {
 
     
     @IBOutlet weak var lblTitle: UILabel!

@@ -8,7 +8,8 @@
 
 import UIKit
 
-class AutomaticExpenseVC: UIViewController {
+class AutomaticExpenseVC: BaseViewController
+{
 
     @IBOutlet weak var lblAllset: UILabel!
     @IBOutlet weak var lblInfo: UILabel!
@@ -21,6 +22,7 @@ class AutomaticExpenseVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setNavBarWithBack(Title: "", IsNeedRightButton: false)
         uiSettings()
         
     }

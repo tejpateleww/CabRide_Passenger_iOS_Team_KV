@@ -7,7 +7,8 @@
 //
 
 import Foundation
-class RequestModel {
+class RequestModel
+{
 
     func  generatPostParams() -> [String : Any]
     {

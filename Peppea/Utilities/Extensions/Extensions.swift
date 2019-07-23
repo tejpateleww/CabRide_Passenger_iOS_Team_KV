@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-
+import SDWebImage
 
 extension UIViewController {
 
@@ -138,7 +138,19 @@ extension String {
             return trimmed.isEmpty
         }
     }
-
+//    var isInValidPassword: Bool {
+//        get {
+//            let trimmed = trimmingCharacters(in: CharacterSet.whitespaces)
+//            if trimmed.count >= 6
+//            {
+//                return false
+//            }
+//            else
+//            {
+//                return true
+//            }
+//        }
+//    }
     //Validate Email
     var isEmail: Bool {
         do {

@@ -52,7 +52,8 @@ class OpenBidListViewController: UIViewController,UITableViewDelegate,UITableVie
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-
+        let viewController = self.storyboard?.instantiateViewController(withIdentifier: "BidDetailsViewController") as! BidDetailsViewController
+        self.navigationController?.pushViewController(viewController, animated: true)
 
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat

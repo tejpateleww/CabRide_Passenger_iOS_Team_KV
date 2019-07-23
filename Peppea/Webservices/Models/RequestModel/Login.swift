@@ -9,10 +9,10 @@
 import Foundation
 
 class loginModel : RequestModel {
-    var Username : String = ""
-    var Password : String = ""
-    var DeviceType : String = ""
-    var Lat : String = ""
-    var Lng : String = ""
-    var Token : String = ""
+    var username : String = ""
+    var password : String = ""
+    var device_type : String = ""
+    var lat : String = ""
+    var lng : String = ""
+    var device_token : String = ""
 }

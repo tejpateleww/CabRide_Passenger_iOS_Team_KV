@@ -15,7 +15,7 @@ class ForgotPasswordViewController: BaseViewController
     @IBOutlet weak var txtEmail: ThemeTextFieldLoginRegister!
     @IBOutlet weak var btnResetPw: UIButton!
     
-    
+      var ForgotPasswordModel : ForgotPassword = ForgotPassword()
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -35,7 +35,48 @@ class ForgotPasswordViewController: BaseViewController
 
     @IBAction func btnREsetPAsswordClicked(_ sender: Any)
     {
-        self.navigationController?.popViewController(animated: true)
+//        self.navigationController?.popViewController(animated: true)
+        ForgotPasswordModel.email = txtEmail.text ?? ""
+        
+        if(self.validations().0 == false)
+        {
+            AlertMessage.showMessageForError(self.validations().1)
+        }
+        else
+        {
+            self.webserviceCallForgotPassword()
+        }
+
     }
-    
+    func webserviceCallForgotPassword()
+    {
+        UtilityClass.showHUD(with: self.view)
+        
+        UserWebserviceSubclass.forgotPassword(ForgotPasswordModel: ForgotPasswordModel) { (json, status) in
+            UtilityClass.hideHUD()
+            
+            if status{
+                 AlertMessage.showMessageForSuccess(json["message"].stringValue)
+                self.navigationController?.popViewController(animated: true)
+            }
+            else{
+                UtilityClass.hideHUD()
+                AlertMessage.showMessageForError(json["message"].stringValue)
+            }
+        }
+    }
+    func validations() -> (Bool,String)
+    {
+        
+        if(ForgotPasswordModel.email.isBlank)
+        {
+            return (false,"Please enter email")
+        }
+        else if(!ForgotPasswordModel.email.isEmail)
+        {
+            return (false,"Please enter valid email")
+        }
+       
+        return (true,"")
+    }
 }

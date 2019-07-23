@@ -21,6 +21,23 @@ pod 'Cosmos'
 pod 'QRCodeReader.swift'
 pod 'CardIO'
 pod 'FormTextField'
+
+pod 'SDWebImage'
+pod 'SwiftyJSON'
+pod 'MarqueeLabel/Swift'
+pod 'Socket.IO-Client-Swift'
+pod 'lottie-ios'
+pod 'ActionSheetPicker-3.0'
+pod 'SwipeCellKit', '2.5.4'
   # Pods for Peppea
 
+  
+  
+end
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['DEBUG_INFORMATION_FORMAT'] = 'dwarf'
+    end
+  end
 end

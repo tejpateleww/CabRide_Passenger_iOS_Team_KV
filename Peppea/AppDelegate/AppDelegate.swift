@@ -26,7 +26,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.enable = true
         GMSServices.provideAPIKey(googlApiKey)
         GMSPlacesClient.provideAPIKey(googlApiKey)
-        //Fabric.with([Crashlytics.self])
+//        Fabric.with([Crashlytics.self])
+//        UserDefaults.standard.set(true, forKey: "isUserLogin")
+        
+
+        
         return true
     }
 
@@ -116,6 +120,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        SingletonClass.sharedInstance.isPasscodeON = false
 //
 //        SingletonClass.sharedInstance.isPasscodeON = false
+         UserDefaults.standard.set(false, forKey: "isUserLogin")
         self.GoToLogin()
     }
 

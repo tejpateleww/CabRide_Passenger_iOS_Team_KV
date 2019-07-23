@@ -16,7 +16,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate,UIPickerView
     @IBOutlet weak var txtPassword: ThemeTextFieldLoginRegister!
     @IBOutlet weak var txtConfirmPassword: ThemeTextFieldLoginRegister!
     @IBOutlet var txtContoryNum: ThemeTextFieldLoginRegister!
-
+    var RegistrationGetOTPModel : RegistrationModel = RegistrationModel()
+    
     var aryContoryNum = [[String:Any]]()
     let countoryz : Int = 0
     var imgflag = UIImageView()
@@ -175,9 +176,15 @@ class RegisterViewController: UIViewController, UITextFieldDelegate,UIPickerView
     @IBAction func btnNext(_ sender: Any) {
         let Validator = self.isvalidateAllFields()
 
-        let registrationContainerVC = self.navigationController?.viewControllers[1] as! RegisterContainerViewController
-        registrationContainerVC.scrollObject.setContentOffset(CGPoint(x: self.view.frame.size.width, y: 0), animated: true)
-        registrationContainerVC.selectPageControlIndex(Index: 1)
+        if self.isvalidateAllFields().0 == true
+        {
+            self.webserviceForGetOTP()
+        }
+        else
+        {
+            AlertMessage.showMessageForError(self.isvalidateAllFields().1)
+        }
+      
         /*
         if (Validator.0) == true
         {
@@ -190,7 +197,37 @@ class RegisterViewController: UIViewController, UITextFieldDelegate,UIPickerView
 
  */
         }
-    
+    func webserviceForGetOTP()
+    {
+//        let parameter = try! parameterArray.asDictionary()
+        
+        RegistrationGetOTPModel.email = txtEmail.text ?? ""
+        RegistrationGetOTPModel.mobile_no = txtPhoneNumber.text ?? ""
+        RegistrationGetOTPModel.password = txtPassword.text ?? ""
+        
+        SingletonRegistration.sharedRegistration.Email = txtEmail.text ?? ""
+        SingletonRegistration.sharedRegistration.MobileNo = txtPhoneNumber.text ?? ""
+        SingletonRegistration.sharedRegistration.Password = txtPassword.text ?? ""
+        var paramter = [String : AnyObject]()
+        paramter["email"] = txtEmail!.text as AnyObject
+        paramter["mobile_no"] = txtPhoneNumber!.text as AnyObject
+        
+        WebService.shared.requestMethod(api: .otp, httpMethod: .post, parameters: paramter){ json,status in
+            if status
+            {
+//                self.parameterArray.otp = json["otp"].stringValue
+                SingletonClass.sharedInstance.RegisterOTP = json["otp"].stringValue
+                let registrationContainerVC = self.navigationController?.viewControllers[1] as! RegisterContainerViewController
+                registrationContainerVC.scrollObject.setContentOffset(CGPoint(x: self.view.frame.size.width, y: 0), animated: true)
+                registrationContainerVC.selectPageControlIndex(Index: 1)
+            }
+            else
+            {
+                AlertMessage.showMessageForError(json["message"].stringValue)
+            }
+//            completion(status)
+        }
+    }
     
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation

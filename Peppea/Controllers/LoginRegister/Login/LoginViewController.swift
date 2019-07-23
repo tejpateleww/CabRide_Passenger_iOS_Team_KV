@@ -23,10 +23,14 @@ class LoginViewController: UIViewController {
 
 
 
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        txtMobileEmail.text = "dev.eloper.eww@gmail.com"
+        txtPassword.text = "12345678"
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -57,32 +61,61 @@ class LoginViewController: UIViewController {
 
     @IBAction func btnSIgnIn(_ sender: ThemeButton) {
 
-        LogInModel.Username = txtMobileEmail.text ?? ""
-        LogInModel.Password = txtPassword.text ?? ""
-        LogInModel.DeviceType = ""
-        LogInModel.Lat = ""
-        LogInModel.Lng = ""
-        LogInModel.Token = ""
-
-
+        LogInModel.username = txtMobileEmail.text ?? ""
+        LogInModel.password = txtPassword.text ?? ""
+        LogInModel.device_type = "ios"
+        LogInModel.lat = "23.75821"
+        LogInModel.lng = "23.75821"
+        LogInModel.device_token = "64546546464646465465464"
         if(self.validations().0 == false)
         {
-            //UtilityClass.showAlert(title: "", message: self.validations().1, alertTheme: .error)
-
-            UtilityClass.showHUD(with: self.view)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                UtilityClass.hideHUD()
-
-                (UIApplication.shared.delegate as! AppDelegate).GoToHome()
-            }
-
+             AlertMessage.showMessageForError(self.validations().1)
         }
         else
         {
-
+            self.webserviceCallForLogin()
         }
 
 
+    }
+    
+    func webserviceCallForLogin()
+    {
+        UtilityClass.showHUD(with: self.view)
+        
+        UserWebserviceSubclass.login(loginModel: LogInModel) { (json, status) in
+            UtilityClass.hideHUD()
+            
+            if status{
+                
+                UserDefaults.standard.set(true, forKey: "isUserLogin")
+                
+                let loginModelDetails = LoginModel.init(fromJson: json)
+                do
+                {
+                    UserDefaults.standard.set(loginModelDetails.loginData.xApiKey, forKey: "X_API_KEY")
+                    SingletonClass.sharedInstance.walletBalance = loginModelDetails.loginData.walletBalance
+                    try UserDefaults.standard.set(object: loginModelDetails, forKey: "userProfile")//(loginModelDetails, forKey: "userProfile")
+                }
+                catch
+                {
+                    UtilityClass.hideHUD()
+                    AlertMessage.showMessageForError("error")
+                }
+                (UIApplication.shared.delegate as! AppDelegate).GoToHome()
+                //                    (UIApplication.shared.delegate as! AppDelegate).setHome()
+            }
+            else{
+                UtilityClass.hideHUD()
+                AlertMessage.showMessageForError(json["message"].stringValue)
+            }
+        }
+        
+        //            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+        //                UtilityClass.hideHUD()
+        //
+        //                (UIApplication.shared.delegate as! AppDelegate).GoToHome()
+        //            }
     }
     @IBAction func btnForgotPassword(_ sender: Any) {
         let viewController = self.storyboard?.instantiateViewController(withIdentifier: "ForgotPasswordViewController") as! ForgotPasswordViewController
@@ -91,23 +124,24 @@ class LoginViewController: UIViewController {
 
     func validations() -> (Bool,String)
     {
-        if(LogInModel.Username.isBlank)
+
+        if(LogInModel.username.isBlank)
         {
             return (false,"Please enter Mobile Number/Email")
         }
-        else if(LogInModel.Password.isBlank)
+        else if(LogInModel.password.isBlank)
         {
             return (false,"Please enter Password")
         }
-        else if(LogInModel.Lat.isBlank)
+        else if(LogInModel.lat.isBlank)
         {
             return (false,"Please enable your location to move forward")
         }
-        else if(LogInModel.Lng.isBlank)
+        else if(LogInModel.lng.isBlank)
         {
             return (false,"Please enable your location to move forward")
         }
-        else if(LogInModel.Token.isBlank)
+        else if(LogInModel.device_token.isBlank)
         {
             return (false,"Please enable push notifications from Settings")
         }
@@ -116,14 +150,5 @@ class LoginViewController: UIViewController {
     }
 
 
-    /*
-     // MARK: - Navigation
-
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-
+ 
 }

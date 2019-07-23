@@ -9,10 +9,10 @@
 import UIKit
 import QRCodeReader
 import AVFoundation
+import SkyFloatingLabelTextField
 
 
-
-class SendMoneyViewController: BaseViewController, UIPickerViewDelegate, UIPickerViewDataSource,QRCodeReaderViewControllerDelegate
+class SendMoneyViewController: BaseViewController, UIPickerViewDelegate, UIPickerViewDataSource,QRCodeReaderViewControllerDelegate,UITextFieldDelegate
 {
 
     
@@ -29,9 +29,13 @@ class SendMoneyViewController: BaseViewController, UIPickerViewDelegate, UIPicke
             })
         }
     }
-    @IBOutlet var btnQR: UIButton!
-    @IBOutlet weak var txtmobileNumber: UITextField!
     
+    
+    @IBOutlet var btnQR: UIButton!
+    @IBOutlet weak var txtmobileNumber: SkyFloatingLabelTextField!
+    
+    @IBOutlet weak var lblReceiverName: UILabel!
+    @IBOutlet weak var viewPlaceholderQR: UIView!
     @IBOutlet weak var txtAmount: UITextField!
     
     @IBOutlet weak var iconQRCodePlaceholder: UIImageView!
@@ -42,69 +46,175 @@ class SendMoneyViewController: BaseViewController, UIPickerViewDelegate, UIPicke
     var pickerView = UIPickerView()
     
     @IBOutlet weak var txtSelectPaymentMethod: UITextField!
-    
-    var aryCards = [[String : AnyObject]]()
+    var QRCodeDetailsReqModel : QRCodeDetails = QRCodeDetails()
+    var MobileNoDetailReqModel : MobileNoDetail = MobileNoDetail()
+    var QRCodeDetailsResult : QRCodeScannedModel = QRCodeScannedModel()
+    var aryCards = [CardsList]()
     
     var CardID = String()
+    var SCnnedQRCode = String()
     var paymentType = String()
     
+    var cardDetailModel : AddCardModel = AddCardModel()
     
+    var transferMoneyReqModel : TransferMoneyModel = TransferMoneyModel()
+    var LoginDetail : LoginModel = LoginModel()
     
+    var strUserType = String()
+    
+    @IBOutlet var selectGender: [UIImageView]!
+    @IBOutlet weak var btnDriver: UIButton!
+    @IBOutlet weak var btnCustomer: UIButton!
+    var didSelectDriverCustomer: Bool = true
+    {
+        didSet
+        {
+            if(didSelectDriverCustomer)
+            {
+                strUserType = "driver"
+                selectGender.first?.image = UIImage(named: "SelectedCircle")
+                selectGender.last?.image = UIImage(named: "UnSelectedCircle")
+                
+                
+            }
+            else
+            {
+                strUserType = "customer"
+                selectGender.last?.image = UIImage(named: "SelectedCircle")
+                selectGender.first?.image = UIImage(named: "UnSelectedCircle")
+                
+            }
+        }
+    }
+    var didMaxMobileNumberLimit: Bool = false
+    {
+        didSet
+        {
+            if(didMaxMobileNumberLimit)
+            {
+                self.webserviceMobileNoDetails()
+            }
+            else
+            {
+        
+            }
+        }
+    }
     override func viewDidLoad()
     {
         super.viewDidLoad()
-
+        strUserType = "driver"
+        txtmobileNumber.delegate = self
+        txtmobileNumber.textAlignment = .center
+        txtmobileNumber.titleLabel.textAlignment = .center
+        self.lblReceiverName.text = ""
+        txtmobileNumber.titleFormatter = { $0 }
+        
+        if(UserDefaults.standard.object(forKey: "userProfile") == nil)
+        {
+            return
+        }
+        do
+        {
+            LoginDetail = try UserDefaults.standard.get(objectType: LoginModel.self, forKey: "userProfile")!
+            cardDetailModel = try UserDefaults.standard.get(objectType: AddCardModel.self, forKey: "cards")!
+            self.aryCards = cardDetailModel.cards
+        }
+        catch
+        {
+            AlertMessage.showMessageForError("error")
+            return
+        }
         pickerView.delegate = self
+        previewView.isHidden = true
+        viewPlaceholderQR.isHidden = false
+        btnQR.isHidden = false
         self.setNavBarWithBack(Title: "Send Money", IsNeedRightButton: false)
         self.lblBankCardName.text = "Select Payment Method"
         self.lblCardNumber.isHidden = true
         iconSelectedPaymentMethod.image = UIImage.init(named: "")
-        
-        var dict = [String:AnyObject]()
-        dict["CardNum"] = "HDFC BANK" as AnyObject
-        dict["CardNum2"] = "XXXX XXXX XXXX 8967" as AnyObject
-        dict["Type"] = "iconVisaCard" as AnyObject
-        self.aryCards.append(dict)
-        
-        dict = [String:AnyObject]()
-        dict["CardNum"] = "AXIS BANK" as AnyObject
-        dict["CardNum2"] = "XXXX XXXX XXXX 5534" as AnyObject
-        dict["Type"] = "iconMasterCard" as AnyObject
-        self.aryCards.append(dict)
-        
-        dict = [String:AnyObject]()
-        dict["CardNum"] = "BOB BANK" as AnyObject
-        dict["CardNum2"] = "XXXX XXXX XXXX 2211" as AnyObject
-        dict["Type"] = "iconDiscover" as AnyObject
-        self.aryCards.append(dict)
-        
-        dict = [String:AnyObject]()
-        dict["CardNum"] = "cash" as AnyObject
-        dict["CardNum2"] = "cash" as AnyObject
-        dict["Type"] = "iconCash" as AnyObject
-        self.aryCards.append(dict)
-        
-        var dict2 = [String:AnyObject]()
-        dict2["CardNum"] = "wallet" as AnyObject
-        dict2["CardNum2"] = "wallet" as AnyObject
-        dict2["Type"] = "iconWallet" as AnyObject
-        
-        var dict3 = [String:AnyObject]()
-        dict3["CardNum"] = "pesapal" as AnyObject
-        dict3["CardNum2"] = "pesapal" as AnyObject
-        dict3["Type"] = "iconMPesa" as AnyObject
-        
-//        self.aryCards.append(dict)
-        self.aryCards.append(dict2)
-        self.aryCards.append(dict3)
-        
+       
     }
     override func viewWillAppear(_ animated: Bool)
     {
         super.viewWillAppear(animated)
-//        previewView.setupComponents(showCancelButton: false, showSwitchCameraButton: false, showTorchButton: false, showOverlayView: true, reader: reader)
         previewView.isHidden = true
+        viewPlaceholderQR.isHidden = false
         btnQR.isHidden = false
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == txtmobileNumber
+        {
+            let resultText: String? = (textField.text as NSString?)?.replacingCharacters(in: range, with: string)
+            if textField == txtmobileNumber && range.location == 0 {
+
+                if string == "0" {
+                    return false
+                }
+
+            }
+            if resultText!.count >= 11
+            {
+//                print("False:-- \(resultText!.count) && \(txtmobileNumber.text)")
+//                self.didMaxMobileNumberLimit = true
+                return false
+            }
+            else
+            {
+//                print("true:-- \(resultText!.count) && \(txtmobileNumber.text)")
+//                self.didMaxMobileNumberLimit = false
+                return true
+            }
+        }
+
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField)
+    {
+    
+        if textField == txtmobileNumber
+        {
+            let resultText: String? = (textField.text as String?)//?.replacingCharacters(in: range, with: string)
+            
+            if resultText!.count == 10
+            {
+                print("False:-- \(resultText!.count) && \(txtmobileNumber.text)")
+                self.didMaxMobileNumberLimit = true
+            }
+            else
+            {
+                print("true:-- \(resultText!.count) && \(txtmobileNumber.text)")
+                self.didMaxMobileNumberLimit = false
+            }
+        }
+        
+        
+    }
+  
+    @IBAction func btnDriverCustomerClicked(_ sender: UIButton)
+    {
+        
+        if(sender.tag == 1) // Male
+        {
+            strUserType = "driver"
+            didSelectDriverCustomer = true
+        }
+        else if (sender.tag == 2) // Female
+        {
+            strUserType = "customer"
+            didSelectDriverCustomer = false
+        }
+        
+        if txtmobileNumber.text?.count == 10
+        {
+            self.didMaxMobileNumberLimit = true
+        }
+        else
+        {
+           self.didMaxMobileNumberLimit = false
+        }
     }
     @IBAction func btnSelectPaymentMethod(_ sender: Any)
     {
@@ -180,38 +290,38 @@ class SendMoneyViewController: BaseViewController, UIPickerViewDelegate, UIPicke
         switch row {
             
         case 0:
-            rowString = data["CardNum2"] as! String
-            myImageView.image = UIImage(named: setCardIcon(str: data["Type"] as! String))
+            rowString = data.formatedCardNo
+            myImageView.image = UIImage(named: setCardIcon(str: data.cardType))
         case 1:
-            rowString = data["CardNum2"] as! String
-            myImageView.image = UIImage(named: setCardIcon(str: data["Type"] as! String))
+            rowString = data.formatedCardNo
+            myImageView.image = UIImage(named: setCardIcon(str: data.cardType))
         case 2:
-            rowString = data["CardNum2"] as! String
-            myImageView.image = UIImage(named: setCardIcon(str: data["Type"] as! String))
+            rowString = data.formatedCardNo
+            myImageView.image = UIImage(named: setCardIcon(str: data.cardType))
         case 3:
-            rowString = data["CardNum2"] as! String
-            myImageView.image = UIImage(named: setCardIcon(str: data["Type"] as! String))
+            rowString = data.formatedCardNo
+            myImageView.image = UIImage(named: setCardIcon(str: data.cardType))
         case 4:
-            rowString = data["CardNum2"] as! String
-            myImageView.image = UIImage(named: setCardIcon(str: data["Type"] as! String))
+            rowString = data.formatedCardNo
+            myImageView.image = UIImage(named: setCardIcon(str: data.cardType))
         case 5:
-            rowString = data["CardNum2"] as! String
-            myImageView.image = UIImage(named: setCardIcon(str: data["Type"] as! String))
+            rowString = data.formatedCardNo
+            myImageView.image = UIImage(named: setCardIcon(str: data.cardType))
         case 6:
-            rowString = data["CardNum2"] as! String
-            myImageView.image = UIImage(named: setCardIcon(str: data["Type"] as! String))
+            rowString = data.formatedCardNo
+            myImageView.image = UIImage(named: setCardIcon(str: data.cardType))
         case 7:
-            rowString = data["CardNum2"] as! String
-            myImageView.image = UIImage(named: setCardIcon(str: data["Type"] as! String))
+            rowString = data.formatedCardNo
+            myImageView.image = UIImage(named: setCardIcon(str: data.cardType))
         case 8:
-            rowString = data["CardNum2"] as! String
-            myImageView.image = UIImage(named: setCardIcon(str: data["Type"] as! String))
+            rowString = data.formatedCardNo
+            myImageView.image = UIImage(named: setCardIcon(str: data.cardType))
         case 9:
-            rowString = data["CardNum2"] as! String
-            myImageView.image = UIImage(named: setCardIcon(str: data["Type"] as! String))
+            rowString = data.formatedCardNo
+            myImageView.image = UIImage(named: setCardIcon(str: data.cardType))
         case 10:
-            rowString = data["CardNum2"] as! String
-            myImageView.image = UIImage(named: setCardIcon(str: data["Type"] as! String))
+            rowString = data.formatedCardNo
+            myImageView.image = UIImage(named: setCardIcon(str: data.cardType))
         default:
             rowString = "Error: too many rows"
             myImageView.image = nil
@@ -228,59 +338,19 @@ class SendMoneyViewController: BaseViewController, UIPickerViewDelegate, UIPicke
     
     var isAddCardSelected = Bool()
     
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
+    {
         
         let data = aryCards[row]
         
-        iconSelectedPaymentMethod.image = UIImage.init(named: data["Type"] as! String) //UIImage(named: setCardIcon(str: data["Type"] as! String))
-//        txtSelectPaymentMethod.text = data["CardNum2"] as? String
+        iconSelectedPaymentMethod.image = UIImage(named: setCardIcon(str: data.cardType)) //UIImage(named: setCardIcon(str: data["Type"] as! String))
         
-        //        if data["CardNum"] as! String == "Add a Card" {
-        //
-        //            isAddCardSelected = true
-        ////            self.addNewCard()
-        //        }
-        //
-        
-//        dict["CardNum"] = "HDFC BANK" as AnyObject
-//        dict["CardNum2"] = "XXXX XXXX XXXX 8967" as AnyObject
-//        dict["Type"] = "iconVisaCard" as AnyObject
-        self.lblBankCardName.text = data["CardNum"] as! String
+        self.lblBankCardName.text = data.cardHolderName
         self.lblCardNumber.isHidden = false
-        self.lblCardNumber.text = data["CardNum2"] as! String
+        self.lblCardNumber.text = data.formatedCardNo
+        self.CardID = data.id
         
-        
-        let type = data["CardNum"] as! String
-        
-        if type  == "wallet"
-        {
-            paymentType = "wallet"
-            self.lblBankCardName.text = data["CardNum"] as! String
-            self.lblCardNumber.isHidden = true
-        }
-        else if type == "cash"
-        {
-            paymentType = "cash"
-            self.lblBankCardName.text = data["CardNum"] as! String
-            self.lblCardNumber.isHidden = true
-        }
-        else if type == "card"
-        {
-            paymentType = "card"
-        }
-        else {
-//            paymentType = "pesapal"
-        }
-        
-        
-        //        if paymentType == "card" {
-        //
-        //            if data["Id"] as? String != "" {
-        //                CardID = data["Id"] as! String
-        //            }
-        //        }
-        
-        // do something with selected row
+        paymentType = "card"
     }
     
     func addNewCard() {
@@ -294,12 +364,111 @@ class SendMoneyViewController: BaseViewController, UIPickerViewDelegate, UIPicke
     @IBAction func btnScanCodeClicked(_ sender: Any)
     {
         previewView.isHidden = false
+        
+        viewPlaceholderQR.isHidden = true
         btnQR.isHidden = true
         reader.didFindCode = { result in
-            print("Completion with result: \(result.value)")      
+            print("Completion with result: \(result.value)")
+            
+            self.pickerView.isHidden = false
+            self.viewPlaceholderQR.isHidden = true
+            self.btnQR.isHidden = true
+            self.SCnnedQRCode = result.value
+            self.webserviceScanQRCode()
             
         }
         
         reader.startScanning()
     }
+    func webserviceScanQRCode()
+    {
+        UtilityClass.showHUD(with: self.view)
+        
+        
+        QRCodeDetailsReqModel.qr_code = self.SCnnedQRCode
+        
+        UserWebserviceSubclass.scanCodeDetail(QRCodeDetailsModel: QRCodeDetailsReqModel) { (json, status) in
+            UtilityClass.hideHUD()
+            
+            if status
+            {
+                self.QRCodeDetailsResult = QRCodeScannedModel.init(fromJson: json)
+                self.lblReceiverName.text = self.QRCodeDetailsResult.data.firstName + " " + self.QRCodeDetailsResult.data.lastName
+                self.txtmobileNumber.text = self.QRCodeDetailsResult.data.mobileNo
+            }
+            else{
+                UtilityClass.hideHUD()
+                AlertMessage.showMessageForError(json["message"].stringValue)
+            }
+        }
+    
+    }
+    
+    func webserviceMobileNoDetails()
+    {
+//        UtilityClass.showHUD(with: self.view)
+        
+        
+        MobileNoDetailReqModel.mobile_no = txtmobileNumber.text ?? ""
+        MobileNoDetailReqModel.user_type = self.strUserType
+        
+        UserWebserviceSubclass.MobileNoDetailDetail(MobileNoDetailModel: MobileNoDetailReqModel) { (json, status) in
+//            UtilityClass.hideHUD()
+            
+            if status
+            {
+                let MobileData = MobileNoResultModel.init(fromJson: json)
+                self.lblReceiverName.text = MobileData.data.firstName + " " + MobileData.data.lastName
+//                self.txtmobileNumber.text = self.QRCodeDetailsResult.data.mobileNo
+            }
+            else{
+//                UtilityClass.hideHUD()
+                AlertMessage.showMessageForError(json["message"].stringValue)
+            }
+        }
+       
+    }
+    @IBAction func btnSendMoneyClicked(_ sender: Any)
+    {
+        if txtAmount.text?.count == 0
+        {
+            AlertMessage.showMessageForError("Please enter amount.")
+        }
+        else if self.CardID == "" //|| self.CardID == nil
+        {
+            AlertMessage.showMessageForError("Please select Payment method.")
+        }
+        else
+        {
+           self.webserciveForTransferMoney()
+        }
+    }
+    
+    
+    func webserciveForTransferMoney()
+    {
+        transferMoneyReqModel.qr_code = self.SCnnedQRCode
+        transferMoneyReqModel.amount = self.txtAmount.text ?? ""
+        transferMoneyReqModel.sender_id = LoginDetail.loginData.id
+        UtilityClass.showHUD(with: self.view)
+        UserWebserviceSubclass.transferMoney(transferMoneyModel: transferMoneyReqModel) { (json, status) in
+            UtilityClass.hideHUD()
+            
+            if status
+            {
+                SingletonClass.sharedInstance.walletBalance = json["wallet_balance"].stringValue
+                self.navigationController?.popViewController(animated: true)
+                AlertMessage.showMessageForSuccess(json["message"].stringValue)
+//                self.lblReceiverName.text = json["first_name"].stringValue + " " + json["last_name"].stringValue
+//                self.txtmobileNumber.text = json["mobile_no"].stringValue
+            }
+            else{
+                UtilityClass.hideHUD()
+                AlertMessage.showMessageForError(json["message"].stringValue)
+            }
+        }
+      
+        
+    }
 }
+

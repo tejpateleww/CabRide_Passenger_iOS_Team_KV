@@ -19,7 +19,7 @@ class RegistrationNewViewController: UIViewController,UIImagePickerControllerDel
     //-------------------------------------------------------------
     // MARK: - Outlets
     //-------------------------------------------------------------
-    
+    var RegistrationGetOTPModel : RegistrationModel = RegistrationModel()
     @IBOutlet weak var txtFirstName: ThemeTextFieldLoginRegister!
     @IBOutlet weak var txtLastName: ThemeTextFieldLoginRegister!
     @IBOutlet weak var txtDateOfBirth: ThemeTextFieldLoginRegister!
@@ -70,6 +70,7 @@ class RegistrationNewViewController: UIViewController,UIImagePickerControllerDel
     override func viewDidLoad() {
         super.viewDidLoad()
  
+        gender = "male"
         selectGender.first?.tintColor = ThemeColor
         selectGender.last?.tintColor = ThemeColor
 
@@ -247,86 +248,146 @@ class RegistrationNewViewController: UIViewController,UIImagePickerControllerDel
         
         if Validator.0 == true
         {
-            let registerVC = (self.navigationController?.viewControllers.last as! RegisterContainerViewController).children[0] as! RegisterViewController
-            
-            strPhoneNumber = (registerVC.txtPhoneNumber.text)!
-            strEmail = (registerVC.txtEmail.text)!
-            strPassword = (registerVC.txtPassword.text)!
-            (UIApplication.shared.delegate as! AppDelegate).GoToHome()
-            //            webServiceCallForRegister()
+//            let registerVC = (self.navigationController?.viewControllers.last as! RegisterContainerViewController).children[0] as! RegisterViewController
+//
+//            strPhoneNumber = (registerVC.txtPhoneNumber.text)!
+//            strEmail = (registerVC.txtEmail.text)!
+//            strPassword = (registerVC.txtPassword.text)!
+//            (UIApplication.shared.delegate as! AppDelegate).GoToHome()
+                        webServiceCallForRegister()
         } else {
             UtilityClass.showAlert(title: "", message: Validator.1, alertTheme: .error)
         }
     }
 
 
-    /*
+    
 
      // MARK: - WebserviceCall
 
      func webServiceCallForRegister()
      {
+        
+        /*
+         "email:dev.elop.er.eww@gmail.com
+         mobile_no:9924455777
+         first_name:Mayur
+         last_name:Patel
+         dob:1992-07-07
+         gender:male
+         lat:23.8656565
+         lng:72.654656
+         device_token:sadfdfs65c4dwfvwdv6edbv16efbef1b165165
+         device_type:1
+         address:Nikol bapunagar
+         password:123456
+         profile_image:(optional)"
+ */
+        
+        RegistrationGetOTPModel.email = SingletonRegistration.sharedRegistration.Email
+        RegistrationGetOTPModel.mobile_no = SingletonRegistration.sharedRegistration.MobileNo
+        RegistrationGetOTPModel.password = SingletonRegistration.sharedRegistration.Password
+        RegistrationGetOTPModel.first_name = txtFirstName.text ?? ""
+        RegistrationGetOTPModel.last_name = txtLastName.text ?? ""
+        RegistrationGetOTPModel.RefarralCode = txtRafarralCode.text ?? ""
+        RegistrationGetOTPModel.dob = txtDateOfBirth.text ?? ""
+        RegistrationGetOTPModel.gender = gender
+        RegistrationGetOTPModel.device_type = "ios"
+        RegistrationGetOTPModel.lat = "23.75821"
+        RegistrationGetOTPModel.lng = "23.75821"
+        RegistrationGetOTPModel.device_token = "64546546464646465465464"
+        RegistrationGetOTPModel.address = "Ahmedabad"
+        
+        if let vc = self.parent as? RegisterContainerViewController
+        {
+            vc.webServiceCallForRegister(RegistrationGetOTPModel, image: self.btnProfileImage.imageView!.image!)
+        }
+//        UtilityClass.showHUD(with: UIApplication.shared.keyWindow)
+//
+//        UserWebserviceSubclass.register(registerModel: RegistrationGetOTPModel, image: self.btnProfileImage.imageView!.image!, imageParamName: "profile_image", completion: { (json, status) in
+//            Loader.hideHUD()
+//
+//            if status{
+//
+//                UserDefaults.standard.set(true, forKey: "isUserLogin")
+//
+//                let registerModelDetails = RegisterResponseModel.init(fromJson: json)
+//                do
+//                {
+//                    try UserDefaults.standard.set(object: registerModelDetails, forKey: "userProfile")//(loginModelDetails, forKey: "userProfile")
+//                }
+//                catch
+//                {
+//                    AlertMessage.showMessageForError("error")
+//                }
+//                (UIApplication.shared.delegate as! AppDelegate).GoToHome()
+//            }
+//            else{
+//                AlertMessage.showMessageForError(json["message"].stringValue)
+//            }
+//        })
+    }
+        
+//        let dictParams = NSMutableDictionary()
+//        dictParams.setObject(txtFirstName.text!, forKey: "Firstname" as NSCopying)
+//        dictParams.setObject(txtLastName.text!, forKey: "Lastname" as NSCopying)
+//        //        dictParams.setObject(txtRafarralCode.text!, forKey: "ReferralCode" as NSCopying)
+//        dictParams.setObject("", forKey: "ReferralCode" as NSCopying)
+//        //        dictParams.setObject("1\(strPhoneNumber)", forKey: "MobileNo" as NSCopying)
+//        dictParams.setObject(strPhoneNumber, forKey: "MobileNo" as NSCopying)
+//        dictParams.setObject(strEmail, forKey: "Email" as NSCopying)
+//        dictParams.setObject(strPassword, forKey: "Password" as NSCopying)
+//        dictParams.setObject(SingletonClass.sharedInstance.deviceToken, forKey: "Token" as NSCopying)
+//        dictParams.setObject("1", forKey: "DeviceType" as NSCopying)
+//        dictParams.setObject(gender, forKey: "Gender" as NSCopying)
+//        if let registerContainer = self.navigationController?.childViewControllers[(self.navigationController?.childViewControllers.count as! Int) - 1] as? RegistrationContainerViewController {
+//            dictParams.setObject("\(registerContainer.CurrentLocation.coordinate.latitude)", forKey: "Lat" as NSCopying)
+//            dictParams.setObject("\(registerContainer.CurrentLocation.coordinate.longitude)", forKey: "Lng" as NSCopying)
+//        }
+//        dictParams.setObject(strDateOfBirth, forKey: "DOB" as NSCopying)
+//        
+//        var ProfileImage = UIImage()
+//        if self.isImageSelected == true {
+//            ProfileImage = self.imgProfile.image!
+//        }
+//        
+//        webserviceForRegistrationForUser(dictParams, image1:ProfileImage) { (result, status) in
+//            print(result)
+//            
+//            if ((result as! NSDictionary).object(forKey: "status") as! Int == 1)
+//            {
+//                
+//                DispatchQueue.main.async(execute: { () -> Void in
+//                    
+//                    //                    self.btnSignUp.stopAnimation(animationStyle: .normal, completion: {
+//                    
+//                    SingletonClass.sharedInstance.dictProfile = NSMutableDictionary(dictionary: (result as! NSDictionary).object(forKey: "profile") as! NSDictionary)
+//                    SingletonClass.sharedInstance.isUserLoggedIN = true
+//                    SingletonClass.sharedInstance.strPassengerID = String(describing: SingletonClass.sharedInstance.dictProfile.object(forKey: "Id")!)
+//                    SingletonClass.sharedInstance.arrCarLists = NSMutableArray(array: (result as! NSDictionary).object(forKey: "car_class") as! NSArray)
+//                    UserDefaults.standard.set(SingletonClass.sharedInstance.arrCarLists, forKey: "carLists")
+//                    
+//                    UserDefaults.standard.set(SingletonClass.sharedInstance.dictProfile, forKey: "profileData")
+//                    (UIApplication.shared.delegate as! AppDelegate).GoToHome()
+//                    
+//                    //                        self.performSegue(withIdentifier: "segueToHomeVC", sender: nil)
+//                    //                    })
+//                })
+//                
+//            }
+//            else
+//            {
+//                //                self.btnSignUp.stopAnimation(animationStyle: .shake, revertAfterDelay: 0, completion: {
+//                
+//                UtilityClass.setCustomAlert(title: "", message: (result as! NSDictionary).object(forKey: "message") as! String) { (index, title) in
+//                }
+//                
+//                //                })
+//            }
+//        }
+//    }
 
-     let dictParams = NSMutableDictionary()
-     dictParams.setObject(txtFirstName.text!, forKey: "Firstname" as NSCopying)
-     dictParams.setObject(txtLastName.text!, forKey: "Lastname" as NSCopying)
-     //        dictParams.setObject(txtRafarralCode.text!, forKey: "ReferralCode" as NSCopying)
-     dictParams.setObject("", forKey: "ReferralCode" as NSCopying)
-     //        dictParams.setObject("1\(strPhoneNumber)", forKey: "MobileNo" as NSCopying)
-     dictParams.setObject(strPhoneNumber, forKey: "MobileNo" as NSCopying)
-     dictParams.setObject(strEmail, forKey: "Email" as NSCopying)
-     dictParams.setObject(strPassword, forKey: "Password" as NSCopying)
-     dictParams.setObject(SingletonClass.sharedInstance.deviceToken, forKey: "Token" as NSCopying)
-     dictParams.setObject("1", forKey: "DeviceType" as NSCopying)
-     dictParams.setObject(gender, forKey: "Gender" as NSCopying)
-     if let registerContainer = self.navigationController?.childViewControllers[(self.navigationController?.childViewControllers.count as! Int) - 1] as? RegistrationContainerViewController {
-     dictParams.setObject("\(registerContainer.CurrentLocation.coordinate.latitude)", forKey: "Lat" as NSCopying)
-     dictParams.setObject("\(registerContainer.CurrentLocation.coordinate.longitude)", forKey: "Lng" as NSCopying)
-     }
-     dictParams.setObject(strDateOfBirth, forKey: "DOB" as NSCopying)
-
-     var ProfileImage = UIImage()
-     if self.isImageSelected == true {
-     ProfileImage = self.imgProfile.image!
-     }
-
-     webserviceForRegistrationForUser(dictParams, image1:ProfileImage) { (result, status) in
-     print(result)
-
-     if ((result as! NSDictionary).object(forKey: "status") as! Int == 1)
-     {
-
-     DispatchQueue.main.async(execute: { () -> Void in
-
-     //                    self.btnSignUp.stopAnimation(animationStyle: .normal, completion: {
-
-     SingletonClass.sharedInstance.dictProfile = NSMutableDictionary(dictionary: (result as! NSDictionary).object(forKey: "profile") as! NSDictionary)
-     SingletonClass.sharedInstance.isUserLoggedIN = true
-     SingletonClass.sharedInstance.strPassengerID = String(describing: SingletonClass.sharedInstance.dictProfile.object(forKey: "Id")!)
-     SingletonClass.sharedInstance.arrCarLists = NSMutableArray(array: (result as! NSDictionary).object(forKey: "car_class") as! NSArray)
-     UserDefaults.standard.set(SingletonClass.sharedInstance.arrCarLists, forKey: "carLists")
-
-     UserDefaults.standard.set(SingletonClass.sharedInstance.dictProfile, forKey: "profileData")
-     (UIApplication.shared.delegate as! AppDelegate).GoToHome()
-
-     //                        self.performSegue(withIdentifier: "segueToHomeVC", sender: nil)
-     //                    })
-     })
-
-     }
-     else
-     {
-     //                self.btnSignUp.stopAnimation(animationStyle: .shake, revertAfterDelay: 0, completion: {
-
-     UtilityClass.setCustomAlert(title: "", message: (result as! NSDictionary).object(forKey: "message") as! String) { (index, title) in
-     }
-
-     //                })
-     }
-     }
-     }
-
-     */
+ 
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

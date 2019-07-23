@@ -55,6 +55,8 @@ class DriverRatingAndTipViewController: UIViewController {
     @IBAction func btnDone(_ sender: Any) {
         let homeVC = self.parent as? HomeViewController
         homeVC?.containerView.isHidden = true
+        homeVC?.viewPickupLocation.isHidden = true
+        homeVC?.hideBookLaterButtonFromDroplocationField = false
     }
 
 

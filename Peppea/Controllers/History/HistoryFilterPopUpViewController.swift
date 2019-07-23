@@ -16,12 +16,18 @@ class HistoryFilterPopUpViewController: BaseViewController
     
     @IBOutlet weak var viewPopup: UIView!
     
-    @IBOutlet weak var txtFromDate: SkyFloatingLabelTextField!
-     @IBOutlet weak var txtToDate: SkyFloatingLabelTextField!
+    @IBOutlet weak var txtFromDate: ThemeTextFieldLoginRegister!
+     @IBOutlet weak var txtToDate: ThemeTextFieldLoginRegister!
     
-    override func viewDidLoad() {
+    var strSelectedFromDate = String()
+    var strSelectedTODate = String()
+    
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
 
+        viewPopup.roundCorners([.topRight , .topLeft], radius: 10)
+        
         // Do any additional setup after loading the view.
     }
     
@@ -39,5 +45,45 @@ class HistoryFilterPopUpViewController: BaseViewController
         // Pass the selected object to the new view controller.
     }
     */
-
+    @IBAction func txtDateFrom(_ sender: SkyFloatingLabelTextField) {
+        
+        let datePickerView:UIDatePicker = UIDatePicker()
+        datePickerView.datePickerMode = UIDatePicker.Mode.date
+        datePickerView.maximumDate = Date()
+        sender.inputView = datePickerView
+        datePickerView.addTarget(self, action: #selector(self.pickupdateMethodFromDate(_:)), for: UIControl.Event.valueChanged)
+    }
+    
+    @IBAction func txtDateTO(_ sender: SkyFloatingLabelTextField) {
+        
+        let datePickerView:UIDatePicker = UIDatePicker()
+        datePickerView.datePickerMode = UIDatePicker.Mode.date
+        datePickerView.maximumDate = Date()
+        sender.inputView = datePickerView
+        datePickerView.addTarget(self, action: #selector(self.pickupdateMethodTodate(_:)), for: UIControl.Event.valueChanged)
+    }
+    
+    
+    @objc func pickupdateMethodFromDate(_ sender: UIDatePicker)
+    {
+        let dateFormaterView = DateFormatter()
+        dateFormaterView.dateFormat = "yyyy-MM-dd"
+        txtFromDate.text = dateFormaterView.string(from: sender.date)
+        strSelectedFromDate = txtFromDate.text!
+    }
+    
+    @objc func pickupdateMethodTodate(_ sender: UIDatePicker)
+    {
+        let dateFormaterView = DateFormatter()
+        dateFormaterView.dateFormat = "yyyy-MM-dd"
+        txtToDate.text = dateFormaterView.string(from: sender.date)
+        strSelectedTODate = txtToDate.text!
+    }
+    
+    
+    @IBAction func bnOKClikced(_ sender: Any)
+    {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 }

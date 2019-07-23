@@ -8,12 +8,13 @@
 
 import UIKit
 
-class BidDetailsViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
+class BidDetailsViewController: BaseViewController,UITableViewDelegate,UITableViewDataSource
 {
 
     
     @IBOutlet weak var iconVehicle: UIImageView!
     
+    @IBOutlet weak var iconLine: UIImageView!
     @IBOutlet weak var lblBidCount: UILabel!
     @IBOutlet weak var lblVehicleName: UILabel!
     
@@ -40,6 +41,10 @@ class BidDetailsViewController: UIViewController,UITableViewDelegate,UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        iconLine.image = UIImage.init(named: "iconLine")?.withRenderingMode(.alwaysTemplate)
+        iconLine.tintColor = UIColor.black
+        
+        self.setNavBarWithBack(Title: "Bid Detail", IsNeedRightButton: false)
         // Do any additional setup after loading the view.
     }
     
