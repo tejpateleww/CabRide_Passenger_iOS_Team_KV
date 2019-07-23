@@ -202,10 +202,10 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
         }
         if arrMenuTitle[indexPath.row] == "Bid My Trip"
         {
-//            let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "BidListContainerViewController") as! BidListContainerViewController
-//            HomePage?.navigationController?.pushViewController(NextPage, animated: true)
-//            sideMenuController?.hideMenu()
-//            return
+           let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "BidListContainerViewController") as! BidListContainerViewController
+            HomePage?.navigationController?.pushViewController(NextPage, animated: true)
+            sideMenuController?.hideMenu()
+            return
         }
         if arrMenuTitle[indexPath.row] == "Bulk Mile"
         {
