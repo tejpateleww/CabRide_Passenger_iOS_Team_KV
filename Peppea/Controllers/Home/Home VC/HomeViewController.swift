@@ -25,7 +25,10 @@ enum HomeViews{
     case none
 }
 
-class HomeViewController: BaseViewController,GMSMapViewDelegate {
+class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDelegate
+{
+
+    
 
 
     //MARK:- IBOutles
@@ -103,21 +106,14 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate {
 
     var isExpandCategory:  Bool  = false {
         didSet {
-
-            if !isExpandCategory {
-                constraintStackViewBottom.constant = -containerHeightConstraint.constant + 50// + view.safeAreaInsets.bottom //+ headerHeightContraint.constant
-
-            }
-            else if isExpandCategory {
-                constraintStackViewBottom.constant = 0
-            }
-
+            constraintStackViewBottom.constant = isExpandCategory ? 0 : (-containerHeightConstraint.constant + 135)
+            
             self.view.endEditing(true)
-
+            
             UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [.curveEaseInOut, .allowUserInteraction, .beginFromCurrentState], animations: {
                 self.view.layoutIfNeeded()
             }) { (success) in
-
+                
             }
         }
     }
@@ -128,7 +124,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.btnViewTop.addTarget(self, action: #selector(setBottomViewOnclickofViewTop), for: .touchUpInside)
+        self.btnViewTop.addTarget(self, action: #selector(setBottomViewOnclickofViewTop), for: .touchUpInside)
 
         self.webserviceForCardList()
         self.setupGoogleMaps()
@@ -210,6 +206,35 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate {
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.requestWhenInUseAuthorization()
     }
+    
+    func didSelectDateAndTime(date: String)
+    {
+        if(txtDropLocation.text?.count == 0)
+        {
+            txtLocation(txtDropLocation as! ThemeTextField)
+        }
+        else
+        {
+            
+            // Because btn title change after reinitialized
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                if let VC = self.storyboard?.instantiateViewController(withIdentifier: "CarCollectionViewController") as? CarCollectionViewController
+                {
+                    VC.btnBookNow.titleLabel?.lineBreakMode = .byWordWrapping
+                    VC.btnBookNow.titleLabel?.textAlignment = .center
+                    VC.btnBookNow.setTitle("Schedule a ride\n\(date)", for: .normal)
+                }
+            }
+           
+            
+//            self.btnBookNow.titleLabel?.lineBreakMode = .byWordWrapping
+//            self.btnBookNow.titleLabel?.textAlignment = .center
+
+            //            UtilityClass.changeDateFormat(from: "yyyy-MM-dd hh:mm:ss", toFormat: "dd-MM-yyyy", date: Date())
+
+//            self.btnBookNow.setTitle("Schedule a ride\n\(date)", for: .normal)
+        }
+    }
     func webserviceForCardList()
     {
 //        self.aryCardData.removeAll()
@@ -246,6 +271,38 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate {
             }
         }
     }
+    @IBAction func btnBookLater(_ sender: Any)
+    {
+        
+        //        if Connectivity.isConnectedToInternet()
+        //        {
+        //
+        //            let profileData = SingletonClass.sharedInstance.dictProfile
+        //
+        //            // This is For Book Later Address
+        //            if (SingletonClass.sharedInstance.isFromNotificationBookLater) {
+        
+        let next = self.storyboard?.instantiateViewController(withIdentifier: "PeppeaBookLaterViewController") as! PeppeaBookLaterViewController
+        next.delegateOfSelectDateAndTime = self
+        //                SingletonClass.sharedInstance.isFromNotificationBookLater = false
+        
+        self.navigationController?.present(next, animated: true, completion: nil)
+        //            }
+        //            else {
+        //
+        //
+        //                let next = self.storyboard?.instantiateViewController(withIdentifier: "PeppeaBookLaterViewController") as! PeppeaBookLaterViewController
+        //                next.delegateOfSelectDateAndTime = self
+        //
+        //                self.navigationController?.present(next, animated: true, completion: nil)
+        //            }
+        //        }
+        //        else
+        //        {
+        //            UtilityClass.showAlert("", message: "Internet connection not available", vc: self)
+        //        }
+    }
+    
     //MARK:- Other Methods
     @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
 
@@ -266,17 +323,11 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate {
         }
     }
 
-//    @objc func setBottomViewOnclickofViewTop()
-//    {
-//        if self.isExpandCategory == false
-//        {
-//            self.isExpandCategory = true
-//        }
-//        else
-//        {
-//            self.isExpandCategory = false
-//        }
-//    }
+    @objc func setBottomViewOnclickofViewTop()
+    {
+        self.isExpandCategory = !self.isExpandCategory
+    }
+    
     //MARK:- Pulse Methods
 
     func createPulse()
@@ -371,7 +422,8 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate {
         
         let strLati: String = "\(self.doublePickupLat)"
         let strlongi: String = "\(self.doublePickupLng)"
-        getAddressForLatLng(latitude: strLati, Longintude: strlongi, markerType: locationType(rawValue: currentLocationMarkerText)!)
+        getAddressForLatLng(latitude: strLati, Longintude: strlongi, markerType: .pickUp)
+        
     }
     //MARK:- Setup Pickup and Destination Location
 

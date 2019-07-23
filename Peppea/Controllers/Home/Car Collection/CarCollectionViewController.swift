@@ -15,18 +15,21 @@ import GoogleMaps
 //}
 
 
-class CarCollectionViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout, UIPickerViewDelegate, UIPickerViewDataSource
+class CarCollectionViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout, UIPickerViewDelegate, UIPickerViewDataSource,didSelectDateDelegate
 {
+ 
 
 
     
     @IBOutlet weak var iconSelectedCard: UIImageView!
     
+    @IBOutlet weak var btnBookNow: ThemeButton!
     @IBOutlet weak var lblCardNumber: UILabel!
     @IBOutlet weak var lblCardName: UILabel!
     @IBOutlet weak var btnSelectCard: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
-    var arrCarLists : [[String:Any]]!
+    var arrCarLists : VehicleListModel = VehicleListModel()
+    //: [[String:Any]]!
     var aryCards = [CardsList]()
     var pickerView = UIPickerView()
     var LoginDetail : LoginModel = LoginModel()
@@ -52,11 +55,24 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
             return
         }
         
+        // 
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             do
             {
                 self.cardDetailModel = try UserDefaults.standard.get(objectType: AddCardModel.self, forKey: "cards")!
                 self.aryCards = self.cardDetailModel.cards
+                
+                let data = self.aryCards[0]
+                
+                self.iconSelectedCard.image = UIImage(named: setCardIcon(str: data.cardType)) //UIImage(named: setCardIcon(str: data["Type"] as! String))
+                
+                self.lblCardName.text = data.cardHolderName
+                self.lblCardNumber.isHidden = false
+                self.lblCardNumber.text = data.formatedCardNo
+                self.CardID = data.id
+                
+                self.paymentType = "card"
+                
             }
             catch
             {
@@ -64,31 +80,31 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
                 return
             }
         }
-        
-        
         pickerView.delegate = self
-        
-        
-        let data = self.aryCards[0]
-        
-        iconSelectedCard.image = UIImage(named: setCardIcon(str: data.cardType)) //UIImage(named: setCardIcon(str: data["Type"] as! String))
-        
-        self.lblCardName.text = data.cardHolderName
-        self.lblCardNumber.isHidden = false
-        self.lblCardNumber.text = data.formatedCardNo
-        self.CardID = data.id
-        
-        paymentType = "card"
-        
     }
 
     func getDataFromJSON()
     {
-        if let dictData = UtilityClass.getDataFromJSON(strJSONFileName: "carList") as? [String : Any]
+//        if let dictData = UtilityClass.getDataFromJSON(strJSONFileName: "carList") as? [String : Any]
+//        {
+//            arrCarLists = dictData["car_class"] as? [[String : Any]]
+//            collectionView.reloadData()
+//        }
+        
+        if(UserDefaults.standard.object(forKey: "carList") == nil)
         {
-            arrCarLists = dictData["car_class"] as? [[String : Any]]
-            collectionView.reloadData()
+            return
         }
+        
+        do {
+            let vehiclelist = try UserDefaults.standard.get(objectType: VehicleListModel.self, forKey: "carList")!
+            self.arrCarLists = vehiclelist
+            self.collectionView.reloadData()
+        } catch {
+            AlertMessage.showMessageForError("error")
+            return
+        }
+        
     }
 
     @IBAction func txtSelectPaymentMethod(_ sender: UITextField)
@@ -192,86 +208,105 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
         
         paymentType = "card"
     }
+    
+    
+    // Handle Booklater date and time
+    func didSelectDateAndTime(date: String)
+    {
+//        if(txtDestinationLocation.text?.count == 0)
+//        {
+//            txtDestinationLocation(txtDestinationLocation)
+//        }
+//        else
+//        {
+            self.btnBookNow.titleLabel?.lineBreakMode = .byWordWrapping
+            self.btnBookNow.titleLabel?.textAlignment = .center
 
+            //            UtilityClass.changeDateFormat(from: "yyyy-MM-dd hh:mm:ss", toFormat: "dd-MM-yyyy", date: Date())
+
+            self.btnBookNow.setTitle("Schedule a ride\n\(date)", for: .normal)
+//        }
+    }
     //MARK:- CollectionView Delegate and Datasource Methods
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return arrCarLists?.count ?? 0
+        return 4//arrCarLists.count ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CarsCollectionViewCell", for: indexPath as IndexPath) as! CarsCollectionViewCell
-        if (self.arrCarLists.count != 0 && indexPath.row < self.arrCarLists.count)
-        {
-            let dictOnlineCars = arrCarLists[indexPath.row]
-
-            if let imageURL = dictOnlineCars["Image"] as? String
-            {
-                cell.imgOfCarModels.image = UIImage.init(named: imageURL)
-            }
-
-            if let strModelName = dictOnlineCars["Name"] as? String
-            {
-                cell.lblModelName.text = strModelName
-            }
-            if let strPrice = dictOnlineCars["BaseFare"] as? String
-            {
-                cell.lblPrice.text = "\(Currency) \(strPrice)"
-            }
-            if let strArrivalTime = dictOnlineCars["Sort"] as? String
-            {
-                cell.lblArrivalTime.text = "ETA \(strArrivalTime) min."
-            }
-            cell.lblModelName.font = UIFont.regular(ofSize: 7)
-            cell.lblPrice.font = UIFont.regular(ofSize: 7)
-            cell.lblArrivalTime.font = UIFont.regular(ofSize: 7)
-        }
+//        if (self.arrCarLists.count != 0 && indexPath.row < self.arrCarLists.count)
+//        {
+//            let dictOnlineCars = arrCarLists[indexPath.row]
+//
+//            if let imageURL = dictOnlineCars["Image"] as? String
+//            {
+//                cell.imgOfCarModels.image = UIImage.init(named: imageURL)
+//            }
+//
+//            if let strModelName = dictOnlineCars["Name"] as? String
+//            {
+//                cell.lblModelName.text = strModelName
+//            }
+//            if let strPrice = dictOnlineCars["BaseFare"] as? String
+//            {
+//                cell.lblPrice.text = "\(Currency) \(strPrice)"
+//            }
+//            if let strArrivalTime = dictOnlineCars["Sort"] as? String
+//            {
+//                cell.lblArrivalTime.text = "ETA \(strArrivalTime) min."
+//            }
+//            cell.lblModelName.font = UIFont.semiBold(ofSize: 9.5)
+//            cell.lblPrice.font = UIFont.regular(ofSize: 9.5)
+//            cell.lblArrivalTime.font = UIFont.regular(ofSize: 9.5)
+//        }
 
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
-        if (self.arrCarLists.count != 0 && indexPath.row < self.arrCarLists.count)
-        {
-            let dictOnlineCars = arrCarLists[indexPath.row]
-            
-            print(dictOnlineCars)
-            
-            if let cell = self.collectionView.cellForItem(at: indexPath)  as? CarsCollectionViewCell
-            {
-                if let imageURL = dictOnlineCars["Image"] as? String
-                {
-                    let FinalString = imageURL.replacingOccurrences(of: "UnSelect", with: "Select")
-                    cell.imgOfCarModels.image = UIImage.init(named: FinalString)
-                }
-            }
-        }
+//        if (self.arrCarLists.count != 0 && indexPath.row < self.arrCarLists.count)
+//        {
+//            let dictOnlineCars = arrCarLists[indexPath.row]
+//
+//            print(dictOnlineCars)
+//
+//            if let cell = self.collectionView.cellForItem(at: indexPath)  as? CarsCollectionViewCell
+//            {
+//                if let imageURL = dictOnlineCars["Image"] as? String
+//                {
+//                    let FinalString = imageURL.replacingOccurrences(of: "UnSelect", with: "Select")
+//                    cell.imgOfCarModels.image = UIImage.init(named: FinalString)
+//                }
+//            }
+//        }
     }
 
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath)
     {
-        if (self.arrCarLists.count != 0 && indexPath.row < self.arrCarLists.count)
-        {
-            let dictOnlineCars = arrCarLists[indexPath.row]
-            
-            print(dictOnlineCars)
-            
-            if let cell = self.collectionView.cellForItem(at: indexPath)  as? CarsCollectionViewCell
-            {
-                if let imageURL = dictOnlineCars["Image"] as? String
-                {
-                    cell.imgOfCarModels.image = UIImage.init(named: imageURL)
-                }
-            }
-        }
+//        if (self.arrCarLists.count != 0 && indexPath.row < self.arrCarLists.count)
+//        {
+//            let dictOnlineCars = arrCarLists[indexPath.row]
+//
+//            print(dictOnlineCars)
+//
+//            if let cell = self.collectionView.cellForItem(at: indexPath)  as? CarsCollectionViewCell
+//            {
+//                if let imageURL = dictOnlineCars["Image"] as? String
+//                {
+//                    cell.imgOfCarModels.image = UIImage.init(named: imageURL)
+//                }
+//            }
+//        }
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
     {
-        let numberOfCars = ( self.arrCarLists.count > 3) ? 4 : 3
-        let CellWidth = ( UIScreen.main.bounds.width - 30 ) / CGFloat(numberOfCars)
-        return CGSize(width: CellWidth , height: self.collectionView.frame.size.height)
+//        let numberOfCars = ( self.arrCarLists.count > 3) ? 4 : 3
+//        let CellWidth = ( UIScreen.main.bounds.width - 10 ) / CGFloat(numberOfCars)
+//        return CGSize(width: CellWidth , height: self.collectionView.frame.size.height)
+        return CGSize(width: 50, height: 50)
     }
 
     @IBAction func btnBookNow(_ sender: Any)
@@ -332,7 +367,37 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
         homeVC?.view.layoutIfNeeded()
         CATransaction.commit()
     }
-
+    @IBAction func btnBookLater(_ sender: Any)
+    {
+        
+//        if Connectivity.isConnectedToInternet()
+//        {
+//
+//            let profileData = SingletonClass.sharedInstance.dictProfile
+//
+//            // This is For Book Later Address
+//            if (SingletonClass.sharedInstance.isFromNotificationBookLater) {
+        
+                let next = self.storyboard?.instantiateViewController(withIdentifier: "PeppeaBookLaterViewController") as! PeppeaBookLaterViewController
+                next.delegateOfSelectDateAndTime = self
+//                SingletonClass.sharedInstance.isFromNotificationBookLater = false
+        
+                self.navigationController?.present(next, animated: true, completion: nil)
+//            }
+//            else {
+//
+//
+//                let next = self.storyboard?.instantiateViewController(withIdentifier: "PeppeaBookLaterViewController") as! PeppeaBookLaterViewController
+//                next.delegateOfSelectDateAndTime = self
+//
+//                self.navigationController?.present(next, animated: true, completion: nil)
+//            }
+//        }
+//        else
+//        {
+//            UtilityClass.showAlert("", message: "Internet connection not available", vc: self)
+//        }
+    }
     /*
     // MARK: - Navigation
 
