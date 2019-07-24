@@ -51,35 +51,35 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
             AlertMessage.showMessageForError("error")
             return
         }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            do
-            {
-                self.cardDetailModel = try UserDefaults.standard.get(objectType: AddCardModel.self, forKey: "cards")!
-                self.aryCards = self.cardDetailModel.cards
-            }
-            catch
-            {
-                AlertMessage.showMessageForError("error")
-                return
+
+        if(UserDefaults.standard.object(forKey: "cars") != nil)
+        {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                do
+                {
+                    self.cardDetailModel = try UserDefaults.standard.get(objectType: AddCardModel.self, forKey: "cards")!
+                    self.aryCards = self.cardDetailModel.cards
+
+                    let data = self.aryCards[0]
+
+                    self.iconSelectedCard.image = UIImage(named: setCardIcon(str: data.cardType)) //UIImage(named: setCardIcon(str: data["Type"] as! String))
+
+                    self.lblCardName.text = data.cardHolderName
+                    self.lblCardNumber.isHidden = false
+                    self.lblCardNumber.text = data.formatedCardNo
+                    self.CardID = data.id
+                    self.paymentType = "card"
+                }
+                catch
+                {
+                    AlertMessage.showMessageForError("error")
+                    return
+                }
             }
         }
         
-        
         pickerView.delegate = self
-        
-        
-        let data = self.aryCards[0]
-        
-        iconSelectedCard.image = UIImage(named: setCardIcon(str: data.cardType)) //UIImage(named: setCardIcon(str: data["Type"] as! String))
-        
-        self.lblCardName.text = data.cardHolderName
-        self.lblCardNumber.isHidden = false
-        self.lblCardNumber.text = data.formatedCardNo
-        self.CardID = data.id
-        
-        paymentType = "card"
-        
+
     }
 
     func getDataFromJSON()

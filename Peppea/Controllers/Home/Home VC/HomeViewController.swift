@@ -32,20 +32,15 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate {
     @IBOutlet weak var btnCurrentLocation: UIButton!
 
     @IBOutlet weak var btnViewTop: UIButton!
-    var LoginDetail : LoginModel = LoginModel()
-    var addCardReqModel : AddCard = AddCard()
-    var CardListReqModel : CardList = CardList()
-    var doublePickupLat = Double()
-    var doublePickupLng = Double()
+
     @IBOutlet weak var txtPickupLocation: UITextField!
     @IBOutlet weak var txtDropLocation: UITextField!
     @IBOutlet weak var btnBookLater: UIButton!
     @IBOutlet weak var mapViewContainer: UIView!
-    var currentLocationMarkerText = String()
     @IBOutlet weak var viewPickupLocation: UIView!
     @IBOutlet weak var viewDropOffLocation: UIView!
     @IBOutlet weak var containerView: UIView!
-
+    @IBOutlet weak var shadowView: UIView!
     @IBOutlet weak var containerHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var constraintStackViewBottom: NSLayoutConstraint!
     @IBOutlet weak var markerView: UIImageView!
@@ -61,7 +56,12 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate {
     var mapView = GMSMapView()
     //    lazy var marker = GMSMarker()
     var pulseArray = [CAShapeLayer]()
-
+    var currentLocationMarkerText = String()
+    var LoginDetail : LoginModel = LoginModel()
+    var addCardReqModel : AddCard = AddCard()
+    var CardListReqModel : CardList = CardList()
+    var doublePickupLat = Double()
+    var doublePickupLng = Double()
 
     //MARk:- PolyLine Variables
     var polyline = GMSPolyline()
@@ -93,10 +93,12 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate {
             if(hideBookLaterButtonFromDroplocationField == false)
             {
                 self.containerView.isHidden = true
+                self.shadowView.isHidden = self.containerView.isHidden
             }
             else
             {
                 self.containerView.isHidden = false
+                self.shadowView.isHidden = self.containerView.isHidden
             }
         }
     }
@@ -104,13 +106,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate {
     var isExpandCategory:  Bool  = false {
         didSet {
 
-            if !isExpandCategory {
-                constraintStackViewBottom.constant = -containerHeightConstraint.constant + 50// + view.safeAreaInsets.bottom //+ headerHeightContraint.constant
-
-            }
-            else if isExpandCategory {
-                constraintStackViewBottom.constant = 0
-            }
+            constraintStackViewBottom.constant = isExpandCategory ? 0 : (-containerHeightConstraint.constant + 135)
 
             self.view.endEditing(true)
 
@@ -128,7 +124,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.btnViewTop.addTarget(self, action: #selector(setBottomViewOnclickofViewTop), for: .touchUpInside)
+        self.btnViewTop.addTarget(self, action: #selector(setBottomViewOnclickofViewTop), for: .touchUpInside)
 
         self.webserviceForCardList()
         self.setupGoogleMaps()
@@ -140,6 +136,10 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         mapView.frame = mapViewContainer.frame
+        containerView.roundCorners([.topLeft, .topRight], radius: 12)
+        shadowView.layer.shadowColor = UIColor.black.cgColor
+        shadowView.layer.shadowOpacity = 1
+        shadowView.layer.masksToBounds = false
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -266,17 +266,10 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate {
         }
     }
 
-//    @objc func setBottomViewOnclickofViewTop()
-//    {
-//        if self.isExpandCategory == false
-//        {
-//            self.isExpandCategory = true
-//        }
-//        else
-//        {
-//            self.isExpandCategory = false
-//        }
-//    }
+    @objc func setBottomViewOnclickofViewTop()
+    {
+         self.isExpandCategory = !self.isExpandCategory
+    }
     //MARK:- Pulse Methods
 
     func createPulse()
@@ -520,6 +513,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate {
         driverRatingContainerView.isHidden = !(view == .ratings)
         carListContainerView.isHidden = !(view == .booking)
         containerView.isHidden = (view == .none)
+        self.shadowView.isHidden = containerView.isHidden
         viewSetup(view: view)
     }
 
