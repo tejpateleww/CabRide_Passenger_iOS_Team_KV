@@ -147,8 +147,14 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
         mapView.frame = mapViewContainer.frame
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+         self.setupNavigationController()
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)

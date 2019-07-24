@@ -14,35 +14,59 @@ enum MyTrips: String, CaseIterable{
     case upcoming = "Upcoming"
     
   
-    func getDescription() -> [(String, String)]{
+    func getDescription(pastBookingHistory : PastBookingHistoryResponse) -> [(String, String)]{
         switch self {
         case .past:
-            return setPastDescription()
+            return setPastDescription(pastBookingHistory: pastBookingHistory)
         case .upcoming:
-            return setUpcomingDescription()
+            return setUpcomingDescription(pastBookingHistory: pastBookingHistory)
         }
     }
     static var titles = MyTrips.allCases.map({$0.rawValue})
-    fileprivate func setPastDescription() -> [(String, String)]{
-        return [("Title" ,"Past"),
-                ("PickupLocation" , "Obj pickupLocation"),
-                ("DropoffLocation" , "Obj dropoffLocation"),
-                ("Date" , "Obj pickupDateTime"),
-                ("BookingId" , "Obj id")]
-    }
     
+    fileprivate func setPastDescription(pastBookingHistory : PastBookingHistoryResponse) -> [(String, String)]{
+
+        var tempArray = [("Pick Up Time" , UtilityClass.convertTimeStampToFormat(unixtimeInterval: pastBookingHistory.pickupTime, dateFormat: "dd-MM-YYYY HH:mm:ss") ),
+                         ("Drop Off Time" , UtilityClass.convertTimeStampToFormat(unixtimeInterval: pastBookingHistory.dropoffTime, dateFormat: "dd-MM-YYYY HH:mm:ss")),
+                         ("Booking Fee" , pastBookingHistory.bookingFee),
+                         ("Base Fare" , pastBookingHistory.baseFare),
+                         //                ("Time Cost :" , pastBookingHistory.id),
+            ("Subtotal" , pastBookingHistory.subTotal),
+            //                ("Other Charges" , pastBookingHistory.subTotal),
+            //                ("Cancellation Charges" , pastBookingHistory.cancellationCharge),
+            //                ("Promocode" , pastBookingHistory.promocode),
+            ("Total Paid To Driver" , pastBookingHistory.grandTotal)
+
+        ] as! [(String,String)]
+
+
+        if(pastBookingHistory.promocode.count != 0)
+        {
+            tempArray.insert( ("Promocode" , pastBookingHistory.promocode), at: tempArray.count-1)
+        }
+
+        return tempArray
+    }
+
+
+//    fileprivate func setPastDescriptionIfCancelled(pastBookingHistory : PastBookingHistoryResponse?) -> [(title : String, description : Any)]{
+//        guard obj != nil else { return []}
+//        return [("Vehicle Type" , obj?["Model"] ?? ""),
+//                ("Waiting Time" , obj?["WaitingTime"] ?? ""),
+//                ("Payment Type" , obj?["PaymentType"] ?? ""),
+//                ("Trip Status" , obj?["Status"] ?? "")]
+//
+//    }
+
+
     fileprivate func setFutureDescription(section: Int){
     }
     
-    fileprivate func setUpcomingDescription() -> [(String, String)]{
+    fileprivate func setUpcomingDescription(pastBookingHistory : PastBookingHistoryResponse) -> [(String, String)]{
         return [("Title" ,"Upcoming"),
-                ("PickupLocation" , "Obj pickupLocation"),
-                ("DropoffLocation" , "Obj dropoffLocation"),
-                ("Date" , "Obj pickupDateTime"),
-                ("BookingId" , "Obj id"),
-                ("PickupLocation" , "Obj pickupLocation"),
-                ("DropoffLocation" , "Obj dropoffLocation"),
-                ("Date" , "Obj pickupDateTime"),
-                ("BookingId" , "Obj id")]
+                ("PickupLocation" , pastBookingHistory.pickupLocation),
+                ("DropoffLocation" , pastBookingHistory.dropoffLocation),
+                ("Date" , pastBookingHistory.pickupDateTime),
+                ("BookingId" , pastBookingHistory.id)]
     }
 }

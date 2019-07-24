@@ -18,14 +18,16 @@ class MyTripTableViewCell: UITableViewCell {
    
     @IBOutlet weak var btnSendReceipt: UIButton!
 
-
+    override func draw(_ rect: CGRect) {
+        setup()
+    }
+    
     func setup(){
         selectionStyle = .none
         cellContainerView.roundCorners([.topLeft,.topRight], radius: 5)
-        
-        btnSendReceipt.layer.cornerRadius = 15
-        btnSendReceipt.layer.borderColor = UIColor.white.cgColor
-        btnSendReceipt.layer.borderWidth = 1.5
-        btnSendReceipt.clipsToBounds = true
+//        btnSendReceipt.layer.cornerRadius = 15
+//        btnSendReceipt.layer.borderColor = UIColor.white.cgColor
+//        btnSendReceipt.layer.borderWidth = 1.5
+//        btnSendReceipt.clipsToBounds = true
     }
 }

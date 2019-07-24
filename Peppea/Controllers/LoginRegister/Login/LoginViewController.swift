@@ -29,7 +29,7 @@ class LoginViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        txtMobileEmail.text = "dev.eloper.eww@gmail.com"
+        txtMobileEmail.text = "rahul.bbit@gmail.com"
         txtPassword.text = "12345678"
     }
     override func viewDidLayoutSubviews() {

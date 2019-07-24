@@ -106,7 +106,23 @@ class UtilityClass : NSObject
         }
 
     }
-    
+
+
+    class func convertTimeStampToFormat(unixtimeInterval : String, dateFormat : String) -> String
+    {
+
+        if(unixtimeInterval.count != 0)
+        {
+            let date = Date(timeIntervalSince1970: Double(unixtimeInterval) as! TimeInterval)
+            let dateFormatter = DateFormatter()
+            //        dateFormatter.timeZone = TimeZone(abbreviation: "GMT") //Set timezone that you want
+            dateFormatter.locale = NSLocale.current
+            dateFormatter.dateFormat = dateFormat //Specify your format that you want
+            let strDate = dateFormatter.string(from: date)
+            return strDate
+        }
+        return ""
+    }
     
 
     class func setCornerRadiusButton(button : UIButton , borderColor : UIColor , bgColor : UIColor, textColor : UIColor)
