@@ -43,6 +43,7 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
     var paymentType = String()
     var CardID = String()
     var vehicleId = ""
+    var estimateFare = ""
     
     // ----------------------------------------------------
     // MARK:- --- Base Methods ---
@@ -269,14 +270,28 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
             {
                 cell.lblModelName.text = strModelName.uppercased()
             }
-            if let strPrice = dictOnlineCars.baseCharge // ["BaseFare"] as? String
-            {
-                cell.lblPrice.text = "\(Currency) \(strPrice)"
+            
+            if let homeVc = self.parent as? HomeViewController {
+                if homeVc.estimateData.count != 0 {
+                    let estimateCurrentData = homeVc.estimateData.filter{$0.vehicleTypeId == dictOnlineCars.id}.first
+                    
+                    let estimateMinute = estimateCurrentData?.driverReachInMinute
+                    let estimateFare = estimateCurrentData?.estimateTripFare
+                    
+                    cell.lblPrice.text = "\(Currency) \((Double((estimateMinute == "0" ? "0" : estimateFare)!)?.rounded(toPlaces: 2)) ?? 0.0)"
+                    cell.lblArrivalTime.text = "ETA \(estimateMinute == "0" ? "0" : estimateMinute ?? "0") min."
+                }
             }
-            if let strArrivalTime = dictOnlineCars.sort // ["Sort"] as? String
-            {
-                cell.lblArrivalTime.text = "ETA \(strArrivalTime) min."
-            }
+            
+            
+//            if let strPrice = dictOnlineCars.baseCharge // ["BaseFare"] as? String
+//            {
+////                cell.lblPrice.text = "\(Currency) \(strPrice)"
+//            }
+//            if let strArrivalTime = dictOnlineCars.sort // ["Sort"] as? String
+//            {
+//                cell.lblArrivalTime.text = "ETA \(strArrivalTime) min."
+//            }
             
             
             cell.lblModelName.font = UIFont.semiBold(ofSize: 9.5)
@@ -294,7 +309,7 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
             let dictOnlineCars = arrCarLists.vehicleTypeList[indexPath.row]
 
             print(dictOnlineCars)
-
+//                (self.parent as! HomeViewController).estimateData
            vehicleId = dictOnlineCars.id
             
             if let cell = self.collectionView.cellForItem(at: indexPath)  as? CarsCollectionViewCell
@@ -303,6 +318,15 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
                 {
 //                    let FinalString = imageURL.replacingOccurrences(of: "UnSelect", with: "Select")
                     cell.imgOfCarModels.sd_setImage(with: URL(string: NetworkEnvironment.baseImageURL + imageURL), completed: nil) // .image = UIImage.init(named: FinalString)
+                    
+                    if let homeVc = self.parent as? HomeViewController {
+                        if homeVc.estimateData.count != 0 {
+                            let estimateCurrentData = homeVc.estimateData.filter{$0.vehicleTypeId == dictOnlineCars.id}.first
+                            
+                            let estimate = estimateCurrentData?.estimateTripFare
+                            estimateFare = estimateCurrentData?.estimateTripFare ?? ""
+                        }
+                    }
                 }
             }
         }
@@ -345,8 +369,8 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
                 CATransaction.begin()
                 CATransaction.setValue(4, forKey: kCATransactionAnimationDuration)
                 CATransaction.setCompletionBlock({
-                    homeVC?.hideAndShowView(view: .requestAccepted)
-                    homeVC?.isExpandCategory = true
+//                    homeVC?.hideAndShowView(view: .requestAccepted)
+//                    homeVC?.isExpandCategory = true
                 })
                 homeVC?.mapView.animate(toBearing: CLLocationDirection(((homeVC?.getHeadingForDirection(fromCoordinate: (homeVC?.defaultLocation.coordinate)!, toCoordinate: (homeVC?.defaultLocation.coordinate)!))! - 30) ))
                 homeVC?.view.layoutIfNeeded()

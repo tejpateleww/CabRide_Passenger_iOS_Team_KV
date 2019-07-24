@@ -14,7 +14,7 @@ class SocketIOManager: NSObject {
     static let shared = SocketIOManager()
 
     
-    let manager = SocketManager(socketURL: URL(string: socketApiKeys.kSocketBaseURL.rawValue)!, config: [.log(true), .compress])
+    let manager = SocketManager(socketURL: URL(string: socketApiKeys.kSocketBaseURL.rawValue)!, config: [.log(false), .compress])
     lazy var socket = manager.defaultSocket
     
      private var isSocketOn = false
@@ -35,9 +35,20 @@ class SocketIOManager: NSObject {
             
             if !self.isSocketOn {
                 self.isSocketOn = true
-                let homeStory = UIStoryboard(name: "Main", bundle: nil)
-                let homeVC = homeStory.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController
-                homeVC?.allSocketOnMethods()
+                
+//                (UIApplication.shared.keyWindow?.rootViewController as! UINavigationController).children.first?.children.first?.children as! HomeViewController
+                
+                if let rootNavi = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
+                    if let sideMenu = rootNavi.children.first?.children {
+                        if let homeVC = sideMenu.first?.children.first as? HomeViewController {
+                            homeVC.allSocketOnMethods()
+                        }
+                    }
+                }
+                                
+//                let homeStory = UIStoryboard(name: "Main", bundle: nil)
+//                let homeVC = homeStory.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController
+//                homeVC?.allSocketOnMethods()
             }
         }
     }

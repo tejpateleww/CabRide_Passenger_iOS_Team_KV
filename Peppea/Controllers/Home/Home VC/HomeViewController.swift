@@ -18,10 +18,12 @@ enum locationType: String {
 enum HomeViews{
     case requestAccepted
     case rideConfirmation
+    case rideStart
     case filter
     case ratings
     case waiting
     case booking
+    case completeTrip
     case none
 }
 
@@ -60,10 +62,13 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
     var isPickupLocation = Bool()
     lazy var geocoder = CLGeocoder()
     var driverInfoVC : DriverInfoPageViewController?
+    var ratingInfoVC : DriverRatingAndTipViewController?
     var stopAnimatingCamera = Bool()
     var mapView = GMSMapView()
     //    lazy var marker = GMSMarker()
     var pulseArray = [CAShapeLayer]()
+    var booingInfo = BookingInfo()
+    
     
     /// Pickup and Dropoff Address
     var pickupAndDropoffAddress = (pickUp: "", dropOff: "")
@@ -132,6 +137,8 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        SocketIOManager.shared.establishConnection()
         
         self.btnViewTop.addTarget(self, action: #selector(setBottomViewOnclickofViewTop), for: .touchUpInside)
 
@@ -580,7 +587,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
 
     func hideAndShowView(view: HomeViews){
         //        containerRideConfirmation.isHidden = !(view == .rideConfirmation)
-        driverInfoContainerView.isHidden = !(view == .requestAccepted || view == .waiting)
+        driverInfoContainerView.isHidden = !(view == .requestAccepted || view == .waiting || view == .rideStart)
         driverRatingContainerView.isHidden = !(view == .ratings)
         carListContainerView.isHidden = !(view == .booking)
         containerView.isHidden = (view == .none)
@@ -593,10 +600,20 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
             guard let driverVC = self.driverInfoVC else { return }
             driverVC.viewWaiting.isHidden = true
             driverVC.cancelBtn.isHidden = false
+            driverVC.setData(bookingData: self.booingInfo)
         case .waiting :
             guard let driverVC = self.driverInfoVC else { return }
             driverVC.viewWaiting.isHidden = false
             driverVC.cancelBtn.isHidden = true
+            driverVC.setData(bookingData: self.booingInfo)
+        case .rideStart:
+            guard let driverVC = self.driverInfoVC else { return }
+            driverVC.viewWaiting.isHidden = true
+            driverVC.cancelBtn.isHidden = true
+            driverVC.setData(bookingData: self.booingInfo)
+        case .completeTrip:
+            guard let driverVC = self.ratingInfoVC else { return }
+            driverVC.setData(bookingData: self.booingInfo)
         default:
             break
         }
@@ -611,9 +628,6 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
             return
         }
     }
-    
-   
-
 
 }
 

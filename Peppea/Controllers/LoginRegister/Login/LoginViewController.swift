@@ -86,6 +86,8 @@ class LoginViewController: UIViewController {
         UserWebserviceSubclass.login(loginModel: LogInModel) { (json, status) in
             UtilityClass.hideHUD()
             
+            print(json)
+            
             if status{
                 
                 UserDefaults.standard.set(true, forKey: "isUserLogin")

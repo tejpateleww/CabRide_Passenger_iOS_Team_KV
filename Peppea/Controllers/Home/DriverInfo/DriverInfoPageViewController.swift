@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class DriverInfoPageViewController: UIViewController {
 
@@ -30,6 +31,31 @@ class DriverInfoPageViewController: UIViewController {
     @IBOutlet weak var lblDriverName: UILabel!
     
 
+    func setData(bookingData: BookingInfo) {
+        //        booingInfo
+        
+        let driver = bookingData.driverInfo
+        _ = bookingData.customerInfo
+        let vehicleType = bookingData.vehicleType
+        
+        let esti = Int(bookingData.estimatedFare)
+        
+        lblCareName.text = vehicleType?.name
+//        lblCarPlateNumber.text = vehicleType.
+        lblPickupLocation.text = bookingData.pickupLocation
+        lblDropoffLocation.text = bookingData.dropoffLocation
+        lblEstimatedFare.text = "\(Currency)\((esti ?? 0) - 10) - \(Currency)\((esti ?? 0) + 10)"
+        lblDriverName.text = driver?.firstName
+        
+        let base = NetworkEnvironment.baseImageURL
+        
+//        imgDriver.sd_addActivityIndicator()
+//        imgDriver.sd_setShowActivityIndicatorView(true)
+//        imgDriver.sd_setIndicatorStyle(.gray)
+        imgDriver.sd_setImage(with: URL(string: base + driver!.profileImage), completed: nil)
+        imgCar.sd_setImage(with: URL(string: base + vehicleType!.image), completed: nil)
+        
+    }
     
     var driverInfo = NSDictionary()
     var CarModelInfo = NSDictionary()
@@ -61,6 +87,7 @@ class DriverInfoPageViewController: UIViewController {
     @IBAction func btnCancel(_ sender: Any) {
         let homeVC = self.parent as? HomeViewController
         homeVC?.hideAndShowView(view: .waiting)
+       
     }
     @IBAction func btnWaitingTime(_ sender: Any) {
         let homeVC = self.parent as? HomeViewController
@@ -70,6 +97,6 @@ class DriverInfoPageViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
-        
     }
+    
 }

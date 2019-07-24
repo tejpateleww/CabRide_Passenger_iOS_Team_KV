@@ -7,12 +7,12 @@ import Foundation
 import SwiftyJSON
 
 
-class GetEstimateFareModel : Codable{
+class GetEstimateFareModel : NSObject, NSCoding {
 
     var estimateFare : [EstimateFare]!
     var status : Bool!
 
-    init() {
+    override init() {
     }
     
 	/**

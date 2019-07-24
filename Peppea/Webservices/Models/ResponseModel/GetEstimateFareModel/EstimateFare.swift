@@ -7,7 +7,7 @@ import Foundation
 import SwiftyJSON
 
 
-class EstimateFare : Codable {
+class EstimateFare : NSObject, NSCoding{
 
     var distance : String!
     var driverReachInMinute : String!
@@ -17,7 +17,7 @@ class EstimateFare : Codable {
     var vehicleTypeId : String!
     var vehicleTypeName : String!
 
-    init() {
+    override init() {
     }
     
 	/**

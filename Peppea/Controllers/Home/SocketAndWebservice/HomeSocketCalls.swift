@@ -36,7 +36,7 @@ extension HomeViewController: SocketConnected {
     }
     
     // ----------------------------------------------------
-    // MARK:- --- Socket On Methods --- 
+    // MARK:- --- Socket On Methods ---
     // ----------------------------------------------------
     
     func onSocket_GetEstimateFare() {
@@ -44,15 +44,22 @@ extension HomeViewController: SocketConnected {
             print(#function, "\n ", json)
             AlertMessage.showMessageForSuccess("Get Estimate Fare")
             
-            let model = GetEstimateFareModel(fromJson: json)
+            let model = GetEstimateFareModel(fromJson: json.array?.first)
             self.estimateData = model.estimateFare
+            (self.children.first as! CarCollectionViewController).getDataFromJSON()
         }
     }
     
     func onSocket_AfterDriverAcceptRequest() {
         SocketIOManager.shared.socketCall(for: socketApiKeys.AfterDriverAcceptRequest.rawValue) { (json) in
             print(#function, "\n ", json)
+            
             AlertMessage.showMessageForSuccess("Request Accepted")
+            
+            self.booingInfo = BookingInfo(fromJson: json.arrayValue.first)
+            
+            self.hideAndShowView(view: .requestAccepted)
+            self.isExpandCategory = true
         }
     }
     
@@ -60,6 +67,9 @@ extension HomeViewController: SocketConnected {
         SocketIOManager.shared.socketCall(for: socketApiKeys.StartTrip.rawValue) { (json) in
             print(#function, "\n ", json)
             AlertMessage.showMessageForSuccess("Trip Started")
+            
+            self.hideAndShowView(view: .rideStart)
+            self.isExpandCategory = true
         }
     }
     

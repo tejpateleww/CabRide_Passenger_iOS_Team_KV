@@ -19,7 +19,7 @@ extension CarCollectionViewController: CarCollectionWebserviceProtocol {
         let address = (self.parent as! HomeViewController).pickupAndDropoffAddress
         let pickup = (self.parent as! HomeViewController).pickupLocation
         let dropOff = (self.parent as! HomeViewController).destinationLocation
-        let estimate = (self.parent as! HomeViewController).estimateFare
+//        let estimate = (self.parent as! HomeViewController).estimateFare
         let bookingType = (self.parent as! HomeViewController).bookingType == "" ? "book_now" : (self.parent as! HomeViewController).bookingType
         
         let model = bookingRequest()
@@ -31,11 +31,11 @@ extension CarCollectionViewController: CarCollectionWebserviceProtocol {
         model.no_of_passenger = "1"
         model.payment_type = "cash"
         model.pickup_lat = "\(pickup.latitude == 0.0 ? 23.072622 : pickup.latitude)"//   23.072622, 72.516409
-        model.pickup_lng = "\(pickup.longitude == 0.0 ? 72.516409 : pickup.latitude)"
+        model.pickup_lng = "\(pickup.longitude == 0.0 ? 72.516409 : pickup.longitude)"
         model.pickup_location = address.pickUp
         model.promocode = ""
         model.vehicle_type_id = vehicleId
-        model.estimated_fare = estimate
+        model.estimated_fare = estimateFare
         
         UserWebserviceSubclass.bookingRequest(WalletHistoryModel: model) { (response, status) in
             

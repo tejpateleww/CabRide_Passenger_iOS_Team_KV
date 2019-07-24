@@ -1470,9 +1470,9 @@ automatic expense for warding</string>
                                 <rect key="frame" x="16" y="172" width="343" height="90"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ouz-NP-DMA">
-                                        <rect key="frame" x="0.0" y="10" width="343" height="50"/>
+                                        <rect key="frame" x="0.0" y="10" width="343" height="40"/>
                                         <subviews>
-                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="82b-G7-bvo">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="82b-G7-bvo">
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="40"/>
                                                 <color key="backgroundColor" red="0.0039215686269999999" green="0.0078431372550000003" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -1490,20 +1490,20 @@ automatic expense for warding</string>
                                                     <action selector="btnCancel:" destination="6Vm-KD-DNP" eventType="touchUpInside" id="vHp-9K-9hs"/>
                                                 </connections>
                                             </button>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eug-7d-2fB">
-                                                <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
+                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eug-7d-2fB">
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="0.0"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="hXf-9d-Cxe">
-                                                        <rect key="frame" x="129.5" y="0.0" width="84" height="50"/>
+                                                        <rect key="frame" x="129.5" y="0.0" width="84" height="0.0"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Waiting Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b2k-Qv-vQD">
-                                                                <rect key="frame" x="0.0" y="0.0" width="84" height="29.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="84" height="0.0"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:48" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BHM-5C-Pkq">
-                                                                <rect key="frame" x="0.0" y="29.5" width="84" height="20.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="84" height="0.0"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -1511,7 +1511,7 @@ automatic expense for warding</string>
                                                         </subviews>
                                                     </stackView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qSE-nR-Rwd">
-                                                        <rect key="frame" x="305" y="10" width="30" height="30"/>
+                                                        <rect key="frame" x="305" y="-15" width="30" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="DOb-6O-ETa"/>
                                                             <constraint firstAttribute="width" secondItem="qSE-nR-Rwd" secondAttribute="height" id="fbt-CD-cgW"/>

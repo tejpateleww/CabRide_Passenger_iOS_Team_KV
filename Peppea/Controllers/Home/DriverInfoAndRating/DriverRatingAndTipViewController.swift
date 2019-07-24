@@ -8,6 +8,7 @@
 
 import UIKit
 import Cosmos
+import SDWebImage
 
 class DriverRatingAndTipViewController: UIViewController {
 
@@ -20,15 +21,28 @@ class DriverRatingAndTipViewController: UIViewController {
 
     @IBOutlet weak var btnDone: ThemeButton!
     @IBOutlet var btnTips: [UIButton]!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupView()
 
-       
-        // Do any additional setup after loading the view.
     }
 
+    func setData(bookingData: BookingInfo) {
+        
+        let driver = bookingData.driverInfo
+        _ = bookingData.customerInfo
+        let vehicleType = bookingData.vehicleType
+        
+        lblDriverName.text = "How was your trip with \((driver?.firstName ?? "") + " " + (driver?.lastName ?? ""))?"
+        
+        let base = NetworkEnvironment.baseImageURL
+        
+        imgDriverImage.sd_setImage(with: URL(string: base + driver!.profileImage), completed: nil)
+        
+    }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -60,14 +74,6 @@ class DriverRatingAndTipViewController: UIViewController {
     }
 
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
 
 }

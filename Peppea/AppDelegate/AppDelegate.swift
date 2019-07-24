@@ -29,8 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        Fabric.with([Crashlytics.self])
 //        UserDefaults.standard.set(true, forKey: "isUserLogin")
         
-        SocketIOManager.shared.socket.connect()
-        SocketIOManager.shared.establishConnection()
+//        SocketIOManager.shared.socket.connect()
+//        SocketIOManager.shared.establishConnection()
         
         return true
     }
