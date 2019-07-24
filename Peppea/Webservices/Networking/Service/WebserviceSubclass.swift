@@ -18,8 +18,7 @@ class UserWebserviceSubclass
         let  params : [String:String] = registerModel.generatPostParams() as! [String : String]
         WebService.shared.postDataWithImage(api: .register, parameter: params, image: image, imageParamName: imageParamName, completion: completion)
     }
-    
-     
+
     class func login( loginModel : loginModel  ,completion: @escaping CompletionResponse ) {
         let  params : [String:String] = loginModel.generatPostParams() as! [String : String]
         WebService.shared.requestMethod(api: .login, httpMethod: .post, parameters: params, completion: completion)
@@ -78,8 +77,6 @@ class UserWebserviceSubclass
         let params : [String: String] = updateProfile.generatPostParams() as! [String:String]
         WebService.shared.postDataWithImage(api: .profileUpdate, parameter: params, image: image, imageParamName: imageParamName, completion: completion)
     }
-    
-    
     class func walletHistoryList( WalletHistoryModel : WalletHistory  ,completion: @escaping CompletionResponse ) {
         let  params : [String:String] = WalletHistoryModel.generatPostParams() as! [String : String]
         WebService.shared.requestMethod(api: .walletHistory, httpMethod: .post, parameters: params, completion: completion)
@@ -89,17 +86,20 @@ class UserWebserviceSubclass
     {
         let strURLFinal = NetworkEnvironment.baseURL + ApiKey.fixRateList.rawValue
         WebService.shared.getMethod(url: URL.init(string: strURLFinal)!, httpMethod: .get, completion: completion)
-        
     }
     class func Logout( strURL : String  ,completion: @escaping CompletionResponse )
     {
         let strURLFinal = NetworkEnvironment.baseURL + ApiKey.logout.rawValue + strURL
         WebService.shared.getMethod(url: URL.init(string: strURLFinal)!, httpMethod: .get, completion: completion)
     }
-    
-    class func bookingRequest( WalletHistoryModel : bookingRequest  ,completion: @escaping CompletionResponse ) {
-        let  params : [String:String] = WalletHistoryModel.generatPostParams() as! [String : String]
+    class func bookingRequest( bookingRequestModel : bookingRequest  ,completion: @escaping CompletionResponse ) {
+        let  params : [String:String] = bookingRequestModel.generatPostParams() as! [String : String]
         WebService.shared.requestMethod(api: .BookingRequest, httpMethod: .post, parameters: params, completion: completion)
+    }
+
+    class func pastBookingHistory( strURL : String  ,completion: @escaping CompletionResponse ) {
+        let strURLFinal = NetworkEnvironment.baseURL + ApiKey.PastBookingHistory.rawValue + strURL
+        WebService.shared.getMethod(url: URL.init(string: strURLFinal)!, httpMethod: .get, completion: completion)
     }
     
 }

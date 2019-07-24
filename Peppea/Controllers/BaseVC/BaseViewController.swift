@@ -47,13 +47,7 @@ class BaseViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = nil
         self.navigationItem.leftBarButtonItem = leftNavBarButton
 
-//        if IsNeedRightButton == true {
-//            let rightNavBarButton = UIBarButtonItem(image: UIImage(named: "icon_Call"), style: .plain, target: self, action: #selector(self.btnCallAction))
-//            self.navigationItem.rightBarButtonItem = nil
-//            self.navigationItem.rightBarButtonItem = rightNavBarButton
-//        } else {
-//            self.navigationItem.rightBarButtonItem = nil
-//        }
+
     }
 
     func setNavBarWithBack(Title:String, IsNeedRightButton:Bool) {
@@ -67,35 +61,27 @@ class BaseViewController: UIViewController {
         } else {
             self.navigationItem.title = Title.uppercased().localizedUppercase
         }
-        self.navigationController?.navigationBar.barTintColor = ThemeColor;
-        self.navigationController?.navigationBar.tintColor = ThemeColor;
-
 
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : ThemeColor]
-        //        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        //        self.navigationController?.navigationBar.shadowImage = UIImage()
         let leftNavBarButton = UIBarButtonItem(image: UIImage(named: "iconLeftArrow"), style: .plain, target: self, action: #selector(self.btnBackAction))
         self.navigationItem.leftBarButtonItem = nil
         self.navigationItem.leftBarButtonItem = leftNavBarButton
         self.navigationItem.leftBarButtonItem?.tintColor = .black
         self.navigationController?.view.backgroundColor = .white
 
+
+        self.navigationController?.navigationBar.tintColor = UIColor.black
+        self.navigationController?.navigationBar.barTintColor = UIColor.white
+        self.navigationController?.navigationBar.layer.shadowColor = UIColor.black.cgColor
+        self.navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
+        self.navigationController?.navigationBar.layer.shadowRadius = 3.0
+        self.navigationController?.navigationBar.layer.shadowOpacity = 0.5
         self.navigationController?.navigationBar.layer.masksToBounds = false
-//        self.navigationController?.navigationBar.layer.shadowColor = UIColor.lightGray.cgColor
-//        self.navigationController?.navigationBar.layer.shadowOpacity = 0.8
-//        self.navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 0, height: 2.0)
-//        self.navigationController?.navigationBar.layer.shadowRadius = 2
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.hidesBarsOnSwipe = false
+        self.navigationController?.navigationBar.isTranslucent = false
 
 
-//        if IsNeedRightButton == true {
-//            let rightNavBarButton = UIBarButtonItem(image: UIImage(named: "icon_Call"), style: .plain, target: self, action: #selector(self.btnCallAction))
-//            self.navigationItem.rightBarButtonItem = nil
-//            self.navigationItem.rightBarButtonItem = rightNavBarButton
-//        }
-//        else
-//        {
-////            self.navigationItem.rightBarButtonItem = nil
-//        }
         if UserDefaults.standard.value(forKey: "i18n_language") != nil {
             if let language = UserDefaults.standard.value(forKey: "i18n_language") as? String {
                 if language == "sw" {
@@ -105,6 +91,20 @@ class BaseViewController: UIViewController {
                 }
             }
         }
+    }
+
+
+    func setupNavigationBarColor(_ navigationController: UINavigationController?) {
+        self.navigationController?.navigationBar.tintColor = UIColor.black
+        self.navigationController?.navigationBar.barTintColor = UIColor.white
+        self.navigationController?.navigationBar.layer.shadowColor = UIColor.black.cgColor
+        self.navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
+        self.navigationController?.navigationBar.layer.shadowRadius = 3.0
+        self.navigationController?.navigationBar.layer.shadowOpacity = 0.5
+        self.navigationController?.navigationBar.layer.masksToBounds = false
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.hidesBarsOnSwipe = false
+        self.navigationController?.navigationBar.isTranslucent = false
     }
 
 

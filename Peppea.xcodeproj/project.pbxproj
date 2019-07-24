@@ -106,6 +106,8 @@
 		B1E233E322D3226600CEA568 /* DriverOffersListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E233E222D3226600CEA568 /* DriverOffersListViewCell.swift */; };
 		EE35158522CE34A00035D0AC /* DriverRatingAndTipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE35158422CE34A00035D0AC /* DriverRatingAndTipViewController.swift */; };
 		EE469B5C22C7344E0075A8A3 /* RegisterOTPVarificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE469B5B22C7344D0075A8A3 /* RegisterOTPVarificationViewController.swift */; };
+		EE61011F22E86F7800B3B4D7 /* PastBookingHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE61011E22E86F7800B3B4D7 /* PastBookingHistory.swift */; };
+		EE61012A22E8787C00B3B4D7 /* PastBookingHistoryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE61012922E8787C00B3B4D7 /* PastBookingHistoryResponse.swift */; };
 		EE8A61C822C652F5000718ED /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8A61C722C652F5000718ED /* RegisterViewController.swift */; };
 		EE8A61CC22C654C0000718ED /* MessageBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8A61CB22C654C0000718ED /* MessageBarController.swift */; };
 		EE9D6F7022C62D6F00EAD756 /* SideMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9D6F6F22C62D6F00EAD756 /* SideMenuTableViewController.swift */; };
@@ -262,6 +264,8 @@
 		B1E233E222D3226600CEA568 /* DriverOffersListViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriverOffersListViewCell.swift; sourceTree = "<group>"; };
 		EE35158422CE34A00035D0AC /* DriverRatingAndTipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverRatingAndTipViewController.swift; sourceTree = "<group>"; };
 		EE469B5B22C7344D0075A8A3 /* RegisterOTPVarificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterOTPVarificationViewController.swift; sourceTree = "<group>"; };
+		EE61011E22E86F7800B3B4D7 /* PastBookingHistory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PastBookingHistory.swift; sourceTree = "<group>"; };
+		EE61012922E8787C00B3B4D7 /* PastBookingHistoryResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PastBookingHistoryResponse.swift; sourceTree = "<group>"; };
 		EE8A61C722C652F5000718ED /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		EE8A61CB22C654C0000718ED /* MessageBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageBarController.swift; sourceTree = "<group>"; };
 		EE9D6F6F22C62D6F00EAD756 /* SideMenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewController.swift; sourceTree = "<group>"; };
@@ -514,6 +518,7 @@
 				18CB7F8822E89688004FA66C /* RequestAcceptedDataModel */,
 				18CB7F8322E86584004FA66C /* GetEstimateFareModel */,
 				461A919322E6F3C8002BDCAC /* VehicleListModel.swift */,
+				EE61012022E8776C00B3B4D7 /* TripHistory */,
 				466957E522DDB165008A73C0 /* LoginModel.swift */,
 				46CA655422DE02B800FC6E16 /* RegisterResponseModel.swift */,
 				46869E6722E1F9CE0053CF37 /* MobileNoResultModel.swift */,
@@ -620,6 +625,14 @@
 			path = DriverInfoAndRating;
 			sourceTree = "<group>";
 		};
+		EE61012022E8776C00B3B4D7 /* TripHistory */ = {
+			isa = PBXGroup;
+			children = (
+				EE61012922E8787C00B3B4D7 /* PastBookingHistoryResponse.swift */,
+			);
+			path = TripHistory;
+			sourceTree = "<group>";
+		};
 		EE8A61C922C654AE000718ED /* ThirdPartyLibraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -718,6 +731,7 @@
 		EE9F3F6722C769D700426377 /* RequestModel */ = {
 			isa = PBXGroup;
 			children = (
+				EE61011E22E86F7800B3B4D7 /* PastBookingHistory.swift */,
 				468E992122D9F26300072361 /* AddCard.swift */,
 				468E992222D9F26400072361 /* AddMoney.swift */,
 				468E992022D9F26200072361 /* CardList.swift */,
@@ -1299,8 +1313,10 @@
 				B1E233DA22D3123300CEA568 /* OpenBidListViewController.swift in Sources */,
 				B1DE159022D358A0001045B1 /* BulkMileVC.swift in Sources */,
 				463DEFF122D8C13A002365F8 /* HistoryFilterPopUpViewController.swift in Sources */,
+				EE61012A22E8787C00B3B4D7 /* PastBookingHistoryResponse.swift in Sources */,
 				464CB66622E19FDB00273F29 /* QRCodeScannedModel.swift in Sources */,
 				B1DE159422D35920001045B1 /* BulkMileTableViewCell.swift in Sources */,
+				EE61011F22E86F7800B3B4D7 /* PastBookingHistory.swift in Sources */,
 				463DEFD522D877E4002365F8 /* CreditCardValidationType.swift in Sources */,
 				463DEFD022D86E15002365F8 /* PaymentCardTypeListCell.swift in Sources */,
 				468E991A22D9DBDA00072361 /* PeppeaBusinessSetupViewController.swift in Sources */,

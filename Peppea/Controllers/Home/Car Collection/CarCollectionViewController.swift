@@ -68,17 +68,21 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
                 do {
                     self.cardDetailModel = try UserDefaults.standard.get(objectType: AddCardModel.self, forKey: "cards")!
                     self.aryCards = self.cardDetailModel.cards
-                    
-                    let data = self.aryCards[0]
-                    
-                    self.iconSelectedCard.image = UIImage(named: setCardIcon(str: data.cardType)) //UIImage(named: setCardIcon(str: data["Type"] as! String))
-                    
-                    self.lblCardName.text = data.cardHolderName
-                    self.lblCardNumber.isHidden = false
-                    self.lblCardNumber.text = data.formatedCardNo
-                    self.CardID = data.id
-                    
-                    self.paymentType = "card"
+
+                    if(self.aryCards.count != 0)
+                    {
+                        let data = self.aryCards[0]
+
+                        self.iconSelectedCard.image = UIImage(named: setCardIcon(str: data.cardType)) //UIImage(named: setCardIcon(str: data["Type"] as! String))
+
+                        self.lblCardName.text = data.cardHolderName
+                        self.lblCardNumber.isHidden = false
+                        self.lblCardNumber.text = data.formatedCardNo
+                        self.CardID = data.id
+
+
+                        self.paymentType = "card"
+                    }
                     
                 } catch {
                     AlertMessage.showMessageForError("error")

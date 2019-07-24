@@ -91,11 +91,11 @@ class HeaderTableViewController: UIView {
         return collectionView
     }()
     
-     lazy var tableView : UITableView = {
+    lazy var tableView : UITableView = {
         let table = UITableView()
-       table.separatorStyle = .none
+        table.separatorStyle = .none
         table.backgroundColor = pageBgColor
-         return table
+        return table
     }()
     
     var registerNibs : [String]!{

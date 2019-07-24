@@ -37,7 +37,7 @@ extension CarCollectionViewController: CarCollectionWebserviceProtocol {
         model.vehicle_type_id = vehicleId
         model.estimated_fare = estimateFare
         
-        UserWebserviceSubclass.bookingRequest(WalletHistoryModel: model) { (response, status) in
+        UserWebserviceSubclass.bookingRequest(bookingRequestModel: model) { (response, status) in
             
             print("Booking Response: \n", response)
             if status {
