@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		0650348A2AC06055B9F453D4 /* Pods_Peppea.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0810AD09B74A352FE6C277E6 /* Pods_Peppea.framework */; };
+		1830C47B22E74235004F107F /* dummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1830C47A22E74235004F107F /* dummyData.swift */; };
+		18CB7F7C22E841ED004FA66C /* SocketProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CB7F7B22E841ED004FA66C /* SocketProtocol.swift */; };
+		18CB7F7E22E844CB004FA66C /* HomeSocketCalls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CB7F7D22E844CB004FA66C /* HomeSocketCalls.swift */; };
+		18CB7F8022E85A0C004FA66C /* CarCollectionWebserviceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CB7F7F22E85A0C004FA66C /* CarCollectionWebserviceProtocol.swift */; };
+		18CB7F8222E85AC4004FA66C /* HomeWebserviceCalls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CB7F8122E85AC4004FA66C /* HomeWebserviceCalls.swift */; };
+		18CB7F8622E86584004FA66C /* GetEstimateFareModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CB7F8422E86584004FA66C /* GetEstimateFareModel.swift */; };
+		18CB7F8722E86584004FA66C /* EstimateFare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CB7F8522E86584004FA66C /* EstimateFare.swift */; };
 		4600BEFD22D5E24F00306486 /* ReceiveMoneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4600BEFC22D5E24F00306486 /* ReceiveMoneyViewController.swift */; };
 		4600BF0022D613B000306486 /* HistoryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4600BEFF22D613B000306486 /* HistoryListViewController.swift */; };
 		4600BF0222D6140200306486 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4600BF0122D6140200306486 /* HistoryTableViewCell.swift */; };
@@ -148,6 +155,13 @@
 /* Begin PBXFileReference section */
 		0568EF05446C647550DA45F6 /* Pods-Peppea.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Peppea.release.xcconfig"; path = "Pods/Target Support Files/Pods-Peppea/Pods-Peppea.release.xcconfig"; sourceTree = "<group>"; };
 		0810AD09B74A352FE6C277E6 /* Pods_Peppea.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Peppea.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1830C47A22E74235004F107F /* dummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dummyData.swift; sourceTree = "<group>"; };
+		18CB7F7B22E841ED004FA66C /* SocketProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketProtocol.swift; sourceTree = "<group>"; };
+		18CB7F7D22E844CB004FA66C /* HomeSocketCalls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSocketCalls.swift; sourceTree = "<group>"; };
+		18CB7F7F22E85A0C004FA66C /* CarCollectionWebserviceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarCollectionWebserviceProtocol.swift; sourceTree = "<group>"; };
+		18CB7F8122E85AC4004FA66C /* HomeWebserviceCalls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWebserviceCalls.swift; sourceTree = "<group>"; };
+		18CB7F8422E86584004FA66C /* GetEstimateFareModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetEstimateFareModel.swift; sourceTree = "<group>"; };
+		18CB7F8522E86584004FA66C /* EstimateFare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EstimateFare.swift; sourceTree = "<group>"; };
 		3113B5679CB8CBDE7AAC41BE /* Pods-Peppea.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Peppea.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Peppea/Pods-Peppea.debug.xcconfig"; sourceTree = "<group>"; };
 		4600BEFC22D5E24F00306486 /* ReceiveMoneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveMoneyViewController.swift; sourceTree = "<group>"; };
 		4600BEFF22D613B000306486 /* HistoryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryListViewController.swift; sourceTree = "<group>"; };
@@ -303,6 +317,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1830C47922E741F6004F107F /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				1830C47A22E74235004F107F /* dummyData.swift */,
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		18CB7F7A22E841D4004FA66C /* SocketAndWebservice */ = {
+			isa = PBXGroup;
+			children = (
+				18CB7F7B22E841ED004FA66C /* SocketProtocol.swift */,
+				18CB7F7D22E844CB004FA66C /* HomeSocketCalls.swift */,
+				18CB7F7F22E85A0C004FA66C /* CarCollectionWebserviceProtocol.swift */,
+				18CB7F8122E85AC4004FA66C /* HomeWebserviceCalls.swift */,
+			);
+			path = SocketAndWebservice;
+			sourceTree = "<group>";
+		};
+		18CB7F8322E86584004FA66C /* GetEstimateFareModel */ = {
+			isa = PBXGroup;
+			children = (
+				18CB7F8422E86584004FA66C /* GetEstimateFareModel.swift */,
+				18CB7F8522E86584004FA66C /* EstimateFare.swift */,
+			);
+			path = GetEstimateFareModel;
+			sourceTree = "<group>";
+		};
 		4600BEFB22D5E1EB00306486 /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
@@ -447,6 +489,7 @@
 		466957E422DDB151008A73C0 /* ResponseModel */ = {
 			isa = PBXGroup;
 			children = (
+				18CB7F8322E86584004FA66C /* GetEstimateFareModel */,
 				461A919322E6F3C8002BDCAC /* VehicleListModel.swift */,
 				466957E522DDB165008A73C0 /* LoginModel.swift */,
 				46CA655422DE02B800FC6E16 /* RegisterResponseModel.swift */,
@@ -686,6 +729,7 @@
 		EE9F3F6F22C7757100426377 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				18CB7F7A22E841D4004FA66C /* SocketAndWebservice */,
 				461A919022E6D50D002BDCAC /* BookLater */,
 				EEA454BA22CCED260094941A /* DriverInfo */,
 				EEA454BB22CCED380094941A /* Home VC */,
@@ -804,6 +848,7 @@
 		EEE2B7E422C62304004F1C00 /* Peppea */ = {
 			isa = PBXGroup;
 			children = (
+				1830C47922E741F6004F107F /* New Group */,
 				46536DFB22E0AC4200C538D8 /* Peppea.entitlements */,
 				EEE2B7FB22C62369004F1C00 /* AppDelegate */,
 				EEE2B7FC22C62376004F1C00 /* Controllers */,
@@ -1180,6 +1225,7 @@
 				EEE2B7E622C62304004F1C00 /* AppDelegate.swift in Sources */,
 				463DEFE822D8AEA6002365F8 /* MyTripsViewController.swift in Sources */,
 				EEA454B322CC913D0094941A /* CarsCollectionViewCell.swift in Sources */,
+				18CB7F7C22E841ED004FA66C /* SocketProtocol.swift in Sources */,
 				464CB66022E195E500273F29 /* CheckPromocode.swift in Sources */,
 				EE9F3F7422C7846500426377 /* BaseViewController.swift in Sources */,
 				EEA454B922CCEC390094941A /* DriverInfoPageViewController.swift in Sources */,
@@ -1189,6 +1235,7 @@
 				468E992C22D9F26900072361 /* CardList.swift in Sources */,
 				463DEFEE22D8B01B002365F8 /* TitleHeaderCollectionViewCell.swift in Sources */,
 				463DEFE622D8AEA6002365F8 /* MyTripDescriptionTableViewCell.swift in Sources */,
+				18CB7F7E22E844CB004FA66C /* HomeSocketCalls.swift in Sources */,
 				B1E233D422D3111D00CEA568 /* BidDetailsViewController.swift in Sources */,
 				B1E233E122D3220600CEA568 /* MyBidListViewCell.swift in Sources */,
 				B1DE159822D361D3001045B1 /* MyMileVC.swift in Sources */,
@@ -1210,13 +1257,16 @@
 				468E993422DA078000072361 /* UpcomingRideConfirmationViewController.swift in Sources */,
 				EE9D6F7F22C6435600EAD756 /* Extensions.swift in Sources */,
 				468E992B22D9F26900072361 /* ForgotPassword.swift in Sources */,
+				1830C47B22E74235004F107F /* dummyData.swift in Sources */,
 				468E992D22D9F26900072361 /* AddCard.swift in Sources */,
 				4600BF0222D6140200306486 /* HistoryTableViewCell.swift in Sources */,
 				EEE2B81122C62A70004F1C00 /* Singleton.swift in Sources */,
 				46869E6622E1D78D0053CF37 /* transferMoneyToBank.swift in Sources */,
 				4666B47A22D48F7D0084A230 /* FlatRateViewCell.swift in Sources */,
 				468E992822D9F26900072361 /* ChangePassword.swift in Sources */,
+				18CB7F8222E85AC4004FA66C /* HomeWebserviceCalls.swift in Sources */,
 				464CB65E22E1947A00273F29 /* MobileNoDetail.swift in Sources */,
+				18CB7F8622E86584004FA66C /* GetEstimateFareModel.swift in Sources */,
 				B1E233D822D3120000CEA568 /* MyBidListViewController.swift in Sources */,
 				468E992722D9F26900072361 /* QRCodeDetails.swift in Sources */,
 				468E991522D9B6EF00072361 /* EmptyTableViewCell.swift in Sources */,
@@ -1230,7 +1280,9 @@
 				463DEFD022D86E15002365F8 /* PaymentCardTypeListCell.swift in Sources */,
 				468E991A22D9DBDA00072361 /* PeppeaBusinessSetupViewController.swift in Sources */,
 				EE9F3F6A22C76B4A00426377 /* Register.swift in Sources */,
+				18CB7F8722E86584004FA66C /* EstimateFare.swift in Sources */,
 				EEE7D73522CF8EEB0076B0C3 /* ChooseServiceViewController.swift in Sources */,
+				18CB7F8022E85A0C004FA66C /* CarCollectionWebserviceProtocol.swift in Sources */,
 				EE9F3F6C22C76CB900426377 /* Login.swift in Sources */,
 				461A919222E6D525002BDCAC /* PeppeaBookLaterViewController.swift in Sources */,
 				466957DF22DD9E4A008A73C0 /* HTTPMethod.swift in Sources */,

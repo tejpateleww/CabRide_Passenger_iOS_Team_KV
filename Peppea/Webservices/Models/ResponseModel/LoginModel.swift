@@ -107,6 +107,9 @@ class LoginData : Codable
     var walletBalance : String!
     var xApiKey : String!
     
+    
+    init() {
+    }
     /**
      * Instantiate the instance using the passed json values to set the properties values
      */

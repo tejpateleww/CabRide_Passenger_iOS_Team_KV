@@ -95,7 +95,9 @@ class LoginViewController: UIViewController {
                 {
                     UserDefaults.standard.set(loginModelDetails.loginData.xApiKey, forKey: "X_API_KEY")
                     SingletonClass.sharedInstance.walletBalance = loginModelDetails.loginData.walletBalance
-                    try UserDefaults.standard.set(object: loginModelDetails, forKey: "userProfile")//(loginModelDetails, forKey: "userProfile")
+                    try UserDefaults.standard.set(object: loginModelDetails, forKey: "userProfile") //(loginModelDetails, forKey: "userProfile")
+                    
+                    SingletonClass.sharedInstance.loginData = loginModelDetails.loginData
                 }
                 catch
                 {

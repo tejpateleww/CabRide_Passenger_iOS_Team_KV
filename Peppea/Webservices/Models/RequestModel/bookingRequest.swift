@@ -38,5 +38,6 @@ class bookingRequest : RequestModel
     var no_of_passenger : String = ""
     var payment_type : String = ""
     var promocode : String = ""
+    var estimated_fare : String = ""
     
 }

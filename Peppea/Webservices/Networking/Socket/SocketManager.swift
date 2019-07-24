@@ -14,8 +14,10 @@ class SocketIOManager: NSObject {
     static let shared = SocketIOManager()
 
     
-    let manager = SocketManager(socketURL: URL(string: "http://localhost:8080")!, config: [.log(true), .compress])
+    let manager = SocketManager(socketURL: URL(string: socketApiKeys.kSocketBaseURL.rawValue)!, config: [.log(true), .compress])
     lazy var socket = manager.defaultSocket
+    
+     private var isSocketOn = false
     
     override private init() {
         super.init()
@@ -30,6 +32,13 @@ class SocketIOManager: NSObject {
         
         socket.on(clientEvent: .connect) {data, ack in
             print ("socket connected")
+            
+            if !self.isSocketOn {
+                self.isSocketOn = true
+                let homeStory = UIStoryboard(name: "Main", bundle: nil)
+                let homeVC = homeStory.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController
+                homeVC?.allSocketOnMethods()
+            }
         }
     }
     
@@ -40,8 +49,6 @@ class SocketIOManager: NSObject {
     func closeConnection() {
         socket.disconnect()
     }
-    
-   
     
     func socketCall(for key: String, completion: CompletionBlock = nil)
     {

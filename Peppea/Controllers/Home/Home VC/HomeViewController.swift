@@ -64,7 +64,14 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
     var mapView = GMSMapView()
     //    lazy var marker = GMSMarker()
     var pulseArray = [CAShapeLayer]()
-
+    
+    /// Pickup and Dropoff Address
+    var pickupAndDropoffAddress = (pickUp: "", dropOff: "")
+    
+    var vehicleId = String()
+    var estimateFare = String()
+    var bookingType = String()
+    var estimateData = [EstimateFare]()
 
     //MARk:- PolyLine Variables
     var polyline = GMSPolyline()
@@ -74,9 +81,11 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
     var i: UInt = 0
     var timer: Timer!
 
-    //MARK: Location Manager
+    //MARK:- Location Manager
     let locationManager = CLLocationManager()
     var defaultLocation = CLLocation()
+    var pickupLocation = CLLocationCoordinate2D()
+    var destinationLocation = CLLocationCoordinate2D()
     var zoomLevel: Float = 16.0
 
 
@@ -423,6 +432,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
         let strLati: String = "\(self.doublePickupLat)"
         let strlongi: String = "\(self.doublePickupLng)"
         getAddressForLatLng(latitude: strLati, Longintude: strlongi, markerType: .pickUp)
+        pickupLocation = defaultLocation.coordinate
         
     }
     //MARK:- Setup Pickup and Destination Location
@@ -479,10 +489,12 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
                 if(markerType == .pickUp)
                 {
                     txtPickupLocation.text = addressString
+                    pickupAndDropoffAddress.pickUp = txtPickupLocation.text ?? ""
                 }
                 else
                 {
                     txtDropLocation.text = addressString
+                    pickupAndDropoffAddress.dropOff = txtDropLocation.text ?? ""
                 }
             }
         }
@@ -515,7 +527,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
                         print("error while drawing route")
                     }
                     }
-                } )
+                })
             }
         }
     }
@@ -599,6 +611,8 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
             return
         }
     }
+    
+   
 
 
 }
@@ -628,21 +642,34 @@ extension HomeViewController: CLLocationManagerDelegate {
             stopAnimatingCamera = true
             mapView.camera = GMSCameraPosition(target: defaultLocation.coordinate, zoom: zoomLevel, bearing: 0, viewingAngle: 0)
         }
+        
+        
+        if SocketIOManager.shared.socket.status == .connected {
+            
+            self.emitSocket_UpdateCustomerLatLng(param: ["customer_id": SingletonClass.sharedInstance.loginData.id ?? "", "lat": location.coordinate.latitude, "lng": location.coordinate.longitude])
+        }
+        
     }
 }
 
 
 // MARK: - GMSAutocompleteViewControllerDelegate
 extension HomeViewController: GMSAutocompleteViewControllerDelegate {
+    
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
 
         if(isPickupLocation)
         {
             txtPickupLocation.text = "\(place.name ?? "") \(place.formattedAddress ?? "")"
+            pickupLocation = place.coordinate
+            
+            pickupAndDropoffAddress.pickUp = txtPickupLocation.text ?? ""
         }
         else
         {
             txtDropLocation.text = "\(place.name ?? "") \(place.formattedAddress ?? "")"
+            destinationLocation = place.coordinate
+            pickupAndDropoffAddress.dropOff = txtDropLocation.text ?? ""
         }
 
 
@@ -659,7 +686,17 @@ extension HomeViewController: GMSAutocompleteViewControllerDelegate {
         {
             hideBookLaterButtonFromDroplocationField = false
         }
-
+        
+        if txtPickupLocation.text != "" && txtDropLocation.text != "" {
+            
+            let param: [String: Any] = ["customer_id" : SingletonClass.sharedInstance.loginData.id ?? "",
+                                        "pickup_lng":pickupLocation.longitude,
+                                        "pickup_lat":pickupLocation.latitude,
+                                        "dropoff_lat":destinationLocation.latitude,
+                                        "dropoff_lng":destinationLocation.longitude]
+            
+            self.emitSocket_GetEstimateFare(param: param)
+        }
 
         self.routeDrawMethod(origin: txtPickupLocation.text, destination: txtDropLocation.text)
         dismiss(animated: true, completion: nil)

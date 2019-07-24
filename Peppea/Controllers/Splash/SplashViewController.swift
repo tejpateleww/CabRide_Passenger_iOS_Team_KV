@@ -66,6 +66,22 @@ class SplashViewController: UIViewController {
                 
                 if isLogin == true
                 {
+                    var loginModelDetails = LoginModel()
+                    do
+                    {
+                        if UserDefaults.standard.object(forKey: "userProfile") != nil {
+                            
+                            loginModelDetails = try UserDefaults.standard.get(objectType: LoginModel.self, forKey: "userProfile")! // set(object: loginModelDetails, forKey: "userProfile") //(loginModelDetails, forKey: "userProfile")
+                            UserDefaults.standard.set(loginModelDetails.loginData.xApiKey, forKey: "X_API_KEY")
+                            SingletonClass.sharedInstance.loginData = loginModelDetails.loginData
+                            SingletonClass.sharedInstance.walletBalance = loginModelDetails.loginData.walletBalance
+                        }
+                    }
+                    catch
+                    {
+                        UtilityClass.hideHUD()
+                        AlertMessage.showMessageForError("error")
+                    }
                     (UIApplication.shared.delegate as! AppDelegate).GoToHome()
                 }
                 else

@@ -651,7 +651,7 @@
                                                                             <rect key="frame" x="0.0" y="0.0" width="104" height="114.5"/>
                                                                             <subviews>
                                                                                 <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cW5-RV-b3L">
-                                                                                    <rect key="frame" x="27" y="22.5" width="50" height="50"/>
+                                                                                    <rect key="frame" x="27" y="12.5" width="50" height="50"/>
                                                                                     <subviews>
                                                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3dE-2P-9TS">
                                                                                             <rect key="frame" x="5" y="5" width="40" height="40"/>
@@ -659,7 +659,7 @@
                                                                                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                         </imageView>
                                                                                     </subviews>
-                                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="bottom" secondItem="3dE-2P-9TS" secondAttribute="bottom" constant="5" id="7zD-DS-pli"/>
                                                                                         <constraint firstItem="3dE-2P-9TS" firstAttribute="top" secondItem="cW5-RV-b3L" secondAttribute="top" constant="5" id="AMB-VH-t9q"/>
@@ -670,12 +670,12 @@
                                                                                     </constraints>
                                                                                     <userDefinedRuntimeAttributes>
                                                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                                            <real key="value" value="30"/>
+                                                                                            <real key="value" value="25"/>
                                                                                         </userDefinedRuntimeAttribute>
                                                                                     </userDefinedRuntimeAttributes>
                                                                                 </view>
                                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="ZZp-of-m3w">
-                                                                                    <rect key="frame" x="0.0" y="72.5" width="104" height="156"/>
+                                                                                    <rect key="frame" x="0.0" y="62.5" width="104" height="156"/>
                                                                                     <subviews>
                                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hPf-JH-fcl">
                                                                                             <rect key="frame" x="27" y="0.0" width="50" height="50"/>
@@ -706,7 +706,7 @@
                                                                                 <constraint firstAttribute="trailing" secondItem="ZZp-of-m3w" secondAttribute="trailing" id="IC0-WY-dfD"/>
                                                                                 <constraint firstItem="cW5-RV-b3L" firstAttribute="centerX" secondItem="jsu-fu-dHO" secondAttribute="centerX" id="Ixd-se-rXJ"/>
                                                                                 <constraint firstItem="ZZp-of-m3w" firstAttribute="top" secondItem="cW5-RV-b3L" secondAttribute="bottom" id="X4P-TR-rFf"/>
-                                                                                <constraint firstItem="cW5-RV-b3L" firstAttribute="centerY" secondItem="jsu-fu-dHO" secondAttribute="centerY" constant="-10" id="c0F-cs-qPS"/>
+                                                                                <constraint firstItem="cW5-RV-b3L" firstAttribute="centerY" secondItem="jsu-fu-dHO" secondAttribute="centerY" constant="-20" id="c0F-cs-qPS"/>
                                                                                 <constraint firstItem="ZZp-of-m3w" firstAttribute="leading" secondItem="jsu-fu-dHO" secondAttribute="leading" id="tyO-fX-95f"/>
                                                                             </constraints>
                                                                         </view>
@@ -725,6 +725,7 @@
                                                                     <outlet property="lblArrivalTime" destination="ihV-Yu-Pzm" id="poR-MK-viY"/>
                                                                     <outlet property="lblModelName" destination="hPf-JH-fcl" id="cIw-nV-oIj"/>
                                                                     <outlet property="lblPrice" destination="9SS-gI-bMU" id="lxb-E5-2HJ"/>
+                                                                    <outlet property="viewCar" destination="cW5-RV-b3L" id="CRJ-KY-d8Q"/>
                                                                 </connections>
                                                             </collectionViewCell>
                                                         </cells>
@@ -1598,7 +1599,7 @@ automatic expense for warding</string>
             <objects>
                 <viewController storyboardIdentifier="DriverRatingAndTipViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="C5a-Ul-jbN" customClass="DriverRatingAndTipViewController" customModule="Peppea" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NN4-ky-f3H">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="240"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QsH-gC-UEP">
@@ -2451,7 +2452,7 @@ automatic expense for warding</string>
             <objects>
                 <viewController storyboardIdentifier="ProfileViewController" id="5mH-gN-Dtc" userLabel="ProfileViewController" customClass="ProfileViewController" customModule="Peppea" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="W2E-Gh-Ye9">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dFZ-b0-9DK">
@@ -4117,7 +4118,7 @@ automatic expense for warding</string>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="os1-Yc-G65">
                                                 <rect key="frame" x="0.0" y="308" width="355" height="40"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eiE-hZ-PCp" customClass="ThemeButton" customModule="PepPea" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eiE-hZ-PCp" customClass="ThemeButton" customModule="Peppea" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="157.5" height="40"/>
                                                         <color key="backgroundColor" red="0.99982124569999997" green="0.63837134839999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Cancel">
@@ -4137,7 +4138,7 @@ automatic expense for warding</string>
                                                             <constraint firstAttribute="width" secondItem="x0V-Tt-Xgj" secondAttribute="height" multiplier="1:1" id="1C0-hl-AKl"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WH0-DY-zFf" customClass="ThemeButton" customModule="PepPea" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WH0-DY-zFf" customClass="ThemeButton" customModule="Peppea" customModuleProvider="target">
                                                         <rect key="frame" x="197.5" y="0.0" width="157.5" height="40"/>
                                                         <color key="backgroundColor" red="0.99982124569999997" green="0.63837134839999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Continue">
