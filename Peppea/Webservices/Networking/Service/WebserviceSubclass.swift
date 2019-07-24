@@ -96,4 +96,10 @@ class UserWebserviceSubclass
         let strURLFinal = NetworkEnvironment.baseURL + ApiKey.logout.rawValue + strURL
         WebService.shared.getMethod(url: URL.init(string: strURLFinal)!, httpMethod: .get, completion: completion)
     }
+    
+    class func bookingRequest( WalletHistoryModel : bookingRequest  ,completion: @escaping CompletionResponse ) {
+        let  params : [String:String] = WalletHistoryModel.generatPostParams() as! [String : String]
+        WebService.shared.requestMethod(api: .BookingRequest, httpMethod: .post, parameters: params, completion: completion)
+    }
+    
 }

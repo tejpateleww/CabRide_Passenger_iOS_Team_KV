@@ -14,7 +14,9 @@ class SingletonClass: NSObject
     
     var RegisterOTP = String()
     var walletBalance = String()
+    var loginData = LoginData()
 }
+
 class SingletonRegistration: NSObject
 {
     static let sharedRegistration = SingletonRegistration()

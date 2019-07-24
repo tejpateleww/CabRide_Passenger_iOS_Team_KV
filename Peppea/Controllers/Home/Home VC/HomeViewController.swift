@@ -25,22 +25,30 @@ enum HomeViews{
     case none
 }
 
-class HomeViewController: BaseViewController,GMSMapViewDelegate {
+class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDelegate
+{
+
+    
 
 
     //MARK:- IBOutles
     @IBOutlet weak var btnCurrentLocation: UIButton!
 
     @IBOutlet weak var btnViewTop: UIButton!
-
+    var LoginDetail : LoginModel = LoginModel()
+    var addCardReqModel : AddCard = AddCard()
+    var CardListReqModel : CardList = CardList()
+    var doublePickupLat = Double()
+    var doublePickupLng = Double()
     @IBOutlet weak var txtPickupLocation: UITextField!
     @IBOutlet weak var txtDropLocation: UITextField!
     @IBOutlet weak var btnBookLater: UIButton!
     @IBOutlet weak var mapViewContainer: UIView!
+    var currentLocationMarkerText = String()
     @IBOutlet weak var viewPickupLocation: UIView!
     @IBOutlet weak var viewDropOffLocation: UIView!
     @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var shadowView: UIView!
+
     @IBOutlet weak var containerHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var constraintStackViewBottom: NSLayoutConstraint!
     @IBOutlet weak var markerView: UIImageView!
@@ -56,12 +64,14 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate {
     var mapView = GMSMapView()
     //    lazy var marker = GMSMarker()
     var pulseArray = [CAShapeLayer]()
-    var currentLocationMarkerText = String()
-    var LoginDetail : LoginModel = LoginModel()
-    var addCardReqModel : AddCard = AddCard()
-    var CardListReqModel : CardList = CardList()
-    var doublePickupLat = Double()
-    var doublePickupLng = Double()
+    
+    /// Pickup and Dropoff Address
+    var pickupAndDropoffAddress = (pickUp: "", dropOff: "")
+    
+    var vehicleId = String()
+    var estimateFare = String()
+    var bookingType = String()
+    var estimateData = [EstimateFare]()
 
     //MARk:- PolyLine Variables
     var polyline = GMSPolyline()
@@ -71,9 +81,11 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate {
     var i: UInt = 0
     var timer: Timer!
 
-    //MARK: Location Manager
+    //MARK:- Location Manager
     let locationManager = CLLocationManager()
     var defaultLocation = CLLocation()
+    var pickupLocation = CLLocationCoordinate2D()
+    var destinationLocation = CLLocationCoordinate2D()
     var zoomLevel: Float = 16.0
 
 
@@ -93,27 +105,24 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate {
             if(hideBookLaterButtonFromDroplocationField == false)
             {
                 self.containerView.isHidden = true
-                self.shadowView.isHidden = self.containerView.isHidden
             }
             else
             {
                 self.containerView.isHidden = false
-                self.shadowView.isHidden = self.containerView.isHidden
             }
         }
     }
 
     var isExpandCategory:  Bool  = false {
         didSet {
-
             constraintStackViewBottom.constant = isExpandCategory ? 0 : (-containerHeightConstraint.constant + 135)
-
+            
             self.view.endEditing(true)
-
+            
             UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [.curveEaseInOut, .allowUserInteraction, .beginFromCurrentState], animations: {
                 self.view.layoutIfNeeded()
             }) { (success) in
-
+                
             }
         }
     }
@@ -136,10 +145,6 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         mapView.frame = mapViewContainer.frame
-        containerView.roundCorners([.topLeft, .topRight], radius: 12)
-        shadowView.layer.shadowColor = UIColor.black.cgColor
-        shadowView.layer.shadowOpacity = 1
-        shadowView.layer.masksToBounds = false
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -210,6 +215,35 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate {
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.requestWhenInUseAuthorization()
     }
+    
+    func didSelectDateAndTime(date: String)
+    {
+        if(txtDropLocation.text?.count == 0)
+        {
+            txtLocation(txtDropLocation as! ThemeTextField)
+        }
+        else
+        {
+            
+            // Because btn title change after reinitialized
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                if let VC = self.storyboard?.instantiateViewController(withIdentifier: "CarCollectionViewController") as? CarCollectionViewController
+                {
+                    VC.btnBookNow.titleLabel?.lineBreakMode = .byWordWrapping
+                    VC.btnBookNow.titleLabel?.textAlignment = .center
+                    VC.btnBookNow.setTitle("Schedule a ride\n\(date)", for: .normal)
+                }
+            }
+           
+            
+//            self.btnBookNow.titleLabel?.lineBreakMode = .byWordWrapping
+//            self.btnBookNow.titleLabel?.textAlignment = .center
+
+            //            UtilityClass.changeDateFormat(from: "yyyy-MM-dd hh:mm:ss", toFormat: "dd-MM-yyyy", date: Date())
+
+//            self.btnBookNow.setTitle("Schedule a ride\n\(date)", for: .normal)
+        }
+    }
     func webserviceForCardList()
     {
 //        self.aryCardData.removeAll()
@@ -246,6 +280,38 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate {
             }
         }
     }
+    @IBAction func btnBookLater(_ sender: Any)
+    {
+        
+        //        if Connectivity.isConnectedToInternet()
+        //        {
+        //
+        //            let profileData = SingletonClass.sharedInstance.dictProfile
+        //
+        //            // This is For Book Later Address
+        //            if (SingletonClass.sharedInstance.isFromNotificationBookLater) {
+        
+        let next = self.storyboard?.instantiateViewController(withIdentifier: "PeppeaBookLaterViewController") as! PeppeaBookLaterViewController
+        next.delegateOfSelectDateAndTime = self
+        //                SingletonClass.sharedInstance.isFromNotificationBookLater = false
+        
+        self.navigationController?.present(next, animated: true, completion: nil)
+        //            }
+        //            else {
+        //
+        //
+        //                let next = self.storyboard?.instantiateViewController(withIdentifier: "PeppeaBookLaterViewController") as! PeppeaBookLaterViewController
+        //                next.delegateOfSelectDateAndTime = self
+        //
+        //                self.navigationController?.present(next, animated: true, completion: nil)
+        //            }
+        //        }
+        //        else
+        //        {
+        //            UtilityClass.showAlert("", message: "Internet connection not available", vc: self)
+        //        }
+    }
+    
     //MARK:- Other Methods
     @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
 
@@ -268,8 +334,9 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate {
 
     @objc func setBottomViewOnclickofViewTop()
     {
-         self.isExpandCategory = !self.isExpandCategory
+        self.isExpandCategory = !self.isExpandCategory
     }
+    
     //MARK:- Pulse Methods
 
     func createPulse()
@@ -364,7 +431,9 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate {
         
         let strLati: String = "\(self.doublePickupLat)"
         let strlongi: String = "\(self.doublePickupLng)"
-        getAddressForLatLng(latitude: strLati, Longintude: strlongi, markerType: locationType(rawValue: currentLocationMarkerText)!)
+        getAddressForLatLng(latitude: strLati, Longintude: strlongi, markerType: .pickUp)
+        pickupLocation = defaultLocation.coordinate
+        
     }
     //MARK:- Setup Pickup and Destination Location
 
@@ -420,10 +489,12 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate {
                 if(markerType == .pickUp)
                 {
                     txtPickupLocation.text = addressString
+                    pickupAndDropoffAddress.pickUp = txtPickupLocation.text ?? ""
                 }
                 else
                 {
                     txtDropLocation.text = addressString
+                    pickupAndDropoffAddress.dropOff = txtDropLocation.text ?? ""
                 }
             }
         }
@@ -456,7 +527,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate {
                         print("error while drawing route")
                     }
                     }
-                } )
+                })
             }
         }
     }
@@ -513,7 +584,6 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate {
         driverRatingContainerView.isHidden = !(view == .ratings)
         carListContainerView.isHidden = !(view == .booking)
         containerView.isHidden = (view == .none)
-        self.shadowView.isHidden = containerView.isHidden
         viewSetup(view: view)
     }
 
@@ -541,6 +611,8 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate {
             return
         }
     }
+    
+   
 
 
 }
@@ -570,21 +642,34 @@ extension HomeViewController: CLLocationManagerDelegate {
             stopAnimatingCamera = true
             mapView.camera = GMSCameraPosition(target: defaultLocation.coordinate, zoom: zoomLevel, bearing: 0, viewingAngle: 0)
         }
+        
+        
+        if SocketIOManager.shared.socket.status == .connected {
+            
+            self.emitSocket_UpdateCustomerLatLng(param: ["customer_id": SingletonClass.sharedInstance.loginData.id ?? "", "lat": location.coordinate.latitude, "lng": location.coordinate.longitude])
+        }
+        
     }
 }
 
 
 // MARK: - GMSAutocompleteViewControllerDelegate
 extension HomeViewController: GMSAutocompleteViewControllerDelegate {
+    
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
 
         if(isPickupLocation)
         {
             txtPickupLocation.text = "\(place.name ?? "") \(place.formattedAddress ?? "")"
+            pickupLocation = place.coordinate
+            
+            pickupAndDropoffAddress.pickUp = txtPickupLocation.text ?? ""
         }
         else
         {
             txtDropLocation.text = "\(place.name ?? "") \(place.formattedAddress ?? "")"
+            destinationLocation = place.coordinate
+            pickupAndDropoffAddress.dropOff = txtDropLocation.text ?? ""
         }
 
 
@@ -601,7 +686,17 @@ extension HomeViewController: GMSAutocompleteViewControllerDelegate {
         {
             hideBookLaterButtonFromDroplocationField = false
         }
-
+        
+        if txtPickupLocation.text != "" && txtDropLocation.text != "" {
+            
+            let param: [String: Any] = ["customer_id" : SingletonClass.sharedInstance.loginData.id ?? "",
+                                        "pickup_lng":pickupLocation.longitude,
+                                        "pickup_lat":pickupLocation.latitude,
+                                        "dropoff_lat":destinationLocation.latitude,
+                                        "dropoff_lng":destinationLocation.longitude]
+            
+            self.emitSocket_GetEstimateFare(param: param)
+        }
 
         self.routeDrawMethod(origin: txtPickupLocation.text, destination: txtDropLocation.text)
         dismiss(animated: true, completion: nil)

@@ -136,6 +136,7 @@ class RegisterContainerViewController: UIViewController,UIScrollViewDelegate {
                 {
                     SingletonClass.sharedInstance.walletBalance = registerModelDetails.loginData.walletBalance
                     try UserDefaults.standard.set(object: registerModelDetails, forKey: "userProfile")//(loginModelDetails, forKey: "userProfile")
+                    SingletonClass.sharedInstance.loginData = registerModelDetails.loginData
                 }
                 catch
                 {

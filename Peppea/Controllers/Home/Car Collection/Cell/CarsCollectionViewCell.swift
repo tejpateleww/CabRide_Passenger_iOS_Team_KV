@@ -10,6 +10,8 @@ import UIKit
 
 class CarsCollectionViewCell: UICollectionViewCell {
 
+    
+    @IBOutlet weak var viewCar: UIView!
     @IBOutlet weak var imgOfCarModels: UIImageView!
     @IBOutlet weak var lblModelName : UILabel!
     @IBOutlet weak var lblPrice : UILabel!
