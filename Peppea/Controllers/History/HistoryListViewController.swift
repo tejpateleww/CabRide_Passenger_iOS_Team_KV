@@ -16,10 +16,10 @@ class HistoryListViewController: BaseViewController, UITableViewDataSource, UITa
 //     var arrHistoryData = [String]()
     var loginModelDetails : LoginModel = LoginModel()
     var walletHistoryRequest : WalletHistory = WalletHistory()
-    
     var pageNo: Int = 1
     private let refreshControl = UIRefreshControl()
-  
+    var isRefresh = Bool()
+
     var arrHistoryData = [walletHistoryListData]()
     {
         didSet
@@ -56,6 +56,7 @@ class HistoryListViewController: BaseViewController, UITableViewDataSource, UITa
 
     @objc private func refreshWeatherData(_ sender: Any) {
         // Fetch Weather Data
+        isRefresh = true
         webserviceCallForHistoryList()
     }
 
@@ -123,11 +124,15 @@ class HistoryListViewController: BaseViewController, UITableViewDataSource, UITa
         
         walletHistoryRequest.customer_id = profile!.id
         walletHistoryRequest.page = "\(pageNo)"
-        UtilityClass.showHUD(with: self.view)
+
+        if(!isRefresh)
+        {
+            UtilityClass.showHUD(with: UIApplication.shared.keyWindow)
+        }
         
         UserWebserviceSubclass.walletHistoryList(WalletHistoryModel: walletHistoryRequest) { (json, status) in
             UtilityClass.hideHUD()
-            
+            self.isRefresh = false
             if status{
                 
                 UserDefaults.standard.set(true, forKey: "isUserLogin")

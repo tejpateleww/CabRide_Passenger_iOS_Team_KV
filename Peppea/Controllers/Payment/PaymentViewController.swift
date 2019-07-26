@@ -460,7 +460,7 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
     {
         RemoveCardReqModel.card_id = strCardId
         RemoveCardReqModel.customer_id = LoginDetail.loginData.id
-        UtilityClass.showHUD(with: self.view)
+        UtilityClass.showHUD(with: UIApplication.shared.keyWindow)
         
         UserWebserviceSubclass.RemoveCardFromList(removeCardModel: RemoveCardReqModel) { (json, status) in
             UtilityClass.hideHUD()
@@ -533,7 +533,7 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
         }
         else
         {
-            UtilityClass.showHUD(with: self.view)
+            UtilityClass.showHUD(with: UIApplication.shared.keyWindow)
             
             UserWebserviceSubclass.addCardInList(addCardModel: addCardReqModel) { (json, status) in
                 UtilityClass.hideHUD()

@@ -142,7 +142,7 @@ class WalletViewController: BaseViewController, UIPickerViewDelegate, UIPickerVi
             addMoneyReqModel.card_id = self.CardID
             addMoneyReqModel.amount = self.txtAmount.text ?? ""
             addMoneyReqModel.customer_id = LoginDetail.loginData.id
-            UtilityClass.showHUD(with: self.view)
+            UtilityClass.showHUD(with: UIApplication.shared.keyWindow)
             UserWebserviceSubclass.AddMoneytoWallet(addMoneyModel: addMoneyReqModel) { (json, status) in
                 UtilityClass.hideHUD()
                 if status

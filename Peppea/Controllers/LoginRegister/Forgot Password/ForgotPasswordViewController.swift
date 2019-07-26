@@ -50,7 +50,7 @@ class ForgotPasswordViewController: BaseViewController
     }
     func webserviceCallForgotPassword()
     {
-        UtilityClass.showHUD(with: self.view)
+        UtilityClass.showHUD(with: UIApplication.shared.keyWindow)
         
         UserWebserviceSubclass.forgotPassword(ForgotPasswordModel: ForgotPasswordModel) { (json, status) in
             UtilityClass.hideHUD()

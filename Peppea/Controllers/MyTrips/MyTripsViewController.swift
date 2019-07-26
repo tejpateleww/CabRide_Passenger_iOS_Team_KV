@@ -12,21 +12,50 @@ class MyTripsViewController: BaseViewController
 {
 
     @IBOutlet weak var collectionTableView: HeaderTableViewController!
-    var pastBookingHistoryModelDetails = [PastBookingHistoryResponse]()
+
+    var tripType = MyTrips.past
+    var data = [(String, String)]()
+    var pageNo: Int = 1
+    private let refreshControl = UIRefreshControl()
+    var isRefresh = Bool()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setCollectionTableView()
         webserviceCallForGettingPastHistory()
+
+        // Add Refresh Control to Table View
+        if #available(iOS 10.0, *) {
+            collectionTableView.tableView.refreshControl = refreshControl
+        } else {
+            collectionTableView.tableView.addSubview(refreshControl)
+        }
+
+        refreshControl.addTarget(self, action: #selector(self.refreshWeatherData(_:)), for: .valueChanged)
+        refreshControl.tintColor = ThemeColor // UIColor(red:0.25, green:0.72, blue:0.85, alpha:1.0)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.setNavBarWithBack(Title: "My Trips", IsNeedRightButton: false)
 
     }
-    var tripType = MyTrips.past
-    var data = [(String, String)]()
-    
+
+
+    @objc private func refreshWeatherData(_ sender: Any) {
+        // Fetch Weather Data
+        isRefresh = true
+        webserviceCallForGettingPastHistory()
+    }
+
+    var pastBookingHistoryModelDetails = [PastBookingHistoryResponse]()
+    {
+        didSet
+        {
+            self.collectionTableView.tableView.reloadData()
+        }
+    }
+
     
     private func setCollectionTableView(){
         collectionTableView.isSizeToFitCellNeeded = true
@@ -70,9 +99,15 @@ class MyTripsViewController: BaseViewController
 
         let strURL = model.customer_id + "/" + model.page
 
+        if(!isRefresh)
+        {
+            UtilityClass.showHUD(with: UIApplication.shared.keyWindow)
+        }
+
 
         UserWebserviceSubclass.pastBookingHistory(strURL: strURL) { (response, status) in
-
+            UtilityClass.hideHUD()
+            self.isRefresh = false
             if(status)
             {
                 if let arrayResponse = response.dictionary?["data"]?.array {
@@ -87,10 +122,12 @@ class MyTripsViewController: BaseViewController
                 self.pastBookingHistoryModelDetails = self.pastBookingHistoryModelDetails.filter({$0.driverId != "0"})
 
                 self.collectionTableView.tableView.reloadData()
+                  self.refreshControl.endRefreshing()
             }
             else
             {
-
+                UtilityClass.hideHUD()
+                AlertMessage.showMessageForError(response["message"].stringValue)
             }
 
 

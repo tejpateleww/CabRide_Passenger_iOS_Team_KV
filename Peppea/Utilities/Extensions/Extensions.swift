@@ -212,7 +212,10 @@ extension UIView {
     
     func removeAllSubviews(){
         self.subviews.forEach({
-            $0.removeFromSuperview()
+            if(!$0.isKind(of: UIRefreshControl.self))
+            {
+                $0.removeFromSuperview()
+            }
         })
     }
     //-------------------------------------

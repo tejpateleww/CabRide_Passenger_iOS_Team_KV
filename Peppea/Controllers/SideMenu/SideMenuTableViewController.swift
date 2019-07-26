@@ -311,10 +311,15 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
         
         let profile = loginModelDetails.loginData
         logoutRequestModel.customer_id = (profile?.id)!
-        logoutRequestModel.device_token = "64546546464646465465464"
+        logoutRequestModel.device_token = ""
+        if let token = UserDefaults.standard.object(forKey: "Token") as? String
+        {
+            logoutRequestModel.device_token = token
+        }
+
         
         
-        UtilityClass.showHUD(with: self.view)
+        UtilityClass.showHUD(with: UIApplication.shared.keyWindow)
         let strURL = logoutRequestModel.customer_id + "/" + logoutRequestModel.device_token
         UserWebserviceSubclass.Logout(strURL: strURL) { (json, status) in
             UtilityClass.hideHUD()

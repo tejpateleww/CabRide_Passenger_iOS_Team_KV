@@ -159,7 +159,7 @@ class FlatRateListViewController: BaseViewController,UITableViewDelegate, UITabl
     func webserviceforFlatRateList()
     {
 //        getFixRateList
-        UtilityClass.showHUD(with: self.view)
+        UtilityClass.showHUD(with: UIApplication.shared.keyWindow)
         UserWebserviceSubclass.getFixRateList(strURL: "") { (json, status) in
              UtilityClass.hideHUD()
             if status
