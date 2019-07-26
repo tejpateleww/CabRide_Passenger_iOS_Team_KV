@@ -10,7 +10,7 @@ import Foundation
 
 protocol SocketConnected {
     
-//    var isSocketConnected: Bool { get set }
+    //    var isSocketConnected: Bool { get set }
     
     func emitSocket_UpdateCustomerLatLng(param: [String:Any])
     
@@ -26,4 +26,11 @@ protocol SocketConnected {
     
     func onSocket_OnTheWayBookLater()
     
+    func onSocket_AskForTips()
+    
+    func emitSocket_ReceiveTips(param: [String:Any])
+    
+    func onSocket_CancelledBookingRequestBySystem()
+    
+    func onSocket_CancelTrip()
 }

@@ -270,7 +270,6 @@ class SendMoneyViewController: BaseViewController, UIPickerViewDelegate, UIPicke
         return 60
     }
     
- 
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         
@@ -341,16 +340,18 @@ class SendMoneyViewController: BaseViewController, UIPickerViewDelegate, UIPicke
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
         
-        let data = aryCards[row]
-        
-        iconSelectedPaymentMethod.image = UIImage(named: setCardIcon(str: data.cardType)) //UIImage(named: setCardIcon(str: data["Type"] as! String))
-        
-        self.lblBankCardName.text = data.cardHolderName
-        self.lblCardNumber.isHidden = false
-        self.lblCardNumber.text = data.formatedCardNo
-        self.CardID = data.id
-        
-        paymentType = "card"
+        if aryCards.count != 0 {
+            let data = aryCards[row]
+            
+            iconSelectedPaymentMethod.image = UIImage(named: setCardIcon(str: data.cardType)) //UIImage(named: setCardIcon(str: data["Type"] as! String))
+            
+            self.lblBankCardName.text = data.cardHolderName
+            self.lblCardNumber.isHidden = false
+            self.lblCardNumber.text = data.formatedCardNo
+            self.CardID = data.id
+            
+            paymentType = "card"
+        }
     }
     
     func addNewCard() {
@@ -411,6 +412,8 @@ class SendMoneyViewController: BaseViewController, UIPickerViewDelegate, UIPicke
         
         MobileNoDetailReqModel.mobile_no = txtmobileNumber.text ?? ""
         MobileNoDetailReqModel.user_type = self.strUserType
+        MobileNoDetailReqModel.amount = txtAmount.text ?? ""
+        MobileNoDetailReqModel.sender_id = SingletonClass.sharedInstance.loginData.id
         
         UserWebserviceSubclass.MobileNoDetailDetail(MobileNoDetailModel: MobileNoDetailReqModel) { (json, status) in
 //            UtilityClass.hideHUD()

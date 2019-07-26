@@ -16,6 +16,9 @@ class HistoryListViewController: BaseViewController, UITableViewDataSource, UITa
 //     var arrHistoryData = [String]()
     var loginModelDetails : LoginModel = LoginModel()
     var walletHistoryRequest : WalletHistory = WalletHistory()
+    
+    var pageNo: Int = 1
+    private let refreshControl = UIRefreshControl()
   
     var arrHistoryData = [walletHistoryListData]()
     {
@@ -25,11 +28,20 @@ class HistoryListViewController: BaseViewController, UITableViewDataSource, UITa
         }
     }
     
-    
-    
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Add Refresh Control to Table View
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = refreshControl
+        } else {
+            tableView.addSubview(refreshControl)
+        }
+        
+        refreshControl.addTarget(self, action: #selector(self.refreshWeatherData(_:)), for: .valueChanged)
+        refreshControl.tintColor = ThemeColor // UIColor(red:0.25, green:0.72, blue:0.85, alpha:1.0)
+        
+        
     }
     override func viewWillAppear(_ animated: Bool)
     {
@@ -42,15 +54,11 @@ class HistoryListViewController: BaseViewController, UITableViewDataSource, UITa
         self.navigationItem.rightBarButtonItem?.tintColor = .black
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc private func refreshWeatherData(_ sender: Any) {
+        // Fetch Weather Data
+        webserviceCallForHistoryList()
     }
-    */
+
     
     @IBAction func btnFilterClicked(_ sender: Any)
     {
@@ -111,9 +119,10 @@ class HistoryListViewController: BaseViewController, UITableViewDataSource, UITa
             AlertMessage.showMessageForError("error")
             return
         }
-        var profile = loginModelDetails.loginData
+        let profile = loginModelDetails.loginData
         
         walletHistoryRequest.customer_id = profile!.id
+        walletHistoryRequest.page = "\(pageNo)"
         UtilityClass.showHUD(with: self.view)
         
         UserWebserviceSubclass.walletHistoryList(WalletHistoryModel: walletHistoryRequest) { (json, status) in
@@ -124,16 +133,17 @@ class HistoryListViewController: BaseViewController, UITableViewDataSource, UITa
                 UserDefaults.standard.set(true, forKey: "isUserLogin")
                 
                 let WalletHistoryListDetails = WalletHistoryListModel.init(fromJson: json)
-                do
-                {
-                    try self.arrHistoryData = WalletHistoryListDetails.walletHistorydata
-                }
-                catch
-                {
+//                do
+//                {
+                   self.arrHistoryData = WalletHistoryListDetails.walletHistorydata
+//                }
+//                catch
+//                {
                     UtilityClass.hideHUD()
-                    AlertMessage.showMessageForError("error")
-                }
-
+//                }
+                self.tableView.reloadData()
+                
+                self.refreshControl.endRefreshing()
             }
             else{
                 UtilityClass.hideHUD()

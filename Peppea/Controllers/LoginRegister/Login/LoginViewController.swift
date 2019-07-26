@@ -11,6 +11,10 @@ import SkyFloatingLabelTextField
 
 class LoginViewController: UIViewController {
 
+    // ----------------------------------------------------
+    // MARK: - Outlets
+    // ----------------------------------------------------
+
     @IBOutlet weak var txtMobileEmail: ThemeTextFieldLoginRegister!
     @IBOutlet weak var txtPassword: ThemeTextFieldLoginRegister!
     @IBOutlet weak var btnForgotPassword: UIButton!
@@ -19,18 +23,26 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var btnSignUp: UIButton!
     @IBOutlet weak var lblDontHaveAnAccount: UILabel!
     @IBOutlet weak var lblOr: UILabel!
+    
+    // ----------------------------------------------------
+    // MARK: - Globle Declaration Methods
+    // ----------------------------------------------------
+    
     var LogInModel : loginModel = loginModel()
 
-
-
+    // ----------------------------------------------------
+    // MARK: - Base Methods
+    // ----------------------------------------------------
     override func viewDidLoad()
     {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        #if targetEnvironment(simulator)
+            txtMobileEmail.text = "bhavesh@gmail.com"
+            txtPassword.text = "12345678"
+        #else
         
-        txtMobileEmail.text = "rahul.bbit@gmail.com"
-        txtPassword.text = "12345678"
+        #endif
+       
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -55,6 +67,9 @@ class LoginViewController: UIViewController {
         lblDontHaveAnAccount.textColor = ThemeColor
     }
     
+    // ----------------------------------------------------
+    // MARK: - Actions
+    // ----------------------------------------------------
     @IBAction func btnSignUp(_ sender: UIButton) {
         self.performSegue(withIdentifier: "navigateToRegister", sender: nil)
     }
@@ -67,18 +82,25 @@ class LoginViewController: UIViewController {
         LogInModel.lat = "23.75821"
         LogInModel.lng = "23.75821"
         LogInModel.device_token = "64546546464646465465464"
-        if(self.validations().0 == false)
-        {
+        
+        if(self.validations().0 == false)  {
              AlertMessage.showMessageForError(self.validations().1)
         }
-        else
-        {
+        else {
             self.webserviceCallForLogin()
         }
-
-
     }
     
+    @IBAction func btnForgotPassword(_ sender: Any) {
+        let viewController = self.storyboard?.instantiateViewController(withIdentifier: "ForgotPasswordViewController") as! ForgotPasswordViewController
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+
+    
+    // ----------------------------------------------------
+    // MARK: - Webservice Methods
+    // ----------------------------------------------------
+
     func webserviceCallForLogin()
     {
         UtilityClass.showHUD(with: self.view)
@@ -121,11 +143,7 @@ class LoginViewController: UIViewController {
         //                (UIApplication.shared.delegate as! AppDelegate).GoToHome()
         //            }
     }
-    @IBAction func btnForgotPassword(_ sender: Any) {
-        let viewController = self.storyboard?.instantiateViewController(withIdentifier: "ForgotPasswordViewController") as! ForgotPasswordViewController
-        self.navigationController?.pushViewController(viewController, animated: true)
-    }
-
+   
     func validations() -> (Bool,String)
     {
 

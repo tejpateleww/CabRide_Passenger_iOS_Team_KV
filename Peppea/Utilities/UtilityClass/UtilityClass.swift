@@ -32,34 +32,54 @@ class DataClass {
 }
 
 
+let forceLogoutMsg = "Response status code was unacceptable: 403."
 
 //MARK: - Message Alert Show
 struct AlertMessage {
     static var messageBar = MessageBarController()
 
     static  func showMessageForError(_ strTitle: String) {
+        
+        forceLogout.forcefullyLogout(strTitle: strTitle)
         messageBar.MessageShow(title: strTitle as NSString, alertType: MessageView.Layout.cardView, alertTheme: .error, TopBottom: true)
     }
     static func showMessageForSuccess(_ strTitle: String) {
+        forceLogout.forcefullyLogout(strTitle: strTitle)
         messageBar.MessageShow(title: strTitle as NSString, alertType: MessageView.Layout.cardView, alertTheme: .success, TopBottom: true)
     }
     static func showCustomeMessage(title strTitle: String,description strDescription : String) {
+        forceLogout.forcefullyLogout(strTitle: strDescription)
         messageBar.showCustomMessage(title: strTitle, description: strDescription, TopBottom: true)
+    }
+}
+
+struct forceLogout {
+    static func forcefullyLogout(strTitle: String) {
+     
+        if strTitle == forceLogoutMsg {
+            
+            if let menuVC = (UIApplication.shared.keyWindow)?.rootViewController?.children.first?.children.last as? SideMenuTableViewController {
+                menuVC.webserviceForLogout()
+            }
+            else if let menuVC = (UIApplication.shared.keyWindow)?.rootViewController?.children.first?.children.first as? SideMenuTableViewController {
+                menuVC.webserviceForLogout()
+            }
+            return
+        }
     }
 }
 
 class UtilityClass : NSObject
 {
-
+    
     static var messageBar = MessageBarController()
 
-    class func showAlert(title:String,message:String,alertTheme:Theme)
-    {
+    class func showAlert(title:String,message:String,alertTheme:Theme) {
+        
+        forceLogout.forcefullyLogout(strTitle: message)
         messageBar.MessageShow(title: message as NSString, alertType: MessageView.Layout.cardView, alertTheme: alertTheme, TopBottom: true)
-
     }
-
-
+    
     class func viewCornerRadius(view : UIView,borderWidth:CGFloat,borderColor:UIColor)
     {
         view.layer.cornerRadius = view.frame.height/2

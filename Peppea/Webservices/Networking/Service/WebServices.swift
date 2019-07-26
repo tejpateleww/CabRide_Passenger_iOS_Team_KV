@@ -98,8 +98,15 @@ class WebService{
                 if let json = response.result.value{
                     let resJson = JSON(json)
                     print("the response is \(resJson)")
-                    let status = resJson["status"].boolValue
-                    completion(resJson, status)
+                    
+                    if "\(url)".contains("geocode/json?latlng=") {
+                        let status = resJson["status"].stringValue.lowercased() == "ok"
+                        completion(resJson, status)
+                    }
+                    else {
+                        let status = resJson["status"].boolValue
+                        completion(resJson, status)
+                    }
                 }
                 else {
                     //  LoaderClass.hideActivityIndicator()

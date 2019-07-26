@@ -261,17 +261,19 @@ class WalletViewController: BaseViewController, UIPickerViewDelegate, UIPickerVi
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
-        
-        let data = aryCards[row]
-        
-        iconSelectedPaymentMethod.image = UIImage(named: setCardIcon(str: data.cardType)) //UIImage(named: setCardIcon(str: data["Type"] as! String))
-   
-        self.lblBankCardName.text = data.cardHolderName
-        self.lblCardNumber.isHidden = false
-        self.lblCardNumber.text = data.formatedCardNo
-        self.CardID = data.id
-       
-        paymentType = "card"
+     
+        if aryCards.count != 0 {
+            let data = aryCards[row]
+            
+            iconSelectedPaymentMethod.image = UIImage(named: setCardIcon(str: data.cardType)) //UIImage(named: setCardIcon(str: data["Type"] as! String))
+            
+            self.lblBankCardName.text = data.cardHolderName
+            self.lblCardNumber.isHidden = false
+            self.lblCardNumber.text = data.formatedCardNo
+            self.CardID = data.id
+            
+            paymentType = "card"
+        }        
     }
     
 }

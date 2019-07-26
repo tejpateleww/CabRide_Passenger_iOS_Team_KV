@@ -55,7 +55,8 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
     @IBOutlet weak var constraintStackViewBottom: NSLayoutConstraint!
     @IBOutlet weak var markerView: UIImageView!
     @IBOutlet weak var markerContainerView: UIView!
-
+    @IBOutlet weak var lblBuildNumber: UILabel!
+    
     let window = UIApplication.shared.keyWindow
 
     //MARK:- Variables
@@ -140,6 +141,10 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
         
         SocketIOManager.shared.establishConnection()
         
+        if SingletonClass.sharedInstance.bookingInfo != nil {
+            self.booingInfo = SingletonClass.sharedInstance.bookingInfo!
+        }
+        
         self.btnViewTop.addTarget(self, action: #selector(setBottomViewOnclickofViewTop), for: .touchUpInside)
 
         self.webserviceForCardList()
@@ -147,6 +152,29 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
         self.setupLocationManager()
         self.setupNavigationController()
         self.setupViewCategory()
+        
+        if self.booingInfo.status == "pending" {
+            setupTripStatu(status: .pending)
+        } else if self.booingInfo.status == "accepted" {
+            setupTripStatu(status: .accepted)
+        } else if self.booingInfo.status == "traveling" {
+            setupTripStatu(status: .traveling)
+        } else if self.booingInfo.status == "completed" {
+            setupTripStatu(status: .completed)
+        }
+        
+        #if targetEnvironment(simulator)
+            lblBuildNumber.isHidden = false
+            lblBuildNumber.text = "Build : \(Bundle.main.buildVersionNumber) \t\t Booking ID: \(self.booingInfo.id ?? "")"
+        #else
+        lblBuildNumber.isHidden = true
+        
+        if UIDevice.current.name == "iPad red" {
+            lblBuildNumber.isHidden = false
+            lblBuildNumber.text = "Build : \(Bundle.main.buildVersionNumber ?? "") \t\t Booking ID: \(self.booingInfo.id ?? "")"
+        }
+        #endif
+        
     }
 
     override func viewDidLayoutSubviews() {
@@ -167,7 +195,23 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
         super.viewWillDisappear(animated)
 //        self.timer.invalidate()
     }
-
+    
+    func setupTripStatu(status: TripStauts) {
+        
+        switch status {
+            case .pending:
+                print("")
+            case .accepted:
+                self.hideAndShowView(view: .requestAccepted)
+                self.isExpandCategory = true
+            case .traveling:
+                self.hideAndShowView(view: .rideStart)
+                self.isExpandCategory = true
+            case .completed:
+                self.hideAndShowView(view: .ratings)
+                self.isExpandCategory = true
+        }
+    }
 
 
     //MARK:- Setup Methods
@@ -444,10 +488,25 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
         
         let strLati: String = "\(self.doublePickupLat)"
         let strlongi: String = "\(self.doublePickupLng)"
-        getAddressForLatLng(latitude: strLati, Longintude: strlongi, markerType: .pickUp)
         pickupLocation = defaultLocation.coordinate
         
+        let address = "\(geocodeAddress)\(defaultLocation.coordinate.latitude),\(defaultLocation.coordinate.longitude)&key=\(googlApiKey)"
+        
+        
+        // Get Perfect address using Google API
+        WebService.shared.getMethod(url: URL(string: address)!, httpMethod: .get) { (response, status) in
+            
+            if status {
+                self.txtPickupLocation.text = response.dictionary!["results"]!.array!.first!.dictionary!["formatted_address"]!.stringValue
+                self.pickupAndDropoffAddress.pickUp = self.txtPickupLocation.text ?? ""
+            } else {
+                // Get address using Google API is not working
+                self.getAddressForLatLng(latitude: strLati, Longintude: strlongi, markerType: .pickUp)
+            }
+        }
+//        getAddressForLatLng(latitude: strLati, Longintude: strlongi, markerType: .pickUp)
     }
+    
     //MARK:- Setup Pickup and Destination Location
 
     func placepickerMethodForLocation(isPickupLocation : Bool)
@@ -509,6 +568,8 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
                     txtDropLocation.text = addressString
                     pickupAndDropoffAddress.dropOff = txtDropLocation.text ?? ""
                 }
+                
+               self.pickupLocation = placemark.location!.coordinate
             }
         }
     }
@@ -526,19 +587,19 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
                 DispatchQueue.main.async(execute: {
                     if let directionsData = NSData(contentsOf: directionsURL! as URL)
                     {
-                    do{
-                        let dictionary: Dictionary<String, AnyObject> = try JSONSerialization.jsonObject(with: directionsData as Data, options: JSONSerialization.ReadingOptions.mutableContainers) as! Dictionary<String, AnyObject>
+                        do{
+                            let dictionary: Dictionary<String, AnyObject> = try JSONSerialization.jsonObject(with: directionsData as Data, options: JSONSerialization.ReadingOptions.mutableContainers) as! Dictionary<String, AnyObject>
 
-                        let status = dictionary["status"] as! String
+                            let status = dictionary["status"] as! String
 
-                        if status == "OK" {
-                            self.drawRoute(routeDict: dictionary)
+                            if status == "OK" {
+                                self.drawRoute(routeDict: dictionary)
+                            }
                         }
-                    }
-                    catch
-                    {
-                        print("error while drawing route")
-                    }
+                        catch
+                        {
+                            print("error while drawing route")
+                        }
                     }
                 })
             }
@@ -717,8 +778,8 @@ extension HomeViewController: GMSAutocompleteViewControllerDelegate {
             
             self.emitSocket_GetEstimateFare(param: param)
         }
-
-        self.routeDrawMethod(origin: txtPickupLocation.text, destination: txtDropLocation.text)
+        self.routeDrawMethod(origin: "\(pickupLocation.latitude),\(pickupLocation.longitude)", destination: "\(destinationLocation.latitude),\(destinationLocation.longitude)")
+//        self.routeDrawMethod(origin: txtPickupLocation.text, destination: txtDropLocation.text)
         dismiss(animated: true, completion: nil)
     }
 
@@ -739,6 +800,19 @@ extension HomeViewController: GMSAutocompleteViewControllerDelegate {
         
         //        self.mapView?.stopRendering()
         //        self.mapView = nil
+    }
+    
+    /// Setup After Complete trip or Cancel trip
+    func setupAfterComplete() {
+        self.txtDropLocation.text = ""
+        self.currentLocationAction()
+        self.carListContainerView.isHidden = false
+        self.driverInfoContainerView.isHidden = true
+        self.driverRatingContainerView.isHidden = true
+        self.viewPickupLocation.isHidden = true
+        self.viewDropOffLocation.isHidden = false
+        self.containerView.isHidden = true
+        self.hideBookLaterButtonFromDroplocationField = false
     }
 }
 

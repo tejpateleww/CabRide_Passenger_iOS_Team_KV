@@ -42,9 +42,31 @@ class SplashViewController: UIViewController {
     func webserviceforAPPInit()
     {
         
+        var loginModelDetails = LoginModel()
+        do
+        {
+            if UserDefaults.standard.object(forKey: "userProfile") != nil {
+                
+                loginModelDetails = try UserDefaults.standard.get(objectType: LoginModel.self, forKey: "userProfile")! // set(object: loginModelDetails, forKey: "userProfile") //(loginModelDetails, forKey: "userProfile")
+                UserDefaults.standard.set(loginModelDetails.loginData.xApiKey, forKey: "X_API_KEY")
+                SingletonClass.sharedInstance.loginData = loginModelDetails.loginData
+                SingletonClass.sharedInstance.walletBalance = loginModelDetails.loginData.walletBalance
+            }
+        }
+        catch
+        {
+            UtilityClass.hideHUD()
+            AlertMessage.showMessageForError("error")
+        }
+        
         var strParam = String()
         
         strParam = NetworkEnvironment.baseURL + ApiKey.Init.rawValue + "ios_customer/\(kAPPVesion)"
+        if SingletonClass.sharedInstance.loginData.id != nil || SingletonClass.sharedInstance.loginData.id != "" {
+            
+            strParam = NetworkEnvironment.baseURL + ApiKey.Init.rawValue + "ios_customer/\(kAPPVesion)/\(SingletonClass.sharedInstance.loginData.id ?? "")"
+        }
+        
 //
         UserWebserviceSubclass.initApi(strURL: strParam) { (json, status) in
             if status
@@ -64,28 +86,18 @@ class SplashViewController: UIViewController {
                 
                 let isLogin = UserDefaults.standard.bool(forKey: "isUserLogin")
                 
-                if isLogin == true
-                {
-                    var loginModelDetails = LoginModel()
-                    do
-                    {
-                        if UserDefaults.standard.object(forKey: "userProfile") != nil {
-                            
-                            loginModelDetails = try UserDefaults.standard.get(objectType: LoginModel.self, forKey: "userProfile")! // set(object: loginModelDetails, forKey: "userProfile") //(loginModelDetails, forKey: "userProfile")
-                            UserDefaults.standard.set(loginModelDetails.loginData.xApiKey, forKey: "X_API_KEY")
-                            SingletonClass.sharedInstance.loginData = loginModelDetails.loginData
-                            SingletonClass.sharedInstance.walletBalance = loginModelDetails.loginData.walletBalance
-                        }
+                if isLogin == true {
+                    
+                    if json.dictionary?["booking_info"] != nil {
+                        let info = BookingInfo(fromJson: json.dictionary?["booking_info"])
+                        
+                        SingletonClass.sharedInstance.bookingInfo = info
+                        (UIApplication.shared.delegate as! AppDelegate).GoToHome(bookingInfo: info)
+                    } else {
+                        (UIApplication.shared.delegate as! AppDelegate).GoToHome()
                     }
-                    catch
-                    {
-                        UtilityClass.hideHUD()
-                        AlertMessage.showMessageForError("error")
-                    }
-                    (UIApplication.shared.delegate as! AppDelegate).GoToHome()
                 }
-                else
-                {
+                else {
                     (UIApplication.shared.delegate as! AppDelegate).GoToLogin()
                 }
             }

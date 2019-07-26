@@ -14,10 +14,10 @@ typealias NetworkRouterCompletion = ((Data?,[String:Any]?, Bool) -> ())
 
 enum NetworkEnvironment: String {
    
-    case qa = "http://13.127.213.134/panel/api/customer_api/"
+    case qa = "https://www.peppea.com/panel/api/customer_api/"// "http://13.127.213.134/panel/api/customer_api/"
     //http://13.127.213.134/panel
     
-    case imageURL = "http://13.127.213.134/panel/"
+    case imageURL = "https://www.peppea.com/panel/"
     
     static var baseURL : String{
         return NetworkEnvironment.environment.rawValue
@@ -34,8 +34,6 @@ enum NetworkEnvironment: String {
             
             if UserDefaults.standard.object(forKey: "isUserLogin") as? Bool == true {
                 
-                
-            
                 var loginModelDetails: LoginModel = LoginModel()
                 do {
                     loginModelDetails = try UserDefaults.standard.get(objectType: LoginModel.self, forKey: "userProfile")!
@@ -92,7 +90,7 @@ enum ApiKey: String{
     case QRCodeDetail = "qr_code_detail"
     case BookingRequest = "booking_request"
     case PastBookingHistory = "past_booking_history/"
-    case MobileNoDetail = "mobile_no_detail"
+    case MobileNoDetail = "transfer_money_with_mobile_no" // "mobile_no_detail"
     case checkPromocode = "check_promocode"
     
 }
@@ -109,7 +107,7 @@ enum ParameterKey
 enum socketApiKeys: String
 {
     
-    case kSocketBaseURL = "http://13.127.213.134:8080" //"https://www.tantaxitanzania.com:8081""http://3.120.161.225:8080""http://13.237.0.107:8080/"http://3.120.161.225:8080""https://pickngolk.info:8081" "https://pickngolk.info:8081"   // "http://54.169.67.226:8080"  //
+    case kSocketBaseURL = "https://www.peppea.com:8080" // "http://13.127.213.134:8080" //"https://www.tantaxitanzania.com:8081""http://3.120.161.225:8080""http://13.237.0.107:8080/"http://3.120.161.225:8080""https://pickngolk.info:8081" "https://pickngolk.info:8081"   // "http://54.169.67.226:8080"  //
     
     case UpdateCustomerLatLng       = "connect_customer"    // customer_id, lat, lng
     case GetEstimateFare            = "get_estimate_fare"   // customer_id : 1, pickup_lng:72.5291184, dropoff_lat:23.0305179, dropoff_lng:72.5053514, pickup_lat:23.0636726
@@ -118,7 +116,10 @@ enum socketApiKeys: String
     case CompleteTrip               = "complete_trip"
     case OnTheWayBookLater          = "on_the_way_booking_request"
     
-    
+    case AskForTips                 = "ask_for_tips"
+    case ReceiveTips                = "receive_tips"    // booking_id,tips
+    case CancelledBookingRequestBySystem = "cancelled_booking_request_by_system"
+    case CancelTrip                 = "cancel_trip"
 }
 
 

@@ -22,15 +22,18 @@ class DriverRatingAndTipViewController: UIViewController {
     @IBOutlet weak var btnDone: ThemeButton!
     @IBOutlet var btnTips: [UIButton]!
     
+    var bookingId = ""
+    var tip = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupView()
-
     }
 
     func setData(bookingData: BookingInfo) {
+        
+        bookingId = bookingData.id
         
         let driver = bookingData.driverInfo
         _ = bookingData.customerInfo
@@ -46,7 +49,7 @@ class DriverRatingAndTipViewController: UIViewController {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        for btn in self.btnTips
+        for (ind,btn) in self.btnTips.enumerated()
         {
             btn.borderWidth = 1.0
             btn.borderColor = ThemeColor
@@ -54,6 +57,9 @@ class DriverRatingAndTipViewController: UIViewController {
             btn.layer.masksToBounds = true
             btn.titleLabel?.font = UIFont.regular(ofSize: 12)
             btn.setTitleColor(ThemeColor, for: .normal)
+            
+            btn.tag = ind
+            btn.addTarget(self, action: #selector(self.tipAction(_:)), for: .touchUpInside)
         }
     }
 
@@ -65,12 +71,27 @@ class DriverRatingAndTipViewController: UIViewController {
         viewRating.settings.starMargin = 5
     }
 
+    @objc func tipAction(_ sender: UIButton) {
+        
+        let value = sender.titleLabel?.text?.replacingOccurrences(of: "K ", with: "")
+        tip = value?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+    }
 
     @IBAction func btnDone(_ sender: Any) {
-        let homeVC = self.parent as? HomeViewController
-        homeVC?.containerView.isHidden = true
-        homeVC?.viewPickupLocation.isHidden = true
-        homeVC?.hideBookLaterButtonFromDroplocationField = false
+        
+//        let alert = UIAlertController(title: AppName.kAPPName, message: "Your trip has been completed", preferredStyle: .alert)
+//        let ok = UIAlertAction(title: "OK", style: .default) { (action) in
+
+            let homeVC = self.parent as? HomeViewController
+//            homeVC?.containerView.isHidden = true
+//            homeVC?.viewPickupLocation.isHidden = true
+//            homeVC?.hideBookLaterButtonFromDroplocationField = false
+
+            homeVC?.emitSocket_ReceiveTips(param: ["booking_id": self.bookingId, "tips": self.tip]) // booking_id,tips
+//            homeVC?.setupAfterComplete()
+//        }
+//        alert.addAction(ok)
+//        self.present(alert, animated: true, completion: nil)
     }
 
 

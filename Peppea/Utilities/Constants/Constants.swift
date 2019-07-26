@@ -16,6 +16,8 @@ import UIKit
 
 let googlApiKey = "AIzaSyDcug87uBhFLMo1KlqyaO10shE-sNTBCmw" // built from ODDs
 let baseURLDirections = "https://maps.googleapis.com/maps/api/directions/json?"
+let geocodeAddress = "https://maps.googleapis.com/maps/api/geocode/json?latlng="
+
 var imagBaseURL = "http://13.127.213.134/panel/"
 
 let kAPPVesion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String

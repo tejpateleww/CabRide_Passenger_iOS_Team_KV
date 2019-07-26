@@ -11,4 +11,5 @@ import Foundation
 
 class WalletHistory : RequestModel {
     var customer_id: String = ""
+    var page: String = ""
 }

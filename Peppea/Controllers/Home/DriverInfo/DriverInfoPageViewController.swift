@@ -38,13 +38,13 @@ class DriverInfoPageViewController: UIViewController {
         _ = bookingData.customerInfo
         let vehicleType = bookingData.vehicleType
         
-        let esti = Int(bookingData.estimatedFare)
+        let esti = Int(Double(bookingData.estimatedFare) ?? 0)
         
         lblCareName.text = vehicleType?.name
 //        lblCarPlateNumber.text = vehicleType.
         lblPickupLocation.text = bookingData.pickupLocation
         lblDropoffLocation.text = bookingData.dropoffLocation
-        lblEstimatedFare.text = "\(Currency)\((esti ?? 0) - 10) - \(Currency)\((esti ?? 0) + 10)"
+        lblEstimatedFare.text = "\(Currency)\((esti) - 10) - \(Currency)\((esti) + 10)"
         lblDriverName.text = driver?.firstName
         
         let base = NetworkEnvironment.baseImageURL
@@ -78,6 +78,15 @@ class DriverInfoPageViewController: UIViewController {
         super.viewDidLoad()
         imgDestinationIcon.tintColor = ThemeColor
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        imgDriver.layer.borderWidth = 1
+        imgDriver.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        imgDriver.layer.cornerRadius = imgDriver.frame.width / 2
+        imgDriver.layer.masksToBounds = true
+    }
+    
     @IBAction func btnMessage(_ sender: Any) {
     }
 
@@ -86,7 +95,8 @@ class DriverInfoPageViewController: UIViewController {
 
     @IBAction func btnCancel(_ sender: Any) {
         let homeVC = self.parent as? HomeViewController
-        homeVC?.hideAndShowView(view: .waiting)
+//        homeVC?.hideAndShowView(view: .waiting)
+        homeVC?.setupAfterComplete()
        
     }
     @IBAction func btnWaitingTime(_ sender: Any) {

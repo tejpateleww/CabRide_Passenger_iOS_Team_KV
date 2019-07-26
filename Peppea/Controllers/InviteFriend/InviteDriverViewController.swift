@@ -9,7 +9,7 @@
 import UIKit
 import MessageUI
 import Social
-//import SDWebImage
+import SDWebImage
 
 class InviteDriverViewController: BaseViewController, MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate {
 
@@ -33,10 +33,23 @@ class InviteDriverViewController: BaseViewController, MFMailComposeViewControlle
     @IBOutlet weak var lblWhenAFriendRegister: UILabel!
     @IBOutlet weak var btnShare: UIButton!
     
+    func setData() {
+        
+        let user = SingletonClass.sharedInstance.bookingInfo
+        
+        let base = NetworkEnvironment.baseImageURL
+
+        imgProfilePick.sd_setImage(with: URL(string: base + (user?.customerInfo.profileImage)! ), completed: nil)
+        
+        lblReferralCode.text = user?.customerInfo.referralCode
+        
+    }
+    
     @IBOutlet weak var lblShareYourInviteCode: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+      
+        setData()
 
 //        let profileData = SingletonClass.sharedInstance.dictProfile
 //
@@ -112,7 +125,7 @@ class InviteDriverViewController: BaseViewController, MFMailComposeViewControlle
 //        }
         
         let strInvitation1 = "has invited you to become a Peppea Passenger"//.localized
-        let strInvitation2 = "Your invite code is:"//.localized
+        let strInvitation2 = "Your invite code is: \(lblReferralCode.text ?? "")"//.localized
         
         let strContent = ""//\(strName) \(strInvitation1)\n \n click here \("https://itunes.apple.com/us/app/TanTaxi/id1445179460?ls=1&mt=8") \n\n \(strInvitation2) \(strReferralCode)"
         // \n https://www.facebook.com/tesluxe \n https://www.instagram.com/teslux3 \n https://www.instagram.com/teslux3 \n https://twitter.com/TESLUX3"
@@ -121,7 +134,7 @@ class InviteDriverViewController: BaseViewController, MFMailComposeViewControlle
         //        click here (https://play.google.com/store/apps/details?id=com.Tesluxe) + "\n\n Your invite code is: "+ iniviteCode + "\n" + https://www.facebook.com/tesluxe
         //            + "\n" + https://www.instagram.com/teslux3
         //            + "\n" +https://twitter.com/TESLUX3
-        let share = [strContent]
+        let share = [strInvitation1,strInvitation2]
         
         let activityViewController = UIActivityViewController(activityItems: share, applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view

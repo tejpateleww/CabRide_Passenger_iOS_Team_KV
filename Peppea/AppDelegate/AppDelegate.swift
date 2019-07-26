@@ -74,7 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK:- Login & Logout Methods
 
-    func GoToHome() {
+    func GoToHome(bookingInfo: BookingInfo? = nil) {
         let storyborad = UIStoryboard(name: "Main", bundle: nil)
         let CustomSideMenu = storyborad.instantiateViewController(withIdentifier: "CustomSideMenuViewController") as! SideMenuController
         let NavHomeVC = UINavigationController(rootViewController: CustomSideMenu)

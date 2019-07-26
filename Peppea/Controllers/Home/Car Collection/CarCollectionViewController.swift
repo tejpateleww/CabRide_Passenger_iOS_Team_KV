@@ -328,7 +328,7 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
                             let estimateCurrentData = homeVc.estimateData.filter{$0.vehicleTypeId == dictOnlineCars.id}.first
                             
                             let estimate = estimateCurrentData?.estimateTripFare
-                            estimateFare = estimateCurrentData?.estimateTripFare ?? ""
+                            estimateFare = estimate ?? ""
                         }
                     }
                 }

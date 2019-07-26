@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0650348A2AC06055B9F453D4 /* Pods_Peppea.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0810AD09B74A352FE6C277E6 /* Pods_Peppea.framework */; };
 		1830C47B22E74235004F107F /* dummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1830C47A22E74235004F107F /* dummyData.swift */; };
+		183BEF7622E9C762000C97E5 /* TripStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183BEF7522E9C762000C97E5 /* TripStatus.swift */; };
 		18CB7F7C22E841ED004FA66C /* SocketProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CB7F7B22E841ED004FA66C /* SocketProtocol.swift */; };
 		18CB7F7E22E844CB004FA66C /* HomeSocketCalls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CB7F7D22E844CB004FA66C /* HomeSocketCalls.swift */; };
 		18CB7F8022E85A0C004FA66C /* CarCollectionWebserviceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CB7F7F22E85A0C004FA66C /* CarCollectionWebserviceProtocol.swift */; };
@@ -163,6 +164,7 @@
 		0568EF05446C647550DA45F6 /* Pods-Peppea.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Peppea.release.xcconfig"; path = "Pods/Target Support Files/Pods-Peppea/Pods-Peppea.release.xcconfig"; sourceTree = "<group>"; };
 		0810AD09B74A352FE6C277E6 /* Pods_Peppea.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Peppea.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1830C47A22E74235004F107F /* dummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dummyData.swift; sourceTree = "<group>"; };
+		183BEF7522E9C762000C97E5 /* TripStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripStatus.swift; sourceTree = "<group>"; };
 		18CB7F7B22E841ED004FA66C /* SocketProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketProtocol.swift; sourceTree = "<group>"; };
 		18CB7F7D22E844CB004FA66C /* HomeSocketCalls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSocketCalls.swift; sourceTree = "<group>"; };
 		18CB7F7F22E85A0C004FA66C /* CarCollectionWebserviceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarCollectionWebserviceProtocol.swift; sourceTree = "<group>"; };
@@ -724,6 +726,7 @@
 				466957E422DDB151008A73C0 /* ResponseModel */,
 				EE9F3F6822C769F100426377 /* Helper */,
 				EE9F3F6722C769D700426377 /* RequestModel */,
+				183BEF7522E9C762000C97E5 /* TripStatus.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1276,6 +1279,7 @@
 				18CB7F7E22E844CB004FA66C /* HomeSocketCalls.swift in Sources */,
 				B1E233D422D3111D00CEA568 /* BidDetailsViewController.swift in Sources */,
 				B1E233E122D3220600CEA568 /* MyBidListViewCell.swift in Sources */,
+				183BEF7622E9C762000C97E5 /* TripStatus.swift in Sources */,
 				B1DE159822D361D3001045B1 /* MyMileVC.swift in Sources */,
 				463DEFEF22D8B01B002365F8 /* HeaderTableViewController.swift in Sources */,
 				EEE2B80422C628F2004F1C00 /* RegisterContainerViewController.swift in Sources */,

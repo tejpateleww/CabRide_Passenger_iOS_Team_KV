@@ -17,6 +17,7 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
     
     @IBOutlet weak var tblView: UITableView!
     @IBOutlet weak var viewPaymentPopup: UIView!
+    @IBOutlet weak var constraintHeightOfTableView: NSLayoutConstraint! // 229
     
     var pickerViewExpiry = UIPickerView()
     var strSelectMonth = String()
@@ -402,7 +403,7 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
   
             let data = aryOtherPayment[indexPath.row]
             cell.iconWallet.image = UIImage.init(named: data["Type"] as! String)
-            cell.lblTitle.text = data["CardNum"] as! String
+            cell.lblTitle.text = data["CardNum"] as? String
         
             return cell
         }
@@ -450,6 +451,11 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
         self.webserviceforAddnewCard()
     }
     
+    override func updateViewConstraints() {
+        self.constraintHeightOfTableView.constant = self.tblView.contentSize.height
+        super.updateViewConstraints()
+    }
+    
     func webserviceForDeleteCardFromList(_ strCardId : String)
     {
         RemoveCardReqModel.card_id = strCardId
@@ -467,8 +473,8 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
                 AlertMessage.showMessageForError("error")
             }
         }
-        
     }
+    
     func webserviceForCardList()
     {
         self.aryCardData.removeAll()
@@ -482,9 +488,11 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
                 let CardListDetails = AddCardModel.init(fromJson: json)
                 do
                 {
-                   try self.aryCardData = CardListDetails.cards
+                    self.aryCardData = CardListDetails.cards
                     try UserDefaults.standard.set(object: CardListDetails, forKey: "cards")
                     self.tblView.reloadData()
+                    self.updateViewConstraints()
+                    
                 }
                 catch
                 {

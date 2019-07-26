@@ -13,4 +13,6 @@ class MobileNoDetail : RequestModel
 {
     var mobile_no : String = ""
     var user_type : String = ""
+    var amount: String = ""
+    var sender_id: String = ""
 }
