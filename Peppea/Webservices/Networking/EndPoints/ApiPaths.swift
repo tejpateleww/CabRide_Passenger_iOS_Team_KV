@@ -93,6 +93,9 @@ enum ApiKey: String{
     case MobileNoDetail = "transfer_money_with_mobile_no" // "mobile_no_detail"
     case checkPromocode = "check_promocode"
     
+    case ReviewRating = "review_rating"
+    case CancelTrip = "cancel_trip"
+    
 }
 enum ParameterKey
 {

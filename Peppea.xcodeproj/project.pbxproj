@@ -10,6 +10,8 @@
 		0650348A2AC06055B9F453D4 /* Pods_Peppea.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0810AD09B74A352FE6C277E6 /* Pods_Peppea.framework */; };
 		1830C47B22E74235004F107F /* dummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1830C47A22E74235004F107F /* dummyData.swift */; };
 		183BEF7622E9C762000C97E5 /* TripStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183BEF7522E9C762000C97E5 /* TripStatus.swift */; };
+		1882A0AD22EB1387008B5D1A /* CancelTripRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1882A0AC22EB1387008B5D1A /* CancelTripRequestModel.swift */; };
+		1882A0AF22EB1801008B5D1A /* ReviewRatingReqModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1882A0AE22EB1801008B5D1A /* ReviewRatingReqModel.swift */; };
 		18CB7F7C22E841ED004FA66C /* SocketProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CB7F7B22E841ED004FA66C /* SocketProtocol.swift */; };
 		18CB7F7E22E844CB004FA66C /* HomeSocketCalls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CB7F7D22E844CB004FA66C /* HomeSocketCalls.swift */; };
 		18CB7F8022E85A0C004FA66C /* CarCollectionWebserviceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CB7F7F22E85A0C004FA66C /* CarCollectionWebserviceProtocol.swift */; };
@@ -165,6 +167,8 @@
 		0810AD09B74A352FE6C277E6 /* Pods_Peppea.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Peppea.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1830C47A22E74235004F107F /* dummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dummyData.swift; sourceTree = "<group>"; };
 		183BEF7522E9C762000C97E5 /* TripStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripStatus.swift; sourceTree = "<group>"; };
+		1882A0AC22EB1387008B5D1A /* CancelTripRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelTripRequestModel.swift; sourceTree = "<group>"; };
+		1882A0AE22EB1801008B5D1A /* ReviewRatingReqModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRatingReqModel.swift; sourceTree = "<group>"; };
 		18CB7F7B22E841ED004FA66C /* SocketProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketProtocol.swift; sourceTree = "<group>"; };
 		18CB7F7D22E844CB004FA66C /* HomeSocketCalls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSocketCalls.swift; sourceTree = "<group>"; };
 		18CB7F7F22E85A0C004FA66C /* CarCollectionWebserviceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarCollectionWebserviceProtocol.swift; sourceTree = "<group>"; };
@@ -754,6 +758,8 @@
 				464CB65F22E195E500273F29 /* CheckPromocode.swift */,
 				464CB66122E1961600273F29 /* bookingRequest.swift */,
 				46869E6522E1D78D0053CF37 /* transferMoneyToBank.swift */,
+				1882A0AC22EB1387008B5D1A /* CancelTripRequestModel.swift */,
+				1882A0AE22EB1801008B5D1A /* ReviewRatingReqModel.swift */,
 			);
 			path = RequestModel;
 			sourceTree = "<group>";
@@ -1292,6 +1298,7 @@
 				468E993222D9F26900072361 /* UpdatePersonalInfo.swift in Sources */,
 				464CB66222E1961600273F29 /* bookingRequest.swift in Sources */,
 				EEE2B80622C62929004F1C00 /* SplashViewController.swift in Sources */,
+				1882A0AD22EB1387008B5D1A /* CancelTripRequestModel.swift in Sources */,
 				466957DC22DD9E4A008A73C0 /* ApiPaths.swift in Sources */,
 				466957DB22DD9E4A008A73C0 /* Parameters.swift in Sources */,
 				EE35158522CE34A00035D0AC /* DriverRatingAndTipViewController.swift in Sources */,
@@ -1326,6 +1333,7 @@
 				468E991A22D9DBDA00072361 /* PeppeaBusinessSetupViewController.swift in Sources */,
 				EE9F3F6A22C76B4A00426377 /* Register.swift in Sources */,
 				18CB7F8E22E89688004FA66C /* RequestAcceptedDataModel.swift in Sources */,
+				1882A0AF22EB1801008B5D1A /* ReviewRatingReqModel.swift in Sources */,
 				18CB7F8722E86584004FA66C /* EstimateFare.swift in Sources */,
 				EEE7D73522CF8EEB0076B0C3 /* ChooseServiceViewController.swift in Sources */,
 				18CB7F8022E85A0C004FA66C /* CarCollectionWebserviceProtocol.swift in Sources */,

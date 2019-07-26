@@ -1627,7 +1627,7 @@ automatic expense for warding</string>
                                     <constraint firstAttribute="height" constant="70" id="Ud7-nh-DVf"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FE1-XC-SNi">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FE1-XC-SNi">
                                 <rect key="frame" x="10" y="50" width="355" height="191"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How was your trip with Thomas?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MIw-li-p0c">
@@ -1653,9 +1653,8 @@ automatic expense for warding</string>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="hgY-04-R6x">
-                                                <rect key="frame" x="0.0" y="11" width="205" height="80"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="hgY-04-R6x">
+                                                <rect key="frame" x="0.0" y="23" width="205" height="40"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="do0-AI-zz1">
                                                         <rect key="frame" x="0.0" y="0.0" width="205" height="40"/>
@@ -1679,50 +1678,62 @@ automatic expense for warding</string>
                                                                 <rect key="frame" x="165" y="0.0" width="40" height="40"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <state key="normal" title="Other"/>
+                                                                <connections>
+                                                                    <action selector="btnOtherAction:" destination="C5a-Ul-jbN" eventType="touchUpInside" id="T1J-NV-pD1"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="40" id="kM2-CB-jqw"/>
+                                                            <constraint firstAttribute="height" constant="40" id="UKg-zc-Mm7"/>
                                                         </constraints>
                                                     </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="pDA-xy-G98">
-                                                        <rect key="frame" x="0.0" y="40" width="205" height="40"/>
+                                                    <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="pDA-xy-G98">
+                                                        <rect key="frame" x="0.0" y="0.0" width="205" height="40"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rq3-8m-L6Q">
-                                                                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HjN-Nm-lKt">
+                                                                <rect key="frame" x="0.0" y="0.0" width="205" height="40"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" secondItem="rq3-8m-L6Q" secondAttribute="height" multiplier="1:1" id="SIK-NE-2Ca"/>
+                                                                    <constraint firstAttribute="height" constant="40" id="XJN-CL-Tca"/>
                                                                 </constraints>
-                                                                <state key="normal" title="K 20"/>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qid-yS-HVq">
-                                                                <rect key="frame" x="55" y="0.0" width="40" height="40"/>
-                                                                <state key="normal" title="K 30"/>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xgC-E7-nOr">
-                                                                <rect key="frame" x="110" y="0.0" width="40" height="40"/>
-                                                                <state key="normal" title="K 40"/>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lre-MU-NxZ">
-                                                                <rect key="frame" x="165" y="0.0" width="40" height="40"/>
+                                                                <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <state key="normal" title="Other"/>
-                                                            </button>
+                                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                            </textField>
                                                         </subviews>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="40" id="QL1-Eu-gi8"/>
-                                                        </constraints>
                                                     </stackView>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="hgY-04-R6x" secondAttribute="bottom" id="AmA-ZO-Zyo"/>
                                             <constraint firstItem="VLz-sp-uV3" firstAttribute="top" secondItem="Xt8-e6-WsO" secondAttribute="top" id="aUJ-XH-kvA"/>
                                             <constraint firstItem="VLz-sp-uV3" firstAttribute="centerX" secondItem="Xt8-e6-WsO" secondAttribute="centerX" id="gi0-cr-neV"/>
+                                            <constraint firstItem="hgY-04-R6x" firstAttribute="top" secondItem="VLz-sp-uV3" secondAttribute="bottom" constant="10" id="je3-fW-mYS"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mhb-ZO-9k2" customClass="ThemeButton" customModule="Peppea" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nYc-f9-dx3">
+                                        <rect key="frame" x="77.5" y="67" width="200" height="63"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder=" Comments..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wGf-dl-N5B">
+                                                <rect key="frame" x="0.0" y="5" width="200" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="8ay-3E-A1u"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="280" id="BcK-Xr-LXg"/>
+                                            <constraint firstItem="wGf-dl-N5B" firstAttribute="top" secondItem="nYc-f9-dx3" secondAttribute="top" constant="5" id="ZOP-Ux-mUS"/>
+                                            <constraint firstAttribute="trailing" secondItem="wGf-dl-N5B" secondAttribute="trailing" id="exs-FY-XKY"/>
+                                            <constraint firstItem="wGf-dl-N5B" firstAttribute="leading" secondItem="nYc-f9-dx3" secondAttribute="leading" id="joN-LV-NAC"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mhb-ZO-9k2" customClass="ThemeButton" customModule="Peppea" customModuleProvider="target">
                                         <rect key="frame" x="10" y="141" width="335" height="40"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -1739,6 +1750,7 @@ automatic expense for warding</string>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="nYc-f9-dx3" firstAttribute="centerX" secondItem="FE1-XC-SNi" secondAttribute="centerX" id="09G-pK-YPr"/>
                                     <constraint firstItem="Qhz-3b-BLb" firstAttribute="top" secondItem="MIw-li-p0c" secondAttribute="bottom" constant="5" id="0Me-Ia-Cof"/>
                                     <constraint firstAttribute="bottom" secondItem="mhb-ZO-9k2" secondAttribute="bottom" constant="10" id="6oS-eT-qtF"/>
                                     <constraint firstItem="Xt8-e6-WsO" firstAttribute="top" secondItem="Qhz-3b-BLb" secondAttribute="bottom" constant="10" id="B7L-6y-kMJ"/>
@@ -1748,7 +1760,9 @@ automatic expense for warding</string>
                                     <constraint firstAttribute="trailing" secondItem="mhb-ZO-9k2" secondAttribute="trailing" constant="10" id="Ubh-DR-GBr"/>
                                     <constraint firstItem="mhb-ZO-9k2" firstAttribute="leading" secondItem="FE1-XC-SNi" secondAttribute="leading" constant="10" id="Xmy-3I-YbU"/>
                                     <constraint firstItem="MIw-li-p0c" firstAttribute="top" secondItem="FE1-XC-SNi" secondAttribute="top" constant="5" id="ddr-2w-Ksn"/>
+                                    <constraint firstItem="Xt8-e6-WsO" firstAttribute="top" secondItem="nYc-f9-dx3" secondAttribute="top" id="sdt-8A-WUO"/>
                                     <constraint firstItem="MIw-li-p0c" firstAttribute="leading" secondItem="FE1-XC-SNi" secondAttribute="leading" constant="10" id="t4h-WC-mdM"/>
+                                    <constraint firstItem="Xt8-e6-WsO" firstAttribute="bottom" secondItem="nYc-f9-dx3" secondAttribute="bottom" id="yMY-S3-ld6"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1773,6 +1787,11 @@ automatic expense for warding</string>
                         <outlet property="btnTip40" destination="BOe-h7-fAt" id="aWu-Ms-P1q"/>
                         <outlet property="imgDriverImage" destination="KJC-eR-F3p" id="RbH-y7-U3b"/>
                         <outlet property="lblDriverName" destination="MIw-li-p0c" id="vwY-Hy-lKE"/>
+                        <outlet property="stackViewOther" destination="pDA-xy-G98" id="vBk-CR-phE"/>
+                        <outlet property="txtComments" destination="wGf-dl-N5B" id="QsN-P7-niM"/>
+                        <outlet property="txtOther" destination="HjN-Nm-lKt" id="KVv-9w-Vk3"/>
+                        <outlet property="viewAskForTip" destination="Xt8-e6-WsO" id="gPr-Au-qM4"/>
+                        <outlet property="viewComments" destination="nYc-f9-dx3" id="rYy-Gt-cHc"/>
                         <outlet property="viewRating" destination="Qhz-3b-BLb" id="Xq4-oK-c5H"/>
                         <outletCollection property="btnTips" destination="BOe-h7-fAt" collectionClass="NSMutableArray" id="5gu-Gn-nDp"/>
                         <outletCollection property="btnTips" destination="zTj-Oa-emD" collectionClass="NSMutableArray" id="WQk-OQ-Lkh"/>
@@ -1781,7 +1800,7 @@ automatic expense for warding</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hao-7j-cgf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1286" y="1813"/>
+            <point key="canvasLocation" x="1285.5999999999999" y="1812.5937031484259"/>
         </scene>
         <!--PaymentViewController-->
         <scene sceneID="wzS-hm-1hu">

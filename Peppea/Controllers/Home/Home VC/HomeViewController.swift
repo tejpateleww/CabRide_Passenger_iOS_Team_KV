@@ -24,6 +24,7 @@ enum HomeViews{
     case waiting
     case booking
     case completeTrip
+    case askForTip
     case none
 }
 
@@ -678,8 +679,13 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
             driverVC.viewWaiting.isHidden = true
             driverVC.cancelBtn.isHidden = true
             driverVC.setData(bookingData: self.booingInfo)
-        case .completeTrip:
+        case .ratings:
             guard let driverVC = self.ratingInfoVC else { return }
+            driverVC.viewType = .ratings
+            driverVC.setData(bookingData: self.booingInfo)
+        case .askForTip:
+            guard let driverVC = self.ratingInfoVC else { return }
+            driverVC.viewType = .askForTip
             driverVC.setData(bookingData: self.booingInfo)
         default:
             break

@@ -105,13 +105,16 @@ extension HomeViewController: SocketConnected {
             print(#function, "\n ", json)
             AlertMessage.showMessageForSuccess("Trip Completed")
             
-            let alert = UIAlertController(title: AppName.kAPPName, message: "Your trip has been completed", preferredStyle: .alert)
-            let ok = UIAlertAction(title: "OK", style: .default) { (action) in
-                
-                self.setupAfterComplete()
-            }
-            alert.addAction(ok)
-            self.present(alert, animated: true, completion: nil)
+            self.hideAndShowView(view: .ratings)
+            self.isExpandCategory = true
+            
+//            let alert = UIAlertController(title: AppName.kAPPName, message: "Your trip has been completed", preferredStyle: .alert)
+//            let ok = UIAlertAction(title: "OK", style: .default) { (action) in
+//
+//                self.setupAfterComplete()
+//            }
+//            alert.addAction(ok)
+//            self.present(alert, animated: true, completion: nil)
         }
     }
     
@@ -137,7 +140,7 @@ extension HomeViewController: SocketConnected {
             print(#function, "\n ", json)
             AlertMessage.showMessageForSuccess("Driver asks for Tips")
             
-            self.hideAndShowView(view: .ratings)
+            self.hideAndShowView(view: .askForTip)
             self.isExpandCategory = true
         }
     }

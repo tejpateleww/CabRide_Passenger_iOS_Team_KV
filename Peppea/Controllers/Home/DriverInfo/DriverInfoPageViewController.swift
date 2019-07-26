@@ -94,11 +94,13 @@ class DriverInfoPageViewController: UIViewController {
     }
 
     @IBAction func btnCancel(_ sender: Any) {
-        let homeVC = self.parent as? HomeViewController
-//        homeVC?.hideAndShowView(view: .waiting)
-        homeVC?.setupAfterComplete()
-       
+//        let homeVC = self.parent as? HomeViewController
+//  //      homeVC?.hideAndShowView(view: .waiting)
+//        homeVC?.setupAfterComplete()
+        
+        webserviceForCancelTrip()
     }
+    
     @IBAction func btnWaitingTime(_ sender: Any) {
         let homeVC = self.parent as? HomeViewController
         homeVC?.hideAndShowView(view: .ratings)
@@ -106,7 +108,26 @@ class DriverInfoPageViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        
     }
+    
+    // ----------------------------------------------------
+    // MARK: - Webservice Methods
+    // ----------------------------------------------------
+    func webserviceForCancelTrip() {
+        
+        let homeVC = self.parent as? HomeViewController
+        
+        let model = CancelTripRequestModel()
+        model.booking_id = homeVC?.booingInfo.id ?? ""
+        UserWebserviceSubclass.CancelTripBookingRequest(bookingRequestModel: model) { (response, status) in
+            
+            if status {
+                  homeVC?.setupAfterComplete()
+            } else {
+                AlertMessage.showMessageForError(response.dictionary?["message"]?.stringValue ?? "Something went wrong")
+            }
+        }
+    }
+    
     
 }

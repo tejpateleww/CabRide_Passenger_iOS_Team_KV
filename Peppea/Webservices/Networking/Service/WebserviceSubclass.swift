@@ -102,4 +102,15 @@ class UserWebserviceSubclass
         WebService.shared.getMethod(url: URL.init(string: strURLFinal)!, httpMethod: .get, completion: completion)
     }
     
+    class func CancelTripBookingRequest( bookingRequestModel : CancelTripRequestModel  ,completion: @escaping CompletionResponse ) {
+        let  params : [String:String] = bookingRequestModel.generatPostParams() as! [String : String]
+        WebService.shared.requestMethod(api: .CancelTrip, httpMethod: .post, parameters: params, completion: completion)
+    }
+
+    class func ReviewRatingToDriver( bookingRequestModel : ReviewRatingReqModel  ,completion: @escaping CompletionResponse ) {
+        let  params : [String:String] = bookingRequestModel.generatPostParams() as! [String : String]
+        WebService.shared.requestMethod(api: .ReviewRating, httpMethod: .post, parameters: params, completion: completion)
+    }
+
+    
 }
