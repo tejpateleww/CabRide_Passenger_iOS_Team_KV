@@ -92,36 +92,7 @@ class RegisterContainerViewController: UIViewController,UIScrollViewDelegate {
     
     func webServiceCallForRegister(_ RegistrationGetOTPModel : RegistrationModel, image : UIImage)
     {
-        
-        /*
-         "email:dev.elop.er.eww@gmail.com
-         mobile_no:9924455777
-         first_name:Mayur
-         last_name:Patel
-         dob:1992-07-07
-         gender:male
-         lat:23.8656565
-         lng:72.654656
-         device_token:sadfdfs65c4dwfvwdv6edbv16efbef1b165165
-         device_type:1
-         address:Nikol bapunagar
-         password:123456
-         profile_image:(optional)"
-         */
-        
-//        RegistrationGetOTPModel.email = SingletonRegistration.sharedRegistration.Email
-//        RegistrationGetOTPModel.mobile_no = SingletonRegistration.sharedRegistration.MobileNo
-//        RegistrationGetOTPModel.password = SingletonRegistration.sharedRegistration.Password
-//        RegistrationGetOTPModel.first_name = txtFirstName.text ?? ""
-//        RegistrationGetOTPModel.last_name = txtLastName.text ?? ""
-//        RegistrationGetOTPModel.RefarralCode = txtRafarralCode.text ?? ""
-//        RegistrationGetOTPModel.dob = txtDateOfBirth.text ?? ""
-//        RegistrationGetOTPModel.gender = gender
-//        RegistrationGetOTPModel.device_type = "ios"
-//        RegistrationGetOTPModel.lat = "23.75821"
-//        RegistrationGetOTPModel.lng = "23.75821"
-//        RegistrationGetOTPModel.device_token = "64546546464646465465464"
-//        RegistrationGetOTPModel.address = "Ahmedabad"
+      
         UtilityClass.showHUD(with: UIApplication.shared.keyWindow)
         
         UserWebserviceSubclass.register(registerModel: RegistrationGetOTPModel, image: image, imageParamName: "profile_image", completion: { (json, status) in

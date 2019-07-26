@@ -48,7 +48,7 @@ class PeppeaBookLaterViewController: UIViewController {
 
         dateFormatter.dateFormat = "hh:mm a"
         let calendar = Calendar.current
-        var date = calendar.date(byAdding: .minute, value: -10, to: sender.date) as! Date
+        let date = calendar.date(byAdding: .minute, value: -10, to: sender.date) as! Date
         let selectedTime1 = dateFormatter.string(from: date)
         let selectedTime2 = dateFormatter.string(from: datePicker.date)
         self.lblTime.text = "\(selectedTime1) - \(selectedTime2)"

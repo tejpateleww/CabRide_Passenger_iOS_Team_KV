@@ -121,7 +121,7 @@ class PeppeaBusinessSetupViewController: BaseViewController,UITableViewDelegate,
             //        }
             let data = aryOtherPayment[indexPath.row]
             cell.iconWallet.image = UIImage.init(named: data["Type"] as! String)
-            cell.lblTitle.text = data["CardNum"] as! String
+            cell.lblTitle.text = data["CardNum"] as? String
             
             return cell
         }
@@ -131,9 +131,9 @@ class PeppeaBusinessSetupViewController: BaseViewController,UITableViewDelegate,
             let data = aryCardData[indexPath.row]
             cell.selectionStyle = .none
             cell.iconCard.image = UIImage.init(named: data["Type"] as! String)
-            cell.lblTitle.text = data["CardNum"] as! String
+            cell.lblTitle.text = data["CardNum"] as? String
             
-            cell.lblCardNumber.text = data["CardNum2"] as! String
+            cell.lblCardNumber.text = data["CardNum2"] as? String
             return cell
         }
         

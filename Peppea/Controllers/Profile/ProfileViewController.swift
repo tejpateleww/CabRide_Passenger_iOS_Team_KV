@@ -180,7 +180,7 @@ class ProfileViewController: BaseViewController,UIImagePickerControllerDelegate,
     func webserviceForUpdateProfile(updateProfile : UpdatePersonalInfo, image : UIImage)
     {
         UtilityClass.showHUD(with: UIApplication.shared.keyWindow)
-         var profile = loginModelDetails.loginData
+        let profile = loginModelDetails.loginData
         
         updateProfile.customer_id = profile!.id
         UserWebserviceSubclass.updatePersonal(updateProfile: updateProfile, image: image, imageParamName: "profile_image") { (json, status) in

@@ -26,7 +26,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate,UIPickerView
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.txtEmail.text = SingletonClass.sharedInstance.strSocialEmail
+        //        self.txtEmail.text = SingletonClass.sharedInstance.strSocialEmail
         setUpCountryTextField()
         setUp()
         // Do any additional setup after loading the view.
@@ -64,7 +64,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate,UIPickerView
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-         self.countoryPicker.reloadAllComponents()
+        self.countoryPicker.reloadAllComponents()
     }
 
 
@@ -81,7 +81,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate,UIPickerView
                 if string == "0" {
                     return false
                 }
-        
+
             }
             if resultText!.count >= 11 {
                 return false
@@ -176,7 +176,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate,UIPickerView
     @IBAction func btnNext(_ sender: Any) {
         let Validator = self.isvalidateAllFields()
 
-        if self.isvalidateAllFields().0 == true
+        if Validator.0 == true
         {
             self.webserviceForGetOTP()
         }
@@ -184,23 +184,10 @@ class RegisterViewController: UIViewController, UITextFieldDelegate,UIPickerView
         {
             AlertMessage.showMessageForError(self.isvalidateAllFields().1)
         }
-      
-        /*
-        if (Validator.0) == true
-        {
-            //webserviceForGetOTPCode(email: txtEmail.text!, mobile: "1\(txtPhoneNumber.text!)")
-        } else {
-//            UtilityClass.AlertMessage.showMessageForError(Validator.1)
-
-            UtilityClass.showAlert(title: "", message: Validator.1, alertTheme: .error)
-             }
-
- */
-        }
+    }
     func webserviceForGetOTP()
     {
-//        let parameter = try! parameterArray.asDictionary()
-        
+
         RegistrationGetOTPModel.email = txtEmail.text ?? ""
         RegistrationGetOTPModel.mobile_no = txtPhoneNumber.text ?? ""
         RegistrationGetOTPModel.password = txtPassword.text ?? ""
@@ -211,11 +198,16 @@ class RegisterViewController: UIViewController, UITextFieldDelegate,UIPickerView
         var paramter = [String : AnyObject]()
         paramter["email"] = txtEmail!.text as AnyObject
         paramter["mobile_no"] = txtPhoneNumber!.text as AnyObject
+
+
+        UtilityClass.showHUD(with: UIApplication.shared.keyWindow)
         
         WebService.shared.requestMethod(api: .otp, httpMethod: .post, parameters: paramter){ json,status in
+            UtilityClass.hideHUD()
             if status
             {
-//                self.parameterArray.otp = json["otp"].stringValue
+                //                self.parameterArray.otp = json["otp"].stringValue
+                AlertMessage.showMessageForError(json["message"].stringValue)
                 SingletonClass.sharedInstance.RegisterOTP = json["otp"].stringValue
                 let registrationContainerVC = self.navigationController?.viewControllers[1] as! RegisterContainerViewController
                 registrationContainerVC.scrollObject.setContentOffset(CGPoint(x: self.view.frame.size.width, y: 0), animated: true)
@@ -225,7 +217,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate,UIPickerView
             {
                 AlertMessage.showMessageForError(json["message"].stringValue)
             }
-//            completion(status)
+            //            completion(status)
         }
     }
     
@@ -266,7 +258,14 @@ class RegisterViewController: UIViewController, UITextFieldDelegate,UIPickerView
             isValid = false
             ValidatorMessage = "Please enter valid email."
             
-        } else if self.txtPassword.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) == "" {
+        }
+        else if (self.txtPassword.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).count)! < 8 {
+
+            isValid = false
+            ValidatorMessage = "Please enter minimum 8 characters in password."
+
+        }
+        else if self.txtPassword.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) == "" {
             
             isValid = false
             ValidatorMessage = "Please enter password."
@@ -314,64 +313,64 @@ class RegisterViewController: UIViewController, UITextFieldDelegate,UIPickerView
 
 
     /*
-    func webserviceForGetOTPCode(email: String, mobile: String) {
-        
-//        Param : MobileNo,Email
+     func webserviceForGetOTPCode(email: String, mobile: String) {
 
-        
-        var param = [String:AnyObject]()
-        param["MobileNo"] = mobile as AnyObject
-        param["Email"] = email as AnyObject
-        
-//        var boolForOTP = Bool()
+     //        Param : MobileNo,Email
 
-        webserviceForOTPRegister(param as AnyObject) { (result, status) in
-            
-            if (status) {
-                print(result)
-                
-                let datas = (result as! [String:AnyObject])
-                
 
-                
-                UtilityClass.setCustomAlert(title: "OTP Code", message: datas["message"] as! String) { (index, title) in
-                    if let otp = datas["otp"] as? String {
-                        SingletonClass.sharedInstance.otpCode = otp
-                        print("OTP is \(otp)")
-                    }
-                    else if let otp = datas["otp"] as? Int {
-                        SingletonClass.sharedInstance.otpCode = "\(otp)"
-                        print("OTP is \(otp)")
-                    }
-                    
-                    
-                    let registrationContainerVC = self.navigationController?.viewControllers[1] as! RegistrationContainerViewController
-                    registrationContainerVC.scrollObject.setContentOffset(CGPoint(x: self.view.frame.size.width, y: 0), animated: true)
-                    registrationContainerVC.selectPageControlIndex(Index: 1)
-                }
+     var param = [String:AnyObject]()
+     param["MobileNo"] = mobile as AnyObject
+     param["Email"] = email as AnyObject
 
-      
-                
-            }
-            else {
-                 print(result)
-                
-                if let res = result as? String {
-                    UtilityClass.setCustomAlert(title: "Error", message: res) { (index, title) in
-                    }
-                }
-                else if let resDict = result as? NSDictionary {
-                    UtilityClass.setCustomAlert(title: "Error", message: resDict.object(forKey: "message") as! String) { (index, title) in
-                    }
-                }
-                else if let resAry = result as? NSArray {
-                    UtilityClass.setCustomAlert(title: "Error", message: (resAry.object(at: 0) as! NSDictionary).object(forKey: "message") as! String) { (index, title) in
-                    }
-                }
-                
-            }
-        }
-    }
+     //        var boolForOTP = Bool()
 
- */
+     webserviceForOTPRegister(param as AnyObject) { (result, status) in
+
+     if (status) {
+     print(result)
+
+     let datas = (result as! [String:AnyObject])
+
+
+     
+     UtilityClass.setCustomAlert(title: "OTP Code", message: datas["message"] as! String) { (index, title) in
+     if let otp = datas["otp"] as? String {
+     SingletonClass.sharedInstance.otpCode = otp
+     print("OTP is \(otp)")
+     }
+     else if let otp = datas["otp"] as? Int {
+     SingletonClass.sharedInstance.otpCode = "\(otp)"
+     print("OTP is \(otp)")
+     }
+
+
+     let registrationContainerVC = self.navigationController?.viewControllers[1] as! RegistrationContainerViewController
+     registrationContainerVC.scrollObject.setContentOffset(CGPoint(x: self.view.frame.size.width, y: 0), animated: true)
+     registrationContainerVC.selectPageControlIndex(Index: 1)
+     }
+
+
+
+     }
+     else {
+     print(result)
+
+     if let res = result as? String {
+     UtilityClass.setCustomAlert(title: "Error", message: res) { (index, title) in
+     }
+     }
+     else if let resDict = result as? NSDictionary {
+     UtilityClass.setCustomAlert(title: "Error", message: resDict.object(forKey: "message") as! String) { (index, title) in
+     }
+     }
+     else if let resAry = result as? NSArray {
+     UtilityClass.setCustomAlert(title: "Error", message: (resAry.object(at: 0) as! NSDictionary).object(forKey: "message") as! String) { (index, title) in
+     }
+     }
+
+     }
+     }
+     }
+
+     */
 }

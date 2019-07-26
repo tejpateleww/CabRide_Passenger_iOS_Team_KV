@@ -383,7 +383,7 @@ class SendMoneyViewController: BaseViewController, UIPickerViewDelegate, UIPicke
     }
     func webserviceScanQRCode()
     {
-        UtilityClass.showHUD(with: self.view)
+        UtilityClass.showHUD(with: UIApplication.shared.keyWindow)
         
         
         QRCodeDetailsReqModel.qr_code = self.SCnnedQRCode
@@ -453,7 +453,7 @@ class SendMoneyViewController: BaseViewController, UIPickerViewDelegate, UIPicke
         transferMoneyReqModel.qr_code = self.SCnnedQRCode
         transferMoneyReqModel.amount = self.txtAmount.text ?? ""
         transferMoneyReqModel.sender_id = LoginDetail.loginData.id
-        UtilityClass.showHUD(with: self.view)
+        UtilityClass.showHUD(with: UIApplication.shared.keyWindow)
         UserWebserviceSubclass.transferMoney(transferMoneyModel: transferMoneyReqModel) { (json, status) in
             UtilityClass.hideHUD()
             

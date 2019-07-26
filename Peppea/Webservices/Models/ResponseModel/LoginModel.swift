@@ -23,7 +23,7 @@ class LoginModel : Codable
 		}
         let dataJson = json["data"]
         if !dataJson.isEmpty{
-            loginData = LoginData(fromJson: dataJson)
+            loginData = LoginData(fromJson: dataJson) 
         }
         message = json["message"].stringValue
         status = json["status"].boolValue

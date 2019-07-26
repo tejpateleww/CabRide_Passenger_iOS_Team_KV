@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -107,6 +107,8 @@
 		B1E233DD22D31B7B00CEA568 /* AutomaticExpenseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E233DC22D31B7B00CEA568 /* AutomaticExpenseVC.swift */; };
 		B1E233E122D3220600CEA568 /* MyBidListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E233E022D3220600CEA568 /* MyBidListViewCell.swift */; };
 		B1E233E322D3226600CEA568 /* DriverOffersListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E233E222D3226600CEA568 /* DriverOffersListViewCell.swift */; };
+		EE2A9B7F22EB1F7F00EBAFEE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EE2A9B7E22EB1F7F00EBAFEE /* GoogleService-Info.plist */; };
+		EE2A9B8122EB29AE00EBAFEE /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE2A9B8022EB29AE00EBAFEE /* UserNotifications.framework */; };
 		EE35158522CE34A00035D0AC /* DriverRatingAndTipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE35158422CE34A00035D0AC /* DriverRatingAndTipViewController.swift */; };
 		EE469B5C22C7344E0075A8A3 /* RegisterOTPVarificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE469B5B22C7344D0075A8A3 /* RegisterOTPVarificationViewController.swift */; };
 		EE61011F22E86F7800B3B4D7 /* PastBookingHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE61011E22E86F7800B3B4D7 /* PastBookingHistory.swift */; };
@@ -249,7 +251,6 @@
 		46CA655022DDCB9600FC6E16 /* UserDefaultsEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsEx.swift; sourceTree = "<group>"; };
 		46CA655422DE02B800FC6E16 /* RegisterResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterResponseModel.swift; sourceTree = "<group>"; };
 		46CA655622DEFB2900FC6E16 /* Logout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logout.swift; sourceTree = "<group>"; };
-		46DC622F22D4705D009D4BE0 /* Location.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = Location.gpx; path = ../../../../../../Location.gpx; sourceTree = "<group>"; };
 		46E8CE8F22D9AD6D001BEFCD /* InviteDriverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteDriverViewController.swift; sourceTree = "<group>"; };
 		B1DE158D22D34818001045B1 /* ChangePwVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePwVC.swift; sourceTree = "<group>"; };
 		B1DE158F22D358A0001045B1 /* BulkMileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulkMileVC.swift; sourceTree = "<group>"; };
@@ -268,6 +269,8 @@
 		B1E233DC22D31B7B00CEA568 /* AutomaticExpenseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutomaticExpenseVC.swift; sourceTree = "<group>"; };
 		B1E233E022D3220600CEA568 /* MyBidListViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyBidListViewCell.swift; sourceTree = "<group>"; };
 		B1E233E222D3226600CEA568 /* DriverOffersListViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriverOffersListViewCell.swift; sourceTree = "<group>"; };
+		EE2A9B7E22EB1F7F00EBAFEE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EE2A9B8022EB29AE00EBAFEE /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		EE35158422CE34A00035D0AC /* DriverRatingAndTipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverRatingAndTipViewController.swift; sourceTree = "<group>"; };
 		EE469B5B22C7344D0075A8A3 /* RegisterOTPVarificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterOTPVarificationViewController.swift; sourceTree = "<group>"; };
 		EE61011E22E86F7800B3B4D7 /* PastBookingHistory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PastBookingHistory.swift; sourceTree = "<group>"; };
@@ -330,6 +333,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE2A9B8122EB29AE00EBAFEE /* UserNotifications.framework in Frameworks */,
 				0650348A2AC06055B9F453D4 /* Pods_Peppea.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -677,7 +681,7 @@
 			isa = PBXGroup;
 			children = (
 				EE9F3F7222C7845300426377 /* JSON Files */,
-				46DC622F22D4705D009D4BE0 /* Location.gpx */,
+				EE2A9B7E22EB1F7F00EBAFEE /* GoogleService-Info.plist */,
 				463DEFD622D87972002365F8 /* Peppea-Bridging-Header.h */,
 			);
 			path = Resources;
@@ -1034,6 +1038,7 @@
 		F440CB2719609AE83920F7DB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EE2A9B8022EB29AE00EBAFEE /* UserNotifications.framework */,
 				0810AD09B74A352FE6C277E6 /* Pods_Peppea.framework */,
 			);
 			name = Frameworks;
@@ -1117,6 +1122,7 @@
 				463DEFE522D8AEA6002365F8 /* FooterTableViewCell.xib in Resources */,
 				B1DE159C22D3647A001045B1 /* MyMileTableViewCell.xib in Resources */,
 				EE9D6F9422C6449F00EAD756 /* proxima-nova-light.otf in Resources */,
+				EE2A9B7F22EB1F7F00EBAFEE /* GoogleService-Info.plist in Resources */,
 				463DEFE422D8AEA6002365F8 /* MyTripTableViewCell.xib in Resources */,
 				463DEFEA22D8AEA6002365F8 /* MyTrips.storyboard in Resources */,
 				EE9D6FA022C6449F00EAD756 /* proxima-nova-black.otf in Resources */,
@@ -1152,15 +1158,12 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Peppea/Pods-Peppea-resources.sh",
-				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
-				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Peppea/Pods-Peppea-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Peppea/Pods-Peppea-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1190,51 +1193,12 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Peppea/Pods-Peppea-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/ActionSheetPicker-3.0/ActionSheetPicker_3_0.framework",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/AvailableHapticFeedback/AvailableHapticFeedback.framework",
-				"${BUILT_PRODUCTS_DIR}/Cosmos/Cosmos.framework",
-				"${BUILT_PRODUCTS_DIR}/FormTextField/FormTextField.framework",
-				"${BUILT_PRODUCTS_DIR}/IQDropDownTextField/IQDropDownTextField.framework",
-				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/MarqueeLabel/MarqueeLabel.framework",
-				"${BUILT_PRODUCTS_DIR}/MiniLayout/MiniLayout.framework",
-				"${BUILT_PRODUCTS_DIR}/MultiSlider/MultiSlider.framework",
-				"${BUILT_PRODUCTS_DIR}/QRCodeReader.swift/QRCodeReader.framework",
-				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
-				"${BUILT_PRODUCTS_DIR}/SideMenuSwift/SideMenuSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
-				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
-				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
-				"${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework",
-				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Peppea/Pods-Peppea-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ActionSheetPicker_3_0.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AvailableHapticFeedback.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cosmos.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FormTextField.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQDropDownTextField.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarqueeLabel.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MiniLayout.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MultiSlider.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QRCodeReader.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenuSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMessages.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeCellKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Peppea/Pods-Peppea-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

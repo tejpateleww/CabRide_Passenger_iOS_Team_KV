@@ -81,7 +81,12 @@ class LoginViewController: UIViewController {
         LogInModel.device_type = "ios"
         LogInModel.lat = "23.75821"
         LogInModel.lng = "23.75821"
-        LogInModel.device_token = "64546546464646465465464"
+        LogInModel.device_token = ""
+        if let token = UserDefaults.standard.object(forKey: "Token") as? String
+        {
+            LogInModel.device_token = token
+        }
+
         
         if(self.validations().0 == false)  {
              AlertMessage.showMessageForError(self.validations().1)
@@ -103,7 +108,7 @@ class LoginViewController: UIViewController {
 
     func webserviceCallForLogin()
     {
-        UtilityClass.showHUD(with: self.view)
+        UtilityClass.showHUD(with: UIApplication.shared.keyWindow)
         
         UserWebserviceSubclass.login(loginModel: LogInModel) { (json, status) in
             UtilityClass.hideHUD()
