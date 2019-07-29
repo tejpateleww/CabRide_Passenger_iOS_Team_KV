@@ -232,6 +232,8 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
             //            UtilityClass.changeDateFormat(from: "yyyy-MM-dd hh:mm:ss", toFormat: "dd-MM-yyyy", date: Date())
 
             self.btnBookNow.setTitle("Schedule a ride\n\(date)", for: .normal)
+        let homeVC = self.parent as? HomeViewController
+        homeVC?.setBackButtonWhileBookLater()
 //        }
     }
     //MARK:-  --- CollectionView Delegate and Datasource Methods ---

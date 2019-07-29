@@ -63,9 +63,6 @@ class PeppeaBookLaterViewController: UIViewController {
         selectedDateAndTime = "\(strDate) at \(selectedTime1)-\(selectedTime2)"
     }
 
-
-
-
     @IBAction func btnContinue(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
         guard (delegateOfSelectDateAndTime != nil) else {

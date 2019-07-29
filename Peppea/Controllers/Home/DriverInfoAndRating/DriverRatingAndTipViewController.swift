@@ -28,6 +28,8 @@ class DriverRatingAndTipViewController: UIViewController {
     @IBOutlet weak var viewComments: UIView!
     @IBOutlet weak var viewAskForTip: UIView!
     
+    @IBOutlet weak var constraintHeightOfViewRating: NSLayoutConstraint! // 30
+    @IBOutlet weak var btnOther: UIButton!
     
     var bookingId = ""
     var tip = ""
@@ -59,16 +61,24 @@ class DriverRatingAndTipViewController: UIViewController {
         _ = bookingData.customerInfo
         _ = bookingData.vehicleType
         
+        if viewType != nil {
+            if viewType! == .ratings || viewType! == .completeTrip {
+                viewAskForTip.isHidden = true
+                viewRating.isHidden = false
+                viewComments.isHidden = false
+                constraintHeightOfViewRating.constant = 30
+                lblDriverName.text = "How was your trip with \((driver?.firstName ?? "") + " " + (driver?.lastName ?? ""))?"
+            }
+            else if viewType! == .askForTip {
+                viewAskForTip.isHidden = false
+                viewComments.isHidden = true
+                viewRating.isHidden = true
+                constraintHeightOfViewRating.constant = 0
+                lblDriverName.text = "Do you want to tip \((driver?.firstName ?? "") + " " + (driver?.lastName ?? ""))?"
+            }
+        }
         
-        if viewType == .ratings {
-            viewAskForTip.isHidden = true
-            lblDriverName.text = "How was your trip with \((driver?.firstName ?? "") + " " + (driver?.lastName ?? ""))?"
-        }
-        else if viewType == .askForTip {
-            viewComments.isHidden = true
-            viewRating.isHidden = true
-            lblDriverName.text = "Do you want to tip \((driver?.firstName ?? "") + " " + (driver?.lastName ?? ""))?"
-        }
+        
         
 //        lblDriverName.text = "How was your trip with \((driver?.firstName ?? "") + " " + (driver?.lastName ?? ""))?"
         
@@ -86,18 +96,30 @@ class DriverRatingAndTipViewController: UIViewController {
         super.viewDidLayoutSubviews()
         for (ind,btn) in self.btnTips.enumerated()
         {
-            btn.borderWidth = 1.0
-            btn.borderColor = ThemeColor
-            btn.layer.cornerRadius = btn.frame.size.width/2
-            btn.layer.masksToBounds = true
-            btn.titleLabel?.font = UIFont.regular(ofSize: 12)
-            btn.setTitleColor(ThemeColor, for: .normal)
+//            btn.layer.borderWidth = 1.0
+//            btn.layer.borderColor = ThemeColor.cgColor
+//            btn.layer.cornerRadius = btn.frame.size.width/2
+//            btn.layer.masksToBounds = true
+//            btn.titleLabel?.font = UIFont.regular(ofSize: 12)
+//            btn.setTitleColor(ThemeColor, for: .normal)
+            buttonSetup(btn: btn)
             
             btn.tag = ind
             btn.addTarget(self, action: #selector(self.tipAction(_:)), for: .touchUpInside)
         }
+        
+        buttonSetup(btn: btnOther)
     }
-
+    
+    func buttonSetup(btn: UIButton) {
+        btn.layer.borderWidth = 1.0
+        btn.layer.borderColor = ThemeColor.cgColor
+        btn.layer.cornerRadius = btn.frame.size.width/2
+        btn.layer.masksToBounds = true
+        btn.titleLabel?.font = UIFont.regular(ofSize: 12)
+        btn.setTitleColor(ThemeColor, for: .normal)
+    }
+    
     func setupView()
     {
         viewRating.settings.filledImage = UIImage(named: "iconSelectedstar")

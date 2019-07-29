@@ -274,6 +274,20 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
         locationManager.requestWhenInUseAuthorization()
     }
     
+    func setBackButtonWhileBookLater() {
+        let leftNavBarButton = UIBarButtonItem(image: UIImage(named: "iconBack"), style: .plain, target: self, action: #selector(self.btnBackButtonWhileBookLater(_:)))
+        self.navigationItem.leftBarButtonItem = nil
+        self.navigationItem.leftBarButtonItem = leftNavBarButton
+    }
+    
+    @objc func btnBackButtonWhileBookLater(_ button: UIBarButtonItem) {
+        let leftNavBarButton = UIBarButtonItem(image: UIImage(named: "iconMenu"), style: .plain, target: self, action: #selector(self.OpenMenuAction))
+        self.navigationItem.leftBarButtonItem = nil
+        self.navigationItem.leftBarButtonItem = leftNavBarButton
+    
+        setupAfterComplete()
+    }
+    
     func didSelectDateAndTime(date: String)
     {
         if(txtDropLocation.text?.count == 0)
@@ -290,6 +304,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
                     VC.btnBookNow.titleLabel?.lineBreakMode = .byWordWrapping
                     VC.btnBookNow.titleLabel?.textAlignment = .center
                     VC.btnBookNow.setTitle("Schedule a ride\n\(date)", for: .normal)
+                    self.setBackButtonWhileBookLater()
                 }
             }
            
@@ -656,7 +671,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
     func hideAndShowView(view: HomeViews){
         //        containerRideConfirmation.isHidden = !(view == .rideConfirmation)
         driverInfoContainerView.isHidden = !(view == .requestAccepted || view == .waiting || view == .rideStart)
-        driverRatingContainerView.isHidden = !(view == .ratings)
+        driverRatingContainerView.isHidden = !(view == .ratings || view == .askForTip)
         carListContainerView.isHidden = !(view == .booking)
         containerView.isHidden = (view == .none)
         viewSetup(view: view)
@@ -698,6 +713,11 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
         // Pass the selected object to the new view controller.
         if let vc = segue.destination as? DriverInfoPageViewController{
             driverInfoVC = vc
+            return
+        }
+        
+        if let vc = segue.destination as? DriverRatingAndTipViewController{
+            ratingInfoVC = vc
             return
         }
     }
@@ -819,6 +839,12 @@ extension HomeViewController: GMSAutocompleteViewControllerDelegate {
         self.viewDropOffLocation.isHidden = false
         self.containerView.isHidden = true
         self.hideBookLaterButtonFromDroplocationField = false
+        
+        if let VC = self.children.first as? CarCollectionViewController
+        {
+    
+            VC.btnBookNow.setTitle("Book Now", for: .normal)
+        }
     }
 }
 
