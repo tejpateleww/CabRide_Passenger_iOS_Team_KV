@@ -96,7 +96,7 @@ class walletHistoryListData : Codable
     var type : String!
     var userId : String!
     var userType : String!
-    
+    var paymentType : String!
     /**
      * Instantiate the instance using the passed json values to set the properties values
      */
@@ -114,6 +114,7 @@ class walletHistoryListData : Codable
         type = json["type"].stringValue
         userId = json["user_id"].stringValue
         userType = json["user_type"].stringValue
+        paymentType = json["payment_type"].stringValue
     }
     
     /**
@@ -151,6 +152,9 @@ class walletHistoryListData : Codable
         }
         if userType != nil{
             dictionary["user_type"] = userType
+        }
+        if paymentType != nil{
+            dictionary["payment_type"] = paymentType
         }
         return dictionary
     }

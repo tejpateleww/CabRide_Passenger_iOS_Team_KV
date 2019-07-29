@@ -6,27 +6,49 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Peppea/Controllers/Home/Car Collection/CarCollectionViewController.swift"
-            timestampString = "585561731.398007"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
-            landmarkName = "getDataFromJSON()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            scope = "0"
-            stopOnStyle = "0">
+            filePath = "Peppea/Controllers/History/HistoryListViewController.swift"
+            timestampString = "586087510.280874"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
+            landmarkName = "webserviceCallForHistoryList(index:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Peppea.HistoryListViewController.webserviceCallForHistoryList(index: Swift.Int) -&gt; ()"
+                  moduleName = "Peppea"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eww090/Documents/Palak%20Projects/Peppea/Peppea/Peppea/Peppea/Controllers/History/HistoryListViewController.swift"
+                  timestampString = "586087510.55126"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "158"
+                  endingLineNumber = "158"
+                  offsetFromSymbolStart = "1191">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (SwiftyJSON.JSON, Swift.Bool) -&gt; () in Peppea.HistoryListViewController.webserviceCallForHistoryList(index: Swift.Int) -&gt; ()"
+                  moduleName = "Peppea"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eww090/Documents/Palak%20Projects/Peppea/Peppea/Peppea/Peppea/Controllers/History/HistoryListViewController.swift"
+                  timestampString = "586087510.552774"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "159"
+                  endingLineNumber = "159"
+                  offsetFromSymbolStart = "399">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

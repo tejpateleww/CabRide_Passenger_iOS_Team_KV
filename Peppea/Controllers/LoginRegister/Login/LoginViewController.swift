@@ -81,7 +81,7 @@ class LoginViewController: UIViewController {
         LogInModel.device_type = "ios"
         LogInModel.lat = "23.75821"
         LogInModel.lng = "23.75821"
-        LogInModel.device_token = ""
+        LogInModel.device_token = "sdfsdfwrfw4rt34r53"
         if let token = UserDefaults.standard.object(forKey: "Token") as? String
         {
             LogInModel.device_token = token
@@ -168,10 +168,10 @@ class LoginViewController: UIViewController {
         {
             return (false,"Please enable your location to move forward")
         }
-        else if(LogInModel.device_token.isBlank)
-        {
-            return (false,"Please enable push notifications from Settings")
-        }
+//        else if(LogInModel.device_token.isBlank)
+//        {
+//            return (false,"Please enable push notifications from Settings")
+//        }
 
         return (true,"")
     }
