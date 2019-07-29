@@ -95,6 +95,7 @@ enum ApiKey: String{
     
     case ReviewRating = "review_rating"
     case CancelTrip = "cancel_trip"
+    case upcomingBookingHistory = "upcoming_booking_history/"
     
 }
 enum ParameterKey

@@ -44,6 +44,8 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
     var CardID = String()
     var vehicleId = ""
     var estimateFare = ""
+    var selectedTimeStemp = ""
+    var strPromoCode = ""
     
     // ----------------------------------------------------
     // MARK:- --- Base Methods ---
@@ -73,11 +75,11 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
                     {
                         let data = self.aryCards[0]
 
-                        self.iconSelectedCard.image = UIImage(named: setCardIcon(str: data.cardType)) //UIImage(named: setCardIcon(str: data["Type"] as! String))
+//                        self.iconSelectedCard.image = UIImage(named: setCardIcon(str: data.cardType)) //UIImage(named: setCardIcon(str: data["Type"] as! String))
 
-                        self.lblCardName.text = data.cardHolderName
-                        self.lblCardNumber.isHidden = false
-                        self.lblCardNumber.text = data.formatedCardNo
+//                        self.lblCardName.text = data.cardHolderName
+//                        self.lblCardNumber.isHidden = false
+//                        self.lblCardNumber.text = data.formatedCardNo
                         self.CardID = data.id
 
 
@@ -118,7 +120,7 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
 
     @IBAction func txtSelectPaymentMethod(_ sender: UITextField)
     {
-        txtSelectPaymentMethod.inputView = pickerView
+//        txtSelectPaymentMethod.inputView = pickerView
     }
     
     //-------------------------------------------------------------
@@ -218,7 +220,7 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
     
     
     // Handle Booklater date and time
-    func didSelectDateAndTime(date: String)
+    func didSelectDateAndTime(date: String, timeStemp: String) 
     {
 //        if(txtDestinationLocation.text?.count == 0)
 //        {
@@ -230,10 +232,11 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
             self.btnBookNow.titleLabel?.textAlignment = .center
 
             //            UtilityClass.changeDateFormat(from: "yyyy-MM-dd hh:mm:ss", toFormat: "dd-MM-yyyy", date: Date())
-
+        selectedTimeStemp = timeStemp
             self.btnBookNow.setTitle("Schedule a ride\n\(date)", for: .normal)
         let homeVC = self.parent as? HomeViewController
         homeVC?.setBackButtonWhileBookLater()
+        homeVC?.selectedTimeStemp = timeStemp
 //        }
     }
     //MARK:-  --- CollectionView Delegate and Datasource Methods ---
@@ -392,9 +395,47 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
     }
     
     // ----------------------------------------------------
-    // MARK: --- Actions ---
+    // MARK:- --- Actions ---
     // ----------------------------------------------------
-    @IBAction func btnBookNow(_ sender: Any) {
+    
+    @IBAction func btnPromoCodeAction(_ sender: UIButton) {
+        let alertController = UIAlertController(title: AppName.kAPPName, message: "Enter promo code", preferredStyle: .alert)
+        alertController.addTextField { (textField : UITextField!) -> Void in
+            textField.placeholder = "Enter promo code"
+        }
+        let saveAction = UIAlertAction(title: "Apply", style: .default, handler: { alert -> Void in
+            let firstTextField = alertController.textFields![0] as UITextField
+//            let secondTextField = alertController.textFields![1] as UITextField
+            print("firstName \(firstTextField.text ?? "")")
+            
+            if !firstTextField.text!.isBlank {
+//                 saveAction.isEnabled = true
+                self.webserviceForCheckPromocodeService(promoCode: firstTextField.text ?? "")
+            }
+           
+        })
+        saveAction.isEnabled = false
+        
+        NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object:alertController.textFields?[0],
+                                                     queue: OperationQueue.main) { (notification) -> Void in
+                                                                    
+                                                                    let textFieldName = alertController.textFields?[0] as! UITextField
+                                                                
+                                                        saveAction.isEnabled = (textFieldName.text?.isBlank)! == true ? false : true
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: { (action : UIAlertAction!) -> Void in })
+//        alertController.addTextField { (textField : UITextField!) -> Void in
+//            textField.placeholder = "Enter First Name"
+//        }
+        
+        alertController.addAction(saveAction)
+        alertController.addAction(cancelAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    @IBAction func btnBookNow(_ sender: UIButton) {
         
         /*
          
@@ -423,7 +464,13 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
         homeVC?.timer?.invalidate()
         animateGoogleMapWhenRotate(homeVC: homeVC)
         
-        webserviceForBooking()
+        if sender.titleLabel?.text == "Book Now" {
+             webserviceForBooking(bookingType: "book_now") // "book_now" // "book_later"
+        } else {
+             webserviceForBooking(bookingType: "book_later") // "book_now" // "book_later"
+        }
+        
+//        webserviceForBooking(bookingType: "") // "book_now" // "book_later"
     }
 
     

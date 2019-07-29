@@ -63,10 +63,20 @@ enum MyTrips: String, CaseIterable{
     }
     
     fileprivate func setUpcomingDescription(pastBookingHistory : PastBookingHistoryResponse) -> [(String, String)]{
+        
+        let inter = TimeInterval(pastBookingHistory.pickupTime) ?? 0
+        
+        let date = Date(timeIntervalSince1970: inter)
+        let dateFormatter = DateFormatter()
+//        dateFormatter.locale = Locale.current
+        dateFormatter.dateFormat = "yyyy/MM/dd HH:mm" //Specify your format that you want
+        let strDate = dateFormatter.string(from: date)
+        
+        
         return [("Title" ,"Upcoming"),
                 ("PickupLocation" , pastBookingHistory.pickupLocation),
                 ("DropoffLocation" , pastBookingHistory.dropoffLocation),
-                ("Date" , pastBookingHistory.pickupDateTime),
+                ("Date" , strDate),
                 ("BookingId" , pastBookingHistory.id)]
     }
 }

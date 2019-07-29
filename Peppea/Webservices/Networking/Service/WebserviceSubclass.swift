@@ -111,6 +111,16 @@ class UserWebserviceSubclass
         let  params : [String:String] = bookingRequestModel.generatPostParams() as! [String : String]
         WebService.shared.requestMethod(api: .ReviewRating, httpMethod: .post, parameters: params, completion: completion)
     }
+    
+    class func upcomingBookingHistory(strURL : String  ,completion: @escaping CompletionResponse ) {
+        let strURLFinal = NetworkEnvironment.baseURL + ApiKey.upcomingBookingHistory.rawValue + strURL
+        WebService.shared.getMethod(url: URL.init(string: strURLFinal)!, httpMethod: .get, completion: completion)
+    }
 
+    class func checkPromocodeService(Promocode : CheckPromocode  ,completion: @escaping CompletionResponse ) {
+        let  params : [String:String] = Promocode.generatPostParams() as! [String : String]
+        WebService.shared.requestMethod(api: .checkPromocode, httpMethod: .post, parameters: params, completion: completion)
+    }
+    
     
 }

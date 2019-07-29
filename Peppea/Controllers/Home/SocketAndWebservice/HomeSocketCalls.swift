@@ -58,7 +58,9 @@ extension HomeViewController: SocketConnected {
             
             let model = GetEstimateFareModel(fromJson: json.array?.first)
             self.estimateData = model.estimateFare
-            (self.children.first as! CarCollectionViewController).getDataFromJSON()
+            if self.estimateData.count != 0 {                
+                (self.children.first as! CarCollectionViewController).getDataFromJSON()
+            }
         }
     }
     

@@ -11,6 +11,9 @@ import Foundation
 
 protocol CarCollectionWebserviceProtocol {
     
-    func webserviceForBooking()
+    func webserviceForBooking(bookingType: String)
+    
+    func webserviceForCheckPromocodeService(promoCode: String)
+    
     
 }

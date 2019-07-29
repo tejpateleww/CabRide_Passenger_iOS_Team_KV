@@ -70,7 +70,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
     //    lazy var marker = GMSMarker()
     var pulseArray = [CAShapeLayer]()
     var booingInfo = BookingInfo()
-    
+    var selectedTimeStemp = ""
     
     /// Pickup and Dropoff Address
     var pickupAndDropoffAddress = (pickUp: "", dropOff: "")
@@ -175,6 +175,8 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
             lblBuildNumber.text = "Build : \(Bundle.main.buildVersionNumber ?? "") \t\t Booking ID: \(self.booingInfo.id ?? "")"
         }
         #endif
+        self.setupNavigationController()
+
         
     }
 
@@ -190,7 +192,14 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-         self.setupNavigationController()
+        
+        self.navigationController?.navigationBar.barTintColor = UIColor.black
+        self.navigationController?.navigationBar.tintColor = UIColor.black
+        
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = .clear
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -288,23 +297,35 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
         setupAfterComplete()
     }
     
-    func didSelectDateAndTime(date: String)
+    func didSelectDateAndTime(date: String, timeStemp: String)
     {
+        selectedTimeStemp = timeStemp
         if(txtDropLocation.text?.count == 0)
         {
             txtLocation(txtDropLocation as! ThemeTextField)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                if let VC = self.children.first as? CarCollectionViewController
+                {
+                    VC.btnBookNow.titleLabel?.lineBreakMode = .byWordWrapping
+                    VC.btnBookNow.titleLabel?.textAlignment = .center
+                    VC.btnBookNow.setTitle("Schedule a ride\n\(date)", for: .normal)
+                    self.setBackButtonWhileBookLater()
+                    VC.selectedTimeStemp = timeStemp
+                }
+            }
         }
         else
         {
             
             // Because btn title change after reinitialized
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                if let VC = self.storyboard?.instantiateViewController(withIdentifier: "CarCollectionViewController") as? CarCollectionViewController
+                if let VC = self.children.first as? CarCollectionViewController
                 {
                     VC.btnBookNow.titleLabel?.lineBreakMode = .byWordWrapping
                     VC.btnBookNow.titleLabel?.textAlignment = .center
                     VC.btnBookNow.setTitle("Schedule a ride\n\(date)", for: .normal)
                     self.setBackButtonWhileBookLater()
+                    VC.selectedTimeStemp = timeStemp
                 }
             }
            
@@ -537,6 +558,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
     @IBAction func btnCurrentLocation(_ sender: UIButton)
     {
         currentLocationAction()
+        setupAfterComplete()
     }
     @IBAction func txtLocation(_ sender: ThemeTextField)
     {
@@ -840,10 +862,11 @@ extension HomeViewController: GMSAutocompleteViewControllerDelegate {
         self.containerView.isHidden = true
         self.hideBookLaterButtonFromDroplocationField = false
         
-        if let VC = self.children.first as? CarCollectionViewController
-        {
+        if let VC = self.children.first as? CarCollectionViewController {
     
             VC.btnBookNow.setTitle("Book Now", for: .normal)
+            VC.strPromoCode = ""
+            VC.vehicleId = ""
         }
     }
 }

@@ -39,5 +39,6 @@ class bookingRequest : RequestModel
     var payment_type : String = ""
     var promocode : String = ""
     var estimated_fare : String = ""
+    var pickup_date_time : String = ""
     
 }

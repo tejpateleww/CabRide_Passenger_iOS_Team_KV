@@ -45,7 +45,11 @@ class MyTripsViewController: BaseViewController
     @objc private func refreshWeatherData(_ sender: Any) {
         // Fetch Weather Data
         isRefresh = true
-        webserviceCallForGettingPastHistory()
+        if self.tripType.rawValue == "past" {
+            webserviceCallForGettingPastHistory()
+        } else {
+            webserviceForUpcommingBooking(pageNo: 1)
+        }
     }
 
     var pastBookingHistoryModelDetails = [PastBookingHistoryResponse]()
@@ -76,6 +80,12 @@ class MyTripsViewController: BaseViewController
                 self.tripType = MyTrips.allCases[indexpaths.indexPath.item]
 //                self.setData()
                 self.selectedCell = []
+                
+                if indexpaths.indexPath.item == 1 {
+                    self.webserviceForUpcommingBooking(pageNo: 1)
+                } else {
+                    self.webserviceCallForGettingPastHistory()
+                }
                 self.collectionTableView.tableView.removeAllSubviews()
                 self.collectionTableView.tableView.reloadData()
             }
@@ -89,13 +99,11 @@ class MyTripsViewController: BaseViewController
        self.data = self.tripType.getDescription(pastBookingHistory: self.pastBookingHistoryModelDetails[0])
     }
 
-    func webserviceCallForGettingPastHistory()
-    {
+    func webserviceCallForGettingPastHistory() {
 
         let model = PastBookingHistory()
         model.customer_id = "1"//SingletonClass.sharedInstance.loginData.id
         model.page = "1"
-
 
         let strURL = model.customer_id + "/" + model.page
 
@@ -108,29 +116,70 @@ class MyTripsViewController: BaseViewController
         UserWebserviceSubclass.pastBookingHistory(strURL: strURL) { (response, status) in
             UtilityClass.hideHUD()
             self.isRefresh = false
-            if(status)
-            {
+            if(status) {
                 if let arrayResponse = response.dictionary?["data"]?.array {
                     self.pastBookingHistoryModelDetails = arrayResponse.map({ (item) -> PastBookingHistoryResponse in
-
                         return PastBookingHistoryResponse.init(fromJson: item)
-
-
                     })
                 }
-
                 self.pastBookingHistoryModelDetails = self.pastBookingHistoryModelDetails.filter({$0.driverId != "0"})
-
                 self.collectionTableView.tableView.reloadData()
                   self.refreshControl.endRefreshing()
             }
-            else
-            {
+            else {
                 UtilityClass.hideHUD()
                 AlertMessage.showMessageForError(response["message"].stringValue)
             }
-
-
+        }
+    }
+    
+    func webserviceForUpcommingBooking(pageNo: Int) {
+        
+        let param = SingletonClass.sharedInstance.loginData.id + "/" + "\(pageNo)"
+        UserWebserviceSubclass.upcomingBookingHistory(strURL: param) { (response, status) in
+            print(response)
+            UtilityClass.hideHUD()
+            self.isRefresh = false
+            if(status) {
+                if let arrayResponse = response.dictionary?["data"]?.array {
+                    self.pastBookingHistoryModelDetails = arrayResponse.map({ (item) -> PastBookingHistoryResponse in
+                        return PastBookingHistoryResponse.init(fromJson: item)
+                    })
+                }
+//                self.pastBookingHistoryModelDetails = self.pastBookingHistoryModelDetails.filter({$0.driverId != "0"})
+                self.collectionTableView.tableView.reloadData()
+                self.refreshControl.endRefreshing()
+            }
+            else {
+                UtilityClass.hideHUD()
+                AlertMessage.showMessageForError(response["message"].stringValue)
+            }
+        }
+    }
+    
+    @objc func cancelTrip(_ sender: UIButton) {
+        let dataResponseHeader = self.pastBookingHistoryModelDetails[sender.tag]
+//        (self.parent?.children.first as! HomeViewController).booingInfo = dataResponseHeader
+    
+        webserviceForCancelTrip(bookingId: dataResponseHeader.id)
+        
+//        ((self.parent?.children.first as! HomeViewController).children[1] as! DriverInfoPageViewController).webserviceForCancelTrip()
+    }
+    
+    func webserviceForCancelTrip(bookingId: String) {
+        
+        let homeVC = self.parent?.children.first as? HomeViewController
+        
+        let model = CancelTripRequestModel()
+        model.booking_id = bookingId
+        UserWebserviceSubclass.CancelTripBookingRequest(bookingRequestModel: model) { (response, status) in
+            
+            if status {
+                homeVC?.setupAfterComplete()
+                self.webserviceForUpcommingBooking(pageNo: 1)
+            } else {
+                AlertMessage.showMessageForError(response.dictionary?["message"]?.stringValue ?? "Something went wrong")
+            }
         }
     }
 }
@@ -163,6 +212,22 @@ extension MyTripsViewController: UITableViewDelegate, UITableViewDataSource{
             cell.lblBookin.text = "Booking Id : \(dataResponseHeader.id ?? "")"
             cell.lblPickup.text = dataResponseHeader.pickupLocation
             cell.lblDropoff.text = dataResponseHeader.dropoffLocation
+            cell.btnSendReceipt.isHidden = true
+            if self.tripType.rawValue.lowercased() != "past" {
+                cell.btnSendReceipt.isHidden = false
+                cell.btnSendReceipt.setTitle("Cancel request", for: .normal)
+                cell.btnSendReceipt.tag = indexPath.section
+                cell.btnSendReceipt.addTarget(self, action: #selector(self.cancelTrip(_:)), for: .touchUpInside)
+                
+                UtilityClass.viewCornerRadius(view: cell.btnSendReceipt, borderWidth: 1, borderColor: .white)
+                
+//                cell.btnSendReceipt.layer.cornerRadius = view.frame.height/2
+//                cell.btnSendReceipt.layer.masksToBounds = true
+//                cell.btnSendReceipt.layer.borderWidth = borderWidth
+//                cell.btnSendReceipt.layer.borderColor = borderColor.cgColor
+                
+            }
+           
             cell.setup()
             return cell
         default:
@@ -183,22 +248,29 @@ extension MyTripsViewController: UITableViewDelegate, UITableViewDataSource{
         if selectedCell.contains(indexPath.section){
             let index = selectedCell.firstIndex(of: indexPath.section)
             selectedCell.remove(at: index!)
-            self.data = self.tripType.getDescription(pastBookingHistory: self.pastBookingHistoryModelDetails[indexPath.row])
-            tableView.removeAllSubviews()
-            tableView.reloadData()
+            if self.pastBookingHistoryModelDetails.count >= indexPath.row {
+                self.data = self.tripType.getDescription(pastBookingHistory: self.pastBookingHistoryModelDetails[indexPath.row])
+                tableView.removeAllSubviews()
+                tableView.reloadData()
+            }
+//            self.data = self.tripType.getDescription(pastBookingHistory: self.pastBookingHistoryModelDetails[indexPath.row])
+//            tableView.removeAllSubviews()
+//            tableView.reloadData()
         }
         else{
-            self.data = self.tripType.getDescription(pastBookingHistory: self.pastBookingHistoryModelDetails[indexPath.row])
-            selectedCell.append(indexPath.section)
-            tableView.reloadData()
-            let rect =  tableView.rect(forSection: indexPath.section)
-            let imageView = UIImageView(frame: CGRect(x: 10, y: rect.minY, width: rect.width - 20, height: rect.height))
-            //            imageView.image = #imageLiteral(resourceName: "bird-icon")
-
-            imageView.alpha = 0.8
-            imageView.contentMode = .scaleAspectFit
-            tableView.removeAllSubviews()
-            tableView.addSubview(imageView)
+            if self.pastBookingHistoryModelDetails.count >= indexPath.row {
+                self.data = self.tripType.getDescription(pastBookingHistory: self.pastBookingHistoryModelDetails[indexPath.row])
+                selectedCell.append(indexPath.section)
+                tableView.reloadData()
+                let rect =  tableView.rect(forSection: indexPath.section)
+                let imageView = UIImageView(frame: CGRect(x: 10, y: rect.minY, width: rect.width - 20, height: rect.height))
+                //            imageView.image = #imageLiteral(resourceName: "bird-icon")
+                
+                imageView.alpha = 0.8
+                imageView.contentMode = .scaleAspectFit
+                tableView.removeAllSubviews()
+                tableView.addSubview(imageView)
+            }
         }
         if indexPath.section == 9{
             tableView.scrollToRow(at: indexPath, at: .middle, animated: true)

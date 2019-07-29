@@ -11,17 +11,27 @@ import UIKit
 
 protocol didSelectDateDelegate {
 
-    func didSelectDateAndTime(date: String)
+    func didSelectDateAndTime(date: String, timeStemp: String)
 }
 
 class PeppeaBookLaterViewController: UIViewController {
 
+    // ----------------------------------------------------
+    // MARK: - Outlets
+    // ----------------------------------------------------
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var lblDate: UILabel!
     @IBOutlet weak var lblTime: UILabel!
+   
+    // ----------------------------------------------------
+    // MARK: - Globle Declaration Methods
+    // ----------------------------------------------------
     var delegateOfSelectDateAndTime : didSelectDateDelegate!
     var selectedDateAndTime : String!
-
+    var selectedTimeStemp = ""
+    // ----------------------------------------------------
+    // MARK: - Base Methods
+    // ----------------------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,24 +44,37 @@ class PeppeaBookLaterViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    // ----------------------------------------------------
+    // MARK: - Actions
+    // ----------------------------------------------------
     @IBAction func btnCancel(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
 
     @IBAction func datePickerValueChanged(_ sender: UIDatePicker) {
 
+        print("sender.date: \(datePicker.date)")
         datePicker.datePickerMode = UIDatePicker.Mode.dateAndTime
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd EEEE MMMM yyyy hh mm ss a"
         let selectedDate = dateFormatter.string(from: datePicker.date)
-        print(selectedDate)
+        print("selectedDate: \(selectedDate)")
 
         dateFormatter.dateFormat = "hh:mm a"
         let calendar = Calendar.current
         let date = calendar.date(byAdding: .minute, value: -10, to: sender.date) as! Date
+        print("date: \(date)")
+        
+        let myTimeInterval = TimeInterval(datePicker.date.timeIntervalSince1970)
+        print("myTimeInterval: \(myTimeInterval)")
+        selectedTimeStemp = "\(Int(myTimeInterval))"
+        
         let selectedTime1 = dateFormatter.string(from: date)
         let selectedTime2 = dateFormatter.string(from: datePicker.date)
         self.lblTime.text = "\(selectedTime1) - \(selectedTime2)"
+        
+//        UtilityClass
 
         dateFormatter.dateFormat = "EEEE,dd MMMM"
         let selectedDateAndDay = dateFormatter.string(from: date)
@@ -68,7 +91,7 @@ class PeppeaBookLaterViewController: UIViewController {
         guard (delegateOfSelectDateAndTime != nil) else {
             return
         }
-        delegateOfSelectDateAndTime?.didSelectDateAndTime(date: selectedDateAndTime)
+        delegateOfSelectDateAndTime?.didSelectDateAndTime(date: selectedDateAndTime, timeStemp: selectedTimeStemp)
     }
     /*
     // MARK: - Navigation
