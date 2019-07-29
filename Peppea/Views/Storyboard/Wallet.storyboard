@@ -497,7 +497,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconBird" translatesAutoresizingMaskIntoConstraints="NO" id="DDO-06-cUp">
-                                <rect key="frame" x="120" y="361" width="174" height="174"/>
+                                <rect key="frame" x="199" y="440" width="16" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="DDO-06-cUp" secondAttribute="height" multiplier="1:1" id="lBK-Pl-icz"/>
                                 </constraints>
@@ -739,7 +739,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconBird" translatesAutoresizingMaskIntoConstraints="NO" id="iAx-8a-i5x">
-                                <rect key="frame" x="120" y="361" width="174" height="174"/>
+                                <rect key="frame" x="199" y="440" width="16" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="iAx-8a-i5x" secondAttribute="height" multiplier="1:1" id="DDc-hO-lYj"/>
                                 </constraints>
@@ -1061,34 +1061,34 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XgW-EU-ObC">
-                                <rect key="frame" x="0.0" y="579" width="414" height="75"/>
+                                <rect key="frame" x="0.0" y="579" width="414" height="65"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JxL-NW-rEt">
-                                        <rect key="frame" x="15" y="5" width="384" height="65"/>
+                                        <rect key="frame" x="15" y="5" width="384" height="55"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V66-U5-Au2">
-                                                <rect key="frame" x="0.0" y="0.0" width="384" height="65"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="384" height="55"/>
                                                 <connections>
                                                     <action selector="btnSelectPaymentMethod:" destination="8fD-7O-Ydp" eventType="touchUpInside" id="qEd-FC-F8i"/>
                                                 </connections>
                                             </button>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconVisaCard" translatesAutoresizingMaskIntoConstraints="NO" id="wGV-UL-QY3">
-                                                <rect key="frame" x="0.0" y="5" width="99.5" height="55"/>
+                                                <rect key="frame" x="0.0" y="5" width="81.5" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="wGV-UL-QY3" secondAttribute="height" multiplier="29:16" id="Yw6-8V-4qn"/>
                                                 </constraints>
                                             </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="m0J-Vk-yp9">
-                                                <rect key="frame" x="99.5" y="5" width="284.5" height="35"/>
+                                                <rect key="frame" x="81.5" y="5" width="302.5" height="35"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="HSEB Debit Card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Bt-JU-BRl">
-                                                        <rect key="frame" x="0.0" y="0.0" width="284.5" height="16.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="302.5" height="16.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="XXXX XXXX XXXX 8976" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TGQ-SN-Ws3">
-                                                        <rect key="frame" x="0.0" y="21.5" width="284.5" height="13.5"/>
+                                                        <rect key="frame" x="0.0" y="21.5" width="302.5" height="13.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -1106,7 +1106,7 @@
                                                 </constraints>
                                             </stackView>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oHh-kG-lxP">
-                                                <rect key="frame" x="0.0" y="0.0" width="384" height="65"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="384" height="55"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="textColor"/>
@@ -1469,6 +1469,12 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G8N-8b-ETi">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yXZ-z7-Fx4">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                                        <connections>
+                                            <action selector="btnOuterClicked:" destination="Qck-HG-mrj" eventType="touchUpInside" id="PCS-bU-ggx"/>
+                                        </connections>
+                                    </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jV7-hY-fKc">
                                         <rect key="frame" x="0.0" y="531" width="414" height="331"/>
                                         <subviews>
@@ -1494,6 +1500,7 @@
                                                                 <textInputTraits key="textInputTraits"/>
                                                                 <connections>
                                                                     <action selector="txtDateFrom:" destination="Qck-HG-mrj" eventType="editingDidBegin" id="PK5-cf-TGx"/>
+                                                                    <outlet property="delegate" destination="Qck-HG-mrj" id="aGu-xD-jwo"/>
                                                                 </connections>
                                                             </textField>
                                                         </subviews>
@@ -1515,6 +1522,7 @@
                                                                 <textInputTraits key="textInputTraits"/>
                                                                 <connections>
                                                                     <action selector="txtDateTO:" destination="Qck-HG-mrj" eventType="editingDidBegin" id="gW7-oC-9aj"/>
+                                                                    <outlet property="delegate" destination="Qck-HG-mrj" id="wcw-9G-epP"/>
                                                                 </connections>
                                                             </textField>
                                                         </subviews>
@@ -1548,10 +1556,13 @@
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fWn-Rq-FuL">
                                                                         <rect key="frame" x="0.0" y="0.0" width="88.5" height="30"/>
                                                                         <subviews>
-                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SfD-Rk-xBm">
+                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SfD-Rk-xBm">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="88.5" height="30"/>
+                                                                                <connections>
+                                                                                    <action selector="btnCashClicked:" destination="Qck-HG-mrj" eventType="touchUpInside" id="AMN-Aj-0cZ"/>
+                                                                                </connections>
                                                                             </button>
-                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mmn-kY-28l">
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconCheckboxUnselected" translatesAutoresizingMaskIntoConstraints="NO" id="Mmn-kY-28l">
                                                                                 <rect key="frame" x="5" y="7.5" width="15" height="15"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" constant="15" id="2dC-Ag-Gzr"/>
@@ -1581,10 +1592,13 @@
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fay-dx-dDm">
                                                                         <rect key="frame" x="98.5" y="0.0" width="88.5" height="30"/>
                                                                         <subviews>
-                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cRO-Z6-8M1">
+                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cRO-Z6-8M1">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="88.5" height="30"/>
+                                                                                <connections>
+                                                                                    <action selector="btnWalletClicked:" destination="Qck-HG-mrj" eventType="touchUpInside" id="Aaz-s2-Nrr"/>
+                                                                                </connections>
                                                                             </button>
-                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fSL-0T-c4z">
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconCheckboxUnselected" translatesAutoresizingMaskIntoConstraints="NO" id="fSL-0T-c4z">
                                                                                 <rect key="frame" x="5" y="7.5" width="15" height="15"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="15" id="pmE-E0-JPt"/>
@@ -1614,10 +1628,13 @@
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AF0-jO-fxV">
                                                                         <rect key="frame" x="197" y="0.0" width="88.5" height="30"/>
                                                                         <subviews>
-                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JWV-4B-WiH">
+                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JWV-4B-WiH">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="88.5" height="30"/>
+                                                                                <connections>
+                                                                                    <action selector="btnCardClicked:" destination="Qck-HG-mrj" eventType="touchUpInside" id="w9e-Yg-gUj"/>
+                                                                                </connections>
                                                                             </button>
-                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9Ex-Yz-j2i">
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconCheckboxUnselected" translatesAutoresizingMaskIntoConstraints="NO" id="9Ex-Yz-j2i">
                                                                                 <rect key="frame" x="5" y="7.5" width="15" height="15"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="15" id="hKL-vv-3JA"/>
@@ -1647,10 +1664,13 @@
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vnn-lK-e6J">
                                                                         <rect key="frame" x="295.5" y="0.0" width="88.5" height="30"/>
                                                                         <subviews>
-                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fx5-j7-Idl">
+                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fx5-j7-Idl">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="88.5" height="30"/>
+                                                                                <connections>
+                                                                                    <action selector="btnMPesaClicked:" destination="Qck-HG-mrj" eventType="touchUpInside" id="tRT-kX-aGE"/>
+                                                                                </connections>
                                                                             </button>
-                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ppy-bC-BXu">
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconCheckboxUnselected" translatesAutoresizingMaskIntoConstraints="NO" id="Ppy-bC-BXu">
                                                                                 <rect key="frame" x="5" y="7.5" width="15" height="15"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="15" id="IeV-Sb-VJP"/>
@@ -1712,10 +1732,13 @@
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hyw-Rt-N1c">
                                                                         <rect key="frame" x="0.0" y="0.0" width="90" height="30"/>
                                                                         <subviews>
-                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K2f-Ny-kcM">
+                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K2f-Ny-kcM">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="90" height="30"/>
+                                                                                <connections>
+                                                                                    <action selector="btnMyTripsClicked:" destination="Qck-HG-mrj" eventType="touchUpInside" id="4HI-A2-GjP"/>
+                                                                                </connections>
                                                                             </button>
-                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jtb-Jq-aRb">
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconCheckboxUnselected" translatesAutoresizingMaskIntoConstraints="NO" id="jtb-Jq-aRb">
                                                                                 <rect key="frame" x="5" y="7.5" width="15" height="15"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="15" id="Rv1-Qs-ypa"/>
@@ -1746,10 +1769,13 @@
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uaS-hB-R3w">
                                                                         <rect key="frame" x="100" y="0.0" width="120" height="30"/>
                                                                         <subviews>
-                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QHK-8j-ecM">
+                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QHK-8j-ecM">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="120" height="30"/>
+                                                                                <connections>
+                                                                                    <action selector="btnCommissionClicked:" destination="Qck-HG-mrj" eventType="touchUpInside" id="cp0-cR-Dyj"/>
+                                                                                </connections>
                                                                             </button>
-                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FXb-ig-KoD">
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconCheckboxUnselected" translatesAutoresizingMaskIntoConstraints="NO" id="FXb-ig-KoD">
                                                                                 <rect key="frame" x="5" y="7.5" width="15" height="15"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" constant="15" id="HRU-l8-WQq"/>
@@ -1819,7 +1845,7 @@
                                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Fh-3i-dgf">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="94" height="30"/>
                                                                             </button>
-                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TDT-Fb-HUM">
+                                                                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TDT-Fb-HUM">
                                                                                 <rect key="frame" x="5" y="7.5" width="15" height="15"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" constant="15" id="1xV-yi-M4F"/>
@@ -1913,9 +1939,13 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="yXZ-z7-Fx4" firstAttribute="leading" secondItem="G8N-8b-ETi" secondAttribute="leading" id="4Ox-DJ-mex"/>
+                                    <constraint firstItem="yXZ-z7-Fx4" firstAttribute="top" secondItem="G8N-8b-ETi" secondAttribute="top" id="BKb-d8-3B1"/>
+                                    <constraint firstAttribute="trailing" secondItem="yXZ-z7-Fx4" secondAttribute="trailing" id="YfU-UF-mQF"/>
                                     <constraint firstAttribute="bottom" secondItem="jV7-hY-fKc" secondAttribute="bottom" id="aVc-qw-X7j"/>
                                     <constraint firstItem="jV7-hY-fKc" firstAttribute="leading" secondItem="G8N-8b-ETi" secondAttribute="leading" id="h7U-sT-hFi"/>
                                     <constraint firstAttribute="trailing" secondItem="jV7-hY-fKc" secondAttribute="trailing" id="jJS-GQ-Rfo"/>
+                                    <constraint firstAttribute="bottom" secondItem="yXZ-z7-Fx4" secondAttribute="bottom" id="ob3-xU-Bzp"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1929,6 +1959,18 @@
                         <viewLayoutGuide key="safeArea" id="syZ-Y9-Dkj"/>
                     </view>
                     <connections>
+                        <outlet property="btnCAsh" destination="SfD-Rk-xBm" id="HRk-GS-kYS"/>
+                        <outlet property="btnCard" destination="JWV-4B-WiH" id="HVd-Cr-CuJ"/>
+                        <outlet property="btnCommission" destination="QHK-8j-ecM" id="kE1-fz-xFN"/>
+                        <outlet property="btnMPesa" destination="Fx5-j7-Idl" id="Qcm-lu-aTz"/>
+                        <outlet property="btnMyTrips" destination="K2f-Ny-kcM" id="are-iy-RoQ"/>
+                        <outlet property="btnWallet" destination="cRO-Z6-8M1" id="V7R-Yt-St7"/>
+                        <outlet property="iconCAsh" destination="Mmn-kY-28l" id="NrB-g8-Gck"/>
+                        <outlet property="iconCard" destination="9Ex-Yz-j2i" id="58R-Rj-U9d"/>
+                        <outlet property="iconCommission" destination="FXb-ig-KoD" id="gI4-x4-px3"/>
+                        <outlet property="iconMPesa" destination="Ppy-bC-BXu" id="eKS-ZP-j9c"/>
+                        <outlet property="iconMyTrips" destination="jtb-Jq-aRb" id="kLF-Tj-cDC"/>
+                        <outlet property="iconWallet" destination="fSL-0T-c4z" id="Ltu-B9-FHP"/>
                         <outlet property="txtFromDate" destination="CHV-wR-tCp" id="O1J-ss-ujr"/>
                         <outlet property="txtToDate" destination="79O-bb-Jd7" id="7of-ys-IUH"/>
                         <outlet property="viewPopup" destination="jV7-hY-fKc" id="14t-Pn-JXr"/>
@@ -1944,6 +1986,7 @@
         <image name="SelectedCircle" width="20" height="20"/>
         <image name="UnSelectedCircle" width="20" height="20"/>
         <image name="iconBird" width="174" height="99"/>
+        <image name="iconCheckboxUnselected" width="26" height="26"/>
         <image name="iconCurrencyBlack" width="33" height="33"/>
         <image name="iconDummyQR" width="170.66667175292969" height="170.66667175292969"/>
         <image name="iconHistory" width="30" height="30"/>

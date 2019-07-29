@@ -92,7 +92,7 @@ class SendMoneyViewController: BaseViewController, UIPickerViewDelegate, UIPicke
         {
             if(didMaxMobileNumberLimit)
             {
-                self.webserviceMobileNoDetails()
+                
             }
             else
             {
@@ -407,7 +407,7 @@ class SendMoneyViewController: BaseViewController, UIPickerViewDelegate, UIPicke
     
     func webserviceMobileNoDetails()
     {
-//        UtilityClass.showHUD(with: self.view)
+        UtilityClass.showHUD(with: UIApplication.shared.keyWindow)
         
         
         MobileNoDetailReqModel.mobile_no = txtmobileNumber.text ?? ""
@@ -416,16 +416,19 @@ class SendMoneyViewController: BaseViewController, UIPickerViewDelegate, UIPicke
         MobileNoDetailReqModel.sender_id = SingletonClass.sharedInstance.loginData.id
         
         UserWebserviceSubclass.MobileNoDetailDetail(MobileNoDetailModel: MobileNoDetailReqModel) { (json, status) in
-//            UtilityClass.hideHUD()
+            UtilityClass.hideHUD()
             
             if status
             {
                 let MobileData = MobileNoResultModel.init(fromJson: json)
-                self.lblReceiverName.text = MobileData.data.firstName + " " + MobileData.data.lastName
+//                self.lblReceiverName.text = MobileData.data.firstName + " " + MobileData.data.lastName
 //                self.txtmobileNumber.text = self.QRCodeDetailsResult.data.mobileNo
+                SingletonClass.sharedInstance.walletBalance = MobileData.walletBalance
+                AlertMessage.showMessageForSuccess(MobileData.message)
+                self.navigationController?.popViewController(animated: true)
             }
             else{
-//                UtilityClass.hideHUD()
+                UtilityClass.hideHUD()
                 AlertMessage.showMessageForError(json["message"].stringValue)
             }
         }
@@ -443,7 +446,20 @@ class SendMoneyViewController: BaseViewController, UIPickerViewDelegate, UIPicke
         }
         else
         {
-           self.webserciveForTransferMoney()
+            
+            print(self.SCnnedQRCode)
+            if self.SCnnedQRCode == ""
+            {
+                if txtmobileNumber.text?.count != 0
+                {
+                    self.webserviceMobileNoDetails()
+                }
+            }
+            else
+            {
+                self.webserciveForTransferMoney()
+            }
+//            self.webserviceMobileNoDetails()
         }
     }
     

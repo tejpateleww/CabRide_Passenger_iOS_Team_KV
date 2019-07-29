@@ -40,4 +40,6 @@ class BulkMileVC: BaseViewController,UITableViewDelegate,UITableViewDataSource {
         print(buttonTag)
     }
 
+    
+    
 }
