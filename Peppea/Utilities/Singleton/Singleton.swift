@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 class SingletonClass: NSObject
 {
@@ -17,6 +18,15 @@ class SingletonClass: NSObject
     var loginData = LoginData()
     
     var bookingInfo: BookingInfo?
+    var myCurrentLocation = CLLocation()
+    
+    func clearSingletonClass() {
+        RegisterOTP = ""
+        walletBalance = ""
+        loginData = LoginData()
+        bookingInfo = nil
+        myCurrentLocation = CLLocation()
+    }
 }
 
 class SingletonRegistration: NSObject

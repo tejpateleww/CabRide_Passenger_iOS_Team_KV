@@ -29,16 +29,6 @@ class SplashViewController: UIViewController {
         super.viewDidAppear(animated)
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
     func webserviceforAPPInit()
     {
         
@@ -86,7 +76,7 @@ class SplashViewController: UIViewController {
                 
                 let isLogin = UserDefaults.standard.bool(forKey: "isUserLogin")
                 
-                if isLogin == true {
+                if isLogin == true || (SingletonClass.sharedInstance.loginData.id != "" && SingletonClass.sharedInstance.loginData.id != nil) {
                     
                     if json.dictionary?["booking_info"] != nil {
                         let info = BookingInfo(fromJson: json.dictionary?["booking_info"])

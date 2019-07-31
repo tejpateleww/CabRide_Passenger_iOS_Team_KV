@@ -487,6 +487,7 @@
                         <outlet property="driverInfoContainerView" destination="m4i-j9-WMt" id="l9d-W5-Ea7"/>
                         <outlet property="driverRatingContainerView" destination="raS-eE-gCS" id="lys-e1-Uha"/>
                         <outlet property="lblBuildNumber" destination="COt-MM-lJA" id="ZdK-zS-R4g"/>
+                        <outlet property="locationView" destination="Yy9-FD-GtO" id="1WQ-WM-Cyc"/>
                         <outlet property="mapViewContainer" destination="m4s-5R-lg3" id="eHW-nf-4VA"/>
                         <outlet property="markerContainerView" destination="DMt-fD-VVT" id="aB7-xg-5Wu"/>
                         <outlet property="markerView" destination="sU4-T2-wIl" id="OAg-gu-nTA"/>
@@ -777,7 +778,7 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="3LX-GT-zzW">
                                                         <rect key="frame" x="60" y="10" width="190" height="50"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Case" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WSJ-W4-wv8">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Cash" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WSJ-W4-wv8">
                                                                 <rect key="frame" x="0.0" y="0.0" width="190" height="50"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                 <nil key="textColor"/>
@@ -1630,8 +1631,14 @@ automatic expense for warding</string>
                                     <constraint firstAttribute="height" constant="70" id="Ud7-nh-DVf"/>
                                 </constraints>
                             </imageView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fQ-oJ-5B7">
+                                <rect key="frame" x="166.5" y="21.5" width="42" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FE1-XC-SNi">
-                                <rect key="frame" x="10" y="50" width="355" height="236"/>
+                                <rect key="frame" x="10" y="50" width="355" height="223"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How was your trip with Thomas?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MIw-li-p0c">
                                         <rect key="frame" x="10" y="5" width="335" height="17"/>
@@ -1648,9 +1655,9 @@ automatic expense for warding</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nYc-f9-dx3">
-                                        <rect key="frame" x="77.5" y="67" width="200" height="108"/>
+                                        <rect key="frame" x="77.5" y="67" width="200" height="50"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder=" Comments..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wGf-dl-N5B">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Comments..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wGf-dl-N5B">
                                                 <rect key="frame" x="0.0" y="5" width="200" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="8ay-3E-A1u"/>
@@ -1663,23 +1670,24 @@ automatic expense for warding</string>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="wGf-dl-N5B" secondAttribute="bottom" constant="5" id="2jg-c3-rD3"/>
                                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="280" id="BcK-Xr-LXg"/>
                                             <constraint firstItem="wGf-dl-N5B" firstAttribute="top" secondItem="nYc-f9-dx3" secondAttribute="top" constant="5" id="ZOP-Ux-mUS"/>
                                             <constraint firstAttribute="trailing" secondItem="wGf-dl-N5B" secondAttribute="trailing" id="exs-FY-XKY"/>
                                             <constraint firstItem="wGf-dl-N5B" firstAttribute="leading" secondItem="nYc-f9-dx3" secondAttribute="leading" id="joN-LV-NAC"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xt8-e6-WsO">
-                                        <rect key="frame" x="37.5" y="67" width="280" height="108"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xt8-e6-WsO">
+                                        <rect key="frame" x="75" y="67" width="205" height="95"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Add a tip" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VLz-sp-uV3">
-                                                <rect key="frame" x="114.5" y="0.0" width="51.5" height="13"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add a tip" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VLz-sp-uV3">
+                                                <rect key="frame" x="77" y="0.0" width="51.5" height="0.0"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="13"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="hgY-04-R6x">
-                                                <rect key="frame" x="37.5" y="23" width="205" height="85"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="hgY-04-R6x">
+                                                <rect key="frame" x="0.0" y="10" width="205" height="85"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="do0-AI-zz1">
                                                         <rect key="frame" x="0.0" y="0.0" width="205" height="40"/>
@@ -1716,7 +1724,7 @@ automatic expense for warding</string>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="pDA-xy-G98">
                                                         <rect key="frame" x="0.0" y="45" width="205" height="40"/>
                                                         <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HjN-Nm-lKt">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Enter amount" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HjN-Nm-lKt">
                                                                 <rect key="frame" x="0.0" y="0.0" width="205" height="40"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="40" id="XJN-CL-Tca"/>
@@ -1736,6 +1744,7 @@ automatic expense for warding</string>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="hgY-04-R6x" secondAttribute="bottom" id="AmA-ZO-Zyo"/>
+                                            <constraint firstItem="hgY-04-R6x" firstAttribute="width" secondItem="Xt8-e6-WsO" secondAttribute="width" id="Bsd-iw-Wou"/>
                                             <constraint firstItem="VLz-sp-uV3" firstAttribute="top" secondItem="Xt8-e6-WsO" secondAttribute="top" id="aUJ-XH-kvA"/>
                                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="280" id="dAu-JM-8sg"/>
                                             <constraint firstItem="VLz-sp-uV3" firstAttribute="centerX" secondItem="Xt8-e6-WsO" secondAttribute="centerX" id="gi0-cr-neV"/>
@@ -1744,7 +1753,7 @@ automatic expense for warding</string>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mhb-ZO-9k2" customClass="ThemeButton" customModule="Peppea" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="186" width="335" height="40"/>
+                                        <rect key="frame" x="10" y="173" width="335" height="40"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="chW-eD-ibI"/>
@@ -1764,16 +1773,16 @@ automatic expense for warding</string>
                                     <constraint firstItem="Qhz-3b-BLb" firstAttribute="top" secondItem="MIw-li-p0c" secondAttribute="bottom" constant="5" id="0Me-Ia-Cof"/>
                                     <constraint firstAttribute="bottom" secondItem="mhb-ZO-9k2" secondAttribute="bottom" constant="10" id="6oS-eT-qtF"/>
                                     <constraint firstItem="Xt8-e6-WsO" firstAttribute="top" secondItem="Qhz-3b-BLb" secondAttribute="bottom" constant="10" id="B7L-6y-kMJ"/>
-                                    <constraint firstItem="mhb-ZO-9k2" firstAttribute="top" secondItem="Xt8-e6-WsO" secondAttribute="bottom" constant="11" id="BDi-I7-STp"/>
+                                    <constraint firstItem="mhb-ZO-9k2" firstAttribute="top" secondItem="Xt8-e6-WsO" secondAttribute="bottom" priority="900" constant="11" id="BDi-I7-STp"/>
                                     <constraint firstItem="Qhz-3b-BLb" firstAttribute="centerX" secondItem="FE1-XC-SNi" secondAttribute="centerX" id="Fa9-tX-lgQ"/>
                                     <constraint firstAttribute="trailing" secondItem="MIw-li-p0c" secondAttribute="trailing" constant="10" id="GPO-Pb-MOp"/>
                                     <constraint firstAttribute="trailing" secondItem="mhb-ZO-9k2" secondAttribute="trailing" constant="10" id="Ubh-DR-GBr"/>
                                     <constraint firstItem="mhb-ZO-9k2" firstAttribute="leading" secondItem="FE1-XC-SNi" secondAttribute="leading" constant="10" id="Xmy-3I-YbU"/>
                                     <constraint firstItem="MIw-li-p0c" firstAttribute="top" secondItem="FE1-XC-SNi" secondAttribute="top" constant="5" id="ddr-2w-Ksn"/>
                                     <constraint firstItem="Xt8-e6-WsO" firstAttribute="centerX" secondItem="FE1-XC-SNi" secondAttribute="centerX" id="ebk-8L-NEy"/>
-                                    <constraint firstItem="Xt8-e6-WsO" firstAttribute="top" secondItem="nYc-f9-dx3" secondAttribute="top" id="sdt-8A-WUO"/>
+                                    <constraint firstItem="nYc-f9-dx3" firstAttribute="top" secondItem="Qhz-3b-BLb" secondAttribute="bottom" constant="10" id="pIE-cK-MmP"/>
                                     <constraint firstItem="MIw-li-p0c" firstAttribute="leading" secondItem="FE1-XC-SNi" secondAttribute="leading" constant="10" id="t4h-WC-mdM"/>
-                                    <constraint firstItem="Xt8-e6-WsO" firstAttribute="bottom" secondItem="nYc-f9-dx3" secondAttribute="bottom" id="yMY-S3-ld6"/>
+                                    <constraint firstItem="mhb-ZO-9k2" firstAttribute="top" secondItem="nYc-f9-dx3" secondAttribute="bottom" priority="800" constant="11" id="uE8-BJ-dma"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1781,9 +1790,11 @@ automatic expense for warding</string>
                         <constraints>
                             <constraint firstItem="FE1-XC-SNi" firstAttribute="centerX" secondItem="piW-p0-Tni" secondAttribute="centerX" id="40f-rY-Wi8"/>
                             <constraint firstItem="QsH-gC-UEP" firstAttribute="leading" secondItem="piW-p0-Tni" secondAttribute="leading" id="5rh-FE-Pj3"/>
+                            <constraint firstItem="FE1-XC-SNi" firstAttribute="top" secondItem="8fQ-oJ-5B7" secondAttribute="bottom" constant="8" id="81U-6X-ZfO"/>
                             <constraint firstItem="KJC-eR-F3p" firstAttribute="centerX" secondItem="piW-p0-Tni" secondAttribute="centerX" id="EJ2-dZ-kDQ"/>
                             <constraint firstItem="piW-p0-Tni" firstAttribute="trailing" secondItem="QsH-gC-UEP" secondAttribute="trailing" id="G6y-xG-msi"/>
                             <constraint firstItem="FE1-XC-SNi" firstAttribute="leading" secondItem="piW-p0-Tni" secondAttribute="leading" constant="10" id="ayQ-wN-CMu"/>
+                            <constraint firstItem="8fQ-oJ-5B7" firstAttribute="centerX" secondItem="FE1-XC-SNi" secondAttribute="centerX" id="c8c-d3-j6G"/>
                             <constraint firstItem="QsH-gC-UEP" firstAttribute="top" secondItem="NN4-ky-f3H" secondAttribute="top" id="gO6-vJ-2wK"/>
                             <constraint firstItem="piW-p0-Tni" firstAttribute="trailing" secondItem="FE1-XC-SNi" secondAttribute="trailing" constant="10" id="nY7-YP-oS2"/>
                             <constraint firstItem="FE1-XC-SNi" firstAttribute="top" secondItem="KJC-eR-F3p" secondAttribute="bottom" constant="10" id="oAZ-DT-WF0"/>
@@ -1798,8 +1809,11 @@ automatic expense for warding</string>
                         <outlet property="btnTip30" destination="A79-MO-p6g" id="cCN-Kn-jeI"/>
                         <outlet property="btnTip40" destination="BOe-h7-fAt" id="aWu-Ms-P1q"/>
                         <outlet property="constraintHeightOfViewRating" destination="zOF-tD-Hi3" id="Aok-3w-X9f"/>
+                        <outlet property="constraintTopOfAskForTip" destination="BDi-I7-STp" id="3fn-Of-hgz"/>
+                        <outlet property="constraintTopOfComments" destination="uE8-BJ-dma" id="yep-ry-rzA"/>
                         <outlet property="imgDriverImage" destination="KJC-eR-F3p" id="RbH-y7-U3b"/>
                         <outlet property="lblDriverName" destination="MIw-li-p0c" id="vwY-Hy-lKE"/>
+                        <outlet property="lblGrandTotal" destination="8fQ-oJ-5B7" id="MHf-nZ-Rxc"/>
                         <outlet property="stackViewOther" destination="pDA-xy-G98" id="vBk-CR-phE"/>
                         <outlet property="txtComments" destination="wGf-dl-N5B" id="QsN-P7-niM"/>
                         <outlet property="txtOther" destination="HjN-Nm-lKt" id="KVv-9w-Vk3"/>

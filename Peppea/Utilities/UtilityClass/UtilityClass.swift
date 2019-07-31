@@ -102,6 +102,21 @@ class UtilityClass : NSObject
         obj?.viewBackFull?.addSubview(imgGlass)
         mainView?.addSubview(obj?.viewBackFull ?? UIView())
     }
+    
+    class func showHUDWithoutLottie(with mainView: UIView?) {
+        
+        let obj = DataClass.getInstance()
+        obj?.viewBackFull = UIView(frame: CGRect(x: 0, y: 0, width: mainView?.frame.size.width ?? 0.0, height: mainView?.frame.size.height ?? 0.0))
+        obj?.viewBackFull?.backgroundColor = UIColor.black.withAlphaComponent(0.2)
+        let imgGlass = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))//239    115    40
+        imgGlass.backgroundColor = UIColor.black.withAlphaComponent(0.0) //UIColor(red: 239/255, green: 115/255, blue: 40/255, alpha: 1.0)//
+        //        self._loadAnimationNamed("Loading", view: imgGlass, dataClass: obj)
+        imgGlass.center = obj?.viewBackFull?.center ?? CGPoint(x: 0, y: 0)
+        imgGlass.layer.cornerRadius = 15.0
+        imgGlass.layer.masksToBounds = true
+        obj?.viewBackFull?.addSubview(imgGlass)
+        mainView?.addSubview(obj?.viewBackFull ?? UIView())
+    }
 
     class func _loadAnimationNamed(_ named: String?, view mainView: UIView?, dataClass obj: DataClass?) {
 
@@ -126,7 +141,28 @@ class UtilityClass : NSObject
         }
 
     }
-
+    
+    
+    class func image(_ originalImage: UIImage?, scaledTo size: CGSize) -> UIImage? {
+        //avoid redundant drawing
+        if originalImage?.size.equalTo(size) ?? false {
+            return originalImage
+        }
+        
+        //create drawing context
+        UIGraphicsBeginImageContextWithOptions(size, _ : false, _ : 0.0)
+        
+        //draw
+        originalImage?.draw(in: CGRect(x: 0.0, y: 0.0, width: size.width, height: size.height))
+        
+        //capture resultant image
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        //return image
+        return image
+    }
+    
 
     class func convertTimeStampToFormat(unixtimeInterval : String, dateFormat : String) -> String
     {

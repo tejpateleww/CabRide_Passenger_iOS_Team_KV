@@ -57,6 +57,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
     @IBOutlet weak var markerView: UIImageView!
     @IBOutlet weak var markerContainerView: UIView!
     @IBOutlet weak var lblBuildNumber: UILabel!
+    @IBOutlet weak var locationView: UIView!
     
     let window = UIApplication.shared.keyWindow
 
@@ -87,13 +88,15 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
     var animationPath = GMSMutablePath()
     var i: UInt = 0
     var timer: Timer!
+    var driverMarker: GMSMarker!
+    
 
     //MARK:- Location Manager
     let locationManager = CLLocationManager()
     var defaultLocation = CLLocation()
     var pickupLocation = CLLocationCoordinate2D()
     var destinationLocation = CLLocationCoordinate2D()
-    var zoomLevel: Float = 16.0
+//    var zoomLevel: Float = 16.0
 
 
     //MARK:- Container viewcontrollers views
@@ -157,8 +160,12 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
         if self.booingInfo.status == "pending" {
             setupTripStatu(status: .pending)
         } else if self.booingInfo.status == "accepted" {
+            self.routeDrawMethod(origin: "\(self.booingInfo.pickupLat ?? ""),\(self.booingInfo.pickupLng ?? "")", destination: "\(self.booingInfo.dropoffLat ?? ""),\(self.booingInfo.dropoffLng ?? "")")
+            setupCarMarker(res: self.booingInfo)
             setupTripStatu(status: .accepted)
         } else if self.booingInfo.status == "traveling" {
+            self.routeDrawMethod(origin: "\(self.booingInfo.pickupLat ?? ""),\(self.booingInfo.pickupLng ?? "")", destination: "\(self.booingInfo.dropoffLat ?? ""),\(self.booingInfo.dropoffLng ?? "")")
+            setupCarMarker(res: self.booingInfo)
             setupTripStatu(status: .traveling)
         } else if self.booingInfo.status == "completed" {
             setupTripStatu(status: .completed)
@@ -166,11 +173,11 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
         
         #if targetEnvironment(simulator)
             lblBuildNumber.isHidden = false
-            lblBuildNumber.text = "Build : \(Bundle.main.buildVersionNumber) \t\t Booking ID: \(self.booingInfo.id ?? "")"
+        lblBuildNumber.text = "Build : \(Bundle.main.buildVersionNumber ?? "") \t\t Booking ID: \(self.booingInfo.id ?? "")"
         #else
         lblBuildNumber.isHidden = true
         
-        if UIDevice.current.name == "iPad red" {
+        if UIDevice.current.name == "iPad red" || UIDevice.current.name == "Eww’s iPhone 7" || UIDevice.current.name == "Administrator’s iPhone" {
             lblBuildNumber.isHidden = false
             lblBuildNumber.text = "Build : \(Bundle.main.buildVersionNumber ?? "") \t\t Booking ID: \(self.booingInfo.id ?? "")"
         }
@@ -264,16 +271,44 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
 
     func setUpCustomMarker()
     {
-        //        let markerImage = UIImage(named: "iconPin")
+        //        let markerImage = UIImage(named: "iconMarker")
         //        let markerView = UIImageView(image: markerImage)
         //        marker.position = defaultLocation.coordinate
         //        marker.iconView = markerView
         //        marker.map = mapView
-        markerContainerView.isHidden = false
+//        markerContainerView.isHidden = false
         markerContainerView.layer.cornerRadius = (markerContainerView.frame.size.width)/2.0
         mapView.isMyLocationEnabled = false
         //        createPulse()
 
+    }
+    
+    func setupCarMarker(res : BookingInfo)
+    {
+        mapView.isMyLocationEnabled = false
+        if self.driverMarker == nil {
+            
+            
+            var DoubleLat = Double()
+            var DoubleLng = Double()
+            
+            if let lat = res.driverInfo?.lat, let doubleLat = Double(lat) {
+                DoubleLat = doubleLat
+            }
+            
+            if let lng = res.driverInfo?.lng, let doubleLng = Double(lng) {
+                DoubleLng = doubleLng
+            }
+            
+            let DriverCordinate = CLLocationCoordinate2D(latitude: DoubleLat , longitude: DoubleLng)
+            self.driverMarker = GMSMarker(position: DriverCordinate) // self.originCoordinate
+            self.driverMarker.icon = UIImage(named: iconCar)
+            self.driverMarker.map = self.mapView
+        }
+        else {
+            self.driverMarker.icon = UIImage.init(named: iconCar)
+        }
+        
     }
 
     func setupLocationManager()
@@ -284,12 +319,12 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
     }
     
     func setBackButtonWhileBookLater() {
-        let leftNavBarButton = UIBarButtonItem(image: UIImage(named: "iconBack"), style: .plain, target: self, action: #selector(self.btnBackButtonWhileBookLater(_:)))
+        let leftNavBarButton = UIBarButtonItem(image: UIImage(named: "iconBack"), style: .plain, target: self, action: #selector(self.btnBackButtonWhileBookLater))
         self.navigationItem.leftBarButtonItem = nil
         self.navigationItem.leftBarButtonItem = leftNavBarButton
     }
     
-    @objc func btnBackButtonWhileBookLater(_ button: UIBarButtonItem) {
+    @objc func btnBackButtonWhileBookLater() {
         let leftNavBarButton = UIBarButtonItem(image: UIImage(named: "iconMenu"), style: .plain, target: self, action: #selector(self.OpenMenuAction))
         self.navigationItem.leftBarButtonItem = nil
         self.navigationItem.leftBarButtonItem = leftNavBarButton
@@ -502,10 +537,13 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
             return 360 + degree
         }
     }
-    func currentLocationAction()
+    func currentLocationAction(isCurrentLocationTapped: Bool = false)
     {
         
-        clearMap()
+        if isCurrentLocationTapped {
+             clearMap()
+        }
+       
         
 //        self.destinationLocationMarker.map = nil
 //        self.currentLocationMarker.map = nil
@@ -558,7 +596,8 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
     @IBAction func btnCurrentLocation(_ sender: UIButton)
     {
         currentLocationAction()
-        setupAfterComplete()
+//        setupAfterComplete()
+
     }
     @IBAction func txtLocation(_ sender: ThemeTextField)
     {
@@ -631,6 +670,23 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
                             let status = dictionary["status"] as! String
 
                             if status == "OK" {
+                                var strDestinationCoordinate = destination?.components(separatedBy: ",")
+                                var DoubleLat = Double()
+                                var DoubleLng = Double()
+                                
+                                if let lat = strDestinationCoordinate?[0], let doubleLat = Double(lat) {
+                                    DoubleLat = doubleLat
+                                }
+                                
+                                if let lng = strDestinationCoordinate?[1], let doubleLng = Double(lng) {
+                                    DoubleLng = doubleLng
+                                }
+                                
+                                let destinationCoordinate = CLLocationCoordinate2D(latitude: DoubleLat , longitude: DoubleLng)
+                                var destinationMarker = GMSMarker()
+                                destinationMarker = GMSMarker(position: destinationCoordinate) // self.originCoordinate
+                                destinationMarker.icon = UtilityClass.image(UIImage(named: iconMarker), scaledTo: CGSize(width: 30, height: 30))//UIImage(named: iconMarker)
+                                destinationMarker.map = self.mapView
                                 self.drawRoute(routeDict: dictionary)
                             }
                         }
@@ -691,6 +747,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
     // MARK: - Navigation
 
     func hideAndShowView(view: HomeViews){
+        locationView.isHidden = true
         //        containerRideConfirmation.isHidden = !(view == .rideConfirmation)
         driverInfoContainerView.isHidden = !(view == .requestAccepted || view == .waiting || view == .rideStart)
         driverRatingContainerView.isHidden = !(view == .ratings || view == .askForTip)
@@ -747,17 +804,36 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
 }
 
 
-// MARK: - CLLocationManagerDelegate
+// MARK:- CLLocationManagerDelegate
 //1
 extension HomeViewController: CLLocationManagerDelegate {
 
+    
+    // Handle authorization for the location manager.
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        guard status == .authorizedWhenInUse else {
-            return
+        switch status {
+        case .restricted:
+            break
+        case .denied:
+            //            mapView.isHidden = false
+            break
+        case .notDetermined:
+            break
+        case .authorizedAlways:
+            manager.startUpdatingLocation()
+        case .authorizedWhenInUse:
+            manager.startUpdatingLocation()
+        @unknown default:
+            print("")
         }
-        locationManager.startUpdatingLocation()
-        //        mapView.isMyLocationEnabled = true
-        //        mapView.settings.myLocationButton = false
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        // print (error)
+        if (error as? CLError)?.code == .denied {
+            manager.stopUpdatingLocation()
+            manager.stopMonitoringSignificantLocationChanges()
+        }
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -852,6 +928,9 @@ extension HomeViewController: GMSAutocompleteViewControllerDelegate {
     
     /// Setup After Complete trip or Cancel trip
     func setupAfterComplete() {
+        
+        currentLocationAction(isCurrentLocationTapped: true)
+        
         self.txtDropLocation.text = ""
         self.currentLocationAction()
         self.carListContainerView.isHidden = false
@@ -862,6 +941,10 @@ extension HomeViewController: GMSAutocompleteViewControllerDelegate {
         self.containerView.isHidden = true
         self.hideBookLaterButtonFromDroplocationField = false
         
+        locationView.isHidden = false
+        mapView.isMyLocationEnabled = true
+        
+        
         if let VC = self.children.first as? CarCollectionViewController {
     
             VC.btnBookNow.setTitle("Book Now", for: .normal)
@@ -869,11 +952,4 @@ extension HomeViewController: GMSAutocompleteViewControllerDelegate {
             VC.vehicleId = ""
         }
     }
-}
-
-
-
-extension FloatingPoint {
-    var degreesToRadians: Self { return self * .pi / 180 }
-    var radiansToDegrees: Self { return self * 180 / .pi }
 }

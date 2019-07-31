@@ -58,7 +58,11 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
         
          pickerView.delegate = self
         do {
-            LoginDetail = try UserDefaults.standard.get(objectType: LoginModel.self, forKey: "userProfile")!
+            guard let userData = try UserDefaults.standard.get(objectType: LoginModel.self, forKey: "userProfile") else {
+                return
+            }
+            
+            LoginDetail = userData
         } catch {
             AlertMessage.showMessageForError("error")
             return
@@ -68,7 +72,12 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
             //
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 do {
-                    self.cardDetailModel = try UserDefaults.standard.get(objectType: AddCardModel.self, forKey: "cards")!
+                    
+                    guard let cardData = try UserDefaults.standard.get(objectType: AddCardModel.self, forKey: "cards") else {
+                        return
+                    }
+                    
+                    self.cardDetailModel = cardData
                     self.aryCards = self.cardDetailModel.cards
 
                     if(self.aryCards.count != 0)
@@ -241,7 +250,7 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
     }
     //MARK:-  --- CollectionView Delegate and Datasource Methods ---
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return arrCarLists.vehicleTypeList.count
+        return arrCarLists.vehicleTypeList?.count ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
@@ -369,6 +378,7 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
   
     func animateGoogleMapWhenRotate(homeVC : HomeViewController?)
     {
+        UtilityClass.showHUDWithoutLottie(with: UIApplication.shared.keyWindow)
         CATransaction.begin()
         CATransaction.setValue(1, forKey: kCATransactionAnimationDuration)
         CATransaction.setCompletionBlock({
@@ -380,6 +390,10 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
                 CATransaction.setCompletionBlock({
 //                    homeVC?.hideAndShowView(view: .requestAccepted)
 //                    homeVC?.isExpandCategory = true
+                    homeVC?.mapView.animate(toViewingAngle: 0)
+                    homeVC?.mapView.animate(toZoom: zoomLevel)
+                    homeVC?.btnCurrentLocation(UIButton())
+                    UtilityClass.hideHUD()
                 })
                 homeVC?.mapView.animate(toBearing: CLLocationDirection(((homeVC?.getHeadingForDirection(fromCoordinate: (homeVC?.defaultLocation.coordinate)!, toCoordinate: (homeVC?.defaultLocation.coordinate)!))! - 30) ))
                 homeVC?.view.layoutIfNeeded()
@@ -459,19 +473,28 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
         //        homeVC?.hideAndShowView(view: .requestAccepted)
         
         
-        homeVC?.isExpandCategory = false
-        homeVC?.setUpCustomMarker()
-        homeVC?.timer?.invalidate()
-        animateGoogleMapWhenRotate(homeVC: homeVC)
         
-        if sender.titleLabel?.text == "Book Now" {
-             webserviceForBooking(bookingType: "book_now") // "book_now" // "book_later"
-        } else {
-             webserviceForBooking(bookingType: "book_later") // "book_now" // "book_later"
+        if(self.validations().0)
+        {
+            
+            homeVC?.isExpandCategory = false
+            homeVC?.setUpCustomMarker()
+            homeVC?.timer?.invalidate()
+            animateGoogleMapWhenRotate(homeVC: homeVC)
+            
+            if sender.titleLabel?.text == "Book Now" {
+                 webserviceForBooking(bookingType: "book_now") // "book_now" // "book_later"
+            } else {
+                 webserviceForBooking(bookingType: "book_later") // "book_now" // "book_later"
+            }
         }
-        
+        else
+        {
+            AlertMessage.showMessageForError(self.validations().1)
+        }
 //        webserviceForBooking(bookingType: "") // "book_now" // "book_later"
     }
+    
 
     
     @IBAction func btnBookLater(_ sender: Any)

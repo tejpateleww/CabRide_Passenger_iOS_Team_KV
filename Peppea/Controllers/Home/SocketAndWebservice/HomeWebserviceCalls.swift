@@ -14,6 +14,36 @@ extension CarCollectionViewController: CarCollectionWebserviceProtocol {
     // MARK:- --- Webservice For Booking ---
     // ----------------------------------------------------
     
+    func validations() -> (Bool, String)
+    {
+        let pickup = (self.parent as! HomeViewController).pickupLocation
+        let dropOff = (self.parent as! HomeViewController).destinationLocation
+        let bookingType = (self.parent as! HomeViewController).bookingType == "" ? "book_now" : (self.parent as! HomeViewController).bookingType
+        
+        
+        if(pickup.latitude == 0 || pickup.longitude == 0)
+        {
+            return (false, "Please enter pickup location")
+        }
+        else if(dropOff.latitude == 0 || dropOff.longitude == 0)
+        {
+            return (false, "Please enter dropoff location")
+        }
+        else if(bookingType.trimmingCharacters(in: .whitespacesAndNewlines).count == 0)
+        {
+            return (false, "Please select booking type")
+        }
+        else if(vehicleId.trimmingCharacters(in: .whitespacesAndNewlines).count == 0)
+        {
+            return (false, "Please select vehicle")
+        }
+        else if(estimateFare.trimmingCharacters(in: .whitespacesAndNewlines).count == 0)
+        {
+            return (false, "Estimate fare is not available")
+        }
+        return (true, "")
+    }
+    
     func webserviceForBooking(bookingType: String) {
         
         let address = (self.parent as! HomeViewController).pickupAndDropoffAddress
@@ -45,6 +75,8 @@ extension CarCollectionViewController: CarCollectionWebserviceProtocol {
             
             print("Booking Response: \n", response)
             if status {
+                 let homeVC = self.parent as? HomeViewController
+                 homeVC?.btnBackButtonWhileBookLater()
                 
                 let msg = response.dictionary?["message"]?.stringValue ?? response.dictionary?["message"]?.array?.first?.stringValue ?? ""
                 

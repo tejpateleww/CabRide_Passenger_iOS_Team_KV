@@ -15,16 +15,23 @@ class MyTripsViewController: BaseViewController
 
     var tripType = MyTrips.past
     var data = [(String, String)]()
-    var pageNo: Int = 1
+    var pageNoPastBooking: Int = 1
+    var pageNoPastUpcoming: Int = 1
     private let refreshControl = UIRefreshControl()
     var isRefresh = Bool()
 
+    var isDataLoading:Bool=false
+    var didEndReached:Bool=false
 
+    var NeedToReload:Bool = false
+    var PageLimit = 10
+    var PageNumber = 1
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setCollectionTableView()
-        webserviceCallForGettingPastHistory()
-
+        webserviceCallForGettingPastHistory(pageNo: 1)
+        
         // Add Refresh Control to Table View
         if #available(iOS 10.0, *) {
             collectionTableView.tableView.refreshControl = refreshControl
@@ -41,14 +48,38 @@ class MyTripsViewController: BaseViewController
 
     }
 
-
     @objc private func refreshWeatherData(_ sender: Any) {
+        self.LoadNewData()
         // Fetch Weather Data
         isRefresh = true
-        if self.tripType.rawValue == "past" {
-            webserviceCallForGettingPastHistory()
-        } else {
-            webserviceForUpcommingBooking(pageNo: 1)
+//        if self.tripType.rawValue.lowercased() == "past" {
+//            self.pageNoPastBooking = 1
+//            webserviceCallForGettingPastHistory(pageNo: 1)
+//        } else {
+//            self.pageNoPastUpcoming = 1
+//            webserviceForUpcommingBooking(pageNo: 1)
+//        }
+    }
+    
+    func LoadMoreData() {
+        
+        self.PageNumber += 1
+        if self.tripType.rawValue.lowercased() == "past" {
+           self.webserviceCallForGettingPastHistory(pageNo: self.PageNumber)
+        } else{
+            self.webserviceForUpcommingBooking(pageNo: self.PageNumber)
+        }
+        
+    }
+    
+    func LoadNewData() {
+        self.PageNumber = 1
+        self.pastBookingHistoryModelDetails.removeAll()
+        self.collectionTableView.tableView.reloadData()
+        if self.tripType.rawValue.lowercased() == "past" {
+            self.webserviceCallForGettingPastHistory(pageNo: self.PageNumber)
+        } else{
+            self.webserviceForUpcommingBooking(pageNo: self.PageNumber)
         }
     }
 
@@ -82,9 +113,11 @@ class MyTripsViewController: BaseViewController
                 self.selectedCell = []
                 
                 if indexpaths.indexPath.item == 1 {
-                    self.webserviceForUpcommingBooking(pageNo: 1)
+                    self.LoadNewData()
+//                    self.webserviceForUpcommingBooking(pageNo: 1)
                 } else {
-                    self.webserviceCallForGettingPastHistory()
+                    self.LoadNewData()
+//                    self.webserviceCallForGettingPastHistory(pageNo: 1)
                 }
                 self.collectionTableView.tableView.removeAllSubviews()
                 self.collectionTableView.tableView.reloadData()
@@ -99,11 +132,11 @@ class MyTripsViewController: BaseViewController
        self.data = self.tripType.getDescription(pastBookingHistory: self.pastBookingHistoryModelDetails[0])
     }
 
-    func webserviceCallForGettingPastHistory() {
+    func webserviceCallForGettingPastHistory(pageNo: Int) {
 
         let model = PastBookingHistory()
-        model.customer_id = "1"//SingletonClass.sharedInstance.loginData.id
-        model.page = "1"
+        model.customer_id = SingletonClass.sharedInstance.loginData.id
+        model.page = "\(pageNo)"
 
         let strURL = model.customer_id + "/" + model.page
 
@@ -117,12 +150,28 @@ class MyTripsViewController: BaseViewController
             UtilityClass.hideHUD()
             self.isRefresh = false
             if(status) {
+                var arrResponseData = [PastBookingHistoryResponse]()
+                
                 if let arrayResponse = response.dictionary?["data"]?.array {
-                    self.pastBookingHistoryModelDetails = arrayResponse.map({ (item) -> PastBookingHistoryResponse in
+                    arrResponseData = arrayResponse.map({ (item) -> PastBookingHistoryResponse in
                         return PastBookingHistoryResponse.init(fromJson: item)
                     })
                 }
-                self.pastBookingHistoryModelDetails = self.pastBookingHistoryModelDetails.filter({$0.driverId != "0"})
+                
+                if arrResponseData.count == self.PageLimit {
+                    self.NeedToReload = true
+                } else {
+                    self.NeedToReload = false
+                }
+
+                if self.PageNumber == 1 {
+                    self.pastBookingHistoryModelDetails = arrResponseData
+                } else {
+                    for BookingObj in arrResponseData {
+                        self.pastBookingHistoryModelDetails.append(BookingObj)
+                    }
+                }
+//                self.pastBookingHistoryModelDetails = self.pastBookingHistoryModelDetails.filter({$0.driverId != "0"})
                 self.collectionTableView.tableView.reloadData()
                   self.refreshControl.endRefreshing()
             }
@@ -141,10 +190,26 @@ class MyTripsViewController: BaseViewController
             UtilityClass.hideHUD()
             self.isRefresh = false
             if(status) {
+                var arrResponseData = [PastBookingHistoryResponse]()
+                
                 if let arrayResponse = response.dictionary?["data"]?.array {
-                    self.pastBookingHistoryModelDetails = arrayResponse.map({ (item) -> PastBookingHistoryResponse in
+                    arrResponseData = arrayResponse.map({ (item) -> PastBookingHistoryResponse in
                         return PastBookingHistoryResponse.init(fromJson: item)
                     })
+                }
+                
+                if arrResponseData.count == self.PageLimit {
+                    self.NeedToReload = true
+                } else {
+                    self.NeedToReload = false
+                }
+                
+                if self.PageNumber == 1 {
+                    self.pastBookingHistoryModelDetails = arrResponseData
+                } else {
+                    for BookingObj in arrResponseData {
+                        self.pastBookingHistoryModelDetails.append(BookingObj)
+                    }
                 }
 //                self.pastBookingHistoryModelDetails = self.pastBookingHistoryModelDetails.filter({$0.driverId != "0"})
                 self.collectionTableView.tableView.reloadData()
@@ -229,6 +294,9 @@ extension MyTripsViewController: UITableViewDelegate, UITableViewDataSource{
             }
            
             cell.setup()
+//            if self.NeedToReload == true && indexPath.section == self.pastBookingHistoryModelDetails.count - 1 {
+//                self.LoadMoreData()
+//            }
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: MyTripDescriptionTableViewCell.identifier, for: indexPath) as! MyTripDescriptionTableViewCell
@@ -239,8 +307,11 @@ extension MyTripsViewController: UITableViewDelegate, UITableViewDataSource{
             cell.lblDescription.textColor = color
             cell.lblTitle.textColor = color
             cell.setup()
+        
             return cell
         }
+        
+        
     }
 
 
@@ -248,7 +319,7 @@ extension MyTripsViewController: UITableViewDelegate, UITableViewDataSource{
         if selectedCell.contains(indexPath.section){
             let index = selectedCell.firstIndex(of: indexPath.section)
             selectedCell.remove(at: index!)
-            if self.pastBookingHistoryModelDetails.count >= indexPath.row {
+            if self.pastBookingHistoryModelDetails.count > indexPath.row {
                 self.data = self.tripType.getDescription(pastBookingHistory: self.pastBookingHistoryModelDetails[indexPath.row])
                 tableView.removeAllSubviews()
                 tableView.reloadData()
@@ -258,7 +329,7 @@ extension MyTripsViewController: UITableViewDelegate, UITableViewDataSource{
 //            tableView.reloadData()
         }
         else{
-            if self.pastBookingHistoryModelDetails.count >= indexPath.row {
+            if self.pastBookingHistoryModelDetails.count > indexPath.row {
                 self.data = self.tripType.getDescription(pastBookingHistory: self.pastBookingHistoryModelDetails[indexPath.row])
                 selectedCell.append(indexPath.section)
                 tableView.reloadData()
@@ -278,5 +349,50 @@ extension MyTripsViewController: UITableViewDelegate, UITableViewDataSource{
 
     }
     
+   
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        
+        print("scrollViewWillBeginDragging")
+        isDataLoading = false
+    }
+    
+    //Pagination
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        
+        print("scrollViewDidEndDragging")
+        if ((collectionTableView.tableView.contentOffset.y + collectionTableView.tableView.frame.size.height) >= collectionTableView.tableView.contentSize.height) {
+            //            if !isDataLoading{
+            //                isDataLoading = true
+            //                self.pageNo = self.pageNo + 1
+            //                webserviceOfPastbookingpagination(index: self.pageNo)
+            //            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        print("indexPath.section: ", indexPath.section )
+        print("indexPath.row: ", indexPath.row )
+        print("self.pastBookingHistoryModelDetails.count: ", self.pastBookingHistoryModelDetails.count)
+
+        
+        
+//        if indexPath.section == (self.pastBookingHistoryModelDetails.count - 1) {
+//            if !isDataLoading{
+//                isDataLoading = true
+//                 self.isRefresh = true
+////                webserviceCallForHistoryList(index: self.pageNo)
+//                if self.tripType.rawValue.lowercased() == "past" {
+//                    self.pageNoPastBooking = self.pageNoPastBooking + 1
+//                    webserviceCallForGettingPastHistory(pageNo: self.pageNoPastBooking)
+//                } else {
+//                    self.pageNoPastUpcoming = self.pageNoPastUpcoming + 1
+//                    webserviceForUpcommingBooking(pageNo: self.pageNoPastUpcoming)
+//                }
+//            }
+//        }
+    }
+
     
 }

@@ -66,9 +66,16 @@ class PeppeaBookLaterViewController: UIViewController {
         let date = calendar.date(byAdding: .minute, value: -10, to: sender.date) as! Date
         print("date: \(date)")
         
-        let myTimeInterval = TimeInterval(datePicker.date.timeIntervalSince1970)
-        print("myTimeInterval: \(myTimeInterval)")
-        selectedTimeStemp = "\(Int(myTimeInterval))"
+        
+//        yyyy-mm-dd hh:mm:ss
+        
+        let dateFormateForSendParam = DateFormatter()
+        dateFormateForSendParam.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        selectedTimeStemp = dateFormateForSendParam.string(from: datePicker.date)
+        
+//        let myTimeInterval = TimeInterval(datePicker.date.timeIntervalSince1970)
+        print("selectedTimeStemp: \(selectedTimeStemp)")
+//        selectedTimeStemp = "\(Int(myTimeInterval))"
         
         let selectedTime1 = dateFormatter.string(from: date)
         let selectedTime2 = dateFormatter.string(from: datePicker.date)

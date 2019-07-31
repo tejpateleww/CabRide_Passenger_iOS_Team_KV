@@ -31,6 +31,10 @@ class DriverRatingAndTipViewController: UIViewController {
     @IBOutlet weak var constraintHeightOfViewRating: NSLayoutConstraint! // 30
     @IBOutlet weak var btnOther: UIButton!
     
+    @IBOutlet weak var constraintTopOfComments: NSLayoutConstraint! // priority 800
+    @IBOutlet weak var constraintTopOfAskForTip: NSLayoutConstraint! // priority 900
+    @IBOutlet weak var lblGrandTotal: UILabel!
+    
     var bookingId = ""
     var tip = ""
     var myRating: Double = 0
@@ -49,7 +53,7 @@ class DriverRatingAndTipViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        lblGrandTotal.isHidden = true
         setupView()
     }
 
@@ -60,31 +64,38 @@ class DriverRatingAndTipViewController: UIViewController {
         let driver = bookingData.driverInfo
         _ = bookingData.customerInfo
         _ = bookingData.vehicleType
+        isOtherSelected = false
         
         if viewType != nil {
             if viewType! == .ratings || viewType! == .completeTrip {
                 viewAskForTip.isHidden = true
                 viewRating.isHidden = false
                 viewComments.isHidden = false
+                constraintTopOfComments.priority = UILayoutPriority(950)
+                constraintTopOfAskForTip.priority = UILayoutPriority(650)
                 constraintHeightOfViewRating.constant = 30
+                lblGrandTotal.isHidden = false
+                lblGrandTotal.text = "Grand Total: \(Currency) \(bookingData.grandTotal ?? "0")"
+                
                 lblDriverName.text = "How was your trip with \((driver?.firstName ?? "") + " " + (driver?.lastName ?? ""))?"
             }
             else if viewType! == .askForTip {
                 viewAskForTip.isHidden = false
                 viewComments.isHidden = true
                 viewRating.isHidden = true
+                constraintTopOfComments.priority = UILayoutPriority(650)
+                constraintTopOfAskForTip.priority = UILayoutPriority(950)
                 constraintHeightOfViewRating.constant = 0
                 lblDriverName.text = "Do you want to tip \((driver?.firstName ?? "") + " " + (driver?.lastName ?? ""))?"
             }
         }
         
         
-        
 //        lblDriverName.text = "How was your trip with \((driver?.firstName ?? "") + " " + (driver?.lastName ?? ""))?"
         
         let base = NetworkEnvironment.baseImageURL
         
-        imgDriverImage.sd_setImage(with: URL(string: base + driver!.profileImage), completed: nil)
+        imgDriverImage.sd_setImage(with: URL(string: base + driver!.profileImage), placeholderImage: UIImage(contentsOfFile: "iconDummyProfilePic")) // sd_setImage(with: URL(string: base + driver!.profileImage), completed: nil)
         
         viewRating.didFinishTouchingCosmos = { rating in
             self.myRating = rating
@@ -131,12 +142,47 @@ class DriverRatingAndTipViewController: UIViewController {
 
     @objc func tipAction(_ sender: UIButton) {
         isOtherSelected = false
+        
         let value = sender.titleLabel?.text?.replacingOccurrences(of: "K ", with: "")
         tip = value?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        
+        for (ind,btn) in self.btnTips.enumerated()
+        {
+            unSelectedButton(btn: btn)
+            unSelectedButton(btn: btnOther)
+            if btn == sender {
+                selectedButton(btn: sender)
+            }
+        }
+        
+    }
+    
+    func selectedButton(btn: UIButton) {
+       
+        btn.backgroundColor = UIColor.orange
+//        btn.layer.masksToBounds = true
+        btn.setTitleColor(UIColor.black, for: .normal)
+    }
+    
+    func unSelectedButton(btn: UIButton) {
+        btn.backgroundColor = UIColor.clear
+//        btn.layer.masksToBounds = true
+        btn.setTitleColor(ThemeColor, for: .normal)
     }
     
     @IBAction func btnOtherAction(_ sender: UIButton) {
         isOtherSelected = true
+        if sender == btnOther {
+            selectedButton(btn: sender)
+        } else {
+            unSelectedButton(btn: btnOther)
+        }
+        
+        for (ind,btn) in self.btnTips.enumerated()
+        {
+            unSelectedButton(btn: btn)
+        }
+        
     }
     
     @IBAction func btnDone(_ sender: Any) {
@@ -147,6 +193,7 @@ class DriverRatingAndTipViewController: UIViewController {
         else if viewType == .askForTip {
             let homeVC = self.parent as? HomeViewController
             homeVC?.emitSocket_ReceiveTips(param: ["booking_id": self.bookingId, "tips": isOtherSelected ? (txtOther.text ?? "") : self.tip])
+            homeVC?.setupAfterComplete()
         }
         
 ////        let alert = UIAlertController(title: AppName.kAPPName, message: "Your trip has been completed", preferredStyle: .alert)
@@ -171,7 +218,7 @@ class DriverRatingAndTipViewController: UIViewController {
     func webserviceForReviewRating() {
         
         let model = ReviewRatingReqModel()
-        model.booking_id = SingletonClass.sharedInstance.loginData.id ?? ""
+        model.booking_id = bookingId ?? ""
         model.rating = "\(myRating)"
         model.comment = txtComments.text ?? ""
         

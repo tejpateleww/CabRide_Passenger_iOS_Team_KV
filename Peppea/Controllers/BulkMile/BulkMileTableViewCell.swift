@@ -11,6 +11,10 @@ import UIKit
 class BulkMileTableViewCell: UITableViewCell {
 
     @IBOutlet weak var btnPurchase: UIButton!
+    @IBOutlet weak var lblDescription: UILabel!
+    @IBOutlet weak var lblPriceRange: UILabel!
+    @IBOutlet weak var lblDistance: UILabel!
+    @IBOutlet weak var lblValidity: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

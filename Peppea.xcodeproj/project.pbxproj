@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		0650348A2AC06055B9F453D4 /* Pods_Peppea.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0810AD09B74A352FE6C277E6 /* Pods_Peppea.framework */; };
+		182BD24522EF166C00C419B9 /* BulkMileListDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182BD24322EF166C00C419B9 /* BulkMileListDataModel.swift */; };
+		182BD24622EF166C00C419B9 /* BulkMileList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182BD24422EF166C00C419B9 /* BulkMileList.swift */; };
+		182BD24B22EF169900C419B9 /* BulkMileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182BD24822EF169800C419B9 /* BulkMileTableViewCell.swift */; };
+		182BD24C22EF169900C419B9 /* BulkMileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182BD24922EF169800C419B9 /* BulkMileVC.swift */; };
+		182BD24D22EF169900C419B9 /* BulkMileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 182BD24A22EF169800C419B9 /* BulkMileTableViewCell.xib */; };
+		182BD25022EF175100C419B9 /* ARCarMovement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182BD24F22EF175100C419B9 /* ARCarMovement.swift */; };
+		182BD25222EF3E9E00C419B9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 182BD25122EF3E9D00C419B9 /* GoogleService-Info.plist */; };
 		1830C47B22E74235004F107F /* dummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1830C47A22E74235004F107F /* dummyData.swift */; };
 		183BEF7622E9C762000C97E5 /* TripStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183BEF7522E9C762000C97E5 /* TripStatus.swift */; };
 		1882A0AD22EB1387008B5D1A /* CancelTripRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1882A0AC22EB1387008B5D1A /* CancelTripRequestModel.swift */; };
@@ -91,9 +98,6 @@
 		46CA655722DEFB2900FC6E16 /* Logout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CA655622DEFB2900FC6E16 /* Logout.swift */; };
 		46E8CE9022D9AD6D001BEFCD /* InviteDriverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E8CE8F22D9AD6D001BEFCD /* InviteDriverViewController.swift */; };
 		B1DE158E22D34818001045B1 /* ChangePwVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DE158D22D34818001045B1 /* ChangePwVC.swift */; };
-		B1DE159022D358A0001045B1 /* BulkMileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DE158F22D358A0001045B1 /* BulkMileVC.swift */; };
-		B1DE159422D35920001045B1 /* BulkMileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DE159222D35920001045B1 /* BulkMileTableViewCell.swift */; };
-		B1DE159522D35920001045B1 /* BulkMileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1DE159322D35920001045B1 /* BulkMileTableViewCell.xib */; };
 		B1DE159822D361D3001045B1 /* MyMileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DE159722D361D3001045B1 /* MyMileVC.swift */; };
 		B1DE159B22D3647A001045B1 /* MyMileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DE159922D3647A001045B1 /* MyMileTableViewCell.swift */; };
 		B1DE159C22D3647A001045B1 /* MyMileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1DE159A22D3647A001045B1 /* MyMileTableViewCell.xib */; };
@@ -107,7 +111,6 @@
 		B1E233DD22D31B7B00CEA568 /* AutomaticExpenseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E233DC22D31B7B00CEA568 /* AutomaticExpenseVC.swift */; };
 		B1E233E122D3220600CEA568 /* MyBidListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E233E022D3220600CEA568 /* MyBidListViewCell.swift */; };
 		B1E233E322D3226600CEA568 /* DriverOffersListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E233E222D3226600CEA568 /* DriverOffersListViewCell.swift */; };
-		EE2A9B7F22EB1F7F00EBAFEE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EE2A9B7E22EB1F7F00EBAFEE /* GoogleService-Info.plist */; };
 		EE2A9B8122EB29AE00EBAFEE /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE2A9B8022EB29AE00EBAFEE /* UserNotifications.framework */; };
 		EE35158522CE34A00035D0AC /* DriverRatingAndTipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE35158422CE34A00035D0AC /* DriverRatingAndTipViewController.swift */; };
 		EE469B5C22C7344E0075A8A3 /* RegisterOTPVarificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE469B5B22C7344D0075A8A3 /* RegisterOTPVarificationViewController.swift */; };
@@ -167,6 +170,13 @@
 /* Begin PBXFileReference section */
 		0568EF05446C647550DA45F6 /* Pods-Peppea.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Peppea.release.xcconfig"; path = "Pods/Target Support Files/Pods-Peppea/Pods-Peppea.release.xcconfig"; sourceTree = "<group>"; };
 		0810AD09B74A352FE6C277E6 /* Pods_Peppea.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Peppea.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		182BD24322EF166C00C419B9 /* BulkMileListDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BulkMileListDataModel.swift; sourceTree = "<group>"; };
+		182BD24422EF166C00C419B9 /* BulkMileList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BulkMileList.swift; sourceTree = "<group>"; };
+		182BD24822EF169800C419B9 /* BulkMileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BulkMileTableViewCell.swift; sourceTree = "<group>"; };
+		182BD24922EF169800C419B9 /* BulkMileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BulkMileVC.swift; sourceTree = "<group>"; };
+		182BD24A22EF169800C419B9 /* BulkMileTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BulkMileTableViewCell.xib; sourceTree = "<group>"; };
+		182BD24F22EF175100C419B9 /* ARCarMovement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARCarMovement.swift; sourceTree = "<group>"; };
+		182BD25122EF3E9D00C419B9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1830C47A22E74235004F107F /* dummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dummyData.swift; sourceTree = "<group>"; };
 		183BEF7522E9C762000C97E5 /* TripStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripStatus.swift; sourceTree = "<group>"; };
 		1882A0AC22EB1387008B5D1A /* CancelTripRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelTripRequestModel.swift; sourceTree = "<group>"; };
@@ -253,9 +263,6 @@
 		46CA655622DEFB2900FC6E16 /* Logout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logout.swift; sourceTree = "<group>"; };
 		46E8CE8F22D9AD6D001BEFCD /* InviteDriverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteDriverViewController.swift; sourceTree = "<group>"; };
 		B1DE158D22D34818001045B1 /* ChangePwVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePwVC.swift; sourceTree = "<group>"; };
-		B1DE158F22D358A0001045B1 /* BulkMileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulkMileVC.swift; sourceTree = "<group>"; };
-		B1DE159222D35920001045B1 /* BulkMileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulkMileTableViewCell.swift; sourceTree = "<group>"; };
-		B1DE159322D35920001045B1 /* BulkMileTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BulkMileTableViewCell.xib; sourceTree = "<group>"; };
 		B1DE159722D361D3001045B1 /* MyMileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMileVC.swift; sourceTree = "<group>"; };
 		B1DE159922D3647A001045B1 /* MyMileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMileTableViewCell.swift; sourceTree = "<group>"; };
 		B1DE159A22D3647A001045B1 /* MyMileTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyMileTableViewCell.xib; sourceTree = "<group>"; };
@@ -269,7 +276,6 @@
 		B1E233DC22D31B7B00CEA568 /* AutomaticExpenseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutomaticExpenseVC.swift; sourceTree = "<group>"; };
 		B1E233E022D3220600CEA568 /* MyBidListViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyBidListViewCell.swift; sourceTree = "<group>"; };
 		B1E233E222D3226600CEA568 /* DriverOffersListViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriverOffersListViewCell.swift; sourceTree = "<group>"; };
-		EE2A9B7E22EB1F7F00EBAFEE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EE2A9B8022EB29AE00EBAFEE /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		EE35158422CE34A00035D0AC /* DriverRatingAndTipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverRatingAndTipViewController.swift; sourceTree = "<group>"; };
 		EE469B5B22C7344D0075A8A3 /* RegisterOTPVarificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterOTPVarificationViewController.swift; sourceTree = "<group>"; };
@@ -341,6 +347,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		182BD24222EF166C00C419B9 /* BulkMileList */ = {
+			isa = PBXGroup;
+			children = (
+				182BD24322EF166C00C419B9 /* BulkMileListDataModel.swift */,
+				182BD24422EF166C00C419B9 /* BulkMileList.swift */,
+			);
+			path = BulkMileList;
+			sourceTree = "<group>";
+		};
+		182BD24722EF169800C419B9 /* BulkMile */ = {
+			isa = PBXGroup;
+			children = (
+				182BD24822EF169800C419B9 /* BulkMileTableViewCell.swift */,
+				182BD24922EF169800C419B9 /* BulkMileVC.swift */,
+				182BD24A22EF169800C419B9 /* BulkMileTableViewCell.xib */,
+			);
+			path = BulkMile;
+			sourceTree = "<group>";
+		};
+		182BD24E22EF175100C419B9 /* ARCarMovement */ = {
+			isa = PBXGroup;
+			children = (
+				182BD24F22EF175100C419B9 /* ARCarMovement.swift */,
+			);
+			path = ARCarMovement;
+			sourceTree = "<group>";
+		};
 		1830C47922E741F6004F107F /* New Group */ = {
 			isa = PBXGroup;
 			children = (
@@ -525,6 +558,7 @@
 		466957E422DDB151008A73C0 /* ResponseModel */ = {
 			isa = PBXGroup;
 			children = (
+				182BD24222EF166C00C419B9 /* BulkMileList */,
 				18CB7F8822E89688004FA66C /* RequestAcceptedDataModel */,
 				18CB7F8322E86584004FA66C /* GetEstimateFareModel */,
 				461A919322E6F3C8002BDCAC /* VehicleListModel.swift */,
@@ -583,16 +617,6 @@
 			path = ChangePW;
 			sourceTree = "<group>";
 		};
-		B1DE159122D358A8001045B1 /* BulkMile */ = {
-			isa = PBXGroup;
-			children = (
-				B1DE158F22D358A0001045B1 /* BulkMileVC.swift */,
-				B1DE159222D35920001045B1 /* BulkMileTableViewCell.swift */,
-				B1DE159322D35920001045B1 /* BulkMileTableViewCell.xib */,
-			);
-			path = BulkMile;
-			sourceTree = "<group>";
-		};
 		B1DE159622D361B0001045B1 /* MyMileVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -646,6 +670,7 @@
 		EE8A61C922C654AE000718ED /* ThirdPartyLibraries */ = {
 			isa = PBXGroup;
 			children = (
+				182BD24E22EF175100C419B9 /* ARCarMovement */,
 				463DEFD122D877E4002365F8 /* CreditCardValidator */,
 				EE8A61CA22C654C0000718ED /* MessageBarController */,
 			);
@@ -681,7 +706,7 @@
 			isa = PBXGroup;
 			children = (
 				EE9F3F7222C7845300426377 /* JSON Files */,
-				EE2A9B7E22EB1F7F00EBAFEE /* GoogleService-Info.plist */,
+				182BD25122EF3E9D00C419B9 /* GoogleService-Info.plist */,
 				463DEFD622D87972002365F8 /* Peppea-Bridging-Header.h */,
 			);
 			path = Resources;
@@ -946,6 +971,7 @@
 		EEE2B7FC22C62376004F1C00 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				182BD24722EF169800C419B9 /* BulkMile */,
 				468E991622D9DBB000072361 /* PeppeaBusiness */,
 				468E991122D9B6EF00072361 /* ChatViewController */,
 				46E8CE8E22D9AD6D001BEFCD /* InviteFriend */,
@@ -956,7 +982,6 @@
 				4666B47B22D49F0B0084A230 /* Profile */,
 				4666B47622D48F7D0084A230 /* FlatRate */,
 				B1DE159622D361B0001045B1 /* MyMileVC */,
-				B1DE159122D358A8001045B1 /* BulkMile */,
 				B1E233DB22D31B3C00CEA568 /* AutomaticExpenseVC */,
 				B1E233D022D3100800CEA568 /* BidsVC */,
 				EE9D6F6E22C62D1B00EAD756 /* SideMenu */,
@@ -1122,7 +1147,6 @@
 				463DEFE522D8AEA6002365F8 /* FooterTableViewCell.xib in Resources */,
 				B1DE159C22D3647A001045B1 /* MyMileTableViewCell.xib in Resources */,
 				EE9D6F9422C6449F00EAD756 /* proxima-nova-light.otf in Resources */,
-				EE2A9B7F22EB1F7F00EBAFEE /* GoogleService-Info.plist in Resources */,
 				463DEFE422D8AEA6002365F8 /* MyTripTableViewCell.xib in Resources */,
 				463DEFEA22D8AEA6002365F8 /* MyTrips.storyboard in Resources */,
 				EE9D6FA022C6449F00EAD756 /* proxima-nova-black.otf in Resources */,
@@ -1135,11 +1159,12 @@
 				468E993622DA0F0B00072361 /* Wallet.storyboard in Resources */,
 				EE9D6F9C22C6449F00EAD756 /* proxima-nova-extrabold.otf in Resources */,
 				EE9D6F9522C6449F00EAD756 /* proxima-nova-condensed-light.otf in Resources */,
+				182BD24D22EF169900C419B9 /* BulkMileTableViewCell.xib in Resources */,
 				EE9D6F9322C6449F00EAD756 /* proxima-nova-condensed-semibold.otf in Resources */,
 				EEE2B7F822C6234B004F1C00 /* LoginRegister.storyboard in Resources */,
 				EE9D6F7A22C6366D00EAD756 /* car.json in Resources */,
 				EE9D6F9D22C6449F00EAD756 /* proxima-nova.otf in Resources */,
-				B1DE159522D35920001045B1 /* BulkMileTableViewCell.xib in Resources */,
+				182BD25222EF3E9E00C419B9 /* GoogleService-Info.plist in Resources */,
 				EE9D6F9A22C6449F00EAD756 /* proxima-nova-bold.otf in Resources */,
 				EEE2B7ED22C62305004F1C00 /* Assets.xcassets in Resources */,
 				463DEFE322D8AEA6002365F8 /* MyTripDescriptionTableViewCell.xib in Resources */,
@@ -1238,9 +1263,11 @@
 				EEA454B322CC913D0094941A /* CarsCollectionViewCell.swift in Sources */,
 				18CB7F7C22E841ED004FA66C /* SocketProtocol.swift in Sources */,
 				464CB66022E195E500273F29 /* CheckPromocode.swift in Sources */,
+				182BD24522EF166C00C419B9 /* BulkMileListDataModel.swift in Sources */,
 				EE9F3F7422C7846500426377 /* BaseViewController.swift in Sources */,
 				EEA454B922CCEC390094941A /* DriverInfoPageViewController.swift in Sources */,
 				462CE46A22DF275F00CA52B0 /* FlatRateListModel.swift in Sources */,
+				182BD24B22EF169900C419B9 /* BulkMileTableViewCell.swift in Sources */,
 				EEA454B622CCE8510094941A /* ForgotPasswordViewController.swift in Sources */,
 				462CE46C22DF32D000CA52B0 /* WalletHistoryListModel.swift in Sources */,
 				468E992C22D9F26900072361 /* CardList.swift in Sources */,
@@ -1282,15 +1309,14 @@
 				18CB7F8622E86584004FA66C /* GetEstimateFareModel.swift in Sources */,
 				B1E233D822D3120000CEA568 /* MyBidListViewController.swift in Sources */,
 				468E992722D9F26900072361 /* QRCodeDetails.swift in Sources */,
+				182BD25022EF175100C419B9 /* ARCarMovement.swift in Sources */,
 				18CB7F9022E89688004FA66C /* DriverInfo.swift in Sources */,
 				468E991522D9B6EF00072361 /* EmptyTableViewCell.swift in Sources */,
 				468E992E22D9F26900072361 /* AddMoney.swift in Sources */,
 				B1E233DA22D3123300CEA568 /* OpenBidListViewController.swift in Sources */,
-				B1DE159022D358A0001045B1 /* BulkMileVC.swift in Sources */,
 				463DEFF122D8C13A002365F8 /* HistoryFilterPopUpViewController.swift in Sources */,
 				EE61012A22E8787C00B3B4D7 /* PastBookingHistoryResponse.swift in Sources */,
 				464CB66622E19FDB00273F29 /* QRCodeScannedModel.swift in Sources */,
-				B1DE159422D35920001045B1 /* BulkMileTableViewCell.swift in Sources */,
 				EE61011F22E86F7800B3B4D7 /* PastBookingHistory.swift in Sources */,
 				463DEFD522D877E4002365F8 /* CreditCardValidationType.swift in Sources */,
 				463DEFD022D86E15002365F8 /* PaymentCardTypeListCell.swift in Sources */,
@@ -1314,6 +1340,7 @@
 				468E991422D9B6EF00072361 /* ChatViewController.swift in Sources */,
 				468E993022D9F26900072361 /* UpdateAccountData.swift in Sources */,
 				EE9F3F6E22C7756C00426377 /* HomeViewController.swift in Sources */,
+				182BD24C22EF169900C419B9 /* BulkMileVC.swift in Sources */,
 				463DEFE722D8AEA6002365F8 /* MyTripTableViewCell.swift in Sources */,
 				EE9F3F6222C74E5900426377 /* ThemeButton.swift in Sources */,
 				46E8CE9022D9AD6D001BEFCD /* InviteDriverViewController.swift in Sources */,
@@ -1325,6 +1352,7 @@
 				EE8A61C822C652F5000718ED /* RegisterViewController.swift in Sources */,
 				46CA655722DEFB2900FC6E16 /* Logout.swift in Sources */,
 				46C469B922D70DA3007BA89B /* WalletViewController.swift in Sources */,
+				182BD24622EF166C00C419B9 /* BulkMileList.swift in Sources */,
 				B1E233E322D3226600CEA568 /* DriverOffersListViewCell.swift in Sources */,
 				EE9D6F7222C62F7200EAD756 /* ContentTableViewCell.swift in Sources */,
 				463DEFE922D8AEA6002365F8 /* MyTrips.swift in Sources */,

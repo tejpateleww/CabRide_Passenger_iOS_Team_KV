@@ -18,7 +18,7 @@ let googlApiKey = "AIzaSyDcug87uBhFLMo1KlqyaO10shE-sNTBCmw" // built from ODDs
 let baseURLDirections = "https://maps.googleapis.com/maps/api/directions/json?"
 let geocodeAddress = "https://maps.googleapis.com/maps/api/geocode/json?latlng="
 
-var imagBaseURL = "http://13.127.213.134/panel/"
+var imagBaseURL = "https://www.peppea.com/panel/"
 
 let kAPPVesion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
 
@@ -29,3 +29,7 @@ let SCREEN_HEIGHT = UIScreen.main.bounds.height
 let Currency = "KES"
 
 let ThemeColor : UIColor =  UIColor.init(hex: "2e2d2e")
+
+let iconCar = "iconCar"
+let iconMarker = "iconMarker"
+let zoomLevel: Float = 16.0

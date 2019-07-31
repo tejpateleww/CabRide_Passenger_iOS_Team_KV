@@ -339,6 +339,11 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
     }
     func removeAllSocketFromMemory()
     {
+//        self.parent?.children.first?.children.first as! HomeViewController
+        if let homeVC = self.parent?.children.first?.children.first as? HomeViewController {
+            homeVC.allSocketOffMethods()
+        }
+        
 //        let socket = (UIApplication.shared.delegate as! AppDelegate).socket
 ////        socket?.off(SocketData.kReceiveGetEstimateFare)
 ////        socket?.off(SocketData.kNearByDriverList)

@@ -123,4 +123,10 @@ class UserWebserviceSubclass
     }
     
     
+    class func getBulkMile( strURL : String  ,completion: @escaping CompletionResponse ) {
+        let strURLFinal = NetworkEnvironment.baseURL + ApiKey.GetBulkMileList.rawValue + strURL
+        WebService.shared.getMethod(url: URL.init(string: strURLFinal)!, httpMethod: .get, completion: completion)
+    }
+    
+    
 }

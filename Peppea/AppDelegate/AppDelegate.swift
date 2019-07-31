@@ -16,6 +16,7 @@ import Crashlytics
 import Firebase
 import FirebaseMessaging
 import UserNotifications
+import CoreLocation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDelegate,MessagingDelegate {
@@ -23,6 +24,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     var window: UIWindow?
     var instanceIDTokenMessage = String()
     var gcmMessageIDKey = String()
+    let locationManager = CLLocationManager()
+    var defaultLocation = CLLocation()
+    
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         setupSideMenu()
@@ -178,17 +183,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     }
 
     func GoToLogout() {
+        
+//        (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController?.children.first?.children.first?.children.first as! HomeViewController
+        
+        SingletonClass.sharedInstance.clearSingletonClass()
 
-//        for (key, value) in UserDefaults.standard.dictionaryRepresentation() {
-//            print("\(key) = \(value) \n")
-//
-//            if key == "Token" || key  == "i18n_language" {
-//
-//            }
-//            else {
-//                UserDefaults.standard.removeObject(forKey: key)
-//            }
-//        }
+        for (key, value) in UserDefaults.standard.dictionaryRepresentation() {
+            print("\(key) = \(value) \n")
+
+            if key == "Token" || key  == "i18n_language" {
+
+            }
+            else {
+                UserDefaults.standard.removeObject(forKey: key)
+            }
+        }
 //        //        UserDefaults.standard.set(false, forKey: kIsSocketEmited)
 //        //        UserDefaults.standard.synchronize()
 //
@@ -213,3 +222,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
 
 }
 
+
+// MARK:- CLLocationManagerDelegate
+//1
+extension AppDelegate: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+
+        switch status {
+            case .restricted:
+                break
+            case .denied:
+                //            mapView.isHidden = false
+                break
+            case .notDetermined:
+                break
+            case .authorizedAlways:
+                manager.startUpdatingLocation()
+            case .authorizedWhenInUse:
+                manager.startUpdatingLocation()
+            @unknown default:
+                print("")
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        guard let location = locations.first else {
+            return
+        }
+        defaultLocation = location
+        
+        SingletonClass.sharedInstance.myCurrentLocation = defaultLocation
+        
+    }
+}

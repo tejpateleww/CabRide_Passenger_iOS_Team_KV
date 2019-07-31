@@ -75,18 +75,19 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func btnSIgnIn(_ sender: ThemeButton) {
+        
+        let myLocation = SingletonClass.sharedInstance.myCurrentLocation
 
         LogInModel.username = txtMobileEmail.text ?? ""
         LogInModel.password = txtPassword.text ?? ""
         LogInModel.device_type = "ios"
-        LogInModel.lat = "23.75821"
-        LogInModel.lng = "23.75821"
+        LogInModel.lat = "\(myLocation.coordinate.latitude)" // "23.75821"
+        LogInModel.lng = "\(myLocation.coordinate.longitude)" // "72.75821"
         LogInModel.device_token = "sdfsdfwrfw4rt34r53"
         if let token = UserDefaults.standard.object(forKey: "Token") as? String
         {
             LogInModel.device_token = token
         }
-
         
         if(self.validations().0 == false)  {
              AlertMessage.showMessageForError(self.validations().1)
@@ -127,6 +128,15 @@ class LoginViewController: UIViewController {
                     try UserDefaults.standard.set(object: loginModelDetails, forKey: "userProfile") //(loginModelDetails, forKey: "userProfile")
                     
                     SingletonClass.sharedInstance.loginData = loginModelDetails.loginData
+                    
+                    if json.dictionary?["booking_info"] != nil {
+                        let info = BookingInfo(fromJson: json.dictionary?["booking_info"])
+                        
+                        SingletonClass.sharedInstance.bookingInfo = info
+                        (UIApplication.shared.delegate as! AppDelegate).GoToHome(bookingInfo: info)
+                    } else {
+                        (UIApplication.shared.delegate as! AppDelegate).GoToHome()
+                    }
                 }
                 catch
                 {

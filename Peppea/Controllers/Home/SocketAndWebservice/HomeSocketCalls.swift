@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftyJSON
+import GoogleMaps
 
 extension HomeViewController: SocketConnected {
 
@@ -15,6 +16,7 @@ extension HomeViewController: SocketConnected {
     // ----------------------------------------------------
     // MARK:- --- All Socket Methods ---
     // ----------------------------------------------------
+    /// Socket On All
     func allSocketOnMethods() {
         
         onSocket_GetEstimateFare()                  // Socket On 1
@@ -25,6 +27,20 @@ extension HomeViewController: SocketConnected {
         onSocket_AskForTips()                       // Socket On 6
         onSocket_CancelledBookingRequestBySystem()  // Socket On 7
         onSocket_CancelTrip()                       // Socket On 8
+    }
+    
+    /// Socket Off All
+    func allSocketOffMethods() {
+        
+        SocketIOManager.shared.socket.off(socketApiKeys.GetEstimateFare.rawValue)                   // Socket Off 1
+        SocketIOManager.shared.socket.off(socketApiKeys.AfterDriverAcceptRequest.rawValue)          // Socket Off 2
+        SocketIOManager.shared.socket.off(socketApiKeys.StartTrip.rawValue)                         // Socket Off 3
+        SocketIOManager.shared.socket.off(socketApiKeys.CompleteTrip.rawValue)                      // Socket Off 4
+        SocketIOManager.shared.socket.off(socketApiKeys.OnTheWayBookLater.rawValue)                 // Socket Off 5
+        SocketIOManager.shared.socket.off(socketApiKeys.AskForTips.rawValue)                        // Socket Off 6
+        SocketIOManager.shared.socket.off(socketApiKeys.CancelledBookingRequestBySystem.rawValue)   // Socket Off 7
+        SocketIOManager.shared.socket.off(socketApiKeys.CancelTrip.rawValue)                        // Socket Off 8
+        SocketIOManager.shared.socket.off(clientEvent: .disconnect)                                 // Socket Disconnect
     }
     
     // ----------------------------------------------------
@@ -107,9 +123,16 @@ extension HomeViewController: SocketConnected {
             print(#function, "\n ", json)
             AlertMessage.showMessageForSuccess("Trip Completed")
             
+//            if self.booingInfo.toDictionary().count == 0 {
+                let fr = json.array?.first
+                let res = RequestAcceptedDataModel(fromJson: fr)
+                self.booingInfo = res.bookingInfo
+//            }
+            
             self.hideAndShowView(view: .ratings)
             self.isExpandCategory = true
             
+           
 //            let alert = UIAlertController(title: AppName.kAPPName, message: "Your trip has been completed", preferredStyle: .alert)
 //            let ok = UIAlertAction(title: "OK", style: .default) { (action) in
 //
@@ -170,6 +193,35 @@ extension HomeViewController: SocketConnected {
     // -------------------------------------------------------------
     // MARK: - --- Accept Book Now & Later Data and View Setup ---
     // -------------------------------------------------------------
+//    func acceptRequestData(json: JSON) {
+//
+//        let fr = json.array?.first
+//        let res = RequestAcceptedDataModel(fromJson: fr)
+//
+//        self.booingInfo = res.bookingInfo // BookingInfo(fromJson: json.arrayValue.first)
+//        self.hideAndShowView(view: .requestAccepted)
+//        self.isExpandCategory = true
+//
+//        lblBuildNumber.text = "Build : \(Bundle.main.buildVersionNumber ?? "") \t\t Booking ID: \(self.booingInfo.id ?? "")"
+//    }
+//
+//    func startedRequestData(json: JSON) {
+//
+//        if self.booingInfo.toDictionary().count == 0 {
+//            let fr = json.array?.first
+//            let res = RequestAcceptedDataModel(fromJson: fr)
+//            self.booingInfo = res.bookingInfo // BookingInfo(fromJson: json.arrayValue.first)
+//        }
+//        self.hideAndShowView(view: .rideStart)
+//        self.isExpandCategory = true
+//
+//        lblBuildNumber.text = "Build : \(Bundle.main.buildVersionNumber ?? "") \t\t Booking ID: \(self.booingInfo.id ?? "")"
+//    }
+    // MARK: -
+
+    // -------------------------------------------------------------
+    // MARK: - --- Accept Book Now & Later Data and View Setup ---
+    // -------------------------------------------------------------
     func acceptRequestData(json: JSON) {
         
         let fr = json.array?.first
@@ -178,7 +230,30 @@ extension HomeViewController: SocketConnected {
         self.booingInfo = res.bookingInfo // BookingInfo(fromJson: json.arrayValue.first)
         self.hideAndShowView(view: .requestAccepted)
         self.isExpandCategory = true
-        
+        self.routeDrawMethod(origin: "\(res.bookingInfo.pickupLat ?? ""),\(res.bookingInfo.pickupLng ?? "")", destination: "\(res.bookingInfo.dropoffLat ?? ""),\(res.bookingInfo.dropoffLng ?? "")")
+        if self.driverMarker == nil {
+            
+            
+            var DoubleLat = Double()
+            var DoubleLng = Double()
+            
+            if let lat = res.bookingInfo.driverInfo?.lat, let doubleLat = Double(lat) {
+                DoubleLat = doubleLat
+            }
+            
+            if let lng = res.bookingInfo.driverInfo?.lng, let doubleLng = Double(lng) {
+                DoubleLng = doubleLng
+            }
+            
+            let DriverCordinate = CLLocationCoordinate2D(latitude: DoubleLat , longitude: DoubleLng)
+            self.driverMarker = GMSMarker(position: DriverCordinate) // self.originCoordinate
+            self.driverMarker.icon = UIImage(named: iconCar)
+            self.driverMarker.map = self.mapView
+        }
+        else {
+            self.driverMarker.icon = UIImage.init(named: iconCar)
+        }
+        markerContainerView.isHidden = true
         lblBuildNumber.text = "Build : \(Bundle.main.buildVersionNumber ?? "") \t\t Booking ID: \(self.booingInfo.id ?? "")"
     }
     
@@ -188,13 +263,13 @@ extension HomeViewController: SocketConnected {
             let fr = json.array?.first
             let res = RequestAcceptedDataModel(fromJson: fr)
             self.booingInfo = res.bookingInfo // BookingInfo(fromJson: json.arrayValue.first)
+            setupCarMarker(res: res.bookingInfo)
+            self.routeDrawMethod(origin: "\(res.bookingInfo.pickupLat ?? ""),\(res.bookingInfo.pickupLng ?? "")", destination: "\(res.bookingInfo.dropoffLat ?? ""),\(res.bookingInfo.dropoffLng ?? "")")
+            
         }
         self.hideAndShowView(view: .rideStart)
         self.isExpandCategory = true
         
         lblBuildNumber.text = "Build : \(Bundle.main.buildVersionNumber ?? "") \t\t Booking ID: \(self.booingInfo.id ?? "")"
     }
-    // MARK: -
-
-    
 }
