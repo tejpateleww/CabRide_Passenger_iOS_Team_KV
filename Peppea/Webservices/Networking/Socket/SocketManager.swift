@@ -17,7 +17,7 @@ class SocketIOManager: NSObject {
     let manager = SocketManager(socketURL: URL(string: socketApiKeys.kSocketBaseURL.rawValue)!, config: [.log(false), .compress])
     lazy var socket = manager.defaultSocket
     
-     private var isSocketOn = false
+    private var isSocketOn = false
     
     override private init() {
         super.init()
@@ -33,22 +33,27 @@ class SocketIOManager: NSObject {
         socket.on(clientEvent: .connect) {data, ack in
             print ("socket connected")
             
+            guard let rootNavi = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController,
+                let sideMenu = rootNavi.children.first?.children,
+                let homeVC = sideMenu.first?.children.first as? HomeViewController else {
+                    return
+            }
+            
+            if homeVC.txtPickupLocation?.text ?? "" != "" && homeVC.txtDropLocation?.text ?? "" != "" {
+                let param: [String: Any] = ["customer_id" : SingletonClass.sharedInstance.loginData.id ?? "",
+                                            "pickup_lng":homeVC.pickupLocation.longitude,
+                                            "pickup_lat":homeVC.pickupLocation.latitude,
+                                            "dropoff_lat":homeVC.destinationLocation.latitude,
+                                            "dropoff_lng":homeVC.destinationLocation.longitude]
+                homeVC.emitSocket_GetEstimateFare(param: param)
+            }
+            
             if !self.isSocketOn {
                 self.isSocketOn = true
                 
 //                (UIApplication.shared.keyWindow?.rootViewController as! UINavigationController).children.first?.children.first?.children as! HomeViewController
                 
-                if let rootNavi = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
-                    if let sideMenu = rootNavi.children.first?.children {
-                        if let homeVC = sideMenu.first?.children.first as? HomeViewController {
-                            homeVC.allSocketOnMethods()
-                        }
-                    }
-                }
-                                
-//                let homeStory = UIStoryboard(name: "Main", bundle: nil)
-//                let homeVC = homeStory.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController
-//                homeVC?.allSocketOnMethods()
+                homeVC.allSocketOnMethods()
             }
         }
     }

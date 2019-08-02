@@ -36,7 +36,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         GMSPlacesClient.provideAPIKey(googlApiKey)
         FirebaseApp.configure()
         setupPushNotification(application: application)
-//        Fabric.with([Crashlytics.self])
+        locationPermission()
+        Fabric.with([Crashlytics.self])
 //        UserDefaults.standard.set(true, forKey: "isUserLogin")
         
 //        SocketIOManager.shared.socket.connect()
@@ -138,6 +139,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        if (CLLocationManager.authorizationStatus() == .denied) || CLLocationManager.authorizationStatus() == .restricted || CLLocationManager.authorizationStatus() == .notDetermined {
+            let alert = UIAlertController(title: AppName.kAPPName, message: "Please enable location from settings", preferredStyle: .alert)
+            let enable = UIAlertAction(title: "Enable", style: .default) { (temp) in
+                
+                if let url = URL.init(string: UIApplication.openSettingsURLString) {
+                    UIApplication.shared.open(URL(string: "App-Prefs:root=Privacy&path=LOCATION") ?? url, options: [:], completionHandler: nil)
+                }
+                //                guard let locationUrl = URL(string: "prefs:root =LOCATION_SERVICES") else {
+                //                    return
+                //                }
+                //                UIApplication.shared.openURL(locationUrl)
+            }
+            alert.addAction(enable)
+            (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController?.present(alert, animated: true, completion: nil)
+        }
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -226,6 +242,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
 // MARK:- CLLocationManagerDelegate
 //1
 extension AppDelegate: CLLocationManagerDelegate {
+    
+    func locationPermission() {
+        // Ask for Authorisation from the User.
+        self.locationManager.requestAlwaysAuthorization()
+        
+        // For use in foreground
+        self.locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
+    }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
 

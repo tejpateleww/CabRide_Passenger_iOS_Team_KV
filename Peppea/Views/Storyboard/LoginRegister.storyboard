@@ -1219,15 +1219,24 @@
                                                             <constraint firstAttribute="bottom" secondItem="klG-IO-czo" secondAttribute="bottom" id="yC5-HJ-gni"/>
                                                         </constraints>
                                                     </view>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5FF-ac-P0U">
+                                                        <rect key="frame" x="194" y="88" width="21" height="22"/>
+                                                        <state key="normal" image="iconPlusBar"/>
+                                                        <connections>
+                                                            <action selector="btnChooseImage:" destination="RD4-df-zYc" eventType="touchUpInside" id="WA7-E4-Hnz"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="6OX-dl-chD" firstAttribute="top" secondItem="SA3-bf-dgp" secondAttribute="bottom" constant="15" id="5Ne-z2-k5i"/>
                                                     <constraint firstAttribute="trailing" secondItem="MGh-hV-TLo" secondAttribute="trailing" constant="10" id="5d8-Eq-9YN"/>
+                                                    <constraint firstItem="5FF-ac-P0U" firstAttribute="bottom" secondItem="SA3-bf-dgp" secondAttribute="bottom" id="Ad2-ax-Pjm"/>
                                                     <constraint firstItem="MGh-hV-TLo" firstAttribute="leading" secondItem="YY5-fe-5zv" secondAttribute="leading" constant="10" id="Bn5-dd-DqA"/>
                                                     <constraint firstItem="6OX-dl-chD" firstAttribute="leading" secondItem="YY5-fe-5zv" secondAttribute="leading" constant="10" id="KZ6-V7-IeQ"/>
                                                     <constraint firstItem="MGh-hV-TLo" firstAttribute="top" secondItem="6OX-dl-chD" secondAttribute="bottom" constant="15" id="Pno-gc-h7m"/>
                                                     <constraint firstAttribute="trailing" secondItem="6OX-dl-chD" secondAttribute="trailing" constant="10" id="bU1-s5-0Xh"/>
+                                                    <constraint firstItem="5FF-ac-P0U" firstAttribute="trailing" secondItem="SA3-bf-dgp" secondAttribute="trailing" id="hLv-oP-nxB"/>
                                                     <constraint firstAttribute="bottom" secondItem="MGh-hV-TLo" secondAttribute="bottom" constant="50" id="has-25-9M7"/>
                                                     <constraint firstItem="SA3-bf-dgp" firstAttribute="centerX" secondItem="YY5-fe-5zv" secondAttribute="centerX" id="htf-pX-TKY"/>
                                                     <constraint firstItem="SA3-bf-dgp" firstAttribute="top" secondItem="YY5-fe-5zv" secondAttribute="top" id="rpP-So-Fds"/>
@@ -1775,6 +1784,7 @@
         <image name="iconBird" width="174" height="99"/>
         <image name="iconFB" width="94" height="28"/>
         <image name="iconLeftArrow" width="29" height="29"/>
+        <image name="iconPlusBar" width="21" height="21"/>
         <image name="imgProfilePlaceHolder" width="56" height="56"/>
     </resources>
 </document>

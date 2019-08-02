@@ -70,8 +70,7 @@ extension HomeViewController: SocketConnected {
     func onSocket_GetEstimateFare() {
         SocketIOManager.shared.socketCall(for: socketApiKeys.GetEstimateFare.rawValue) { (json) in
             print(#function, "\n ", json)
-//            AlertMessage.showMessageForSuccess("Get Estimate Fare")
-            
+
             let model = GetEstimateFareModel(fromJson: json.array?.first)
             self.estimateData = model.estimateFare
             if self.estimateData.count != 0 {                
@@ -86,7 +85,7 @@ extension HomeViewController: SocketConnected {
             print(#function, "\n ", json)
             
             AlertMessage.showMessageForSuccess("Request Accepted")
-            
+            self.stopAnimationWhileStartBooking()
 //            let fr = json.array?.first
 //            let res = RequestAcceptedDataModel(fromJson: fr)
 //
@@ -175,7 +174,7 @@ extension HomeViewController: SocketConnected {
         SocketIOManager.shared.socketCall(for: socketApiKeys.CancelledBookingRequestBySystem.rawValue) { (json) in
             print(#function, "\n ", json)
             AlertMessage.showMessageForSuccess("Cancelled Booking Request By System")
-            
+            self.stopAnimationWhileStartBooking()
             self.setupAfterComplete()
         }
     }
@@ -185,7 +184,7 @@ extension HomeViewController: SocketConnected {
         SocketIOManager.shared.socketCall(for: socketApiKeys.CancelTrip.rawValue) { (json) in
             print(#function, "\n ", json)
             AlertMessage.showMessageForSuccess("Cancelled Booking Request By Driver")
-            
+            self.stopAnimationWhileStartBooking()
             self.setupAfterComplete()
         }
     }
@@ -271,5 +270,12 @@ extension HomeViewController: SocketConnected {
         self.isExpandCategory = true
         
         lblBuildNumber.text = "Build : \(Bundle.main.buildVersionNumber ?? "") \t\t Booking ID: \(self.booingInfo.id ?? "")"
+    }
+    
+    func stopAnimationWhileStartBooking() {
+        self.mapView.animate(toViewingAngle: 0)
+        self.mapView.animate(toZoom: zoomLevel)
+        self.btnCurrentLocation(UIButton())
+        UtilityClass.hideHUD()
     }
 }

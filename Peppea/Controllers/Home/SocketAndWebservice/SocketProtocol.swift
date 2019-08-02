@@ -16,7 +16,7 @@ protocol SocketConnected {
     
     func emitSocket_GetEstimateFare(param: [String:Any])
     
-     func onSocket_GetEstimateFare()
+    func onSocket_GetEstimateFare()
     
     func onSocket_AfterDriverAcceptRequest()
    

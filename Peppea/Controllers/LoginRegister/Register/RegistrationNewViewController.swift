@@ -83,7 +83,7 @@ class RegistrationNewViewController: UIViewController,UIImagePickerControllerDel
         super.viewWillLayoutSubviews()
         self.btnProfileImage.layer.cornerRadius = self.btnProfileImage.frame.size.width/2
         self.btnProfileImage.layer.masksToBounds = true
-        self.btnProfileImage.contentMode = .scaleAspectFill
+        self.btnProfileImage.contentMode = .scaleAspectFit
 
         /*
          if SingletonClass.sharedInstance.strSocialImage != "" {

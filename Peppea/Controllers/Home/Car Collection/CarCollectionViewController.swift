@@ -340,9 +340,13 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
                     if let homeVc = self.parent as? HomeViewController {
                         if homeVc.estimateData.count != 0 {
                             let estimateCurrentData = homeVc.estimateData.filter{$0.vehicleTypeId == dictOnlineCars.id}.first
+                            if estimateCurrentData?.driverReachInMinute == "0" {
+                                estimateFare = "0"
+                            } else {
+                                let estimate = estimateCurrentData?.estimateTripFare
+                                estimateFare = estimate ?? ""
+                            }
                             
-                            let estimate = estimateCurrentData?.estimateTripFare
-                            estimateFare = estimate ?? ""
                         }
                     }
                 }
@@ -378,7 +382,7 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
   
     func animateGoogleMapWhenRotate(homeVC : HomeViewController?)
     {
-        UtilityClass.showHUDWithoutLottie(with: UIApplication.shared.keyWindow)
+//        UtilityClass.showHUDWithoutLottie(with: UIApplication.shared.keyWindow)
         CATransaction.begin()
         CATransaction.setValue(1, forKey: kCATransactionAnimationDuration)
         CATransaction.setCompletionBlock({
@@ -390,11 +394,16 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
                 CATransaction.setCompletionBlock({
 //                    homeVC?.hideAndShowView(view: .requestAccepted)
 //                    homeVC?.isExpandCategory = true
+                    
+                    // For Stop Animation on map
                     homeVC?.mapView.animate(toViewingAngle: 0)
                     homeVC?.mapView.animate(toZoom: zoomLevel)
-                    homeVC?.btnCurrentLocation(UIButton())
+//                    homeVC?.btnCurrentLocation(UIButton())
                     UtilityClass.hideHUD()
+//                    self.animateGoogleMapWhenRotate(homeVC: homeVC)
+                    
                 })
+                
                 homeVC?.mapView.animate(toBearing: CLLocationDirection(((homeVC?.getHeadingForDirection(fromCoordinate: (homeVC?.defaultLocation.coordinate)!, toCoordinate: (homeVC?.defaultLocation.coordinate)!))! - 30) ))
                 homeVC?.view.layoutIfNeeded()
                 CATransaction.commit()
@@ -480,6 +489,7 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
             homeVC?.isExpandCategory = false
             homeVC?.setUpCustomMarker()
             homeVC?.timer?.invalidate()
+            UtilityClass.showHUDWithoutLottie(with: UIApplication.shared.keyWindow)
             animateGoogleMapWhenRotate(homeVC: homeVC)
             
             if sender.titleLabel?.text == "Book Now" {
@@ -490,6 +500,7 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
         }
         else
         {
+            UtilityClass.hideHUD()
             AlertMessage.showMessageForError(self.validations().1)
         }
 //        webserviceForBooking(bookingType: "") // "book_now" // "book_later"

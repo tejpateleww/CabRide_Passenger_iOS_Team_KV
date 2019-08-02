@@ -89,7 +89,8 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
     var i: UInt = 0
     var timer: Timer!
     var driverMarker: GMSMarker!
-    
+    var destinationMarker = GMSMarker()
+    var pickupMarker = GMSMarker()
 
     //MARK:- Location Manager
     let locationManager = CLLocationManager()
@@ -142,7 +143,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+     
         SocketIOManager.shared.establishConnection()
         
         if SingletonClass.sharedInstance.bookingInfo != nil {
@@ -184,7 +185,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
         #endif
         self.setupNavigationController()
 
-        
+        self.perform(#selector(self.btnCurrentLocation(_:)), with: self, afterDelay: 1)
     }
 
     override func viewDidLayoutSubviews() {
@@ -199,6 +200,24 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        if (CLLocationManager.authorizationStatus() == .denied) || CLLocationManager.authorizationStatus() == .restricted || CLLocationManager.authorizationStatus() == .notDetermined {
+            let alert = UIAlertController(title: AppName.kAPPName, message: "Please enable location from settings", preferredStyle: .alert)
+            let enable = UIAlertAction(title: "Enable", style: .default) { (temp) in
+                
+                if let url = URL.init(string: UIApplication.openSettingsURLString) {
+                    UIApplication.shared.open(URL(string: "App-Prefs:root=Privacy&path=LOCATION") ?? url, options: [:], completionHandler: nil)
+                }
+//                App-Prefs:root=Privacy&path=LOCATION"
+//                guard let locationUrl = URL(string: "App-Prefs:root=Privacy&path=LOCATION") else {
+//                    return
+//                }
+//                UIApplication.shared.openURL(locationUrl)
+            }
+            alert.addAction(enable)
+            (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController?.present(alert, animated: true, completion: nil)
+        }
+        
         
         self.navigationController?.navigationBar.barTintColor = UIColor.black
         self.navigationController?.navigationBar.tintColor = UIColor.black
@@ -329,7 +348,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
         self.navigationItem.leftBarButtonItem = nil
         self.navigationItem.leftBarButtonItem = leftNavBarButton
     
-        setupAfterComplete()
+//        setupAfterComplete()
     }
     
     func didSelectDateAndTime(date: String, timeStemp: String)
@@ -595,7 +614,17 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
     }
     @IBAction func btnCurrentLocation(_ sender: UIButton)
     {
-        currentLocationAction()
+        if txtPickupLocation.text!.isBlank {
+            currentLocationAction()
+        } else {
+            let camera = GMSCameraPosition.camera(withLatitude: defaultLocation.coordinate.latitude,
+                                                  longitude: defaultLocation.coordinate.longitude,
+                                                  zoom: zoomLevel)
+            mapView.camera = camera
+        }
+        
+        UtilityClass.hideHUD()
+        
 //        setupAfterComplete()
 
     }
@@ -670,6 +699,26 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
                             let status = dictionary["status"] as! String
 
                             if status == "OK" {
+                                
+                                var strPickupCoordinate = origin?.components(separatedBy: ",")
+                                var pickupDoubleLat = Double()
+                                var pickupDoubleLng = Double()
+                                
+                                if let lat = strPickupCoordinate?[0], let doubleLat = Double(lat) {
+                                    pickupDoubleLat = doubleLat
+                                }
+                                
+                                if let lng = strPickupCoordinate?[1], let doubleLng = Double(lng) {
+                                    pickupDoubleLng = doubleLng
+                                }
+                                
+                                let pickupCoordinate = CLLocationCoordinate2D(latitude: pickupDoubleLat , longitude: pickupDoubleLng)
+                                self.pickupMarker.map = nil
+                                self.pickupMarker = GMSMarker(position: pickupCoordinate) // self.originCoordinate
+                                self.pickupMarker.icon = UtilityClass.image(UIImage(named: iconMarker), scaledTo: CGSize(width: 30, height: 30))//UIImage(named: iconMarker)
+                                self.pickupMarker.map = self.mapView
+                                
+                                
                                 var strDestinationCoordinate = destination?.components(separatedBy: ",")
                                 var DoubleLat = Double()
                                 var DoubleLng = Double()
@@ -683,11 +732,13 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
                                 }
                                 
                                 let destinationCoordinate = CLLocationCoordinate2D(latitude: DoubleLat , longitude: DoubleLng)
-                                var destinationMarker = GMSMarker()
-                                destinationMarker = GMSMarker(position: destinationCoordinate) // self.originCoordinate
-                                destinationMarker.icon = UtilityClass.image(UIImage(named: iconMarker), scaledTo: CGSize(width: 30, height: 30))//UIImage(named: iconMarker)
-                                destinationMarker.map = self.mapView
+                                self.destinationMarker.map = nil
+                                self.destinationMarker = GMSMarker(position: destinationCoordinate) // self.originCoordinate
+                                self.destinationMarker.icon = UtilityClass.image(UIImage(named: iconMarker), scaledTo: CGSize(width: 30, height: 30))//UIImage(named: iconMarker)
+                                self.destinationMarker.map = self.mapView
                                 self.drawRoute(routeDict: dictionary)
+                            } else {
+                                
                             }
                         }
                         catch
@@ -841,7 +892,7 @@ extension HomeViewController: CLLocationManagerDelegate {
             return
         }
         defaultLocation = location
-        self.getAddressForLatLng(latitude: "\(defaultLocation.coordinate.latitude)", Longintude: "\(defaultLocation.coordinate.longitude)", markerType: .pickUp)
+//        self.getAddressForLatLng(latitude: "\(defaultLocation.coordinate.latitude)", Longintude: "\(defaultLocation.coordinate.longitude)", markerType: .pickUp)
         if(!stopAnimatingCamera)
         {
             stopAnimatingCamera = true

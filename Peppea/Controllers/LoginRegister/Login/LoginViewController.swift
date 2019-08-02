@@ -41,6 +41,11 @@ class LoginViewController: UIViewController {
             txtPassword.text = "12345678"
         #else
         
+        if UIDevice.current.name == "iPad red" {
+            txtMobileEmail.text = "bhavesh@gmail.com"
+            txtPassword.text = "12345678"
+        }
+        
         #endif
        
     }

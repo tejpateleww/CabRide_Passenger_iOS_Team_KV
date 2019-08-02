@@ -37,10 +37,13 @@ extension CarCollectionViewController: CarCollectionWebserviceProtocol {
         {
             return (false, "Please select vehicle")
         }
-        else if(estimateFare.trimmingCharacters(in: .whitespacesAndNewlines).count == 0)
-        {
-            return (false, "Estimate fare is not available")
-        }
+//        else if (estimateFare.trimmingCharacters(in: .whitespacesAndNewlines) == "0") {
+//            return (false, "Driver is not available")
+//        }
+//        else if(estimateFare.trimmingCharacters(in: .whitespacesAndNewlines).count == 0)
+//        {
+//            return (false, "Estimate fare is not available")
+//        }
         return (true, "")
     }
     

@@ -26,26 +26,33 @@ enum MyTrips: String, CaseIterable{
     
     fileprivate func setPastDescription(pastBookingHistory : PastBookingHistoryResponse) -> [(String, String)]{
 
-        var tempArray = [("Pick Up Time" , UtilityClass.convertTimeStampToFormat(unixtimeInterval: pastBookingHistory.pickupTime, dateFormat: "dd-MM-YYYY HH:mm:ss") ),
-                         ("Drop Off Time" , UtilityClass.convertTimeStampToFormat(unixtimeInterval: pastBookingHistory.dropoffTime, dateFormat: "dd-MM-YYYY HH:mm:ss")),
-                         ("Booking Fee" , pastBookingHistory.bookingFee),
-                         ("Base Fare" , pastBookingHistory.baseFare),
-                         //                ("Time Cost :" , pastBookingHistory.id),
-            ("Subtotal" , pastBookingHistory.subTotal),
-            //                ("Other Charges" , pastBookingHistory.subTotal),
-            //                ("Cancellation Charges" , pastBookingHistory.cancellationCharge),
-            //                ("Promocode" , pastBookingHistory.promocode),
-            ("Total Paid To Driver" , pastBookingHistory.grandTotal)
-
-        ] as! [(String,String)]
-
-
-        if(pastBookingHistory.promocode.count != 0)
-        {
-            tempArray.insert( ("Promocode" , pastBookingHistory.promocode), at: tempArray.count-1)
+        if pastBookingHistory.status == "canceled" {
+            let tempArray = [("Status" , pastBookingHistory.status)]  as! [(String,String)]
+            
+            return tempArray
+        } else {
+            var tempArray = [("Pick Up Time" , UtilityClass.convertTimeStampToFormat(unixtimeInterval: pastBookingHistory.pickupTime, dateFormat: "dd-MM-YYYY HH:mm:ss") ),
+                             ("Drop Off Time" , UtilityClass.convertTimeStampToFormat(unixtimeInterval: pastBookingHistory.dropoffTime, dateFormat: "dd-MM-YYYY HH:mm:ss")),
+                             ("Booking Fee" , pastBookingHistory.bookingFee),
+                             ("Base Fare" , pastBookingHistory.baseFare),
+                             //                ("Time Cost :" , pastBookingHistory.id),
+                ("Subtotal" , pastBookingHistory.subTotal),
+                //                ("Other Charges" , pastBookingHistory.subTotal),
+                //                ("Cancellation Charges" , pastBookingHistory.cancellationCharge),
+                //                ("Promocode" , pastBookingHistory.promocode),
+                ("Total Paid To Driver" , pastBookingHistory.grandTotal)
+                
+                ] as! [(String,String)]
+            
+            
+            if(pastBookingHistory.promocode.count != 0)
+            {
+                tempArray.insert( ("Promocode" , pastBookingHistory.promocode), at: tempArray.count-1)
+            }
+            
+            return tempArray
         }
-
-        return tempArray
+        
     }
 
 
@@ -64,19 +71,23 @@ enum MyTrips: String, CaseIterable{
     
     fileprivate func setUpcomingDescription(pastBookingHistory : PastBookingHistoryResponse) -> [(String, String)]{
         
+        
         let inter = TimeInterval("\(pastBookingHistory.pickupDateTime!)") ?? 0
         
         let date = Date(timeIntervalSince1970: inter)
         let dateFormatter = DateFormatter()
-//        dateFormatter.locale = Locale.current
-        dateFormatter.dateFormat = "yyyy/MM/dd hh:mm:ss" //Specify your format that you want
-        let strDate = dateFormatter.string(from: date)
+//        dateFormatter.locale = Locale.currentf
+        dateFormatter.dateFormat = "yyyy/MM/dd HH:mm:ss" //Specify your format that you want
+        var strDate = dateFormatter.string(from: date)
         
+        if pastBookingHistory.pickupDateTime == "" {
+            strDate = "N/A"
+        }
         
         return [("Title" ,"Upcoming"),
                 ("PickupLocation" , pastBookingHistory.pickupLocation),
                 ("DropoffLocation" , pastBookingHistory.dropoffLocation),
                 ("Date" , strDate),
-                ("BookingId" , pastBookingHistory.id)]
+                ("Payment Type" , pastBookingHistory.paymentType)]
     }
 }

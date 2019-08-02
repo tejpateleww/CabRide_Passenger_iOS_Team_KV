@@ -25,7 +25,7 @@ class SingletonClass: NSObject
         walletBalance = ""
         loginData = LoginData()
         bookingInfo = nil
-        myCurrentLocation = CLLocation()
+       
     }
 }
 

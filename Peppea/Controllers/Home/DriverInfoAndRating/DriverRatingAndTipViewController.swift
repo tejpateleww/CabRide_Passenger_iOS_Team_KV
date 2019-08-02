@@ -65,12 +65,13 @@ class DriverRatingAndTipViewController: UIViewController {
         _ = bookingData.customerInfo
         _ = bookingData.vehicleType
         isOtherSelected = false
-        
+        imgDriverImage.isHidden = false
         if viewType != nil {
             if viewType! == .ratings || viewType! == .completeTrip {
                 viewAskForTip.isHidden = true
                 viewRating.isHidden = false
                 viewComments.isHidden = false
+                imgDriverImage.isHidden = true
                 constraintTopOfComments.priority = UILayoutPriority(950)
                 constraintTopOfAskForTip.priority = UILayoutPriority(650)
                 constraintHeightOfViewRating.constant = 30
@@ -105,6 +106,10 @@ class DriverRatingAndTipViewController: UIViewController {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
+        imgDriverImage.layer.cornerRadius = imgDriverImage.frame.width / 2
+        imgDriverImage.layer.masksToBounds = true                                                                                                                             
+        
         for (ind,btn) in self.btnTips.enumerated()
         {
 //            btn.layer.borderWidth = 1.0
@@ -223,7 +228,7 @@ class DriverRatingAndTipViewController: UIViewController {
         model.comment = txtComments.text ?? ""
         
         UserWebserviceSubclass.ReviewRatingToDriver(bookingRequestModel: model) { (response, status) in
-            
+            print(response)
             if status {
                 AlertMessage.showMessageForSuccess(response.dictionary?["message"]?.stringValue ?? "")
                 

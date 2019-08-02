@@ -70,7 +70,7 @@ class PeppeaBookLaterViewController: UIViewController {
 //        yyyy-mm-dd hh:mm:ss
         
         let dateFormateForSendParam = DateFormatter()
-        dateFormateForSendParam.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        dateFormateForSendParam.dateFormat = "yyyy-MM-dd HH:mm:ss"
         selectedTimeStemp = dateFormateForSendParam.string(from: datePicker.date)
         
 //        let myTimeInterval = TimeInterval(datePicker.date.timeIntervalSince1970)

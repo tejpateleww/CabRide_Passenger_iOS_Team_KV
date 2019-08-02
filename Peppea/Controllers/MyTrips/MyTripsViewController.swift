@@ -330,7 +330,7 @@ extension MyTripsViewController: UITableViewDelegate, UITableViewDataSource{
         }
         else{
             if self.pastBookingHistoryModelDetails.count > indexPath.row {
-                self.data = self.tripType.getDescription(pastBookingHistory: self.pastBookingHistoryModelDetails[indexPath.row])
+                self.data = self.tripType.getDescription(pastBookingHistory: self.pastBookingHistoryModelDetails[indexPath.section])
                 selectedCell.append(indexPath.section)
                 tableView.reloadData()
                 let rect =  tableView.rect(forSection: indexPath.section)
