@@ -270,7 +270,7 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
         }
         if arrMenuTitle[indexPath.row] == "Favourite"
         {
-            let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "ChatViewController") as! ChatViewController
+            let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "FavouriteAddressViewController") as! FavouriteAddressViewController
             HomePage?.navigationController?.pushViewController(NextPage, animated: true)
             sideMenuController?.hideMenu()
             return

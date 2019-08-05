@@ -37,13 +37,13 @@ extension CarCollectionViewController: CarCollectionWebserviceProtocol {
         {
             return (false, "Please select vehicle")
         }
-//        else if (estimateFare.trimmingCharacters(in: .whitespacesAndNewlines) == "0") {
-//            return (false, "Driver is not available")
-//        }
-//        else if(estimateFare.trimmingCharacters(in: .whitespacesAndNewlines).count == 0)
-//        {
-//            return (false, "Estimate fare is not available")
-//        }
+        else if (estimateFare.trimmingCharacters(in: .whitespacesAndNewlines) == "0") {
+            return (false, "Driver is not available")
+        }
+        else if(estimateFare.trimmingCharacters(in: .whitespacesAndNewlines).count == 0)
+        {
+            return (false, "Estimate fare is not available")
+        }
         return (true, "")
     }
     
@@ -78,8 +78,8 @@ extension CarCollectionViewController: CarCollectionWebserviceProtocol {
             
             print("Booking Response: \n", response)
             if status {
-                 let homeVC = self.parent as? HomeViewController
-                 homeVC?.btnBackButtonWhileBookLater()
+//                 let homeVC = self.parent as? HomeViewController
+//                 homeVC?.btnBackButtonWhileBookLater()
                 
                 let msg = response.dictionary?["message"]?.stringValue ?? response.dictionary?["message"]?.array?.first?.stringValue ?? ""
                 

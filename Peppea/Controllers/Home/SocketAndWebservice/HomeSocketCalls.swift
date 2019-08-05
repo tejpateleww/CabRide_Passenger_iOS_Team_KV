@@ -84,6 +84,11 @@ extension HomeViewController: SocketConnected {
         SocketIOManager.shared.socketCall(for: socketApiKeys.AfterDriverAcceptRequest.rawValue) { (json) in
             print(#function, "\n ", json)
             
+//            let homeVC = self.parent as? HomeViewController
+            
+            self.clearMap()
+            self.btnBackButtonWhileBookLater()
+            
             AlertMessage.showMessageForSuccess("Request Accepted")
             self.stopAnimationWhileStartBooking()
 //            let fr = json.array?.first
@@ -174,8 +179,11 @@ extension HomeViewController: SocketConnected {
         SocketIOManager.shared.socketCall(for: socketApiKeys.CancelledBookingRequestBySystem.rawValue) { (json) in
             print(#function, "\n ", json)
             AlertMessage.showMessageForSuccess("Cancelled Booking Request By System")
+            
+            self.clearMap()
+            self.btnBackButtonWhileBookLater()
             self.stopAnimationWhileStartBooking()
-            self.setupAfterComplete()
+//            self.setupAfterComplete()
         }
     }
     
@@ -184,8 +192,10 @@ extension HomeViewController: SocketConnected {
         SocketIOManager.shared.socketCall(for: socketApiKeys.CancelTrip.rawValue) { (json) in
             print(#function, "\n ", json)
             AlertMessage.showMessageForSuccess("Cancelled Booking Request By Driver")
+            self.clearMap()
+            self.btnBackButtonWhileBookLater()
             self.stopAnimationWhileStartBooking()
-            self.setupAfterComplete()
+//            self.setupAfterComplete()
         }
     }
     

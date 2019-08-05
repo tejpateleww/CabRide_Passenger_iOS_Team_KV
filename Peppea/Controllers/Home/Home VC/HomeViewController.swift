@@ -31,9 +31,6 @@ enum HomeViews{
 class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDelegate
 {
 
-    
-
-
     //MARK:- IBOutles
     @IBOutlet weak var btnCurrentLocation: UIButton!
 
@@ -186,6 +183,11 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
         self.setupNavigationController()
 
         self.perform(#selector(self.btnCurrentLocation(_:)), with: self, afterDelay: 1)
+        
+        
+        let rightNavBarButton = UIBarButtonItem(image: UIImage(named: "iconUnSelectedstar"), style: .plain, target: self, action: #selector(self.btnFavouriteAddress(_:)))
+        self.navigationItem.rightBarButtonItem = nil
+        self.navigationItem.rightBarButtonItem = rightNavBarButton
     }
 
     override func viewDidLayoutSubviews() {
@@ -218,7 +220,6 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
             (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController?.present(alert, animated: true, completion: nil)
         }
         
-        
         self.navigationController?.navigationBar.barTintColor = UIColor.black
         self.navigationController?.navigationBar.tintColor = UIColor.black
         
@@ -227,9 +228,48 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
     }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 //        self.timer.invalidate()
+    }
+    
+    @objc func btnFavouriteAddress(_ sender: UIButton) {
+        
+        if txtPickupLocation.text!.isBlank {
+            
+            UtilityClass.showAlert(title: AppName.kAPPName, message: "Please select pickup location", alertTheme: .warning)
+            return
+        }
+        
+        if txtDropLocation.text!.isBlank {
+            
+            UtilityClass.showAlert(title: AppName.kAPPName, message: "Please select destination location", alertTheme: .warning)
+            return
+        }
+        
+        let alert = UIAlertController(title: AppName.kAPPName, message: "Choose your favourite location", preferredStyle: .actionSheet)
+        
+        let Home = UIAlertAction(title: "Home", style: .default) { (action) in
+            self.webserviceForAddToFavouriteAddress(addresType: "Home")
+        }
+        
+        let Office = UIAlertAction(title: "Office", style: .default) { (action) in
+            self.webserviceForAddToFavouriteAddress(addresType: "Office")
+        }
+        
+        let Other = UIAlertAction(title: "Other", style: .default) { (action) in
+            self.webserviceForAddToFavouriteAddress(addresType: "Other")
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alert.addAction(Home)
+        alert.addAction(Office)
+        alert.addAction(Other)
+        alert.addAction(cancel)
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
     func setupTripStatu(status: TripStauts) {
@@ -347,6 +387,14 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
         let leftNavBarButton = UIBarButtonItem(image: UIImage(named: "iconMenu"), style: .plain, target: self, action: #selector(self.OpenMenuAction))
         self.navigationItem.leftBarButtonItem = nil
         self.navigationItem.leftBarButtonItem = leftNavBarButton
+        
+        if let VC = self.children.first as? CarCollectionViewController {
+            
+            VC.btnBookNow.setTitle("Book Now", for: .normal)
+            VC.strPromoCode = ""
+            VC.vehicleId = ""
+            VC.selectedTimeStemp = ""
+        }
     
 //        setupAfterComplete()
     }
@@ -851,7 +899,33 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
             return
         }
     }
-
+    
+    // ----------------------------------------------------
+    // MARK: - Webservice Methods
+    // ----------------------------------------------------
+    func webserviceForAddToFavouriteAddress(addresType: String) {
+        
+        let model = addFavouriteAddressReqModel()
+        model.customer_id = SingletonClass.sharedInstance.loginData.id
+        model.dropoff_lat = "\(destinationLocation.latitude)"
+        model.dropoff_lng = "\(destinationLocation.longitude)"
+        model.dropoff_location = txtDropLocation.text ?? ""
+        model.favourite_type = addresType
+        model.pickup_lat = "\(pickupLocation.latitude)"
+        model.pickup_lng = "\(pickupLocation.longitude)"
+        model.pickup_location = txtPickupLocation.text ?? ""
+        
+        UserWebserviceSubclass.addFavouriteAddressListService(Promocode: model) { (response, status) in
+            print(response)
+            if status {
+                UtilityClass.showAlert(title: AppName.kAPPName, message: response.dictionary?["message"]?.stringValue ?? "", alertTheme: .success)
+            } else {
+                UtilityClass.showAlert(title: AppName.kAPPName, message: response.dictionary?["message"]?.stringValue ?? "", alertTheme: .error)
+            }
+        }
+    }
+    
+    
 }
 
 
@@ -979,8 +1053,6 @@ extension HomeViewController: GMSAutocompleteViewControllerDelegate {
     
     /// Setup After Complete trip or Cancel trip
     func setupAfterComplete() {
-        
-        currentLocationAction(isCurrentLocationTapped: true)
         
         self.txtDropLocation.text = ""
         self.currentLocationAction()

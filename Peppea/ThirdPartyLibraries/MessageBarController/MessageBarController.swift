@@ -32,7 +32,7 @@ class MessageBarController: NSObject {
         
         //Set title value
 //       alertTheme.hashValue
-        alert.configureContent(title: alertTheme == .success ? "Success" : "Error", body: title as String)
+        alert.configureContent(title: alertTheme == .success ? "Success" : "", body: title as String)
 
         var successConfig = SwiftMessages.Config()
         

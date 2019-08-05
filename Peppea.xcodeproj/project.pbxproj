@@ -16,6 +16,11 @@
 		182BD25022EF175100C419B9 /* ARCarMovement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182BD24F22EF175100C419B9 /* ARCarMovement.swift */; };
 		182BD25222EF3E9E00C419B9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 182BD25122EF3E9D00C419B9 /* GoogleService-Info.plist */; };
 		1830C47B22E74235004F107F /* dummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1830C47A22E74235004F107F /* dummyData.swift */; };
+		1836EF4222F7F93500852EC8 /* addFavouriteAddressReqModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1836EF4122F7F93500852EC8 /* addFavouriteAddressReqModel.swift */; };
+		1836EF4422F7F9C600852EC8 /* deleteFavouriteAddressReqAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1836EF4322F7F9C600852EC8 /* deleteFavouriteAddressReqAddress.swift */; };
+		1836EF4822F8000900852EC8 /* FavouriteAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1836EF4722F8000900852EC8 /* FavouriteAddressViewController.swift */; };
+		1836EF4A22F802DF00852EC8 /* favouriteAddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1836EF4922F802DF00852EC8 /* favouriteAddressTableViewCell.swift */; };
+		1836EF4C22F80EDD00852EC8 /* favouriteAddressListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1836EF4B22F80EDD00852EC8 /* favouriteAddressListModel.swift */; };
 		183BEF7622E9C762000C97E5 /* TripStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183BEF7522E9C762000C97E5 /* TripStatus.swift */; };
 		1882A0AD22EB1387008B5D1A /* CancelTripRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1882A0AC22EB1387008B5D1A /* CancelTripRequestModel.swift */; };
 		1882A0AF22EB1801008B5D1A /* ReviewRatingReqModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1882A0AE22EB1801008B5D1A /* ReviewRatingReqModel.swift */; };
@@ -178,6 +183,11 @@
 		182BD24F22EF175100C419B9 /* ARCarMovement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARCarMovement.swift; sourceTree = "<group>"; };
 		182BD25122EF3E9D00C419B9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1830C47A22E74235004F107F /* dummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dummyData.swift; sourceTree = "<group>"; };
+		1836EF4122F7F93500852EC8 /* addFavouriteAddressReqModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addFavouriteAddressReqModel.swift; sourceTree = "<group>"; };
+		1836EF4322F7F9C600852EC8 /* deleteFavouriteAddressReqAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = deleteFavouriteAddressReqAddress.swift; sourceTree = "<group>"; };
+		1836EF4722F8000900852EC8 /* FavouriteAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteAddressViewController.swift; sourceTree = "<group>"; };
+		1836EF4922F802DF00852EC8 /* favouriteAddressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = favouriteAddressTableViewCell.swift; sourceTree = "<group>"; };
+		1836EF4B22F80EDD00852EC8 /* favouriteAddressListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = favouriteAddressListModel.swift; sourceTree = "<group>"; };
 		183BEF7522E9C762000C97E5 /* TripStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripStatus.swift; sourceTree = "<group>"; };
 		1882A0AC22EB1387008B5D1A /* CancelTripRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelTripRequestModel.swift; sourceTree = "<group>"; };
 		1882A0AE22EB1801008B5D1A /* ReviewRatingReqModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRatingReqModel.swift; sourceTree = "<group>"; };
@@ -382,6 +392,15 @@
 			path = "New Group";
 			sourceTree = "<group>";
 		};
+		1836EF4622F7FFE800852EC8 /* Favourite */ = {
+			isa = PBXGroup;
+			children = (
+				1836EF4722F8000900852EC8 /* FavouriteAddressViewController.swift */,
+				1836EF4922F802DF00852EC8 /* favouriteAddressTableViewCell.swift */,
+			);
+			path = Favourite;
+			sourceTree = "<group>";
+		};
 		18CB7F7A22E841D4004FA66C /* SocketAndWebservice */ = {
 			isa = PBXGroup;
 			children = (
@@ -558,6 +577,7 @@
 		466957E422DDB151008A73C0 /* ResponseModel */ = {
 			isa = PBXGroup;
 			children = (
+				1836EF4B22F80EDD00852EC8 /* favouriteAddressListModel.swift */,
 				182BD24222EF166C00C419B9 /* BulkMileList */,
 				18CB7F8822E89688004FA66C /* RequestAcceptedDataModel */,
 				18CB7F8322E86584004FA66C /* GetEstimateFareModel */,
@@ -767,6 +787,7 @@
 		EE9F3F6722C769D700426377 /* RequestModel */ = {
 			isa = PBXGroup;
 			children = (
+				1836EF4122F7F93500852EC8 /* addFavouriteAddressReqModel.swift */,
 				EE61011E22E86F7800B3B4D7 /* PastBookingHistory.swift */,
 				468E992122D9F26300072361 /* AddCard.swift */,
 				468E992222D9F26400072361 /* AddMoney.swift */,
@@ -789,6 +810,7 @@
 				46869E6522E1D78D0053CF37 /* transferMoneyToBank.swift */,
 				1882A0AC22EB1387008B5D1A /* CancelTripRequestModel.swift */,
 				1882A0AE22EB1801008B5D1A /* ReviewRatingReqModel.swift */,
+				1836EF4322F7F9C600852EC8 /* deleteFavouriteAddressReqAddress.swift */,
 			);
 			path = RequestModel;
 			sourceTree = "<group>";
@@ -971,6 +993,7 @@
 		EEE2B7FC22C62376004F1C00 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				1836EF4622F7FFE800852EC8 /* Favourite */,
 				182BD24722EF169800C419B9 /* BulkMile */,
 				468E991622D9DBB000072361 /* PeppeaBusiness */,
 				468E991122D9B6EF00072361 /* ChatViewController */,
@@ -1249,7 +1272,9 @@
 				463DEFCE22D86D7C002365F8 /* PaymentWalletTypeListCell.swift in Sources */,
 				463DEFCC22D86AE2002365F8 /* PaymentViewController.swift in Sources */,
 				4600BF0022D613B000306486 /* HistoryListViewController.swift in Sources */,
+				1836EF4A22F802DF00852EC8 /* favouriteAddressTableViewCell.swift in Sources */,
 				46CA655522DE02B800FC6E16 /* RegisterResponseModel.swift in Sources */,
+				1836EF4822F8000900852EC8 /* FavouriteAddressViewController.swift in Sources */,
 				EEBF159E22CA0E1F004CB7FB /* CarCollectionViewController.swift in Sources */,
 				46536DFA22E0794D00C538D8 /* AddCardModel.swift in Sources */,
 				468E992922D9F26900072361 /* WalletHistory.swift in Sources */,
@@ -1343,6 +1368,7 @@
 				182BD24C22EF169900C419B9 /* BulkMileVC.swift in Sources */,
 				463DEFE722D8AEA6002365F8 /* MyTripTableViewCell.swift in Sources */,
 				EE9F3F6222C74E5900426377 /* ThemeButton.swift in Sources */,
+				1836EF4C22F80EDD00852EC8 /* favouriteAddressListModel.swift in Sources */,
 				46E8CE9022D9AD6D001BEFCD /* InviteDriverViewController.swift in Sources */,
 				18CB7F8F22E89688004FA66C /* BookingInfo.swift in Sources */,
 				EEE2B80F22C62A27004F1C00 /* UtilityClass.swift in Sources */,
@@ -1354,9 +1380,11 @@
 				46C469B922D70DA3007BA89B /* WalletViewController.swift in Sources */,
 				182BD24622EF166C00C419B9 /* BulkMileList.swift in Sources */,
 				B1E233E322D3226600CEA568 /* DriverOffersListViewCell.swift in Sources */,
+				1836EF4222F7F93500852EC8 /* addFavouriteAddressReqModel.swift in Sources */,
 				EE9D6F7222C62F7200EAD756 /* ContentTableViewCell.swift in Sources */,
 				463DEFE922D8AEA6002365F8 /* MyTrips.swift in Sources */,
 				46C469B822D70DA3007BA89B /* TransferToBankVC.swift in Sources */,
+				1836EF4422F7F9C600852EC8 /* deleteFavouriteAddressReqAddress.swift in Sources */,
 				B1E233DD22D31B7B00CEA568 /* AutomaticExpenseVC.swift in Sources */,
 				466957E322DDAB8D008A73C0 /* LoaderClass.swift in Sources */,
 			);

@@ -128,5 +128,18 @@ class UserWebserviceSubclass
         WebService.shared.getMethod(url: URL.init(string: strURLFinal)!, httpMethod: .get, completion: completion)
     }
     
+    class func favouriteAddressListService( strURL : String  ,completion: @escaping CompletionResponse ) {
+        let strURLFinal = NetworkEnvironment.baseURL + ApiKey.favouriteAddressList.rawValue + strURL
+        WebService.shared.getMethod(url: URL.init(string: strURLFinal)!, httpMethod: .get, completion: completion)
+    }
     
+    class func addFavouriteAddressListService(Promocode : addFavouriteAddressReqModel  ,completion: @escaping CompletionResponse ) {
+        let  params : [String:String] = Promocode.generatPostParams() as! [String : String]
+        WebService.shared.requestMethod(api: .addFavouriteAddress, httpMethod: .post, parameters: params, completion: completion)
+    }
+    
+    class func deleteFavouriteAddressListService(Promocode : deleteFavouriteAddressReqAddress  ,completion: @escaping CompletionResponse ) {
+        let  params : [String:String] = Promocode.generatPostParams() as! [String : String]
+        WebService.shared.requestMethod(api: .removeFavouriteAddress, httpMethod: .post, parameters: params, completion: completion)
+    }
 }

@@ -223,7 +223,7 @@ class DriverRatingAndTipViewController: UIViewController {
     func webserviceForReviewRating() {
         
         let model = ReviewRatingReqModel()
-        model.booking_id = bookingId ?? ""
+        model.booking_id = bookingId 
         model.rating = "\(myRating)"
         model.comment = txtComments.text ?? ""
         
@@ -235,6 +235,7 @@ class DriverRatingAndTipViewController: UIViewController {
                 let alert = UIAlertController(title: AppName.kAPPName, message: "Your trip has been completed", preferredStyle: .alert)
                 let ok = UIAlertAction(title: "OK", style: .default) { (action) in
                     let homeVC = self.parent as? HomeViewController
+                    homeVC?.clearMap()
                     homeVC?.setupAfterComplete()
                 }
                 alert.addAction(ok)

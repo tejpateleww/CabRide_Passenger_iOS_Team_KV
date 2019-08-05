@@ -98,6 +98,9 @@ enum ApiKey: String{
     case upcomingBookingHistory = "upcoming_booking_history/"
     case GetBulkMileList = "bulk_miles_list"
     
+    case favouriteAddressList = "favourite_address_list/"
+    case addFavouriteAddress = "add_favourite_address"
+    case removeFavouriteAddress = "remove_favourite_address"
 }
 enum ParameterKey
 {

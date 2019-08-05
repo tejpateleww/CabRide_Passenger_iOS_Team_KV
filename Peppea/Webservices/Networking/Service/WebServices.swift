@@ -54,7 +54,6 @@ class WebService{
         {
             params = [:]
         }
-
         
 //        if let strAPIKey = UserDefaults.standard.value(forKey: "X_API_KEY")
 //        {
@@ -82,9 +81,7 @@ class WebService{
                     }
                 }
             }
-
     }
-
 
     func getMethod(url: URL, httpMethod:Method, completion: @escaping CompletionResponse)
     {
@@ -93,7 +90,7 @@ class WebService{
             .responseJSON { (response) in
                 // LoaderClass.hideActivityIndicator()
                 
-                print("The webservice call is for \(url))")
+                print("The webservice call is for \(url)")
                 
                 if let json = response.result.value{
                     let resJson = JSON(json)
@@ -147,14 +144,13 @@ class WebService{
                 case .failure(let encodingError):
                     print(encodingError)
                 }
-        }
-        )
+        })
     }
+    
     func postDataWithImage(api: ApiKey, parameter dictParams: [String: Any], image: UIImage, imageParamName: String, completion: @escaping CompletionResponse) {
         
         guard isConnected else { completion(JSON(), false); return }
-
-           
+        
         Alamofire.upload(multipartFormData: { (multipartFormData) in
             
             if let imageData = image.jpegData(compressionQuality: 0.6) {
@@ -183,7 +179,7 @@ class WebService{
                 
                upload.responseJSON {
                     response in
-                    
+                
                     if let json = response.result.value {
                         
                         if (json as AnyObject).object(forKey:("status")) as! Bool == false {
@@ -195,26 +191,20 @@ class WebService{
                             print(resJson)
 
                             completion(resJson, true)
-                            
                         }
                     }
                     else {
                         if let error = response.result.error {
                             print("Error = \(error.localizedDescription)")
-                            
                         }
-                                            }
-                    
-                    
-                
+                   }
                 }
             case .failure( _):
                 print("failure")
                 break
             }
-        
+        }
     }
-}
     
     
 
