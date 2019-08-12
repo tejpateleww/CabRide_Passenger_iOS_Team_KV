@@ -21,6 +21,7 @@
 		1836EF4822F8000900852EC8 /* FavouriteAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1836EF4722F8000900852EC8 /* FavouriteAddressViewController.swift */; };
 		1836EF4A22F802DF00852EC8 /* favouriteAddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1836EF4922F802DF00852EC8 /* favouriteAddressTableViewCell.swift */; };
 		1836EF4C22F80EDD00852EC8 /* favouriteAddressListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1836EF4B22F80EDD00852EC8 /* favouriteAddressListModel.swift */; };
+		1836EF5022F8428100852EC8 /* temp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1836EF4F22F8428100852EC8 /* temp.swift */; };
 		183BEF7622E9C762000C97E5 /* TripStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183BEF7522E9C762000C97E5 /* TripStatus.swift */; };
 		1882A0AD22EB1387008B5D1A /* CancelTripRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1882A0AC22EB1387008B5D1A /* CancelTripRequestModel.swift */; };
 		1882A0AF22EB1801008B5D1A /* ReviewRatingReqModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1882A0AE22EB1801008B5D1A /* ReviewRatingReqModel.swift */; };
@@ -188,6 +189,7 @@
 		1836EF4722F8000900852EC8 /* FavouriteAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteAddressViewController.swift; sourceTree = "<group>"; };
 		1836EF4922F802DF00852EC8 /* favouriteAddressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = favouriteAddressTableViewCell.swift; sourceTree = "<group>"; };
 		1836EF4B22F80EDD00852EC8 /* favouriteAddressListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = favouriteAddressListModel.swift; sourceTree = "<group>"; };
+		1836EF4F22F8428100852EC8 /* temp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = temp.swift; sourceTree = "<group>"; };
 		183BEF7522E9C762000C97E5 /* TripStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripStatus.swift; sourceTree = "<group>"; };
 		1882A0AC22EB1387008B5D1A /* CancelTripRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelTripRequestModel.swift; sourceTree = "<group>"; };
 		1882A0AE22EB1801008B5D1A /* ReviewRatingReqModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRatingReqModel.swift; sourceTree = "<group>"; };
@@ -388,6 +390,7 @@
 			isa = PBXGroup;
 			children = (
 				1830C47A22E74235004F107F /* dummyData.swift */,
+				1836EF4F22F8428100852EC8 /* temp.swift */,
 			);
 			path = "New Group";
 			sourceTree = "<group>";
@@ -1287,6 +1290,7 @@
 				463DEFE822D8AEA6002365F8 /* MyTripsViewController.swift in Sources */,
 				EEA454B322CC913D0094941A /* CarsCollectionViewCell.swift in Sources */,
 				18CB7F7C22E841ED004FA66C /* SocketProtocol.swift in Sources */,
+				1836EF5022F8428100852EC8 /* temp.swift in Sources */,
 				464CB66022E195E500273F29 /* CheckPromocode.swift in Sources */,
 				182BD24522EF166C00C419B9 /* BulkMileListDataModel.swift in Sources */,
 				EE9F3F7422C7846500426377 /* BaseViewController.swift in Sources */,

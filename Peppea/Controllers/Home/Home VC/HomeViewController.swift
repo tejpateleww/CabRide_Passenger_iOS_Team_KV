@@ -185,7 +185,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
         self.perform(#selector(self.btnCurrentLocation(_:)), with: self, afterDelay: 1)
         
         
-        let rightNavBarButton = UIBarButtonItem(image: UIImage(named: "iconUnSelectedstar"), style: .plain, target: self, action: #selector(self.btnFavouriteAddress(_:)))
+        let rightNavBarButton = UIBarButtonItem(image: UIImage(named: "iconFavorite"), style: .plain, target: self, action: #selector(self.btnFavouriteAddress(_:)))
         self.navigationItem.rightBarButtonItem = nil
         self.navigationItem.rightBarButtonItem = rightNavBarButton
     }
@@ -197,7 +197,6 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -604,14 +603,12 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
             return 360 + degree
         }
     }
-    func currentLocationAction(isCurrentLocationTapped: Bool = false)
-    {
+    func currentLocationAction(isCurrentLocationTapped: Bool = false) {
         
         if isCurrentLocationTapped {
              clearMap()
         }
        
-        
 //        self.destinationLocationMarker.map = nil
 //        self.currentLocationMarker.map = nil
 //        self.strLocationType = self.currentLocationMarkerText
@@ -789,8 +786,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
                                 
                             }
                         }
-                        catch
-                        {
+                        catch {
                             print("error while drawing route")
                         }
                     }
@@ -824,7 +820,6 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
     @objc func animatePolylinePath() {
 
         DispatchQueue.main.async(execute: {
-            
             if (self.i < self.path.count()) {
                 self.animationPath.add(self.path.coordinate(at: self.i))
                 self.animationPolyline.path = self.animationPath
@@ -832,19 +827,15 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
                 self.animationPolyline.strokeWidth = 3
                 self.animationPolyline.map = self.mapView
                 self.i += 1
-            }
-            else {
+            } else {
                 self.i = 0
                 self.animationPath = GMSMutablePath()
                 self.animationPolyline.map = nil
             }
         })
     }
-
-
-
+    
     // MARK: - Navigation
-
     func hideAndShowView(view: HomeViews){
         locationView.isHidden = true
         //        containerRideConfirmation.isHidden = !(view == .rideConfirmation)
@@ -910,7 +901,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
         model.dropoff_lat = "\(destinationLocation.latitude)"
         model.dropoff_lng = "\(destinationLocation.longitude)"
         model.dropoff_location = txtDropLocation.text ?? ""
-        model.favourite_type = addresType
+        model.favourite_type = addresType.lowercased()
         model.pickup_lat = "\(pickupLocation.latitude)"
         model.pickup_lng = "\(pickupLocation.longitude)"
         model.pickup_location = txtPickupLocation.text ?? ""
@@ -924,15 +915,12 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
             }
         }
     }
-    
-    
 }
 
 
 // MARK:- CLLocationManagerDelegate
 //1
 extension HomeViewController: CLLocationManagerDelegate {
-
     
     // Handle authorization for the location manager.
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {

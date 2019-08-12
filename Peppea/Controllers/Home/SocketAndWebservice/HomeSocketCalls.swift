@@ -11,7 +11,7 @@ import SwiftyJSON
 import GoogleMaps
 
 extension HomeViewController: SocketConnected {
-
+   
     
     // ----------------------------------------------------
     // MARK:- --- All Socket Methods ---
@@ -27,6 +27,7 @@ extension HomeViewController: SocketConnected {
         onSocket_AskForTips()                       // Socket On 6
         onSocket_CancelledBookingRequestBySystem()  // Socket On 7
         onSocket_CancelTrip()                       // Socket On 8
+        onSocket_DriverCurrentLocation()            // Socket On 9
     }
     
     /// Socket Off All
@@ -40,6 +41,7 @@ extension HomeViewController: SocketConnected {
         SocketIOManager.shared.socket.off(socketApiKeys.AskForTips.rawValue)                        // Socket Off 6
         SocketIOManager.shared.socket.off(socketApiKeys.CancelledBookingRequestBySystem.rawValue)   // Socket Off 7
         SocketIOManager.shared.socket.off(socketApiKeys.CancelTrip.rawValue)                        // Socket Off 8
+        SocketIOManager.shared.socket.off(socketApiKeys.DriverCurrentLocation.rawValue)             // Socket Off 9
         SocketIOManager.shared.socket.off(clientEvent: .disconnect)                                 // Socket Disconnect
     }
     
@@ -62,6 +64,10 @@ extension HomeViewController: SocketConnected {
         SocketIOManager.shared.socketEmit(for: socketApiKeys.ReceiveTips.rawValue, with: param)
     }
     
+    // Socket Emit 4
+    func emitSocket_DriverCurrentLocation(param: [String : Any]) {
+        SocketIOManager.shared.socketEmit(for: socketApiKeys.DriverCurrentLocation.rawValue, with: param)
+    }
     // ----------------------------------------------------
     // MARK:- --- Socket On Methods ---
     // ----------------------------------------------------
@@ -199,34 +205,12 @@ extension HomeViewController: SocketConnected {
         }
     }
     
-    // -------------------------------------------------------------
-    // MARK: - --- Accept Book Now & Later Data and View Setup ---
-    // -------------------------------------------------------------
-//    func acceptRequestData(json: JSON) {
-//
-//        let fr = json.array?.first
-//        let res = RequestAcceptedDataModel(fromJson: fr)
-//
-//        self.booingInfo = res.bookingInfo // BookingInfo(fromJson: json.arrayValue.first)
-//        self.hideAndShowView(view: .requestAccepted)
-//        self.isExpandCategory = true
-//
-//        lblBuildNumber.text = "Build : \(Bundle.main.buildVersionNumber ?? "") \t\t Booking ID: \(self.booingInfo.id ?? "")"
-//    }
-//
-//    func startedRequestData(json: JSON) {
-//
-//        if self.booingInfo.toDictionary().count == 0 {
-//            let fr = json.array?.first
-//            let res = RequestAcceptedDataModel(fromJson: fr)
-//            self.booingInfo = res.bookingInfo // BookingInfo(fromJson: json.arrayValue.first)
-//        }
-//        self.hideAndShowView(view: .rideStart)
-//        self.isExpandCategory = true
-//
-//        lblBuildNumber.text = "Build : \(Bundle.main.buildVersionNumber ?? "") \t\t Booking ID: \(self.booingInfo.id ?? "")"
-//    }
-    // MARK: -
+    // Socket On 9
+    func onSocket_DriverCurrentLocation() {
+        SocketIOManager.shared.socketCall(for: socketApiKeys.DriverCurrentLocation.rawValue) { (json) in
+            print(#function, "\n ", json)
+        }
+    }
 
     // -------------------------------------------------------------
     // MARK: - --- Accept Book Now & Later Data and View Setup ---
@@ -241,8 +225,7 @@ extension HomeViewController: SocketConnected {
         self.isExpandCategory = true
         self.routeDrawMethod(origin: "\(res.bookingInfo.pickupLat ?? ""),\(res.bookingInfo.pickupLng ?? "")", destination: "\(res.bookingInfo.dropoffLat ?? ""),\(res.bookingInfo.dropoffLng ?? "")")
         if self.driverMarker == nil {
-            
-            
+                        
             var DoubleLat = Double()
             var DoubleLng = Double()
             

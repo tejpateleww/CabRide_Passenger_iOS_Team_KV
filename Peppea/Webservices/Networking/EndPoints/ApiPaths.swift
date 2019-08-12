@@ -128,6 +128,7 @@ enum socketApiKeys: String
     case ReceiveTips                = "receive_tips"    // booking_id,tips
     case CancelledBookingRequestBySystem = "cancelled_booking_request_by_system"
     case CancelTrip                 = "cancel_trip"
+    case DriverCurrentLocation      = "driver_current_location"
 }
 
 

@@ -62,13 +62,14 @@ extension CarCollectionViewController: CarCollectionWebserviceProtocol {
         model.dropoff_lng = "\(dropOff.longitude == 0.0 ? 72.52645 : dropOff.longitude)"
         model.dropoff_location = address.dropOff
         model.no_of_passenger = "1"
-        model.payment_type = "cash"
         model.pickup_lat = "\(pickup.latitude == 0.0 ? 23.072622 : pickup.latitude)"//   23.072622, 72.516409
         model.pickup_lng = "\(pickup.longitude == 0.0 ? 72.516409 : pickup.longitude)"
         model.pickup_location = address.pickUp
         model.promocode = self.strPromoCode
         model.vehicle_type_id = vehicleId
         model.estimated_fare = estimateFare
+        model.payment_type = "cash"
+        model.rent_type = "standard_rate"
         
         if bookingType == "book_later" {
             model.pickup_date_time = selectedTimeStemp

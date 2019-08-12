@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FavouriteAddressViewController: UIViewController {
+class FavouriteAddressViewController: BaseViewController {
 
     // ----------------------------------------------------
     // MARK: - Outlets
@@ -25,7 +25,9 @@ class FavouriteAddressViewController: UIViewController {
     // ----------------------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNavBarWithBack(Title: "Favourites", IsNeedRightButton: false)
         
+        tableView.tableFooterView = UIView()
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 300
         webserviceForGetAddressList()
@@ -39,13 +41,12 @@ class FavouriteAddressViewController: UIViewController {
         UserWebserviceSubclass.favouriteAddressListService(strURL: SingletonClass.sharedInstance.loginData.id) { (response, status) in
             print(response)
             if status {
-                
+                self.aryData.removeAll()
                 let res = response.dictionary?["data"]?.array
-                
                 if res?.count == 0 {
+                     self.tableView.reloadData()
                     return
                 }
-                
                 for item in res! {
                     self.aryData.append(favouriteAddressListModel(fromJson: item))
                 }
@@ -55,21 +56,39 @@ class FavouriteAddressViewController: UIViewController {
             }
         }
     }
+    
+    func webserviceForDeleteFavouriteAddress(addressId: String) {
+        let model = deleteFavouriteAddressReqAddress()
+        model.customer_id = SingletonClass.sharedInstance.loginData.id
+        model.favourite_address_id = addressId
+        
+        UserWebserviceSubclass.deleteFavouriteAddressListService(Promocode: model) { (response, status) in
+            print(response)
+            if status {
+                AlertMessage.showMessageForSuccess(response.dictionary?["message"]?.string ?? "")
+                self.webserviceForGetAddressList()
+            } else {
+                AlertMessage.showMessageForError(response.dictionary?["message"]?.string ?? "")
+            }
+        }
+    }
 }
+
+// ----------------------------------------------------
+// MARK:- TableView Methods
+// MARK:-
+// ----------------------------------------------------
 
 extension FavouriteAddressViewController: UITableViewDataSource, UITableViewDelegate {
     
-    func numberOfSections(in tableView: UITableView) -> Int
-    {
+    func numberOfSections(in tableView: UITableView) -> Int {
         var numOfSections: Int = 0
-        if aryData.count == 0 ? false : true
-        {
+        if aryData.count == 0 ? false : true {
             tableView.separatorStyle = .singleLine
             numOfSections            = 1
             tableView.backgroundView = nil
         }
-        else
-        {
+        else {
             let noDataLabel: UILabel  = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
             noDataLabel.text          = "No data available"
             noDataLabel.textColor     = UIColor.black
@@ -79,31 +98,30 @@ extension FavouriteAddressViewController: UITableViewDataSource, UITableViewDele
         }
         return numOfSections
     }
-
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if section == 0 {
-            return 0
+            return aryData.count == 0 ? 1 : aryData.count
         }
-        
-        return aryData.count == 0 ? 1 : aryData.count
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "favouriteAddressTableViewCell", for: indexPath) as? favouriteAddressTableViewCell else {
-//            let cellNodataFound = tableView.dequeueReusableCell(withIdentifier: "favouriteAddressNotFound", for: indexPath) as? favouriteAddressTableViewCell
-            return UITableViewCell(frame: .zero)
+       let cell = tableView.dequeueReusableCell(withIdentifier: "favouriteAddressTableViewCell", for: indexPath) as! favouriteAddressTableViewCell
+        cell.selectionStyle = .none
+        let currentData = aryData[indexPath.row]
+        
+        if currentData.favouriteType.lowercased() == "home" {
+            cell.imgAddressType.image = UIImage(named: "iconHome")
+        } else if currentData.favouriteType.lowercased() == "office" {
+            cell.imgAddressType.image = UIImage(named: "iconOffice")
+        } else if currentData.favouriteType.lowercased() == "other" {
+            cell.imgAddressType.image = UIImage(named: "iconOthers")
         }
         
-//        if aryData.count == 0 {
-//            let cellNodataFound = tableView.dequeueReusableCell(withIdentifier: "favouriteAddressNotFound", for: indexPath) as? favouriteAddressTableViewCell
-//            return UITableViewCell(frame: .zero)
-//        }
-        
-        let currentData = aryData[indexPath.row]
-        cell.imgAddressType.image = UIImage()
+        cell.imgAddressType.setImageColor(color: ThemeColor)
         cell.lblAddressTitle.text = currentData.favouriteType.uppercased()
         cell.lblAddressDescription.text = currentData.dropoffLocation
         
@@ -111,11 +129,27 @@ extension FavouriteAddressViewController: UITableViewDataSource, UITableViewDele
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
     }
     
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt: IndexPath) -> [UITableViewRowAction]? {
+        let Delete = UITableViewRowAction(style: .destructive, title: "Delete") { action, index in
+            print("Delete button tapped")
+            
+            let currentId =  self.aryData[editActionsForRowAt.row].id
+            let alert = UIAlertController(title: AppName.kAPPName, message: "Are you want to sure to remove this address?", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "OK", style: .default) { (action) in
+                self.webserviceForDeleteFavouriteAddress(addressId: currentId ?? "")
+            }
+            let cancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+            alert.addAction(ok)
+            alert.addAction(cancel)
+            self.present(alert, animated: true, completion: nil)
+        }      
+        return [Delete]
     }
     
 }

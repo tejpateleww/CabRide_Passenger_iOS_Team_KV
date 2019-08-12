@@ -16,6 +16,8 @@ protocol SocketConnected {
     
     func emitSocket_GetEstimateFare(param: [String:Any])
     
+    func emitSocket_DriverCurrentLocation(param: [String:Any])
+    
     func onSocket_GetEstimateFare()
     
     func onSocket_AfterDriverAcceptRequest()
@@ -33,4 +35,6 @@ protocol SocketConnected {
     func onSocket_CancelledBookingRequestBySystem()
     
     func onSocket_CancelTrip()
+    
+    func onSocket_DriverCurrentLocation()
 }
