@@ -106,7 +106,8 @@ class LoginData : Codable
     var userType : String!
     var walletBalance : String!
     var xApiKey : String!
-    
+    var BulkMilesBalance : String!
+    var MileExpDate : String!
     
     init() {
     }
@@ -141,6 +142,8 @@ class LoginData : Codable
         userType = json["user_type"].stringValue
         walletBalance = json["wallet_balance"].stringValue
         xApiKey = json["x-api-key"].stringValue
+        BulkMilesBalance = json["miles_balance"].stringValue
+        MileExpDate = json["miles_exp_date"].stringValue
     }
     
     /**

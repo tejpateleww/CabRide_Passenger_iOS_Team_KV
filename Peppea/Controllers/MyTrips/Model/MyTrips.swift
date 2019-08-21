@@ -55,6 +55,8 @@ enum MyTrips: String, CaseIterable{
         
     }
 
+    
+
 
 //    fileprivate func setPastDescriptionIfCancelled(pastBookingHistory : PastBookingHistoryResponse?) -> [(title : String, description : Any)]{
 //        guard obj != nil else { return []}

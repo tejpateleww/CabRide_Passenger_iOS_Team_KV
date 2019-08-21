@@ -44,6 +44,8 @@ class bookingRequest : RequestModel
     var estimated_fare : String = ""
     var pickup_date_time : String = ""
     var rent_type : String = ""
-    
+    var card_id : String = ""
+    var fix_rate_id : String = ""
+    var distance : String = ""
     
 }

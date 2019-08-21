@@ -27,6 +27,7 @@ let SCREEN_WIDTH = UIScreen.main.bounds.width
 let SCREEN_HEIGHT = UIScreen.main.bounds.height
 
 let Currency = "KES"
+let MeasurementSign = "mi"
 
 let ThemeColor : UIColor =  UIColor.init(hex: "2e2d2e")
 

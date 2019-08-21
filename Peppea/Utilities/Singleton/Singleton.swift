@@ -15,6 +15,7 @@ class SingletonClass: NSObject
     
     var RegisterOTP = String()
     var walletBalance = String()
+    var BulkMilesBalance = String()
     var loginData = LoginData()
     
     var bookingInfo: BookingInfo?

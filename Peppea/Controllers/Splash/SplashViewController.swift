@@ -41,6 +41,8 @@ class SplashViewController: UIViewController {
                 UserDefaults.standard.set(loginModelDetails.loginData.xApiKey, forKey: "X_API_KEY")
                 SingletonClass.sharedInstance.loginData = loginModelDetails.loginData
                 SingletonClass.sharedInstance.walletBalance = loginModelDetails.loginData.walletBalance
+                SingletonClass.sharedInstance.BulkMilesBalance  = loginModelDetails.loginData.BulkMilesBalance
+                
             }
         }
         catch
@@ -80,7 +82,6 @@ class SplashViewController: UIViewController {
                     
                     if json.dictionary?["booking_info"] != nil {
                         let info = BookingInfo(fromJson: json.dictionary?["booking_info"])
-                        
                         SingletonClass.sharedInstance.bookingInfo = info
                         (UIApplication.shared.delegate as! AppDelegate).GoToHome(bookingInfo: info)
                     } else {

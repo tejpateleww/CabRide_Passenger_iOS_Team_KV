@@ -117,7 +117,13 @@ class BaseViewController: UIViewController {
 
     @objc func btnBackAction()
     {
-        self.navigationController?.popViewController(animated: true)
+        if self.navigationController?.children.count == 1 {
+            self.navigationController?.dismiss(animated: true, completion: nil)
+        }
+        else {
+            self.navigationController?.popViewController(animated: true)
+        }
+        
     }
 
     @objc func btnCallAction() {

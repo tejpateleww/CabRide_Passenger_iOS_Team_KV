@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol FlatRateDelegate {
+    func SetFlatRateBooking(FlatRateObject:FlatRateData)
+}
+
 class FlatRateListViewController: BaseViewController,UITableViewDelegate, UITableViewDataSource
 {
 
@@ -20,7 +24,7 @@ class FlatRateListViewController: BaseViewController,UITableViewDelegate, UITabl
     
     @IBOutlet var tblView: UITableView!
     var arrFlatRateListCityDEstination = [FlatRateData]()
-    
+    var Delegate:FlatRateDelegate!
     var arrFlatRateListMountainDEstination = [[String : AnyObject]]()
 //    var delegateFlatRate : delegateforFlatRateSelection!
     
@@ -129,6 +133,7 @@ class FlatRateListViewController: BaseViewController,UITableViewDelegate, UITabl
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         
+        
 //        if btnCityDestination.isSelected
 //        {
 //            let dictTemp = arrFlatRateListCityDEstination[indexPath.row]
@@ -139,6 +144,7 @@ class FlatRateListViewController: BaseViewController,UITableViewDelegate, UITabl
 //            let dictTemp = arrFlatRateListCityDEstination[indexPath.row]
 //            self.delegateFlatRate.didSelectFlateRatePackage(dictTemp)
 //        }
+        self.Delegate.SetFlatRateBooking(FlatRateObject: self.arrFlatRateListCityDEstination[indexPath.row])
         self.navigationController?.popViewController(animated: true)
     }
     

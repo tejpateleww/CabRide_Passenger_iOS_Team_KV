@@ -19,6 +19,7 @@ class BulkMileListDataModel : NSObject, NSCoding{
     var status : String!
     var validity : String!
     var validityType : String!
+    var isPurchased:Bool!
 
 	/**
 	 * Instantiate the instance using the passed json values to set the properties values
@@ -37,6 +38,7 @@ class BulkMileListDataModel : NSObject, NSCoding{
         status = json["status"].stringValue
         validity = json["validity"].stringValue
         validityType = json["validity_type"].stringValue
+        isPurchased = (json["is_purchased"].intValue == 1)
 	}
 
 	/**
@@ -75,6 +77,10 @@ class BulkMileListDataModel : NSObject, NSCoding{
         if validityType != nil{
         	dictionary["validity_type"] = validityType
         }
+        
+        if isPurchased != nil{
+            dictionary["is_purchased"] = isPurchased ? 1 : 0
+        }
 		return dictionary
 	}
 
@@ -94,6 +100,7 @@ class BulkMileListDataModel : NSObject, NSCoding{
 		status = aDecoder.decodeObject(forKey: "status") as? String
 		validity = aDecoder.decodeObject(forKey: "validity") as? String
 		validityType = aDecoder.decodeObject(forKey: "validity_type") as? String
+        isPurchased = (aDecoder.decodeObject(forKey: "is_purchased") as? Int) == 1
 	}
 
     /**
@@ -132,6 +139,10 @@ class BulkMileListDataModel : NSObject, NSCoding{
 		if validityType != nil{
 			aCoder.encode(validityType, forKey: "validity_type")
 		}
+        
+        if isPurchased != nil{
+            aCoder.encode( isPurchased ? 1 : 0, forKey: "is_purchased")
+        }
 
 	}
 

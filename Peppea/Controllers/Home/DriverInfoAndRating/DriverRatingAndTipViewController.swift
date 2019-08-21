@@ -79,6 +79,8 @@ class DriverRatingAndTipViewController: UIViewController {
                 lblGrandTotal.text = "Grand Total: \(Currency) \(bookingData.grandTotal ?? "0")"
                 
                 lblDriverName.text = "How was your trip with \((driver?.firstName ?? "") + " " + (driver?.lastName ?? ""))?"
+                
+                
             }
             else if viewType! == .askForTip {
                 viewAskForTip.isHidden = false

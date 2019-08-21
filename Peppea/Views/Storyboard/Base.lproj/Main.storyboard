@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hie-4Z-Tl3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hie-4Z-Tl3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -922,6 +922,9 @@
                                                     </stackView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5QR-JT-CJK">
                                                         <rect key="frame" x="60" y="10" width="190" height="50"/>
+                                                        <connections>
+                                                            <action selector="btnSelectPayment:" destination="bfC-L5-iDG" eventType="touchUpInside" id="PbD-PN-Uta"/>
+                                                        </connections>
                                                     </button>
                                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ODW-IX-YgV">
                                                         <rect key="frame" x="60" y="10" width="190" height="50"/>
@@ -1448,16 +1451,16 @@ automatic expense for warding</string>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="tyb-me-JOH">
-                                <rect key="frame" x="64" y="15" width="70" height="26"/>
+                                <rect key="frame" x="64" y="14" width="70" height="28"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rahul Patel" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yJh-Su-hlF">
-                                        <rect key="frame" x="0.0" y="0.0" width="54" height="11"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="56.5" height="13"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="11"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4cr-3a-zcN">
-                                        <rect key="frame" x="0.0" y="11" width="70" height="15"/>
+                                        <rect key="frame" x="0.0" y="13" width="70" height="15"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconSelectedstar" translatesAutoresizingMaskIntoConstraints="NO" id="B6q-Dv-6GZ">
                                                 <rect key="frame" x="0.0" y="0.0" width="15" height="15"/>
@@ -1466,7 +1469,7 @@ automatic expense for warding</string>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y1t-9A-aSA">
-                                                <rect key="frame" x="20" y="1" width="19.5" height="14"/>
+                                                <rect key="frame" x="20" y="-1.5" width="19.5" height="16.5"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -1766,16 +1769,16 @@ automatic expense for warding</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FE1-XC-SNi">
-                                <rect key="frame" x="10" y="50" width="355" height="223"/>
+                                <rect key="frame" x="10" y="50" width="355" height="226"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How was your trip with Thomas?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MIw-li-p0c">
-                                        <rect key="frame" x="10" y="5" width="335" height="17"/>
+                                        <rect key="frame" x="10" y="5" width="335" height="20"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qhz-3b-BLb" customClass="CosmosView" customModule="Cosmos">
-                                        <rect key="frame" x="92.5" y="27" width="170" height="30"/>
+                                        <rect key="frame" x="92.5" y="30" width="170" height="30"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="170" id="jez-PQ-hUg"/>
@@ -1783,7 +1786,7 @@ automatic expense for warding</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nYc-f9-dx3">
-                                        <rect key="frame" x="77.5" y="67" width="200" height="50"/>
+                                        <rect key="frame" x="77.5" y="70" width="200" height="50"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Comments..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wGf-dl-N5B">
                                                 <rect key="frame" x="0.0" y="5" width="200" height="40"/>
@@ -1806,10 +1809,10 @@ automatic expense for warding</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xt8-e6-WsO">
-                                        <rect key="frame" x="75" y="67" width="205" height="95"/>
+                                        <rect key="frame" x="75" y="70" width="205" height="95"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add a tip" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VLz-sp-uV3">
-                                                <rect key="frame" x="77" y="0.0" width="51.5" height="0.0"/>
+                                                <rect key="frame" x="76" y="0.0" width="53" height="0.0"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="13"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -1881,7 +1884,7 @@ automatic expense for warding</string>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mhb-ZO-9k2" customClass="ThemeButton" customModule="Peppea" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="173" width="335" height="40"/>
+                                        <rect key="frame" x="10" y="176" width="335" height="40"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="chW-eD-ibI"/>
@@ -2301,7 +2304,7 @@ automatic expense for warding</string>
                                                                 <rect key="frame" x="0.0" y="0.0" width="355" height="50"/>
                                                                 <subviews>
                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Card Holder" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F6e-yw-vaM" customClass="ThemeTextField" customModule="Peppea" customModuleProvider="target">
-                                                                        <rect key="frame" x="10" y="0.0" width="345" height="44"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="355" height="44"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="44" id="UlS-cP-S9c"/>
                                                                         </constraints>
@@ -2313,7 +2316,7 @@ automatic expense for warding</string>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="bottom" secondItem="F6e-yw-vaM" secondAttribute="bottom" constant="6" id="2a0-0P-6lU"/>
-                                                                    <constraint firstItem="F6e-yw-vaM" firstAttribute="leading" secondItem="Fmi-J3-YmJ" secondAttribute="leading" constant="10" id="WRo-5V-rWn"/>
+                                                                    <constraint firstItem="F6e-yw-vaM" firstAttribute="leading" secondItem="Fmi-J3-YmJ" secondAttribute="leading" id="WRo-5V-rWn"/>
                                                                     <constraint firstAttribute="trailing" secondItem="F6e-yw-vaM" secondAttribute="trailing" id="iER-Ah-ku2"/>
                                                                     <constraint firstAttribute="trailing" secondItem="F6e-yw-vaM" secondAttribute="trailing" id="lZg-Zr-e5O"/>
                                                                     <constraint firstItem="F6e-yw-vaM" firstAttribute="top" secondItem="Fmi-J3-YmJ" secondAttribute="top" id="n9y-vg-gf7"/>
@@ -2698,7 +2701,167 @@ automatic expense for warding</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tFp-2f-ou1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4644" y="4218"/>
+            <point key="canvasLocation" x="4610" y="4218"/>
+        </scene>
+        <!--Bulk Miles History-->
+        <scene sceneID="QGd-bG-Y9I">
+            <objects>
+                <viewController storyboardIdentifier="BulkMilesHistory" id="5gp-Pc-iuU" customClass="BulkMilesHistory" customModule="Peppea" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mwd-Jg-LMc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qzl-4h-jMo">
+                                <rect key="frame" x="0.0" y="118" width="375" height="549"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="5gp-Pc-iuU" id="gcv-OC-BTm"/>
+                                    <outlet property="delegate" destination="5gp-Pc-iuU" id="atj-8a-b2J"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bew-hE-vd4">
+                                <rect key="frame" x="16" y="30" width="343" height="80"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="If0-0p-Ay1">
+                                        <rect key="frame" x="5" y="5" width="333" height="70"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="THY-fO-VFK">
+                                                <rect key="frame" x="0.0" y="0.0" width="156.5" height="70"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Purchase" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0y2-dE-W14">
+                                                        <rect key="frame" x="35.5" y="10" width="86" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="20" id="5Zz-2c-pcy"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100 mi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FWS-Xv-UiA">
+                                                        <rect key="frame" x="43" y="35" width="70.5" height="25"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="25" id="oXo-zR-W05"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E2s-QQ-9Ig">
+                                                        <rect key="frame" x="33" y="62" width="90.5" height="1"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="1" id="9YS-OL-sGP"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="0y2-dE-W14" firstAttribute="centerX" secondItem="THY-fO-VFK" secondAttribute="centerX" id="8lx-6L-JqZ"/>
+                                                    <constraint firstItem="0y2-dE-W14" firstAttribute="top" secondItem="THY-fO-VFK" secondAttribute="top" constant="10" id="E0T-dh-h1U"/>
+                                                    <constraint firstItem="FWS-Xv-UiA" firstAttribute="top" secondItem="0y2-dE-W14" secondAttribute="bottom" constant="5" id="H2y-jw-oh6"/>
+                                                    <constraint firstItem="E2s-QQ-9Ig" firstAttribute="trailing" secondItem="FWS-Xv-UiA" secondAttribute="trailing" constant="10" id="SH7-E7-CMh"/>
+                                                    <constraint firstItem="E2s-QQ-9Ig" firstAttribute="leading" secondItem="FWS-Xv-UiA" secondAttribute="leading" constant="-10" id="W5H-US-LND"/>
+                                                    <constraint firstItem="FWS-Xv-UiA" firstAttribute="centerX" secondItem="THY-fO-VFK" secondAttribute="centerX" id="Yyx-E6-8YU"/>
+                                                    <constraint firstItem="E2s-QQ-9Ig" firstAttribute="top" secondItem="FWS-Xv-UiA" secondAttribute="bottom" constant="2" id="eh8-dg-Idh"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="icm-ZN-oMr">
+                                                <rect key="frame" x="176.5" y="0.0" width="156.5" height="70"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ih9-9c-9PU">
+                                                        <rect key="frame" x="36.5" y="10" width="83.5" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="20" id="wwv-gd-zrZ"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100 mi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XoP-5O-AUa">
+                                                        <rect key="frame" x="43" y="35" width="70.5" height="25"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="25" id="QGf-kR-O7j"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Vb-fk-7k9">
+                                                        <rect key="frame" x="33" y="62" width="90.5" height="1"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="1" id="8RD-A6-lQm"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="8Vb-fk-7k9" firstAttribute="trailing" secondItem="XoP-5O-AUa" secondAttribute="trailing" constant="10" id="37B-3k-a0v"/>
+                                                    <constraint firstItem="ih9-9c-9PU" firstAttribute="centerX" secondItem="icm-ZN-oMr" secondAttribute="centerX" id="3it-Xy-UCW"/>
+                                                    <constraint firstItem="ih9-9c-9PU" firstAttribute="top" secondItem="icm-ZN-oMr" secondAttribute="top" constant="10" id="45g-al-kfr"/>
+                                                    <constraint firstItem="XoP-5O-AUa" firstAttribute="centerX" secondItem="icm-ZN-oMr" secondAttribute="centerX" id="Jmg-zX-Ll1"/>
+                                                    <constraint firstItem="8Vb-fk-7k9" firstAttribute="leading" secondItem="XoP-5O-AUa" secondAttribute="leading" constant="-10" id="LeM-4h-KpB"/>
+                                                    <constraint firstItem="8Vb-fk-7k9" firstAttribute="top" secondItem="XoP-5O-AUa" secondAttribute="bottom" constant="2" id="hW2-Fy-1S6"/>
+                                                    <constraint firstItem="XoP-5O-AUa" firstAttribute="top" secondItem="ih9-9c-9PU" secondAttribute="bottom" constant="5" id="kDW-e8-sCd"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="If0-0p-Ay1" firstAttribute="leading" secondItem="bew-hE-vd4" secondAttribute="leading" constant="5" id="VNb-IQ-GdJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="If0-0p-Ay1" secondAttribute="bottom" constant="5" id="eQN-OM-dLl"/>
+                                    <constraint firstItem="If0-0p-Ay1" firstAttribute="top" secondItem="bew-hE-vd4" secondAttribute="top" constant="5" id="m5G-ri-Ds7"/>
+                                    <constraint firstAttribute="height" constant="80" id="nLs-dA-N2e"/>
+                                    <constraint firstAttribute="trailing" secondItem="If0-0p-Ay1" secondAttribute="trailing" constant="5" id="rbH-1x-mq1"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.29999999999999999"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="3" height="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="TLX-2A-i6K" firstAttribute="trailing" secondItem="bew-hE-vd4" secondAttribute="trailing" constant="16" id="13w-DX-Etb"/>
+                            <constraint firstAttribute="bottom" secondItem="Qzl-4h-jMo" secondAttribute="bottom" id="1pC-qx-qL4"/>
+                            <constraint firstItem="Qzl-4h-jMo" firstAttribute="leading" secondItem="mwd-Jg-LMc" secondAttribute="leading" id="Lrm-8e-KYt"/>
+                            <constraint firstAttribute="trailing" secondItem="Qzl-4h-jMo" secondAttribute="trailing" id="ca3-9g-0sm"/>
+                            <constraint firstItem="bew-hE-vd4" firstAttribute="top" secondItem="TLX-2A-i6K" secondAttribute="top" constant="10" id="gky-B7-qOT"/>
+                            <constraint firstItem="bew-hE-vd4" firstAttribute="leading" secondItem="TLX-2A-i6K" secondAttribute="leading" constant="16" id="mLb-ee-DiZ"/>
+                            <constraint firstItem="Qzl-4h-jMo" firstAttribute="top" secondItem="bew-hE-vd4" secondAttribute="bottom" constant="8" id="qaR-F1-rRa"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="TLX-2A-i6K"/>
+                    </view>
+                    <connections>
+                        <outlet property="lblAvailableBalance" destination="XoP-5O-AUa" id="f4w-nZ-Pew"/>
+                        <outlet property="lblPurchasePlan" destination="FWS-Xv-UiA" id="4NL-af-hLm"/>
+                        <outlet property="tblBulkMileHistory" destination="Qzl-4h-jMo" id="RLy-Lg-A7b"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uCE-OD-Mfg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5277.6000000000004" y="4217.5412293853078"/>
         </scene>
         <!--ProfileViewController-->
         <scene sceneID="bHp-Xg-e4d">
@@ -4538,7 +4701,7 @@ automatic expense for warding</string>
         <image name="iconEmail" width="16" height="16"/>
         <image name="iconFB" width="94" height="28"/>
         <image name="iconInviteFriendsBanner" width="307" height="303"/>
-        <image name="iconLine" width="0.5" height="42.5"/>
+        <image name="iconLine" width="1" height="85"/>
         <image name="iconPersonal" width="170" height="170"/>
         <image name="iconPickupRound" width="85" height="85"/>
         <image name="iconPin" width="45" height="45"/>
@@ -4550,7 +4713,7 @@ automatic expense for warding</string>
         <image name="iconToAndFromAddress" width="13" height="60"/>
         <image name="iconTwitter" width="16" height="16"/>
         <image name="iconWhatsApp" width="16" height="16"/>
-        <image name="imgSliderImage" width="85" height="85"/>
+        <image name="imgSliderImage" width="170" height="170"/>
         <image name="send" width="16" height="16"/>
     </resources>
 </document>

@@ -74,11 +74,12 @@ extension HomeViewController: SocketConnected {
     
     // Socket On 1
     func onSocket_GetEstimateFare() {
-        SocketIOManager.shared.socketCall(for: socketApiKeys.GetEstimateFare.rawValue) { (json) in
+            SocketIOManager.shared.socketCall(for: socketApiKeys.GetEstimateFare.rawValue) { (json) in
             print(#function, "\n ", json)
 
             let model = GetEstimateFareModel(fromJson: json.array?.first)
-            self.estimateData = model.estimateFare
+                guard model.estimateFare != nil else  { return }
+                self.estimateData = model.estimateFare
             if self.estimateData.count != 0 {                
                 (self.children.first as! CarCollectionViewController).getDataFromJSON()
             }
@@ -138,6 +139,26 @@ extension HomeViewController: SocketConnected {
                 let res = RequestAcceptedDataModel(fromJson: fr)
                 self.booingInfo = res.bookingInfo
 //            }
+            if self.booingInfo.rentType == "bulk_miles" {
+                
+                if let SavedLoginData = UserDefaults.standard.value(forKey: "userProfile") as? LoginModel {
+                    let balanceLoginData = SavedLoginData
+                    balanceLoginData.loginData.BulkMilesBalance =  self.booingInfo.customerInfo.MilesBalance
+                    balanceLoginData.loginData.walletBalance    = self.booingInfo.customerInfo.walletBalance
+                    SingletonClass.sharedInstance.BulkMilesBalance = balanceLoginData.loginData.walletBalance
+                    SingletonClass.sharedInstance.walletBalance = balanceLoginData.loginData.walletBalance
+                    SingletonClass.sharedInstance.loginData = balanceLoginData.loginData
+                    
+                    do {
+                        try UserDefaults.standard.set(object: balanceLoginData, forKey: "userProfile")
+                        
+                    }
+                    catch {
+                        
+                    }
+                }
+            }
+            
             
             self.hideAndShowView(view: .ratings)
             self.isExpandCategory = true

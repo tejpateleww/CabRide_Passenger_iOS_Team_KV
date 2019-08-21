@@ -33,7 +33,7 @@ class CustomerInfo : NSObject, NSCoding{
     var trash : String!
     var userType : String!
     var walletBalance : String!
-
+    var MilesBalance : String!
     override init() {
         
     }
@@ -69,6 +69,7 @@ class CustomerInfo : NSObject, NSCoding{
         trash = json["trash"].stringValue
         userType = json["user_type"].stringValue
         walletBalance = json["wallet_balance"].stringValue
+        MilesBalance = json["miles_balance"].stringValue
 	}
 
 	/**
@@ -149,6 +150,9 @@ class CustomerInfo : NSObject, NSCoding{
         if walletBalance != nil{
         	dictionary["wallet_balance"] = walletBalance
         }
+        if MilesBalance != nil {
+            dictionary["miles_balance"] = MilesBalance
+        }
 		return dictionary
 	}
 
@@ -182,6 +186,7 @@ class CustomerInfo : NSObject, NSCoding{
 		trash = aDecoder.decodeObject(forKey: "trash") as? String
 		userType = aDecoder.decodeObject(forKey: "user_type") as? String
 		walletBalance = aDecoder.decodeObject(forKey: "wallet_balance") as? String
+        MilesBalance = aDecoder.decodeObject(forKey: "miles_balance") as? String
 	}
 
     /**
@@ -262,7 +267,9 @@ class CustomerInfo : NSObject, NSCoding{
 		if walletBalance != nil{
 			aCoder.encode(walletBalance, forKey: "wallet_balance")
 		}
-
+        if MilesBalance != nil {
+            aCoder.encode(MilesBalance, forKey: "miles_balance")
+        }
 	}
 
 }

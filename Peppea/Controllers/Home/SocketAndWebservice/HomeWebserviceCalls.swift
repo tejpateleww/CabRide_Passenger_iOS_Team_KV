@@ -37,7 +37,7 @@ extension CarCollectionViewController: CarCollectionWebserviceProtocol {
         {
             return (false, "Please select vehicle")
         }
-        else if (estimateFare.trimmingCharacters(in: .whitespacesAndNewlines) == "0") {
+        else if (estimateFare.trimmingCharacters(in: .whitespacesAndNewlines) == "0.0") {
             return (false, "Driver is not available")
         }
         else if(estimateFare.trimmingCharacters(in: .whitespacesAndNewlines).count == 0)
@@ -67,10 +67,22 @@ extension CarCollectionViewController: CarCollectionWebserviceProtocol {
         model.pickup_location = address.pickUp
         model.promocode = self.strPromoCode
         model.vehicle_type_id = vehicleId
-        model.estimated_fare = estimateFare
-        model.payment_type = "cash"
-        model.rent_type = "standard_rate"
+        model.estimated_fare = (self.FlatRate != "") ? self.FlatRate : estimateFare
+        model.payment_type = self.paymentType
+        if self.paymentType == "card" {
+            model.card_id = self.CardID
+        } else if self.paymentType == "bulk_miles" {
+            self.RentType = self.paymentType
+        }
+       
+        if self.RentType == "fix_rate" {
+            model.fix_rate_id = self.FlatRateId
+        } else if self.RentType == "bulk_miles" {
+            model.distance = self.Distance
+        }
         
+        model.rent_type =  (self.RentType == "") ? Rent_Type.standard_rate.rawValue : self.RentType
+ 
         if bookingType == "book_later" {
             model.pickup_date_time = selectedTimeStemp
         }

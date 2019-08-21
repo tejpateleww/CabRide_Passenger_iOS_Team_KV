@@ -28,6 +28,21 @@ enum HomeViews{
     case none
 }
 
+enum Rent_Type: String{
+    case fix_rate = "fix_rate"
+    case standard_rate = "standard_rate"
+    case bulk_miles = "bulk_miles"
+}
+
+enum payment_type: String {
+    case cash = "cash"
+    case card = "card"
+    case wallet = "wallet"
+    case bulk_miles = "bulk_miles"
+}
+
+
+
 class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDelegate
 {
 
@@ -85,6 +100,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
     var animationPath = GMSMutablePath()
     var i: UInt = 0
     var timer: Timer!
+    var EstimateTime: Timer!
     var driverMarker: GMSMarker!
     var destinationMarker = GMSMarker()
     var pickupMarker = GMSMarker()
@@ -134,7 +150,12 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
             }
         }
     }
-
+    
+    var PaymentType: String = payment_type.cash.rawValue
+    var Card_id:String = ""
+    var RentType:String = Rent_Type.standard_rate.rawValue
+    var fixRateId:String = ""
+    var BulkDistance:String = ""
 
     //MARK:- View Life cycle methods
 
@@ -396,6 +417,22 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
         }
     
 //        setupAfterComplete()
+    }
+    
+    
+    func CallForGetEstimate() {
+        if self.txtPickupLocation.text != "" && self.txtDropLocation.text != "" && self.booingInfo.id == "" {
+            let param: [String: Any] = ["customer_id" : SingletonClass.sharedInstance.loginData.id ?? "",
+                                        "pickup_lng":pickupLocation.longitude,
+                                        "pickup_lat":pickupLocation.latitude,
+                                        "dropoff_lat":destinationLocation.latitude,
+                                        "dropoff_lng":destinationLocation.longitude]
+            
+            self.emitSocket_GetEstimateFare(param: param)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                    self.CallForGetEstimate()
+            }
+        }
     }
     
     func didSelectDateAndTime(date: String, timeStemp: String)
@@ -740,7 +777,24 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
                     {
                         do{
                             let dictionary: Dictionary<String, AnyObject> = try JSONSerialization.jsonObject(with: directionsData as Data, options: JSONSerialization.ReadingOptions.mutableContainers) as! Dictionary<String, AnyObject>
-
+                            
+                            // get Distance between Pickup Location & Drop OFF Location
+                            
+                            if let routes = dictionary["routes"] as? [[String:Any]] {
+                                if let RouteObject = routes[0]["legs"] as? [[String:Any]] {
+                                    if let Distance = RouteObject[0]["distance"] as? [String:Any] {
+                                        if let DistanceText = Distance["text"] as? String {
+                                            let distance = DistanceText.components(separatedBy: " ")[0]
+                                                if let CarCollection = self.children[0] as? CarCollectionViewController {
+                                                    CarCollection.Distance = distance
+                                                }
+                                       } else {
+                                            print("no")
+                                        }
+                                    }
+                                }
+                            }
+                            
                             let status = dictionary["status"] as! String
 
                             if status == "OK" {
@@ -975,7 +1029,11 @@ extension HomeViewController: CLLocationManagerDelegate {
 extension HomeViewController: GMSAutocompleteViewControllerDelegate {
     
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-
+        
+        if self.RentType == Rent_Type.fix_rate.rawValue {
+            self.RemoveFlatRate()
+        }
+        
         if(isPickupLocation)
         {
             txtPickupLocation.text = "\(place.name ?? "") \(place.formattedAddress ?? "")"
@@ -1005,6 +1063,15 @@ extension HomeViewController: GMSAutocompleteViewControllerDelegate {
             hideBookLaterButtonFromDroplocationField = false
         }
         
+       
+        if let CarCollection = self.children[0] as? CarCollectionViewController {
+            CarCollection.FlatRate  = ""
+            CarCollection.collectionView.reloadData()
+        }
+        
+        self.CallForGetEstimate()
+        
+        /*
         if txtPickupLocation.text != "" && txtDropLocation.text != "" {
             
             let param: [String: Any] = ["customer_id" : SingletonClass.sharedInstance.loginData.id ?? "",
@@ -1015,6 +1082,8 @@ extension HomeViewController: GMSAutocompleteViewControllerDelegate {
             
             self.emitSocket_GetEstimateFare(param: param)
         }
+        */
+        
         self.routeDrawMethod(origin: "\(pickupLocation.latitude),\(pickupLocation.longitude)", destination: "\(destinationLocation.latitude),\(destinationLocation.longitude)")
 //        self.routeDrawMethod(origin: txtPickupLocation.text, destination: txtDropLocation.text)
         dismiss(animated: true, completion: nil)
@@ -1041,7 +1110,7 @@ extension HomeViewController: GMSAutocompleteViewControllerDelegate {
     
     /// Setup After Complete trip or Cancel trip
     func setupAfterComplete() {
-        
+        self.booingInfo = BookingInfo()
         self.txtDropLocation.text = ""
         self.currentLocationAction()
         self.carListContainerView.isHidden = false
@@ -1063,4 +1132,76 @@ extension HomeViewController: GMSAutocompleteViewControllerDelegate {
             VC.vehicleId = ""
         }
     }
+}
+
+
+
+//MARK:- Fix Rates Delegate Method
+extension HomeViewController : FlatRateDelegate {
+    
+    func RemoveFlatRate() {
+        
+        self.fixRateId = ""
+        if self.RentType == Rent_Type.fix_rate.rawValue {
+                self.RentType = Rent_Type.standard_rate.rawValue
+        }
+        
+        if let CarCollection = self.children[0] as? CarCollectionViewController {
+            CarCollection.FlatRate  = ""
+            CarCollection.collectionView.reloadData()
+        }
+    }
+    
+    func SetFlatRateBooking(FlatRateObject: FlatRateData) {
+        self.fixRateId = FlatRateObject.id
+        self.RentType = Rent_Type.fix_rate.rawValue
+        
+        if let CarCollection = self.children[0] as? CarCollectionViewController {
+            CarCollection.FlatRate  = FlatRateObject.rate
+            CarCollection.FlatRateId = FlatRateObject.id
+            CarCollection.RentType = self.RentType
+            CarCollection.collectionView.reloadData()
+        }
+        
+        
+        txtPickupLocation.text = FlatRateObject.pickupLocation
+        pickupLocation =  CLLocationCoordinate2D(latitude: (FlatRateObject.pickupLat as NSString).doubleValue, longitude: (FlatRateObject.pickupLng as NSString).doubleValue)
+        pickupAndDropoffAddress.pickUp = txtPickupLocation.text ?? ""
+        
+        txtDropLocation.text = FlatRateObject.dropoffLocation
+        destinationLocation =  CLLocationCoordinate2D(latitude: (FlatRateObject.dropoffLat as NSString).doubleValue, longitude: (FlatRateObject.dropoffLng as NSString).doubleValue)
+        pickupAndDropoffAddress.dropOff = txtDropLocation.text ?? ""
+        
+        if(txtDropLocation.text?.isEmpty == false)
+        {
+            viewPickupLocation.isHidden = false
+        }
+        
+        if(txtDropLocation.text?.isEmpty == false && txtPickupLocation.text?.isEmpty == false)
+        {
+            hideBookLaterButtonFromDroplocationField = true
+        }
+        else
+        {
+            hideBookLaterButtonFromDroplocationField = false
+        }
+        
+        self.CallForGetEstimate()
+        
+        /*
+        if txtPickupLocation.text != "" && txtDropLocation.text != "" {
+            
+            let param: [String: Any] = ["customer_id" : SingletonClass.sharedInstance.loginData.id ?? "",
+                                        "pickup_lng":pickupLocation.longitude,
+                                        "pickup_lat":pickupLocation.latitude,
+                                        "dropoff_lat":destinationLocation.latitude,
+                                        "dropoff_lng":destinationLocation.longitude]
+            
+            self.emitSocket_GetEstimateFare(param: param)
+        }
+        */
+        
+        self.routeDrawMethod(origin: "\(pickupLocation.latitude),\(pickupLocation.longitude)", destination: "\(destinationLocation.latitude),\(destinationLocation.longitude)")
+    }
+    
 }

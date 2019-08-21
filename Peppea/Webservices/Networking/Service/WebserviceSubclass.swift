@@ -128,6 +128,17 @@ class UserWebserviceSubclass
         WebService.shared.getMethod(url: URL.init(string: strURLFinal)!, httpMethod: .get, completion: completion)
     }
     
+    
+    class func BulkMilesBookingHistory(strURL : String  ,completion: @escaping CompletionResponse ) {
+        let strURLFinal = NetworkEnvironment.baseURL + ApiKey.BulkMilesHistory.rawValue + strURL
+        WebService.shared.getMethod(url: URL.init(string: strURLFinal)!, httpMethod: .get, completion: completion)
+    }
+    
+    class func PurchaseBulkMile( PurchaseRequest : BulkMilesPurchase, completion: @escaping CompletionResponse) {
+         let  params : [String:String] = PurchaseRequest.generatPostParams() as! [String : String]
+        WebService.shared.requestMethod(api: .PurchaseBulkMile, httpMethod: .post , parameters: params, completion: completion)
+    }
+    
     class func favouriteAddressListService( strURL : String  ,completion: @escaping CompletionResponse ) {
         let strURLFinal = NetworkEnvironment.baseURL + ApiKey.favouriteAddressList.rawValue + strURL
         WebService.shared.getMethod(url: URL.init(string: strURLFinal)!, httpMethod: .get, completion: completion)

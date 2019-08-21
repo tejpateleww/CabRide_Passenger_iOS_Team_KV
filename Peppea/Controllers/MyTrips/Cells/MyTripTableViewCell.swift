@@ -15,7 +15,8 @@ class MyTripTableViewCell: UITableViewCell {
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblBookin: UILabel!
     @IBOutlet weak var lblDate: UILabel!
-   
+    @IBOutlet var lblKM: UILabel!
+    
     @IBOutlet weak var btnSendReceipt: UIButton!
 
     override func draw(_ rect: CGRect) {

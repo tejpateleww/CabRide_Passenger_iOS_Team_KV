@@ -10,6 +10,10 @@ import UIKit
 import FormTextField
 import SwipeCellKit
 
+protocol didSelectPaymentDelegate {
+    
+    func didSelectPaymentType(PaymentType:String, PaymentTypeID:String, PaymentNumber: String, PaymentHolderName:String)
+}
 
 class PaymentViewController: BaseViewController,UITableViewDelegate, UITableViewDataSource,SwipeTableViewCellDelegate
 {
@@ -32,6 +36,10 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
     var strMonth = String()
     var strYear = String()
     var strCVV = String()
+    var isFlatRateSelected:Bool = false
+    var PagefromBulkMiles:Bool = false
+    var OpenedForPayment:Bool = false
+    var Delegate:didSelectPaymentDelegate!
     
     @IBOutlet weak var btnAddCard: ThemeButton!
     var aryTempMonth = [String]()
@@ -78,19 +86,32 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
         
         aryYear = aryTempYear
         
-        
-        var dict2 = [String:AnyObject]()
-        dict2["CardNum"] = "cash" as AnyObject
-        dict2["CardNum2"] = "cash" as AnyObject
-        dict2["Type"] = "iconCash" as AnyObject
-        self.aryOtherPayment.append(dict2)
-        
-        
+        if self.PagefromBulkMiles  == false {
+            var dict2 = [String:AnyObject]()
+            dict2["CardNum"] = "Cash" as AnyObject
+            dict2["CardNum2"] = "cash" as AnyObject
+            dict2["Type"] = "iconCash" as AnyObject
+            self.aryOtherPayment.append(dict2)
+            
+            var dict4 = [String:AnyObject]()
+            dict4["CardNum"] = "Bulk Mile" as AnyObject
+            dict4["CardNum2"] = "bulk_miles" as AnyObject
+            dict4["Type"] = "iconMPesa" as AnyObject
+            self.aryOtherPayment.append(dict4)
+            
+        }
+
         var dict3 = [String:AnyObject]()
-        dict3["CardNum"] = "M-Pesa" as AnyObject
-        dict3["CardNum2"] = "M-Pesa" as AnyObject
+        dict3["CardNum"] = "Wallet" as AnyObject
+        dict3["CardNum2"] = "wallet" as AnyObject
         dict3["Type"] = "iconMPesa" as AnyObject
         self.aryOtherPayment.append(dict3)
+        
+        var dict5 = [String:AnyObject]()
+        dict5["CardNum"] = "M-Pesa" as AnyObject
+        dict5["CardNum2"] = "m_pesa" as AnyObject
+        dict5["Type"] = "iconMPesa" as AnyObject
+        self.aryOtherPayment.append(dict5)
         
         /*
          
@@ -398,13 +419,10 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
         if indexPath.section == 0
         {
             let cell = tableView.dequeueReusableCell(withIdentifier: "PaymentWalletTypeListCell") as! PaymentWalletTypeListCell
-            
             cell.selectionStyle = .none
-  
             let data = aryOtherPayment[indexPath.row]
             cell.iconWallet.image = UIImage.init(named: data["Type"] as! String)
             cell.lblTitle.text = data["CardNum"] as? String
-        
             return cell
         }
         else
@@ -440,9 +458,45 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
         
         return [deleteAction]
     }
+    
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        self.tblView.deselectRow(at: indexPath, animated: true)
+        if self.OpenedForPayment {
+        if indexPath.section == 0
+        {
+            let PaymentObject = self.aryOtherPayment[indexPath.row]
+            if (self.isFlatRateSelected == true) && ((PaymentObject["CardNum2"] as! String) != "bulk_miles") {
+                self.dismiss(animated: true) {
+                    self.Delegate.didSelectPaymentType(PaymentType:  PaymentObject["CardNum2"] as! String, PaymentTypeID: "", PaymentNumber: "", PaymentHolderName: "")
+                }
+            } else if self.isFlatRateSelected == false {
+                if self.PagefromBulkMiles == true {
+                    self.Delegate.didSelectPaymentType(PaymentType:  PaymentObject["CardNum2"] as! String, PaymentTypeID: "", PaymentNumber: "", PaymentHolderName: "")
+                    self.navigationController?.popViewController(animated: true)
+                } else {
+                    self.dismiss(animated: true) {
+                           self.Delegate.didSelectPaymentType(PaymentType:  PaymentObject["CardNum2"] as! String, PaymentTypeID: "", PaymentNumber: "", PaymentHolderName: "")
+                    }
+                }
+            }
+        }
+        else
+        {
+            
+            if self.PagefromBulkMiles == true {
+                let card = self.aryCardData[indexPath.row]
+                self.Delegate.didSelectPaymentType(PaymentType: "card" , PaymentTypeID: card.id, PaymentNumber: card.formatedCardNo, PaymentHolderName: card.cardHolderName)
+                self.navigationController?.popViewController(animated: true)
+            } else {
+                self.dismiss(animated: true) {
+                    let card = self.aryCardData[indexPath.row]
+                    self.Delegate.didSelectPaymentType(PaymentType: "card" , PaymentTypeID: card.id, PaymentNumber: card.formatedCardNo, PaymentHolderName: card.cardHolderName)
+                }
+            }
+        }
+    }
+//        self.tblView.deselectRow(at: indexPath, animated: true)
     }
     
     

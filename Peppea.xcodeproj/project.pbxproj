@@ -103,6 +103,10 @@
 		46CA655522DE02B800FC6E16 /* RegisterResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CA655422DE02B800FC6E16 /* RegisterResponseModel.swift */; };
 		46CA655722DEFB2900FC6E16 /* Logout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CA655622DEFB2900FC6E16 /* Logout.swift */; };
 		46E8CE9022D9AD6D001BEFCD /* InviteDriverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E8CE8F22D9AD6D001BEFCD /* InviteDriverViewController.swift */; };
+		7A1CC8F12306871F00FB6ECD /* BulkMilePurchaseReqModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1CC8F02306871F00FB6ECD /* BulkMilePurchaseReqModel.swift */; };
+		7A1CC8F32306DE1300FB6ECD /* BulkMilesHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1CC8F22306DE1300FB6ECD /* BulkMilesHistory.swift */; };
+		7A984494230A6BED004359F3 /* BulkMileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A984492230A6BED004359F3 /* BulkMileData.swift */; };
+		7A984495230A6BED004359F3 /* BulkMileHistoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A984493230A6BED004359F3 /* BulkMileHistoryList.swift */; };
 		B1DE158E22D34818001045B1 /* ChangePwVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DE158D22D34818001045B1 /* ChangePwVC.swift */; };
 		B1DE159822D361D3001045B1 /* MyMileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DE159722D361D3001045B1 /* MyMileVC.swift */; };
 		B1DE159B22D3647A001045B1 /* MyMileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DE159922D3647A001045B1 /* MyMileTableViewCell.swift */; };
@@ -274,6 +278,10 @@
 		46CA655422DE02B800FC6E16 /* RegisterResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterResponseModel.swift; sourceTree = "<group>"; };
 		46CA655622DEFB2900FC6E16 /* Logout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logout.swift; sourceTree = "<group>"; };
 		46E8CE8F22D9AD6D001BEFCD /* InviteDriverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteDriverViewController.swift; sourceTree = "<group>"; };
+		7A1CC8F02306871F00FB6ECD /* BulkMilePurchaseReqModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulkMilePurchaseReqModel.swift; sourceTree = "<group>"; };
+		7A1CC8F22306DE1300FB6ECD /* BulkMilesHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulkMilesHistory.swift; sourceTree = "<group>"; };
+		7A984492230A6BED004359F3 /* BulkMileData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BulkMileData.swift; sourceTree = "<group>"; };
+		7A984493230A6BED004359F3 /* BulkMileHistoryList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BulkMileHistoryList.swift; sourceTree = "<group>"; };
 		B1DE158D22D34818001045B1 /* ChangePwVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePwVC.swift; sourceTree = "<group>"; };
 		B1DE159722D361D3001045B1 /* MyMileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMileVC.swift; sourceTree = "<group>"; };
 		B1DE159922D3647A001045B1 /* MyMileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMileTableViewCell.swift; sourceTree = "<group>"; };
@@ -364,6 +372,8 @@
 			children = (
 				182BD24322EF166C00C419B9 /* BulkMileListDataModel.swift */,
 				182BD24422EF166C00C419B9 /* BulkMileList.swift */,
+				7A984492230A6BED004359F3 /* BulkMileData.swift */,
+				7A984493230A6BED004359F3 /* BulkMileHistoryList.swift */,
 			);
 			path = BulkMileList;
 			sourceTree = "<group>";
@@ -374,6 +384,7 @@
 				182BD24822EF169800C419B9 /* BulkMileTableViewCell.swift */,
 				182BD24922EF169800C419B9 /* BulkMileVC.swift */,
 				182BD24A22EF169800C419B9 /* BulkMileTableViewCell.xib */,
+				7A1CC8F22306DE1300FB6ECD /* BulkMilesHistory.swift */,
 			);
 			path = BulkMile;
 			sourceTree = "<group>";
@@ -814,6 +825,7 @@
 				1882A0AC22EB1387008B5D1A /* CancelTripRequestModel.swift */,
 				1882A0AE22EB1801008B5D1A /* ReviewRatingReqModel.swift */,
 				1836EF4322F7F9C600852EC8 /* deleteFavouriteAddressReqAddress.swift */,
+				7A1CC8F02306871F00FB6ECD /* BulkMilePurchaseReqModel.swift */,
 			);
 			path = RequestModel;
 			sourceTree = "<group>";
@@ -1312,6 +1324,7 @@
 				466957E022DD9E4A008A73C0 /* WebServices.swift in Sources */,
 				EE9F3F6522C769CA00426377 /* RequestModel.swift in Sources */,
 				EE9D6F7022C62D6F00EAD756 /* SideMenuTableViewController.swift in Sources */,
+				7A984494230A6BED004359F3 /* BulkMileData.swift in Sources */,
 				468E992F22D9F26900072361 /* RemoveCard.swift in Sources */,
 				EE469B5C22C7344E0075A8A3 /* RegisterOTPVarificationViewController.swift in Sources */,
 				466957DE22DD9E4A008A73C0 /* WebserviceSubclass.swift in Sources */,
@@ -1322,10 +1335,12 @@
 				466957DC22DD9E4A008A73C0 /* ApiPaths.swift in Sources */,
 				466957DB22DD9E4A008A73C0 /* Parameters.swift in Sources */,
 				EE35158522CE34A00035D0AC /* DriverRatingAndTipViewController.swift in Sources */,
+				7A1CC8F32306DE1300FB6ECD /* BulkMilesHistory.swift in Sources */,
 				B1E233D222D3109800CEA568 /* PostABidViewController.swift in Sources */,
 				468E993422DA078000072361 /* UpcomingRideConfirmationViewController.swift in Sources */,
 				EE9D6F7F22C6435600EAD756 /* Extensions.swift in Sources */,
 				468E992B22D9F26900072361 /* ForgotPassword.swift in Sources */,
+				7A1CC8F12306871F00FB6ECD /* BulkMilePurchaseReqModel.swift in Sources */,
 				1830C47B22E74235004F107F /* dummyData.swift in Sources */,
 				468E992D22D9F26900072361 /* AddCard.swift in Sources */,
 				4600BF0222D6140200306486 /* HistoryTableViewCell.swift in Sources */,
@@ -1363,6 +1378,7 @@
 				468E991822D9DBC300072361 /* PeppeaBusinessBannerViewController.swift in Sources */,
 				468E993122D9F26900072361 /* TransferMoneyModel.swift in Sources */,
 				EE8A61CC22C654C0000718ED /* MessageBarController.swift in Sources */,
+				7A984495230A6BED004359F3 /* BulkMileHistoryList.swift in Sources */,
 				466957E622DDB165008A73C0 /* LoginModel.swift in Sources */,
 				468E992A22D9F26900072361 /* UpdateVehicleInfo.swift in Sources */,
 				B1DE15A022D3760D001045B1 /* HeaderView.swift in Sources */,

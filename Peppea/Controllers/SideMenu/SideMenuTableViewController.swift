@@ -230,6 +230,7 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
         if arrMenuTitle[indexPath.row] == "Payments"
         {
             let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "PaymentViewController") as! PaymentViewController
+            NextPage.OpenedForPayment = false
             HomePage?.navigationController?.pushViewController(NextPage, animated: true)
             sideMenuController?.hideMenu()
             return
@@ -254,6 +255,7 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
         if arrMenuTitle[indexPath.row] == "Flat Rate"
         {
             let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "FlatRateListViewController") as! FlatRateListViewController
+            NextPage.Delegate = HomePage
             HomePage?.navigationController?.pushViewController(NextPage, animated: true)
             sideMenuController?.hideMenu()
             return

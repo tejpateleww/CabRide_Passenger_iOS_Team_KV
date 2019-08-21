@@ -110,7 +110,7 @@ class MyTripsViewController: BaseViewController
             if indexpaths.indexPath != indexpaths.previousIndexPath{
                 self.tripType = MyTrips.allCases[indexpaths.indexPath.item]
 //                self.setData()
-                self.selectedCell = []
+                self.selectedCell = -1
                 
                 if indexpaths.indexPath.item == 1 {
                     self.LoadNewData()
@@ -124,7 +124,7 @@ class MyTripsViewController: BaseViewController
             }
         }
     }
-    var selectedCell = [Int]()
+    var selectedCell : Int = -1
 
 
     func setData()
@@ -256,7 +256,7 @@ extension MyTripsViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if selectedCell.contains(section){
+        if selectedCell == section {
             return 1 + self.data.count
         }
         return 1
@@ -278,6 +278,7 @@ extension MyTripsViewController: UITableViewDelegate, UITableViewDataSource{
             cell.lblPickup.text = dataResponseHeader.pickupLocation
             cell.lblDropoff.text = dataResponseHeader.dropoffLocation
             cell.btnSendReceipt.isHidden = true
+            cell.lblKM.isHidden = true
             if self.tripType.rawValue.lowercased() != "past" {
                 cell.btnSendReceipt.isHidden = false
                 cell.btnSendReceipt.setTitle("Cancel request", for: .normal)
@@ -316,23 +317,25 @@ extension MyTripsViewController: UITableViewDelegate, UITableViewDataSource{
 
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if selectedCell.contains(indexPath.section){
-            let index = selectedCell.firstIndex(of: indexPath.section)
-            selectedCell.remove(at: index!)
-            if self.pastBookingHistoryModelDetails.count > indexPath.row {
-                self.data = self.tripType.getDescription(pastBookingHistory: self.pastBookingHistoryModelDetails[indexPath.row])
+        if selectedCell == indexPath.section {
+//            let index = selectedCell.firstIndex(of: indexPath.section)
+//            selectedCell.remove(at: index!)
+            selectedCell = -1
+//            if self.pastBookingHistoryModelDetails.count > indexPath.row {
+                self.data = self.tripType.getDescription(pastBookingHistory: self.pastBookingHistoryModelDetails[indexPath.section])
                 tableView.removeAllSubviews()
                 tableView.reloadData()
-            }
+//            }
 //            self.data = self.tripType.getDescription(pastBookingHistory: self.pastBookingHistoryModelDetails[indexPath.row])
 //            tableView.removeAllSubviews()
 //            tableView.reloadData()
         }
         else{
-            if self.pastBookingHistoryModelDetails.count > indexPath.row {
+//            if self.pastBookingHistoryModelDetails.count > indexPath.row {
                 self.data = self.tripType.getDescription(pastBookingHistory: self.pastBookingHistoryModelDetails[indexPath.section])
-                selectedCell.append(indexPath.section)
+                selectedCell = indexPath.section
                 tableView.reloadData()
+                /*
                 let rect =  tableView.rect(forSection: indexPath.section)
                 let imageView = UIImageView(frame: CGRect(x: 10, y: rect.minY, width: rect.width - 20, height: rect.height))
                 //            imageView.image = #imageLiteral(resourceName: "bird-icon")
@@ -341,7 +344,8 @@ extension MyTripsViewController: UITableViewDelegate, UITableViewDataSource{
                 imageView.contentMode = .scaleAspectFit
                 tableView.removeAllSubviews()
                 tableView.addSubview(imageView)
-            }
+ */
+ //            }
         }
         if indexPath.section == 9{
             tableView.scrollToRow(at: indexPath, at: .middle, animated: true)

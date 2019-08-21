@@ -43,17 +43,26 @@
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
                                 </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 KM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wg6-ix-Gb6">
+                                    <rect key="frame" x="288.5" y="0.0" width="41.5" height="30"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="faz-YB-aCJ" firstAttribute="top" secondItem="CDD-uw-fhj" secondAttribute="top" id="1Gi-hh-NZb"/>
                                 <constraint firstAttribute="bottom" secondItem="qKV-Zv-abu" secondAttribute="bottom" id="2qM-74-l2w"/>
+                                <constraint firstAttribute="trailing" secondItem="wg6-ix-Gb6" secondAttribute="trailing" constant="15" id="6d3-Kd-2hQ"/>
                                 <constraint firstItem="qKV-Zv-abu" firstAttribute="trailing" secondItem="dTM-La-xA2" secondAttribute="trailing" id="HEW-Ws-efM"/>
                                 <constraint firstItem="qKV-Zv-abu" firstAttribute="leading" secondItem="dTM-La-xA2" secondAttribute="leading" id="HuY-Oh-5qv"/>
+                                <constraint firstItem="wg6-ix-Gb6" firstAttribute="top" secondItem="CDD-uw-fhj" secondAttribute="top" id="Pqu-5D-eWx"/>
                                 <constraint firstAttribute="bottom" secondItem="faz-YB-aCJ" secondAttribute="bottom" id="QDa-dP-ngP"/>
                                 <constraint firstItem="dTM-La-xA2" firstAttribute="top" secondItem="CDD-uw-fhj" secondAttribute="top" id="f79-MY-HOe"/>
                                 <constraint firstAttribute="trailing" secondItem="faz-YB-aCJ" secondAttribute="trailing" constant="5" id="fBh-vN-gwU"/>
                                 <constraint firstItem="dTM-La-xA2" firstAttribute="centerX" secondItem="CDD-uw-fhj" secondAttribute="centerX" id="iPQ-fy-uEf"/>
+                                <constraint firstAttribute="bottom" secondItem="wg6-ix-Gb6" secondAttribute="bottom" id="pfF-gL-LfU"/>
                                 <constraint firstAttribute="bottom" secondItem="dTM-La-xA2" secondAttribute="bottom" id="uoy-20-MgZ"/>
                                 <constraint firstAttribute="height" constant="30" id="vfC-89-f6g"/>
                             </constraints>
@@ -193,6 +202,7 @@
                 <outlet property="lblBookin" destination="Z8Z-3K-AXl" id="qmh-s4-Hel"/>
                 <outlet property="lblDate" destination="88w-wM-5KX" id="YdA-Sb-gVy"/>
                 <outlet property="lblDropoff" destination="W0F-mb-qJn" id="ffg-52-Tcg"/>
+                <outlet property="lblKM" destination="wg6-ix-Gb6" id="Esn-F1-1pv"/>
                 <outlet property="lblName" destination="dTM-La-xA2" id="DbV-AJ-p2f"/>
                 <outlet property="lblPickup" destination="eZw-2V-1Zt" id="ax9-pf-5mR"/>
             </connections>

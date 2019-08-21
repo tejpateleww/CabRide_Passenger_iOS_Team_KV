@@ -1,16 +1,15 @@
 //
-//  BookingInfo.swift
+//  BulkMileData.swift
 //  Model Generated using http://www.jsoncafe.com/ 
-//  Created on July 24, 2019
+//  Created on August 19, 2019
 
 import Foundation
 import SwiftyJSON
 
 
-class BookingInfo : NSObject, NSCoding{
+class BulkMileData : NSObject, NSCoding{
 
-    var _id : String!
-    var acceptTime : Int!
+    var acceptTime : String!
     var arrivedTime : String!
     var baseFare : String!
     var bookingFee : String!
@@ -21,23 +20,26 @@ class BookingInfo : NSObject, NSCoding{
     var cardId : String!
     var companyAmount : String!
     var customerId : String!
-    var customerInfo : CustomerInfo!
     var discount : String!
     var distance : String!
     var distanceFare : String!
     var driverAmount : String!
-    var driverId : Int!
-    var driverInfo : DriverInfo!
+    var driverFirstName : String!
+    var driverId : String!
+    var driverLastName : String!
     var dropoffLat : String!
     var dropoffLng : String!
     var dropoffLocation : String!
     var dropoffTime : String!
     var durationFare : String!
     var estimatedFare : String!
+    var extraCharge : String!
+    var fixRateId : String!
     var grandTotal : String!
     var id : String!
     var noOfPassenger : String!
     var onTheWay : String!
+    var paymentResponse : String!
     var paymentStatus : String!
     var paymentType : String!
     var pickupDateTime : String!
@@ -47,18 +49,17 @@ class BookingInfo : NSObject, NSCoding{
     var pickupTime : String!
     var promocode : String!
     var referenceId : String!
+    var rentType : String!
+    var requestId : String!
     var status : String!
     var subTotal : String!
     var tax : String!
+    var tips : String!
+    var tipsStatus : String!
     var tripDuration : String!
-    var vehicleType : VehicleType!
+    var vehicleName : String!
     var vehicleTypeId : String!
-    var rentType : String!
 
-    
-    override init() {
-        
-    }
 	/**
 	 * Instantiate the instance using the passed json values to set the properties values
 	 */
@@ -66,8 +67,7 @@ class BookingInfo : NSObject, NSCoding{
 		if json.isEmpty{
 			return
 		}
-        _id = json["_id"].stringValue
-        acceptTime = json["accept_time"].intValue
+        acceptTime = json["accept_time"].stringValue
         arrivedTime = json["arrived_time"].stringValue
         baseFare = json["base_fare"].stringValue
         bookingFee = json["booking_fee"].stringValue
@@ -78,29 +78,26 @@ class BookingInfo : NSObject, NSCoding{
         cardId = json["card_id"].stringValue
         companyAmount = json["company_amount"].stringValue
         customerId = json["customer_id"].stringValue
-        let customerInfoJson = json["customer_info"]
-        if !customerInfoJson.isEmpty{
-            customerInfo = CustomerInfo(fromJson: customerInfoJson)
-        }
         discount = json["discount"].stringValue
         distance = json["distance"].stringValue
         distanceFare = json["distance_fare"].stringValue
         driverAmount = json["driver_amount"].stringValue
-        driverId = json["driver_id"].intValue
-        let driverInfoJson = json["driver_info"]
-        if !driverInfoJson.isEmpty{
-            driverInfo = DriverInfo(fromJson: driverInfoJson)
-        }
+        driverFirstName = json["driver_first_name"].stringValue
+        driverId = json["driver_id"].stringValue
+        driverLastName = json["driver_last_name"].stringValue
         dropoffLat = json["dropoff_lat"].stringValue
         dropoffLng = json["dropoff_lng"].stringValue
         dropoffLocation = json["dropoff_location"].stringValue
         dropoffTime = json["dropoff_time"].stringValue
         durationFare = json["duration_fare"].stringValue
         estimatedFare = json["estimated_fare"].stringValue
+        extraCharge = json["extra_charge"].stringValue
+        fixRateId = json["fix_rate_id"].stringValue
         grandTotal = json["grand_total"].stringValue
         id = json["id"].stringValue
         noOfPassenger = json["no_of_passenger"].stringValue
         onTheWay = json["on_the_way"].stringValue
+        paymentResponse = json["payment_response"].stringValue
         paymentStatus = json["payment_status"].stringValue
         paymentType = json["payment_type"].stringValue
         pickupDateTime = json["pickup_date_time"].stringValue
@@ -110,16 +107,16 @@ class BookingInfo : NSObject, NSCoding{
         pickupTime = json["pickup_time"].stringValue
         promocode = json["promocode"].stringValue
         referenceId = json["reference_id"].stringValue
+        rentType = json["rent_type"].stringValue
+        requestId = json["request_id"].stringValue
         status = json["status"].stringValue
         subTotal = json["sub_total"].stringValue
         tax = json["tax"].stringValue
+        tips = json["tips"].stringValue
+        tipsStatus = json["tips_status"].stringValue
         tripDuration = json["trip_duration"].stringValue
-        let vehicleTypeJson = json["vehicle_type"]
-        if !vehicleTypeJson.isEmpty{
-            vehicleType = VehicleType(fromJson: vehicleTypeJson)
-        }
+        vehicleName = json["vehicle_name"].stringValue
         vehicleTypeId = json["vehicle_type_id"].stringValue
-        rentType = json["rent_type"].stringValue
 	}
 
 	/**
@@ -128,9 +125,6 @@ class BookingInfo : NSObject, NSCoding{
 	func toDictionary() -> [String:Any]
 	{
 		var dictionary = [String:Any]()
-        if _id != nil{
-        	dictionary["_id"] = _id
-        }
         if acceptTime != nil{
         	dictionary["accept_time"] = acceptTime
         }
@@ -164,9 +158,6 @@ class BookingInfo : NSObject, NSCoding{
         if customerId != nil{
         	dictionary["customer_id"] = customerId
         }
-        if customerInfo != nil{
-        	dictionary["customerInfo"] = customerInfo.toDictionary()
-        }
         if discount != nil{
         	dictionary["discount"] = discount
         }
@@ -179,11 +170,14 @@ class BookingInfo : NSObject, NSCoding{
         if driverAmount != nil{
         	dictionary["driver_amount"] = driverAmount
         }
+        if driverFirstName != nil{
+        	dictionary["driver_first_name"] = driverFirstName
+        }
         if driverId != nil{
         	dictionary["driver_id"] = driverId
         }
-        if driverInfo != nil{
-        	dictionary["driverInfo"] = driverInfo.toDictionary()
+        if driverLastName != nil{
+        	dictionary["driver_last_name"] = driverLastName
         }
         if dropoffLat != nil{
         	dictionary["dropoff_lat"] = dropoffLat
@@ -203,6 +197,12 @@ class BookingInfo : NSObject, NSCoding{
         if estimatedFare != nil{
         	dictionary["estimated_fare"] = estimatedFare
         }
+        if extraCharge != nil{
+        	dictionary["extra_charge"] = extraCharge
+        }
+        if fixRateId != nil{
+        	dictionary["fix_rate_id"] = fixRateId
+        }
         if grandTotal != nil{
         	dictionary["grand_total"] = grandTotal
         }
@@ -214,6 +214,9 @@ class BookingInfo : NSObject, NSCoding{
         }
         if onTheWay != nil{
         	dictionary["on_the_way"] = onTheWay
+        }
+        if paymentResponse != nil{
+        	dictionary["payment_response"] = paymentResponse
         }
         if paymentStatus != nil{
         	dictionary["payment_status"] = paymentStatus
@@ -242,6 +245,12 @@ class BookingInfo : NSObject, NSCoding{
         if referenceId != nil{
         	dictionary["reference_id"] = referenceId
         }
+        if rentType != nil{
+        	dictionary["rent_type"] = rentType
+        }
+        if requestId != nil{
+        	dictionary["request_id"] = requestId
+        }
         if status != nil{
         	dictionary["status"] = status
         }
@@ -251,17 +260,20 @@ class BookingInfo : NSObject, NSCoding{
         if tax != nil{
         	dictionary["tax"] = tax
         }
+        if tips != nil{
+        	dictionary["tips"] = tips
+        }
+        if tipsStatus != nil{
+        	dictionary["tips_status"] = tipsStatus
+        }
         if tripDuration != nil{
         	dictionary["trip_duration"] = tripDuration
         }
-        if vehicleType != nil{
-        	dictionary["vehicleType"] = vehicleType.toDictionary()
+        if vehicleName != nil{
+        	dictionary["vehicle_name"] = vehicleName
         }
         if vehicleTypeId != nil{
         	dictionary["vehicle_type_id"] = vehicleTypeId
-        }
-        if rentType != nil {
-            dictionary["rent_type"] = rentType
         }
 		return dictionary
 	}
@@ -272,8 +284,7 @@ class BookingInfo : NSObject, NSCoding{
     */
     @objc required init(coder aDecoder: NSCoder)
 	{
-		_id = aDecoder.decodeObject(forKey: "_id") as? String
-		acceptTime = aDecoder.decodeObject(forKey: "accept_time") as? Int
+		acceptTime = aDecoder.decodeObject(forKey: "accept_time") as? String
 		arrivedTime = aDecoder.decodeObject(forKey: "arrived_time") as? String
 		baseFare = aDecoder.decodeObject(forKey: "base_fare") as? String
 		bookingFee = aDecoder.decodeObject(forKey: "booking_fee") as? String
@@ -284,23 +295,26 @@ class BookingInfo : NSObject, NSCoding{
 		cardId = aDecoder.decodeObject(forKey: "card_id") as? String
 		companyAmount = aDecoder.decodeObject(forKey: "company_amount") as? String
 		customerId = aDecoder.decodeObject(forKey: "customer_id") as? String
-		customerInfo = aDecoder.decodeObject(forKey: "customer_info") as? CustomerInfo
 		discount = aDecoder.decodeObject(forKey: "discount") as? String
 		distance = aDecoder.decodeObject(forKey: "distance") as? String
 		distanceFare = aDecoder.decodeObject(forKey: "distance_fare") as? String
 		driverAmount = aDecoder.decodeObject(forKey: "driver_amount") as? String
-		driverId = aDecoder.decodeObject(forKey: "driver_id") as? Int
-		driverInfo = aDecoder.decodeObject(forKey: "driver_info") as? DriverInfo
+		driverFirstName = aDecoder.decodeObject(forKey: "driver_first_name") as? String
+		driverId = aDecoder.decodeObject(forKey: "driver_id") as? String
+		driverLastName = aDecoder.decodeObject(forKey: "driver_last_name") as? String
 		dropoffLat = aDecoder.decodeObject(forKey: "dropoff_lat") as? String
 		dropoffLng = aDecoder.decodeObject(forKey: "dropoff_lng") as? String
 		dropoffLocation = aDecoder.decodeObject(forKey: "dropoff_location") as? String
 		dropoffTime = aDecoder.decodeObject(forKey: "dropoff_time") as? String
 		durationFare = aDecoder.decodeObject(forKey: "duration_fare") as? String
 		estimatedFare = aDecoder.decodeObject(forKey: "estimated_fare") as? String
+		extraCharge = aDecoder.decodeObject(forKey: "extra_charge") as? String
+		fixRateId = aDecoder.decodeObject(forKey: "fix_rate_id") as? String
 		grandTotal = aDecoder.decodeObject(forKey: "grand_total") as? String
 		id = aDecoder.decodeObject(forKey: "id") as? String
 		noOfPassenger = aDecoder.decodeObject(forKey: "no_of_passenger") as? String
 		onTheWay = aDecoder.decodeObject(forKey: "on_the_way") as? String
+		paymentResponse = aDecoder.decodeObject(forKey: "payment_response") as? String
 		paymentStatus = aDecoder.decodeObject(forKey: "payment_status") as? String
 		paymentType = aDecoder.decodeObject(forKey: "payment_type") as? String
 		pickupDateTime = aDecoder.decodeObject(forKey: "pickup_date_time") as? String
@@ -310,13 +324,16 @@ class BookingInfo : NSObject, NSCoding{
 		pickupTime = aDecoder.decodeObject(forKey: "pickup_time") as? String
 		promocode = aDecoder.decodeObject(forKey: "promocode") as? String
 		referenceId = aDecoder.decodeObject(forKey: "reference_id") as? String
+		rentType = aDecoder.decodeObject(forKey: "rent_type") as? String
+		requestId = aDecoder.decodeObject(forKey: "request_id") as? String
 		status = aDecoder.decodeObject(forKey: "status") as? String
 		subTotal = aDecoder.decodeObject(forKey: "sub_total") as? String
 		tax = aDecoder.decodeObject(forKey: "tax") as? String
+		tips = aDecoder.decodeObject(forKey: "tips") as? String
+		tipsStatus = aDecoder.decodeObject(forKey: "tips_status") as? String
 		tripDuration = aDecoder.decodeObject(forKey: "trip_duration") as? String
-		vehicleType = aDecoder.decodeObject(forKey: "vehicle_type") as? VehicleType
+		vehicleName = aDecoder.decodeObject(forKey: "vehicle_name") as? String
 		vehicleTypeId = aDecoder.decodeObject(forKey: "vehicle_type_id") as? String
-        rentType = aDecoder.decodeObject(forKey: "rent_type") as? String
 	}
 
     /**
@@ -325,9 +342,6 @@ class BookingInfo : NSObject, NSCoding{
     */
     func encode(with aCoder: NSCoder)
 	{
-		if _id != nil{
-			aCoder.encode(id, forKey: "_id")
-		}
 		if acceptTime != nil{
 			aCoder.encode(acceptTime, forKey: "accept_time")
 		}
@@ -361,9 +375,6 @@ class BookingInfo : NSObject, NSCoding{
 		if customerId != nil{
 			aCoder.encode(customerId, forKey: "customer_id")
 		}
-		if customerInfo != nil{
-			aCoder.encode(customerInfo, forKey: "customer_info")
-		}
 		if discount != nil{
 			aCoder.encode(discount, forKey: "discount")
 		}
@@ -376,11 +387,14 @@ class BookingInfo : NSObject, NSCoding{
 		if driverAmount != nil{
 			aCoder.encode(driverAmount, forKey: "driver_amount")
 		}
+		if driverFirstName != nil{
+			aCoder.encode(driverFirstName, forKey: "driver_first_name")
+		}
 		if driverId != nil{
 			aCoder.encode(driverId, forKey: "driver_id")
 		}
-		if driverInfo != nil{
-			aCoder.encode(driverInfo, forKey: "driver_info")
+		if driverLastName != nil{
+			aCoder.encode(driverLastName, forKey: "driver_last_name")
 		}
 		if dropoffLat != nil{
 			aCoder.encode(dropoffLat, forKey: "dropoff_lat")
@@ -400,6 +414,12 @@ class BookingInfo : NSObject, NSCoding{
 		if estimatedFare != nil{
 			aCoder.encode(estimatedFare, forKey: "estimated_fare")
 		}
+		if extraCharge != nil{
+			aCoder.encode(extraCharge, forKey: "extra_charge")
+		}
+		if fixRateId != nil{
+			aCoder.encode(fixRateId, forKey: "fix_rate_id")
+		}
 		if grandTotal != nil{
 			aCoder.encode(grandTotal, forKey: "grand_total")
 		}
@@ -411,6 +431,9 @@ class BookingInfo : NSObject, NSCoding{
 		}
 		if onTheWay != nil{
 			aCoder.encode(onTheWay, forKey: "on_the_way")
+		}
+		if paymentResponse != nil{
+			aCoder.encode(paymentResponse, forKey: "payment_response")
 		}
 		if paymentStatus != nil{
 			aCoder.encode(paymentStatus, forKey: "payment_status")
@@ -439,6 +462,12 @@ class BookingInfo : NSObject, NSCoding{
 		if referenceId != nil{
 			aCoder.encode(referenceId, forKey: "reference_id")
 		}
+		if rentType != nil{
+			aCoder.encode(rentType, forKey: "rent_type")
+		}
+		if requestId != nil{
+			aCoder.encode(requestId, forKey: "request_id")
+		}
 		if status != nil{
 			aCoder.encode(status, forKey: "status")
 		}
@@ -448,18 +477,22 @@ class BookingInfo : NSObject, NSCoding{
 		if tax != nil{
 			aCoder.encode(tax, forKey: "tax")
 		}
+		if tips != nil{
+			aCoder.encode(tips, forKey: "tips")
+		}
+		if tipsStatus != nil{
+			aCoder.encode(tipsStatus, forKey: "tips_status")
+		}
 		if tripDuration != nil{
 			aCoder.encode(tripDuration, forKey: "trip_duration")
 		}
-		if vehicleType != nil{
-			aCoder.encode(vehicleType, forKey: "vehicle_type")
+		if vehicleName != nil{
+			aCoder.encode(vehicleName, forKey: "vehicle_name")
 		}
 		if vehicleTypeId != nil{
 			aCoder.encode(vehicleTypeId, forKey: "vehicle_type_id")
 		}
-        if rentType != nil {
-            aCoder.encode(vehicleTypeId, forKey: "rent_type")
-        }
+
 	}
 
 }

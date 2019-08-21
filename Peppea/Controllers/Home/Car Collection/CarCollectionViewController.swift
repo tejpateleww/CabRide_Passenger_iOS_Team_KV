@@ -15,7 +15,7 @@ import GoogleMaps
 //}
 
 
-class CarCollectionViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout, UIPickerViewDelegate, UIPickerViewDataSource,didSelectDateDelegate {
+class CarCollectionViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout, UIPickerViewDelegate, UIPickerViewDataSource,didSelectDateDelegate, didSelectPaymentDelegate {
  
     // ----------------------------------------------------
     // MARK:- --- Outlets ---
@@ -40,8 +40,12 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
     var LoginDetail : LoginModel = LoginModel()
     var cardDetailModel : AddCardModel = AddCardModel()
    
+    var FlatRate = String()
+    var FlatRateId = String()
     var paymentType = String()
+    var RentType = String()
     var CardID = String()
+    var Distance = String()
     var vehicleId = ""
     var estimateFare = ""
     var selectedTimeStemp = ""
@@ -61,8 +65,7 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
             guard let userData = try UserDefaults.standard.get(objectType: LoginModel.self, forKey: "userProfile") else {
                 return
             }
-            
-            LoginDetail = userData
+           LoginDetail = userData
         } catch {
             AlertMessage.showMessageForError("error")
             return
@@ -281,7 +284,7 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
             
             if dictOnlineCars.unselectImage != nil
             {
-                cell.imgOfCarModels.sd_setImage(with: URL(string: NetworkEnvironment.baseImageURL + dictOnlineCars.unselectImage), completed: nil) //image = UIImage.init(named: imageURL)
+                cell.imgOfCarModels.sd_setImage(with: URL(string: NetworkEnvironment.baseImageURL + ((dictOnlineCars.id == vehicleId) ? dictOnlineCars.image :  dictOnlineCars.unselectImage)), completed: nil) //image = UIImage.init(named: imageURL)
             }
             
             if let strModelName = dictOnlineCars.name // ["Name"] as? String
@@ -296,7 +299,13 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
                     let estimateMinute = estimateCurrentData?.driverReachInMinute
                     let estimateFare = estimateCurrentData?.estimateTripFare
                     
-                    cell.lblPrice.text = "\(Currency) \((Double((estimateMinute == "0" ? "0" : estimateFare)!)?.rounded(toPlaces: 2)) ?? 0.0)"
+                    if dictOnlineCars.id == vehicleId {
+                        self.estimateFare = (FlatRate == "") ? "\((Double((estimateMinute == "0" ? "0.0" : estimateFare)!)?.rounded(toPlaces: 2)) ?? 0.0)" : "\((Double((estimateMinute == "0" ? "0.0" : FlatRate))?.rounded(toPlaces: 2)) ?? 0.0)"
+                    }
+//                    else {
+//                        self.estimateFare = "0.0"
+//                    }
+                    cell.lblPrice.text =  (FlatRate == "") ? "\(Currency) \((Double((estimateMinute == "0" ? "0" : estimateFare)!)?.rounded(toPlaces: 2)) ?? 0.0)" : "\(Currency) \((Double((estimateMinute == "0" ? "0" : FlatRate))?.rounded(toPlaces: 2)) ?? 0.0)"
                     cell.lblArrivalTime.text = "ETA \(estimateMinute == "0" ? "0" : estimateMinute ?? "0") min."
                 }
             }
@@ -330,6 +339,8 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
 //                (self.parent as! HomeViewController).estimateData
            vehicleId = dictOnlineCars.id
             
+           self.collectionView.reloadData()
+            /*
             if let cell = self.collectionView.cellForItem(at: indexPath)  as? CarsCollectionViewCell
             {
                 if let imageURL = dictOnlineCars.image // ["Image"] as? String
@@ -351,6 +362,8 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
                     }
                 }
             }
+            */
+            
         }
     }
 
@@ -458,6 +471,17 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
         self.present(alertController, animated: true, completion: nil)
     }
     
+    
+    @IBAction func btnSelectPayment(_ sender: Any) {
+        
+        let PaymentPage = self.storyboard?.instantiateViewController(withIdentifier: "PaymentViewController") as! PaymentViewController
+        PaymentPage.Delegate = self
+        PaymentPage.isFlatRateSelected  = (self.FlatRate != "")
+        PaymentPage.OpenedForPayment = true
+        let NavController = UINavigationController(rootViewController: PaymentPage)
+        self.navigationController?.present(NavController, animated: true, completion: nil)
+    }
+    
     @IBAction func btnBookNow(_ sender: UIButton) {
         
         /*
@@ -540,5 +564,17 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
 //        }
     }
 
+    
+    func didSelectPaymentType(PaymentType: String, PaymentTypeID: String, PaymentNumber: String, PaymentHolderName: String) {
+        self.lblCardName.text = PaymentType
+        self.paymentType = PaymentType
+        self.lblCardNumber.isHidden = true
+        if PaymentType == "card" {
+            self.lblCardNumber.isHidden = false
+            self.CardID = PaymentTypeID
+            self.lblCardName.text = PaymentHolderName
+            self.lblCardNumber.text = PaymentNumber
+        }
+    }
     
 }
