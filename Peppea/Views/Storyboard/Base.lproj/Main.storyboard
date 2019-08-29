@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hie-4Z-Tl3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5GS-8Y-6g1">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -442,7 +442,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4nS-zn-KUk">
-                                <rect key="frame" x="315" y="95" width="40" height="40"/>
+                                <rect key="frame" x="315" y="273" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="2A0-Wg-gYx"/>
                                     <constraint firstAttribute="height" constant="40" id="ah8-pr-4NW"/>
@@ -470,8 +470,8 @@
                             <constraint firstItem="Yy9-FD-GtO" firstAttribute="top" secondItem="COt-MM-lJA" secondAttribute="bottom" id="j9i-yG-IAv"/>
                             <constraint firstAttribute="bottom" secondItem="m4s-5R-lg3" secondAttribute="bottom" id="jLi-wY-uAL"/>
                             <constraint firstItem="grQ-8m-FpI" firstAttribute="trailing" secondItem="Yy9-FD-GtO" secondAttribute="trailing" constant="10" id="jn6-Lr-SXr"/>
+                            <constraint firstItem="vHn-d0-859" firstAttribute="top" secondItem="4nS-zn-KUk" secondAttribute="bottom" constant="20" id="jol-rI-wsO"/>
                             <constraint firstItem="COt-MM-lJA" firstAttribute="leading" secondItem="Yy9-FD-GtO" secondAttribute="leading" id="wVZ-nO-6gm"/>
-                            <constraint firstItem="4nS-zn-KUk" firstAttribute="top" secondItem="Yy9-FD-GtO" secondAttribute="bottom" constant="30" id="z4K-B4-0YG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="grQ-8m-FpI"/>
                     </view>
@@ -515,14 +515,14 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eSu-ck-XaF">
                                         <rect key="frame" x="129.5" y="123.5" width="116" height="420"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Book Taxi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q1s-Sd-oAJ">
-                                                <rect key="frame" x="21" y="40" width="74" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hire A Car" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q1s-Sd-oAJ">
+                                                <rect key="frame" x="19" y="40" width="78" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hire A Car" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pk1-qO-GhQ">
-                                                <rect key="frame" x="19" y="359" width="78" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Book Taxi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pk1-qO-GhQ">
+                                                <rect key="frame" x="21.5" y="359" width="73.5" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -560,6 +560,9 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <state key="normal" title="LOGOUT"/>
+                                        <connections>
+                                            <action selector="btnLogOut:" destination="5GS-8Y-6g1" eventType="touchUpInside" id="1zw-Sc-hWA"/>
+                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="me1-xX-wIY">
                                         <rect key="frame" x="91.5" y="563.5" width="192" height="40"/>
@@ -570,6 +573,12 @@
                                                     <constraint firstAttribute="width" constant="30" id="RbW-DA-Ikv"/>
                                                     <constraint firstAttribute="width" secondItem="20d-A1-xMd" secondAttribute="height" multiplier="1:1" id="h0j-3a-kqp"/>
                                                 </constraints>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" image="iconCheckboxUnselected"/>
+                                                <state key="selected" image="iconCheckboxSelected"/>
+                                                <connections>
+                                                    <action selector="btnDidSelectDefault:" destination="5GS-8Y-6g1" eventType="touchUpInside" id="yF8-Eg-6nT"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Make a Default screen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kxP-Kb-A04">
                                                 <rect key="frame" x="40" y="11" width="152" height="18"/>
@@ -622,7 +631,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kgm-eZ-HEs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2844" y="2005"/>
+            <point key="canvasLocation" x="-2658" y="975"/>
         </scene>
         <!--Favourite Address View Controller-->
         <scene sceneID="JGn-li-ZWv">
@@ -1451,16 +1460,16 @@ automatic expense for warding</string>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="tyb-me-JOH">
-                                <rect key="frame" x="64" y="14" width="70" height="28"/>
+                                <rect key="frame" x="64" y="15" width="70" height="26"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rahul Patel" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yJh-Su-hlF">
-                                        <rect key="frame" x="0.0" y="0.0" width="56.5" height="13"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="54" height="11"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="11"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4cr-3a-zcN">
-                                        <rect key="frame" x="0.0" y="13" width="70" height="15"/>
+                                        <rect key="frame" x="0.0" y="11" width="70" height="15"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconSelectedstar" translatesAutoresizingMaskIntoConstraints="NO" id="B6q-Dv-6GZ">
                                                 <rect key="frame" x="0.0" y="0.0" width="15" height="15"/>
@@ -1469,7 +1478,7 @@ automatic expense for warding</string>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y1t-9A-aSA">
-                                                <rect key="frame" x="20" y="-1.5" width="19.5" height="16.5"/>
+                                                <rect key="frame" x="20" y="1" width="19.5" height="14"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -1769,16 +1778,16 @@ automatic expense for warding</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FE1-XC-SNi">
-                                <rect key="frame" x="10" y="50" width="355" height="226"/>
+                                <rect key="frame" x="10" y="50" width="355" height="223"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How was your trip with Thomas?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MIw-li-p0c">
-                                        <rect key="frame" x="10" y="5" width="335" height="20"/>
+                                        <rect key="frame" x="10" y="5" width="335" height="17"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qhz-3b-BLb" customClass="CosmosView" customModule="Cosmos">
-                                        <rect key="frame" x="92.5" y="30" width="170" height="30"/>
+                                        <rect key="frame" x="92.5" y="27" width="170" height="30"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="170" id="jez-PQ-hUg"/>
@@ -1786,7 +1795,7 @@ automatic expense for warding</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nYc-f9-dx3">
-                                        <rect key="frame" x="77.5" y="70" width="200" height="50"/>
+                                        <rect key="frame" x="77.5" y="67" width="200" height="50"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Comments..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wGf-dl-N5B">
                                                 <rect key="frame" x="0.0" y="5" width="200" height="40"/>
@@ -1809,10 +1818,10 @@ automatic expense for warding</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xt8-e6-WsO">
-                                        <rect key="frame" x="75" y="70" width="205" height="95"/>
+                                        <rect key="frame" x="75" y="67" width="205" height="95"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add a tip" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VLz-sp-uV3">
-                                                <rect key="frame" x="76" y="0.0" width="53" height="0.0"/>
+                                                <rect key="frame" x="77" y="0.0" width="51.5" height="0.0"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="13"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -1884,7 +1893,7 @@ automatic expense for warding</string>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mhb-ZO-9k2" customClass="ThemeButton" customModule="Peppea" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="176" width="335" height="40"/>
+                                        <rect key="frame" x="10" y="173" width="335" height="40"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="chW-eD-ibI"/>
@@ -4695,13 +4704,15 @@ automatic expense for warding</string>
         <image name="iconCash" width="40" height="40"/>
         <image name="iconChat" width="45" height="45"/>
         <image name="iconChatDot" width="16" height="16"/>
+        <image name="iconCheckboxSelected" width="26" height="26"/>
+        <image name="iconCheckboxUnselected" width="26" height="26"/>
         <image name="iconCurrentLocation" width="38" height="38"/>
         <image name="iconDropoffPinRound" width="85" height="85"/>
         <image name="iconDummyProfilePic" width="170" height="170"/>
         <image name="iconEmail" width="16" height="16"/>
         <image name="iconFB" width="94" height="28"/>
         <image name="iconInviteFriendsBanner" width="307" height="303"/>
-        <image name="iconLine" width="1" height="85"/>
+        <image name="iconLine" width="0.5" height="42.5"/>
         <image name="iconPersonal" width="170" height="170"/>
         <image name="iconPickupRound" width="85" height="85"/>
         <image name="iconPin" width="45" height="45"/>
@@ -4713,7 +4724,7 @@ automatic expense for warding</string>
         <image name="iconToAndFromAddress" width="13" height="60"/>
         <image name="iconTwitter" width="16" height="16"/>
         <image name="iconWhatsApp" width="16" height="16"/>
-        <image name="imgSliderImage" width="170" height="170"/>
+        <image name="imgSliderImage" width="85" height="85"/>
         <image name="send" width="16" height="16"/>
     </resources>
 </document>

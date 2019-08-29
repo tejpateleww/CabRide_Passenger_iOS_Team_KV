@@ -137,11 +137,7 @@ class LoginViewController: UIViewController {
                     
                     if json.dictionary?["booking_info"] != nil {
                         let info = BookingInfo(fromJson: json.dictionary?["booking_info"])
-                        
                         SingletonClass.sharedInstance.bookingInfo = info
-                        (UIApplication.shared.delegate as! AppDelegate).GoToHome(bookingInfo: info)
-                    } else {
-                        (UIApplication.shared.delegate as! AppDelegate).GoToHome()
                     }
                 }
                 catch
@@ -149,20 +145,48 @@ class LoginViewController: UIViewController {
                     UtilityClass.hideHUD()
                     AlertMessage.showMessageForError("error")
                 }
-                (UIApplication.shared.delegate as! AppDelegate).GoToHome()
-                //                    (UIApplication.shared.delegate as! AppDelegate).setHome()
-            }
+
+//                (UIApplication.shared.delegate as! AppDelegate).GoToHome() // Commented by Rahul for Choose services Option i.e. Hire a Car or Book a taxi option
+                self.redirectToChooseServicesVC()
+
+             }
             else{
                 UtilityClass.hideHUD()
                 AlertMessage.showMessageForError(json["message"].stringValue)
             }
         }
-        
-        //            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-        //                UtilityClass.hideHUD()
-        //
-        //                (UIApplication.shared.delegate as! AppDelegate).GoToHome()
-        //            }
+    }
+
+    func redirectToChooseServicesVC()
+    {
+        if let dictValue = UserDefaults.standard.object(forKey: "didSelectTaxiStatus") as? [String:Bool]
+        {
+            if(dictValue["isDefaultScreen"]!)
+            {
+                //redirect to choose service VC
+                (UIApplication.shared.delegate as! AppDelegate).GoToChooseServices()
+            }
+            else
+            {
+                if(dictValue["didSelectTaxi"]!)
+                {
+                     (UIApplication.shared.delegate as! AppDelegate).GoToHome()
+                    //redirect to Main storyboard home
+                }
+                else
+                {
+
+                    //redirect to hire a car in future
+                    (UIApplication.shared.delegate as! AppDelegate).GoToHome()
+
+                }
+            }
+        }
+        else
+        {
+             (UIApplication.shared.delegate as! AppDelegate).GoToChooseServices()
+        }
+
     }
    
     func validations() -> (Bool,String)

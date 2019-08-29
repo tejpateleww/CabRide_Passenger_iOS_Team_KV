@@ -36,7 +36,7 @@
                                     </constraints>
                                 </view>
                                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="faz-YB-aCJ">
-                                    <rect key="frame" x="237" y="0.0" width="103" height="30"/>
+                                    <rect key="frame" x="239.5" y="0.0" width="100.5" height="30"/>
                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
                                     <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                     <state key="normal" title="Send Receipt">
@@ -62,6 +62,7 @@
                                 <constraint firstItem="dTM-La-xA2" firstAttribute="top" secondItem="CDD-uw-fhj" secondAttribute="top" id="f79-MY-HOe"/>
                                 <constraint firstAttribute="trailing" secondItem="faz-YB-aCJ" secondAttribute="trailing" constant="5" id="fBh-vN-gwU"/>
                                 <constraint firstItem="dTM-La-xA2" firstAttribute="centerX" secondItem="CDD-uw-fhj" secondAttribute="centerX" id="iPQ-fy-uEf"/>
+                                <constraint firstItem="faz-YB-aCJ" firstAttribute="leading" secondItem="dTM-La-xA2" secondAttribute="trailing" constant="10" id="oFr-E9-TCT"/>
                                 <constraint firstAttribute="bottom" secondItem="wg6-ix-Gb6" secondAttribute="bottom" id="pfF-gL-LfU"/>
                                 <constraint firstAttribute="bottom" secondItem="dTM-La-xA2" secondAttribute="bottom" id="uoy-20-MgZ"/>
                                 <constraint firstAttribute="height" constant="30" id="vfC-89-f6g"/>

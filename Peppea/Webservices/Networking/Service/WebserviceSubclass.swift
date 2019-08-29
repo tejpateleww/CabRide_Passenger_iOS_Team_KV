@@ -19,6 +19,10 @@ class UserWebserviceSubclass
         WebService.shared.postDataWithImage(api: .register, parameter: params, image: image, imageParamName: imageParamName, completion: completion)
     }
 
+    class func getRegisteredCompanyList( strURL : String  ,completion: @escaping CompletionResponse ) {
+        let strURLFinal = NetworkEnvironment.baseURL + ApiKey.getRegisteredCompanyList.rawValue + strURL
+        WebService.shared.getMethod(url: URL.init(string: strURLFinal)!, httpMethod: .get, completion: completion)
+    }
     class func login( loginModel : loginModel  ,completion: @escaping CompletionResponse ) {
         let  params : [String:String] = loginModel.generatPostParams() as! [String : String]
         WebService.shared.requestMethod(api: .login, httpMethod: .post, parameters: params, completion: completion)
@@ -116,6 +120,13 @@ class UserWebserviceSubclass
         let strURLFinal = NetworkEnvironment.baseURL + ApiKey.upcomingBookingHistory.rawValue + strURL
         WebService.shared.getMethod(url: URL.init(string: strURLFinal)!, httpMethod: .get, completion: completion)
     }
+
+
+    class func currentBookingList(strURL : String  ,completion: @escaping CompletionResponse ) {
+        let strURLFinal = NetworkEnvironment.baseURL + ApiKey.CurrentTripDetails.rawValue + strURL
+        WebService.shared.getMethod(url: URL.init(string: strURLFinal)!, httpMethod: .get, completion: completion)
+    }
+
 
     class func checkPromocodeService(Promocode : CheckPromocode  ,completion: @escaping CompletionResponse ) {
         let  params : [String:String] = Promocode.generatPostParams() as! [String : String]

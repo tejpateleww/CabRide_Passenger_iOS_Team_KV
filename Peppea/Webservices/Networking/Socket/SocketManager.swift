@@ -84,7 +84,7 @@ class SocketIOManager: NSObject {
     
     func dataSerializationToJson(data: [Any],_ description : String = "") -> (status: Bool, json: JSON){
         let json = JSON(data)
-        print (description, ": \(json)")
+//        print (description, ": \(json)")
 
         return (true, json)
     }

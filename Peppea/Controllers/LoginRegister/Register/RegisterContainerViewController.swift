@@ -8,7 +8,9 @@
 
 import UIKit
 
-class RegisterContainerViewController: UIViewController,UIScrollViewDelegate {
+class RegisterContainerViewController: UIViewController,UIScrollViewDelegate,SearchForCompanyViewControllerDelegate {
+
+
 
 
     @IBOutlet weak var scrollObject: UIScrollView!
@@ -121,14 +123,29 @@ class RegisterContainerViewController: UIViewController,UIScrollViewDelegate {
         })
     }
     
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-    }
-    */
 
+        if(segue.identifier == "segueForCompanyList")
+        {
+            let destinationVC = (segue.destination as? UINavigationController)?.children.first as? SearchForCompanyViewController
+            destinationVC?.arrCompanyLists = (self.children.last as? RegistrationNewViewController)?.arrRegisteredCompanyList ?? [[:]]
+            destinationVC?.delegate = self
+        }
+
+    }
+
+
+    // ----------------------------------------------------
+    // MARK:- Custom delegate for selecting company name
+    // ----------------------------------------------------
+    func didSelectCompanyName(dictCompanyDetails: [String : Any]) {
+        let registerationNewVc =  self.children.last as? RegistrationNewViewController
+        registerationNewVc?.txtSelectCompany.text = dictCompanyDetails["company_name"] as? String
+    }
 }

@@ -43,8 +43,10 @@ enum payment_type: String {
 
 
 
-class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDelegate
+class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDelegate,ARCarMovementDelegate
 {
+
+
 
     //MARK:- IBOutles
     @IBOutlet weak var btnCurrentLocation: UIButton!
@@ -80,11 +82,11 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
     var ratingInfoVC : DriverRatingAndTipViewController?
     var stopAnimatingCamera = Bool()
     var mapView = GMSMapView()
-    //    lazy var marker = GMSMarker()
     var pulseArray = [CAShapeLayer]()
     var booingInfo = BookingInfo()
     var selectedTimeStemp = ""
-    
+    var moveMent: ARCarMovement!
+    var oldCoordinate : CLLocationCoordinate2D!
     /// Pickup and Dropoff Address
     var pickupAndDropoffAddress = (pickUp: "", dropOff: "")
     
@@ -179,19 +181,17 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
         if self.booingInfo.status == "pending" {
             setupTripStatu(status: .pending)
         } else if self.booingInfo.status == "accepted" {
-            self.routeDrawMethod(origin: "\(self.booingInfo.pickupLat ?? ""),\(self.booingInfo.pickupLng ?? "")", destination: "\(self.booingInfo.dropoffLat ?? ""),\(self.booingInfo.dropoffLng ?? "")")
-            setupCarMarker(res: self.booingInfo)
-            setupTripStatu(status: .accepted)
+            self.routeDrawMethod(origin: "\(self.booingInfo.pickupLat ?? ""),\(self.booingInfo.pickupLng ?? "")", destination: "\(self.booingInfo.dropoffLat ?? ""),\(self.booingInfo.dropoffLng ?? "")", isTripAccepted: true)
+             setupTripStatu(status: .accepted)
         } else if self.booingInfo.status == "traveling" {
-            self.routeDrawMethod(origin: "\(self.booingInfo.pickupLat ?? ""),\(self.booingInfo.pickupLng ?? "")", destination: "\(self.booingInfo.dropoffLat ?? ""),\(self.booingInfo.dropoffLng ?? "")")
-            setupCarMarker(res: self.booingInfo)
-            setupTripStatu(status: .traveling)
+            self.routeDrawMethod(origin: "\(self.booingInfo.pickupLat ?? ""),\(self.booingInfo.pickupLng ?? "")", destination: "\(self.booingInfo.dropoffLat ?? ""),\(self.booingInfo.dropoffLng ?? "")", isTripAccepted: true)
+             setupTripStatu(status: .traveling)
         } else if self.booingInfo.status == "completed" {
             setupTripStatu(status: .completed)
         }
         
         #if targetEnvironment(simulator)
-            lblBuildNumber.isHidden = false
+        lblBuildNumber.isHidden = false
         lblBuildNumber.text = "Build : \(Bundle.main.buildVersionNumber ?? "") \t\t Booking ID: \(self.booingInfo.id ?? "")"
         #else
         lblBuildNumber.isHidden = true
@@ -203,9 +203,14 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
         #endif
         self.setupNavigationController()
 
+
+//        LocationTracker.shared.locateMeOnLocationChange { [weak self]  _  in
+//            self?.moveCar()
+//        }
+        moveMent = ARCarMovement()
+        moveMent.delegate = self
+
         self.perform(#selector(self.btnCurrentLocation(_:)), with: self, afterDelay: 1)
-        
-        
         let rightNavBarButton = UIBarButtonItem(image: UIImage(named: "iconFavorite"), style: .plain, target: self, action: #selector(self.btnFavouriteAddress(_:)))
         self.navigationItem.rightBarButtonItem = nil
         self.navigationItem.rightBarButtonItem = rightNavBarButton
@@ -230,11 +235,6 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
                 if let url = URL.init(string: UIApplication.openSettingsURLString) {
                     UIApplication.shared.open(URL(string: "App-Prefs:root=Privacy&path=LOCATION") ?? url, options: [:], completionHandler: nil)
                 }
-//                App-Prefs:root=Privacy&path=LOCATION"
-//                guard let locationUrl = URL(string: "App-Prefs:root=Privacy&path=LOCATION") else {
-//                    return
-//                }
-//                UIApplication.shared.openURL(locationUrl)
             }
             alert.addAction(enable)
             (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController?.present(alert, animated: true, completion: nil)
@@ -253,6 +253,57 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
         super.viewWillDisappear(animated)
 //        self.timer.invalidate()
     }
+
+
+    // ----------------------------------------------------
+    // MARK:- Live Tracking of car methods
+    // ----------------------------------------------------
+
+    func moveCar() {
+        if let myLocation = LocationTracker.shared.lastLocation,
+            driverMarker == nil {
+            driverMarker = GMSMarker(position: myLocation.coordinate)
+            driverMarker.icon = UIImage(named: iconCar)
+            driverMarker.map = self.mapView
+            self.mapView.updateMap(toLocation: myLocation, zoomLevel: 16)
+        } else if let myLocation = LocationTracker.shared.lastLocation, let myLastLocation = LocationTracker.shared.previousLocation {
+            let degrees = myLastLocation.coordinate.bearing(to: myLocation.coordinate)
+            updateMarker(marker: driverMarker, coordinates: myLocation.coordinate, degrees: degrees, duration: 0.3)
+        }
+    }
+
+    func updateMarker(marker: GMSMarker, coordinates: CLLocationCoordinate2D, degrees: CLLocationDegrees, duration: Double) {
+        // Keep Rotation Short
+        CATransaction.begin()
+        CATransaction.setAnimationDuration(1)
+        marker.rotation = degrees
+        marker.groundAnchor = CGPoint(x: CGFloat(0.5), y: CGFloat(0.5))
+        CATransaction.commit()
+
+        // Movement
+        CATransaction.begin()
+        CATransaction.setAnimationDuration(1)
+        marker.position = coordinates
+
+        // Center Map View
+        let camera = GMSCameraUpdate.setTarget(coordinates)
+        mapView.animate(with: camera)
+
+        CATransaction.commit()
+    }
+
+    //-------------------------------------------------------------
+    // MARK: - ARCar Movement Delegate Method
+    //-------------------------------------------------------------
+    func arCarMovementMoved(_ Marker: GMSMarker) {
+        driverMarker = Marker
+        driverMarker.map = mapView
+    }
+
+
+    // ----------------------------------------------------
+    // MARK:-
+    // ----------------------------------------------------
     
     @objc func btnFavouriteAddress(_ sender: UIButton) {
         
@@ -361,7 +412,8 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
         //        createPulse()
 
     }
-    
+
+    /*
     func setupCarMarker(res : BookingInfo)
     {
         mapView.isMyLocationEnabled = false
@@ -389,11 +441,13 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
         }
         
     }
+ */
 
     func setupLocationManager()
     {
         locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+//        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
     }
     
@@ -466,20 +520,11 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
                     VC.selectedTimeStemp = timeStemp
                 }
             }
-           
-            
-//            self.btnBookNow.titleLabel?.lineBreakMode = .byWordWrapping
-//            self.btnBookNow.titleLabel?.textAlignment = .center
-
-            //            UtilityClass.changeDateFormat(from: "yyyy-MM-dd hh:mm:ss", toFormat: "dd-MM-yyyy", date: Date())
-
-//            self.btnBookNow.setTitle("Schedule a ride\n\(date)", for: .normal)
         }
     }
     func webserviceForCardList()
     {
-//        self.aryCardData.removeAll()
-        
+
         if(UserDefaults.standard.object(forKey: "userProfile") == nil)
         {
             return
@@ -514,42 +559,14 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
     }
     @IBAction func btnBookLater(_ sender: Any)
     {
-        
-        //        if Connectivity.isConnectedToInternet()
-        //        {
-        //
-        //            let profileData = SingletonClass.sharedInstance.dictProfile
-        //
-        //            // This is For Book Later Address
-        //            if (SingletonClass.sharedInstance.isFromNotificationBookLater) {
-        
         let next = self.storyboard?.instantiateViewController(withIdentifier: "PeppeaBookLaterViewController") as! PeppeaBookLaterViewController
         next.delegateOfSelectDateAndTime = self
-        //                SingletonClass.sharedInstance.isFromNotificationBookLater = false
-        
         self.navigationController?.present(next, animated: true, completion: nil)
-        //            }
-        //            else {
-        //
-        //
-        //                let next = self.storyboard?.instantiateViewController(withIdentifier: "PeppeaBookLaterViewController") as! PeppeaBookLaterViewController
-        //                next.delegateOfSelectDateAndTime = self
-        //
-        //                self.navigationController?.present(next, animated: true, completion: nil)
-        //            }
-        //        }
-        //        else
-        //        {
-        //            UtilityClass.showAlert("", message: "Internet connection not available", vc: self)
-        //        }
     }
     
     //MARK:- Other Methods
     @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
-
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
-
-
             switch swipeGesture.direction {
             case UISwipeGestureRecognizer.Direction.down:
                 print("Swiped down")
@@ -557,7 +574,6 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
             case UISwipeGestureRecognizer.Direction.up:
                 print("Swiped up")
                 self.isExpandCategory = true
-
             default:
                 break
             }
@@ -645,10 +661,6 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
         if isCurrentLocationTapped {
              clearMap()
         }
-       
-//        self.destinationLocationMarker.map = nil
-//        self.currentLocationMarker.map = nil
-//        self.strLocationType = self.currentLocationMarkerText
         mapView.delegate = self
         
         let camera = GMSCameraPosition.camera(withLatitude: defaultLocation.coordinate.latitude,
@@ -656,9 +668,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
                                               zoom: zoomLevel)
         
         mapView.camera = camera
-        
-//        MarkerCurrntLocation.isHidden = false
-        
+
         self.doublePickupLat = (defaultLocation.coordinate.latitude)
         self.doublePickupLng = (defaultLocation.coordinate.longitude)
         
@@ -680,7 +690,6 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
                 self.getAddressForLatLng(latitude: strLati, Longintude: strlongi, markerType: .pickUp)
             }
         }
-//        getAddressForLatLng(latitude: strLati, Longintude: strlongi, markerType: .pickUp)
     }
     
     //MARK:- Setup Pickup and Destination Location
@@ -706,8 +715,6 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
         }
         
         UtilityClass.hideHUD()
-        
-//        setupAfterComplete()
 
     }
     @IBAction func txtLocation(_ sender: ThemeTextField)
@@ -765,7 +772,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
     //MARK:- PolyLine Methods
 
 
-    func routeDrawMethod(origin: String?, destination: String?)
+    func routeDrawMethod(origin: String?, destination: String?, isTripAccepted : Bool)
     {
         if let originLocation = origin {
             if let destinationLocation = destination {
@@ -781,20 +788,28 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
                             // get Distance between Pickup Location & Drop OFF Location
                             
                             if let routes = dictionary["routes"] as? [[String:Any]] {
-                                if let RouteObject = routes[0]["legs"] as? [[String:Any]] {
-                                    if let Distance = RouteObject[0]["distance"] as? [String:Any] {
-                                        if let DistanceText = Distance["text"] as? String {
-                                            let distance = DistanceText.components(separatedBy: " ")[0]
+                                if(routes.count != 0)
+                                {
+                                    if let RouteObject = routes[0]["legs"] as? [[String:Any]] {
+                                        if let Distance = RouteObject[0]["distance"] as? [String:Any] {
+                                            if let DistanceText = Distance["text"] as? String {
+                                                let distance = DistanceText.components(separatedBy: " ")[0]
                                                 if let CarCollection = self.children[0] as? CarCollectionViewController {
                                                     CarCollection.Distance = distance
                                                 }
-                                       } else {
-                                            print("no")
+                                            } else {
+                                                print("no")
+                                            }
                                         }
                                     }
                                 }
+                                else
+                                {
+                                    return
+                                }
+
                             }
-                            
+
                             let status = dictionary["status"] as! String
 
                             if status == "OK" {
@@ -814,10 +829,16 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
                                 let pickupCoordinate = CLLocationCoordinate2D(latitude: pickupDoubleLat , longitude: pickupDoubleLng)
                                 self.pickupMarker.map = nil
                                 self.pickupMarker = GMSMarker(position: pickupCoordinate) // self.originCoordinate
-                                self.pickupMarker.icon = UtilityClass.image(UIImage(named: iconMarker), scaledTo: CGSize(width: 30, height: 30))//UIImage(named: iconMarker)
+                                self.pickupMarker.icon = isTripAccepted ? UIImage(named: iconCar) : UtilityClass.image(UIImage(named:iconMarker), scaledTo: CGSize(width: 30, height: 30))
                                 self.pickupMarker.map = self.mapView
-                                
-                                
+                                 self.mapView.isMyLocationEnabled = true
+                                if isTripAccepted
+                                {
+                                    self.driverMarker = self.pickupMarker
+                                    self.mapView.isMyLocationEnabled = false
+                                }
+
+
                                 var strDestinationCoordinate = destination?.components(separatedBy: ",")
                                 var DoubleLat = Double()
                                 var DoubleLng = Double()
@@ -865,9 +886,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
             self.polyline.map = self.mapView
 
             let bounds = GMSCoordinateBounds(path: path)
-            mapView.animate(with: GMSCameraUpdate.fit(bounds, withPadding: 80))
-
-//            self.timer = Timer.scheduledTimer(timeInterval: 0.03, target: self, selector: #selector(animatePolylinePath), userInfo: nil, repeats: true)
+            mapView.animate(with: GMSCameraUpdate.fit(bounds, withPadding: 140))
         }
     }
 
@@ -961,7 +980,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
         model.pickup_location = txtPickupLocation.text ?? ""
         
         UserWebserviceSubclass.addFavouriteAddressListService(Promocode: model) { (response, status) in
-            print(response)
+//            print(response)
             if status {
                 UtilityClass.showAlert(title: AppName.kAPPName, message: response.dictionary?["message"]?.stringValue ?? "", alertTheme: .success)
             } else {
@@ -1008,19 +1027,28 @@ extension HomeViewController: CLLocationManagerDelegate {
             return
         }
         defaultLocation = location
-//        self.getAddressForLatLng(latitude: "\(defaultLocation.coordinate.latitude)", Longintude: "\(defaultLocation.coordinate.longitude)", markerType: .pickUp)
         if(!stopAnimatingCamera)
         {
             stopAnimatingCamera = true
             mapView.camera = GMSCameraPosition(target: defaultLocation.coordinate, zoom: zoomLevel, bearing: 0, viewingAngle: 0)
         }
-        
-        
+
+        //This is just temporary
+//        self.emitSocket_DriverCurrentLocation(param: ["customer_id": SingletonClass.sharedInstance.loginData.id ?? "","driver_id" : "46", "lat": location.coordinate.latitude, "lng": location.coordinate.longitude])
+
         if SocketIOManager.shared.socket.status == .connected {
             
             self.emitSocket_UpdateCustomerLatLng(param: ["customer_id": SingletonClass.sharedInstance.loginData.id ?? "", "lat": location.coordinate.latitude, "lng": location.coordinate.longitude])
         }
         
+    }
+
+
+    func liveTrackingForTrip(lat : String , lng : String)
+    {
+        let newCoordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(exactly: Double(lat) ?? 0.00) ?? 0.00, longitude:CLLocationDegrees(exactly: Double(lng) ?? 0.00) ?? 0.00)
+        self.moveMent.arCarMovement(marker: driverMarker, oldCoordinate: oldCoordinate ?? defaultLocation.coordinate, newCoordinate: newCoordinate, mapView: self.mapView)
+        oldCoordinate = defaultLocation.coordinate
     }
 }
 
@@ -1071,21 +1099,7 @@ extension HomeViewController: GMSAutocompleteViewControllerDelegate {
         
         self.CallForGetEstimate()
         
-        /*
-        if txtPickupLocation.text != "" && txtDropLocation.text != "" {
-            
-            let param: [String: Any] = ["customer_id" : SingletonClass.sharedInstance.loginData.id ?? "",
-                                        "pickup_lng":pickupLocation.longitude,
-                                        "pickup_lat":pickupLocation.latitude,
-                                        "dropoff_lat":destinationLocation.latitude,
-                                        "dropoff_lng":destinationLocation.longitude]
-            
-            self.emitSocket_GetEstimateFare(param: param)
-        }
-        */
-        
-        self.routeDrawMethod(origin: "\(pickupLocation.latitude),\(pickupLocation.longitude)", destination: "\(destinationLocation.latitude),\(destinationLocation.longitude)")
-//        self.routeDrawMethod(origin: txtPickupLocation.text, destination: txtDropLocation.text)
+        self.routeDrawMethod(origin: "\(pickupLocation.latitude),\(pickupLocation.longitude)", destination: "\(destinationLocation.latitude),\(destinationLocation.longitude)", isTripAccepted: false)
         dismiss(animated: true, completion: nil)
     }
 
@@ -1097,15 +1111,8 @@ extension HomeViewController: GMSAutocompleteViewControllerDelegate {
         dismiss(animated: true, completion: nil)
     }
     func clearMap() {
-        
         self.mapView.clear()
-//        self.driverMarker = nil
         self.mapView.delegate = self
-        
-//        self.destinationLocationMarker.map = nil
-        
-        //        self.mapView?.stopRendering()
-        //        self.mapView = nil
     }
     
     /// Setup After Complete trip or Cancel trip
@@ -1187,21 +1194,43 @@ extension HomeViewController : FlatRateDelegate {
         }
         
         self.CallForGetEstimate()
-        
-        /*
-        if txtPickupLocation.text != "" && txtDropLocation.text != "" {
-            
-            let param: [String: Any] = ["customer_id" : SingletonClass.sharedInstance.loginData.id ?? "",
-                                        "pickup_lng":pickupLocation.longitude,
-                                        "pickup_lat":pickupLocation.latitude,
-                                        "dropoff_lat":destinationLocation.latitude,
-                                        "dropoff_lng":destinationLocation.longitude]
-            
-            self.emitSocket_GetEstimateFare(param: param)
-        }
-        */
-        
-        self.routeDrawMethod(origin: "\(pickupLocation.latitude),\(pickupLocation.longitude)", destination: "\(destinationLocation.latitude),\(destinationLocation.longitude)")
+        self.routeDrawMethod(origin: "\(pickupLocation.latitude),\(pickupLocation.longitude)", destination: "\(destinationLocation.latitude),\(destinationLocation.longitude)", isTripAccepted: false)
     }
     
+}
+
+
+extension GMSMapView {
+    func updateMap(toLocation location: CLLocation, zoomLevel: Float? = nil) {
+        if let zoomLevel = zoomLevel {
+            let cameraUpdate = GMSCameraUpdate.setTarget(location.coordinate, zoom: zoomLevel)
+            animate(with: cameraUpdate)
+        } else {
+            animate(toLocation: location.coordinate)
+        }
+    }
+}
+
+
+extension CLLocationCoordinate2D {
+
+    func bearing(to point: CLLocationCoordinate2D) -> Double {
+        func degreesToRadians(_ degrees: Double) -> Double { return degrees * Double.pi / 180.0 }
+        func radiansToDegrees(_ radians: Double) -> Double { return radians * 180.0 / Double.pi }
+
+        let lat1 = degreesToRadians(latitude)
+        let lon1 = degreesToRadians(longitude)
+
+        let lat2 = degreesToRadians(point.latitude);
+        let lon2 = degreesToRadians(point.longitude);
+
+        let dLon = lon2 - lon1;
+
+        let y = sin(dLon) * cos(lat2);
+        let x = cos(lat1) * sin(lat2) - sin(lat1) * cos(lat2) * cos(dLon);
+        let radiansBearing = atan2(y, x);
+        let degree = radiansToDegrees(radiansBearing)
+        return (degree >= 0) ? degree : (360 + degree)
+    }
+
 }

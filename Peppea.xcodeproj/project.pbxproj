@@ -121,8 +121,10 @@
 		B1E233DD22D31B7B00CEA568 /* AutomaticExpenseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E233DC22D31B7B00CEA568 /* AutomaticExpenseVC.swift */; };
 		B1E233E122D3220600CEA568 /* MyBidListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E233E022D3220600CEA568 /* MyBidListViewCell.swift */; };
 		B1E233E322D3226600CEA568 /* DriverOffersListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E233E222D3226600CEA568 /* DriverOffersListViewCell.swift */; };
+		EE1365952316A117001AFF6A /* LocationTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1365942316A117001AFF6A /* LocationTracker.swift */; };
 		EE2A9B8122EB29AE00EBAFEE /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE2A9B8022EB29AE00EBAFEE /* UserNotifications.framework */; };
 		EE35158522CE34A00035D0AC /* DriverRatingAndTipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE35158422CE34A00035D0AC /* DriverRatingAndTipViewController.swift */; };
+		EE37810C231531C600629ECA /* SearchForCompanyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE37810B231531C600629ECA /* SearchForCompanyViewController.swift */; };
 		EE469B5C22C7344E0075A8A3 /* RegisterOTPVarificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE469B5B22C7344D0075A8A3 /* RegisterOTPVarificationViewController.swift */; };
 		EE61011F22E86F7800B3B4D7 /* PastBookingHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE61011E22E86F7800B3B4D7 /* PastBookingHistory.swift */; };
 		EE61012A22E8787C00B3B4D7 /* PastBookingHistoryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE61012922E8787C00B3B4D7 /* PastBookingHistoryResponse.swift */; };
@@ -296,8 +298,11 @@
 		B1E233DC22D31B7B00CEA568 /* AutomaticExpenseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutomaticExpenseVC.swift; sourceTree = "<group>"; };
 		B1E233E022D3220600CEA568 /* MyBidListViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyBidListViewCell.swift; sourceTree = "<group>"; };
 		B1E233E222D3226600CEA568 /* DriverOffersListViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriverOffersListViewCell.swift; sourceTree = "<group>"; };
+		EE1365942316A117001AFF6A /* LocationTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTracker.swift; sourceTree = "<group>"; };
+		EE15895A2313E92D00D714FB /* Location.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Location.gpx; sourceTree = "<group>"; };
 		EE2A9B8022EB29AE00EBAFEE /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		EE35158422CE34A00035D0AC /* DriverRatingAndTipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverRatingAndTipViewController.swift; sourceTree = "<group>"; };
+		EE37810B231531C600629ECA /* SearchForCompanyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchForCompanyViewController.swift; sourceTree = "<group>"; };
 		EE469B5B22C7344D0075A8A3 /* RegisterOTPVarificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterOTPVarificationViewController.swift; sourceTree = "<group>"; };
 		EE61011E22E86F7800B3B4D7 /* PastBookingHistory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PastBookingHistory.swift; sourceTree = "<group>"; };
 		EE61012922E8787C00B3B4D7 /* PastBookingHistoryResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PastBookingHistoryResponse.swift; sourceTree = "<group>"; };
@@ -402,6 +407,7 @@
 			children = (
 				1830C47A22E74235004F107F /* dummyData.swift */,
 				1836EF4F22F8428100852EC8 /* temp.swift */,
+				EE15895A2313E92D00D714FB /* Location.gpx */,
 			);
 			path = "New Group";
 			sourceTree = "<group>";
@@ -685,6 +691,14 @@
 			path = AutomaticExpenseVC;
 			sourceTree = "<group>";
 		};
+		EE1365962316A11C001AFF6A /* LocationTracker */ = {
+			isa = PBXGroup;
+			children = (
+				EE1365942316A117001AFF6A /* LocationTracker.swift */,
+			);
+			path = LocationTracker;
+			sourceTree = "<group>";
+		};
 		EE35158622CE34A50035D0AC /* DriverInfoAndRating */ = {
 			isa = PBXGroup;
 			children = (
@@ -704,6 +718,7 @@
 		EE8A61C922C654AE000718ED /* ThirdPartyLibraries */ = {
 			isa = PBXGroup;
 			children = (
+				EE1365962316A11C001AFF6A /* LocationTracker */,
 				182BD24E22EF175100C419B9 /* ARCarMovement */,
 				463DEFD122D877E4002365F8 /* CreditCardValidator */,
 				EE8A61CA22C654C0000718ED /* MessageBarController */,
@@ -960,8 +975,8 @@
 		EEE2B7E422C62304004F1C00 /* Peppea */ = {
 			isa = PBXGroup;
 			children = (
-				1830C47922E741F6004F107F /* New Group */,
 				46536DFB22E0AC4200C538D8 /* Peppea.entitlements */,
+				1830C47922E741F6004F107F /* New Group */,
 				EEE2B7FB22C62369004F1C00 /* AppDelegate */,
 				EEE2B7FC22C62376004F1C00 /* Controllers */,
 				EEE2B7F922C62351004F1C00 /* Views */,
@@ -1043,6 +1058,7 @@
 			isa = PBXGroup;
 			children = (
 				EE9F3F5D22C7366900426377 /* RegistrationNewViewController.swift */,
+				EE37810B231531C600629ECA /* SearchForCompanyViewController.swift */,
 				EE469B5B22C7344D0075A8A3 /* RegisterOTPVarificationViewController.swift */,
 				EE8A61C722C652F5000718ED /* RegisterViewController.swift */,
 				EEE2B80322C628F2004F1C00 /* RegisterContainerViewController.swift */,
@@ -1320,6 +1336,7 @@
 				183BEF7622E9C762000C97E5 /* TripStatus.swift in Sources */,
 				B1DE159822D361D3001045B1 /* MyMileVC.swift in Sources */,
 				463DEFEF22D8B01B002365F8 /* HeaderTableViewController.swift in Sources */,
+				EE1365952316A117001AFF6A /* LocationTracker.swift in Sources */,
 				EEE2B80422C628F2004F1C00 /* RegisterContainerViewController.swift in Sources */,
 				466957E022DD9E4A008A73C0 /* WebServices.swift in Sources */,
 				EE9F3F6522C769CA00426377 /* RequestModel.swift in Sources */,
@@ -1346,6 +1363,7 @@
 				4600BF0222D6140200306486 /* HistoryTableViewCell.swift in Sources */,
 				EEE2B81122C62A70004F1C00 /* Singleton.swift in Sources */,
 				46869E6622E1D78D0053CF37 /* transferMoneyToBank.swift in Sources */,
+				EE37810C231531C600629ECA /* SearchForCompanyViewController.swift in Sources */,
 				4666B47A22D48F7D0084A230 /* FlatRateViewCell.swift in Sources */,
 				468E992822D9F26900072361 /* ChangePassword.swift in Sources */,
 				18CB7F8222E85AC4004FA66C /* HomeWebserviceCalls.swift in Sources */,

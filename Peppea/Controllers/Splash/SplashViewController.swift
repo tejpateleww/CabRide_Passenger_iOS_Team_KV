@@ -40,9 +40,16 @@ class SplashViewController: UIViewController {
                 loginModelDetails = try UserDefaults.standard.get(objectType: LoginModel.self, forKey: "userProfile")! // set(object: loginModelDetails, forKey: "userProfile") //(loginModelDetails, forKey: "userProfile")
                 UserDefaults.standard.set(loginModelDetails.loginData.xApiKey, forKey: "X_API_KEY")
                 SingletonClass.sharedInstance.loginData = loginModelDetails.loginData
-                SingletonClass.sharedInstance.walletBalance = loginModelDetails.loginData.walletBalance
-                SingletonClass.sharedInstance.BulkMilesBalance  = loginModelDetails.loginData.BulkMilesBalance
-                
+
+                if let walletBalance = loginModelDetails.loginData.walletBalance
+                {
+                    SingletonClass.sharedInstance.BulkMilesBalance = walletBalance
+                }
+
+                if let bulkMileBalance = loginModelDetails.loginData.BulkMilesBalance
+                {
+                    SingletonClass.sharedInstance.BulkMilesBalance = bulkMileBalance
+                }
             }
         }
         catch
@@ -83,10 +90,12 @@ class SplashViewController: UIViewController {
                     if json.dictionary?["booking_info"] != nil {
                         let info = BookingInfo(fromJson: json.dictionary?["booking_info"])
                         SingletonClass.sharedInstance.bookingInfo = info
-                        (UIApplication.shared.delegate as! AppDelegate).GoToHome(bookingInfo: info)
+//                        (UIApplication.shared.delegate as! AppDelegate).GoToHome(bookingInfo: info) // Commented by Rahul for Choose services Option i.e. Hire a Car or Book a taxi option
                     } else {
-                        (UIApplication.shared.delegate as! AppDelegate).GoToHome()
+//                        (UIApplication.shared.delegate as! AppDelegate).GoToHome() // Commented by Rahul for Choose services Option i.e. Hire a Car or Book a taxi option
                     }
+
+                    self.redirectToChooseServicesVC()
                 }
                 else {
                     (UIApplication.shared.delegate as! AppDelegate).GoToLogin()
@@ -97,68 +106,48 @@ class SplashViewController: UIViewController {
                 
             }
         }
-//        webserviceForAPPVerison(strParam as AnyObject, showHUD: false) { (result, status) in
-//            if status
-//            {
-//                guard let strMSG = result["message"] as? String else
-//                {
-//                    self.perform(#selector(self.moveToLogin), with: nil, afterDelay: 5.0)
-//                    return
-//                }
-//                if let strUpdate = result["update"] as? Bool
-//                {
-//                    RMUniversalAlert.show(in: self, withTitle:appName, message: strMSG, cancelButtonTitle: nil, destructiveButtonTitle: nil, otherButtonTitles: ["Update", "Later"], tap: {(alert, buttonIndex) in
-//                        if (buttonIndex == 2)
-//                        {
-//                            if let url = URL(string: "https://itunes.apple.com/us/app/tesluxe/id1438245899?ls=1&mt=8"),
-//                                UIApplication.shared.canOpenURL(url)
-//                            {
-//                                if #available(iOS 10.0, *)
-//                                {
-//                                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
-//                                }
-//                                else
-//                                {
-//                                    UIApplication.shared.openURL(url)
-//                                }
-//                            }
-//                        }
-//                        else
-//                        {
-//                            self.perform(#selector(self.moveToLogin), with: nil, afterDelay: 0.0)
-//                        }
-//                    })
-//                }
-//            }
-//            else
-//            {
-//
-//
-//
-//
-//                //                    if let result as? String// == "The request timed out."
-//                //                    {
-//                //                        self.perform(#selector(self.moveToLogin), with: nil, afterDelay: 0.0)
-//                //                    }
-//                //                        else if result as! String == "The Internet connection appears to be offline."
-//                //                    {
-//                //                        Utilities.showAlert(appName, message: "The Internet connection appears to be offline.", vc: self)
-//                //                    }
-//                //                    else
-//                //                    {
-//                //                        self.perform(#selector(self.moveToLogin), with: nil, afterDelay: 0.0)
-//
-//                //                    }
-//                //                    if Utilities.isInternetConnectionAvailable()
-//                //                    {
-//
-//                //                    }
-//                //                    else
-//                //                    {
-//                //                        Utilities.showToastMSG(MSG: message_NoInternetConnection)
-//                //                    }
-//            }
-//        }
+
+    }
+
+
+
+    func redirectToChooseServicesVC()
+    {
+        if let dictValue = UserDefaults.standard.object(forKey: "didSelectTaxiStatus") as? [String:Bool]
+        {
+            if(dictValue["isDefaultScreen"]!)
+            {
+
+                if(dictValue["didSelectTaxi"]!)
+                {
+                    (UIApplication.shared.delegate as! AppDelegate).GoToHome()
+                    //redirect to Main storyboard home
+                }
+                else
+                {
+
+                    //redirect to hire a car in future
+                    (UIApplication.shared.delegate as! AppDelegate).GoToHome()
+
+                }
+            }
+            else
+            {
+
+                (UIApplication.shared.delegate as! AppDelegate).GoToChooseServices()
+
+            }
+        }
+        else if(UserDefaults.standard.bool(forKey: "isUserLogin") == false)
+        {
+            (UIApplication.shared.delegate as! AppDelegate).GoToLogin()
+        }
+        else
+        {
+            (UIApplication.shared.delegate as! AppDelegate).GoToChooseServices()
+
+        }
+
     }
 
 }

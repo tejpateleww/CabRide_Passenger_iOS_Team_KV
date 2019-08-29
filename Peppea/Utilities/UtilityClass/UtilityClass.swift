@@ -88,6 +88,47 @@ class UtilityClass : NSObject
         view.layer.borderColor = borderColor.cgColor
     }
 
+
+    class func showDefaultAlertView(withTitle title: String?, message: String?, buttons buttonArray: [Any]?, completion block: @escaping (_ buttonIndex: Int) -> Void) {
+
+        let strTitle = title
+
+        let alertController = UIAlertController(title: strTitle, message: message, preferredStyle: .alert)
+        for buttonTitle in buttonArray ?? [] {
+            guard let buttonTitle = buttonTitle as? String else {
+                continue
+            }
+            var action: UIAlertAction?
+            if (buttonTitle.lowercased() == "cancel") {
+                action = UIAlertAction(title: buttonTitle, style: .destructive, handler: { action in
+                    let index = (buttonArray as NSArray?)?.index(of: action.title ?? "")
+                    block(index!)
+                })
+            } else {
+                action = UIAlertAction(title: buttonTitle, style: .default, handler: { action in
+                    let index = (buttonArray as NSArray?)?.index(of: action.title ?? "")
+                    block(index!)
+                })
+            }
+
+            if let action = action {
+                alertController.addAction(action)
+            }
+        }
+        self.topMostController()?.present(alertController, animated: true)
+
+    }
+
+    class func topMostController() -> UIViewController? {
+        var topController = UIApplication.shared.keyWindow?.rootViewController
+
+        while ((topController?.presentedViewController) != nil) {
+            topController = topController?.presentedViewController
+        }
+
+        return topController
+    }
+
     class func showHUD(with mainView: UIView?) {
 
         let obj = DataClass.getInstance()

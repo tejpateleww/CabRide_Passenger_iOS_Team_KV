@@ -14,9 +14,11 @@ typealias NetworkRouterCompletion = ((Data?,[String:Any]?, Bool) -> ())
 
 enum NetworkEnvironment: String {
    
-    case qa = "https://www.peppea.com/panel/api/customer_api/"// "http://13.127.213.134/panel/api/customer_api/"
-    //http://13.127.213.134/panel
-    
+    case liveBaseUrl = "https://www.peppea.com/panel/api/customer_api/"
+
+    case developmentBaseUrl = "https://www.peppea.com/panel/api/customer_api2/"
+
+
     case imageURL = "https://www.peppea.com/panel/"
     
     static var baseURL : String{
@@ -57,7 +59,14 @@ enum NetworkEnvironment: String {
    
     static var environment: NetworkEnvironment{
         //Set environment Here
-        return .qa
+
+        #if DEBUG
+        return .developmentBaseUrl
+        #else
+        return .liveBaseUrl
+        #endif
+
+
     }
    
     static var token: String{
@@ -70,6 +79,7 @@ enum ApiKey: String{
     case login = "login"
     case otp = "register_otp"
     case docUpload = "upload_docs"
+    case getRegisteredCompanyList = "registered_company_list"
     case register = "register"
     case fixRateList = "fix_rate_list"
     case transferMoney = "transfer_money"
@@ -90,6 +100,7 @@ enum ApiKey: String{
     case QRCodeDetail = "qr_code_detail"
     case BookingRequest = "booking_request"
     case PastBookingHistory = "past_booking_history/"
+    case CurrentTripDetails = "ongoing_booking_history/"
     case MobileNoDetail = "transfer_money_with_mobile_no" // "mobile_no_detail"
     case checkPromocode = "check_promocode"
     
@@ -130,7 +141,7 @@ enum socketApiKeys: String
     case ReceiveTips                = "receive_tips"    // booking_id,tips
     case CancelledBookingRequestBySystem = "cancelled_booking_request_by_system"
     case CancelTrip                 = "cancel_trip"
-    case DriverCurrentLocation      = "driver_current_location"
+    case DriverCurrentLocation      = "live_tracking"//"driver_current_location"
 }
 
 

@@ -12,7 +12,7 @@ import MobileCoreServices
 
 //import TransitionButton
 
-class RegistrationNewViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class RegistrationNewViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate,UITextFieldDelegate {
 
     var strDateOfBirth = String()
 
@@ -27,9 +27,13 @@ class RegistrationNewViewController: UIViewController,UIImagePickerControllerDel
     @IBOutlet weak var txtAddress: ThemeTextFieldLoginRegister!
     @IBOutlet weak var btnFemale: UIButton!
     @IBOutlet weak var btnMale: UIButton!
+    @IBOutlet weak var viewSelectCompany: UIView!
 
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var txtSelectCompany: ThemeTextFieldLoginRegister!
     @IBOutlet var selectGender: [UIImageView]!
 
+    @IBOutlet var arrBtnSelectPassengerType: [UIButton]!
 
     @IBOutlet weak var btnProfileImage: UIButton!
     @IBOutlet weak var btnSignUp: UIButton!
@@ -38,7 +42,7 @@ class RegistrationNewViewController: UIViewController,UIImagePickerControllerDel
     var strPassword = String()
     var gender = String()
     var isImageSelected:Bool = false
-    
+    var arrRegisteredCompanyList : [[String:Any]]!
     //-------------------------------------------------------------
     // MARK: - Base Methods
     //-------------------------------------------------------------
@@ -70,7 +74,9 @@ class RegistrationNewViewController: UIViewController,UIImagePickerControllerDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
- 
+        webserviceCallForGettingRegisteredCompanyList()
+        arrBtnSelectPassengerType[0].isSelected = true
+        viewSelectCompany.isHidden = true
         gender = "male"
         selectGender.first?.tintColor = ThemeColor
         selectGender.last?.tintColor = ThemeColor
@@ -171,7 +177,7 @@ class RegistrationNewViewController: UIViewController,UIImagePickerControllerDel
         
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             self.isImageSelected = true
-            btnProfileImage.imageView?.contentMode = .scaleToFill
+            btnProfileImage.imageView?.contentMode = .scaleAspectFill
             btnProfileImage.setImage(pickedImage, for: .normal)
         }
         setNavigationClear()
@@ -239,6 +245,17 @@ class RegistrationNewViewController: UIViewController,UIImagePickerControllerDel
         return (isValid,ValidatorMessage)
     }
 
+
+    // // ----------------------------------------------------
+    // MARK:-  Textfield Delegate Methods
+    // ----------------------------------------------------
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if(textField == txtSelectCompany)
+        {
+            let containerVC = self.parent as! RegisterContainerViewController
+            containerVC.performSegue(withIdentifier: "segueForCompanyList", sender: nil)
+        }
+    }
     //MARK: - IBActions
     
     @IBAction func btnChooseImage(_ sender: Any) {
@@ -299,6 +316,49 @@ class RegistrationNewViewController: UIViewController,UIImagePickerControllerDel
         // Dispose of any resources that can be recreated.
     }
     
+
+    @IBAction func btnSelectPassengerType(_ sender: UIButton) {
+        for btn in arrBtnSelectPassengerType {
+            btn.isSelected = false
+            viewSelectCompany.isHidden = true
+        }
+        if let index = arrBtnSelectPassengerType.firstIndex(where: { $0 == sender }) {
+            arrBtnSelectPassengerType[index].isSelected = true
+
+            if(index == 2 || index == 1)
+            {
+                viewSelectCompany.isHidden = false
+                let bottomOffset = CGPoint(x: 0, y: (scrollView.contentSize.height - scrollView.bounds.size.height) + 20)
+                scrollView.setContentOffset(bottomOffset, animated: true)
+
+                if(index == 1)
+                {
+                    txtSelectCompany.placeholder = "Enter the name of the company"
+                    txtSelectCompany.delegate = nil
+                }
+                else if(index == 2)
+                {
+                    txtSelectCompany.placeholder = "Select a company"
+                    txtSelectCompany.delegate = self
+                }
+            }
+        }
+    }
+
+    // ----------------------------------------------------
+    // MARK:- Webservice Call for getting registered company list
+    // ----------------------------------------------------
+
+
+    func webserviceCallForGettingRegisteredCompanyList() {
+        UserWebserviceSubclass.getRegisteredCompanyList(strURL: "") { (response, status) in
+            if(status)
+            {
+                self.arrRegisteredCompanyList = response["data"].arrayObject as? [[String : Any]]
+
+            }
+        }
+    }
 
     /*
      // MARK: - Navigation

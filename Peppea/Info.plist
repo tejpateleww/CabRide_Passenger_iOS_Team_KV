@@ -2,25 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIAppFonts</key>
-	<array>
-		<string>proxima-nova-black.otf</string>
-		<string>proxima-nova-bold-italic.otf</string>
-		<string>proxima-nova-bold.otf</string>
-		<string>proxima-nova-condensed-light-italic.otf</string>
-		<string>proxima-nova-condensed-light.otf</string>
-		<string>proxima-nova-condensed-regular-italic.otf</string>
-		<string>proxima-nova-condensed-semibold-italic.otf</string>
-		<string>proxima-nova-condensed-semibold.otf</string>
-		<string>proxima-nova-condensed.otf</string>
-		<string>proxima-nova-extrabold.otf</string>
-		<string>proxima-nova-light-italic.otf</string>
-		<string>proxima-nova-light.otf</string>
-		<string>proxima-nova-regular-italic.otf</string>
-		<string>proxima-nova-semibold-italic.otf</string>
-		<string>proxima-nova-semibold.otf</string>
-		<string>proxima-nova.otf</string>
-	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -47,7 +28,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1.0.7</string>
+	<string>1.0.9</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSApplicationQueriesSchemes</key>
@@ -69,6 +50,25 @@
 	<string>We use location to get you nearby taxis</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>You can select photos to upload your profile picture and car photos.</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>proxima-nova-black.otf</string>
+		<string>proxima-nova-bold-italic.otf</string>
+		<string>proxima-nova-bold.otf</string>
+		<string>proxima-nova-condensed-light-italic.otf</string>
+		<string>proxima-nova-condensed-light.otf</string>
+		<string>proxima-nova-condensed-regular-italic.otf</string>
+		<string>proxima-nova-condensed-semibold-italic.otf</string>
+		<string>proxima-nova-condensed-semibold.otf</string>
+		<string>proxima-nova-condensed.otf</string>
+		<string>proxima-nova-extrabold.otf</string>
+		<string>proxima-nova-light-italic.otf</string>
+		<string>proxima-nova-light.otf</string>
+		<string>proxima-nova-regular-italic.otf</string>
+		<string>proxima-nova-semibold-italic.otf</string>
+		<string>proxima-nova-semibold.otf</string>
+		<string>proxima-nova.otf</string>
+	</array>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>

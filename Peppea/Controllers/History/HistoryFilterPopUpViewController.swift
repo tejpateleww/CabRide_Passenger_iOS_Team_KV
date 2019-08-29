@@ -56,7 +56,7 @@ class HistoryFilterPopUpViewController: BaseViewController,UITextFieldDelegate
     {
         super.viewDidLoad()
 
-        
+        self.iconCAsh.tintColor = .black
         viewPopup.roundCorners([.topRight , .topLeft], radius: 10)
         
         // Do any additional setup after loading the view.

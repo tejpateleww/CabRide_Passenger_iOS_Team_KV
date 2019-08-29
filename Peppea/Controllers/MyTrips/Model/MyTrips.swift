@@ -11,6 +11,7 @@ import Foundation
 enum MyTrips: String, CaseIterable{
     
     case past = "Past"
+    case current = "Current"
     case upcoming = "Upcoming"
     
   
@@ -20,6 +21,9 @@ enum MyTrips: String, CaseIterable{
             return setPastDescription(pastBookingHistory: pastBookingHistory)
         case .upcoming:
             return setUpcomingDescription(pastBookingHistory: pastBookingHistory)
+        case .current:
+            return setUpcomingDescription(pastBookingHistory: pastBookingHistory)
+            
         }
     }
     static var titles = MyTrips.allCases.map({$0.rawValue})

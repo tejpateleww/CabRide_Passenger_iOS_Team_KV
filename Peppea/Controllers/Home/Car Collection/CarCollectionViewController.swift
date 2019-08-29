@@ -15,8 +15,8 @@ import GoogleMaps
 //}
 
 
-class CarCollectionViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout, UIPickerViewDelegate, UIPickerViewDataSource,didSelectDateDelegate, didSelectPaymentDelegate {
- 
+class CarCollectionViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,didSelectDateDelegate, didSelectPaymentDelegate {
+
     // ----------------------------------------------------
     // MARK:- --- Outlets ---
     // ----------------------------------------------------
@@ -36,10 +36,9 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
     var arrCarLists : VehicleListModel = VehicleListModel()
     //: [[String:Any]]!
     var aryCards = [CardsList]()
-    var pickerView = UIPickerView()
     var LoginDetail : LoginModel = LoginModel()
     var cardDetailModel : AddCardModel = AddCardModel()
-   
+
     var FlatRate = String()
     var FlatRateId = String()
     var paymentType = String()
@@ -54,18 +53,17 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
     // ----------------------------------------------------
     // MARK:- --- Base Methods ---
     // ----------------------------------------------------
-//    weak var delegateOfbookingSelection : didSelectBooking!
+    //    weak var delegateOfbookingSelection : didSelectBooking!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         getDataFromJSON()
         
-         pickerView.delegate = self
         do {
             guard let userData = try UserDefaults.standard.get(objectType: LoginModel.self, forKey: "userProfile") else {
                 return
             }
-           LoginDetail = userData
+            LoginDetail = userData
         } catch {
             AlertMessage.showMessageForError("error")
             return
@@ -86,15 +84,7 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
                     if(self.aryCards.count != 0)
                     {
                         let data = self.aryCards[0]
-
-//                        self.iconSelectedCard.image = UIImage(named: setCardIcon(str: data.cardType)) //UIImage(named: setCardIcon(str: data["Type"] as! String))
-
-//                        self.lblCardName.text = data.cardHolderName
-//                        self.lblCardNumber.isHidden = false
-//                        self.lblCardNumber.text = data.formatedCardNo
                         self.CardID = data.id
-
-
                         self.paymentType = "card"
                     }
                     
@@ -104,16 +94,13 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
                 }
             }
         }
+
+        didSelectPaymentType(PaymentType: "cash", PaymentTypeID: "", PaymentNumber: "", PaymentHolderName: "")
     }
 
     func getDataFromJSON()
     {
-//        if let dictData = UtilityClass.getDataFromJSON(strJSONFileName: "carList") as? [String : Any]
-//        {
-//            arrCarLists = dictData["car_class"] as? [[String : Any]]
-//            collectionView.reloadData()
-//        }
-        
+
         if(UserDefaults.standard.object(forKey: "carList") == nil)
         {
             return
@@ -130,126 +117,19 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
         
     }
 
-    @IBAction func txtSelectPaymentMethod(_ sender: UITextField)
-    {
-//        txtSelectPaymentMethod.inputView = pickerView
-    }
-    
-    //-------------------------------------------------------------
-    // MARK: - --- PickerView Methods ---
-    //-------------------------------------------------------------
-    
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return aryCards.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-        return 60
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        
-        let data = aryCards[row]
-        
-        let myView = UIView(frame: CGRect(x:0, y:0, width: pickerView.bounds.width - 30, height: 60))
-        
-        let centerOfmyView = myView.frame.size.height / 4
-        
-        
-        let myImageView = UIImageView(frame: CGRect(x:0, y:centerOfmyView, width:40, height:26))
-        myImageView.contentMode = .scaleAspectFit
-        
-        var rowString = String()
-        
-        
-        switch row {
-            
-        case 0:
-            rowString = data.formatedCardNo
-            myImageView.image = UIImage(named: setCardIcon(str: data.cardType))
-        case 1:
-            rowString = data.formatedCardNo
-            myImageView.image = UIImage(named: setCardIcon(str: data.cardType))
-        case 2:
-            rowString = data.formatedCardNo
-            myImageView.image = UIImage(named: setCardIcon(str: data.cardType))
-        case 3:
-            rowString = data.formatedCardNo
-            myImageView.image = UIImage(named: setCardIcon(str: data.cardType))
-        case 4:
-            rowString = data.formatedCardNo
-            myImageView.image = UIImage(named: setCardIcon(str: data.cardType))
-        case 5:
-            rowString = data.formatedCardNo
-            myImageView.image = UIImage(named: setCardIcon(str: data.cardType))
-        case 6:
-            rowString = data.formatedCardNo
-            myImageView.image = UIImage(named: setCardIcon(str: data.cardType))
-        case 7:
-            rowString = data.formatedCardNo
-            myImageView.image = UIImage(named: setCardIcon(str: data.cardType))
-        case 8:
-            rowString = data.formatedCardNo
-            myImageView.image = UIImage(named: setCardIcon(str: data.cardType))
-        case 9:
-            rowString = data.formatedCardNo
-            myImageView.image = UIImage(named: setCardIcon(str: data.cardType))
-        case 10:
-            rowString = data.formatedCardNo
-            myImageView.image = UIImage(named: setCardIcon(str: data.cardType))
-        default:
-            rowString = "Error: too many rows"
-            myImageView.image = nil
-        }
-        let myLabel = UILabel(frame: CGRect(x:60, y:0, width:pickerView.bounds.width - 90, height:60 ))
-        //        myLabel.font = UIFont(name:some, font, size: 18)
-        myLabel.text = rowString
-        
-        myView.addSubview(myLabel)
-        myView.addSubview(myImageView)
-        
-        return myView
-    }
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
-    {
-        
-        let data = aryCards[row]
-        
-        iconSelectedCard.image = UIImage(named: setCardIcon(str: data.cardType)) //UIImage(named: setCardIcon(str: data["Type"] as! String))
-        
-        self.lblCardName.text = data.cardHolderName
-        self.lblCardNumber.isHidden = false
-        self.lblCardNumber.text = data.formatedCardNo
-        self.CardID = data.id
-        
-        paymentType = "card"
-    }
-    
     
     // Handle Booklater date and time
     func didSelectDateAndTime(date: String, timeStemp: String) 
     {
-//        if(txtDestinationLocation.text?.count == 0)
-//        {
-//            txtDestinationLocation(txtDestinationLocation)
-//        }
-//        else
-//        {
-            self.btnBookNow.titleLabel?.lineBreakMode = .byWordWrapping
-            self.btnBookNow.titleLabel?.textAlignment = .center
 
-            //            UtilityClass.changeDateFormat(from: "yyyy-MM-dd hh:mm:ss", toFormat: "dd-MM-yyyy", date: Date())
+        self.btnBookNow.titleLabel?.lineBreakMode = .byWordWrapping
+        self.btnBookNow.titleLabel?.textAlignment = .center
+
         selectedTimeStemp = timeStemp
-            self.btnBookNow.setTitle("Schedule a ride\n\(date)", for: .normal)
+        self.btnBookNow.setTitle("Schedule a ride\n\(date)", for: .normal)
         let homeVC = self.parent as? HomeViewController
         homeVC?.setBackButtonWhileBookLater()
         homeVC?.selectedTimeStemp = timeStemp
-//        }
     }
     //MARK:-  --- CollectionView Delegate and Datasource Methods ---
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -264,27 +144,9 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
         {
             let dictOnlineCars = arrCarLists.vehicleTypeList[indexPath.row]
 
-//            if let imageURL = dictOnlineCars["Image"] as? String
-//            {
-//                cell.imgOfCarModels.image = UIImage.init(named: imageURL)
-//            }
-//
-//            if let strModelName = dictOnlineCars["Name"] as? String
-//            {
-//                cell.lblModelName.text = strModelName
-//            }
-//            if let strPrice = dictOnlineCars["BaseFare"] as? String
-//            {
-//                cell.lblPrice.text = "\(Currency) \(strPrice)"
-//            }
-//            if let strArrivalTime = dictOnlineCars["Sort"] as? String
-//            {
-//                cell.lblArrivalTime.text = "ETA \(strArrivalTime) min."
-//            }
-            
             if dictOnlineCars.unselectImage != nil
             {
-                cell.imgOfCarModels.sd_setImage(with: URL(string: NetworkEnvironment.baseImageURL + ((dictOnlineCars.id == vehicleId) ? dictOnlineCars.image :  dictOnlineCars.unselectImage)), completed: nil) //image = UIImage.init(named: imageURL)
+                cell.imgOfCarModels.sd_setImage(with: URL(string: NetworkEnvironment.baseImageURL + ((dictOnlineCars.id == vehicleId) ? dictOnlineCars.image :  dictOnlineCars.unselectImage)), completed: nil)
             }
             
             if let strModelName = dictOnlineCars.name // ["Name"] as? String
@@ -302,25 +164,11 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
                     if dictOnlineCars.id == vehicleId {
                         self.estimateFare = (FlatRate == "") ? "\((Double((estimateMinute == "0" ? "0.0" : estimateFare)!)?.rounded(toPlaces: 2)) ?? 0.0)" : "\((Double((estimateMinute == "0" ? "0.0" : FlatRate))?.rounded(toPlaces: 2)) ?? 0.0)"
                     }
-//                    else {
-//                        self.estimateFare = "0.0"
-//                    }
                     cell.lblPrice.text =  (FlatRate == "") ? "\(Currency) \((Double((estimateMinute == "0" ? "0" : estimateFare)!)?.rounded(toPlaces: 2)) ?? 0.0)" : "\(Currency) \((Double((estimateMinute == "0" ? "0" : FlatRate))?.rounded(toPlaces: 2)) ?? 0.0)"
                     cell.lblArrivalTime.text = "ETA \(estimateMinute == "0" ? "0" : estimateMinute ?? "0") min."
                 }
             }
-            
-            
-//            if let strPrice = dictOnlineCars.baseCharge // ["BaseFare"] as? String
-//            {
-////                cell.lblPrice.text = "\(Currency) \(strPrice)"
-//            }
-//            if let strArrivalTime = dictOnlineCars.sort // ["Sort"] as? String
-//            {
-//                cell.lblArrivalTime.text = "ETA \(strArrivalTime) min."
-//            }
-            
-            
+
             cell.lblModelName.font = UIFont.semiBold(ofSize: 9.5)
             cell.lblPrice.font = UIFont.regular(ofSize: 9.5)
             cell.lblArrivalTime.font = UIFont.regular(ofSize: 9.5)
@@ -334,36 +182,8 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
         if (self.arrCarLists.vehicleTypeList.count != 0 && indexPath.row < self.arrCarLists.vehicleTypeList.count)
         {
             let dictOnlineCars = arrCarLists.vehicleTypeList[indexPath.row]
-
-            print(dictOnlineCars)
-//                (self.parent as! HomeViewController).estimateData
-           vehicleId = dictOnlineCars.id
-            
-           self.collectionView.reloadData()
-            /*
-            if let cell = self.collectionView.cellForItem(at: indexPath)  as? CarsCollectionViewCell
-            {
-                if let imageURL = dictOnlineCars.image // ["Image"] as? String
-                {
-//                    let FinalString = imageURL.replacingOccurrences(of: "UnSelect", with: "Select")
-                    cell.imgOfCarModels.sd_setImage(with: URL(string: NetworkEnvironment.baseImageURL + imageURL), completed: nil) // .image = UIImage.init(named: FinalString)
-                    
-                    if let homeVc = self.parent as? HomeViewController {
-                        if homeVc.estimateData.count != 0 {
-                            let estimateCurrentData = homeVc.estimateData.filter{$0.vehicleTypeId == dictOnlineCars.id}.first
-                            if estimateCurrentData?.driverReachInMinute == "0" {
-                                estimateFare = "0"
-                            } else {
-                                let estimate = estimateCurrentData?.estimateTripFare
-                                estimateFare = estimate ?? ""
-                            }
-                            
-                        }
-                    }
-                }
-            }
-            */
-            
+            vehicleId = dictOnlineCars.id
+            self.collectionView.reloadData()
         }
     }
 
@@ -372,9 +192,6 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
         if (self.arrCarLists.vehicleTypeList.count != 0 && indexPath.row < self.arrCarLists.vehicleTypeList.count)
         {
             let dictOnlineCars = arrCarLists.vehicleTypeList[indexPath.row]
-
-            print(dictOnlineCars)
-
             if let cell = self.collectionView.cellForItem(at: indexPath)  as? CarsCollectionViewCell
             {
                 if let imageURL = dictOnlineCars.unselectImage //["Image"] as? String
@@ -389,13 +206,13 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
         let numberOfCars = ( self.arrCarLists.vehicleTypeList.count > 3) ? 4 : 3
         let CellWidth = ( UIScreen.main.bounds.width - 10 ) / CGFloat(numberOfCars)
         return CGSize(width: CellWidth , height: self.collectionView.frame.size.height)
-//        return CGSize(width: 50, height: 50)
+        //        return CGSize(width: 50, height: 50)
     }
 
-  
+
     func animateGoogleMapWhenRotate(homeVC : HomeViewController?)
     {
-//        UtilityClass.showHUDWithoutLottie(with: UIApplication.shared.keyWindow)
+        //        UtilityClass.showHUDWithoutLottie(with: UIApplication.shared.keyWindow)
         CATransaction.begin()
         CATransaction.setValue(1, forKey: kCATransactionAnimationDuration)
         CATransaction.setCompletionBlock({
@@ -405,28 +222,35 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
                 CATransaction.begin()
                 CATransaction.setValue(4, forKey: kCATransactionAnimationDuration)
                 CATransaction.setCompletionBlock({
-//                    homeVC?.hideAndShowView(view: .requestAccepted)
-//                    homeVC?.isExpandCategory = true
-                    
                     // For Stop Animation on map
+                    let pickup = homeVC?.pickupLocation
+
+                    let cameraPosition = GMSCameraPosition.camera(withLatitude: pickup?.latitude ?? 0.0, longitude: pickup?.longitude ?? 0.0, zoom: zoomLevel)
+                    homeVC?.mapView.animate(to: cameraPosition)
+
                     homeVC?.mapView.animate(toViewingAngle: 0)
                     homeVC?.mapView.animate(toZoom: zoomLevel)
-//                    homeVC?.btnCurrentLocation(UIButton())
+
+//                    UtilityClass.showHUD(with: homeVC?.view)
                     UtilityClass.hideHUD()
-//                    self.animateGoogleMapWhenRotate(homeVC: homeVC)
-                    
                 })
-                
-                homeVC?.mapView.animate(toBearing: CLLocationDirection(((homeVC?.getHeadingForDirection(fromCoordinate: (homeVC?.defaultLocation.coordinate)!, toCoordinate: (homeVC?.defaultLocation.coordinate)!))! - 30) ))
+                homeVC?.mapView.animate(toBearing: CLLocationDirection(((homeVC?.getHeadingForDirection(fromCoordinate: (homeVC?.pickupLocation)!, toCoordinate: (homeVC?.pickupLocation)!))! - 30) ))
                 homeVC?.view.layoutIfNeeded()
                 CATransaction.commit()
             })
-            homeVC?.mapView.animate(toZoom: 13)
-            homeVC?.view.layoutIfNeeded()
-            CATransaction.commit()
+//            homeVC?.mapView.animate(toZoom: 13)
+//            homeVC?.view.layoutIfNeeded()
+//            CATransaction.commit()
+
+                    homeVC?.mapView.animate(toViewingAngle: 45)
+                    homeVC?.view.layoutIfNeeded()
+              CATransaction.commit()
         })
-        homeVC?.mapView.animate(toViewingAngle: 45)
-        homeVC?.view.layoutIfNeeded()
+        let pickup = homeVC?.pickupLocation
+        let cameraPosition = GMSCameraPosition.camera(withLatitude: pickup?.latitude ?? 0.0, longitude: pickup?.longitude ?? 0.0, zoom: zoomLevel)
+        homeVC?.mapView.animate(to: cameraPosition)
+//        homeVC?.mapView.animate(toViewingAngle: 45)
+//        homeVC?.view.layoutIfNeeded()
         CATransaction.commit()
     }
     
@@ -441,30 +265,24 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
         }
         let saveAction = UIAlertAction(title: "Apply", style: .default, handler: { alert -> Void in
             let firstTextField = alertController.textFields![0] as UITextField
-//            let secondTextField = alertController.textFields![1] as UITextField
             print("firstName \(firstTextField.text ?? "")")
             
             if !firstTextField.text!.isBlank {
-//                 saveAction.isEnabled = true
                 self.webserviceForCheckPromocodeService(promoCode: firstTextField.text ?? "")
             }
-           
+
         })
         saveAction.isEnabled = false
         
         NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object:alertController.textFields?[0],
-                                                     queue: OperationQueue.main) { (notification) -> Void in
-                                                                    
-                                                                    let textFieldName = alertController.textFields?[0] as! UITextField
-                                                                
-                                                        saveAction.isEnabled = (textFieldName.text?.isBlank)! == true ? false : true
+                                               queue: OperationQueue.main) { (notification) -> Void in
+
+                                                let textFieldName = alertController.textFields?[0] //as! UITextField
+
+                                                saveAction.isEnabled = (textFieldName?.text?.isBlank)! == true ? false : true
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: { (action : UIAlertAction!) -> Void in })
-//        alertController.addTextField { (textField : UITextField!) -> Void in
-//            textField.placeholder = "Enter First Name"
-//        }
-        
         alertController.addAction(saveAction)
         alertController.addAction(cancelAction)
         
@@ -483,30 +301,9 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
     }
     
     @IBAction func btnBookNow(_ sender: UIButton) {
-        
-        /*
-         
-         "booking_type: book_now or book_later
-         customer_id:1
-         vehicle_type_id:1
-         pickup_location:Excellent WebWorld, Science City Road, Sola, Ahmedabad, Gujarat
-         dropoff_location:Iscon Mega Mall, Sarkhej - Gandhinagar Highway, Ahmedabad, Gujarat
-         pickup_lat:23.0726414
-         pickup_lng:72.51423
-         dropoff_lat:23.0305179
-         dropoff_lng:72.5053514
-         no_of_passenger:2
-         payment_type:cash OR card OR wallet (if payment_type = 'card' then 'card_id' parameter (complusary))
-         if booking_type = 'book_later' then  'pickup_date_time'(should be in timestamp) parameter (complusary)
-         promocode(if applicable)"
-         
-         */
-        //self.delegateOfbookingSelection?.didSelectBookNow?()
+
         let homeVC = self.parent as? HomeViewController
-        //        homeVC?.hideAndShowView(view: .requestAccepted)
-        
-        
-        
+
         if(self.validations().0)
         {
             
@@ -517,9 +314,9 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
             animateGoogleMapWhenRotate(homeVC: homeVC)
             
             if sender.titleLabel?.text == "Book Now" {
-                 webserviceForBooking(bookingType: "book_now") // "book_now" // "book_later"
+                webserviceForBooking(bookingType: "book_now") // "book_now" // "book_later"
             } else {
-                 webserviceForBooking(bookingType: "book_later") // "book_now" // "book_later"
+                webserviceForBooking(bookingType: "book_later") // "book_now" // "book_later"
             }
         }
         else
@@ -527,41 +324,15 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
             UtilityClass.hideHUD()
             AlertMessage.showMessageForError(self.validations().1)
         }
-//        webserviceForBooking(bookingType: "") // "book_now" // "book_later"
     }
     
 
     
     @IBAction func btnBookLater(_ sender: Any)
     {
-        
-//        if Connectivity.isConnectedToInternet()
-//        {
-//
-//            let profileData = SingletonClass.sharedInstance.dictProfile
-//
-//            // This is For Book Later Address
-//            if (SingletonClass.sharedInstance.isFromNotificationBookLater) {
-        
-                let next = self.storyboard?.instantiateViewController(withIdentifier: "PeppeaBookLaterViewController") as! PeppeaBookLaterViewController
-                next.delegateOfSelectDateAndTime = self
-//                SingletonClass.sharedInstance.isFromNotificationBookLater = false
-        
-                self.navigationController?.present(next, animated: true, completion: nil)
-//            }
-//            else {
-//
-//
-//                let next = self.storyboard?.instantiateViewController(withIdentifier: "PeppeaBookLaterViewController") as! PeppeaBookLaterViewController
-//                next.delegateOfSelectDateAndTime = self
-//
-//                self.navigationController?.present(next, animated: true, completion: nil)
-//            }
-//        }
-//        else
-//        {
-//            UtilityClass.showAlert("", message: "Internet connection not available", vc: self)
-//        }
+        let next = self.storyboard?.instantiateViewController(withIdentifier: "PeppeaBookLaterViewController") as! PeppeaBookLaterViewController
+        next.delegateOfSelectDateAndTime = self
+        self.navigationController?.present(next, animated: true, completion: nil)
     }
 
     

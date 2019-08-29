@@ -33,11 +33,11 @@ extension CarCollectionViewController: CarCollectionWebserviceProtocol {
         {
             return (false, "Please select booking type")
         }
-        else if(vehicleId.trimmingCharacters(in: .whitespacesAndNewlines).count == 0)
+        else if(vehicleId.trimmingCharacters(in: .whitespacesAndNewlines).count == 0 && self.btnBookNow.titleLabel?.text == "Book Now")
         {
             return (false, "Please select vehicle")
         }
-        else if (estimateFare.trimmingCharacters(in: .whitespacesAndNewlines) == "0.0") {
+        else if (estimateFare.trimmingCharacters(in: .whitespacesAndNewlines) == "0.0" && self.btnBookNow.titleLabel?.text == "Book Now") {
             return (false, "Driver is not available")
         }
         else if(estimateFare.trimmingCharacters(in: .whitespacesAndNewlines).count == 0)

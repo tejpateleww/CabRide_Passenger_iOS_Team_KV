@@ -38,11 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         setupPushNotification(application: application)
         locationPermission()
         Fabric.with([Crashlytics.self])
-//        UserDefaults.standard.set(true, forKey: "isUserLogin")
-        
-//        SocketIOManager.shared.socket.connect()
-//        SocketIOManager.shared.establishConnection()
-        
+
         return true
     }
 
@@ -188,6 +184,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     }
 
 
+    func GoToChooseServices(bookingInfo: BookingInfo? = nil) {
+        let storyborad = UIStoryboard(name: "Main", bundle: nil)
+        let CustomSideMenu = storyborad.instantiateViewController(withIdentifier: "ChooseServiceViewController") as! ChooseServiceViewController
+        let NavHomeVC = UINavigationController(rootViewController: CustomSideMenu)
+        NavHomeVC.isNavigationBarHidden = true
+        UIApplication.shared.keyWindow?.rootViewController = NavHomeVC
+    }
+
+
     func GoToLogin() {
 
         let storyborad = UIStoryboard(name: "LoginRegister", bundle: nil)
@@ -214,22 +219,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
                 UserDefaults.standard.removeObject(forKey: key)
             }
         }
-//        //        UserDefaults.standard.set(false, forKey: kIsSocketEmited)
-//        //        UserDefaults.standard.synchronize()
-//
-//        SingletonClass.sharedInstance.strPassengerID = ""
-//        UserDefaults.standard.removeObject(forKey: "profileData")
-//        SingletonClass.sharedInstance.isUserLoggedIN = false
-//        //                self.performSegue(withIdentifier: "unwindToContainerVC", sender: self)
-//        UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
-//
-//        UserDefaults.standard.removeObject(forKey: "Passcode")
-//        SingletonClass.sharedInstance.setPasscode = ""
-//
-//        UserDefaults.standard.removeObject(forKey: "isPasscodeON")
-//        SingletonClass.sharedInstance.isPasscodeON = false
-//
-//        SingletonClass.sharedInstance.isPasscodeON = false
          UserDefaults.standard.set(false, forKey: "isUserLogin")
         self.GoToLogin()
     }
