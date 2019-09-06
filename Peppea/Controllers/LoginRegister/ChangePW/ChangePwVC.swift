@@ -24,6 +24,15 @@ class ChangePwVC: BaseViewController
         btnSubmit.backgroundColor = ThemeColor
         
         self.setNavBarWithBack(Title: "Change Password", IsNeedRightButton: false)
+
+
+        txtOldPw.tag = 0
+        txtNewPw.tag = 1
+        txtConfirmPw.tag = 2
+
+        setRightViewForPassword(textField: txtOldPw)
+        setRightViewForPassword(textField: txtNewPw)
+        setRightViewForPassword(textField: txtConfirmPw)
         
     }
     
@@ -122,6 +131,38 @@ class ChangePwVC: BaseViewController
     }
     
     
-   
+    func setRightViewForPassword(textField: UITextField)
+    {
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage(named: "iconHidePassword"), for: .normal)
+        button.setImage(UIImage(named: "iconShowPassword"), for: .selected)
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -16, bottom: 0, right: 0)
+        button.tag = textField.tag
+        button.frame = CGRect(x: CGFloat(textField.frame.size.width - 25), y: CGFloat(5), width: CGFloat(25), height: CGFloat(25))
+        button.addTarget(self, action: #selector(self.showHidePassword), for: .touchUpInside)
+        textField.rightView = button
+        textField.rightViewMode = .always
+
+    }
+
+    @objc func showHidePassword(sender : UIButton)
+    {
+        sender.isSelected = !sender.isSelected
+
+        if(sender.tag == 0)
+        {
+            txtOldPw.isSecureTextEntry = !sender.isSelected
+        }
+        else if(sender.tag == 1)
+        {
+            txtNewPw.isSecureTextEntry = !sender.isSelected
+        }
+        else if(sender.tag == 2)
+        {
+            txtConfirmPw.isSecureTextEntry = !sender.isSelected
+        }
+        //        txtPassword.isSecureTextEntry = !sender.isSelected
+
+    }
 
 }

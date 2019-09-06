@@ -71,6 +71,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
             } else if let result = result {
                 print("Remote instance ID token: \(result.token)")
                 self.instanceIDTokenMessage  = "Remote InstanceID token: \(result.token)"
+                UserDefaults.standard.set(result.token, forKey: "Token")
+                UserDefaults.standard.synchronize()
             }
         }
 
@@ -79,9 +81,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     }
 
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        let token = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
-        UserDefaults.standard.set(token, forKey: "Token")
-        UserDefaults.standard.synchronize()
         Messaging.messaging().apnsToken = deviceToken
     }
 

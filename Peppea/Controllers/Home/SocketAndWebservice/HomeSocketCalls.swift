@@ -11,7 +11,7 @@ import SwiftyJSON
 import GoogleMaps
 
 extension HomeViewController: SocketConnected {
-   
+
     
     // ----------------------------------------------------
     // MARK:- --- All Socket Methods ---
@@ -74,12 +74,12 @@ extension HomeViewController: SocketConnected {
     
     // Socket On 1
     func onSocket_GetEstimateFare() {
-            SocketIOManager.shared.socketCall(for: socketApiKeys.GetEstimateFare.rawValue) { (json) in
-//            print(#function, "\n ", json)
+        SocketIOManager.shared.socketCall(for: socketApiKeys.GetEstimateFare.rawValue) { (json) in
+            //            print(#function, "\n ", json)
 
             let model = GetEstimateFareModel(fromJson: json.array?.first)
-                guard model.estimateFare != nil else  { return }
-                self.estimateData = model.estimateFare
+            guard model.estimateFare != nil else  { return }
+            self.estimateData = model.estimateFare
             if self.estimateData.count != 0 {                
                 (self.children.first as! CarCollectionViewController).getDataFromJSON()
             }
@@ -102,7 +102,7 @@ extension HomeViewController: SocketConnected {
     // Socket On 3
     func onSocket_StartTrip() {
         SocketIOManager.shared.socketCall(for: socketApiKeys.StartTrip.rawValue) { (json) in
-//            print(#function, "\n ", json)
+            //            print(#function, "\n ", json)
             AlertMessage.showMessageForSuccess("Trip Started")
             self.startedRequestData(json: json)
 
@@ -112,14 +112,14 @@ extension HomeViewController: SocketConnected {
     // Socket On 4
     func onSocket_CompleteTrip() {
         SocketIOManager.shared.socketCall(for: socketApiKeys.CompleteTrip.rawValue) { (json) in
-//            print(#function, "\n ", json)
+            //            print(#function, "\n ", json)
             AlertMessage.showMessageForSuccess("Trip Completed")
             
-//            if self.booingInfo.toDictionary().count == 0 {
-                let fr = json.array?.first
-                let res = RequestAcceptedDataModel(fromJson: fr)
-                self.booingInfo = res.bookingInfo
-//            }
+            //            if self.booingInfo.toDictionary().count == 0 {
+            let fr = json.array?.first
+            let res = RequestAcceptedDataModel(fromJson: fr)
+            self.booingInfo = res.bookingInfo
+            //            }
             if self.booingInfo.rentType == "bulk_miles" {
                 
                 if let SavedLoginData = UserDefaults.standard.value(forKey: "userProfile") as? LoginModel {
@@ -150,7 +150,7 @@ extension HomeViewController: SocketConnected {
     // Socket On 5
     func onSocket_OnTheWayBookLater() {
         SocketIOManager.shared.socketCall(for: socketApiKeys.OnTheWayBookLater.rawValue) { (json) in
-//            print(#function, "\n ", json)
+            //            print(#function, "\n ", json)
             AlertMessage.showMessageForSuccess("Driver is on the way")
             
             self.acceptRequestData(json: json)
@@ -160,36 +160,36 @@ extension HomeViewController: SocketConnected {
     // Socket On 6
     func onSocket_AskForTips() {
         SocketIOManager.shared.socketCall(for: socketApiKeys.AskForTips.rawValue) { (json) in
-//            print(#function, "\n ", json)
+            //            print(#function, "\n ", json)
             AlertMessage.showMessageForSuccess("Driver asks for Tips")
             
             self.hideAndShowView(view: .askForTip)
             self.isExpandCategory = true
         }
     }
-   
+
     // Socket On 7
     func onSocket_CancelledBookingRequestBySystem() {
         SocketIOManager.shared.socketCall(for: socketApiKeys.CancelledBookingRequestBySystem.rawValue) { (json) in
-//            print(#function, "\n ", json)
+            //            print(#function, "\n ", json)
             AlertMessage.showMessageForSuccess("Cancelled Booking Request By System")
             
-//            self.clearMap()
+            //            self.clearMap()
             self.btnBackButtonWhileBookLater()
             self.stopAnimationWhileStartBooking()
-//            self.setupAfterComplete()
+            //            self.setupAfterComplete()
         }
     }
     
     // Socket On 8
     func onSocket_CancelTrip() {
         SocketIOManager.shared.socketCall(for: socketApiKeys.CancelTrip.rawValue) { (json) in
-//            print(#function, "\n ", json)
+            //            print(#function, "\n ", json)
             AlertMessage.showMessageForSuccess("Cancelled Booking Request By Driver")
             self.clearMap()
             self.btnBackButtonWhileBookLater()
             self.stopAnimationWhileStartBooking()
-//            self.setupAfterComplete()
+            //            self.setupAfterComplete()
         }
     }
     
@@ -217,8 +217,8 @@ extension HomeViewController: SocketConnected {
         self.hideAndShowView(view: .requestAccepted)
         self.isExpandCategory = true
         self.routeDrawMethod(origin: "\(res.bookingInfo.driverInfo.lat ?? ""),\(res.bookingInfo.driverInfo.lng ?? "")", destination: "\(res.bookingInfo.pickupLat ?? ""),\(res.bookingInfo.pickupLng ?? "")", isTripAccepted: true)
-        if self.driverMarker == nil {
-                        
+        if self.pickupMarker == nil {
+
             var DoubleLat = Double()
             var DoubleLng = Double()
             
@@ -231,27 +231,23 @@ extension HomeViewController: SocketConnected {
             }
             
             let DriverCordinate = CLLocationCoordinate2D(latitude: DoubleLat , longitude: DoubleLng)
-            self.driverMarker = GMSMarker(position: DriverCordinate) // self.originCoordinate
-            self.driverMarker.icon = UIImage(named: iconCar)
-            self.driverMarker.map = self.mapView
+            self.pickupMarker = GMSMarker(position: DriverCordinate) // self.originCoordinate
+            self.pickupMarker.icon = UIImage(named: iconCar)
+            self.pickupMarker.map = self.mapView
         }
         else {
-            self.driverMarker.icon = UIImage.init(named: iconCar)
+            self.pickupMarker.icon = UIImage.init(named: iconCar)
         }
         markerContainerView.isHidden = true
         lblBuildNumber.text = "Build : \(Bundle.main.buildVersionNumber ?? "") \t\t Booking ID: \(self.booingInfo.id ?? "")"
     }
     
     func startedRequestData(json: JSON) {
-        
-        if self.booingInfo.toDictionary().count == 0 {
-            let fr = json.array?.first
-            let res = RequestAcceptedDataModel(fromJson: fr)
-            self.booingInfo = res.bookingInfo // BookingInfo(fromJson: json.arrayValue.first)
-//            setupCarMarker(res: res.bookingInfo)
-            self.routeDrawMethod(origin: "\(res.bookingInfo.pickupLat ?? ""),\(res.bookingInfo.pickupLng ?? "")", destination: "\(res.bookingInfo.dropoffLat ?? ""),\(res.bookingInfo.dropoffLng ?? "")", isTripAccepted: true)
-            
-        }
+
+        let fr = json.array?.first
+        let res = RequestAcceptedDataModel(fromJson: fr)
+        self.booingInfo = res.bookingInfo // BookingInfo(fromJson: json.arrayValue.first)
+        self.routeDrawMethod(origin: "\(res.bookingInfo.pickupLat ?? ""),\(res.bookingInfo.pickupLng ?? "")", destination: "\(res.bookingInfo.dropoffLat ?? ""),\(res.bookingInfo.dropoffLng ?? "")", isTripAccepted: true)
         self.hideAndShowView(view: .rideStart)
         self.isExpandCategory = true
         
@@ -261,7 +257,7 @@ extension HomeViewController: SocketConnected {
     func stopAnimationWhileStartBooking() {
         self.mapView.animate(toViewingAngle: 0)
         self.mapView.animate(toZoom: zoomLevel)
-//        self.mapView.isMyLocationEnabled = true
+        //        self.mapView.isMyLocationEnabled = true
         self.btnCurrentLocation(UIButton())
         UtilityClass.hideHUD()
     }

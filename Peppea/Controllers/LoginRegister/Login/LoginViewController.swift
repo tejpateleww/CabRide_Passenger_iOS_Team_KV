@@ -47,6 +47,8 @@ class LoginViewController: UIViewController {
         }
         
         #endif
+
+        setRightViewForPassword(textField: txtPassword)
        
     }
     override func viewDidLayoutSubviews() {
@@ -132,7 +134,6 @@ class LoginViewController: UIViewController {
                     SingletonClass.sharedInstance.walletBalance = loginModelDetails.loginData.walletBalance
                     SingletonClass.sharedInstance.BulkMilesBalance = loginModelDetails.loginData.BulkMilesBalance
                     try UserDefaults.standard.set(object: loginModelDetails, forKey: "userProfile") //(loginModelDetails, forKey: "userProfile")
-                    
                     SingletonClass.sharedInstance.loginData = loginModelDetails.loginData
                     
                     if json.dictionary?["booking_info"] != nil {
@@ -216,6 +217,24 @@ class LoginViewController: UIViewController {
         return (true,"")
     }
 
+    func setRightViewForPassword(textField: UITextField)
+    {
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage(named: "iconHidePassword"), for: .normal)
+        button.setImage(UIImage(named: "iconShowPassword"), for: .selected)
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -16, bottom: 0, right: 0)
+        button.tag = textField.tag
+        button.frame = CGRect(x: CGFloat(textField.frame.size.width - 25), y: CGFloat(5), width: CGFloat(25), height: CGFloat(25))
+        button.addTarget(self, action: #selector(self.showHidePassword), for: .touchUpInside)
+        textField.rightView = button
+        textField.rightViewMode = .always
 
+    }
+
+    @objc func showHidePassword(sender : UIButton)
+    {
+        sender.isSelected = !sender.isSelected
+        txtPassword.isSecureTextEntry = !sender.isSelected
+    }
  
 }

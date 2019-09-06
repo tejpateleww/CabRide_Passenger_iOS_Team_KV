@@ -103,7 +103,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
     var i: UInt = 0
     var timer: Timer!
     var EstimateTime: Timer!
-    var driverMarker: GMSMarker!
+//    var driverMarker: GMSMarker!
     var destinationMarker = GMSMarker()
     var pickupMarker = GMSMarker()
 
@@ -218,7 +218,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        mapView.frame = mapViewContainer.frame
+        mapView.frame = CGRect(x: 0, y: 0, width: mapViewContainer.frame.width, height: mapViewContainer.frame.height)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -261,14 +261,14 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
 
     func moveCar() {
         if let myLocation = LocationTracker.shared.lastLocation,
-            driverMarker == nil {
-            driverMarker = GMSMarker(position: myLocation.coordinate)
-            driverMarker.icon = UIImage(named: iconCar)
-            driverMarker.map = self.mapView
+            pickupMarker == nil {
+            pickupMarker = GMSMarker(position: myLocation.coordinate)
+            pickupMarker.icon = UIImage(named: iconCar)
+            pickupMarker.map = self.mapView
             self.mapView.updateMap(toLocation: myLocation, zoomLevel: 16)
         } else if let myLocation = LocationTracker.shared.lastLocation, let myLastLocation = LocationTracker.shared.previousLocation {
             let degrees = myLastLocation.coordinate.bearing(to: myLocation.coordinate)
-            updateMarker(marker: driverMarker, coordinates: myLocation.coordinate, degrees: degrees, duration: 0.3)
+            updateMarker(marker: pickupMarker, coordinates: myLocation.coordinate, degrees: degrees, duration: 0.3)
         }
     }
 
@@ -296,8 +296,8 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
     // MARK: - ARCar Movement Delegate Method
     //-------------------------------------------------------------
     func arCarMovementMoved(_ Marker: GMSMarker) {
-        driverMarker = Marker
-        driverMarker.map = mapView
+        pickupMarker = Marker
+        pickupMarker.map = mapView
     }
 
 
@@ -380,7 +380,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
 
     func setupGoogleMaps()
     {
-        mapView = GMSMapView(frame: mapViewContainer.bounds)
+        mapView = GMSMapView(frame: CGRect(x: 0, y: 0, width: mapViewContainer.frame.width, height: mapViewContainer.frame.height))
         mapView.settings.rotateGestures = false
         mapView.settings.tiltGestures = false
         mapView.isMyLocationEnabled = true
@@ -834,7 +834,8 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
                                  self.mapView.isMyLocationEnabled = true
                                 if isTripAccepted
                                 {
-                                    self.driverMarker = self.pickupMarker
+//                                    self.driverMarker = self.pickupMarker
+//                                    self.pickupMarker.map = nil
                                     self.mapView.isMyLocationEnabled = false
                                 }
 
@@ -1032,22 +1033,17 @@ extension HomeViewController: CLLocationManagerDelegate {
             stopAnimatingCamera = true
             mapView.camera = GMSCameraPosition(target: defaultLocation.coordinate, zoom: zoomLevel, bearing: 0, viewingAngle: 0)
         }
-
-        //This is just temporary
-//        self.emitSocket_DriverCurrentLocation(param: ["customer_id": SingletonClass.sharedInstance.loginData.id ?? "","driver_id" : "46", "lat": location.coordinate.latitude, "lng": location.coordinate.longitude])
-
         if SocketIOManager.shared.socket.status == .connected {
             
             self.emitSocket_UpdateCustomerLatLng(param: ["customer_id": SingletonClass.sharedInstance.loginData.id ?? "", "lat": location.coordinate.latitude, "lng": location.coordinate.longitude])
         }
-        
     }
 
 
     func liveTrackingForTrip(lat : String , lng : String)
     {
         let newCoordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(exactly: Double(lat) ?? 0.00) ?? 0.00, longitude:CLLocationDegrees(exactly: Double(lng) ?? 0.00) ?? 0.00)
-        self.moveMent.arCarMovement(marker: driverMarker, oldCoordinate: oldCoordinate ?? defaultLocation.coordinate, newCoordinate: newCoordinate, mapView: self.mapView)
+        self.moveMent.arCarMovement(marker: pickupMarker, oldCoordinate: oldCoordinate ?? defaultLocation.coordinate, newCoordinate: newCoordinate, mapView: self.mapView)
         oldCoordinate = defaultLocation.coordinate
     }
 }

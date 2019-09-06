@@ -66,7 +66,6 @@ class SplashViewController: UIViewController {
             strParam = NetworkEnvironment.baseURL + ApiKey.Init.rawValue + "ios_customer/\(kAPPVesion)/\(SingletonClass.sharedInstance.loginData.id ?? "")"
         }
         
-//
         UserWebserviceSubclass.initApi(strURL: strParam) { (json, status) in
             if status
             {

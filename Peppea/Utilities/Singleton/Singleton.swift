@@ -20,6 +20,8 @@ class SingletonClass: NSObject
     
     var bookingInfo: BookingInfo?
     var myCurrentLocation = CLLocation()
+    /// Get device token
+    var token = ""
     
     func clearSingletonClass() {
         RegisterOTP = ""
