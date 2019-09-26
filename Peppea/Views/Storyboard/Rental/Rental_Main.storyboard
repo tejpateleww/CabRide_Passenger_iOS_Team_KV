@@ -196,7 +196,7 @@
         <!--Rental Home View Controller-->
         <scene sceneID="ky5-my-v05">
             <objects>
-                <viewController storyboardIdentifier="RentalHomeViewController" id="Lif-om-EAm" customClass="RentalHomeViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RentalHomeViewController" id="Lif-om-EAm" customClass="RentalHomeViewController" customModule="Peppea" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1Uo-Gt-Gyi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -204,10 +204,13 @@
                         <viewLayoutGuide key="safeArea" id="Uci-Qg-4zG"/>
                     </view>
                     <navigationItem key="navigationItem" id="vzl-ET-XYx"/>
+                    <connections>
+                        <outlet property="view" destination="1Uo-Gt-Gyi" id="SOd-Ji-6F9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zMD-tz-UmE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="687" y="967"/>
+            <point key="canvasLocation" x="386" y="969"/>
         </scene>
         <!--Favourite Address View Controller-->
         <scene sceneID="JGn-li-ZWv">
