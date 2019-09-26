@@ -14,6 +14,9 @@ import UIKit
 //Grey : 9a9a9a
 //Balck : 2e2d2e
 
+let peppeaAppNameString = "Peppea"
+let peppeaRentalAppNameString = "PeppeaRental"
+
 let googlApiKey = "AIzaSyDcug87uBhFLMo1KlqyaO10shE-sNTBCmw" // built from ODDs
 let baseURLDirections = "https://maps.googleapis.com/maps/api/directions/json?"
 let geocodeAddress = "https://maps.googleapis.com/maps/api/geocode/json?latlng="
@@ -21,6 +24,7 @@ let geocodeAddress = "https://maps.googleapis.com/maps/api/geocode/json?latlng="
 var imagBaseURL = "https://www.peppea.com/panel/"
 
 let kAPPVesion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
+
 
 
 let SCREEN_WIDTH = UIScreen.main.bounds.width

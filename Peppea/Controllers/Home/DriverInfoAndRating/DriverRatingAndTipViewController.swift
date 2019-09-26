@@ -234,7 +234,7 @@ class DriverRatingAndTipViewController: UIViewController {
             if status {
                 AlertMessage.showMessageForSuccess(response.dictionary?["message"]?.stringValue ?? "")
                 
-                let alert = UIAlertController(title: AppName.kAPPName, message: "Your trip has been completed", preferredStyle: .alert)
+                let alert = UIAlertController(title: AppName.kAPPName.rawValue, message: "Your trip has been completed", preferredStyle: .alert)
                 let ok = UIAlertAction(title: "OK", style: .default) { (action) in
                     let homeVC = self.parent as? HomeViewController
                     homeVC?.clearMap()

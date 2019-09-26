@@ -126,11 +126,29 @@ struct RegistrationFinalKeys {
 }
 
 
+enum AppNamesEnum: String {
+    
+    case peppea = "Peppea"
+    case peppeaRental = "PeppeaRental"
+}
 
 struct AppName {
-    static let kAPPName = "Peppea"//.localized
+    
+
+    static var kAPPName: AppNamesEnum = .peppea
+//        = "Peppea"//.localized
     //    "TanTaxi Driver"
     static let kAPPUrl = "https://itunes.apple.com/us/app/TanTaxi Driver/id1445179587?ls=1&mt=8"
+    
+    static func set(appName: AppNamesEnum) {
+        
+        AppName.kAPPName = appName
+    }
+    
+    static func getkAppName() -> AppNamesEnum {
+        
+        return kAPPName
+    }
     
 }
 
