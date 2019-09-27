@@ -89,7 +89,7 @@ class DriverRatingAndTipViewController: UIViewController {
                 constraintTopOfComments.priority = UILayoutPriority(650)
                 constraintTopOfAskForTip.priority = UILayoutPriority(950)
                 constraintHeightOfViewRating.constant = 0
-                lblDriverName.text = "Do you want to tip \((driver?.firstName ?? "") + " " + (driver?.lastName ?? ""))?"
+                lblDriverName.text = "Do you want give tip to \((driver?.firstName ?? "") + " " + (driver?.lastName ?? ""))?"
             }
         }
         

@@ -214,7 +214,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate,UIPickerView
             if status
             {
                 //                self.parameterArray.otp = json["otp"].stringValue
-                AlertMessage.showMessageForError(json["message"].stringValue)
+                AlertMessage.showMessageForSuccess(json["message"].stringValue)
                 SingletonClass.sharedInstance.RegisterOTP = json["otp"].stringValue
                 let registrationContainerVC = self.navigationController?.viewControllers[1] as! RegisterContainerViewController
                 registrationContainerVC.scrollObject.setContentOffset(CGPoint(x: self.view.frame.size.width, y: 0), animated: true)
