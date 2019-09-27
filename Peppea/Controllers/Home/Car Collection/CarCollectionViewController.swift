@@ -259,7 +259,7 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
     // ----------------------------------------------------
     
     @IBAction func btnPromoCodeAction(_ sender: UIButton) {
-        let alertController = UIAlertController(title: AppName.kAPPName, message: "Enter promo code", preferredStyle: .alert)
+        let alertController = UIAlertController(title: AppName.kAPPName.rawValue, message: "Enter promo code", preferredStyle: .alert)
         alertController.addTextField { (textField : UITextField!) -> Void in
             textField.placeholder = "Enter promo code"
         }

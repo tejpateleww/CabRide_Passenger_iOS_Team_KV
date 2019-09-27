@@ -15,14 +15,38 @@ class SplashViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        webserviceforAPPInit()
         
-//        (UIApplication.shared.delegate as! AppDelegate).GoToHome()
+        self.determiningTheAppName()
+        
+        //Peppea or Peppea Rental
+        
+        if AppName.getkAppName() == .peppea {
 
+            self.webserviceforAPPInit()
+        
+        }else{
+            //Peppea Rental
+            self.redirectToPeppeaRentalFlow()
+            
+        }
+        
 
         // Do any additional setup after loading the view.
     }
 
+    func determiningTheAppName(){
+        
+        if self.view.tag == 1 {
+
+            //Peppea Rental App
+            AppName.set(appName: .peppeaRental)
+
+        }else{
+            //Peppea App
+            AppName.set(appName: .peppea)
+
+        }
+    }
 
 
     override func viewDidAppear(_ animated: Bool) {
@@ -149,4 +173,26 @@ class SplashViewController: UIViewController {
 
     }
 
+}
+
+
+extension SplashViewController {
+    
+    
+    func redirectToPeppeaRentalFlow() {
+        
+//        if(UserDefaults.standard.bool(forKey: "isUserLogin") == false)
+//        {
+            (UIApplication.shared.delegate as! AppDelegate).goToPeppeaRentalLogin()
+//        }
+//        else
+//        {
+//            (UIApplication.shared.delegate as! AppDelegate).GoToChooseServices()
+//
+//        }
+        
+        
+        
+        
+    }
 }
