@@ -88,7 +88,7 @@ PODS:
   - GoogleUtilities/UserDefaults (6.2.5):
     - GoogleUtilities/Logger
   - IQDropDownTextField (1.1.1)
-  - IQKeyboardManagerSwift (6.3.0)
+  - IQKeyboardManagerSwift (6.5.0)
   - lottie-ios (3.1.0)
   - MarqueeLabel/Swift (3.2.1)
   - MiniLayout (1.4.1)
@@ -208,7 +208,7 @@ SPEC CHECKSUMS:
   GooglePlaces: f09e76993c9c3ee4af8f4f7f535bb94d6aa3b649
   GoogleUtilities: e7dc37039b19df7fe543479d3e4a02ac8d11bb69
   IQDropDownTextField: 3d2e5728a2b83ff5dbb14cb9b497a80005124cbe
-  IQKeyboardManagerSwift: a8228c257614af98743b4cd8584637025f36358f
+  IQKeyboardManagerSwift: 6cd19976c6e871907c4ed9127c2d3affdd4defc2
   lottie-ios: 9467723922dfff46f6d4e3019c32594a62440b7c
   MarqueeLabel: 2daf039bf916937c8a4c9adfc13577cc5e51b4ce
   MiniLayout: bd42e3763700c3002f39ff3b36dc8a027ea5078a
