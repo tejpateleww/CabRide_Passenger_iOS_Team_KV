@@ -9,7 +9,7 @@
 import UIKit
 
 //CategoryFileterDelegate
-class SelectVehicleViewController: UIViewController,BookVehicleDelegate
+class SelectVehicleViewController: BaseViewController,BookVehicleDelegate
 {
     
     @IBOutlet var tblView: UITableView!
@@ -54,13 +54,24 @@ class SelectVehicleViewController: UIViewController,BookVehicleDelegate
 //            self.endDate
 //        self.webserviceFindVehicle()
         arrVehicles = [["Id":"111","vehiclemodel":"ford Figo","distance":"25","capicity":"5 seater","address":"30525 Linden Street PO Box 283 Lindstrom, MN 55045","carImage":"imgYellowCar"], ["Id":"112","vehiclemodel":"Mercedes Benz","distance":"15","capicity":"4 seater","address":"30525 Linden Street PO Box 283 London, MN 55045","carImage":"imgYellowCar"], ["Id":"113","vehiclemodel":"Verna Hundai","distance":"22","capicity":"5 seater","address":"US Main Street PO Box 283 London, MN 55045","carImage":"imgYellowCar"],["Id":"114","vehiclemodel":"Honda City","distance":"18","capicity":"5 seater","address":"111505 London Street PO Box 283 Lindstrom, MN 55055Z5","carImage":"imgYellowCar"],["Id":"228","vehiclemodel":"Scorpio","distance":"22","capicity":"5 seater","address":"30000 Linden Street PO Box 283 Lindstrom, MN 465001","carImage":"imgYellowCar"],["Id":"640","vehiclemodel":"ford Figo","distance":"25","capicity":"5 seater","address":"30525 Linden Street PO Box 283 Lindstrom, MN 55045","carImage":"imgYellowCar"]]
-        
+        //Adding more elements
+        arrVehicles.append(contentsOf: arrVehicles)
+        arrVehicles.append(contentsOf: arrVehicles)
+
+
+    }
+    
+    func setupNavigationController()
+    {
+        setNavBarWithMenu(Title: "Home", IsNeedRightButton: false)
     }
     
     override func viewWillAppear(_ animated: Bool)
     {
         super.viewWillAppear(animated)
         
+        self.setupNavigationController()
+
 //        Utilities.setNavigationBarInViewController(controller: self, naviColor: ThemeNaviLightBlueColor, naviTitle: "Select \(VehicalCat_IDName.1)", leftImage: kBack_Icon, rightImage: "", isTranslucent: false)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "filter"), style: .plain, target: self, action: nil)
         //#selector(self.openFilterView)
@@ -115,16 +126,25 @@ extension SelectVehicleViewController : UITableViewDataSource, UITableViewDelega
         var CustomCell = UITableViewCell()
         if self.arrVehicles.count > 0 {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SelectVehicleViewCell") as! SelectVehicleViewCell
+            
+        ///Cell Border and Corener Radius
+        cell.viewCell.layer.borderWidth = 1.2
+        cell.viewCell.layer.borderColor = cellBorderColor.cgColor
+//        cell.viewCell.layer.cornerRadius = 9.0
+        cell.viewCell.layer.cornerRadius = 15
+        cell.viewCell.layer.masksToBounds = true
+
+            
         let VehicleDict = self.arrVehicles[indexPath.row]
         cell.DelegateForVehicalBook = self
-        cell.viewCell.backgroundColor = UIColor.white
-        cell.viewCell.layer.shadowColor = UIColor.darkGray.cgColor
-        cell.viewCell.layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
-        cell.viewCell.layer.shadowOpacity = 0.4
-        cell.viewCell.layer.shadowRadius = 1
+//        cell.viewCell.backgroundColor = UIColor.white
+//        cell.viewCell.layer.shadowColor = UIColor.darkGray.cgColor
+//        cell.viewCell.layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
+//        cell.viewCell.layer.shadowOpacity = 0.4
+//        cell.viewCell.layer.shadowRadius = 1
         
-        cell.viewCell.layer.cornerRadius = 15
-        cell.btnBook.layer.cornerRadius = 15
+
+            cell.btnBook.layer.cornerRadius = 15
         cell.btnBook.tag = indexPath.row
         
         if let VehicleModel = VehicleDict["name"] as? String {
@@ -163,16 +183,20 @@ extension SelectVehicleViewController : UITableViewDataSource, UITableViewDelega
         
     }
     
-    //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    //
-    //        tblView.deselectRow(at: indexPath, animated: false)
-    //
-    //    }
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        tblView.deselectRow(at: indexPath, animated: false)
+        
+        let cell = tableView.cellForRow(at: indexPath)
+        self.didVehicleBook(CustomCell: cell!)
+        
+    }
+
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if arrVehicles.count > 0 {
-            return 150
+            return 100
+            //150
         } else {
             return 200
         }
@@ -273,31 +297,31 @@ extension SelectVehicleViewController {
 //    }
     
     
-    func getDummyVehicles() -> [[String: Any]] {
-        
-        var arrayVehicles: [[String: Any]] = [
-                                                [
-                                                 "vehicleName" : "Ford Figo",
-                                                 "noOfSeats" : "5 Seater",
-                                                 "distance": "5.5 km",
-                                                 "Address": "Linden Street, PO Box No 12345"],
-                                                [
-                                                    "vehicleName" : "Ford Figo",
-                                                    "noOfSeats" : "5 Seater",
-                                                    "distance": "5.5 km",
-                                                    "Address": "Linden Street, PO Box No 12345"],
-                                                [
-                                                    "vehicleName" : "Ford Figo",
-                                                    "noOfSeats" : "5 Seater",
-                                                    "distance": "5.5 km",
-                                                    "Address": "Linden Street, PO Box No 12345"],
-                                                [
-                                                    "vehicleName" : "Ford Figo",
-                                                    "noOfSeats" : "5 Seater",
-                                                    "distance": "5.5 km",
-                                                    "Address": "Linden Street, PO Box No 12345"]
-                                            ]
-        
-        return arrayVehicles
-    }
+//    func getDummyVehicles() -> [[String: Any]] {
+//
+//        var arrayVehicles: [[String: Any]] = [
+//                                                [
+//                                                 "vehicleName" : "Ford Figo",
+//                                                 "noOfSeats" : "5 Seater",
+//                                                 "distance": "5.5 km",
+//                                                 "Address": "Linden Street, PO Box No 12345"],
+//                                                [
+//                                                    "vehicleName" : "Ford Figo",
+//                                                    "noOfSeats" : "5 Seater",
+//                                                    "distance": "5.5 km",
+//                                                    "Address": "Linden Street, PO Box No 12345"],
+//                                                [
+//                                                    "vehicleName" : "Ford Figo",
+//                                                    "noOfSeats" : "5 Seater",
+//                                                    "distance": "5.5 km",
+//                                                    "Address": "Linden Street, PO Box No 12345"],
+//                                                [
+//                                                    "vehicleName" : "Ford Figo",
+//                                                    "noOfSeats" : "5 Seater",
+//                                                    "distance": "5.5 km",
+//                                                    "Address": "Linden Street, PO Box No 12345"]
+//                                            ]
+//
+//        return arrayVehicles
+//    }
 }

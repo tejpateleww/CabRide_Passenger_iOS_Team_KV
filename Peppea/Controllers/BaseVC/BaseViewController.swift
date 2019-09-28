@@ -20,19 +20,7 @@ class BaseViewController: UIViewController {
 
     func setNavBarWithMenu(Title:String, IsNeedRightButton:Bool){
 
-        if Title == "Home"
-        {
-            //            let titleImage = UIImageView(frame: CGRect(x: 10, y: 0, width: 100, height: 30))
-            //            titleImage.contentMode = .scaleAspectFit
-            //            titleImage.image = UIImage(named: "Title_logo")
-            ////            titleImage.backgroundColor  = themeYellowColor
-            //             self.navigationItem.titleView = titleImage
-            self.title = title?.uppercased()
-        }
-        else
-        {
-            self.navigationItem.title = Title.uppercased()
-        }
+        
 
         self.navigationController?.navigationBar.barTintColor = UIColor.black
         self.navigationController?.navigationBar.tintColor = UIColor.black
@@ -46,11 +34,29 @@ class BaseViewController: UIViewController {
         let leftNavBarButton = UIBarButtonItem(image: UIImage(named: "iconMenu"), style: .plain, target: self, action: #selector(self.OpenMenuAction))
         self.navigationItem.leftBarButtonItem = nil
         self.navigationItem.leftBarButtonItem = leftNavBarButton
+        
+        if Title == "Home"
+        {
+            //            let titleImage = UIImageView(frame: CGRect(x: 10, y: 0, width: 100, height: 30))
+            //            titleImage.contentMode = .scaleAspectFit
+            //            titleImage.image = UIImage(named: "Title_logo")
+            ////            titleImage.backgroundColor  = themeYellowColor
+            //             self.navigationItem.titleView = titleImage
+            self.title = Title
+                //.uppercased()
+        }
+        else
+        {
+            self.navigationItem.title = Title.uppercased()
+        }
+        
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.black ,NSAttributedString.Key.font: UIFont(name: AppRegularFont, size: 20)!] ///
+
 
 
     }
 
-    func setNavBarWithBack(Title:String, IsNeedRightButton:Bool) {
+    func setNavBarWithBack(Title:String, IsNeedRightButton:Bool, titleFontColor: UIColor = UIColor.black) {
                 self.navigationController?.navigationBar.isTranslucent = true
 
         if Title == "Home" {
@@ -59,23 +65,25 @@ class BaseViewController: UIViewController {
             titleImage.image = UIImage(named: "Title_logo")
             self.navigationItem.titleView = titleImage
         } else {
-            self.navigationItem.title = Title.uppercased().localizedUppercase
+            self.navigationItem.title = Title
+                //.uppercased().localizedUppercase
         }
 
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : ThemeColor]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : titleFontColor, NSAttributedString.Key.font: UIFont(name: AppRegularFont, size: 20)!] ///
         let leftNavBarButton = UIBarButtonItem(image: UIImage(named: "iconLeftArrow"), style: .plain, target: self, action: #selector(self.btnBackAction))
         self.navigationItem.leftBarButtonItem = nil
         self.navigationItem.leftBarButtonItem = leftNavBarButton
-        self.navigationItem.leftBarButtonItem?.tintColor = .black
+        ///White color of a Back Bar Button Item
+        self.navigationItem.leftBarButtonItem?.tintColor = .white
         self.navigationController?.view.backgroundColor = .white
 
 
         self.navigationController?.navigationBar.tintColor = UIColor.black
-        self.navigationController?.navigationBar.barTintColor = UIColor.white
-        self.navigationController?.navigationBar.layer.shadowColor = UIColor.black.cgColor
-        self.navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
-        self.navigationController?.navigationBar.layer.shadowRadius = 3.0
-        self.navigationController?.navigationBar.layer.shadowOpacity = 0.5
+        self.navigationController?.navigationBar.barTintColor = UIColor.black
+//        self.navigationController?.navigationBar.layer.shadowColor = UIColor.black.cgColor
+//        self.navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
+//        self.navigationController?.navigationBar.layer.shadowRadius = 3.0
+//        self.navigationController?.navigationBar.layer.shadowOpacity = 0.5
         self.navigationController?.navigationBar.layer.masksToBounds = false
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.hidesBarsOnSwipe = false

@@ -116,6 +116,7 @@
 		687A004E233E416B005C71C5 /* VehicleFirstTimeDurationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687A0049233E416B005C71C5 /* VehicleFirstTimeDurationCell.swift */; };
 		687A004F233E416B005C71C5 /* VehiclePaymentBreakdownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687A004A233E416B005C71C5 /* VehiclePaymentBreakdownCell.swift */; };
 		687A0056233E4ACF005C71C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 687A0055233E4ACE005C71C5 /* Assets.xcassets */; };
+		68B79B78233F664900A399C7 /* CarsAvailabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B79B77233F664900A399C7 /* CarsAvailabelViewController.swift */; };
 		7A1CC8F12306871F00FB6ECD /* BulkMilePurchaseReqModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1CC8F02306871F00FB6ECD /* BulkMilePurchaseReqModel.swift */; };
 		7A1CC8F32306DE1300FB6ECD /* BulkMilesHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1CC8F22306DE1300FB6ECD /* BulkMilesHistory.swift */; };
 		7A984494230A6BED004359F3 /* BulkMileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A984492230A6BED004359F3 /* BulkMileData.swift */; };
@@ -305,6 +306,7 @@
 		687A0049233E416B005C71C5 /* VehicleFirstTimeDurationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleFirstTimeDurationCell.swift; sourceTree = "<group>"; };
 		687A004A233E416B005C71C5 /* VehiclePaymentBreakdownCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehiclePaymentBreakdownCell.swift; sourceTree = "<group>"; };
 		687A0055233E4ACE005C71C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		68B79B77233F664900A399C7 /* CarsAvailabelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarsAvailabelViewController.swift; sourceTree = "<group>"; };
 		7A1CC8F02306871F00FB6ECD /* BulkMilePurchaseReqModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulkMilePurchaseReqModel.swift; sourceTree = "<group>"; };
 		7A1CC8F22306DE1300FB6ECD /* BulkMilesHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulkMilesHistory.swift; sourceTree = "<group>"; };
 		7A984492230A6BED004359F3 /* BulkMileData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BulkMileData.swift; sourceTree = "<group>"; };
@@ -737,6 +739,7 @@
 			children = (
 				687A0044233E415B005C71C5 /* VehicleDetailViewController.swift */,
 				687A003B233E28BE005C71C5 /* DetailCells */,
+				68B79B76233F661800A399C7 /* BookCarViewConroller */,
 			);
 			path = HomeDetailViewController;
 			sourceTree = "<group>";
@@ -759,6 +762,14 @@
 				687A0055233E4ACE005C71C5 /* Assets.xcassets */,
 			);
 			path = Assets;
+			sourceTree = "<group>";
+		};
+		68B79B76233F661800A399C7 /* BookCarViewConroller */ = {
+			isa = PBXGroup;
+			children = (
+				68B79B77233F664900A399C7 /* CarsAvailabelViewController.swift */,
+			);
+			path = BookCarViewConroller;
 			sourceTree = "<group>";
 		};
 		92BC9B349AE5C1EFF324C378 /* Pods */ = {
@@ -1523,6 +1534,7 @@
 				468E993122D9F26900072361 /* TransferMoneyModel.swift in Sources */,
 				687A0045233E415B005C71C5 /* VehicleDetailViewController.swift in Sources */,
 				EE8A61CC22C654C0000718ED /* MessageBarController.swift in Sources */,
+				68B79B78233F664900A399C7 /* CarsAvailabelViewController.swift in Sources */,
 				7A984495230A6BED004359F3 /* BulkMileHistoryList.swift in Sources */,
 				466957E622DDB165008A73C0 /* LoginModel.swift in Sources */,
 				468E992A22D9F26900072361 /* UpdateVehicleInfo.swift in Sources */,

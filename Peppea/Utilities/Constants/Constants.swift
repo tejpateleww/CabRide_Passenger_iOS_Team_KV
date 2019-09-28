@@ -35,6 +35,8 @@ let MeasurementSign = "mi"
 
 let ThemeColor : UIColor =  UIColor.init(hex: "2e2d2e")
 
+let cellBorderColor: UIColor = UIColor.init(red: 212.0/255.0, green: 212.0/255.0, blue: 212.0/255.0, alpha: 1.0)
+
 let iconCar = "iconCar"
 let iconMarker = "iconMarker"
 let zoomLevel: Float = 16.0

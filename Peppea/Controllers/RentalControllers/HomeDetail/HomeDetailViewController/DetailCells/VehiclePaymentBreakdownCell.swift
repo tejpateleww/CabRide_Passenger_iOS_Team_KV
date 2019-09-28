@@ -39,6 +39,7 @@ class VehiclePaymentBreakdownCell: UITableViewCell {
     @IBOutlet weak var ViewSpecialFare: UIView!
     @IBOutlet weak var ViewDeliveryFare: UIView!
     
+    @IBOutlet weak var btnViewOffers: UIButton!
     
     
     var Delegate:TryPromoCodeDelegate!

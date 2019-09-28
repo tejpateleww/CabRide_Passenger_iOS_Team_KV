@@ -25,6 +25,9 @@
         <array key="SFUIText.ttf">
             <string>.SFUIText</string>
         </array>
+        <array key="proxima-nova-light.otf">
+            <string>ProximaNova-Light</string>
+        </array>
         <array key="proxima-nova-semibold.otf">
             <string>ProximaNova-Semibold</string>
         </array>
@@ -2286,6 +2289,134 @@ automatic expense for warding</string>
             </objects>
             <point key="canvasLocation" x="-631" y="2012"/>
         </scene>
+        <!--Cars Availabel View Controller-->
+        <scene sceneID="HWd-X3-4ws">
+            <objects>
+                <viewController id="hTa-xN-048" customClass="CarsAvailabelViewController" customModule="Peppea" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TPQ-ff-m5k">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="182"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Cars Availabel View" translatesAutoresizingMaskIntoConstraints="NO" id="2XN-li-JLD">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="182"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Availabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uD1-yu-nd4">
+                                <rect key="frame" x="148.5" y="4" width="78" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="26" id="34r-yn-f3n"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="19"/>
+                                <color key="textColor" red="0.0" green="0.56031829119999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="ti0-IG-pSh" userLabel="Stack View - From Date">
+                                <rect key="frame" x="39.5" y="41" width="96" height="57"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="15" translatesAutoresizingMaskIntoConstraints="NO" id="gRb-qQ-u2H">
+                                        <rect key="frame" x="0.0" y="0.0" width="37.5" height="19"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="19" id="y3a-w6-nRf"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="29th May 2019" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="15" translatesAutoresizingMaskIntoConstraints="NO" id="y2n-JP-vad">
+                                        <rect key="frame" x="0.0" y="23" width="96" height="15"/>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Light" family="Proxima Nova" pointSize="15"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:00 AM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="15" translatesAutoresizingMaskIntoConstraints="NO" id="0us-XP-iXJ">
+                                        <rect key="frame" x="0.0" y="42" width="60.5" height="15"/>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Light" family="Proxima Nova" pointSize="15"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="57" id="D0L-XL-5Id"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="4eI-kk-Xwk" userLabel="Stack View - To Date">
+                                <rect key="frame" x="237.5" y="41" width="90" height="57"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tCQ-C1-926">
+                                        <rect key="frame" x="0.0" y="0.0" width="19" height="19"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="19" id="Vmm-ua-dkU"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="31st May 2019" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ba-T4-SFe">
+                                        <rect key="frame" x="0.0" y="19" width="90" height="19"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="19" id="gJq-IF-4d4"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Light" family="Proxima Nova" pointSize="15"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:00 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WeS-VD-NO8">
+                                        <rect key="frame" x="0.0" y="38" width="60" height="19"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="19" id="ZA0-Z6-5Wj"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Light" family="Proxima Nova" pointSize="15"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="57" id="JAh-ZG-N3L"/>
+                                </constraints>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9lu-1R-cfQ">
+                                <rect key="frame" x="107.5" y="120" width="160" height="35"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="5fn-Vf-KQ2"/>
+                                    <constraint firstAttribute="width" constant="160" id="NSe-Og-f3V"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="14"/>
+                                <state key="normal" title="Book Car">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="bookCarButtonClicked:" destination="hTa-xN-048" eventType="touchUpInside" id="8V0-a7-WFs"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="uD1-yu-nd4" firstAttribute="centerX" secondItem="TPQ-ff-m5k" secondAttribute="centerX" id="A2G-Fa-2g2"/>
+                            <constraint firstItem="uD1-yu-nd4" firstAttribute="top" secondItem="sl9-ts-Yf0" secondAttribute="top" constant="4" id="CGx-NA-BBa"/>
+                            <constraint firstItem="9lu-1R-cfQ" firstAttribute="centerX" secondItem="TPQ-ff-m5k" secondAttribute="centerX" id="DFv-og-mOi"/>
+                            <constraint firstItem="4eI-kk-Xwk" firstAttribute="centerX" secondItem="TPQ-ff-m5k" secondAttribute="centerX" constant="95" id="HXL-5v-aV5"/>
+                            <constraint firstItem="4eI-kk-Xwk" firstAttribute="top" secondItem="sl9-ts-Yf0" secondAttribute="top" constant="41" id="IPd-J4-EFc"/>
+                            <constraint firstItem="ti0-IG-pSh" firstAttribute="top" secondItem="sl9-ts-Yf0" secondAttribute="top" constant="41" id="Rbf-RK-Vsc"/>
+                            <constraint firstItem="ti0-IG-pSh" firstAttribute="centerX" secondItem="TPQ-ff-m5k" secondAttribute="centerX" constant="-100" id="gAz-0U-WOS"/>
+                            <constraint firstItem="9lu-1R-cfQ" firstAttribute="top" secondItem="uD1-yu-nd4" secondAttribute="bottom" constant="90" id="o7G-rU-veK"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="sl9-ts-Yf0"/>
+                    </view>
+                    <connections>
+                        <outlet property="availabelTitleLbl" destination="uD1-yu-nd4" id="n9l-MB-uGY"/>
+                        <outlet property="btnBookCar" destination="9lu-1R-cfQ" id="7Kw-M8-QOe"/>
+                        <outlet property="fromDateLbl" destination="y2n-JP-vad" id="tcP-jX-Pqi"/>
+                        <outlet property="fromTimeLbl" destination="0us-XP-iXJ" id="XAM-n3-piA"/>
+                        <outlet property="toDateLbl" destination="8ba-T4-SFe" id="gq7-9s-JBt"/>
+                        <outlet property="toTimeLbl" destination="WeS-VD-NO8" id="5vm-yb-0BN"/>
+                        <outlet property="view" destination="TPQ-ff-m5k" id="WlS-rM-Y77"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tkh-X3-rYJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1628" y="1723.5382308845578"/>
+        </scene>
         <!--FlatRateListViewController-->
         <scene sceneID="peJ-zY-KVg">
             <objects>
@@ -2317,13 +2448,13 @@ automatic expense for warding</string>
                                                             <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OSE-Vk-m5k">
-                                                                    <rect key="frame" x="10" y="7" width="355" height="60"/>
+                                                                    <rect key="frame" x="10" y="7" width="355" height="57"/>
                                                                     <subviews>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XWw-OB-fSq">
-                                                                            <rect key="frame" x="5" y="5" width="345" height="50"/>
+                                                                            <rect key="frame" x="5" y="5" width="345" height="47"/>
                                                                             <subviews>
                                                                                 <view contentMode="scaleToFill" verticalHuggingPriority="241" translatesAutoresizingMaskIntoConstraints="NO" id="g8Z-Sw-mZy">
-                                                                                    <rect key="frame" x="0.0" y="4" width="10" height="39"/>
+                                                                                    <rect key="frame" x="0.0" y="4" width="10" height="36"/>
                                                                                     <subviews>
                                                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconPickupRound" translatesAutoresizingMaskIntoConstraints="NO" id="SJy-Wv-FGr">
                                                                                             <rect key="frame" x="0.0" y="0.0" width="10" height="10"/>
@@ -2333,13 +2464,13 @@ automatic expense for warding</string>
                                                                                             </constraints>
                                                                                         </imageView>
                                                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconLine" translatesAutoresizingMaskIntoConstraints="NO" id="M4j-cb-56V">
-                                                                                            <rect key="frame" x="4.5" y="10" width="1" height="19"/>
+                                                                                            <rect key="frame" x="4.5" y="10" width="1" height="16"/>
                                                                                             <constraints>
                                                                                                 <constraint firstAttribute="width" constant="1" id="EaQ-Or-dDt"/>
                                                                                             </constraints>
                                                                                         </imageView>
                                                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconDropoffPinRound" translatesAutoresizingMaskIntoConstraints="NO" id="qYd-m6-ipe">
-                                                                                            <rect key="frame" x="0.0" y="29" width="10" height="10"/>
+                                                                                            <rect key="frame" x="0.0" y="26" width="10" height="10"/>
                                                                                         </imageView>
                                                                                     </subviews>
                                                                                     <constraints>
@@ -2358,12 +2489,12 @@ automatic expense for warding</string>
                                                                                     </constraints>
                                                                                 </view>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="First Description  Description  Description Description Description Description Description " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WXH-pP-W2q">
-                                                                                    <rect key="frame" x="15" y="2" width="325" height="17.5"/>
+                                                                                    <rect key="frame" x="15" y="2" width="325" height="16"/>
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5jN-UT-BPt">
-                                                                                    <rect key="frame" x="15" y="24.5" width="320" height="1"/>
+                                                                                    <rect key="frame" x="15" y="23" width="320" height="1"/>
                                                                                     <color key="backgroundColor" red="0.41176470590000003" green="0.41176470590000003" blue="0.41176470590000003" alpha="0.13" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="height" constant="1" id="rZ7-ga-aN2"/>
@@ -2373,7 +2504,7 @@ automatic expense for warding</string>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Second Description Description Description Description Description Description " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TKU-3d-iuJ">
-                                                                                    <rect key="frame" x="15" y="30.5" width="325" height="14.5"/>
+                                                                                    <rect key="frame" x="15" y="29" width="325" height="13"/>
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
@@ -2428,10 +2559,10 @@ automatic expense for warding</string>
                                                                     </userDefinedRuntimeAttributes>
                                                                 </view>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qr6-ZB-ZT6">
-                                                                    <rect key="frame" x="10" y="67" width="355" height="18"/>
+                                                                    <rect key="frame" x="10" y="64" width="355" height="21"/>
                                                                     <subviews>
                                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QNe-2x-3VH">
-                                                                            <rect key="frame" x="0.0" y="-2" width="355" height="20"/>
+                                                                            <rect key="frame" x="0.0" y="-2" width="355" height="23"/>
                                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                                             <state key="normal" title="$ 210"/>
                                                                         </button>
@@ -2533,7 +2664,7 @@ automatic expense for warding</string>
         <!--SelectVehicleViewController-->
         <scene sceneID="cdK-C1-VD7">
             <objects>
-                <viewController storyboardIdentifier="SelectVehicleViewController" id="7Tp-ya-nby" userLabel="SelectVehicleViewController" customClass="SelectVehicleViewController" customModule="RentInFlash_Customer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SelectVehicleViewController" id="7Tp-ya-nby" userLabel="SelectVehicleViewController" customClass="SelectVehicleViewController" customModule="Peppea" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9oT-gU-Sgw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2544,17 +2675,18 @@ automatic expense for warding</string>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6d9-M5-ZP4">
                                         <rect key="frame" x="0.0" y="62" width="375" height="545"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <viewLayoutGuide key="safeArea" id="4Cv-HD-L3u"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SelectVehicleViewCell" rowHeight="150" id="CNX-Tj-4GB" userLabel="SelectVehicleViewCell" customClass="SelectVehicleViewCell" customModule="RentInFlash_Customer" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28" width="375" height="150"/>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SelectVehicleViewCell" rowHeight="100" id="CNX-Tj-4GB" userLabel="SelectVehicleViewCell" customClass="SelectVehicleViewCell" customModule="Peppea" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CNX-Tj-4GB" id="eWN-wN-pgo">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xUr-rP-6kU">
-                                                            <rect key="frame" x="70" y="100" width="235" height="45"/>
+                                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xUr-rP-6kU">
+                                                            <rect key="frame" x="70" y="50" width="235" height="45"/>
                                                             <color key="backgroundColor" red="1" green="0.67450980390000004" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="45" id="SwT-vH-WRc"/>
@@ -2567,84 +2699,88 @@ automatic expense for warding</string>
                                                             </connections>
                                                         </button>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Xf-Ur-9lB">
-                                                            <rect key="frame" x="10" y="5" width="355" height="105"/>
+                                                            <rect key="frame" x="10" y="6" width="355" height="88"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgYellowCar" translatesAutoresizingMaskIntoConstraints="NO" id="64o-HU-ENb">
-                                                                    <rect key="frame" x="5" y="5" width="90" height="70"/>
+                                                                    <rect key="frame" x="5" y="11" width="90" height="70"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="70" id="ZkQ-dl-Y1g"/>
                                                                         <constraint firstAttribute="width" constant="90" id="hK3-X4-2bs"/>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cwQ-jQ-3Ob">
-                                                                    <rect key="frame" x="105" y="5" width="1" height="90"/>
+                                                                    <rect key="frame" x="105" y="7" width="1" height="74"/>
                                                                     <color key="backgroundColor" red="0.83137254900000002" green="0.83137254900000002" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="1" id="HhC-hR-6zc"/>
                                                                     </constraints>
                                                                 </view>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="With in  5.5 km" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ynz-qB-6y4">
-                                                                    <rect key="frame" x="141" y="35.5" width="87" height="15.5"/>
-                                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="13"/>
+                                                                    <rect key="frame" x="141" y="35" width="87" height="13"/>
+                                                                    <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="13"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30525 Linden Street PO BOX 283 Lindstrom, MN 55045" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CCV-yY-J6v">
-                                                                    <rect key="frame" x="141" y="56" width="194" height="28"/>
+                                                                    <rect key="frame" x="141" y="53" width="194" height="28"/>
                                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 Seater" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TIb-0K-bIK">
-                                                                    <rect key="frame" x="302" y="13" width="45" height="13"/>
+                                                                    <rect key="frame" x="302" y="13" width="45" height="12"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="45" id="gvq-aN-sXj"/>
                                                                     </constraints>
-                                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="11"/>
+                                                                    <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ford Figo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SAI-2d-iEt">
-                                                                    <rect key="frame" x="116" y="13" width="171" height="17.5"/>
-                                                                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
+                                                                    <rect key="frame" x="116" y="13" width="171" height="17"/>
+                                                                    <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="locationMarkerDemoIcon" translatesAutoresizingMaskIntoConstraints="NO" id="3eu-Sc-mbA">
-                                                                    <rect key="frame" x="116" y="35.5" width="15" height="15"/>
+                                                                    <rect key="frame" x="116" y="35" width="15" height="15"/>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="15" id="8nv-pE-0Ke"/>
                                                                         <constraint firstAttribute="width" constant="15" id="RJe-Ix-qL1"/>
                                                                     </constraints>
                                                                 </imageView>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconArrowGray" translatesAutoresizingMaskIntoConstraints="NO" id="V6z-vP-Irm">
-                                                                    <rect key="frame" x="238" y="38.5" width="15" height="11"/>
-                                                                </imageView>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JSh-su-BEs">
+                                                                    <rect key="frame" x="234" y="35" width="13" height="13"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="13" id="Ke8-T2-car"/>
+                                                                        <constraint firstAttribute="height" constant="13" id="oxw-uE-P15"/>
+                                                                    </constraints>
+                                                                    <color key="tintColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <state key="normal" image="iconArrowGray"/>
+                                                                </button>
                                                             </subviews>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstItem="64o-HU-ENb" firstAttribute="leading" secondItem="0Xf-Ur-9lB" secondAttribute="leading" constant="5" id="4Vd-X1-qPw"/>
-                                                                <constraint firstItem="cwQ-jQ-3Ob" firstAttribute="top" secondItem="0Xf-Ur-9lB" secondAttribute="top" constant="5" id="EV1-gF-oqj"/>
+                                                                <constraint firstItem="JSh-su-BEs" firstAttribute="top" secondItem="SAI-2d-iEt" secondAttribute="bottom" constant="5" id="89s-fq-0sn"/>
+                                                                <constraint firstItem="cwQ-jQ-3Ob" firstAttribute="top" secondItem="0Xf-Ur-9lB" secondAttribute="top" constant="7" id="EV1-gF-oqj"/>
                                                                 <constraint firstItem="TIb-0K-bIK" firstAttribute="top" secondItem="0Xf-Ur-9lB" secondAttribute="top" constant="13" id="J0Y-JX-SFy"/>
                                                                 <constraint firstItem="SAI-2d-iEt" firstAttribute="top" secondItem="TIb-0K-bIK" secondAttribute="top" id="JeE-Jj-dUu"/>
                                                                 <constraint firstItem="CCV-yY-J6v" firstAttribute="leading" secondItem="Ynz-qB-6y4" secondAttribute="leading" id="Lpr-aQ-QCZ"/>
                                                                 <constraint firstItem="Ynz-qB-6y4" firstAttribute="top" secondItem="SAI-2d-iEt" secondAttribute="bottom" constant="5" id="OkZ-1j-JCg"/>
                                                                 <constraint firstAttribute="trailing" secondItem="CCV-yY-J6v" secondAttribute="trailing" constant="20" id="P1D-pK-Qks"/>
-                                                                <constraint firstItem="V6z-vP-Irm" firstAttribute="top" secondItem="3eu-Sc-mbA" secondAttribute="top" constant="3" id="aQl-hP-8In"/>
                                                                 <constraint firstItem="3eu-Sc-mbA" firstAttribute="leading" secondItem="SAI-2d-iEt" secondAttribute="leading" id="biD-tH-hMx"/>
                                                                 <constraint firstItem="cwQ-jQ-3Ob" firstAttribute="leading" secondItem="64o-HU-ENb" secondAttribute="trailing" constant="10" id="bo2-Xr-0M1"/>
                                                                 <constraint firstItem="CCV-yY-J6v" firstAttribute="top" secondItem="Ynz-qB-6y4" secondAttribute="bottom" constant="5" id="cml-Cf-FkH"/>
-                                                                <constraint firstItem="V6z-vP-Irm" firstAttribute="height" secondItem="3eu-Sc-mbA" secondAttribute="height" constant="-4" id="ifG-gg-HcS"/>
-                                                                <constraint firstItem="64o-HU-ENb" firstAttribute="top" secondItem="0Xf-Ur-9lB" secondAttribute="top" constant="5" id="imk-L3-sdB"/>
+                                                                <constraint firstItem="64o-HU-ENb" firstAttribute="top" secondItem="0Xf-Ur-9lB" secondAttribute="top" constant="11" id="imk-L3-sdB"/>
                                                                 <constraint firstItem="Ynz-qB-6y4" firstAttribute="leading" secondItem="3eu-Sc-mbA" secondAttribute="trailing" constant="10" id="jEl-5X-seq"/>
-                                                                <constraint firstAttribute="bottom" secondItem="cwQ-jQ-3Ob" secondAttribute="bottom" constant="10" id="okR-7V-G50"/>
+                                                                <constraint firstItem="JSh-su-BEs" firstAttribute="leading" secondItem="Ynz-qB-6y4" secondAttribute="trailing" constant="6" id="ogy-vj-fBZ"/>
+                                                                <constraint firstAttribute="bottom" secondItem="cwQ-jQ-3Ob" secondAttribute="bottom" constant="7" id="okR-7V-G50"/>
                                                                 <constraint firstAttribute="trailing" secondItem="TIb-0K-bIK" secondAttribute="trailing" constant="8" id="tVd-qK-GzF"/>
-                                                                <constraint firstItem="V6z-vP-Irm" firstAttribute="width" secondItem="3eu-Sc-mbA" secondAttribute="width" id="uRq-6b-uJE"/>
                                                                 <constraint firstItem="SAI-2d-iEt" firstAttribute="leading" secondItem="cwQ-jQ-3Ob" secondAttribute="trailing" constant="10" id="wYO-KV-MX5"/>
                                                                 <constraint firstItem="TIb-0K-bIK" firstAttribute="leading" secondItem="SAI-2d-iEt" secondAttribute="trailing" constant="15" id="yPy-Qa-3Lf"/>
                                                                 <constraint firstItem="3eu-Sc-mbA" firstAttribute="top" secondItem="Ynz-qB-6y4" secondAttribute="top" id="z0n-2m-vcC"/>
-                                                                <constraint firstItem="V6z-vP-Irm" firstAttribute="leading" secondItem="Ynz-qB-6y4" secondAttribute="trailing" constant="10" id="zXc-co-vDk"/>
                                                             </constraints>
                                                         </view>
                                                     </subviews>
@@ -2654,8 +2790,8 @@ automatic expense for warding</string>
                                                         <constraint firstAttribute="trailing" secondItem="xUr-rP-6kU" secondAttribute="trailing" constant="70" id="Mjc-ci-B9w"/>
                                                         <constraint firstItem="xUr-rP-6kU" firstAttribute="centerX" secondItem="eWN-wN-pgo" secondAttribute="centerX" id="Ptj-jk-OZB"/>
                                                         <constraint firstAttribute="trailing" secondItem="0Xf-Ur-9lB" secondAttribute="trailing" constant="10" id="TTk-0F-dj7"/>
-                                                        <constraint firstItem="0Xf-Ur-9lB" firstAttribute="top" secondItem="eWN-wN-pgo" secondAttribute="top" constant="5" id="dyJ-Qa-vIc"/>
-                                                        <constraint firstItem="xUr-rP-6kU" firstAttribute="top" secondItem="0Xf-Ur-9lB" secondAttribute="bottom" constant="-10" id="tvG-Vm-x0t"/>
+                                                        <constraint firstItem="0Xf-Ur-9lB" firstAttribute="top" secondItem="eWN-wN-pgo" secondAttribute="top" constant="6" id="dyJ-Qa-vIc"/>
+                                                        <constraint firstItem="xUr-rP-6kU" firstAttribute="top" secondItem="0Xf-Ur-9lB" secondAttribute="bottom" constant="-44" id="tvG-Vm-x0t"/>
                                                         <constraint firstItem="xUr-rP-6kU" firstAttribute="leading" secondItem="eWN-wN-pgo" secondAttribute="leading" constant="70" id="zGo-H9-M1b"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
@@ -2670,14 +2806,14 @@ automatic expense for warding</string>
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoDataFound" id="aiK-3j-Nsr">
-                                                <rect key="frame" x="0.0" y="178" width="375" height="44"/>
+                                                <rect key="frame" x="0.0" y="128" width="375" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aiK-3j-Nsr" id="a0R-p8-nLn">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Data Found" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zdI-AL-icf">
-                                                            <rect key="frame" x="102.5" y="12" width="115" height="20.5"/>
+                                                            <rect key="frame" x="130" y="12" width="115" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -2716,11 +2852,11 @@ automatic expense for warding</string>
                                             </view>
                                         </subviews>
                                     </stackView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3MS-6I-mcs">
+                                    <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3MS-6I-mcs">
                                         <rect key="frame" x="10" y="15" width="355" height="37"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12 Sep, 2018 05:30 PM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bIt-Sg-E5O">
-                                                <rect key="frame" x="5" y="10.5" width="154.5" height="16.5"/>
+                                                <rect key="frame" x="5" y="11.5" width="154.5" height="14"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="12"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -2733,7 +2869,7 @@ automatic expense for warding</string>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12 Sep, 2018 05:30 PM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VLY-qe-2A0">
-                                                <rect key="frame" x="195.5" y="10.5" width="154.5" height="16.5"/>
+                                                <rect key="frame" x="195.5" y="11.5" width="154.5" height="14"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="12"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -2789,7 +2925,7 @@ automatic expense for warding</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lsc-rH-lQm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="503" y="975"/>
+            <point key="canvasLocation" x="501.60000000000002" y="974.6626686656673"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Onc-wL-R4q">
@@ -2825,33 +2961,33 @@ automatic expense for warding</string>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="XMk-M0-DHg">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="301"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="335"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YNq-1b-xq8">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="301"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="335"/>
                                             <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                         </imageView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I3r-Ul-X2I">
-                                            <rect key="frame" x="15" y="13" width="345" height="275"/>
+                                            <rect key="frame" x="15" y="13" width="345" height="309"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgYellowCar" translatesAutoresizingMaskIntoConstraints="NO" id="2uJ-5k-5Oo">
-                                                    <rect key="frame" x="40" y="40" width="265" height="130"/>
+                                                    <rect key="frame" x="40" y="82" width="265" height="130"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="130" id="Wvo-n7-XxN"/>
                                                     </constraints>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tAA-WC-VMF">
-                                                    <rect key="frame" x="50" y="185" width="245" height="60"/>
+                                                    <rect key="frame" x="50" y="227" width="245" height="60"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$ 50.00 - 20km" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MHU-Bw-Vmk">
-                                                            <rect key="frame" x="0.0" y="5" width="245" height="30.5"/>
+                                                            <rect key="frame" x="0.0" y="5" width="245" height="27"/>
                                                             <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="23"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="($ 2.5 per km)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o9C-OS-DtV">
-                                                            <rect key="frame" x="0.0" y="35.5" width="245" height="19.5"/>
+                                                            <rect key="frame" x="0.0" y="32" width="245" height="23"/>
                                                             <fontDescription key="fontDescription" name=".SFUIText" family=".SF UI Text" pointSize="16"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -2879,7 +3015,7 @@ automatic expense for warding</string>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="2uJ-5k-5Oo" secondAttribute="trailing" constant="40" id="Dc4-kP-f8I"/>
-                                                <constraint firstItem="2uJ-5k-5Oo" firstAttribute="top" secondItem="I3r-Ul-X2I" secondAttribute="top" constant="40" id="EBL-cZ-Msb"/>
+                                                <constraint firstItem="2uJ-5k-5Oo" firstAttribute="top" secondItem="I3r-Ul-X2I" secondAttribute="top" constant="82" id="EBL-cZ-Msb"/>
                                                 <constraint firstItem="tAA-WC-VMF" firstAttribute="top" secondItem="2uJ-5k-5Oo" secondAttribute="bottom" constant="15" id="K7P-aK-xeI"/>
                                                 <constraint firstAttribute="trailing" secondItem="tAA-WC-VMF" secondAttribute="trailing" constant="50" id="Knm-nr-V9o"/>
                                                 <constraint firstItem="2uJ-5k-5Oo" firstAttribute="leading" secondItem="I3r-Ul-X2I" secondAttribute="leading" constant="40" id="cEY-Qm-4LX"/>
@@ -2900,16 +3036,17 @@ automatic expense for warding</string>
                                     </constraints>
                                 </view>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="QoU-3K-0Sd">
-                                    <rect key="frame" x="0.0" y="1108" width="375" height="60"/>
+                                    <rect key="frame" x="0.0" y="1060" width="375" height="60"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FtW-le-yCe">
-                                            <rect key="frame" x="0.0" y="15" width="320" height="45"/>
-                                            <color key="backgroundColor" red="1" green="0.67450980390000004" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="17"/>
-                                            <state key="normal" title="Confirm Booking"/>
+                                            <rect key="frame" x="0.0" y="15" width="375" height="45"/>
+                                            <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                            <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="19"/>
+                                            <state key="normal" title="Check Availability"/>
                                             <connections>
                                                 <action selector="btnBookConfirmClicked:" destination="Nuc-JV-hT6" eventType="touchUpInside" id="0JX-Fe-n8j"/>
+                                                <action selector="checkAvailabilityButtonClicked:" destination="Nuc-JV-hT6" eventType="touchUpInside" id="KLj-96-qh6"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -2922,8 +3059,8 @@ automatic expense for warding</string>
                                     </constraints>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VehicleFirstTimeDurationCell" rowHeight="50" id="IvO-Oc-uhp" userLabel="VehicleFirstTimeDurationCell" customClass="VehicleFirstTimeDurationCell" customModule="RentInFlash_Customer" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="302" width="375" height="50"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VehicleFirstTimeDurationCell" rowHeight="50" id="IvO-Oc-uhp" userLabel="VehicleFirstTimeDurationCell" customClass="VehicleFirstTimeDurationCell" customModule="Peppea" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="336" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IvO-Oc-uhp" id="BA6-Rb-GZj">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
@@ -2989,8 +3126,8 @@ automatic expense for warding</string>
                                             <outlet property="viewCell" destination="qC4-f6-quJ" id="tm3-iy-55d"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VehicleDetailMapViewCell" rowHeight="200" id="3l5-vR-MBw" userLabel="VehicleDetailMapViewCell" customClass="VehicleDetailMapViewCell" customModule="RentInFlash_Customer" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="352" width="375" height="200"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VehicleDetailMapViewCell" rowHeight="200" id="3l5-vR-MBw" userLabel="VehicleDetailMapViewCell" customClass="VehicleDetailMapViewCell" customModule="Peppea" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="386" width="375" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3l5-vR-MBw" id="fzs-Xc-XXG">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
@@ -3045,24 +3182,24 @@ automatic expense for warding</string>
                                             <outlet property="viewCell" destination="amY-up-5Fj" id="7DA-Lu-pxS"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VehiclePaymentBreakdownCell" rowHeight="366" id="n40-C2-aXm" userLabel="VehiclePaymentBreakdownCell" customClass="VehiclePaymentBreakdownCell" customModule="RentInFlash_Customer" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="552" width="375" height="366"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VehiclePaymentBreakdownCell" rowHeight="284" id="n40-C2-aXm" userLabel="VehiclePaymentBreakdownCell" customClass="VehiclePaymentBreakdownCell" customModule="Peppea" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="586" width="375" height="284"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="n40-C2-aXm" id="d5r-gS-PxD">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="366"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="284"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HAk-Bp-tw0">
-                                                    <rect key="frame" x="10" y="5" width="300" height="355.5"/>
+                                                    <rect key="frame" x="10" y="5" width="355" height="274"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment BreakDown" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xjn-g0-vHr">
-                                                            <rect key="frame" x="8" y="8" width="157.5" height="0.0"/>
+                                                            <rect key="frame" x="8" y="8" width="141.5" height="0.5"/>
                                                             <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D1N-3U-3aX">
-                                                            <rect key="frame" x="8" y="12" width="177.5" height="1"/>
+                                                            <rect key="frame" x="8" y="12.5" width="161.5" height="1"/>
                                                             <color key="backgroundColor" red="0.83137254900000002" green="0.83137254900000002" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="1" id="GTa-hG-8vW"/>
@@ -3072,7 +3209,7 @@ automatic expense for warding</string>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fare" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FFd-Xz-hix">
-                                                            <rect key="frame" x="8" y="23" width="25.5" height="16.5"/>
+                                                            <rect key="frame" x="8" y="23.5" width="24" height="16.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="16.5" id="1ct-Hl-qFX"/>
                                                             </constraints>
@@ -3081,13 +3218,13 @@ automatic expense for warding</string>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$ 50.00 - 20 km" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RXL-5H-UNv">
-                                                            <rect key="frame" x="204" y="23" width="86" height="16.5"/>
+                                                            <rect key="frame" x="260" y="23.5" width="85" height="16.5"/>
                                                             <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="12"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The fare includes tax, fuel etc" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pOg-N2-6AY">
-                                                            <rect key="frame" x="8" y="40.5" width="136" height="14"/>
+                                                            <rect key="frame" x="8" y="41" width="131.5" height="14"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="14" id="XfX-QM-O9Q"/>
                                                             </constraints>
@@ -3095,11 +3232,11 @@ automatic expense for warding</string>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gfw-wk-KuY">
-                                                            <rect key="frame" x="8" y="64.5" width="284" height="132"/>
+                                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gfw-wk-KuY">
+                                                            <rect key="frame" x="8" y="65" width="339" height="50"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Have a promo code?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yEi-kW-KqI">
-                                                                    <rect key="frame" x="74.5" y="5" width="135" height="20"/>
+                                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Have a promo code?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yEi-kW-KqI">
+                                                                    <rect key="frame" x="102" y="5" width="135" height="20"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="20" id="yhx-Sy-Khv"/>
                                                                     </constraints>
@@ -3107,8 +3244,8 @@ automatic expense for warding</string>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter promo code" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QQC-l3-WBZ">
-                                                                    <rect key="frame" x="40" y="33" width="204" height="30"/>
+                                                                <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter promo code" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QQC-l3-WBZ">
+                                                                    <rect key="frame" x="40" y="33" width="259" height="30"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="30" id="bIn-dC-pKA"/>
                                                                     </constraints>
@@ -3119,8 +3256,8 @@ automatic expense for warding</string>
                                                                         <action selector="txtDidValueChange:" destination="n40-C2-aXm" eventType="editingChanged" id="0hy-tH-Z6v"/>
                                                                     </connections>
                                                                 </textField>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nO1-1q-HSb">
-                                                                    <rect key="frame" x="35" y="63" width="214" height="1"/>
+                                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nO1-1q-HSb">
+                                                                    <rect key="frame" x="35" y="63" width="269" height="1"/>
                                                                     <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="1" id="tVd-40-gDz"/>
@@ -3129,8 +3266,8 @@ automatic expense for warding</string>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O27-qv-kTm">
-                                                                    <rect key="frame" x="112" y="79" width="60" height="30"/>
+                                                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O27-qv-kTm">
+                                                                    <rect key="frame" x="139.5" y="79" width="60" height="30"/>
                                                                     <color key="backgroundColor" red="0.99215686270000003" green="0.63529411759999999" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="60" id="m0l-th-bSr"/>
@@ -3143,15 +3280,15 @@ automatic expense for warding</string>
                                                                         <action selector="btnApplyAction:" destination="n40-C2-aXm" eventType="touchUpInside" id="CgD-e2-WKv"/>
                                                                     </connections>
                                                                 </button>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="verified" translatesAutoresizingMaskIntoConstraints="NO" id="hTF-M8-Jlm">
-                                                                    <rect key="frame" x="250" y="38" width="25" height="25"/>
+                                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="verified" translatesAutoresizingMaskIntoConstraints="NO" id="hTF-M8-Jlm">
+                                                                    <rect key="frame" x="305" y="38" width="25" height="25"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="25" id="MMs-rG-MON"/>
                                                                         <constraint firstAttribute="height" constant="25" id="p1B-N2-uOE"/>
                                                                     </constraints>
                                                                 </imageView>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8uK-da-3ey">
-                                                                    <rect key="frame" x="119" y="109" width="160" height="23"/>
+                                                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8uK-da-3ey">
+                                                                    <rect key="frame" x="184" y="109" width="150" height="23"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="23" id="B3v-QY-T4V"/>
                                                                     </constraints>
@@ -3163,6 +3300,17 @@ automatic expense for warding</string>
                                                                         <action selector="btnRemovePromoCode:" destination="n40-C2-aXm" eventType="touchUpInside" id="cBl-qD-1U5"/>
                                                                     </connections>
                                                                 </button>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DO9-Sg-bwN">
+                                                                    <rect key="frame" x="12" y="5" width="315" height="40"/>
+                                                                    <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="40" id="Hf8-dU-DQ1"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" name=".SFUIText" family=".SF UI Text" pointSize="19"/>
+                                                                    <state key="normal" title="View Offers">
+                                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    </state>
+                                                                </button>
                                                             </subviews>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
@@ -3172,19 +3320,22 @@ automatic expense for warding</string>
                                                                 <constraint firstItem="yEi-kW-KqI" firstAttribute="top" secondItem="Gfw-wk-KuY" secondAttribute="top" constant="5" id="BsK-fk-QjF"/>
                                                                 <constraint firstItem="nO1-1q-HSb" firstAttribute="top" secondItem="QQC-l3-WBZ" secondAttribute="bottom" id="EQn-fz-rCz"/>
                                                                 <constraint firstItem="nO1-1q-HSb" firstAttribute="trailing" secondItem="QQC-l3-WBZ" secondAttribute="trailing" constant="5" id="GUD-yT-vuJ"/>
+                                                                <constraint firstItem="DO9-Sg-bwN" firstAttribute="leading" secondItem="Gfw-wk-KuY" secondAttribute="leading" constant="12" id="Jvl-z2-YnH"/>
                                                                 <constraint firstItem="O27-qv-kTm" firstAttribute="centerX" secondItem="Gfw-wk-KuY" secondAttribute="centerX" id="MLD-5q-X5J"/>
-                                                                <constraint firstAttribute="bottom" secondItem="8uK-da-3ey" secondAttribute="bottom" id="XlS-kh-WGB"/>
+                                                                <constraint firstAttribute="bottom" secondItem="8uK-da-3ey" secondAttribute="bottom" constant="-82" id="XlS-kh-WGB"/>
                                                                 <constraint firstItem="O27-qv-kTm" firstAttribute="top" secondItem="nO1-1q-HSb" secondAttribute="bottom" constant="15" id="YRv-fF-p4F"/>
                                                                 <constraint firstAttribute="trailing" secondItem="8uK-da-3ey" secondAttribute="trailing" constant="5" id="bMx-aF-U4y"/>
+                                                                <constraint firstAttribute="trailing" secondItem="DO9-Sg-bwN" secondAttribute="trailing" constant="12" id="bkx-90-lsf"/>
                                                                 <constraint firstItem="hTF-M8-Jlm" firstAttribute="bottom" secondItem="QQC-l3-WBZ" secondAttribute="bottom" id="e1X-Ld-lf3"/>
                                                                 <constraint firstItem="hTF-M8-Jlm" firstAttribute="leading" secondItem="QQC-l3-WBZ" secondAttribute="trailing" constant="6" id="gZM-3U-kdO"/>
-                                                                <constraint firstAttribute="bottom" secondItem="O27-qv-kTm" secondAttribute="bottom" constant="23" id="izK-7b-qH8"/>
+                                                                <constraint firstAttribute="bottom" secondItem="O27-qv-kTm" secondAttribute="bottom" constant="-59" id="izK-7b-qH8"/>
+                                                                <constraint firstItem="DO9-Sg-bwN" firstAttribute="centerY" secondItem="Gfw-wk-KuY" secondAttribute="centerY" id="k2g-WX-wQr"/>
                                                                 <constraint firstItem="nO1-1q-HSb" firstAttribute="leading" secondItem="QQC-l3-WBZ" secondAttribute="leading" constant="-5" id="qdi-Wt-NcQ"/>
                                                                 <constraint firstItem="yEi-kW-KqI" firstAttribute="centerX" secondItem="Gfw-wk-KuY" secondAttribute="centerX" id="xhm-lI-avb"/>
                                                             </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Refundable deposit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z09-rV-pc7">
-                                                            <rect key="frame" x="8" y="206.5" width="113" height="16.5"/>
+                                                            <rect key="frame" x="8" y="125" width="105" height="16.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="16.5" id="uPt-jA-vDl"/>
                                                             </constraints>
@@ -3193,25 +3344,25 @@ automatic expense for warding</string>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$ 50.00 " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f9P-Te-rzi">
-                                                            <rect key="frame" x="246" y="206.5" width="44" height="16.5"/>
+                                                            <rect key="frame" x="301.5" y="125" width="43.5" height="16.5"/>
                                                             <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="12"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="dZ3-aR-9JF">
-                                                            <rect key="frame" x="10" y="257.5" width="280" height="89.5"/>
+                                                            <rect key="frame" x="10" y="176" width="335" height="89.5"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="28K-EJ-Icw">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="280" height="26.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="335" height="26.5"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tax" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VxG-cg-6KV">
-                                                                            <rect key="frame" x="0.0" y="5" width="135" height="16.5"/>
+                                                                            <rect key="frame" x="0.0" y="5" width="162.5" height="16.5"/>
                                                                             <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="12"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$ 50.00 " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5QO-YK-CZC">
-                                                                            <rect key="frame" x="145" y="5" width="135" height="16.5"/>
+                                                                            <rect key="frame" x="172.5" y="5" width="162.5" height="16.5"/>
                                                                             <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="12"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
@@ -3230,16 +3381,16 @@ automatic expense for warding</string>
                                                                     </constraints>
                                                                 </view>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jl4-sU-UFl">
-                                                                    <rect key="frame" x="0.0" y="31.5" width="280" height="26.5"/>
+                                                                    <rect key="frame" x="0.0" y="31.5" width="335" height="26.5"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Special Fare" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PER-Mh-Vu2">
-                                                                            <rect key="frame" x="0.0" y="5" width="135" height="16.5"/>
+                                                                            <rect key="frame" x="0.0" y="5" width="162.5" height="16.5"/>
                                                                             <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="12"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$ 50.00 " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gjY-DO-b5e">
-                                                                            <rect key="frame" x="145" y="5" width="135" height="16.5"/>
+                                                                            <rect key="frame" x="172.5" y="5" width="162.5" height="16.5"/>
                                                                             <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="12"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
@@ -3259,16 +3410,16 @@ automatic expense for warding</string>
                                                                     </constraints>
                                                                 </view>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sYB-x9-LmE">
-                                                                    <rect key="frame" x="0.0" y="63" width="280" height="26.5"/>
+                                                                    <rect key="frame" x="0.0" y="63" width="335" height="26.5"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delivery Fare" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2HS-w4-K0k">
-                                                                            <rect key="frame" x="0.0" y="5" width="135" height="16.5"/>
+                                                                            <rect key="frame" x="0.0" y="5" width="162.5" height="16.5"/>
                                                                             <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="12"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$ 50.00 " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2gp-qI-VWX">
-                                                                            <rect key="frame" x="145" y="5" width="135" height="16.5"/>
+                                                                            <rect key="frame" x="172.5" y="5" width="162.5" height="16.5"/>
                                                                             <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="12"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
@@ -3289,7 +3440,7 @@ automatic expense for warding</string>
                                                             </subviews>
                                                         </stackView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This amount will be refunded once you return the car" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="Taj-fg-X08">
-                                                            <rect key="frame" x="8" y="224" width="237" height="23.5"/>
+                                                            <rect key="frame" x="8" y="142.5" width="292" height="23.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="23.5" id="0Cl-k6-YOv"/>
                                                             </constraints>
@@ -3345,6 +3496,7 @@ automatic expense for warding</string>
                                             <outlet property="ViewTaxFare" destination="28K-EJ-Icw" id="mW1-09-do4"/>
                                             <outlet property="btnApply" destination="O27-qv-kTm" id="lKN-NE-8T3"/>
                                             <outlet property="btnRemovePromocode" destination="8uK-da-3ey" id="MiX-tB-U7a"/>
+                                            <outlet property="btnViewOffers" destination="DO9-Sg-bwN" id="kG4-sT-tdz"/>
                                             <outlet property="imgVerified" destination="hTF-M8-Jlm" id="ZfM-FL-U1h"/>
                                             <outlet property="lblDeliveryFare" destination="2gp-qI-VWX" id="NnX-NR-oh1"/>
                                             <outlet property="lblFarePriceKM" destination="RXL-5H-UNv" id="X1b-jI-C7c"/>
@@ -3355,8 +3507,8 @@ automatic expense for warding</string>
                                             <outlet property="viewCell" destination="HAk-Bp-tw0" id="t4U-hd-Sea"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VehicleDetailTotalAmountCell" rowHeight="70" id="SLm-dn-TS9" userLabel="VehicleDetailTotalAmountCell" customClass="VehicleDetailTotalAmountCell" customModule="RentInFlash_Customer" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="918" width="375" height="70"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VehicleDetailTotalAmountCell" rowHeight="70" id="SLm-dn-TS9" userLabel="VehicleDetailTotalAmountCell" customClass="VehicleDetailTotalAmountCell" customModule="Peppea" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="870" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SLm-dn-TS9" id="1RR-9c-s9F">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
@@ -3477,18 +3629,18 @@ automatic expense for warding</string>
                                             <outlet property="viewCell" destination="q72-Gg-8oE" id="3cA-Ge-AeC"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VehicleDetailExtraChargesCell" rowHeight="120" id="2BF-sh-akD" userLabel="VehicleDetailExtraChargesCell" customClass="VehicleDetailExtraChargesCell" customModule="RentInFlash_Customer" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="988" width="375" height="120"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VehicleDetailExtraChargesCell" rowHeight="120" id="2BF-sh-akD" userLabel="VehicleDetailExtraChargesCell" customClass="VehicleDetailExtraChargesCell" customModule="Peppea" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="940" width="375" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2BF-sh-akD" id="2Ss-3X-le5">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="119.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M5Q-lF-4FZ">
-                                                    <rect key="frame" x="10" y="5" width="300" height="109.5"/>
+                                                    <rect key="frame" x="10" y="5" width="355" height="109.5"/>
                                                     <subviews>
                                                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Extra km Charges" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sfb-Uv-2Nf">
-                                                            <rect key="frame" x="8" y="0.0" width="101.5" height="0.0"/>
+                                                            <rect key="frame" x="8" y="0.0" width="96" height="0.0"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" id="c7n-mB-zmr"/>
                                                             </constraints>
@@ -3497,7 +3649,7 @@ automatic expense for warding</string>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$ 6" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s1V-UI-dMn">
-                                                            <rect key="frame" x="273" y="0.0" width="17" height="0.0"/>
+                                                            <rect key="frame" x="328" y="0.0" width="17" height="0.0"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" id="Kcf-pw-wsF"/>
                                                             </constraints>
@@ -3506,22 +3658,22 @@ automatic expense for warding</string>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V6c-rP-pAU">
-                                                            <rect key="frame" x="8" y="10" width="284" height="73.5"/>
+                                                            <rect key="frame" x="8" y="10" width="339" height="67.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FIa-aW-5Do">
-                                                                    <rect key="frame" x="8" y="8" width="21.5" height="12.5"/>
+                                                                    <rect key="frame" x="8" y="8" width="19.5" height="10.5"/>
                                                                     <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="9"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This amount will be refunded once you " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UOB-eJ-rE1">
-                                                                    <rect key="frame" x="18" y="25.5" width="251" height="14"/>
+                                                                    <rect key="frame" x="18" y="23.5" width="306" height="12"/>
                                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="10"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zds-fs-Qg5">
-                                                                    <rect key="frame" x="8" y="30" width="5" height="5"/>
+                                                                    <rect key="frame" x="8" y="27" width="5" height="5"/>
                                                                     <color key="backgroundColor" red="0.48627450979999998" green="0.49019607840000001" blue="0.4941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="5" id="GfN-Jh-WD6"/>
@@ -3538,13 +3690,13 @@ automatic expense for warding</string>
                                                                     </userDefinedRuntimeAttributes>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This amount will be refunded once you " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dr4-v0-BeQ">
-                                                                    <rect key="frame" x="18" y="49.5" width="184" height="14"/>
+                                                                    <rect key="frame" x="18" y="45.5" width="176" height="12"/>
                                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="10"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QeZ-5k-oQU">
-                                                                    <rect key="frame" x="8" y="54" width="5" height="5"/>
+                                                                    <rect key="frame" x="8" y="49" width="5" height="5"/>
                                                                     <color key="backgroundColor" red="0.48627450979999998" green="0.49019607840000001" blue="0.4941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="7"/>
                                                                     <nil key="textColor"/>
@@ -3608,15 +3760,61 @@ automatic expense for warding</string>
                                     <outlet property="delegate" destination="Nuc-JV-hT6" id="VVw-5f-0cD"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M4s-o3-LMN" userLabel="View - Availabel View">
+                                <rect key="frame" x="0.0" y="455" width="375" height="212"/>
+                                <subviews>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7me-WY-WFW">
+                                        <rect key="frame" x="0.0" y="30" width="375" height="182"/>
+                                        <connections>
+                                            <segue destination="hTa-xN-048" kind="embed" id="qnj-AQ-drJ"/>
+                                        </connections>
+                                    </containerView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZfF-oQ-BUn">
+                                        <rect key="frame" x="137.5" y="14" width="100" height="2"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="B0h-Iu-0lQ"/>
+                                            <constraint firstAttribute="width" constant="100" id="wSt-mU-MEA"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="beM-C0-v7E">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="B6A-jI-jl2"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="closeCarsAvailabelButtonClicked:" destination="Nuc-JV-hT6" eventType="touchUpInside" id="2Jd-BO-rkP"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="beM-C0-v7E" firstAttribute="leading" secondItem="Eyr-dO-ZOE" secondAttribute="leading" id="1Lp-Pc-rSY"/>
+                                    <constraint firstItem="7me-WY-WFW" firstAttribute="trailing" secondItem="Eyr-dO-ZOE" secondAttribute="trailing" id="3Pw-X1-udK"/>
+                                    <constraint firstItem="ZfF-oQ-BUn" firstAttribute="top" secondItem="Eyr-dO-ZOE" secondAttribute="top" constant="14" id="GK6-it-hwu"/>
+                                    <constraint firstAttribute="height" constant="212" id="I4w-wc-j97"/>
+                                    <constraint firstItem="ZfF-oQ-BUn" firstAttribute="centerX" secondItem="M4s-o3-LMN" secondAttribute="centerX" id="K4h-GD-wrl"/>
+                                    <constraint firstItem="7me-WY-WFW" firstAttribute="leading" secondItem="Eyr-dO-ZOE" secondAttribute="leading" id="b6n-zI-SfV"/>
+                                    <constraint firstItem="7me-WY-WFW" firstAttribute="top" secondItem="Eyr-dO-ZOE" secondAttribute="top" constant="30" id="eq7-Fp-ivg"/>
+                                    <constraint firstItem="7me-WY-WFW" firstAttribute="bottom" secondItem="Eyr-dO-ZOE" secondAttribute="bottom" id="lvf-rZ-n3R"/>
+                                    <constraint firstItem="beM-C0-v7E" firstAttribute="top" secondItem="Eyr-dO-ZOE" secondAttribute="top" id="ogO-JS-q6S"/>
+                                    <constraint firstItem="beM-C0-v7E" firstAttribute="trailing" secondItem="Eyr-dO-ZOE" secondAttribute="trailing" id="ol2-dc-Izl"/>
+                                </constraints>
+                                <viewLayoutGuide key="safeArea" id="Eyr-dO-ZOE"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Po4-mb-5fW" secondAttribute="trailing" id="0GY-Km-LB7"/>
                             <constraint firstAttribute="bottom" secondItem="Po4-mb-5fW" secondAttribute="bottom" id="5aB-B2-fyw"/>
+                            <constraint firstItem="M4s-o3-LMN" firstAttribute="leading" secondItem="yLk-Bq-hye" secondAttribute="leading" id="CO8-IT-mCt"/>
                             <constraint firstAttribute="trailing" secondItem="XJ5-3l-5Va" secondAttribute="trailing" id="EYt-c0-dW4"/>
                             <constraint firstAttribute="bottom" secondItem="XJ5-3l-5Va" secondAttribute="bottom" id="J0o-ac-24D"/>
                             <constraint firstItem="XJ5-3l-5Va" firstAttribute="top" secondItem="Wmu-9b-s21" secondAttribute="top" id="b5N-YW-aU2"/>
                             <constraint firstItem="Po4-mb-5fW" firstAttribute="top" secondItem="Wmu-9b-s21" secondAttribute="top" id="c4h-5m-da9"/>
+                            <constraint firstAttribute="bottom" secondItem="M4s-o3-LMN" secondAttribute="bottom" id="c7Y-2s-nW9"/>
+                            <constraint firstItem="yLk-Bq-hye" firstAttribute="trailing" secondItem="M4s-o3-LMN" secondAttribute="trailing" id="gzR-Nl-Dic"/>
                             <constraint firstItem="XJ5-3l-5Va" firstAttribute="leading" secondItem="yLk-Bq-hye" secondAttribute="leading" id="nS7-4l-LWo"/>
                             <constraint firstItem="Po4-mb-5fW" firstAttribute="leading" secondItem="yLk-Bq-hye" secondAttribute="leading" id="wKO-i2-YWw"/>
                         </constraints>
@@ -3624,7 +3822,8 @@ automatic expense for warding</string>
                     </view>
                     <connections>
                         <outlet property="MainViewTop" destination="c4h-5m-da9" id="hne-5m-uLx"/>
-                        <outlet property="btnBookConfirm" destination="FtW-le-yCe" id="KQp-vn-sjO"/>
+                        <outlet property="bottomConstraintCarsAvailabelView" destination="c7Y-2s-nW9" id="GZF-mW-lbc"/>
+                        <outlet property="btnCheckAvailability" destination="FtW-le-yCe" id="KQp-vn-sjO"/>
                         <outlet property="imgVehicle" destination="2uJ-5k-5Oo" id="wmz-a7-cck"/>
                         <outlet property="lblPriceDistance" destination="MHU-Bw-Vmk" id="C2Q-bA-zN7"/>
                         <outlet property="lblPriceperKM" destination="o9C-OS-DtV" id="RPF-FW-liJ"/>
@@ -3634,10 +3833,11 @@ automatic expense for warding</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="irJ-WI-t35" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1401" y="975"/>
+            <point key="canvasLocation" x="1282" y="966"/>
         </scene>
     </scenes>
     <resources>
+        <image name="Cars Availabel View" width="375" height="202"/>
         <image name="RightArrowInCircle" width="16" height="16"/>
         <image name="SelectedCircle" width="20" height="20"/>
         <image name="Suitcase" width="100" height="100"/>

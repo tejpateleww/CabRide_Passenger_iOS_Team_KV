@@ -8,7 +8,7 @@
 
 import UIKit
 
-class VehicleDetailViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
+class VehicleDetailViewController: BaseViewController,UITableViewDataSource,UITableViewDelegate
 {
     
     @IBOutlet var tblView: UITableView!
@@ -20,13 +20,14 @@ class VehicleDetailViewController: UIViewController,UITableViewDataSource,UITabl
     @IBOutlet var lblPriceperKM: UILabel!
     @IBOutlet var lblPriceDistance: UILabel!
     
-    @IBOutlet var btnBookConfirm: UIButton!
+    @IBOutlet var btnCheckAvailability: UIButton!
     
     @IBOutlet weak var btnApply: UIButton!
    
     @IBOutlet weak var txtPromoCode: UITextField!
     
     @IBOutlet weak var MainViewTop: NSLayoutConstraint!
+    @IBOutlet weak var bottomConstraintCarsAvailabelView: NSLayoutConstraint!
     
 //    var parallaxEffect: RKParallaxEffect!
     var VehicleDetail:[String:AnyObject] = [:]
@@ -69,6 +70,12 @@ class VehicleDetailViewController: UIViewController,UITableViewDataSource,UITabl
         self.MainViewTop.constant = 0 - (navigationbarHeight! + StatusBarHeight)
         
         // Do any additional setup after loading the view.
+        
+        ///Hiding the Availability View, initially
+        self.bottomConstraintCarsAvailabelView.constant = -212.0
+        
+
+       
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -81,6 +88,15 @@ class VehicleDetailViewController: UIViewController,UITableViewDataSource,UITabl
     override func viewWillAppear(_ animated: Bool)
     {
         super.viewWillAppear(animated)
+        
+        setNavBarWithBack(Title: "Ford Figo", IsNeedRightButton: false,titleFontColor: UIColor.white)
+        
+        //Transperant
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = .clear
+
 //        Utilities.setNavigationBarInViewController(controller: self, naviColor: ThemeNaviLightBlueColor, naviTitle: "", leftImage: kBack_Icon, rightImage: "", isTranslucent: true)
     }
     
@@ -156,6 +172,7 @@ class VehicleDetailViewController: UIViewController,UITableViewDataSource,UITabl
         }
         else if indexPath.section == 2
         {
+            ///PAyment Breakdown cell
             let cell = tableView.dequeueReusableCell(withIdentifier: "VehiclePaymentBreakdownCell") as! VehiclePaymentBreakdownCell
 //            cell.Delegate = self
 //            cell.lblFarePriceKM.text = "\(currency) \( (self.Fare != "") ? String(format: "%.2f", (self.Fare as NSString).doubleValue) : "")"
@@ -171,6 +188,9 @@ class VehicleDetailViewController: UIViewController,UITableViewDataSource,UITabl
             
             cell.btnApply.layer.cornerRadius = 5.0
             cell.btnApply.layer.masksToBounds = true
+            
+            cell.btnViewOffers.layer.cornerRadius = cell.btnViewOffers.frame.height/2.0
+            cell.btnViewOffers.layer.masksToBounds = true
             
             
             if self.selectedTripType == "delivery" {
@@ -245,10 +265,12 @@ class VehicleDetailViewController: UIViewController,UITableViewDataSource,UITabl
         }
         else if indexPath.section == 1
         {
+            ///Map cell
             return 170
         }
         else if indexPath.section == 2
         {
+            //Payment Breakdown cell
             return UITableView.automaticDimension
         }
         else if indexPath.section == 3
@@ -266,8 +288,30 @@ class VehicleDetailViewController: UIViewController,UITableViewDataSource,UITabl
     }
     
     
-    //IBAction Methods
     
+    //MARK: Button Clicks
+    
+    @IBAction func checkAvailabilityButtonClicked(_ sender: Any) {
+        
+//        if self.bottomConstraintCarsAvailabelView.constant == 0.0 {
+//
+//            ///Hide Cars Availabel View
+//            self.bottomConstraintCarsAvailabelView.constant = -232.0
+//        }
+//        else{
+
+            ///Show Cars Availabel View
+            self.bottomConstraintCarsAvailabelView.constant =  0.0
+//        }
+    }
+
+    @IBAction func closeCarsAvailabelButtonClicked(_ sender: Any) {
+        
+        ///Close cars available
+        self.bottomConstraintCarsAvailabelView.constant = -232.0
+
+        
+    }
     @IBAction func btnBookConfirmClicked(_ sender: Any) {
 //
 //        let  PaymentviewController = self.storyboard?.instantiateViewController(withIdentifier: "SelectPaymentPopUpViewController") as! SelectPaymentPopUpViewController
