@@ -39,9 +39,39 @@ class SelectVehicleViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    
+    
+    
     @IBAction func btnBookAction(_ sender: Any) {
         self.DelegateForVehicalBook.didVehicleBook(CustomCell: self)
     }
     
 
+}
+
+
+extension SelectVehicleViewCell {
+    
+    
+    func uiSetup(){
+        
+        ///Cell Border and Corener Radius
+        self.viewCell.layer.borderWidth = 1.2
+        self.viewCell.layer.borderColor = cellBorderColor.cgColor
+        //        cell.viewCell.layer.cornerRadius = 9.0
+        self.viewCell.layer.cornerRadius = 15
+        self.viewCell.layer.masksToBounds = true
+        
+        
+        //        cell.viewCell.backgroundColor = UIColor.white
+        //        cell.viewCell.layer.shadowColor = UIColor.darkGray.cgColor
+        //        cell.viewCell.layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
+        //        cell.viewCell.layer.shadowOpacity = 0.4
+        //        cell.viewCell.layer.shadowRadius = 1
+        
+        
+        self.btnBook.layer.cornerRadius = 15
+        
+    }
+    
 }
