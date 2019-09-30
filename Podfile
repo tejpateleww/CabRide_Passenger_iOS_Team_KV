@@ -5,6 +5,7 @@ target 'Peppea' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
+  # Pods for Peppea
 pod 'SkyFloatingLabelTextField'
 pod 'IQKeyboardManagerSwift'
 pod 'Alamofire'
@@ -30,7 +31,14 @@ pod 'Socket.IO-Client-Swift'
 pod 'lottie-ios'
 pod 'ActionSheetPicker-3.0'
 pod 'SwipeCellKit', '2.5.4'
-  # Pods for Peppea
+
+  # Pods for Peppea Rental
+  pod 'FSCalendar'
+  pod 'RKMultiUnitRuler'
+  pod 'TTSegmentedControl'
+
+
+
 
   
   
