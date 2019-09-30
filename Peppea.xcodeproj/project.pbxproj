@@ -121,6 +121,11 @@
 		6882F60523420DFA00934C04 /* VehicleDetailTotalAmountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6882F5ED23420DFA00934C04 /* VehicleDetailTotalAmountCell.swift */; };
 		6882F60623420DFA00934C04 /* VehicleDetailMapViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6882F5EE23420DFA00934C04 /* VehicleDetailMapViewCell.swift */; };
 		6882F60723420DFA00934C04 /* VehicleFirstTimeDurationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6882F5EF23420DFA00934C04 /* VehicleFirstTimeDurationCell.swift */; };
+		6882F6202342230200934C04 /* FindCarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6882F61A2342230200934C04 /* FindCarViewController.swift */; };
+		6882F6212342230200934C04 /* FindCarFirstCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6882F61C2342230200934C04 /* FindCarFirstCell.swift */; };
+		6882F6222342230200934C04 /* FindCarOfferListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6882F61D2342230200934C04 /* FindCarOfferListCell.swift */; };
+		6882F62423423C6A00934C04 /* FindCarHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6882F62323423C6A00934C04 /* FindCarHeaderCell.swift */; };
+		6882F62623423EED00934C04 /* FindCarPickUpDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6882F62523423EED00934C04 /* FindCarPickUpDateCell.swift */; };
 		7A1CC8F12306871F00FB6ECD /* BulkMilePurchaseReqModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1CC8F02306871F00FB6ECD /* BulkMilePurchaseReqModel.swift */; };
 		7A1CC8F32306DE1300FB6ECD /* BulkMilesHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1CC8F22306DE1300FB6ECD /* BulkMilesHistory.swift */; };
 		7A984494230A6BED004359F3 /* BulkMileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A984492230A6BED004359F3 /* BulkMileData.swift */; };
@@ -315,6 +320,11 @@
 		6882F5ED23420DFA00934C04 /* VehicleDetailTotalAmountCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleDetailTotalAmountCell.swift; sourceTree = "<group>"; };
 		6882F5EE23420DFA00934C04 /* VehicleDetailMapViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleDetailMapViewCell.swift; sourceTree = "<group>"; };
 		6882F5EF23420DFA00934C04 /* VehicleFirstTimeDurationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleFirstTimeDurationCell.swift; sourceTree = "<group>"; };
+		6882F61A2342230200934C04 /* FindCarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindCarViewController.swift; sourceTree = "<group>"; };
+		6882F61C2342230200934C04 /* FindCarFirstCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindCarFirstCell.swift; sourceTree = "<group>"; };
+		6882F61D2342230200934C04 /* FindCarOfferListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindCarOfferListCell.swift; sourceTree = "<group>"; };
+		6882F62323423C6A00934C04 /* FindCarHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindCarHeaderCell.swift; sourceTree = "<group>"; };
+		6882F62523423EED00934C04 /* FindCarPickUpDateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindCarPickUpDateCell.swift; sourceTree = "<group>"; };
 		7A1CC8F02306871F00FB6ECD /* BulkMilePurchaseReqModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulkMilePurchaseReqModel.swift; sourceTree = "<group>"; };
 		7A1CC8F22306DE1300FB6ECD /* BulkMilesHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulkMilesHistory.swift; sourceTree = "<group>"; };
 		7A984492230A6BED004359F3 /* BulkMileData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BulkMileData.swift; sourceTree = "<group>"; };
@@ -694,6 +704,7 @@
 		6882F5D823420DFA00934C04 /* PeppeaRentalControllers */ = {
 			isa = PBXGroup;
 			children = (
+				6882F6152342230200934C04 /* FindCar */,
 				6882F5D923420DFA00934C04 /* Home */,
 				6882F5E023420DFA00934C04 /* LoginRegister */,
 				6882F5E323420DFA00934C04 /* HomeDetail */,
@@ -782,6 +793,26 @@
 				6882F5EF23420DFA00934C04 /* VehicleFirstTimeDurationCell.swift */,
 			);
 			path = DetailCells;
+			sourceTree = "<group>";
+		};
+		6882F6152342230200934C04 /* FindCar */ = {
+			isa = PBXGroup;
+			children = (
+				6882F61A2342230200934C04 /* FindCarViewController.swift */,
+				6882F61B2342230200934C04 /* FindCarCells */,
+			);
+			path = FindCar;
+			sourceTree = "<group>";
+		};
+		6882F61B2342230200934C04 /* FindCarCells */ = {
+			isa = PBXGroup;
+			children = (
+				6882F61C2342230200934C04 /* FindCarFirstCell.swift */,
+				6882F61D2342230200934C04 /* FindCarOfferListCell.swift */,
+				6882F62323423C6A00934C04 /* FindCarHeaderCell.swift */,
+				6882F62523423EED00934C04 /* FindCarPickUpDateCell.swift */,
+			);
+			path = FindCarCells;
 			sourceTree = "<group>";
 		};
 		92BC9B349AE5C1EFF324C378 /* Pods */ = {
@@ -1468,6 +1499,7 @@
 				182BD24522EF166C00C419B9 /* BulkMileListDataModel.swift in Sources */,
 				EE9F3F7422C7846500426377 /* BaseViewController.swift in Sources */,
 				EEA454B922CCEC390094941A /* DriverInfoPageViewController.swift in Sources */,
+				6882F62423423C6A00934C04 /* FindCarHeaderCell.swift in Sources */,
 				462CE46A22DF275F00CA52B0 /* FlatRateListModel.swift in Sources */,
 				684B460A233CDD660066855C /* AppDelegate+PeppeaRental.swift in Sources */,
 				182BD24B22EF169900C419B9 /* BulkMileTableViewCell.swift in Sources */,
@@ -1498,8 +1530,11 @@
 				EEE2B80622C62929004F1C00 /* SplashViewController.swift in Sources */,
 				1882A0AD22EB1387008B5D1A /* CancelTripRequestModel.swift in Sources */,
 				466957DC22DD9E4A008A73C0 /* ApiPaths.swift in Sources */,
+				6882F6222342230200934C04 /* FindCarOfferListCell.swift in Sources */,
 				466957DB22DD9E4A008A73C0 /* Parameters.swift in Sources */,
 				EE35158522CE34A00035D0AC /* DriverRatingAndTipViewController.swift in Sources */,
+				6882F6212342230200934C04 /* FindCarFirstCell.swift in Sources */,
+				6882F62623423EED00934C04 /* FindCarPickUpDateCell.swift in Sources */,
 				7A1CC8F32306DE1300FB6ECD /* BulkMilesHistory.swift in Sources */,
 				B1E233D222D3109800CEA568 /* PostABidViewController.swift in Sources */,
 				468E993422DA078000072361 /* UpcomingRideConfirmationViewController.swift in Sources */,
@@ -1516,6 +1551,7 @@
 				468E992822D9F26900072361 /* ChangePassword.swift in Sources */,
 				6882F60323420DFA00934C04 /* VehicleDetailExtraChargesCell.swift in Sources */,
 				18CB7F8222E85AC4004FA66C /* HomeWebserviceCalls.swift in Sources */,
+				6882F6202342230200934C04 /* FindCarViewController.swift in Sources */,
 				6882F60123420DFA00934C04 /* CarsAvailabelViewController.swift in Sources */,
 				464CB65E22E1947A00273F29 /* MobileNoDetail.swift in Sources */,
 				18CB7F8622E86584004FA66C /* GetEstimateFareModel.swift in Sources */,

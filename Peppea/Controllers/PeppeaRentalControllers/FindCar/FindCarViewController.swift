@@ -10,27 +10,24 @@ import UIKit
 import CoreLocation
 import SDWebImage
 
-class FindCarViewController: UIViewController,UITableViewDelegate, UITableViewDataSource,
+class FindCarViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource
     ///TODO:
     //SelectDateDelegate, LocationSelectionDelegate
 {
     
     
-    @IBOutlet var viewHeader: UIView!
+//    @IBOutlet var viewHeader: UIView!
     @IBOutlet var tblView: UITableView!
-    @IBOutlet var viewSelectedVehicle: UIView!
-    @IBOutlet var lblVehicleName: UILabel!
-    @IBOutlet var iconVehicle: UIImageView!
     
-    @IBOutlet var viewDropoff: UIView!
-    @IBOutlet var vioewPickup: UIView!
-    @IBOutlet var viewTimeBTNS: UIView!
-    @IBOutlet var btnDropOffTime: UIButton!
-    @IBOutlet var btnPickupTime: UIButton!
-    @IBOutlet var viewSelectedPoint: UIView!
-    @IBOutlet weak var lblPickupTime: UILabel!
-    @IBOutlet weak var lblDropOffTime: UILabel!
-    @IBOutlet weak var lblStartingPoint: UILabel!
+//    @IBOutlet var viewDropoff: UIView!
+//    @IBOutlet var vioewPickup: UIView!
+//    @IBOutlet var viewTimeBTNS: UIView!
+//    @IBOutlet var btnDropOffTime: UIButton!
+//    @IBOutlet var btnPickupTime: UIButton!
+//    @IBOutlet var viewSelectedPoint: UIView!
+//    @IBOutlet weak var lblPickupTime: UILabel!
+//    @IBOutlet weak var lblDropOffTime: UILabel!
+//    @IBOutlet weak var lblStartingPoint: UILabel!
     @IBOutlet weak var btnFindVehicles: UIButton!
     
     
@@ -57,19 +54,16 @@ class FindCarViewController: UIViewController,UITableViewDelegate, UITableViewDa
     {
         super.viewDidLoad()
         
-        viewSelectedVehicle.layer.cornerRadius = 5
-        viewSelectedVehicle.layer.masksToBounds = true
-        viewSelectedPoint.layer.cornerRadius = 10 //viewSelectedPoint.frame.height/2
-        viewSelectedPoint.layer.masksToBounds = true
-        //        viewTimeBTNS.layer.cornerRadius = 10
-        //        viewTimeBTNS.layer.masksToBounds = true
-        vioewPickup.layer.cornerRadius = 5
-        vioewPickup.layer.masksToBounds = true
-        viewDropoff.layer.cornerRadius = 5
-        viewDropoff.layer.masksToBounds = true
+    
+//        viewSelectedPoint.layer.cornerRadius = 10 //viewSelectedPoint.frame.height/2
+//        viewSelectedPoint.layer.masksToBounds = true
+//        //        viewTimeBTNS.layer.cornerRadius = 10
+//        //        viewTimeBTNS.layer.masksToBounds = true
+//        vioewPickup.layer.cornerRadius = 5
+//        vioewPickup.layer.masksToBounds = true
+//        viewDropoff.layer.cornerRadius = 5
+//        viewDropoff.layer.masksToBounds = true
         
-        //        self.iconVehicle.image = self.VehicalImage
-        self.lblVehicleName.text = self.VehicalName
         //TODO:
         //        self.iconVehicle.sd_setShowActivityIndicatorView(true)
 //        self.iconVehicle.sd_setIndicatorStyle(.gray)
@@ -91,7 +85,11 @@ class FindCarViewController: UIViewController,UITableViewDelegate, UITableViewDa
         super.viewWillAppear(animated)
         ///TODO:
         //        Utilities.setNavigationBarInViewController(controller: self, naviColor: ThemeNaviLightBlueColor, naviTitle: "Search For \(VehicalName)", leftImage: kBack_Icon, rightImage: "", isTranslucent: true)
-        self.btnFindVehicles.setTitle("Find \(VehicalName)", for: .normal)
+//        self.btnFindVehicles.setTitle("Find \(VehicalName)", for: .normal)
+        
+        self.setNavBarWithMenu(Title: "", IsNeedRightButton: false)
+        
+        
     }
     
     
@@ -114,12 +112,34 @@ class FindCarViewController: UIViewController,UITableViewDelegate, UITableViewDa
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return  arrOfferList.count > 0 ? arrOfferList.count : 1
+        return 2
+            //arrOfferList.count > 0 ? arrOfferList.count : 1
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
+        
+        
+        if indexPath.row == 0 {
+         
+              let cell = tableView.dequeueReusableCell(withIdentifier: "FindCarHeaderCell") as! FindCarHeaderCell
+                return cell
+            
+
+        }
+        else if indexPath.row == 1 {
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "FindCarPickUpDateCell") as! FindCarPickUpDateCell
+            return cell
+            
+            
+        }
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FindCarPickUpDateCell") as! FindCarPickUpDateCell
+        return cell
+        
+        
         
         //        var customCell = UITableViewCell()
         //
@@ -142,55 +162,62 @@ class FindCarViewController: UIViewController,UITableViewDelegate, UITableViewDa
         //        }
         //        else
         //        {
-        var CustomCell = UITableViewCell()
-        if arrOfferList.count > 0 {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FindCarOfferListCell") as! FindCarOfferListCell
-        
-        //        cell.viewCell.layer.cornerRadius = 10
-        //        cell.viewCell.layer.borderWidth = 1
-        //        cell.viewCell.layer.borderColor = UIColor.lightGray.cgColor
-        
-        
-        cell.viewCEll.backgroundColor = UIColor.white
-        cell.viewCEll.layer.shadowColor = UIColor.darkGray.cgColor
-        cell.viewCEll.layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
-        cell.viewCEll.layer.shadowOpacity = 0.4
-        cell.viewCEll.layer.shadowRadius = 1
-        
-        cell.viewCEll.layer.cornerRadius = 10
-        
-        if let img =  arrOfferList[indexPath.row]["image"] as? String  {
-            cell.imgOfferBanner.sd_setShowActivityIndicatorView(true)
-            cell.imgOfferBanner.sd_setIndicatorStyle(.gray)
-            cell.imgOfferBanner.sd_setImage(with: URL(string:"\(WebserviceURLs.kOfferImageBaseURL)\(img)")!)
-        }
-            CustomCell = cell
-        }
-        else {
-            let NoDataCell = tableView.dequeueReusableCell(withIdentifier: "NoDataFound") as! UITableViewCell
-            
-            CustomCell = NoDataCell
-        }
-        
-        CustomCell.selectionStyle = .none
-        //        cell.viewCell.layer.masksToBounds = true
-        
-        
-        //        cellMenu.imgDetail?.image = UIImage.init(named:  "\(arrMenuIcons[indexPath.row])")
-        //        cellMenu.selectionStyle = .none
-        //
-        //        cellMenu.lblTitle.text = arrMenuTitle[indexPath.row]
-        
-        //            customCell = cell
-        //        }
-        return CustomCell
-        
+//        var CustomCell = UITableViewCell()
+//        if arrOfferList.count > 0 {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "FindCarOfferListCell") as! FindCarOfferListCell
+//
+//        //        cell.viewCell.layer.cornerRadius = 10
+//        //        cell.viewCell.layer.borderWidth = 1
+//        //        cell.viewCell.layer.borderColor = UIColor.lightGray.cgColor
+//
+//
+//        cell.viewCEll.backgroundColor = UIColor.white
+//        cell.viewCEll.layer.shadowColor = UIColor.darkGray.cgColor
+//        cell.viewCEll.layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
+//        cell.viewCEll.layer.shadowOpacity = 0.4
+//        cell.viewCEll.layer.shadowRadius = 1
+//
+//        cell.viewCEll.layer.cornerRadius = 10
+//
+//        if let img =  arrOfferList[indexPath.row]["image"] as? String  {
+//
+//            //Swift 5
+////            cell.imgOfferBanner.sd_imageIndicator = SDWebImageActivityIndicator.gray
+////            cell.imgOfferBanner.sd_setImage(with: URL(string: "\(WebserviceURLs.kOfferImageBaseURL)\(img)"))
+//
+//            //            cell.imgOfferBanner.sd_s
+////            cell.imgOfferBanner.sd_setIndicatorStyle(.gray)
+////            cell.imgOfferBanner.sd_setImage(with: URL(string:"\(WebserviceURLs.kOfferImageBaseURL)\(img)")!)
+//        }
+//            CustomCell = cell
+//        }
+//        else {
+//            let NoDataCell = tableView.dequeueReusableCell(withIdentifier: "NoDataFound") as! UITableViewCell
+//
+//            CustomCell = NoDataCell
+//        }
+//
+//        CustomCell.selectionStyle = .none
+//        //        cell.viewCell.layer.masksToBounds = true
+//
+//
+//        //        cellMenu.imgDetail?.image = UIImage.init(named:  "\(arrMenuIcons[indexPath.row])")
+//        //        cellMenu.selectionStyle = .none
+//        //
+//        //        cellMenu.lblTitle.text = arrMenuTitle[indexPath.row]
+//
+//        //            customCell = cell
+//        //        }
+//        return CustomCell
+//
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
+
+        tableView.deselectRow(at: indexPath, animated: false)
         
-        tblView.deselectRow(at: indexPath, animated: true)
+//        tblView.deselectRow(at: indexPath, animated: true)
         //        let  viewController = self.storyboard?.instantiateViewController(withIdentifier: "VehicleEditViewController") as! VehicleEditViewController
         //        self.present(viewController, animated: true, completion: nil)
     }
@@ -199,19 +226,16 @@ class FindCarViewController: UIViewController,UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
         
-        //        if indexPath.row == 0
-        //        {
-        //            return 70
-        //        }
-        //        else
-        //        {
-        if arrOfferList.count >  0 {
-        return 100
-        } else {
-            return 200
+        if indexPath.row  == 0 {
+
+            return 253.0
+
+        }else if indexPath.row == 1 {
+         
+            return 215.0
         }
-        //        }
-        
+
+        return 0.0
     }
     
     //MARK:- IBAction Methods
@@ -251,39 +275,40 @@ class FindCarViewController: UIViewController,UITableViewDelegate, UITableViewDa
     
     @IBAction func btnFindCars(_ sender: Any) {
         
-        let validator = self.isValidate()
-        
-        if validator.0 == true  {
-            if isBookingFromBanner == false {
-                let vehicalList = self.storyboard?.instantiateViewController(withIdentifier: "SelectVehicleViewController") as! SelectVehicleViewController
-                vehicalList.startDate = "\(self.selectedPickupTime):00"
-                vehicalList.endDate = "\(self.selectedDeliveryTime):00"
-                vehicalList.VehicalCat_IDName = (Vehical_ID,VehicalName)
-                vehicalList.selectedAddress = self.selectedAddress
-                vehicalList.selectedAddLat = self.selectedAddLat
-                vehicalList.selectedAddLong = self.selectedAddLong
-                vehicalList.selectedTripType = self.selectedLocationType
-                vehicalList.DisplayPickupDate = self.PickupDisplayDate
-                vehicalList.DisplayDeliveryDate = self.DeliveryDisplayDate
-                self.navigationController?.pushViewController(vehicalList, animated: true)
-            }
-            else if isBookingFromBanner == true {
-                let vehicleDetail = self.storyboard?.instantiateViewController(withIdentifier: "VehicleDetailViewController") as! VehicleDetailViewController
-                vehicleDetail.VehicleDetail = self.BannerDetail
-                vehicleDetail.vehicleFrom_To = ("\(self.selectedPickupTime):00","\(self.selectedDeliveryTime):00")
-                vehicleDetail.startDisplayDate = self.PickupDisplayDate
-                vehicleDetail.endDisplayDate = self.DeliveryDisplayDate
-                vehicleDetail.selectedAddress = self.selectedAddress
-                vehicleDetail.selectedAddLat = self.selectedAddLat
-                vehicleDetail.selectedAddLong = self.selectedAddLong
-                vehicleDetail.selectedTripType = self.selectedLocationType
-                self.navigationController?.pushViewController(vehicleDetail, animated: true)
-            }
-            
-        } else {
-            Utilities.showToastMSG(MSG: validator.1)
-        }
-        
+        ///TODO:
+//        let validator = self.isValidate()
+//
+//        if validator.0 == true  {
+//            if isBookingFromBanner == false {
+//                let vehicalList = self.storyboard?.instantiateViewController(withIdentifier: "SelectVehicleViewController") as! SelectVehicleViewController
+//                vehicalList.startDate = "\(self.selectedPickupTime):00"
+//                vehicalList.endDate = "\(self.selectedDeliveryTime):00"
+//                vehicalList.VehicalCat_IDName = (Vehical_ID,VehicalName)
+//                vehicalList.selectedAddress = self.selectedAddress
+//                vehicalList.selectedAddLat = self.selectedAddLat
+//                vehicalList.selectedAddLong = self.selectedAddLong
+//                vehicalList.selectedTripType = self.selectedLocationType
+//                vehicalList.DisplayPickupDate = self.PickupDisplayDate
+//                vehicalList.DisplayDeliveryDate = self.DeliveryDisplayDate
+//                self.navigationController?.pushViewController(vehicalList, animated: true)
+//            }
+//            else if isBookingFromBanner == true {
+//                let vehicleDetail = self.storyboard?.instantiateViewController(withIdentifier: "VehicleDetailViewController") as! VehicleDetailViewController
+//                vehicleDetail.VehicleDetail = self.BannerDetail
+//                vehicleDetail.vehicleFrom_To = ("\(self.selectedPickupTime):00","\(self.selectedDeliveryTime):00")
+//                vehicleDetail.startDisplayDate = self.PickupDisplayDate
+//                vehicleDetail.endDisplayDate = self.DeliveryDisplayDate
+//                vehicleDetail.selectedAddress = self.selectedAddress
+//                vehicleDetail.selectedAddLat = self.selectedAddLat
+//                vehicleDetail.selectedAddLong = self.selectedAddLong
+//                vehicleDetail.selectedTripType = self.selectedLocationType
+//                self.navigationController?.pushViewController(vehicleDetail, animated: true)
+//            }
+//
+//        } else {
+//            Utilities.showToastMSG(MSG: validator.1)
+//        }
+//
     }
     
     //MARK:- LocationSelectionDelegate Method
@@ -292,22 +317,24 @@ class FindCarViewController: UIViewController,UITableViewDelegate, UITableViewDa
         self.selectedAddLat = (SelectedLocation?.coordinate.latitude)!
         self.selectedAddLong = (SelectedLocation?.coordinate.longitude)!
         self.selectedAddress = AddressString
-        self.lblStartingPoint.text = self.selectedAddress
+//        self.lblStartingPoint.text = self.selectedAddress
         self.selectedLocationType = LocationType
     }
     
     //MARK:- selectDateDelegate Methods
     
     func DidSelectStartTripDate(SelectedDate: String, HoursFormat: String, DisplayAmPmFormat: String) {
-        self.lblPickupTime.text = DisplayAmPmFormat
-        self.selectedPickupTime = HoursFormat
-        self.PickupDisplayDate = "\(HoursFormat):00".Convert_To_dd_MMM_yyyy_HH_mm_a()
+//        self.lblPickupTime.text = DisplayAmPmFormat
+        ///TODO:
+//        self.selectedPickupTime = HoursFormat
+//        self.PickupDisplayDate = "\(HoursFormat):00".Convert_To_dd_MMM_yyyy_HH_mm_a()
     }
     
     func DidSelectEndTripDate(SelectedDate: String, HoursFormat: String, DisplayAmPmFormat: String) {
-        self.lblDropOffTime.text = DisplayAmPmFormat
-        self.selectedDeliveryTime = HoursFormat
-        self.DeliveryDisplayDate = "\(HoursFormat):00".Convert_To_dd_MMM_yyyy_HH_mm_a()
+//        self.lblDropOffTime.text = DisplayAmPmFormat
+        ///TODO:
+//        self.selectedDeliveryTime = HoursFormat
+//        self.DeliveryDisplayDate = "\(HoursFormat):00".Convert_To_dd_MMM_yyyy_HH_mm_a()
     }
     
     //    func DidSelectEndTripDate(SelectedDate: String, HoursFormat: String) {
@@ -332,8 +359,9 @@ class FindCarViewController: UIViewController,UITableViewDelegate, UITableViewDa
     
 }
 
+///TODO:
 //MARK:- WebService & Custom Methods
-
+/*
 extension SearchForVehicleViewController {
     
     func webserviceFindVehicle(_ dictParam : [String:Any])
@@ -423,3 +451,4 @@ extension SearchForVehicleViewController {
         return (Compare.rawValue == -1) ? true : false
     }
 }
+*/
