@@ -14,12 +14,11 @@ import MobileCoreServices
 
 class RegistrationNewViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate,UITextFieldDelegate {
 
-    var strDateOfBirth = String()
-
     //-------------------------------------------------------------
     // MARK: - Outlets
     //-------------------------------------------------------------
-    var RegistrationGetOTPModel : RegistrationModel = RegistrationModel()
+    
+
     @IBOutlet weak var txtFirstName: ThemeTextFieldLoginRegister!
     @IBOutlet weak var txtLastName: ThemeTextFieldLoginRegister!
     @IBOutlet weak var txtDateOfBirth: ThemeTextFieldLoginRegister!
@@ -37,12 +36,21 @@ class RegistrationNewViewController: UIViewController,UIImagePickerControllerDel
 
     @IBOutlet weak var btnProfileImage: UIButton!
     @IBOutlet weak var btnSignUp: UIButton!
+    
+    
+    //-------------------------------------------------------------
+    // MARK: - Variables
+    //-------------------------------------------------------------
+
     var strPhoneNumber = String()
     var strEmail = String()
     var strPassword = String()
     var gender = String()
     var isImageSelected:Bool = false
     var arrRegisteredCompanyList : [[String:Any]]!
+    var strDateOfBirth = String()
+    var RegistrationGetOTPModel : RegistrationModel = RegistrationModel()
+    var selectedCompanyID : String = ""
     //-------------------------------------------------------------
     // MARK: - Base Methods
     //-------------------------------------------------------------
@@ -55,8 +63,6 @@ class RegistrationNewViewController: UIViewController,UIImagePickerControllerDel
             {
                 selectGender.first?.image = UIImage(named: "SelectedCircle")
                 selectGender.last?.image = UIImage(named: "UnSelectedCircle")
-
-
             }
             else
             {
@@ -284,8 +290,6 @@ class RegistrationNewViewController: UIViewController,UIImagePickerControllerDel
 
      func webServiceCallForRegister()
      {
-        
-
         RegistrationGetOTPModel.email = SingletonRegistration.sharedRegistration.Email
         RegistrationGetOTPModel.mobile_no = SingletonRegistration.sharedRegistration.MobileNo
         RegistrationGetOTPModel.password = SingletonRegistration.sharedRegistration.Password
@@ -298,6 +302,8 @@ class RegistrationNewViewController: UIViewController,UIImagePickerControllerDel
         RegistrationGetOTPModel.lat = "23.75821"
         RegistrationGetOTPModel.lng = "23.75821"
         RegistrationGetOTPModel.device_token = ""
+        RegistrationGetOTPModel.user_type = self.getSelectedType()
+        RegistrationGetOTPModel.company_name = (RegistrationGetOTPModel.user_type == "company") ? self.txtSelectCompany.text! : ""
         if let token = UserDefaults.standard.object(forKey: "Token") as? String
         {
             RegistrationGetOTPModel.device_token = token
@@ -345,6 +351,22 @@ class RegistrationNewViewController: UIViewController,UIImagePickerControllerDel
         }
     }
 
+    func getSelectedType() -> String {
+        let selectedButton = self.arrBtnSelectPassengerType.filter({ $0.isSelected == true }).first
+        let SelectedIndex = self.arrBtnSelectPassengerType.firstIndex(of: selectedButton!)
+        switch SelectedIndex {
+        case 0:
+            return "individual"
+        case 1:
+            return "company"
+        case 2:
+            return "under_company"
+        default:
+            break
+        }
+        return ""
+    }
+    
     // ----------------------------------------------------
     // MARK:- Webservice Call for getting registered company list
     // ----------------------------------------------------

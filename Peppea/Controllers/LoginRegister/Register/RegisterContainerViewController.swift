@@ -21,12 +21,9 @@ class RegisterContainerViewController: UIViewController,UIScrollViewDelegate,Sea
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
+        scrollObject.isScrollEnabled = false
         scrollObject.delegate = self
         self.selectPageControlIndex(Index: 0)
-
-
-        
 
         // Do any additional setup after loading the view.
     }
@@ -100,7 +97,7 @@ class RegisterContainerViewController: UIViewController,UIScrollViewDelegate,Sea
         UserWebserviceSubclass.register(registerModel: RegistrationGetOTPModel, image: image, imageParamName: "profile_image", completion: { (json, status) in
             UtilityClass.hideHUD()
             
-            if status{
+            if status {
                 
                 UserDefaults.standard.set(true, forKey: "isUserLogin")
                 
@@ -147,5 +144,6 @@ class RegisterContainerViewController: UIViewController,UIScrollViewDelegate,Sea
     func didSelectCompanyName(dictCompanyDetails: [String : Any]) {
         let registerationNewVc =  self.children.last as? RegistrationNewViewController
         registerationNewVc?.txtSelectCompany.text = dictCompanyDetails["company_name"] as? String
+        registerationNewVc?.RegistrationGetOTPModel.company_id = (dictCompanyDetails["id"] as! String)
     }
 }

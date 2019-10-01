@@ -42,6 +42,9 @@ class RegistrationModel : RequestModel {
     var device_type : String = ""
     var lat : String = ""
     var lng : String = ""
+    var user_type : String = ""
+    var company_name : String = ""
+    var company_id :  String = ""
 }
 
 
