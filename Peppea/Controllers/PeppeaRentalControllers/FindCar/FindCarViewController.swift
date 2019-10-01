@@ -73,6 +73,8 @@ class FindCarViewController: BaseViewController, UITableViewDelegate, UITableVie
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+//        self.navigationController?.navigationBar.isTranslucent = false
         //TODO:
         //        parallaxEffect = RKParallaxEffect(tableView: tblView)
 //        parallaxEffect.isParallaxEffectEnabled = true
@@ -112,7 +114,7 @@ class FindCarViewController: BaseViewController, UITableViewDelegate, UITableVie
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 2
+        return 4
             //arrOfferList.count > 0 ? arrOfferList.count : 1
     }
     
@@ -123,21 +125,40 @@ class FindCarViewController: BaseViewController, UITableViewDelegate, UITableVie
         
         if indexPath.row == 0 {
          
+            //Header Cell
               let cell = tableView.dequeueReusableCell(withIdentifier: "FindCarHeaderCell") as! FindCarHeaderCell
-                return cell
+              return cell
             
 
         }
         else if indexPath.row == 1 {
             
+            //Select Date Cell
             let cell = tableView.dequeueReusableCell(withIdentifier: "FindCarPickUpDateCell") as! FindCarPickUpDateCell
+            cell.setUpUI()
             return cell
             
             
+        }else if indexPath.row == 2 {
+         
+            //Refer and earn cell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "FindCarReferAndEarnCell") as! FindCarReferAndEarnCell
+            
+            cell.setUpUI()
+            
+            return cell
+            
+        }else{
+
+            //Trending Cars Collection Cell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "FindCarTrendingCarsCell") as! FindCarTrendingCarsCell
+            
+            cell.collectionView.reloadData()
+            
+            return cell
+
         }
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FindCarPickUpDateCell") as! FindCarPickUpDateCell
-        return cell
         
         
         
@@ -227,12 +248,21 @@ class FindCarViewController: BaseViewController, UITableViewDelegate, UITableVie
     {
         
         if indexPath.row  == 0 {
-
+            //Header Image View
             return 253.0
 
         }else if indexPath.row == 1 {
          
+            //Select date
             return 215.0
+        }
+        else if indexPath.row == 2 {
+            //Refer and Earn Cell
+            return 164.0
+        }
+        else if indexPath.row == 3 {
+            //Find cars Collection View
+            return 168.0
         }
 
         return 0.0

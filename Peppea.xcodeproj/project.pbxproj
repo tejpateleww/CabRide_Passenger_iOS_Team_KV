@@ -103,6 +103,9 @@
 		46CA655522DE02B800FC6E16 /* RegisterResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CA655422DE02B800FC6E16 /* RegisterResponseModel.swift */; };
 		46CA655722DEFB2900FC6E16 /* Logout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CA655622DEFB2900FC6E16 /* Logout.swift */; };
 		46E8CE9022D9AD6D001BEFCD /* InviteDriverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E8CE8F22D9AD6D001BEFCD /* InviteDriverViewController.swift */; };
+		6810B1CA23431B510071BAE9 /* FindCarTrendingCarsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6810B1C923431B510071BAE9 /* FindCarTrendingCarsCell.swift */; };
+		6810B1CD234323890071BAE9 /* TrendingCarsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6810B1CC234323890071BAE9 /* TrendingCarsCollectionViewCell.swift */; };
+		6810B1CF234337D00071BAE9 /* FindCarReferAndEarnCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6810B1CE234337D00071BAE9 /* FindCarReferAndEarnCell.swift */; };
 		684B460A233CDD660066855C /* AppDelegate+PeppeaRental.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684B4609233CDD660066855C /* AppDelegate+PeppeaRental.swift */; };
 		684B460C233CE8240066855C /* Rental_Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 684B460B233CE8240066855C /* Rental_Main.storyboard */; };
 		6863FC73233CCBED007E1D0F /* Rental_LoginRegister.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6863FC72233CCBEC007E1D0F /* Rental_LoginRegister.storyboard */; };
@@ -302,6 +305,9 @@
 		46CA655422DE02B800FC6E16 /* RegisterResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterResponseModel.swift; sourceTree = "<group>"; };
 		46CA655622DEFB2900FC6E16 /* Logout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logout.swift; sourceTree = "<group>"; };
 		46E8CE8F22D9AD6D001BEFCD /* InviteDriverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteDriverViewController.swift; sourceTree = "<group>"; };
+		6810B1C923431B510071BAE9 /* FindCarTrendingCarsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindCarTrendingCarsCell.swift; sourceTree = "<group>"; };
+		6810B1CC234323890071BAE9 /* TrendingCarsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingCarsCollectionViewCell.swift; sourceTree = "<group>"; };
+		6810B1CE234337D00071BAE9 /* FindCarReferAndEarnCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindCarReferAndEarnCell.swift; sourceTree = "<group>"; };
 		684B4609233CDD660066855C /* AppDelegate+PeppeaRental.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+PeppeaRental.swift"; sourceTree = "<group>"; };
 		684B460B233CE8240066855C /* Rental_Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Rental_Main.storyboard; sourceTree = "<group>"; };
 		6863FC72233CCBEC007E1D0F /* Rental_LoginRegister.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Rental_LoginRegister.storyboard; sourceTree = "<group>"; };
@@ -684,6 +690,14 @@
 			path = InviteFriend;
 			sourceTree = "<group>";
 		};
+		6810B1CB234323650071BAE9 /* TrendingCarsCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				6810B1CC234323890071BAE9 /* TrendingCarsCollectionViewCell.swift */,
+			);
+			path = TrendingCarsCollectionViewCell;
+			sourceTree = "<group>";
+		};
 		6863FC71233CCB6B007E1D0F /* Rental */ = {
 			isa = PBXGroup;
 			children = (
@@ -807,10 +821,13 @@
 		6882F61B2342230200934C04 /* FindCarCells */ = {
 			isa = PBXGroup;
 			children = (
-				6882F61C2342230200934C04 /* FindCarFirstCell.swift */,
-				6882F61D2342230200934C04 /* FindCarOfferListCell.swift */,
 				6882F62323423C6A00934C04 /* FindCarHeaderCell.swift */,
 				6882F62523423EED00934C04 /* FindCarPickUpDateCell.swift */,
+				6810B1C923431B510071BAE9 /* FindCarTrendingCarsCell.swift */,
+				6810B1CB234323650071BAE9 /* TrendingCarsCollectionViewCell */,
+				6810B1CE234337D00071BAE9 /* FindCarReferAndEarnCell.swift */,
+				6882F61C2342230200934C04 /* FindCarFirstCell.swift */,
+				6882F61D2342230200934C04 /* FindCarOfferListCell.swift */,
 			);
 			path = FindCarCells;
 			sourceTree = "<group>";
@@ -1525,6 +1542,7 @@
 				468E992F22D9F26900072361 /* RemoveCard.swift in Sources */,
 				EE469B5C22C7344E0075A8A3 /* RegisterOTPVarificationViewController.swift in Sources */,
 				466957DE22DD9E4A008A73C0 /* WebserviceSubclass.swift in Sources */,
+				6810B1CD234323890071BAE9 /* TrendingCarsCollectionViewCell.swift in Sources */,
 				468E993222D9F26900072361 /* UpdatePersonalInfo.swift in Sources */,
 				464CB66222E1961600273F29 /* bookingRequest.swift in Sources */,
 				EEE2B80622C62929004F1C00 /* SplashViewController.swift in Sources */,
@@ -1558,6 +1576,7 @@
 				6882F60523420DFA00934C04 /* VehicleDetailTotalAmountCell.swift in Sources */,
 				B1E233D822D3120000CEA568 /* MyBidListViewController.swift in Sources */,
 				468E992722D9F26900072361 /* QRCodeDetails.swift in Sources */,
+				6810B1CF234337D00071BAE9 /* FindCarReferAndEarnCell.swift in Sources */,
 				6882F5FE23420DFA00934C04 /* RentalLoginViewController.swift in Sources */,
 				182BD25022EF175100C419B9 /* ARCarMovement.swift in Sources */,
 				18CB7F9022E89688004FA66C /* DriverInfo.swift in Sources */,
@@ -1605,6 +1624,7 @@
 				18CB7F9222E89688004FA66C /* CustomerInfo.swift in Sources */,
 				463DEFC922D851E6002365F8 /* SendMoneyViewController.swift in Sources */,
 				EE8A61C822C652F5000718ED /* RegisterViewController.swift in Sources */,
+				6810B1CA23431B510071BAE9 /* FindCarTrendingCarsCell.swift in Sources */,
 				46CA655722DEFB2900FC6E16 /* Logout.swift in Sources */,
 				6882F60623420DFA00934C04 /* VehicleDetailMapViewCell.swift in Sources */,
 				46C469B922D70DA3007BA89B /* WalletViewController.swift in Sources */,
