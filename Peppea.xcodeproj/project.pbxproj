@@ -1792,7 +1792,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.PepPeaRental.passenger;
+				PRODUCT_BUNDLE_IDENTIFIER = com.PepPea.passenger;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Peppea/Resources/Peppea-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -1814,7 +1814,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.PepPeaRental.passenger;
+				PRODUCT_BUNDLE_IDENTIFIER = com.PepPea.passenger;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Peppea/Resources/Peppea-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
