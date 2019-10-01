@@ -15,7 +15,9 @@ protocol SelectDateDelegate {
     func DidSelectEndTripDate(SelectedDate:String, HoursFormat:String, DisplayAmPmFormat:String)
 }
 
-class SelectDateTimeViewController: UIViewController, RKMultiUnitRulerDataSource, RKMultiUnitRulerDelegate, FSCalendarDataSource, FSCalendarDelegate{
+class SelectDateTimeViewController: BaseViewController, RKMultiUnitRulerDataSource, RKMultiUnitRulerDelegate, FSCalendarDataSource, FSCalendarDelegate{
+    
+    var isForPickUp: Bool = true
     
     @IBOutlet weak var calendarView: FSCalendar!
     
@@ -41,6 +43,7 @@ class SelectDateTimeViewController: UIViewController, RKMultiUnitRulerDataSource
     var SelectedTimeHourFormat:String = ""
     var SelectedTimeHourWithAmPm:String = ""
     
+    @IBOutlet weak var btnContinue: UIButton!
     override func loadView() {
         super.loadView()
         
@@ -58,11 +61,25 @@ class SelectDateTimeViewController: UIViewController, RKMultiUnitRulerDataSource
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        ///TODO:
+//        Utilities.setNavigationBarInViewController(controller: self, naviColor: ThemeNaviLightBlueColor, naviTitle: "", leftImage: kClose_Icon, rightImage: "", isTranslucent: false)
         
-        Utilities.setNavigationBarInViewController(controller: self, naviColor: ThemeNaviLightBlueColor, naviTitle: "", leftImage: kClose_Icon, rightImage: "", isTranslucent: false)
+        self.setNavBarWithBack(Title: "Date & Time", IsNeedRightButton: false)
         
-        self.lblDateTitle.text = "\(TypeofSelection) TRIP DATE"
-        self.lblTimeTitle.text = "\(TypeofSelection) TRIP TIME"
+        if isForPickUp {
+            
+            self.lblDateTitle.text = "PICKUP DATE"
+            self.lblTimeTitle.text = "PICKUP TIME"
+        }else{
+            
+            self.lblDateTitle.text = "DROP OFF DATE"
+            self.lblTimeTitle.text = "DROP OFF TIME"
+        }
+       
+        self.btnContinue.layer.cornerRadius = self.btnContinue.frame.height / 2.0
+        self.btnContinue.layer.masksToBounds = true
+        
         
         self.Ruler.direction = .horizontal
 //        self.Ruler.tintColor = UIColor(red: 255.0/255.0, green: 172.0/255.0, blue: 38.0/255.0, alpha: 1.0)
@@ -72,10 +89,12 @@ class SelectDateTimeViewController: UIViewController, RKMultiUnitRulerDataSource
         self.Ruler?.dataSource = self
         for subview  in self.Ruler.subviews {
             if let subSegment = subview as? UISegmentedControl {
-                subSegment.backgroundColor = UIColor(red: 255.0/255.0, green: 172.0/255.0, blue: 38.0/255.0, alpha: 1.0)
+                subSegment.backgroundColor = UIColor.white
+                    //UIColor(red: 255.0/255.0, green: 172.0/255.0, blue: 38.0/255.0, alpha: 1.0)
                 subSegment.isHidden = true
             } else if let sub = subview as? UIView {
-                sub.backgroundColor = UIColor(red: 255.0/255.0, green: 172.0/255.0, blue: 38.0/255.0, alpha: 1.0)
+                sub.backgroundColor = UIColor.white
+                    //UIColor(red: 255.0/255.0, green: 172.0/255.0, blue: 38.0/255.0, alpha: 1.0)
             }
         }
         
@@ -154,9 +173,9 @@ class SelectDateTimeViewController: UIViewController, RKMultiUnitRulerDataSource
             let DateformatterFinal = DateFormatter()
             DateformatterFinal.dateFormat = "yyyy-MM-dd"
             let dateTimes = (self.lblTime.text!).components(separatedBy: " ")
-            if self.TypeofSelection == "START" {
+            if self.TypeofSelection == "PICKUP" {
                 self.Delegate.DidSelectStartTripDate(SelectedDate: "\(DateformatterFinal.string(from: self.SelectDate)) \(dateTimes[0])", HoursFormat: "\(DateformatterFinal.string(from: self.SelectDate)) \(self.SelectedTimeHourFormat)", DisplayAmPmFormat: "\(DateformatterFinal.string(from: self.SelectDate)) \(self.lblTime.text!)")
-            } else if self.TypeofSelection == "END" {
+            } else if self.TypeofSelection == "DROPOFF" {
                 self.Delegate.DidSelectEndTripDate(SelectedDate: "\(DateformatterFinal.string(from: self.SelectDate)) \(dateTimes[0])", HoursFormat: "\(DateformatterFinal.string(from: self.SelectDate)) \(self.SelectedTimeHourFormat)", DisplayAmPmFormat: "\(DateformatterFinal.string(from: self.SelectDate)) \(self.lblTime.text!)")
             }
         }
@@ -195,12 +214,12 @@ class SelectDateTimeViewController: UIViewController, RKMultiUnitRulerDataSource
         let kgSegment = RKSegmentUnit(name: "", unit: UnitDuration.hours, formatter: formatter)
         kgSegment.name = ""
         kgSegment.unit = UnitDuration.hours
-        let kgMarkerTypeMax = RKRangeMarkerType(color: UIColor.white, size: CGSize(width: 1.0, height: 50.0), scale: 5.0)
+        let kgMarkerTypeMax = RKRangeMarkerType(color: UIColor.gray, size: CGSize(width: 1.0, height: 50.0), scale: 5.0)
         kgMarkerTypeMax.labelVisible = true
         
         kgSegment.markerTypes = [
-            RKRangeMarkerType(color: UIColor.white, size: CGSize(width: 1.0, height: 35.0), scale: 0.5),
-            RKRangeMarkerType(color: UIColor.white, size: CGSize(width: 1.0, height: 50.0), scale: 1.0)]
+            RKRangeMarkerType(color: UIColor.gray, size: CGSize(width: 1.0, height: 35.0), scale: 0.5),
+            RKRangeMarkerType(color: UIColor.gray, size: CGSize(width: 1.0, height: 50.0), scale: 1.0)]
         kgSegment.markerTypes.last?.labelVisible = true
         return [kgSegment]
     }
@@ -225,7 +244,8 @@ class SelectDateTimeViewController: UIViewController, RKMultiUnitRulerDataSource
     
     func styleForUnit(_ unit: Dimension) -> RKSegmentUnitControlStyle {
         let style: RKSegmentUnitControlStyle = RKSegmentUnitControlStyle()
-        style.scrollViewBackgroundColor = UIColor(red: 255.0/255.0, green: 172.0/255.0, blue: 38.0/255.0, alpha: 1.0)
+        style.scrollViewBackgroundColor = UIColor.white
+            //UIColor(red: 255.0/255.0, green: 172.0/255.0, blue: 38.0/255.0, alpha: 1.0)
 //            UIColor(red: 0.22, green: 0.74, blue: 0.86, alpha: 1.0)
         let range = self.rangeForUnit(unit)
         if unit == UnitMass.pounds {
@@ -236,8 +256,8 @@ class SelectDateTimeViewController: UIViewController, RKMultiUnitRulerDataSource
             style.textFieldBackgroundColor = UIColor.red
         }
         style.colorOverrides = [
-            RKRange<Float>(location: range.location, length: 0.1 * (range.length)): UIColor.white,
-            RKRange<Float>(location: range.location + 0.4 * (range.length), length: 0.2 * (range.length)): UIColor.white]
+            RKRange<Float>(location: range.location, length: 0.1 * (range.length)): UIColor.gray,
+            RKRange<Float>(location: range.location + 0.4 * (range.length), length: 0.2 * (range.length)): UIColor.gray]
         style.textFieldBackgroundColor = UIColor.clear
         style.textFieldTextColor = UIColor.white
     
