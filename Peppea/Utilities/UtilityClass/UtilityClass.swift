@@ -258,3 +258,18 @@ class UtilityClass : NSObject
 
 
 }
+
+
+extension String {
+    
+    func Convert_To_dd_MMM_yyyy_HH_mm_a() -> String {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let date = dateFormatter.date(from: self)
+        dateFormatter.dateFormat = "dd MMM, yyyy hh:mm a"
+        return  dateFormatter.string(from: date!)
+    }
+    
+    
+}

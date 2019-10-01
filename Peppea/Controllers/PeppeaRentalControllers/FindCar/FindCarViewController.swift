@@ -42,11 +42,18 @@ class FindCarViewController: BaseViewController, UITableViewDelegate, UITableVie
     var selectedAddress:String = ""
     var selectedAddLat = Double()
     var selectedAddLong = Double()
+    
+    
     var selectedLocationType:String = ""
-    var selectedPickupTime:String = ""
-    var selectedDeliveryTime:String = ""
+    
     var PickupDisplayDate:String = ""
+    var selectedPickupTime:String = ""
+    var pickTimeToDisplay: String = ""
+    
     var DeliveryDisplayDate:String = ""
+    var selectedDeliveryTime:String = ""
+    var deliveryTimeToDisplay: String = ""
+    
     var isBookingFromBanner:Bool = false
     var BannerDetail:[String:AnyObject] = [:]
     
@@ -136,6 +143,19 @@ class FindCarViewController: BaseViewController, UITableViewDelegate, UITableVie
             //Select Date Cell
             let cell = tableView.dequeueReusableCell(withIdentifier: "FindCarPickUpDateCell") as! FindCarPickUpDateCell
             cell.setUpUI()
+            
+            cell.btnPickUpDate.addTarget(self, action: #selector(self.btnPickupTime(_:)), for: .touchUpInside)
+            
+            
+            if self.PickupDisplayDate == "" {
+            
+                cell.lblPickUpDate.text = "Pickup Date & Time"
+                
+            }else {
+                 cell.lblPickUpDate.text = self.PickupDisplayDate
+            }
+            
+            
             return cell
             
             
@@ -272,12 +292,13 @@ class FindCarViewController: BaseViewController, UITableViewDelegate, UITableVie
     
     @IBAction func btnPickupTime(_ sender: Any) {
         ///TODO:
-//        let selectDateTime = self.storyboard?.instantiateViewController(withIdentifier: "SelectDateTimeViewController") as! SelectDateTimeViewController
-//        selectDateTime.Delegate = self
-//        selectDateTime.TypeofSelection = "START"
-//        let NavSelect = UINavigationController(rootViewController: selectDateTime)
-//        self.present(NavSelect, animated: true, completion: nil)
-//
+        let selectDateTime = self.storyboard?.instantiateViewController(withIdentifier: "SelectDateTimeViewController") as! SelectDateTimeViewController
+        selectDateTime.Delegate = self
+        selectDateTime.TypeofSelection = "PICKUP"
+        selectDateTime.isForPickUp = true
+        let NavSelect = UINavigationController(rootViewController: selectDateTime)
+        self.present(NavSelect, animated: true, completion: nil)
+
     }
     
     @IBAction func btnDropOffTime(_ sender: Any) {
@@ -353,19 +374,19 @@ class FindCarViewController: BaseViewController, UITableViewDelegate, UITableVie
     
     //MARK:- selectDateDelegate Methods
     
-    func DidSelectStartTripDate(SelectedDate: String, HoursFormat: String, DisplayAmPmFormat: String) {
-//        self.lblPickupTime.text = DisplayAmPmFormat
-        ///TODO:
-//        self.selectedPickupTime = HoursFormat
-//        self.PickupDisplayDate = "\(HoursFormat):00".Convert_To_dd_MMM_yyyy_HH_mm_a()
-    }
-    
-    func DidSelectEndTripDate(SelectedDate: String, HoursFormat: String, DisplayAmPmFormat: String) {
-//        self.lblDropOffTime.text = DisplayAmPmFormat
-        ///TODO:
-//        self.selectedDeliveryTime = HoursFormat
-//        self.DeliveryDisplayDate = "\(HoursFormat):00".Convert_To_dd_MMM_yyyy_HH_mm_a()
-    }
+//    func DidSelectStartTripDate(SelectedDate: String, HoursFormat: String, DisplayAmPmFormat: String) {
+////        self.lblPickupTime.text = DisplayAmPmFormat
+//        ///TODO:
+////        self.selectedPickupTime = HoursFormat
+////        self.PickupDisplayDate = "\(HoursFormat):00".Convert_To_dd_MMM_yyyy_HH_mm_a()
+//    }
+//    
+//    func DidSelectEndTripDate(SelectedDate: String, HoursFormat: String, DisplayAmPmFormat: String) {
+////        self.lblDropOffTime.text = DisplayAmPmFormat
+//        ///TODO:
+////        self.selectedDeliveryTime = HoursFormat
+////        self.DeliveryDisplayDate = "\(HoursFormat):00".Convert_To_dd_MMM_yyyy_HH_mm_a()
+//    }
     
     //    func DidSelectEndTripDate(SelectedDate: String, HoursFormat: String) {
     //        self.lblDropOffTime.text = SelectedDate
@@ -386,6 +407,30 @@ class FindCarViewController: BaseViewController, UITableViewDelegate, UITableVie
     //        self.lblPickupTime.text = SelectedDate
     //        self.selectedPickupTime = SelectedDate
     //    }
+    
+}
+
+extension FindCarViewController: SelectDateDelegate {
+    
+    
+    //MARK:- selectDateDelegate Methods
+    
+    func DidSelectStartTripDate(SelectedDate: String, HoursFormat: String, DisplayAmPmFormat: String) {
+
+        self.pickTimeToDisplay = DisplayAmPmFormat
+        self.selectedPickupTime = HoursFormat
+        self.PickupDisplayDate = "\(HoursFormat):00".Convert_To_dd_MMM_yyyy_HH_mm_a()
+        
+        //For updating the values
+        self.tblView.reloadData()
+    }
+    
+    func DidSelectEndTripDate(SelectedDate: String, HoursFormat: String, DisplayAmPmFormat: String) {
+//        self.lblDropOffTime.text = DisplayAmPmFormat
+        self.selectedDeliveryTime = HoursFormat
+//        self.DeliveryDisplayDate = "\(HoursFormat):00".Convert_To_dd_MMM_yyyy_HH_mm_a()
+    }
+
     
 }
 
