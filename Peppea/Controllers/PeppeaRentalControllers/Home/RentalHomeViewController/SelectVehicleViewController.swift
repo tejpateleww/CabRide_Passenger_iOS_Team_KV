@@ -65,7 +65,8 @@ class SelectVehicleViewController: BaseViewController,BookVehicleDelegate
     
     func setupNavigationController()
     {
-        setNavBarWithMenu(Title: "Home", IsNeedRightButton: false)
+
+        self.title = "Home"
     }
     
     override func viewWillAppear(_ animated: Bool)
