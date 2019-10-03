@@ -41,8 +41,6 @@ enum payment_type: String {
     case bulk_miles = "bulk_miles"
 }
 
-
-
 class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDelegate,ARCarMovementDelegate
 {
 
@@ -135,6 +133,8 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
             else
             {
                 self.containerView.isHidden = false
+                (self.children.first as! CarCollectionViewController).getDataFromJSON()
+                
             }
         }
     }
@@ -163,7 +163,8 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
 
     override func viewDidLoad() {
         super.viewDidLoad()
-     
+
+        
         SocketIOManager.shared.establishConnection()
         
         if SingletonClass.sharedInstance.bookingInfo != nil {

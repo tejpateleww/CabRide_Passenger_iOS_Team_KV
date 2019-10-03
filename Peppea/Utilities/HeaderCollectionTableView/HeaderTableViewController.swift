@@ -129,9 +129,11 @@ class HeaderTableViewController: UIView {
         customInitialiser()
        
     }
+    
     // //-------------------------------------
     // MARK:- INdicator View/Line Methods
     //-------------------------------------
+    
     var leadingConstraint : NSLayoutConstraint?
     var widthConstraint : NSLayoutConstraint?
   

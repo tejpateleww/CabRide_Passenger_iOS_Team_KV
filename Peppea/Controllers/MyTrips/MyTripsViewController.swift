@@ -66,7 +66,7 @@ class MyTripsViewController: BaseViewController
         self.PageNumber += 1
         if self.tripType.rawValue.lowercased() == "past" {
            self.webserviceCallForGettingPastHistory(pageNo: self.PageNumber)
-        } else{
+        } else {
             self.webserviceForUpcommingBooking(pageNo: self.PageNumber)
         }
         
@@ -323,6 +323,11 @@ extension MyTripsViewController: UITableViewDelegate, UITableViewDataSource{
                 self.data = self.tripType.getDescription(pastBookingHistory: self.pastBookingHistoryModelDetails[indexPath.section])
                 tableView.removeAllSubviews()
                 tableView.reloadData()
+            
+                if self.data.count > 0 {
+                    tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+                }
+            
 //            }
 //            self.data = self.tripType.getDescription(pastBookingHistory: self.pastBookingHistoryModelDetails[indexPath.row])
 //            tableView.removeAllSubviews()
@@ -333,6 +338,9 @@ extension MyTripsViewController: UITableViewDelegate, UITableViewDataSource{
                 self.data = self.tripType.getDescription(pastBookingHistory: self.pastBookingHistoryModelDetails[indexPath.section])
                 selectedCell = indexPath.section
                 tableView.reloadData()
+                if self.data.count > 0 {
+                    tableView.scrollToRow(at: IndexPath(row: 0, section: selectedCell), at: .top, animated: false)
+                }
                 /*
                 let rect =  tableView.rect(forSection: indexPath.section)
                 let imageView = UIImageView(frame: CGRect(x: 10, y: rect.minY, width: rect.width - 20, height: rect.height))
