@@ -12,18 +12,19 @@ class FindCarPickUpDateCell: UITableViewCell {
 
     @IBOutlet weak var btnFindCar: UIButton!
     
-  
+    @IBOutlet weak var viewPickUp: UIView!
     @IBOutlet weak var btnPickUpDate: UIButton!
-    
     @IBOutlet weak var lblPickUpDate: UILabel!
 
+    @IBOutlet weak var viewDropOff: UIView!
     @IBOutlet weak var lblDropOffDate: UILabel!
 
-    @IBOutlet weak var viewDropOff: UIView!
-    
-    @IBOutlet weak var viewPickUp: UIView!
+    @IBOutlet weak var btnDropOffDate: UIButton!
     
     @IBOutlet weak var viewSelectLocation: UIView!
+    
+    var findCarButtonClickClosure: (() -> ())?
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -64,10 +65,12 @@ class FindCarPickUpDateCell: UITableViewCell {
     }
     @IBAction func findCarButtonClicked(_ sender: Any) {
     
+        if let findCarButtonClickClosure = self.findCarButtonClickClosure {
+            
+            findCarButtonClickClosure()
+        }
+        
     
     }
-    
-   
-    
   
 }

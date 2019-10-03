@@ -65,7 +65,10 @@ class SelectDateTimeViewController: BaseViewController, RKMultiUnitRulerDataSour
         ///TODO:
 //        Utilities.setNavigationBarInViewController(controller: self, naviColor: ThemeNaviLightBlueColor, naviTitle: "", leftImage: kClose_Icon, rightImage: "", isTranslucent: false)
         
-        self.setNavBarWithBack(Title: "Date & Time", IsNeedRightButton: false)
+
+        self.navigationController?.navigationBar.barTintColor = .white
+        setNavBarWithBack(Title: "Date & Time", IsNeedRightButton: false, barColor: .white,titleFontColor: .black,backBarButtonColor: .black)
+        
         
         if isForPickUp {
             

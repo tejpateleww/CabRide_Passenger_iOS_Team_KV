@@ -56,7 +56,7 @@ class BaseViewController: UIViewController {
 
     }
 
-    func setNavBarWithBack(Title:String, IsNeedRightButton:Bool, titleFontColor: UIColor = UIColor.black) {
+    func setNavBarWithBack(Title:String, IsNeedRightButton:Bool, barColor: UIColor = UIColor.black, titleFontColor: UIColor = UIColor.black, backBarButtonColor: UIColor = UIColor.white) {
                 self.navigationController?.navigationBar.isTranslucent = true
 
         if Title == "Home" {
@@ -74,12 +74,14 @@ class BaseViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = nil
         self.navigationItem.leftBarButtonItem = leftNavBarButton
         ///White color of a Back Bar Button Item
-        self.navigationItem.leftBarButtonItem?.tintColor = .white
+        self.navigationItem.leftBarButtonItem?.tintColor = backBarButtonColor
+            //.white
         self.navigationController?.view.backgroundColor = .white
 
 
         self.navigationController?.navigationBar.tintColor = UIColor.black
-        self.navigationController?.navigationBar.barTintColor = UIColor.black
+        self.navigationController?.navigationBar.barTintColor = barColor
+            //UIColor.black
 //        self.navigationController?.navigationBar.layer.shadowColor = UIColor.black.cgColor
 //        self.navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
 //        self.navigationController?.navigationBar.layer.shadowRadius = 3.0
