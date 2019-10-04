@@ -372,7 +372,7 @@
                   moduleName = "Peppea"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/eww078/Documents/Arpit/Projects/peppea/Peppea/Webservices/Networking/Socket/SocketManager.swift"
-                  timestampString = "591867992.571913"
+                  timestampString = "591873587.27206"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "69"
@@ -387,7 +387,7 @@
                   moduleName = "Peppea"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/eww078/Documents/Arpit/Projects/peppea/Peppea/Webservices/Networking/Socket/SocketManager.swift"
-                  timestampString = "591867992.5733401"
+                  timestampString = "591873587.273512"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "71"
@@ -452,7 +452,7 @@
                   moduleName = "Peppea"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/eww078/Documents/Arpit/Projects/peppea/Peppea/Webservices/Networking/Socket/SocketManager.swift"
-                  timestampString = "591867992.583172"
+                  timestampString = "591873587.28407"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "33"
@@ -467,7 +467,7 @@
                   moduleName = "Peppea"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/eww078/Documents/Arpit/Projects/peppea/Peppea/Webservices/Networking/Socket/SocketManager.swift"
-                  timestampString = "591867992.584638"
+                  timestampString = "591873587.2856081"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "34"
@@ -475,22 +475,6 @@
                   offsetFromSymbolStart = "247">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Peppea/Controllers/BaseVC/BaseViewController.swift"
-            timestampString = "591868149.359235"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "setNavBarWithBack(Title:IsNeedRightButton:barColor:titleFontColor:backBarButtonColor:isTransperant:)"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -580,11 +564,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Peppea/Controllers/PeppeaRentalControllers/FindCar/FindCarVc/FindCarViewController.swift"
-            timestampString = "591868149.359355"
+            timestampString = "591873756.139884"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "384"
-            endingLineNumber = "384"
+            startingLineNumber = "385"
+            endingLineNumber = "385"
             landmarkName = "FindCarViewController"
             landmarkType = "21">
          </BreakpointContent>
@@ -596,11 +580,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Peppea/Controllers/PeppeaRentalControllers/FindCar/FindCarVc/FindCarViewController.swift"
-            timestampString = "591868149.359408"
+            timestampString = "591873756.140167"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "403"
-            endingLineNumber = "403"
+            startingLineNumber = "404"
+            endingLineNumber = "404"
             landmarkName = "FindCarViewController"
             landmarkType = "21">
          </BreakpointContent>
@@ -612,11 +596,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Peppea/Controllers/PeppeaRentalControllers/FindCar/FindCarVc/FindCarViewController.swift"
-            timestampString = "591868149.3594559"
+            timestampString = "591873756.140215"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "389"
-            endingLineNumber = "389"
+            startingLineNumber = "390"
+            endingLineNumber = "390"
             landmarkName = "FindCarViewController"
             landmarkType = "21">
          </BreakpointContent>
@@ -628,11 +612,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Peppea/Controllers/PeppeaRentalControllers/FindCar/FindCarVc/FindCarViewController.swift"
-            timestampString = "591868149.359502"
+            timestampString = "591873756.1402791"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "392"
-            endingLineNumber = "392"
+            startingLineNumber = "393"
+            endingLineNumber = "393"
             landmarkName = "DidSelectEndTripDate(SelectedDate:HoursFormat:DisplayAmPmFormat:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -644,11 +628,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Peppea/Controllers/PeppeaRentalControllers/FindCar/FindCarVc/FindCarViewController.swift"
-            timestampString = "591868149.359548"
+            timestampString = "591873756.140349"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "408"
-            endingLineNumber = "408"
+            startingLineNumber = "409"
+            endingLineNumber = "409"
             landmarkName = "unknown"
             landmarkType = "0">
          </BreakpointContent>
@@ -660,11 +644,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Peppea/Controllers/PeppeaRentalControllers/FindCar/FindCarVc/FindCarViewController.swift"
-            timestampString = "591868149.359593"
+            timestampString = "591873756.140427"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "403"
-            endingLineNumber = "403"
+            startingLineNumber = "404"
+            endingLineNumber = "404"
             landmarkName = "FindCarViewController"
             landmarkType = "21">
          </BreakpointContent>
@@ -676,45 +660,23 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Peppea/Controllers/PeppeaRentalControllers/FindCar/FindCarVc/FindCarViewController.swift"
-            timestampString = "591868149.359637"
+            timestampString = "591873756.140491"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "384"
-            endingLineNumber = "384"
+            startingLineNumber = "385"
+            endingLineNumber = "385"
             landmarkName = "FindCarViewController"
             landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
          <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Peppea/Controllers/SideMenu/SideMenuTableViewController.swift"
-            timestampString = "591868149.359684"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Peppea/Controllers/SideMenu/SideMenuTableViewController.swift"
-            timestampString = "591868149.360015"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
+            scope = "0"
+            stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

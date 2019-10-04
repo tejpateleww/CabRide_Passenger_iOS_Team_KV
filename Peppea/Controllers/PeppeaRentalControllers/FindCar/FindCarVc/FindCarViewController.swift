@@ -101,7 +101,8 @@ class FindCarViewController: BaseViewController, UITableViewDelegate, UITableVie
         //        Utilities.setNavigationBarInViewController(controller: self, naviColor: ThemeNaviLightBlueColor, naviTitle: "Search For \(VehicalName)", leftImage: kBack_Icon, rightImage: "", isTranslucent: true)
 //        self.btnFindVehicles.setTitle("Find \(VehicalName)", for: .normal)
         
-        self.setNavBarWithMenu(Title: "", IsNeedRightButton: false,barButtonColor: .white)
+        self.setNavBarWithMenu(Title: "", IsNeedRightButton: false)
+            ///,barButtonColor: .white)
 
         ///Adding height
         do {

@@ -82,7 +82,8 @@ class SelectDateTimeViewController: BaseViewController, RKMultiUnitRulerDataSour
 
 //        self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.navigationBar.barTintColor = .white
-        setNavBarWithBack(Title: "Date & Time", IsNeedRightButton: false, barColor: .white,titleFontColor: .black,backBarButtonColor: .black)
+        setNavBarWithBack(Title: "Date & Time", IsNeedRightButton: false)
+            //, barColor: .white,titleFontColor: .black,backBarButtonColor: .black)
         setNavigationBarDefault()
         
         

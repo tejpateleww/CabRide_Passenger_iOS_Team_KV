@@ -82,7 +82,8 @@ class SelectVehicleViewController: BaseViewController,BookVehicleDelegate
     {
         super.viewWillAppear(animated)
         
-        setNavBarWithBack(Title: "Select Car", IsNeedRightButton: false, barColor: .white,titleFontColor: .black,backBarButtonColor: .black)
+        setNavBarWithBack(Title: "Select Car", IsNeedRightButton: false)
+            //, barColor: .white,titleFontColor: .black,backBarButtonColor: .black)
 
 //        Utilities.setNavigationBarInViewController(controller: self, naviColor: ThemeNaviLightBlueColor, naviTitle: "Select \(VehicalCat_IDName.1)", leftImage: kBack_Icon, rightImage: "", isTranslucent: false)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "filter"), style: .plain, target: self, action: nil)

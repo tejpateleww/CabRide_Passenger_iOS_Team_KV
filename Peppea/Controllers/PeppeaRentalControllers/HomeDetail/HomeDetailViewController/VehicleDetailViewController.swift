@@ -90,7 +90,8 @@ class VehicleDetailViewController: BaseViewController
     {
         super.viewWillAppear(animated)
         
-        setNavBarWithBack(Title: "Ford Figo", IsNeedRightButton: false,titleFontColor: UIColor.white)
+        setNavBarWithBack(Title: "Ford Figo", IsNeedRightButton: false)
+            //,titleFontColor: UIColor.white)
         
         //Transperant
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
