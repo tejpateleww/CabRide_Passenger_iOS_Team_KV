@@ -97,8 +97,13 @@ class DriverInfoPageViewController: UIViewController {
 //        let homeVC = self.parent as? HomeViewController
 //  //      homeVC?.hideAndShowView(view: .waiting)
 //        homeVC?.setupAfterComplete()
-        
-        webserviceForCancelTrip()
+        let AlertController = UIAlertController(title:AppName.getkAppName().rawValue , message: "Are you sure want to cancel the trip?", preferredStyle: .alert)
+        AlertController.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (UIAlertAction) in
+                self.webserviceForCancelTrip()
+        }))
+        AlertController.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+        guard let Parentvc = self.parent as? HomeViewController else { return }
+        Parentvc.present(AlertController, animated: true, completion: nil)
     }
     
     @IBAction func btnWaitingTime(_ sender: Any) {

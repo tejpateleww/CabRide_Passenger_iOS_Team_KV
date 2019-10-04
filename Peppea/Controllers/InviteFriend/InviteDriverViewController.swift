@@ -35,13 +35,13 @@ class InviteDriverViewController: BaseViewController, MFMailComposeViewControlle
     
     func setData() {
         
-        let user = SingletonClass.sharedInstance.bookingInfo
+        let user = SingletonClass.sharedInstance.loginData
         
         let base = NetworkEnvironment.baseImageURL
 
-        imgProfilePick.sd_setImage(with: URL(string: base + (user?.customerInfo.profileImage)! ), completed: nil)
+        imgProfilePick.sd_setImage(with: URL(string: base + (user.profileImage)! ), completed: nil)
         
-        lblReferralCode.text = user?.customerInfo.referralCode
+        lblReferralCode.text = user.referralCode
         
     }
     
