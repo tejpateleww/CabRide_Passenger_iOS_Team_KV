@@ -10,23 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Peppea/Controllers/Home/Home VC/HomeViewController.swift"
-            timestampString = "591715013.4449281"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "463"
-            endingLineNumber = "463"
-            landmarkName = "btnBackButtonWhileBookLater()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Peppea/Controllers/Home/Home VC/HomeViewController.swift"
-            timestampString = "591715013.444988"
+            timestampString = "591865389.478194"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "414"
@@ -186,7 +170,7 @@
                   moduleName = "Peppea"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Volumes/Data/Bhautik/BitBucket_Projects/Peppea%20User/Peppea/Controllers/LoginRegister/Register/RegisterContainerViewController.swift"
-                  timestampString = "591714614.349733"
+                  timestampString = "591864426.497099"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "97"
@@ -201,7 +185,7 @@
                   moduleName = "Peppea"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Volumes/Data/Bhautik/BitBucket_Projects/Peppea%20User/Peppea/Controllers/LoginRegister/Register/RegisterContainerViewController.swift"
-                  timestampString = "591714614.351051"
+                  timestampString = "591864426.498616"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "98"
@@ -250,7 +234,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Peppea/Controllers/Home/Car Collection/CarCollectionViewController.swift"
-            timestampString = "591715013.44522"
+            timestampString = "591789534.830249"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "306"
@@ -266,7 +250,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Peppea/Controllers/Home/Car Collection/CarCollectionViewController.swift"
-            timestampString = "591715013.445598"
+            timestampString = "591789534.830628"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "142"
@@ -282,7 +266,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Peppea/Controllers/Home/Car Collection/CarCollectionViewController.swift"
-            timestampString = "591715013.445834"
+            timestampString = "591789534.830892"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "157"
@@ -297,24 +281,8 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Peppea/Controllers/Home/SocketAndWebservice/HomeSocketCalls.swift"
-            timestampString = "591712478.315338"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
-            landmarkName = "onSocket_GetEstimateFare()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Peppea/Controllers/Home/Car Collection/CarCollectionViewController.swift"
-            timestampString = "591715013.446076"
+            timestampString = "591789534.831122"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "167"
@@ -330,7 +298,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Peppea/Controllers/Home/Home VC/HomeViewController.swift"
-            timestampString = "591715013.446298"
+            timestampString = "591865389.478734"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "127"
@@ -345,13 +313,77 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Peppea/Webservices/Networking/Socket/SocketManager.swift"
-            timestampString = "591715013.446341"
+            filePath = "Peppea/Controllers/MyTrips/MyTripsViewController.swift"
+            timestampString = "591791214.053367"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
-            landmarkName = "socketEmit(for:with:)"
+            startingLineNumber = "201"
+            endingLineNumber = "201"
+            landmarkName = "setDataAfterWebServiceCall(response:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Peppea/Controllers/MyTrips/MyTripsViewController.swift"
+            timestampString = "591791214.05389"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "252"
+            endingLineNumber = "252"
+            landmarkName = "numberOfSections(in:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Peppea/Controllers/MyTrips/MyTripsViewController.swift"
+            timestampString = "591791214.054253"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "272"
+            endingLineNumber = "272"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Peppea/Controllers/MyTrips/MyTripsViewController.swift"
+            timestampString = "591791214.0546089"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "371"
+            endingLineNumber = "371"
+            landmarkName = "tableView(_:heightForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Peppea/Controllers/Home/SocketAndWebservice/HomeSocketCalls.swift"
+            timestampString = "591791571.130363"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "emitSocket_GetEstimateFare(param:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

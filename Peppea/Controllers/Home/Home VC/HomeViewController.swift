@@ -704,6 +704,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
         acController.autocompleteBounds = bounds
         present(acController, animated: true, completion: nil)
     }
+    
     @IBAction func btnCurrentLocation(_ sender: UIButton)
     {
         if txtPickupLocation.text!.isBlank {
