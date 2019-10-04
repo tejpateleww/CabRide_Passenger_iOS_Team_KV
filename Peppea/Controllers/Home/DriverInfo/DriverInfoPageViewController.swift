@@ -97,7 +97,7 @@ class DriverInfoPageViewController: UIViewController {
 //        let homeVC = self.parent as? HomeViewController
 //  //      homeVC?.hideAndShowView(view: .waiting)
 //        homeVC?.setupAfterComplete()
-        let AlertController = UIAlertController(title:AppName.getkAppName().rawValue , message: "Are you sure want to cancel the trip?", preferredStyle: .alert)
+        let AlertController = UIAlertController(title:AppName.kAPPName , message: "Are you sure want to cancel the trip?", preferredStyle: .alert)
         AlertController.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (UIAlertAction) in
                 self.webserviceForCancelTrip()
         }))

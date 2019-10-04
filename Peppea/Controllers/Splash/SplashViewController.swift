@@ -16,37 +16,24 @@ class SplashViewController: UIViewController {
         super.viewDidLoad()
 
         
-        self.determiningTheAppName()
+        let storyboardName = self.storyboard?.value(forKey: "name") as? String ?? ""
         
-        //Peppea or Peppea Rental
-        
-        if AppName.getkAppName() == .peppea {
+        if storyboardName == "LoginRegister" {
 
             self.webserviceforAPPInit()
-        
+            
         }else{
+            //Rental_LoginRegister - storyboard name
             //Peppea Rental
             self.redirectToPeppeaRentalFlow()
-            
+        
         }
         
 
         // Do any additional setup after loading the view.
     }
 
-    func determiningTheAppName(){
-        
-        if self.view.tag == 1 {
-
-            //Peppea Rental App
-            AppName.set(appName: .peppeaRental)
-
-        }else{
-            //Peppea App
-            AppName.set(appName: .peppea)
-
-        }
-    }
+   
 
 
     override func viewDidAppear(_ animated: Bool) {

@@ -96,12 +96,12 @@ extension CarCollectionViewController: CarCollectionWebserviceProtocol {
                 
                 let msg = response.dictionary?["message"]?.stringValue ?? response.dictionary?["message"]?.array?.first?.stringValue ?? ""
                 
-                UtilityClass.showAlert(title: AppName.kAPPName.rawValue, message: msg, alertTheme: .success)
+                UtilityClass.showAlert(title: AppName.kAPPName, message: msg, alertTheme: .success)
                 
             } else {
                 let msg = response.dictionary?["message"]?.stringValue ?? response.dictionary?["message"]?.array?.first?.stringValue ?? ""
                 
-                UtilityClass.showAlert(title: AppName.kAPPName.rawValue, message: msg, alertTheme: .error)
+                UtilityClass.showAlert(title: AppName.kAPPName, message: msg, alertTheme: .error)
                 
             }
         }

@@ -140,7 +140,7 @@ extension FavouriteAddressViewController: UITableViewDataSource, UITableViewDele
             print("Delete button tapped")
             
             let currentId =  self.aryData[editActionsForRowAt.row].id
-            let alert = UIAlertController(title: AppName.kAPPName.rawValue, message: "Are you want to sure to remove this address?", preferredStyle: .alert)
+            let alert = UIAlertController(title: AppName.kAPPName, message: "Are you want to sure to remove this address?", preferredStyle: .alert)
             let ok = UIAlertAction(title: "OK", style: .default) { (action) in
                 self.webserviceForDeleteFavouriteAddress(addressId: currentId ?? "")
             }

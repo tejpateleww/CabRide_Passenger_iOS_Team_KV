@@ -137,7 +137,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
         if (CLLocationManager.authorizationStatus() == .denied) || CLLocationManager.authorizationStatus() == .restricted || CLLocationManager.authorizationStatus() == .notDetermined {
-            let alert = UIAlertController(title: AppName.kAPPName.rawValue, message: "Please enable location from settings", preferredStyle: .alert)
+            let alert = UIAlertController(title: AppName.kAPPName, message: "Please enable location from settings", preferredStyle: .alert)
             let enable = UIAlertAction(title: "Enable", style: .default) { (temp) in
                 
                 if let url = URL.init(string: UIApplication.openSettingsURLString) {
