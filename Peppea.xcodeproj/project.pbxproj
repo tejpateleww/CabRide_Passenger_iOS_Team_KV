@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0650348A2AC06055B9F453D4 /* Pods_Peppea.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0810AD09B74A352FE6C277E6 /* Pods_Peppea.framework */; };
+		181DED212326294300C66403 /* MyMiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181DED202326294300C66403 /* MyMiles.swift */; };
+		181DED2423267A5400C66403 /* TransferMileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181DED2223267A5400C66403 /* TransferMileTableViewCell.swift */; };
+		181DED2523267A5400C66403 /* TransferMileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181DED2323267A5400C66403 /* TransferMileTableViewCell.xib */; };
 		182BD24522EF166C00C419B9 /* BulkMileListDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182BD24322EF166C00C419B9 /* BulkMileListDataModel.swift */; };
 		182BD24622EF166C00C419B9 /* BulkMileList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182BD24422EF166C00C419B9 /* BulkMileList.swift */; };
 		182BD24B22EF169900C419B9 /* BulkMileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182BD24822EF169800C419B9 /* BulkMileTableViewCell.swift */; };
@@ -36,6 +39,7 @@
 		18CB7F9022E89688004FA66C /* DriverInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CB7F8B22E89688004FA66C /* DriverInfo.swift */; };
 		18CB7F9122E89688004FA66C /* VehicleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CB7F8C22E89688004FA66C /* VehicleType.swift */; };
 		18CB7F9222E89688004FA66C /* CustomerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CB7F8D22E89688004FA66C /* CustomerInfo.swift */; };
+		18CE238923229446003901D8 /* NavigationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CE238823229446003901D8 /* NavigationVC.swift */; };
 		4600BEFD22D5E24F00306486 /* ReceiveMoneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4600BEFC22D5E24F00306486 /* ReceiveMoneyViewController.swift */; };
 		4600BF0022D613B000306486 /* HistoryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4600BEFF22D613B000306486 /* HistoryListViewController.swift */; };
 		4600BF0222D6140200306486 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4600BF0122D6140200306486 /* HistoryTableViewCell.swift */; };
@@ -182,6 +186,9 @@
 /* Begin PBXFileReference section */
 		0568EF05446C647550DA45F6 /* Pods-Peppea.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Peppea.release.xcconfig"; path = "Pods/Target Support Files/Pods-Peppea/Pods-Peppea.release.xcconfig"; sourceTree = "<group>"; };
 		0810AD09B74A352FE6C277E6 /* Pods_Peppea.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Peppea.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		181DED202326294300C66403 /* MyMiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMiles.swift; sourceTree = "<group>"; };
+		181DED2223267A5400C66403 /* TransferMileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferMileTableViewCell.swift; sourceTree = "<group>"; };
+		181DED2323267A5400C66403 /* TransferMileTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransferMileTableViewCell.xib; sourceTree = "<group>"; };
 		182BD24322EF166C00C419B9 /* BulkMileListDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BulkMileListDataModel.swift; sourceTree = "<group>"; };
 		182BD24422EF166C00C419B9 /* BulkMileList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BulkMileList.swift; sourceTree = "<group>"; };
 		182BD24822EF169800C419B9 /* BulkMileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BulkMileTableViewCell.swift; sourceTree = "<group>"; };
@@ -210,6 +217,7 @@
 		18CB7F8B22E89688004FA66C /* DriverInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriverInfo.swift; sourceTree = "<group>"; };
 		18CB7F8C22E89688004FA66C /* VehicleType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleType.swift; sourceTree = "<group>"; };
 		18CB7F8D22E89688004FA66C /* CustomerInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerInfo.swift; sourceTree = "<group>"; };
+		18CE238823229446003901D8 /* NavigationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationVC.swift; sourceTree = "<group>"; };
 		3113B5679CB8CBDE7AAC41BE /* Pods-Peppea.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Peppea.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Peppea/Pods-Peppea.debug.xcconfig"; sourceTree = "<group>"; };
 		4600BEFC22D5E24F00306486 /* ReceiveMoneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveMoneyViewController.swift; sourceTree = "<group>"; };
 		4600BEFF22D613B000306486 /* HistoryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryListViewController.swift; sourceTree = "<group>"; };
@@ -390,6 +398,8 @@
 				182BD24922EF169800C419B9 /* BulkMileVC.swift */,
 				182BD24A22EF169800C419B9 /* BulkMileTableViewCell.xib */,
 				7A1CC8F22306DE1300FB6ECD /* BulkMilesHistory.swift */,
+				181DED2223267A5400C66403 /* TransferMileTableViewCell.swift */,
+				181DED2323267A5400C66403 /* TransferMileTableViewCell.xib */,
 			);
 			path = BulkMile;
 			sourceTree = "<group>";
@@ -665,6 +675,7 @@
 				B1DE159A22D3647A001045B1 /* MyMileTableViewCell.xib */,
 				B1DE159D22D37263001045B1 /* HeaderView.xib */,
 				B1DE159F22D3760D001045B1 /* HeaderView.swift */,
+				181DED202326294300C66403 /* MyMiles.swift */,
 			);
 			path = MyMileVC;
 			sourceTree = "<group>";
@@ -881,6 +892,7 @@
 			isa = PBXGroup;
 			children = (
 				EE9F3F7322C7846500426377 /* BaseViewController.swift */,
+				18CE238823229446003901D8 /* NavigationVC.swift */,
 			);
 			path = BaseVC;
 			sourceTree = "<group>";
@@ -1201,6 +1213,7 @@
 				463DEFE522D8AEA6002365F8 /* FooterTableViewCell.xib in Resources */,
 				B1DE159C22D3647A001045B1 /* MyMileTableViewCell.xib in Resources */,
 				EE9D6F9422C6449F00EAD756 /* proxima-nova-light.otf in Resources */,
+				181DED2523267A5400C66403 /* TransferMileTableViewCell.xib in Resources */,
 				463DEFE422D8AEA6002365F8 /* MyTripTableViewCell.xib in Resources */,
 				463DEFEA22D8AEA6002365F8 /* MyTrips.storyboard in Resources */,
 				EE9D6FA022C6449F00EAD756 /* proxima-nova-black.otf in Resources */,
@@ -1307,6 +1320,7 @@
 				46CA655522DE02B800FC6E16 /* RegisterResponseModel.swift in Sources */,
 				1836EF4822F8000900852EC8 /* FavouriteAddressViewController.swift in Sources */,
 				EEBF159E22CA0E1F004CB7FB /* CarCollectionViewController.swift in Sources */,
+				181DED212326294300C66403 /* MyMiles.swift in Sources */,
 				46536DFA22E0794D00C538D8 /* AddCardModel.swift in Sources */,
 				468E992922D9F26900072361 /* WalletHistory.swift in Sources */,
 				463DEFD422D877E4002365F8 /* CreditCardValidator.swift in Sources */,
@@ -1374,7 +1388,9 @@
 				182BD25022EF175100C419B9 /* ARCarMovement.swift in Sources */,
 				18CB7F9022E89688004FA66C /* DriverInfo.swift in Sources */,
 				468E991522D9B6EF00072361 /* EmptyTableViewCell.swift in Sources */,
+				181DED2423267A5400C66403 /* TransferMileTableViewCell.swift in Sources */,
 				468E992E22D9F26900072361 /* AddMoney.swift in Sources */,
+				18CE238923229446003901D8 /* NavigationVC.swift in Sources */,
 				B1E233DA22D3123300CEA568 /* OpenBidListViewController.swift in Sources */,
 				463DEFF122D8C13A002365F8 /* HistoryFilterPopUpViewController.swift in Sources */,
 				EE61012A22E8787C00B3B4D7 /* PastBookingHistoryResponse.swift in Sources */,

@@ -177,7 +177,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     func GoToHome(bookingInfo: BookingInfo? = nil) {
         let storyborad = UIStoryboard(name: "Main", bundle: nil)
         let CustomSideMenu = storyborad.instantiateViewController(withIdentifier: "CustomSideMenuViewController") as! SideMenuController
-        let NavHomeVC = UINavigationController(rootViewController: CustomSideMenu)
+        let NavHomeVC = NavigationController(rootViewController: CustomSideMenu)
         NavHomeVC.isNavigationBarHidden = true
         UIApplication.shared.keyWindow?.rootViewController = NavHomeVC
     }

@@ -21,6 +21,8 @@ class TitleHeaderCollectionViewCell: UICollectionViewCell {
                   font: UIFont){
         headerTitleLabel.text = title
         headerTitleLabel.font = font
+//        headerTitleLabel.lineBreakMode = .byWordWrapping
+//        headerTitleLabel.adjustsFontSizeToFitWidth = true
         headerTitleLabel.textColor = textColor
     }
     override init(frame: CGRect) {

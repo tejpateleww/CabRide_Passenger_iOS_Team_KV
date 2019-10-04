@@ -10,7 +10,6 @@ import UIKit
 
 class MyMileVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
    
-    
 
     @IBOutlet weak var mymileTableView: UITableView!
     
@@ -39,9 +38,7 @@ class MyMileVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         backButton.imageView?.contentMode = .scaleAspectFit
         barButton.addSubview(backButton)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: barButton)
-        
     }
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 7

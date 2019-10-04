@@ -114,6 +114,10 @@ enum ApiKey: String{
     case favouriteAddressList = "favourite_address_list/"
     case addFavouriteAddress = "add_favourite_address"
     case removeFavouriteAddress = "remove_favourite_address"
+    
+    case transferCorporateMiles = "transfer_corporate_miles/"
+    
+    case customerUnderCompanyList = "customer_under_company_list/"
 }
 enum ParameterKey
 {

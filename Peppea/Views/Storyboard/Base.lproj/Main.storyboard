@@ -1338,10 +1338,18 @@ automatic expense for warding</string>
                                             <outlet property="delegate" destination="DP0-8X-oNs" id="t6A-Dr-ukt"/>
                                         </connections>
                                     </tableView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4cp-YP-0BJ" customClass="HeaderTableViewController" customModule="Peppea" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="4cp-YP-0BJ" secondAttribute="trailing" id="0uz-k3-rPB"/>
                                     <constraint firstItem="zUd-B0-P8v" firstAttribute="leading" secondItem="FyK-FV-ym6" secondAttribute="leading" id="JDJ-wG-RlD"/>
+                                    <constraint firstItem="4cp-YP-0BJ" firstAttribute="top" secondItem="FyK-FV-ym6" secondAttribute="top" id="MLk-hX-JcP"/>
+                                    <constraint firstAttribute="bottom" secondItem="4cp-YP-0BJ" secondAttribute="bottom" id="SfO-Ow-8iz"/>
+                                    <constraint firstItem="4cp-YP-0BJ" firstAttribute="leading" secondItem="FyK-FV-ym6" secondAttribute="leading" id="ZHC-MQ-5kq"/>
                                     <constraint firstAttribute="trailing" secondItem="zUd-B0-P8v" secondAttribute="trailing" id="gbc-F8-uLM"/>
                                     <constraint firstAttribute="bottom" secondItem="zUd-B0-P8v" secondAttribute="bottom" id="uHe-4y-DsT"/>
                                     <constraint firstItem="zUd-B0-P8v" firstAttribute="top" secondItem="FyK-FV-ym6" secondAttribute="top" id="w0i-wI-9ab"/>
@@ -1361,6 +1369,7 @@ automatic expense for warding</string>
                     </view>
                     <connections>
                         <outlet property="cardTableView" destination="zUd-B0-P8v" id="RMZ-u8-hA9"/>
+                        <outlet property="collectionTableView" destination="4cp-YP-0BJ" id="epr-0x-2km"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Fr-zC-Bxr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2608,7 +2617,7 @@ automatic expense for warding</string>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wq5-i2-BDD">
                                                 <rect key="frame" x="20" y="258.5" width="335" height="45"/>
-                                                <color key="backgroundColor" red="0.17715445160000001" green="0.17732077839999999" blue="0.17718020079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.1764705882352941" green="0.1764705882352941" blue="0.1764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="6ES-ar-8hH"/>
                                                 </constraints>

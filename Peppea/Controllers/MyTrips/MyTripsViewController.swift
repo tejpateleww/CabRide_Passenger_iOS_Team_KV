@@ -126,6 +126,8 @@ class MyTripsViewController: BaseViewController
             }
         }
     }
+    
+    
     var selectedCell : Int = -1
 
 

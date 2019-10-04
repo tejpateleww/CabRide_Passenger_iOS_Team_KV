@@ -164,4 +164,19 @@ class UserWebserviceSubclass
         let  params : [String:String] = Promocode.generatPostParams() as! [String : String]
         WebService.shared.requestMethod(api: .removeFavouriteAddress, httpMethod: .post, parameters: params, completion: completion)
     }
+    
+    class func transferCorporateMiles(strURL : String  ,completion: @escaping CompletionResponse ) {
+        let strURLFinal = NetworkEnvironment.baseURL + ApiKey.transferCorporateMiles.rawValue + strURL
+        WebService.shared.getMethod(url: URL.init(string: strURLFinal)!, httpMethod: .get, completion: completion)
+    }
+    
+    class func customerUnderCompanyList(strURL : String  ,completion: @escaping CompletionResponse ) {
+        let strURLFinal = NetworkEnvironment.baseURL + ApiKey.customerUnderCompanyList.rawValue + strURL
+        WebService.shared.getMethod(url: URL.init(string: strURLFinal)!, httpMethod: .get, completion: completion)
+    }
+    
+    
+    
+    
+    
 }

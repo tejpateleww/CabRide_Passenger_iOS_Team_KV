@@ -243,7 +243,7 @@ extension HeaderTableViewController: UICollectionViewDataSource, UICollectionVie
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TitleHeaderCollectionViewCell.identifier, for: indexPath) as! TitleHeaderCollectionViewCell
             cell.setTitle(title: titles[indexPath.item],
                           textColor : textColor,
-                          font: textFont)
+                          font: UIFont.boldSystemFont(ofSize: 13))
             return cell
      }
 
