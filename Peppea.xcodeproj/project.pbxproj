@@ -103,18 +103,23 @@
 		46CA655522DE02B800FC6E16 /* RegisterResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CA655422DE02B800FC6E16 /* RegisterResponseModel.swift */; };
 		46CA655722DEFB2900FC6E16 /* Logout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CA655622DEFB2900FC6E16 /* Logout.swift */; };
 		46E8CE9022D9AD6D001BEFCD /* InviteDriverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E8CE8F22D9AD6D001BEFCD /* InviteDriverViewController.swift */; };
+		680836F82345CC2600B71D21 /* FindCarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680836F72345CC2600B71D21 /* FindCarViewController.swift */; };
+		680836FA2345CC5800B71D21 /* FindCarViewController+GooglePlacePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680836F92345CC5800B71D21 /* FindCarViewController+GooglePlacePicker.swift */; };
+		680837022345F71000B71D21 /* SelectVehicleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680836FE2345F70F00B71D21 /* SelectVehicleViewCell.swift */; };
+		680837042345F71000B71D21 /* SelectVehicleViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680837002345F70F00B71D21 /* SelectVehicleViewController+TableView.swift */; };
+		680837052345F71000B71D21 /* SelectVehicleViewController+WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680837012345F70F00B71D21 /* SelectVehicleViewController+WebService.swift */; };
 		6810B1CA23431B510071BAE9 /* FindCarTrendingCarsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6810B1C923431B510071BAE9 /* FindCarTrendingCarsCell.swift */; };
 		6810B1CD234323890071BAE9 /* TrendingCarsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6810B1CC234323890071BAE9 /* TrendingCarsCollectionViewCell.swift */; };
 		6810B1CF234337D00071BAE9 /* FindCarReferAndEarnCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6810B1CE234337D00071BAE9 /* FindCarReferAndEarnCell.swift */; };
 		6810B1D22343515F0071BAE9 /* SelectDateTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6810B1D12343515F0071BAE9 /* SelectDateTimeViewController.swift */; };
+		68142B0B2346049D007964AD /* SelectVehicleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68142B0A2346049D007964AD /* SelectVehicleViewController.swift */; };
+		68142B0D23461057007964AD /* SelectDateTimeViewController+RKMultiUnitSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68142B0C23461057007964AD /* SelectDateTimeViewController+RKMultiUnitSegment.swift */; };
+		68142B0F23461067007964AD /* SelectDateTimeViewController+FSCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68142B0E23461067007964AD /* SelectDateTimeViewController+FSCalendar.swift */; };
+		68142B11234610FF007964AD /* SelectDateTimeViewController+Conversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68142B10234610FF007964AD /* SelectDateTimeViewController+Conversions.swift */; };
 		684B460A233CDD660066855C /* AppDelegate+PeppeaRental.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684B4609233CDD660066855C /* AppDelegate+PeppeaRental.swift */; };
 		684B460C233CE8240066855C /* Rental_Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 684B460B233CE8240066855C /* Rental_Main.storyboard */; };
 		6863FC73233CCBED007E1D0F /* Rental_LoginRegister.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6863FC72233CCBEC007E1D0F /* Rental_LoginRegister.storyboard */; };
 		687A0056233E4ACF005C71C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 687A0055233E4ACE005C71C5 /* Assets.xcassets */; };
-		6882F5FA23420DFA00934C04 /* SelectVehicleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6882F5DB23420DFA00934C04 /* SelectVehicleViewController.swift */; };
-		6882F5FB23420DFA00934C04 /* SelectVehicleViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6882F5DC23420DFA00934C04 /* SelectVehicleViewController+TableView.swift */; };
-		6882F5FC23420DFA00934C04 /* SelectVehicleViewController+WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6882F5DD23420DFA00934C04 /* SelectVehicleViewController+WebService.swift */; };
-		6882F5FD23420DFA00934C04 /* SelectVehicleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6882F5DF23420DFA00934C04 /* SelectVehicleViewCell.swift */; };
 		6882F5FE23420DFA00934C04 /* RentalLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6882F5E223420DFA00934C04 /* RentalLoginViewController.swift */; };
 		6882F5FF23420DFA00934C04 /* VehicleDetailViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6882F5E523420DFA00934C04 /* VehicleDetailViewController+TableView.swift */; };
 		6882F60023420DFA00934C04 /* VehicleDetailViewController+Payment+WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6882F5E623420DFA00934C04 /* VehicleDetailViewController+Payment+WebService.swift */; };
@@ -125,7 +130,6 @@
 		6882F60523420DFA00934C04 /* VehicleDetailTotalAmountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6882F5ED23420DFA00934C04 /* VehicleDetailTotalAmountCell.swift */; };
 		6882F60623420DFA00934C04 /* VehicleDetailMapViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6882F5EE23420DFA00934C04 /* VehicleDetailMapViewCell.swift */; };
 		6882F60723420DFA00934C04 /* VehicleFirstTimeDurationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6882F5EF23420DFA00934C04 /* VehicleFirstTimeDurationCell.swift */; };
-		6882F6202342230200934C04 /* FindCarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6882F61A2342230200934C04 /* FindCarViewController.swift */; };
 		6882F6212342230200934C04 /* FindCarFirstCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6882F61C2342230200934C04 /* FindCarFirstCell.swift */; };
 		6882F6222342230200934C04 /* FindCarOfferListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6882F61D2342230200934C04 /* FindCarOfferListCell.swift */; };
 		6882F62423423C6A00934C04 /* FindCarHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6882F62323423C6A00934C04 /* FindCarHeaderCell.swift */; };
@@ -308,18 +312,23 @@
 		46CA655422DE02B800FC6E16 /* RegisterResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterResponseModel.swift; sourceTree = "<group>"; };
 		46CA655622DEFB2900FC6E16 /* Logout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logout.swift; sourceTree = "<group>"; };
 		46E8CE8F22D9AD6D001BEFCD /* InviteDriverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteDriverViewController.swift; sourceTree = "<group>"; };
+		680836F72345CC2600B71D21 /* FindCarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindCarViewController.swift; sourceTree = "<group>"; };
+		680836F92345CC5800B71D21 /* FindCarViewController+GooglePlacePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FindCarViewController+GooglePlacePicker.swift"; sourceTree = "<group>"; };
+		680836FE2345F70F00B71D21 /* SelectVehicleViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectVehicleViewCell.swift; sourceTree = "<group>"; };
+		680837002345F70F00B71D21 /* SelectVehicleViewController+TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SelectVehicleViewController+TableView.swift"; sourceTree = "<group>"; };
+		680837012345F70F00B71D21 /* SelectVehicleViewController+WebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SelectVehicleViewController+WebService.swift"; sourceTree = "<group>"; };
 		6810B1C923431B510071BAE9 /* FindCarTrendingCarsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindCarTrendingCarsCell.swift; sourceTree = "<group>"; };
 		6810B1CC234323890071BAE9 /* TrendingCarsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingCarsCollectionViewCell.swift; sourceTree = "<group>"; };
 		6810B1CE234337D00071BAE9 /* FindCarReferAndEarnCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindCarReferAndEarnCell.swift; sourceTree = "<group>"; };
 		6810B1D12343515F0071BAE9 /* SelectDateTimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectDateTimeViewController.swift; sourceTree = "<group>"; };
+		68142B0A2346049D007964AD /* SelectVehicleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectVehicleViewController.swift; sourceTree = "<group>"; };
+		68142B0C23461057007964AD /* SelectDateTimeViewController+RKMultiUnitSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SelectDateTimeViewController+RKMultiUnitSegment.swift"; sourceTree = "<group>"; };
+		68142B0E23461067007964AD /* SelectDateTimeViewController+FSCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SelectDateTimeViewController+FSCalendar.swift"; sourceTree = "<group>"; };
+		68142B10234610FF007964AD /* SelectDateTimeViewController+Conversions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SelectDateTimeViewController+Conversions.swift"; sourceTree = "<group>"; };
 		684B4609233CDD660066855C /* AppDelegate+PeppeaRental.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+PeppeaRental.swift"; sourceTree = "<group>"; };
 		684B460B233CE8240066855C /* Rental_Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Rental_Main.storyboard; sourceTree = "<group>"; };
 		6863FC72233CCBEC007E1D0F /* Rental_LoginRegister.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Rental_LoginRegister.storyboard; sourceTree = "<group>"; };
 		687A0055233E4ACE005C71C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		6882F5DB23420DFA00934C04 /* SelectVehicleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectVehicleViewController.swift; sourceTree = "<group>"; };
-		6882F5DC23420DFA00934C04 /* SelectVehicleViewController+TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SelectVehicleViewController+TableView.swift"; sourceTree = "<group>"; };
-		6882F5DD23420DFA00934C04 /* SelectVehicleViewController+WebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SelectVehicleViewController+WebService.swift"; sourceTree = "<group>"; };
-		6882F5DF23420DFA00934C04 /* SelectVehicleViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectVehicleViewCell.swift; sourceTree = "<group>"; };
 		6882F5E223420DFA00934C04 /* RentalLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RentalLoginViewController.swift; sourceTree = "<group>"; };
 		6882F5E523420DFA00934C04 /* VehicleDetailViewController+TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VehicleDetailViewController+TableView.swift"; sourceTree = "<group>"; };
 		6882F5E623420DFA00934C04 /* VehicleDetailViewController+Payment+WebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VehicleDetailViewController+Payment+WebService.swift"; sourceTree = "<group>"; };
@@ -330,7 +339,6 @@
 		6882F5ED23420DFA00934C04 /* VehicleDetailTotalAmountCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleDetailTotalAmountCell.swift; sourceTree = "<group>"; };
 		6882F5EE23420DFA00934C04 /* VehicleDetailMapViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleDetailMapViewCell.swift; sourceTree = "<group>"; };
 		6882F5EF23420DFA00934C04 /* VehicleFirstTimeDurationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleFirstTimeDurationCell.swift; sourceTree = "<group>"; };
-		6882F61A2342230200934C04 /* FindCarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindCarViewController.swift; sourceTree = "<group>"; };
 		6882F61C2342230200934C04 /* FindCarFirstCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindCarFirstCell.swift; sourceTree = "<group>"; };
 		6882F61D2342230200934C04 /* FindCarOfferListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindCarOfferListCell.swift; sourceTree = "<group>"; };
 		6882F62323423C6A00934C04 /* FindCarHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindCarHeaderCell.swift; sourceTree = "<group>"; };
@@ -698,6 +706,42 @@
 			path = InviteFriend;
 			sourceTree = "<group>";
 		};
+		680836F62345CC2600B71D21 /* FindCarVc */ = {
+			isa = PBXGroup;
+			children = (
+				680836F72345CC2600B71D21 /* FindCarViewController.swift */,
+				680836F92345CC5800B71D21 /* FindCarViewController+GooglePlacePicker.swift */,
+			);
+			path = FindCarVc;
+			sourceTree = "<group>";
+		};
+		680836FB2345F70F00B71D21 /* Select Vehicle */ = {
+			isa = PBXGroup;
+			children = (
+				680836FC2345F70F00B71D21 /* SelectVehicleVC */,
+			);
+			path = "Select Vehicle";
+			sourceTree = "<group>";
+		};
+		680836FC2345F70F00B71D21 /* SelectVehicleVC */ = {
+			isa = PBXGroup;
+			children = (
+				68142B0A2346049D007964AD /* SelectVehicleViewController.swift */,
+				680837002345F70F00B71D21 /* SelectVehicleViewController+TableView.swift */,
+				680837012345F70F00B71D21 /* SelectVehicleViewController+WebService.swift */,
+				680836FD2345F70F00B71D21 /* SelectVehicleCell */,
+			);
+			path = SelectVehicleVC;
+			sourceTree = "<group>";
+		};
+		680836FD2345F70F00B71D21 /* SelectVehicleCell */ = {
+			isa = PBXGroup;
+			children = (
+				680836FE2345F70F00B71D21 /* SelectVehicleViewCell.swift */,
+			);
+			path = SelectVehicleCell;
+			sourceTree = "<group>";
+		};
 		6810B1CB234323650071BAE9 /* TrendingCarsCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -710,6 +754,9 @@
 			isa = PBXGroup;
 			children = (
 				6810B1D12343515F0071BAE9 /* SelectDateTimeViewController.swift */,
+				68142B10234610FF007964AD /* SelectDateTimeViewController+Conversions.swift */,
+				68142B0C23461057007964AD /* SelectDateTimeViewController+RKMultiUnitSegment.swift */,
+				68142B0E23461067007964AD /* SelectDateTimeViewController+FSCalendar.swift */,
 			);
 			path = SelectDate;
 			sourceTree = "<group>";
@@ -736,38 +783,11 @@
 			children = (
 				6882F6152342230200934C04 /* FindCar */,
 				6810B1D02343515F0071BAE9 /* SelectDate */,
-				6882F5D923420DFA00934C04 /* Home */,
+				680836FB2345F70F00B71D21 /* Select Vehicle */,
 				6882F5E023420DFA00934C04 /* LoginRegister */,
 				6882F5E323420DFA00934C04 /* HomeDetail */,
 			);
 			path = PeppeaRentalControllers;
-			sourceTree = "<group>";
-		};
-		6882F5D923420DFA00934C04 /* Home */ = {
-			isa = PBXGroup;
-			children = (
-				6882F5DA23420DFA00934C04 /* RentalHomeViewController */,
-			);
-			path = Home;
-			sourceTree = "<group>";
-		};
-		6882F5DA23420DFA00934C04 /* RentalHomeViewController */ = {
-			isa = PBXGroup;
-			children = (
-				6882F5DB23420DFA00934C04 /* SelectVehicleViewController.swift */,
-				6882F5DC23420DFA00934C04 /* SelectVehicleViewController+TableView.swift */,
-				6882F5DD23420DFA00934C04 /* SelectVehicleViewController+WebService.swift */,
-				6882F5DE23420DFA00934C04 /* RentalHomeCell */,
-			);
-			path = RentalHomeViewController;
-			sourceTree = "<group>";
-		};
-		6882F5DE23420DFA00934C04 /* RentalHomeCell */ = {
-			isa = PBXGroup;
-			children = (
-				6882F5DF23420DFA00934C04 /* SelectVehicleViewCell.swift */,
-			);
-			path = RentalHomeCell;
 			sourceTree = "<group>";
 		};
 		6882F5E023420DFA00934C04 /* LoginRegister */ = {
@@ -829,7 +849,7 @@
 		6882F6152342230200934C04 /* FindCar */ = {
 			isa = PBXGroup;
 			children = (
-				6882F61A2342230200934C04 /* FindCarViewController.swift */,
+				680836F62345CC2600B71D21 /* FindCarVc */,
 				6882F61B2342230200934C04 /* FindCarCells */,
 			);
 			path = FindCar;
@@ -1499,13 +1519,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				4666B47922D48F7D0084A230 /* FlatRateListViewController.swift in Sources */,
-				6882F5FA23420DFA00934C04 /* SelectVehicleViewController.swift in Sources */,
 				B1E233D622D311BB00CEA568 /* BidListContainerViewController.swift in Sources */,
 				EEE2B7FE22C628BA004F1C00 /* LoginViewController.swift in Sources */,
 				EE9D6F7422C6300F00EAD756 /* Constants.swift in Sources */,
 				466957E122DD9E4A008A73C0 /* SocketManager.swift in Sources */,
 				EE9F3F5E22C7366900426377 /* RegistrationNewViewController.swift in Sources */,
 				B1DE159B22D3647A001045B1 /* MyMileTableViewCell.swift in Sources */,
+				68142B0F23461067007964AD /* SelectDateTimeViewController+FSCalendar.swift in Sources */,
 				4666B47D22D49F180084A230 /* ProfileViewController.swift in Sources */,
 				6810B1D22343515F0071BAE9 /* SelectDateTimeViewController.swift in Sources */,
 				461A919422E6F3C9002BDCAC /* VehicleListModel.swift in Sources */,
@@ -1515,6 +1535,7 @@
 				1836EF4A22F802DF00852EC8 /* favouriteAddressTableViewCell.swift in Sources */,
 				46CA655522DE02B800FC6E16 /* RegisterResponseModel.swift in Sources */,
 				1836EF4822F8000900852EC8 /* FavouriteAddressViewController.swift in Sources */,
+				680836FA2345CC5800B71D21 /* FindCarViewController+GooglePlacePicker.swift in Sources */,
 				EEBF159E22CA0E1F004CB7FB /* CarCollectionViewController.swift in Sources */,
 				46536DFA22E0794D00C538D8 /* AddCardModel.swift in Sources */,
 				468E992922D9F26900072361 /* WalletHistory.swift in Sources */,
@@ -1549,14 +1570,13 @@
 				B1E233D422D3111D00CEA568 /* BidDetailsViewController.swift in Sources */,
 				B1E233E122D3220600CEA568 /* MyBidListViewCell.swift in Sources */,
 				183BEF7622E9C762000C97E5 /* TripStatus.swift in Sources */,
+				68142B11234610FF007964AD /* SelectDateTimeViewController+Conversions.swift in Sources */,
 				B1DE159822D361D3001045B1 /* MyMileVC.swift in Sources */,
 				463DEFEF22D8B01B002365F8 /* HeaderTableViewController.swift in Sources */,
 				EE1365952316A117001AFF6A /* LocationTracker.swift in Sources */,
 				EEE2B80422C628F2004F1C00 /* RegisterContainerViewController.swift in Sources */,
 				466957E022DD9E4A008A73C0 /* WebServices.swift in Sources */,
-				6882F5FD23420DFA00934C04 /* SelectVehicleViewCell.swift in Sources */,
 				EE9F3F6522C769CA00426377 /* RequestModel.swift in Sources */,
-				6882F5FB23420DFA00934C04 /* SelectVehicleViewController+TableView.swift in Sources */,
 				EE9D6F7022C62D6F00EAD756 /* SideMenuTableViewController.swift in Sources */,
 				7A984494230A6BED004359F3 /* BulkMileData.swift in Sources */,
 				468E992F22D9F26900072361 /* RemoveCard.swift in Sources */,
@@ -1578,6 +1598,7 @@
 				468E993422DA078000072361 /* UpcomingRideConfirmationViewController.swift in Sources */,
 				EE9D6F7F22C6435600EAD756 /* Extensions.swift in Sources */,
 				468E992B22D9F26900072361 /* ForgotPassword.swift in Sources */,
+				68142B0B2346049D007964AD /* SelectVehicleViewController.swift in Sources */,
 				7A1CC8F12306871F00FB6ECD /* BulkMilePurchaseReqModel.swift in Sources */,
 				1830C47B22E74235004F107F /* dummyData.swift in Sources */,
 				468E992D22D9F26900072361 /* AddCard.swift in Sources */,
@@ -1589,12 +1610,12 @@
 				468E992822D9F26900072361 /* ChangePassword.swift in Sources */,
 				6882F60323420DFA00934C04 /* VehicleDetailExtraChargesCell.swift in Sources */,
 				18CB7F8222E85AC4004FA66C /* HomeWebserviceCalls.swift in Sources */,
-				6882F6202342230200934C04 /* FindCarViewController.swift in Sources */,
 				6882F60123420DFA00934C04 /* CarsAvailabelViewController.swift in Sources */,
 				464CB65E22E1947A00273F29 /* MobileNoDetail.swift in Sources */,
 				18CB7F8622E86584004FA66C /* GetEstimateFareModel.swift in Sources */,
 				6882F60523420DFA00934C04 /* VehicleDetailTotalAmountCell.swift in Sources */,
 				B1E233D822D3120000CEA568 /* MyBidListViewController.swift in Sources */,
+				680837022345F71000B71D21 /* SelectVehicleViewCell.swift in Sources */,
 				468E992722D9F26900072361 /* QRCodeDetails.swift in Sources */,
 				6810B1CF234337D00071BAE9 /* FindCarReferAndEarnCell.swift in Sources */,
 				6882F5FE23420DFA00934C04 /* RentalLoginViewController.swift in Sources */,
@@ -1602,12 +1623,12 @@
 				18CB7F9022E89688004FA66C /* DriverInfo.swift in Sources */,
 				6882F60223420DFA00934C04 /* VehicleDetailViewController.swift in Sources */,
 				468E991522D9B6EF00072361 /* EmptyTableViewCell.swift in Sources */,
-				6882F5FC23420DFA00934C04 /* SelectVehicleViewController+WebService.swift in Sources */,
 				468E992E22D9F26900072361 /* AddMoney.swift in Sources */,
 				B1E233DA22D3123300CEA568 /* OpenBidListViewController.swift in Sources */,
 				463DEFF122D8C13A002365F8 /* HistoryFilterPopUpViewController.swift in Sources */,
 				EE61012A22E8787C00B3B4D7 /* PastBookingHistoryResponse.swift in Sources */,
 				464CB66622E19FDB00273F29 /* QRCodeScannedModel.swift in Sources */,
+				680837042345F71000B71D21 /* SelectVehicleViewController+TableView.swift in Sources */,
 				EE61011F22E86F7800B3B4D7 /* PastBookingHistory.swift in Sources */,
 				6882F60723420DFA00934C04 /* VehicleFirstTimeDurationCell.swift in Sources */,
 				463DEFD522D877E4002365F8 /* CreditCardValidationType.swift in Sources */,
@@ -1625,10 +1646,12 @@
 				4600BEFD22D5E24F00306486 /* ReceiveMoneyViewController.swift in Sources */,
 				468E991822D9DBC300072361 /* PeppeaBusinessBannerViewController.swift in Sources */,
 				468E993122D9F26900072361 /* TransferMoneyModel.swift in Sources */,
+				680837052345F71000B71D21 /* SelectVehicleViewController+WebService.swift in Sources */,
 				EE8A61CC22C654C0000718ED /* MessageBarController.swift in Sources */,
 				7A984495230A6BED004359F3 /* BulkMileHistoryList.swift in Sources */,
 				466957E622DDB165008A73C0 /* LoginModel.swift in Sources */,
 				468E992A22D9F26900072361 /* UpdateVehicleInfo.swift in Sources */,
+				68142B0D23461057007964AD /* SelectDateTimeViewController+RKMultiUnitSegment.swift in Sources */,
 				B1DE15A022D3760D001045B1 /* HeaderView.swift in Sources */,
 				468E991422D9B6EF00072361 /* ChatViewController.swift in Sources */,
 				468E993022D9F26900072361 /* UpdateAccountData.swift in Sources */,
@@ -1650,6 +1673,7 @@
 				46C469B922D70DA3007BA89B /* WalletViewController.swift in Sources */,
 				182BD24622EF166C00C419B9 /* BulkMileList.swift in Sources */,
 				B1E233E322D3226600CEA568 /* DriverOffersListViewCell.swift in Sources */,
+				680836F82345CC2600B71D21 /* FindCarViewController.swift in Sources */,
 				1836EF4222F7F93500852EC8 /* addFavouriteAddressReqModel.swift in Sources */,
 				EE9D6F7222C62F7200EAD756 /* ContentTableViewCell.swift in Sources */,
 				463DEFE922D8AEA6002365F8 /* MyTrips.swift in Sources */,

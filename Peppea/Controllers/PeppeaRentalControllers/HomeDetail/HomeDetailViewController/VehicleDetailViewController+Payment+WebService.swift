@@ -10,6 +10,17 @@ import Foundation
 
 
 
+
+extension VehicleDetailViewController: didSelectPaymentDelegate {
+    
+    func didSelectPaymentType(PaymentType: String, PaymentTypeID: String, PaymentNumber: String, PaymentHolderName: String) {
+        
+    }
+    
+    
+    
+    
+}
 /*
  extension VehicleDetailViewController:SelectCardDelegate {
  

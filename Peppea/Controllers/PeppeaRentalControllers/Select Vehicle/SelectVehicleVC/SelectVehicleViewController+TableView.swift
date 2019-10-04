@@ -90,10 +90,11 @@ extension SelectVehicleViewController : UITableViewDataSource, UITableViewDelega
         vehicleDetail.vehicleFrom_To = (startDate,endDate)
         vehicleDetail.startDisplayDate = self.DisplayPickupDate
         vehicleDetail.endDisplayDate = self.DisplayDeliveryDate
-        vehicleDetail.selectedAddress = self.selectedAddress
-        vehicleDetail.selectedAddLat = self.selectedAddLat
-        vehicleDetail.selectedAddLong = self.selectedAddLong
-        vehicleDetail.selectedTripType = self.selectedTripType
+        vehicleDetail.selectedAddress = self.placeSelected?.formattedAddress ?? ""
+        vehicleDetail.selectedAddLat = self.placeSelected?.coordinate.latitude ?? 0.0
+        vehicleDetail.selectedAddLong = self.placeSelected?.coordinate.longitude ?? 0.0
+        vehicleDetail.selectedTripType = ""
+            //self.selectedTripType
         vehicleDetail.VehicalCat_IDName = self.VehicalCat_IDName
         self.navigationController?.pushViewController(vehicleDetail, animated: true)
         

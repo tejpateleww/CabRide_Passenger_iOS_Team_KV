@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GooglePlaces
 
 //CategoryFileterDelegate
 class SelectVehicleViewController: BaseViewController,BookVehicleDelegate
@@ -14,14 +15,14 @@ class SelectVehicleViewController: BaseViewController,BookVehicleDelegate
     
     @IBOutlet var tblView: UITableView!
     
-    @IBOutlet var lblEndDate: UILabel!
-    @IBOutlet var lblStartDate: UILabel!
     @IBOutlet var viewDateInterval: UIView!
     
-    var selectedAddress:String = ""
-    var selectedAddLat = Double()
-    var selectedAddLong = Double()
-    var selectedTripType:String = ""
+    @IBOutlet weak var lblPickUpDate: UILabel!
+    @IBOutlet weak var lblDropOffDate: UILabel!
+    
+    var placeSelected: GMSPlace?
+    var selectedPickUpDate: String = ""
+    var selectedDropOffDate: String = ""
     
     var VehicalCat_IDName:(String,String) = ("","")
     
@@ -45,13 +46,18 @@ class SelectVehicleViewController: BaseViewController,BookVehicleDelegate
     {
         super.viewDidLoad()
 
-        viewDateInterval.layer.cornerRadius = viewDateInterval.frame.size.height / 2
+//        viewDateInterval.layer.cornerRadius = viewDateInterval.frame.size.height / 2
+//        self.lblStartDate.text = self.DisplayPickupDate
+//        //            self.startDate
+//        self.lblEndDate.text = self.DisplayDeliveryDate
+
+        
+        self.lblPickUpDate.text = self.selectedPickUpDate.convertDateString(inputFormat: .dateWithOutSeconds, outputFormat: .fullDate)
+        self.lblDropOffDate.text = self.selectedDropOffDate.convertDateString(inputFormat: .dateWithOutSeconds, outputFormat: .fullDate)
+        
         self.LoaderBackView.isHidden = true
         self.tblView.tableFooterView = UIView()
         print("arrVehicles in Response\(arrVehicles)")
-        self.lblStartDate.text = self.DisplayPickupDate
-//            self.startDate
-        self.lblEndDate.text = self.DisplayDeliveryDate
 //            self.endDate
 //        self.webserviceFindVehicle()
 
@@ -63,17 +69,20 @@ class SelectVehicleViewController: BaseViewController,BookVehicleDelegate
 
     }
     
-    func setupNavigationController()
-    {
-
-        self.title = "Home"
-    }
+//    func setupNavigationController()
+//    {
+//
+//        self.title = "Select Car"
+//        self.navigationController?.navigationBar.barTintColor = .white
+////        self.navigationController?.navigationBar.isTranslucent = true
+//
+//    }
     
     override func viewWillAppear(_ animated: Bool)
     {
         super.viewWillAppear(animated)
         
-        self.setupNavigationController()
+        setNavBarWithBack(Title: "Select Car", IsNeedRightButton: false, barColor: .white,titleFontColor: .black,backBarButtonColor: .black)
 
 //        Utilities.setNavigationBarInViewController(controller: self, naviColor: ThemeNaviLightBlueColor, naviTitle: "Select \(VehicalCat_IDName.1)", leftImage: kBack_Icon, rightImage: "", isTranslucent: false)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "filter"), style: .plain, target: self, action: nil)
