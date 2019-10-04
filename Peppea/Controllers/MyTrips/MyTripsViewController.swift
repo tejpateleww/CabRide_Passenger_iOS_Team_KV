@@ -66,7 +66,7 @@ class MyTripsViewController: BaseViewController
         self.PageNumber += 1
         if self.tripType.rawValue.lowercased() == "past" {
            self.webserviceCallForGettingPastHistory(pageNo: self.PageNumber)
-        } else{
+        } else {
             self.webserviceForUpcommingBooking(pageNo: self.PageNumber)
         }
         
@@ -103,13 +103,13 @@ class MyTripsViewController: BaseViewController
         collectionTableView.textColor = .black
         collectionTableView.registerNibs = [MyTripTableViewCell.identifier,
                                             MyTripDescriptionTableViewCell.identifier,
-                                            FooterTableViewCell.identifier]
+                                            FooterTableViewCell.identifier, NoDataFoundTblCell.identifier]
         collectionTableView.cellInset = UIEdgeInsets.zero
         collectionTableView.spacing = 0
         
         collectionTableView.didSelectItemAt = {
             indexpaths in
-            if indexpaths.indexPath != indexpaths.previousIndexPath{
+            if indexpaths.indexPath != indexpaths.previousIndexPath {
                 self.tripType = MyTrips.allCases[indexpaths.indexPath.item]
 //                self.setData()
                 self.selectedCell = -1
@@ -251,23 +251,27 @@ class MyTripsViewController: BaseViewController
 extension MyTripsViewController: UITableViewDelegate, UITableViewDataSource{
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return self.pastBookingHistoryModelDetails.count
+        return (self.pastBookingHistoryModelDetails.count > 0) ? self.pastBookingHistoryModelDetails.count : 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if selectedCell == section {
+       if selectedCell == section {
             return 1 + self.data.count
         }
         return 1
     }
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return tableView.dequeueReusableCell(withIdentifier: FooterTableViewCell.identifier)
+        if self.pastBookingHistoryModelDetails.count > 0 {
+            return tableView.dequeueReusableCell(withIdentifier: FooterTableViewCell.identifier)
+        }
+        return UIView()
     }
     func tableView(_ tableView: UITableView, estimatedHeightForFooterInSection section: Int) -> CGFloat {
         return 10
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if self.pastBookingHistoryModelDetails.count > 0 {
         switch indexPath.row {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: MyTripTableViewCell.identifier, for: indexPath) as! MyTripTableViewCell
@@ -311,7 +315,11 @@ extension MyTripsViewController: UITableViewDelegate, UITableViewDataSource{
         
             return cell
         }
-        
+        } else {
+            let NoDataCell = tableView.dequeueReusableCell(withIdentifier: NoDataFoundTblCell.identifier) as! NoDataFoundTblCell
+            
+            return NoDataCell
+        }
         
     }
 
@@ -325,6 +333,11 @@ extension MyTripsViewController: UITableViewDelegate, UITableViewDataSource{
                 self.data = self.tripType.getDescription(pastBookingHistory: self.pastBookingHistoryModelDetails[indexPath.section])
                 tableView.removeAllSubviews()
                 tableView.reloadData()
+            
+                if self.data.count > 0 {
+                    tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+                }
+            
 //            }
 //            self.data = self.tripType.getDescription(pastBookingHistory: self.pastBookingHistoryModelDetails[indexPath.row])
 //            tableView.removeAllSubviews()
@@ -335,6 +348,9 @@ extension MyTripsViewController: UITableViewDelegate, UITableViewDataSource{
                 self.data = self.tripType.getDescription(pastBookingHistory: self.pastBookingHistoryModelDetails[indexPath.section])
                 selectedCell = indexPath.section
                 tableView.reloadData()
+                if self.data.count > 0 {
+                    tableView.scrollToRow(at: IndexPath(row: 0, section: selectedCell), at: .top, animated: false)
+                }
                 /*
                 let rect =  tableView.rect(forSection: indexPath.section)
                 let imageView = UIImageView(frame: CGRect(x: 10, y: rect.minY, width: rect.width - 20, height: rect.height))
@@ -353,7 +369,13 @@ extension MyTripsViewController: UITableViewDelegate, UITableViewDataSource{
 
     }
     
-   
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if self.pastBookingHistoryModelDetails.count > 0 {
+            return UITableView.automaticDimension
+        }
+        return 400.0
+    }
+    
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         

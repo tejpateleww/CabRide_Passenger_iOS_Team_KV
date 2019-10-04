@@ -258,3 +258,65 @@ class UtilityClass : NSObject
 
 
 }
+
+
+extension String {
+    
+    enum DateFormatInputType: String {
+        case dateWithSeconds = "yyyy-MM-dd HH:mm:ss"
+        case dateWithOutSeconds = "yyyy-MM-dd HH:mm"
+    }
+    
+    enum DateFormatOutputType: String {
+        case fullDate = "d MMM, yyyy h:mm a"
+        case onlyDate = "d MMM, yyyy"
+        case onlyTime = "h:mm a"
+
+    }
+
+    func convertDateString(inputFormat: DateFormatInputType, outputFormat: DateFormatOutputType) -> String {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = inputFormat.rawValue
+        
+        if let date = dateFormatter.date(from: self) {
+            dateFormatter.dateFormat = outputFormat.rawValue
+            return  dateFormatter.string(from: date)
+ 
+        }else{
+            print("Could not get the dat string from dateformattere")
+            return ""
+            
+        }
+        
+    }
+    
+//    func Convert_To_dd_MMM_yyyy() -> String {
+//
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+//
+//        if let date = dateFormatter.date(from: self) {
+//            dateFormatter.dateFormat = "d MMM, yyyy"
+//            return  dateFormatter.string(from: date)
+//        }else{
+//            print("Cant convert to date by dateformatter")
+//
+//            return ""
+//        }
+//    }
+//
+//    func Convert_To_HH_mm_a() -> String {
+//
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+//        if let date = dateFormatter.date(from: self) {
+//            dateFormatter.dateFormat = "h:mm a"
+//            return  dateFormatter.string(from: date)
+//        }else{
+//            print("Cant convert to date by dateformatter")
+//            return ""
+//        }
+//    }
+}

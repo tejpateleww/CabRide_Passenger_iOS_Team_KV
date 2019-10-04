@@ -41,8 +41,6 @@ enum payment_type: String {
     case bulk_miles = "bulk_miles"
 }
 
-
-
 class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDelegate,ARCarMovementDelegate
 {
 
@@ -135,6 +133,8 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
             else
             {
                 self.containerView.isHidden = false
+                (self.children.first as! CarCollectionViewController).getDataFromJSON()
+                
             }
         }
     }
@@ -163,7 +163,8 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
 
     override func viewDidLoad() {
         super.viewDidLoad()
-     
+
+        
         SocketIOManager.shared.establishConnection()
         
         if SingletonClass.sharedInstance.bookingInfo != nil {
@@ -229,7 +230,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
         super.viewWillAppear(animated)
         
         if (CLLocationManager.authorizationStatus() == .denied) || CLLocationManager.authorizationStatus() == .restricted || CLLocationManager.authorizationStatus() == .notDetermined {
-            let alert = UIAlertController(title: AppName.kAPPName, message: "Please enable location from settings", preferredStyle: .alert)
+            let alert = UIAlertController(title: AppName.kAPPName.rawValue, message: "Please enable location from settings", preferredStyle: .alert)
             let enable = UIAlertAction(title: "Enable", style: .default) { (temp) in
                 
                 if let url = URL.init(string: UIApplication.openSettingsURLString) {
@@ -309,17 +310,17 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
         
         if txtPickupLocation.text!.isBlank {
             
-            UtilityClass.showAlert(title: AppName.kAPPName, message: "Please select pickup location", alertTheme: .warning)
+            UtilityClass.showAlert(title: AppName.kAPPName.rawValue, message: "Please select pickup location", alertTheme: .warning)
             return
         }
         
         if txtDropLocation.text!.isBlank {
             
-            UtilityClass.showAlert(title: AppName.kAPPName, message: "Please select destination location", alertTheme: .warning)
+            UtilityClass.showAlert(title: AppName.kAPPName.rawValue, message: "Please select destination location", alertTheme: .warning)
             return
         }
         
-        let alert = UIAlertController(title: AppName.kAPPName, message: "Choose your favourite location", preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: AppName.kAPPName.rawValue, message: "Choose your favourite location", preferredStyle: .actionSheet)
         
         let Home = UIAlertAction(title: "Home", style: .default) { (action) in
             self.webserviceForAddToFavouriteAddress(addresType: "Home")
@@ -703,6 +704,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
         acController.autocompleteBounds = bounds
         present(acController, animated: true, completion: nil)
     }
+    
     @IBAction func btnCurrentLocation(_ sender: UIButton)
     {
         if txtPickupLocation.text!.isBlank {
@@ -983,9 +985,9 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
         UserWebserviceSubclass.addFavouriteAddressListService(Promocode: model) { (response, status) in
 //            print(response)
             if status {
-                UtilityClass.showAlert(title: AppName.kAPPName, message: response.dictionary?["message"]?.stringValue ?? "", alertTheme: .success)
+                UtilityClass.showAlert(title: AppName.kAPPName.rawValue, message: response.dictionary?["message"]?.stringValue ?? "", alertTheme: .success)
             } else {
-                UtilityClass.showAlert(title: AppName.kAPPName, message: response.dictionary?["message"]?.stringValue ?? "", alertTheme: .error)
+                UtilityClass.showAlert(title: AppName.kAPPName.rawValue, message: response.dictionary?["message"]?.stringValue ?? "", alertTheme: .error)
             }
         }
     }

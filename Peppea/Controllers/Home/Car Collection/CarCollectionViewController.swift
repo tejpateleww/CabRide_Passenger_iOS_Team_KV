@@ -162,9 +162,10 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
                     let estimateFare = estimateCurrentData?.estimateTripFare
                     
                     if dictOnlineCars.id == vehicleId {
-                        self.estimateFare = (FlatRate == "") ? "\((Double((estimateMinute == "0" ? "0.0" : estimateFare)!)?.rounded(toPlaces: 2)) ?? 0.0)" : "\((Double((estimateMinute == "0" ? "0.0" : FlatRate))?.rounded(toPlaces: 2)) ?? 0.0)"
+                        self.estimateFare = (FlatRate == "") ? ( ((estimateFare?.contains(".") == true) ? estimateFare  : "\((Double((estimateMinute == "0" ? "0.0" : estimateFare)!)?.rounded(toPlaces: 2)) ?? 0.0)")!  ) : "\((Double((estimateMinute == "0" ? "0.0" : FlatRate))?.rounded(toPlaces: 2)) ?? 0.0)"
                     }
-                    cell.lblPrice.text =  (FlatRate == "") ? "\(Currency) \((Double((estimateMinute == "0" ? "0" : estimateFare)!)?.rounded(toPlaces: 2)) ?? 0.0)" : "\(Currency) \((Double((estimateMinute == "0" ? "0" : FlatRate))?.rounded(toPlaces: 2)) ?? 0.0)"
+                    cell.lblPrice.text =  (FlatRate == "") ? ( ((estimateFare?.contains(".") == true) ? "\(Currency) \(estimateFare as! String)"  : "\(Currency) \((Double((estimateMinute == "0" ? "0.0" : estimateFare)!)?.rounded(toPlaces: 2)) ?? 0.0)")  ) : "\((Double((estimateMinute == "0" ? "0.0" : FlatRate))?.rounded(toPlaces: 2)) ?? 0.0)"
+                    
                     cell.lblArrivalTime.text = "ETA \(estimateMinute == "0" ? "0" : estimateMinute ?? "0") min."
                 }
             }
@@ -259,7 +260,7 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
     // ----------------------------------------------------
     
     @IBAction func btnPromoCodeAction(_ sender: UIButton) {
-        let alertController = UIAlertController(title: AppName.kAPPName, message: "Enter promo code", preferredStyle: .alert)
+        let alertController = UIAlertController(title: AppName.kAPPName.rawValue, message: "Enter promo code", preferredStyle: .alert)
         alertController.addTextField { (textField : UITextField!) -> Void in
             textField.placeholder = "Enter promo code"
         }

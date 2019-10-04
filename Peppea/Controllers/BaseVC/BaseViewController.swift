@@ -9,17 +9,17 @@
 import UIKit
 
 class BaseViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
-
-
-
+    
+    
+    
     func setNavBarWithMenu(Title:String, IsNeedRightButton:Bool){
-
+        
         if Title == "Home"
         {
             //            let titleImage = UIImageView(frame: CGRect(x: 10, y: 0, width: 100, height: 30))
@@ -33,26 +33,26 @@ class BaseViewController: UIViewController {
         {
             self.navigationItem.title = Title.uppercased()
         }
-
+        
         self.navigationController?.navigationBar.barTintColor = UIColor.black
         self.navigationController?.navigationBar.tintColor = UIColor.black
-
+        
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
-
-
+        
+        
         let leftNavBarButton = UIBarButtonItem(image: UIImage(named: "iconMenu"), style: .plain, target: self, action: #selector(self.OpenMenuAction))
         self.navigationItem.leftBarButtonItem = nil
         self.navigationItem.leftBarButtonItem = leftNavBarButton
-
-
+        
+        
     }
-
+    
     func setNavBarWithBack(Title:String, IsNeedRightButton:Bool) {
-                self.navigationController?.navigationBar.isTranslucent = true
-
+        self.navigationController?.navigationBar.isTranslucent = true
+        
         if Title == "Home" {
             let titleImage = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
             titleImage.contentMode = .scaleAspectFit
@@ -61,15 +61,15 @@ class BaseViewController: UIViewController {
         } else {
             self.navigationItem.title = Title.uppercased().localizedUppercase
         }
-
+        
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : ThemeColor]
         let leftNavBarButton = UIBarButtonItem(image: UIImage(named: "iconLeftArrow"), style: .plain, target: self, action: #selector(self.btnBackAction))
         self.navigationItem.leftBarButtonItem = nil
         self.navigationItem.leftBarButtonItem = leftNavBarButton
         self.navigationItem.leftBarButtonItem?.tintColor = .black
         self.navigationController?.view.backgroundColor = .white
-
-
+        
+        
         self.navigationController?.navigationBar.tintColor = UIColor.black
         self.navigationController?.navigationBar.barTintColor = UIColor.white
         self.navigationController?.navigationBar.layer.shadowColor = UIColor.black.cgColor
@@ -80,20 +80,20 @@ class BaseViewController: UIViewController {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.hidesBarsOnSwipe = false
         self.navigationController?.navigationBar.isTranslucent = false
-
-
+        
+        
         if UserDefaults.standard.value(forKey: "i18n_language") != nil {
             if let language = UserDefaults.standard.value(forKey: "i18n_language") as? String {
                 if language == "sw" {
                     //                    btnLeft.semanticContentAttribute = .forceLeftToRight
-
+                    
                     //                    image = UIImage.init(named: "icon_BackWhite")?.imageFlippedForRightToLeftLayoutDirection()
                 }
             }
         }
     }
-
-
+    
+    
     func setupNavigationBarColor(_ navigationController: UINavigationController?) {
         self.navigationController?.navigationBar.tintColor = UIColor.black
         self.navigationController?.navigationBar.barTintColor = UIColor.white
@@ -106,15 +106,15 @@ class BaseViewController: UIViewController {
         self.navigationController?.hidesBarsOnSwipe = false
         self.navigationController?.navigationBar.isTranslucent = false
     }
-
-
+    
+    
     // MARK:- Navigation Bar Button Action Methods
-
+    
     @objc func OpenMenuAction()
     {
         sideMenuController?.revealMenu()
     }
-
+    
     @objc func btnBackAction()
     {
         if self.navigationController?.children.count == 1 {
@@ -125,42 +125,42 @@ class BaseViewController: UIViewController {
         }
         
     }
-
+    
     @objc func btnCallAction() {
-
-//        let contactNumber = helpLineNumber
-//        if contactNumber == "" {
-//            UtilityClass.setCustomAlert(title: "\(appName)", message: "Contact number is not available") { (index, title) in
-//            }
-//        }
-//        else
-//        {
-//            callNumber(phoneNumber: contactNumber)
-//        }
+        
+        //        let contactNumber = helpLineNumber
+        //        if contactNumber == "" {
+        //            UtilityClass.setCustomAlert(title: "\(appName)", message: "Contact number is not available") { (index, title) in
+        //            }
+        //        }
+        //        else
+        //        {
+        //            callNumber(phoneNumber: contactNumber)
+        //        }
     }
-
-
+    
+    
     private func callNumber(phoneNumber:String) {
-
+        
         if let phoneCallURL = URL(string: "tel://\(phoneNumber)") {
-
+            
             let application:UIApplication = UIApplication.shared
             if (application.canOpenURL(phoneCallURL)) {
                 application.open(phoneCallURL, options: [:], completionHandler: nil)
             }
         }
     }
-
-
-
+    
+    
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

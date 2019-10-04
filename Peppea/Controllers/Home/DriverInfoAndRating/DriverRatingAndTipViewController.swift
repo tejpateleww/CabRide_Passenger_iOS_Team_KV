@@ -89,7 +89,7 @@ class DriverRatingAndTipViewController: UIViewController {
                 constraintTopOfComments.priority = UILayoutPriority(650)
                 constraintTopOfAskForTip.priority = UILayoutPriority(950)
                 constraintHeightOfViewRating.constant = 0
-                lblDriverName.text = "Do you want to tip \((driver?.firstName ?? "") + " " + (driver?.lastName ?? ""))?"
+                lblDriverName.text = "Do you want give tip to \((driver?.firstName ?? "") + " " + (driver?.lastName ?? ""))?"
             }
         }
         
@@ -234,7 +234,7 @@ class DriverRatingAndTipViewController: UIViewController {
             if status {
                 AlertMessage.showMessageForSuccess(response.dictionary?["message"]?.stringValue ?? "")
                 
-                let alert = UIAlertController(title: AppName.kAPPName, message: "Your trip has been completed", preferredStyle: .alert)
+                let alert = UIAlertController(title: AppName.kAPPName.rawValue, message: "Your trip has been completed", preferredStyle: .alert)
                 let ok = UIAlertAction(title: "OK", style: .default) { (action) in
                     let homeVC = self.parent as? HomeViewController
                     homeVC?.clearMap()

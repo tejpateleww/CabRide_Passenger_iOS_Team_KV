@@ -18,6 +18,8 @@ import FirebaseMessaging
 import UserNotifications
 import CoreLocation
 
+let appDelegate = UIApplication.shared.delegate as! AppDelegate
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDelegate,MessagingDelegate {
 
@@ -135,7 +137,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
         if (CLLocationManager.authorizationStatus() == .denied) || CLLocationManager.authorizationStatus() == .restricted || CLLocationManager.authorizationStatus() == .notDetermined {
-            let alert = UIAlertController(title: AppName.kAPPName, message: "Please enable location from settings", preferredStyle: .alert)
+            let alert = UIAlertController(title: AppName.kAPPName.rawValue, message: "Please enable location from settings", preferredStyle: .alert)
             let enable = UIAlertAction(title: "Enable", style: .default) { (temp) in
                 
                 if let url = URL.init(string: UIApplication.openSettingsURLString) {
@@ -205,9 +207,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     func GoToLogout() {
         
 //        (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController?.children.first?.children.first?.children.first as! HomeViewController
-        
+        //1. Clear Singleton class
         SingletonClass.sharedInstance.clearSingletonClass()
 
+        //2. Clear all userdefaults
+        
         for (key, value) in UserDefaults.standard.dictionaryRepresentation() {
             print("\(key) = \(value) \n")
 
@@ -218,9 +222,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
                 UserDefaults.standard.removeObject(forKey: key)
             }
         }
-         UserDefaults.standard.set(false, forKey: "isUserLogin")
+
+        //3. Set isLogin USer Defaults to false
+        UserDefaults.standard.set(false, forKey: "isUserLogin")
+
         self.GoToLogin()
     }
+    
+   
 
  
 

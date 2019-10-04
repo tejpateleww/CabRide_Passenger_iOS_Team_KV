@@ -52,6 +52,7 @@ PODS:
     - GoogleUtilities/UserDefaults (~> 6.2)
     - Protobuf (~> 3.1)
   - FormTextField (3.0.0)
+  - FSCalendar (2.8.0)
   - GoogleAppMeasurement (6.1.1):
     - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
     - GoogleUtilities/MethodSwizzler (~> 6.0)
@@ -88,7 +89,7 @@ PODS:
   - GoogleUtilities/UserDefaults (6.2.5):
     - GoogleUtilities/Logger
   - IQDropDownTextField (1.1.1)
-  - IQKeyboardManagerSwift (6.3.0)
+  - IQKeyboardManagerSwift (6.5.0)
   - lottie-ios (3.1.0)
   - MarqueeLabel/Swift (3.2.1)
   - MiniLayout (1.4.1)
@@ -102,6 +103,7 @@ PODS:
   - nanopb/encode (0.3.901)
   - Protobuf (3.9.0)
   - QRCodeReader.swift (10.1.0)
+  - RKMultiUnitRuler (0.0.1)
   - SDWebImage (5.0.6):
     - SDWebImage/Core (= 5.0.6)
   - SDWebImage/Core (5.0.6)
@@ -115,6 +117,7 @@ PODS:
   - SwiftMessages/App (7.0.0)
   - SwiftyJSON (5.0.0)
   - SwipeCellKit (2.5.4)
+  - TTSegmentedControl (0.4.9)
 
 DEPENDENCIES:
   - ActionSheetPicker-3.0
@@ -126,6 +129,7 @@ DEPENDENCIES:
   - Firebase/Analytics
   - Firebase/Messaging
   - FormTextField
+  - FSCalendar
   - GoogleMaps (= 3.0.3)
   - GooglePlaces (= 3.0.3)
   - IQDropDownTextField
@@ -134,6 +138,7 @@ DEPENDENCIES:
   - MarqueeLabel/Swift
   - MultiSlider
   - QRCodeReader.swift
+  - RKMultiUnitRuler
   - SDWebImage
   - SideMenuSwift
   - SkyFloatingLabelTextField
@@ -141,6 +146,7 @@ DEPENDENCIES:
   - SwiftMessages
   - SwiftyJSON
   - SwipeCellKit (= 2.5.4)
+  - TTSegmentedControl
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -160,6 +166,7 @@ SPEC REPOS:
     - FirebaseInstanceID
     - FirebaseMessaging
     - FormTextField
+    - FSCalendar
     - GoogleAppMeasurement
     - GoogleDataTransport
     - GoogleDataTransportCCTSupport
@@ -175,6 +182,7 @@ SPEC REPOS:
     - nanopb
     - Protobuf
     - QRCodeReader.swift
+    - RKMultiUnitRuler
     - SDWebImage
     - SideMenuSwift
     - SkyFloatingLabelTextField
@@ -183,6 +191,7 @@ SPEC REPOS:
     - SwiftMessages
     - SwiftyJSON
     - SwipeCellKit
+    - TTSegmentedControl
 
 SPEC CHECKSUMS:
   ActionSheetPicker-3.0: eef157d75e151f255c5333d26656c7fbfe905a51
@@ -201,6 +210,7 @@ SPEC CHECKSUMS:
   FirebaseInstanceID: 8b42755db950682e7de0d167bc6fb26a57b244af
   FirebaseMessaging: 930e4cce01f8f1e634cfdd1881db471fb61be883
   FormTextField: fd5dc441ad40ba12d08ef66aeb0453ee9bf55e6d
+  FSCalendar: 3a5ed3636e2ba1b83ebebfcf0c2603105a6f5efe
   GoogleAppMeasurement: 86a82f0e1f20b8eedf8e20326530138fd71409de
   GoogleDataTransport: 91e682bd60a49d3f8f69f2e909a66efaed5a1e7a
   GoogleDataTransportCCTSupport: 6b545f7149111180763dc18c6f372c963de4a310
@@ -208,7 +218,7 @@ SPEC CHECKSUMS:
   GooglePlaces: f09e76993c9c3ee4af8f4f7f535bb94d6aa3b649
   GoogleUtilities: e7dc37039b19df7fe543479d3e4a02ac8d11bb69
   IQDropDownTextField: 3d2e5728a2b83ff5dbb14cb9b497a80005124cbe
-  IQKeyboardManagerSwift: a8228c257614af98743b4cd8584637025f36358f
+  IQKeyboardManagerSwift: 6cd19976c6e871907c4ed9127c2d3affdd4defc2
   lottie-ios: 9467723922dfff46f6d4e3019c32594a62440b7c
   MarqueeLabel: 2daf039bf916937c8a4c9adfc13577cc5e51b4ce
   MiniLayout: bd42e3763700c3002f39ff3b36dc8a027ea5078a
@@ -216,6 +226,7 @@ SPEC CHECKSUMS:
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 1097ca58584c8d9be81bfbf2c5ff5975648dd87a
   QRCodeReader.swift: 373a389fe9a22d513c879a32a6f647c58f4ef572
+  RKMultiUnitRuler: a427cd135956d3965123363e57fe0256dfd0348a
   SDWebImage: 920f1a2ff1ca8296ad34f6e0510a1ef1d70ac965
   SideMenuSwift: 1bee5a0e54c6df7d8106f749b82567eae5c6d974
   SkyFloatingLabelTextField: 4b46db0ab1ccde0919cded29c656e6b4805eda04
@@ -224,7 +235,8 @@ SPEC CHECKSUMS:
   SwiftMessages: a952f7a9103d9aeab93730a2861d2d8fcdd8758f
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   SwipeCellKit: 4eada3884ab1bbae5e8d2fb9030c242aa23d7f42
+  TTSegmentedControl: 6657bb0cf85f59a2f559bd22387cdf057f84fce8
 
-PODFILE CHECKSUM: a7bb127ac8c4810f37e1e180800168542065e32c
+PODFILE CHECKSUM: 46704921595fd11c1d38c773e51dd8e14cfcd4cf
 
-COCOAPODS: 1.7.3
+COCOAPODS: 1.7.5

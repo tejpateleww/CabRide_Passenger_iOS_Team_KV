@@ -28,6 +28,9 @@ class RegisterOTPVarificationViewController: UIViewController {
     }
     
 
+    @IBAction func btnResetOtp(_ sender: Any) {
+        webserviceForResendOTP()
+    }
     func setCornerToTextField(txtField : UITextField)
     {
         txtField.layer.cornerRadius = txtField.frame.height / 2
@@ -59,22 +62,6 @@ class RegisterOTPVarificationViewController: UIViewController {
 //            UtilityClass.showAlert(title: "", message: "Please enter valid OTP code", alertTheme: .error)//AlertMessage.showMessageForError("Please enter valid OTP code")
             AlertMessage.showMessageForError("Please enter valid OTP code")
         }
-      
-
-        /*
-        if SingletonClass.sharedInstance.otpCode == txtOTP.text {
-
-            let registrationContainerVC = self.navigationController?.viewControllers[1]  as! RegistrationContainerViewController
-            registrationContainerVC.scrollObject.setContentOffset(CGPoint(x: self.view.frame.size.width * 2, y: 0), animated: true)
-            registrationContainerVC.selectPageControlIndex(Index: 2)
-        }
-        else
-        {
-
-            UtilityClass.showAlert(title: "", message: "Please enter valid OTP code", alertTheme: .error)//AlertMessage.showMessageForError("Please enter valid OTP code")
-        }
-        */
-
         
     }
     
@@ -83,7 +70,30 @@ class RegisterOTPVarificationViewController: UIViewController {
     // MARK: - Webservice Methods
     //-------------------------------------------------------------
     
-    
+    func webserviceForResendOTP()
+    {
+        var paramter = [String : AnyObject]()
+        paramter["email"] = SingletonRegistration.sharedRegistration.Email as AnyObject
+        paramter["mobile_no"] = SingletonRegistration.sharedRegistration.MobileNo as AnyObject
+
+
+        UtilityClass.showHUD(with: UIApplication.shared.keyWindow)
+
+        WebService.shared.requestMethod(api: .otp, httpMethod: .post, parameters: paramter){ json,status in
+            UtilityClass.hideHUD()
+            if status
+            {
+                //                self.parameterArray.otp = json["otp"].stringValue
+                AlertMessage.showMessageForSuccess(json["message"].stringValue)
+                SingletonClass.sharedInstance.RegisterOTP = json["otp"].stringValue
+            }
+            else
+            {
+                AlertMessage.showMessageForError(json["message"].stringValue)
+            }
+            //            completion(status)
+        }
+    }
     
 
 }
