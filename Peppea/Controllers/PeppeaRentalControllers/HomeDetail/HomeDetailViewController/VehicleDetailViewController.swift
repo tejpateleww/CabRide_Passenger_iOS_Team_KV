@@ -35,7 +35,6 @@ class VehicleDetailViewController: BaseViewController
     @IBOutlet weak var txtPromoCode: UITextField!
     
     @IBOutlet weak var MainViewTop: NSLayoutConstraint!
-    @IBOutlet weak var bottomConstraintCarsAvailabelView: NSLayoutConstraint!
     
 //    var parallaxEffect: RKParallaxEffect!
     var VehicleDetail:[String:AnyObject] = [:]
@@ -66,6 +65,8 @@ class VehicleDetailViewController: BaseViewController
     var Discount:String = ""
     var PromoCodeId:String = ""
     
+    var FlatRate = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -80,7 +81,6 @@ class VehicleDetailViewController: BaseViewController
         // Do any additional setup after loading the view.
         
         ///Hiding the Availability View, initially
-        self.bottomConstraintCarsAvailabelView.constant = -212.0
         
 
        
@@ -117,24 +117,21 @@ class VehicleDetailViewController: BaseViewController
     
     //MARK: Button Clicks
     
-    @IBAction func checkAvailabilityButtonClicked(_ sender: Any) {
+    @IBAction func proceedToPaymentButtonClicked(_ sender: Any) {
         
-//        if self.bottomConstraintCarsAvailabelView.constant == 0.0 {
-//
-//            ///Hide Cars Availabel View
-//            self.bottomConstraintCarsAvailabelView.constant = -232.0
-//        }
-//        else{
 
-            ///Show Cars Availabel View
-            self.bottomConstraintCarsAvailabelView.constant =  0.0
-//        }
+        let PaymentPage = self.storyboard?.instantiateViewController(withIdentifier: "PaymentViewController") as! PaymentViewController
+        PaymentPage.Delegate = self
+        PaymentPage.isFlatRateSelected  = (self.FlatRate != "")
+        PaymentPage.OpenedForPayment = true
+        let NavController = UINavigationController(rootViewController: PaymentPage)
+        self.navigationController?.present(NavController, animated: true, completion: nil)
+
     }
 
     @IBAction func closeCarsAvailabelButtonClicked(_ sender: Any) {
         
         ///Close cars available
-        self.bottomConstraintCarsAvailabelView.constant = -232.0
 
         
     }

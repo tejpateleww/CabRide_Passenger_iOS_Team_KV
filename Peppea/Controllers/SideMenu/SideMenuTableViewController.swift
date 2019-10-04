@@ -33,7 +33,17 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
         NotificationCenter.default.addObserver(self, selector: #selector(self.SetRating), name: NSNotification.Name(rawValue: "rating"), object: nil)
 //        NotificationCenter.default.addObserver(self, selector: #selector(self.setProfileData), name: NSNotification.Name(rawValue: "UpdateProfile"), object: nil)
 //        self.setProfileData()
-        arrMenuTitle = ["My Trips", "Payments", "Wallet", "Favourite", "Bulk Mile", "Invite Friends", "Bid My Trip", "Flat Rate","Peppea Business", "Logout"]//["My Bookings","Payment Options","Favourites","Invite Friends","Pass","Help","Logout"]
+        
+        let storyboardName = self.storyboard?.value(forKey: "name") as? String ?? ""
+
+        if storyboardName == "Rental_Main" {
+
+            arrMenuTitle = ["Profile", "Post a Add", "My Add", "Trip History", "Logout"]
+            
+        }else{
+
+            arrMenuTitle = ["My Trips", "Payments", "Wallet", "Favourite", "Bulk Mile", "Invite Friends", "Bid My Trip", "Flat Rate","Peppea Business", "Logout"]//["My Bookings","Payment Options","Favourites","Invite Friends","Pass","Help","Logout"]
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -208,102 +218,139 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
 
  */
         
-        if arrMenuTitle[indexPath.row] == "Peppea Business"
-        {
+        let storyboardName = self.storyboard?.value(forKey: "name") as? String ?? ""
+        
+        if storyboardName == "Rental_Main" {
             
-            let storyboradTrip = UIStoryboard(name: "LoginRegister", bundle: nil)
-            let NextPage = storyboradTrip.instantiateViewController(withIdentifier: "PeppeaBusinessBannerViewController") as! PeppeaBusinessBannerViewController
-            HomePage?.navigationController?.pushViewController(NextPage, animated: true)
-            sideMenuController?.hideMenu()
-            return
-        }
-        if arrMenuTitle[indexPath.row] == "My Trips"
-        {
+            ///Peppea Rental Flow
             
-            let storyboradTrip = UIStoryboard(name: "MyTrips", bundle: nil)
-            let NextPage = storyboradTrip.instantiateViewController(withIdentifier: "MyTripsViewController") as! MyTripsViewController
-            HomePage?.navigationController?.pushViewController(NextPage, animated: true)
-            sideMenuController?.hideMenu()
-            return
-        }
-        
-        if arrMenuTitle[indexPath.row] == "Payments"
-        {
-            let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "PaymentViewController") as! PaymentViewController
-            NextPage.OpenedForPayment = false
-            HomePage?.navigationController?.pushViewController(NextPage, animated: true)
-            sideMenuController?.hideMenu()
-            return
-        }
-        if arrMenuTitle[indexPath.row] == "Invite Friends"
-        {
-            let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "InviteDriverViewController") as! InviteDriverViewController
-            HomePage?.navigationController?.pushViewController(NextPage, animated: true)
-            sideMenuController?.hideMenu()
-            return
-        }
-        
-        if arrMenuTitle[indexPath.row] == "Wallet"
-        {
-            let storyboradWallet = UIStoryboard(name: "Wallet", bundle: nil)
-            let NextPage = storyboradWallet.instantiateViewController(withIdentifier: "WalletViewController") as! WalletViewController
-            HomePage?.navigationController?.pushViewController(NextPage, animated: true)
-            sideMenuController?.hideMenu()
-            return
-        }
-        
-        if arrMenuTitle[indexPath.row] == "Flat Rate"
-        {
-            let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "FlatRateListViewController") as! FlatRateListViewController
-            NextPage.Delegate = HomePage
-            HomePage?.navigationController?.pushViewController(NextPage, animated: true)
-            sideMenuController?.hideMenu()
-            return
-        }
-        if arrMenuTitle[indexPath.row] == "Bid My Trip"
-        {
-            let storyboradBid = UIStoryboard(name: "Bid", bundle: nil)
-            let NextPage = storyboradBid.instantiateViewController(withIdentifier: "BidListContainerViewController") as! BidListContainerViewController
-            HomePage?.navigationController?.pushViewController(NextPage, animated: true)
-            sideMenuController?.hideMenu()
-            return
+            if (arrMenuTitle[indexPath.row] == "Profile") {
+
+                self.gotoProfileVC()
+
+            }
+            else if (arrMenuTitle[indexPath.row] == "Logout")
+            {
+                let alert = UIAlertController(title: "Logout", message: "Are you sure you want to logout?", preferredStyle: .alert)
+                
+                let ok = UIAlertAction(title: "OK", style: .default) { (action) in
+                    //                                    (UIApplication.shared.delegate as! AppDelegate).GoToLogout()
+                    self.webserviceForLogout()
+                }
+                
+                let cancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+                
+                alert.addAction(ok)
+                alert.addAction(cancel)
+                
+                self.present(alert, animated: true, completion: nil)
+                sideMenuController?.hideMenu()
+                return
+            }
+        }else{
             
-       
-        }
-        if arrMenuTitle[indexPath.row] == "Favourite"
-        {
-            let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "FavouriteAddressViewController") as! FavouriteAddressViewController
-            HomePage?.navigationController?.pushViewController(NextPage, animated: true)
-            sideMenuController?.hideMenu()
-            return
-        }
-        
-        if arrMenuTitle[indexPath.row] == "Bulk Mile"
-        {
-            let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "BulkMileVC") as! BulkMileVC
-            HomePage?.navigationController?.pushViewController(NextPage, animated: true)
-            sideMenuController?.hideMenu()
-            return
-        }
-        
-        if (arrMenuTitle[indexPath.row] == "Logout")
-        {
-            let alert = UIAlertController(title: "Logout", message: "Are you sure you want to logout?", preferredStyle: .alert)
-            
-            let ok = UIAlertAction(title: "OK", style: .default) { (action) in
-//                                    (UIApplication.shared.delegate as! AppDelegate).GoToLogout()
-                self.webserviceForLogout()
+            ///Peppea flow
+            if arrMenuTitle[indexPath.row] == "Peppea Business"
+            {
+                
+                let storyboradTrip = UIStoryboard(name: "LoginRegister", bundle: nil)
+                let NextPage = storyboradTrip.instantiateViewController(withIdentifier: "PeppeaBusinessBannerViewController") as! PeppeaBusinessBannerViewController
+                HomePage?.navigationController?.pushViewController(NextPage, animated: true)
+                sideMenuController?.hideMenu()
+                return
+            }
+            if arrMenuTitle[indexPath.row] == "My Trips"
+            {
+                
+                let storyboradTrip = UIStoryboard(name: "MyTrips", bundle: nil)
+                let NextPage = storyboradTrip.instantiateViewController(withIdentifier: "MyTripsViewController") as! MyTripsViewController
+                HomePage?.navigationController?.pushViewController(NextPage, animated: true)
+                sideMenuController?.hideMenu()
+                return
             }
             
-            let cancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+            if arrMenuTitle[indexPath.row] == "Payments"
+            {
+                let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "PaymentViewController") as! PaymentViewController
+                NextPage.OpenedForPayment = false
+                HomePage?.navigationController?.pushViewController(NextPage, animated: true)
+                sideMenuController?.hideMenu()
+                return
+            }
+            if arrMenuTitle[indexPath.row] == "Invite Friends"
+            {
+                let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "InviteDriverViewController") as! InviteDriverViewController
+                HomePage?.navigationController?.pushViewController(NextPage, animated: true)
+                sideMenuController?.hideMenu()
+                return
+            }
             
-            alert.addAction(ok)
-            alert.addAction(cancel)
+            if arrMenuTitle[indexPath.row] == "Wallet"
+            {
+                let storyboradWallet = UIStoryboard(name: "Wallet", bundle: nil)
+                let NextPage = storyboradWallet.instantiateViewController(withIdentifier: "WalletViewController") as! WalletViewController
+                HomePage?.navigationController?.pushViewController(NextPage, animated: true)
+                sideMenuController?.hideMenu()
+                return
+            }
             
-            self.present(alert, animated: true, completion: nil)
-            sideMenuController?.hideMenu()
-            return
+            if arrMenuTitle[indexPath.row] == "Flat Rate"
+            {
+                let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "FlatRateListViewController") as! FlatRateListViewController
+                NextPage.Delegate = HomePage
+                HomePage?.navigationController?.pushViewController(NextPage, animated: true)
+                sideMenuController?.hideMenu()
+                return
+            }
+            if arrMenuTitle[indexPath.row] == "Bid My Trip"
+            {
+                let storyboradBid = UIStoryboard(name: "Bid", bundle: nil)
+                let NextPage = storyboradBid.instantiateViewController(withIdentifier: "BidListContainerViewController") as! BidListContainerViewController
+                HomePage?.navigationController?.pushViewController(NextPage, animated: true)
+                sideMenuController?.hideMenu()
+                return
+                
+                
+            }
+            if arrMenuTitle[indexPath.row] == "Favourite"
+            {
+                let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "FavouriteAddressViewController") as! FavouriteAddressViewController
+                HomePage?.navigationController?.pushViewController(NextPage, animated: true)
+                sideMenuController?.hideMenu()
+                return
+            }
+            
+            if arrMenuTitle[indexPath.row] == "Bulk Mile"
+            {
+                let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "BulkMileVC") as! BulkMileVC
+                HomePage?.navigationController?.pushViewController(NextPage, animated: true)
+                sideMenuController?.hideMenu()
+                return
+            }
+            
+            if (arrMenuTitle[indexPath.row] == "Logout")
+            {
+                let alert = UIAlertController(title: "Logout", message: "Are you sure you want to logout?", preferredStyle: .alert)
+                
+                let ok = UIAlertAction(title: "OK", style: .default) { (action) in
+                    //                                    (UIApplication.shared.delegate as! AppDelegate).GoToLogout()
+                    self.webserviceForLogout()
+                }
+                
+                let cancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+                
+                alert.addAction(ok)
+                alert.addAction(cancel)
+                
+                self.present(alert, animated: true, completion: nil)
+                sideMenuController?.hideMenu()
+                return
+            }
+
+            
+            
         }
+        
         
         
     }
@@ -406,11 +453,22 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
     @IBAction func btnProfilePickClicked(_ sender: Any)
     {
 
-        let HomePage = self.parent?.children.first?.children.first as? HomeViewController
-        let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
-        HomePage?.navigationController?.pushViewController(NextPage, animated: true)
-        sideMenuController?.hideMenu()
+        self.gotoProfileVC()
 
+    }
+    
+    
+    func gotoProfileVC() {
+        
+        let findCarVC = self.parent?.children.first?.children.first as? FindCarViewController
+        let storyborad = UIStoryboard(name: "Main", bundle: nil)
+        let profileVC = storyborad.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
+        
+        //        let NextPage =
+        
+        //self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
+        findCarVC?.navigationController?.pushViewController(profileVC, animated: true)
+        sideMenuController?.hideMenu()
     }
 
 }

@@ -19,6 +19,16 @@ class SelectDateTimeViewController: BaseViewController, RKMultiUnitRulerDataSour
     
     var isForPickUp: Bool = true
     
+    var selectedPickUpDate: String = ""
+    var selectedDropOffdate: String = ""
+ 
+    @IBOutlet weak var pickUpDateLbl: UILabel!
+    @IBOutlet weak var pickUpTimeLbl: UILabel!
+
+
+    @IBOutlet weak var dropOffDateLbl: UILabel!
+    @IBOutlet weak var dropOffTimeLbl: UILabel!
+
     @IBOutlet weak var calendarView: FSCalendar!
     
     @IBOutlet weak var Ruler: RKMultiUnitRuler!
@@ -53,11 +63,15 @@ class SelectDateTimeViewController: BaseViewController, RKMultiUnitRulerDataSour
         
     }
     
-    fileprivate lazy var dateFormatter: DateFormatter = {
+   lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd MMM"
         return formatter
     }()
+    
+    
+    
+    //MARK: View ControllerLife Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,20 +80,14 @@ class SelectDateTimeViewController: BaseViewController, RKMultiUnitRulerDataSour
 //        Utilities.setNavigationBarInViewController(controller: self, naviColor: ThemeNaviLightBlueColor, naviTitle: "", leftImage: kClose_Icon, rightImage: "", isTranslucent: false)
         
 
+//        self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.navigationBar.barTintColor = .white
         setNavBarWithBack(Title: "Date & Time", IsNeedRightButton: false, barColor: .white,titleFontColor: .black,backBarButtonColor: .black)
+        setNavigationBarDefault()
         
         
-        if isForPickUp {
-            
-            self.lblDateTitle.text = "PICKUP DATE"
-            self.lblTimeTitle.text = "PICKUP TIME"
-        }else{
-            
-            self.lblDateTitle.text = "DROP OFF DATE"
-            self.lblTimeTitle.text = "DROP OFF TIME"
-        }
-       
+        self.setUpLabelData()
+        
         self.btnContinue.layer.cornerRadius = self.btnContinue.frame.height / 2.0
         self.btnContinue.layer.masksToBounds = true
         
@@ -98,6 +106,7 @@ class SelectDateTimeViewController: BaseViewController, RKMultiUnitRulerDataSour
             } else if let sub = subview as? UIView {
                 sub.backgroundColor = UIColor.white
                     //UIColor(red: 255.0/255.0, green: 172.0/255.0, blue: 38.0/255.0, alpha: 1.0)
+                
             }
         }
         
@@ -129,7 +138,57 @@ class SelectDateTimeViewController: BaseViewController, RKMultiUnitRulerDataSour
         
     }
     
+    func setNavigationBarDefault() {
+        
+        self.navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+        self.navigationController?.navigationBar.shadowImage = nil
+        self.navigationController?.view.backgroundColor = .white
+
+    }
     
+    
+    func setUpLabelData() {
+        
+        ///1
+        if isForPickUp {
+            
+            self.lblDateTitle.text = "PICKUP DATE"
+            self.lblTimeTitle.text = "PICKUP TIME"
+        }else{
+            
+            self.lblDateTitle.text = "DROP OFF DATE"
+            self.lblTimeTitle.text = "DROP OFF TIME"
+        }
+        
+        
+        ///2
+        if selectedPickUpDate != "" {
+
+            self.pickUpDateLbl.text = self.selectedPickUpDate.convertDateString(inputFormat: .dateWithOutSeconds, outputFormat: .onlyDate)
+            self.pickUpTimeLbl.text = self.selectedPickUpDate.convertDateString(inputFormat: .dateWithOutSeconds, outputFormat: .onlyTime)
+
+        }else{
+            self.pickUpDateLbl.text = "-"
+            self.pickUpTimeLbl.text = ""
+        }
+
+
+        ///3
+        if selectedDropOffdate != "" {
+            
+            self.dropOffDateLbl.text = self.selectedDropOffdate.convertDateString(inputFormat: .dateWithOutSeconds, outputFormat: .onlyDate)
+            self.dropOffTimeLbl.text = self.selectedDropOffdate.convertDateString(inputFormat: .dateWithOutSeconds, outputFormat: .onlyTime)
+
+        }else{
+
+            self.dropOffDateLbl.text = "-"
+            self.dropOffTimeLbl.text = ""
+        }
+        
+        
+    }
+    
+    //MARK: Button Click
     @IBAction func btnSingleLineDate(_ sender: UIButton) {
         
         if sender.isSelected == false {
@@ -151,26 +210,7 @@ class SelectDateTimeViewController: BaseViewController, RKMultiUnitRulerDataSour
         sender.isSelected = !sender.isSelected
     }
     
-    //    if sender.isSelected == false {
-    //
-    //    self.CalendarHeight.constant = 250.0
-    //    UIView.animate(withDuration: 0.5, animations: {
-    //    self.view.layoutIfNeeded()
-    //    self.calendarView.layoutIfNeeded()
-    //    }) { (status) in
-    //    self.calendarView.scope = .month
-    //    }
-    //
-    //    } else {
-    //    self.CalendarHeight.constant = 100.0
-    //    UIView.animate(withDuration: 0.5, animations: {
-    //    self.view.layoutIfNeeded()
-    //    self.calendarView.layoutIfNeeded()
-    //    }) { (status) in
-    //    self.calendarView.scope = .week
-    //    }
-    //    }
-    
+   
     @IBAction func btnContinue(_ sender: Any) {
         self.dismiss(animated: true) {
             let DateformatterFinal = DateFormatter()
@@ -183,169 +223,15 @@ class SelectDateTimeViewController: BaseViewController, RKMultiUnitRulerDataSour
             }
         }
     }
-    
-    // MARK:- FSCalendarDataSource &  FSCalendarDelegate Methods
-    
-    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        //        print("did select date \(self.dateFormatter.string(from: date))")
-        self.lblDate.text = self.dateFormatter.string(from: date)
-        self.SelectDate = date
-        //        let selectedDates = calendar.selectedDates.map({self.dateFormatter.string(from: $0)})
-        //        print("selected dates is \(selectedDates)")
-        if monthPosition == .next || monthPosition == .previous {
-            calendar.setCurrentPage(date, animated: true)
-        }
-    }
+   
     
     
     
     
-    //MARK:- RKMultiUnitRulerDataSource & RKMultiUnitRulerDelegate Methods
-    
-    func valueChanged(measurement: NSMeasurement) {
-        self.lblTime.text = self.getTimeStringFromHours(Hours: measurement.doubleValue)
-        let HourlyBase = "\(measurement.doubleValue)".components(separatedBy: ".")
-        
-        self.SelectedTimeHourFormat = "\((((HourlyBase[0] == "0") || (HourlyBase[0] == "24")) ? "0" : HourlyBase[0])):\(((HourlyBase[1] != "0") ? "30" : "00"))"
-    }
-    
-    private func createSegments() -> Array<RKSegmentUnit> {
-        let formatter = MeasurementFormatter()
-        formatter.unitStyle = .medium
-        
-        formatter.unitOptions = .providedUnit
-        let kgSegment = RKSegmentUnit(name: "", unit: UnitDuration.hours, formatter: formatter)
-        kgSegment.name = ""
-        kgSegment.unit = UnitDuration.hours
-        let kgMarkerTypeMax = RKRangeMarkerType(color: UIColor.gray, size: CGSize(width: 1.0, height: 50.0), scale: 5.0)
-        kgMarkerTypeMax.labelVisible = true
-        
-        kgSegment.markerTypes = [
-            RKRangeMarkerType(color: UIColor.gray, size: CGSize(width: 1.0, height: 35.0), scale: 0.5),
-            RKRangeMarkerType(color: UIColor.gray, size: CGSize(width: 1.0, height: 50.0), scale: 1.0)]
-        kgSegment.markerTypes.last?.labelVisible = true
-        return [kgSegment]
-    }
-    
-    func unitForSegmentAtIndex(index: Int) -> RKSegmentUnit {
-        return segments[index]
-    }
-    var numberOfSegments: Int {
-        get {
-            return segments.count
-        }
-        set {
-        }
-    }
-    
-    func rangeForUnit(_ unit: Dimension) -> RKRange<Float> {
-        let locationConverted = rangeStart.converted(to: unit as! UnitDuration)
-        let lengthConverted = rangeLength.converted(to: unit as! UnitDuration)
-        return RKRange<Float>(location: ceilf(Float(locationConverted.value)),
-                              length: ceilf(Float(lengthConverted.value)))
-    }
-    
-    func styleForUnit(_ unit: Dimension) -> RKSegmentUnitControlStyle {
-        let style: RKSegmentUnitControlStyle = RKSegmentUnitControlStyle()
-        style.scrollViewBackgroundColor = UIColor.white
-            //UIColor(red: 255.0/255.0, green: 172.0/255.0, blue: 38.0/255.0, alpha: 1.0)
-//            UIColor(red: 0.22, green: 0.74, blue: 0.86, alpha: 1.0)
-        let range = self.rangeForUnit(unit)
-        if unit == UnitMass.pounds {
-            
-            style.textFieldBackgroundColor = UIColor.clear
-            // color override location:location+40% red , location+60%:location.100% green
-        } else {
-            style.textFieldBackgroundColor = UIColor.red
-        }
-        style.colorOverrides = [
-            RKRange<Float>(location: range.location, length: 0.1 * (range.length)): UIColor.gray,
-            RKRange<Float>(location: range.location + 0.4 * (range.length), length: 0.2 * (range.length)): UIColor.gray]
-        style.textFieldBackgroundColor = UIColor.clear
-        style.textFieldTextColor = UIColor.white
-    
-        return style
-    }
-    
-    
-    func colorSwitchValueChanged(sender: UISwitch) {
-        colorOverridesEnabled = sender.isOn
-        self.Ruler?.refresh()
-    }
+  
     
     
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
-    func getTimeStringFromHours(Hours:Double) -> String {
-        print(" \(Hours)")
-        var timeString:String = "";
-        //        int hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
-        if (Hours == 0.0) || (Hours == 24.0) {
-            timeString =  "12:00 AM";
-        } else if (Hours < 12.0) {
-            let strHours = "\(Hours)".components(separatedBy: ".")
-            if strHours[1] != "0" {
-                timeString =  "\(strHours[0]):30 AM"
-            } else {
-                timeString = "\(strHours[0]):00 AM"
-            }
-        } else if (Hours == 12.0) {
-            timeString = "12:00 PM";
-        } else if (Hours == 12.5) {
-            timeString = "12:30 PM";
-        } else if (Hours > 12.0) {
-            let strHours = "\(Hours - 12.0)".components(separatedBy: ".")
-            if strHours[1] != "0" {
-                timeString =  "\(strHours[0]):30 PM"
-            } else {
-                timeString = "\(strHours[0]):00 PM"
-            }
-            //            timeString = hour-12 +"PM";
-        }
-        return timeString
-    }
-    
-    func getMonthName(MonthNumber:Int) -> String {
-        
-        var MonthName:String = ""
-        switch MonthNumber {
-        case 1:
-            MonthName = "Jan"
-        case 2:
-            MonthName = "Feb"
-        case 3:
-            MonthName = "Mar"
-        case 4:
-            MonthName = "Apr"
-        case 5:
-            MonthName = "May"
-        case 6:
-            MonthName = "Jun"
-        case 7:
-            MonthName = "Jul"
-        case 8:
-            MonthName = "Aug"
-        case 9:
-            MonthName = "Sep"
-        case 10:
-            MonthName = "Oct"
-        case 11:
-            MonthName = "Nov"
-        case 12:
-            MonthName = "Dec"
-        default:
-            break
-        }
-        return MonthName
-    }
+   
     
 }

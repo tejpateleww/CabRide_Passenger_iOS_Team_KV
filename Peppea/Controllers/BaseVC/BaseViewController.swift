@@ -18,7 +18,7 @@ class BaseViewController: UIViewController {
 
 
 
-    func setNavBarWithMenu(Title:String, IsNeedRightButton:Bool){
+    func setNavBarWithMenu(Title:String, IsNeedRightButton:Bool, barButtonColor: UIColor = UIColor.black){
 
         
 
@@ -34,6 +34,8 @@ class BaseViewController: UIViewController {
         let leftNavBarButton = UIBarButtonItem(image: UIImage(named: "iconMenu"), style: .plain, target: self, action: #selector(self.OpenMenuAction))
         self.navigationItem.leftBarButtonItem = nil
         self.navigationItem.leftBarButtonItem = leftNavBarButton
+        ///White color of a Back Bar Button Item
+        self.navigationItem.leftBarButtonItem?.tintColor = barButtonColor
         
         if Title == "Home"
         {
@@ -56,7 +58,7 @@ class BaseViewController: UIViewController {
 
     }
 
-    func setNavBarWithBack(Title:String, IsNeedRightButton:Bool, barColor: UIColor = UIColor.black, titleFontColor: UIColor = UIColor.black, backBarButtonColor: UIColor = UIColor.white) {
+    func setNavBarWithBack(Title:String, IsNeedRightButton:Bool, barColor: UIColor = UIColor.black, titleFontColor: UIColor = UIColor.black, backBarButtonColor: UIColor = UIColor.white,isTransperant: Bool = false) {
                 self.navigationController?.navigationBar.isTranslucent = true
 
         if Title == "Home" {
@@ -90,8 +92,8 @@ class BaseViewController: UIViewController {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.hidesBarsOnSwipe = false
         self.navigationController?.navigationBar.isTranslucent = false
-
-
+        
+       
         if UserDefaults.standard.value(forKey: "i18n_language") != nil {
             if let language = UserDefaults.standard.value(forKey: "i18n_language") as? String {
                 if language == "sw" {
