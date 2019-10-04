@@ -28,7 +28,7 @@ class VehicleDetailViewController: BaseViewController
     
     @IBOutlet var lblPriceDistance: UILabel!
     
-    @IBOutlet var btnCheckAvailability: UIButton!
+    @IBOutlet var btnProceedToPayment: UIButton!
     
     @IBOutlet weak var btnApply: UIButton!
    

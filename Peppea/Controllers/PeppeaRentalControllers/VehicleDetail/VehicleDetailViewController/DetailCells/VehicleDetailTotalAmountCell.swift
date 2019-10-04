@@ -18,12 +18,23 @@ class VehicleDetailTotalAmountCell: UITableViewCell {
     
     @IBOutlet weak var lblDiscountAmount: UILabel!
     
+    @IBOutlet weak var noteView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
+    
+    func setUpUI() {
+        
+        self.noteView.layer.cornerRadius = 8.0
+        self.noteView.layer.masksToBounds = true
+        
+        self.noteView.layer.borderWidth = 0.5
+        self.noteView.layer.borderColor = UIColor.lightGray.cgColor
+        
+    }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
