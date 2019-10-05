@@ -483,6 +483,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
                                         "dropoff_lat":destinationLocation.latitude,
                                         "dropoff_lng":destinationLocation.longitude]
             
+            
             self.emitSocket_GetEstimateFare(param: param)
             DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                     self.CallForGetEstimate()
@@ -1036,7 +1037,6 @@ extension HomeViewController: CLLocationManagerDelegate {
             mapView.camera = GMSCameraPosition(target: defaultLocation.coordinate, zoom: zoomLevel, bearing: 0, viewingAngle: 0)
         }
         if SocketIOManager.shared.socket.status == .connected {
-            
             self.emitSocket_UpdateCustomerLatLng(param: ["customer_id": SingletonClass.sharedInstance.loginData.id ?? "", "lat": location.coordinate.latitude, "lng": location.coordinate.longitude])
         }
     }
@@ -1093,6 +1093,10 @@ extension HomeViewController: GMSAutocompleteViewControllerDelegate {
         if let CarCollection = self.children[0] as? CarCollectionViewController {
             CarCollection.FlatRate  = ""
             CarCollection.collectionView.reloadData()
+        }
+        
+        if SocketIOManager.shared.socket.status == .connected {
+            self.emitSocket_UpdateCustomerLatLng(param: ["customer_id": SingletonClass.sharedInstance.loginData.id ?? "", "lat": pickupLocation.latitude, "lng": pickupLocation.longitude])
         }
         
         self.CallForGetEstimate()
