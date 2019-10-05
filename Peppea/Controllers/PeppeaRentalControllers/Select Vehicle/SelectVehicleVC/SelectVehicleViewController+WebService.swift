@@ -18,7 +18,7 @@ extension SelectVehicleViewController {
     
     func reloadMoreHistory() {
         self.PageNumber += 1
-        self.LoaderBackView.isHidden = false
+//        self.LoaderBackView.isHidden = false
         self.ActivityIndicator.startAnimating()
         //        self.webserviceFindVehicle()
     }

@@ -33,7 +33,7 @@ class SelectVehicleViewController: BaseViewController,BookVehicleDelegate
     var DisplayDeliveryDate:String = ""
     
     @IBOutlet weak var ActivityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var LoaderBackView: UIView!
+//    @IBOutlet weak var LoaderBackView: UIView!
     
     var arrVehicles:[[String:Any]] = []
     var startDate:String = ""
@@ -55,7 +55,7 @@ class SelectVehicleViewController: BaseViewController,BookVehicleDelegate
         self.lblPickUpDate.text = self.selectedPickUpDate.convertDateString(inputFormat: .dateWithOutSeconds, outputFormat: .fullDate)
         self.lblDropOffDate.text = self.selectedDropOffDate.convertDateString(inputFormat: .dateWithOutSeconds, outputFormat: .fullDate)
         
-        self.LoaderBackView.isHidden = true
+//        self.LoaderBackView.isHidden = true
         self.tblView.tableFooterView = UIView()
         print("arrVehicles in Response\(arrVehicles)")
 //            self.endDate
