@@ -128,6 +128,7 @@ class LoginViewController: UIViewController {
                 UserDefaults.standard.set(true, forKey: "isUserLogin")
                 
                 let loginModelDetails = LoginModel.init(fromJson: json)
+                let Vehiclelist = VehicleListModel(fromJson: json)
                 do
                 {
                     UserDefaults.standard.set(loginModelDetails.loginData.xApiKey, forKey: "X_API_KEY")
@@ -135,7 +136,7 @@ class LoginViewController: UIViewController {
                     SingletonClass.sharedInstance.BulkMilesBalance = loginModelDetails.loginData.BulkMilesBalance
                     try UserDefaults.standard.set(object: loginModelDetails, forKey: "userProfile") //(loginModelDetails, forKey: "userProfile")
                     SingletonClass.sharedInstance.loginData = loginModelDetails.loginData
-                    
+                    try UserDefaults.standard.set(object: Vehiclelist, forKey: "carList")
                     if json.dictionary?["booking_info"] != nil {
                         let info = BookingInfo(fromJson: json.dictionary?["booking_info"])
                         SingletonClass.sharedInstance.bookingInfo = info

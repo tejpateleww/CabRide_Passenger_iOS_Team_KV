@@ -215,6 +215,18 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
         let rightNavBarButton = UIBarButtonItem(image: UIImage(named: "iconFavorite"), style: .plain, target: self, action: #selector(self.btnFavouriteAddress(_:)))
         self.navigationItem.rightBarButtonItem = nil
         self.navigationItem.rightBarButtonItem = rightNavBarButton
+        
+        // openChatbox
+        
+        if let DriverInfoPage = self.children[1] as? DriverInfoPageViewController {
+            DriverInfoPage.OpenChatBox = {
+                let viewController = self.storyboard?.instantiateViewController(withIdentifier: "ChatViewController") as! ChatViewController
+                viewController.strTicketID = dictData["TicketId"] as! String
+                viewController.strTicketTile = dictData["TicketTitle"] as! String
+                self.navigationController?.pushViewController(viewController, animated: true)
+            }
+        }
+        
     }
 
     override func viewDidLayoutSubviews() {
