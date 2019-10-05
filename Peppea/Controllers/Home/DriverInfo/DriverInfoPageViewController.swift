@@ -69,7 +69,7 @@ class DriverInfoPageViewController: UIViewController {
     var strDriverName = String()
     var strCarPlateNumber = String()
     var strPassengerMobileNumber = String()
-
+    var OpenChatBox:(() -> ())?
     //-------------------------------------------------------------
     // MARK: - Base Methods
     //-------------------------------------------------------------
@@ -88,6 +88,9 @@ class DriverInfoPageViewController: UIViewController {
     }
     
     @IBAction func btnMessage(_ sender: Any) {
+        if let OpenChatAction = OpenChatBox {
+            OpenChatAction()
+        }
     }
 
     @IBAction func btnCall(_ sender: Any) {

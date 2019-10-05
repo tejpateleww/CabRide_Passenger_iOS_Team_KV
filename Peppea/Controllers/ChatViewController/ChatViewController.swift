@@ -93,8 +93,6 @@ class ChatViewController: BaseViewController,UIGestureRecognizerDelegate ,UINavi
         
       
         viewFN.addSubview(button1)
-        
-        
         let rightBarButton = UIBarButtonItem(customView: viewFN)
         self.navigationItem.rightBarButtonItem = rightBarButton
     }
