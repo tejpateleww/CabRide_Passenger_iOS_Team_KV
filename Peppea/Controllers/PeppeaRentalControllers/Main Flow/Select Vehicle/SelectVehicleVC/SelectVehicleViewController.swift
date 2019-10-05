@@ -69,15 +69,6 @@ class SelectVehicleViewController: BaseViewController,BookVehicleDelegate
 
     }
     
-//    func setupNavigationController()
-//    {
-//
-//        self.title = "Select Car"
-//        self.navigationController?.navigationBar.barTintColor = .white
-////        self.navigationController?.navigationBar.isTranslucent = true
-//
-//    }
-    
     override func viewWillAppear(_ animated: Bool)
     {
         super.viewWillAppear(animated)

@@ -229,6 +229,18 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
                 self.gotoProfileVC()
 
             }
+            else if (arrMenuTitle[indexPath.row] == "My Add") {
+                
+                let findCarVC = self.parent?.children.first?.children.first as? FindCarViewController
+                let storyborad = UIStoryboard(name: "Rental_Main", bundle: nil)
+                let myAddsVC = storyborad.instantiateViewController(withIdentifier: "MyAddsViewController") as! MyAddsViewController
+                
+                //        let NextPage =
+                
+                //self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
+                findCarVC?.navigationController?.pushViewController(myAddsVC, animated: true)
+                sideMenuController?.hideMenu()
+            }
             else if (arrMenuTitle[indexPath.row] == "Logout")
             {
                 let alert = UIAlertController(title: "Logout", message: "Are you sure you want to logout?", preferredStyle: .alert)

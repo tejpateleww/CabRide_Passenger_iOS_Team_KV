@@ -15,26 +15,27 @@ class VehicleDetailViewController: BaseViewController
     
     ///Top View
     
-    @IBOutlet weak var topBgImageView: UIImageView!
-    @IBOutlet var imgVehicle: UIImageView!
-
-    @IBOutlet var lblPrice: UILabel!
-    @IBOutlet weak var lblValidityTime: UILabel!
-
-    @IBOutlet weak var lblCarCompanyName: UILabel!
-    @IBOutlet weak var lblCarName: UILabel!
-
-    @IBOutlet var viewInfoVehicle: UIView!
+//    @IBOutlet weak var topBgImageView: UIImageView!
+//    @IBOutlet var imgVehicle: UIImageView!
+//
+//    @IBOutlet var lblPrice: UILabel!
+//    @IBOutlet weak var lblValidityTime: UILabel!
+//
+//    @IBOutlet weak var lblCarCompanyName: UILabel!
+//    @IBOutlet weak var lblCarName: UILabel!
+//
+//    @IBOutlet var viewInfoVehicle: UIView!
     
-    @IBOutlet var lblPriceDistance: UILabel!
+//    @IBOutlet var lblPriceDistance: UILabel!
     
     @IBOutlet var btnProceedToPayment: UIButton!
     
-    @IBOutlet weak var btnApply: UIButton!
-   
-    @IBOutlet weak var txtPromoCode: UITextField!
-    
-    @IBOutlet weak var MainViewTop: NSLayoutConstraint!
+//    @IBOutlet weak var btnApply: UIButton!
+//   
+//    @IBOutlet weak var txtPromoCode: UITextField!
+//    
+//    @IBOutlet weak var MainViewTop: NSLayoutConstraint!
+    @IBOutlet weak var topConstraintContainerView: NSLayoutConstraint!
     
 //    var parallaxEffect: RKParallaxEffect!
     var VehicleDetail:[String:AnyObject] = [:]
@@ -67,16 +68,18 @@ class VehicleDetailViewController: BaseViewController
     
     var FlatRate = ""
     
+    var topBarHeight: CGFloat = 0.0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.startDate = vehicleFrom_To.0
         self.endDate = vehicleFrom_To.1
 //        self.WebServiceForGetFare()
-        let navigationbarHeight = self.navigationController?.navigationBar.frame.height
-        let StatusBarHeight = UIApplication.shared.statusBarFrame.height
+//        let navigationbarHeight = self.navigationController?.navigationBar.frame.height
+//        let StatusBarHeight = UIApplication.shared.statusBarFrame.height
         
-        self.MainViewTop.constant = 0 - (navigationbarHeight! + StatusBarHeight)
+//        self.MainViewTop.constant = 0 - (navigationbarHeight! + StatusBarHeight)
         
         // Do any additional setup after loading the view.
         
@@ -91,15 +94,26 @@ class VehicleDetailViewController: BaseViewController
         super.viewWillAppear(animated)
         
         setNavBarWithBack(Title: "Ford Figo", IsNeedRightButton: false)
-            //,titleFontColor: UIColor.white)
         
-        //Transperant
+//        //Transperant
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
         
-        //        Utilities.setNavigationBarInViewController(controller: self, naviColor: ThemeNaviLightBlueColor, naviTitle: "", leftImage: kBack_Icon, rightImage: "", isTranslucent: true)
+        ///Note: For setting left ar button item's color to white
+        self.navigationItem.leftBarButtonItem?.tintColor = .white
+        //Naviugatipm bar title color
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+        
+        ///Stretching Top constraint of a Top View.
+        let navigationbarHeight = self.navigationController?.navigationBar.frame.height ?? 0.0
+        let StatusBarHeight = UIApplication.shared.statusBarFrame.height
+        topBarHeight = navigationbarHeight + StatusBarHeight
+        self.topConstraintContainerView.constant = 0 - topBarHeight
+
+
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {

@@ -83,6 +83,26 @@ class FindCarViewController: BaseViewController, UITableViewDelegate, UITableVie
 //        self.webserviceForGetOffers()
         // Do any additional setup after loading the view.
     }
+    
+    override func viewWillAppear(_ animated: Bool)
+    {
+        super.viewWillAppear(animated)
+        
+        //Set navigation bar
+        self.setNavBarWithMenu(Title: "", IsNeedRightButton: false)
+        ///Note: For setting left ar button item's color to white
+        self.navigationController?.navigationBar.tintColor = .white
+
+        
+        ///Stretching Top constraint of a Top View.
+        let navigationbarHeight = self.navigationController?.navigationBar.frame.height ?? 0.0
+        let StatusBarHeight = UIApplication.shared.statusBarFrame.height
+        topBarHeight = navigationbarHeight + StatusBarHeight
+        self.topConstraintContainerView.constant = 0 - topBarHeight
+        
+    }
+    
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -94,26 +114,7 @@ class FindCarViewController: BaseViewController, UITableViewDelegate, UITableVie
 //        parallaxEffect.isFullScreenPanGestureRecognizerEnabled = false
     }
     
-    override func viewWillAppear(_ animated: Bool)
-    {
-        super.viewWillAppear(animated)
-        ///TODO:
-        //        Utilities.setNavigationBarInViewController(controller: self, naviColor: ThemeNaviLightBlueColor, naviTitle: "Search For \(VehicalName)", leftImage: kBack_Icon, rightImage: "", isTranslucent: true)
-//        self.btnFindVehicles.setTitle("Find \(VehicalName)", for: .normal)
-        
-        self.setNavBarWithMenu(Title: "", IsNeedRightButton: false)
-            ///,barButtonColor: .white)
-
-        ///Adding height
-        do {
-            let navigationbarHeight = self.navigationController?.navigationBar.frame.height ?? 0.0
-            let StatusBarHeight = UIApplication.shared.statusBarFrame.height
-            topBarHeight = navigationbarHeight + StatusBarHeight
-            self.topConstraintContainerView.constant = 0 - topBarHeight
-        }
-        
-    }
-    
+   
     
     
     func isValidate() -> (Bool,String) {

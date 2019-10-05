@@ -1,17 +1,16 @@
 //
-//  SelectLocationFirstCell.swift
-//  RentInFlash-Customer
+//  AddDetailsDropDownCell.swift
+//  Peppea
 //
-//  Created by EWW iMac2 on 14/11/18.
-//  Copyright © 2018 EWW iMac2. All rights reserved.
+//  Created by EWW078 on 05/10/19.
+//  Copyright © 2019 Mayur iMac. All rights reserved.
 //
 
 import UIKit
 
-class SelectLocationFirstCell: UITableViewCell {
-    @IBOutlet var viewCell: UIView!
-    
-    @IBOutlet var btnContinue: UIButton!
+class AddDetailsDropDownCell: UITableViewCell {
+
+    @IBOutlet weak var detailTypeLbl: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

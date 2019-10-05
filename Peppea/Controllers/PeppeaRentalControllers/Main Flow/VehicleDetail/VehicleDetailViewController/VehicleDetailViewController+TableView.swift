@@ -16,7 +16,7 @@ extension VehicleDetailViewController : UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 4
+        return 5
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
@@ -27,8 +27,30 @@ extension VehicleDetailViewController : UITableViewDataSource {
     {
         
         var customCell = UITableViewCell()
-        
+
         if indexPath.section == 0
+        {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "VehicleDetailHeaderCell") as! VehicleDetailHeaderCell
+            
+            
+            //            cell.viewCell.backgroundColor = UIColor.white
+//            cell.viewCell.layer.shadowColor = UIColor.darkGray.cgColor
+//            cell.viewCell.layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
+//            cell.viewCell.layer.shadowOpacity = 0.4
+//            cell.viewCell.layer.shadowRadius = 1
+//
+//            cell.viewCell.layer.cornerRadius = cell.viewCell.frame.height / 2
+//
+//            cell.lblPickupTime.text = self.startDisplayDate
+//            cell.lblDropoffTime.text = self.endDisplayDate
+//
+//            cell.layer.zPosition = (indexPath.row == 0) ? 1 : 0
+            cell.selectionStyle = .none
+            
+            customCell = cell
+        }
+
+        else if indexPath.section == 1
         {
             let cell = tableView.dequeueReusableCell(withIdentifier: "VehicleFirstTimeDurationCell") as! VehicleFirstTimeDurationCell
             
@@ -49,7 +71,7 @@ extension VehicleDetailViewController : UITableViewDataSource {
             
             customCell = cell
         }
-        else if indexPath.section == 1
+        else if indexPath.section == 2
         {
             let cell = tableView.dequeueReusableCell(withIdentifier: "VehicleDetailMapViewCell") as! VehicleDetailMapViewCell
             //        cell.viewCell.layer.cornerRadius = 10
@@ -78,7 +100,7 @@ extension VehicleDetailViewController : UITableViewDataSource {
             
             customCell = cell
         }
-        else if indexPath.section == 2
+        else if indexPath.section == 3
         {
             ///PAyment Breakdown cell
             let cell = tableView.dequeueReusableCell(withIdentifier: "VehiclePaymentBreakdownCell") as! VehiclePaymentBreakdownCell
@@ -119,7 +141,7 @@ extension VehicleDetailViewController : UITableViewDataSource {
             
             customCell = cell
         }
-        else if indexPath.section == 3
+        else if indexPath.section == 4
         {
             let cell = tableView.dequeueReusableCell(withIdentifier: "VehicleDetailTotalAmountCell") as! VehicleDetailTotalAmountCell
             
@@ -178,23 +200,28 @@ extension VehicleDetailViewController : UITableViewDelegate {
     {
         
         if indexPath.section == 0 {
+
+            ///HEader cEll
+            return 285 + topBarHeight
+        }
+        else if indexPath.section == 1 {
+
             return 0.0
         }
-        else if indexPath.section == 1
+        else if indexPath.section == 2
         {
             ///Map cell
             return 202
         }
-        else if indexPath.section == 2
+        else if indexPath.section == 3
         {
             //Payment Breakdown cell
             return 284.0
                 //UITableView.automaticDimension
         }
-        else if indexPath.section == 3
+        else if indexPath.section == 4
         {
-            //Fares
-            //Notes
+            ///Total Amount
             return 220
             
         }
