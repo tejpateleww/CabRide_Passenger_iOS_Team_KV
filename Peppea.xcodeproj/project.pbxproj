@@ -108,6 +108,10 @@
 		46CA655722DEFB2900FC6E16 /* Logout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CA655622DEFB2900FC6E16 /* Logout.swift */; };
 		46E8CE9022D9AD6D001BEFCD /* InviteDriverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E8CE8F22D9AD6D001BEFCD /* InviteDriverViewController.swift */; };
 		681265292348A8A400C14AD4 /* AddDetailsDropDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681265282348A8A400C14AD4 /* AddDetailsDropDownCell.swift */; };
+		684706B4234B4101007892D8 /* RentalPastHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684706AF234B4101007892D8 /* RentalPastHistoryCell.swift */; };
+		684706B5234B4101007892D8 /* RentalPastHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 684706B0234B4101007892D8 /* RentalPastHistoryCell.xib */; };
+		684706B6234B4102007892D8 /* RentalCurrentHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 684706B2234B4101007892D8 /* RentalCurrentHistoryCell.xib */; };
+		684706B7234B4102007892D8 /* RentalCurrentHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684706B3234B4101007892D8 /* RentalCurrentHistoryCell.swift */; };
 		684B460A233CDD660066855C /* AppDelegate+PeppeaRental.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684B4609233CDD660066855C /* AppDelegate+PeppeaRental.swift */; };
 		684B460C233CE8240066855C /* Rental_Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 684B460B233CE8240066855C /* Rental_Main.storyboard */; };
 		6863FC73233CCBED007E1D0F /* Rental_LoginRegister.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6863FC72233CCBEC007E1D0F /* Rental_LoginRegister.storyboard */; };
@@ -141,6 +145,7 @@
 		688122E32348726500577D6E /* SelectDateTimeViewController+FSCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688122C52348726500577D6E /* SelectDateTimeViewController+FSCalendar.swift */; };
 		688122E9234872B500577D6E /* MyAddsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688122E8234872B500577D6E /* MyAddsViewController.swift */; };
 		688122EC234873EA00577D6E /* MyAddsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688122EB234873EA00577D6E /* MyAddsCell.swift */; };
+		68959FEF234B090900D6EC2C /* RentalHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68959FE4234B090900D6EC2C /* RentalHistoryViewController.swift */; };
 		68C7BE1F2348845000DDEB10 /* AddDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C7BE1E2348845000DDEB10 /* AddDetailViewController.swift */; };
 		68C7BE2223489C9000DDEB10 /* AddDetailHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C7BE2123489C9000DDEB10 /* AddDetailHeaderCell.swift */; };
 		7A1CC8F12306871F00FB6ECD /* BulkMilePurchaseReqModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1CC8F02306871F00FB6ECD /* BulkMilePurchaseReqModel.swift */; };
@@ -327,6 +332,10 @@
 		46CA655622DEFB2900FC6E16 /* Logout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logout.swift; sourceTree = "<group>"; };
 		46E8CE8F22D9AD6D001BEFCD /* InviteDriverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteDriverViewController.swift; sourceTree = "<group>"; };
 		681265282348A8A400C14AD4 /* AddDetailsDropDownCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDetailsDropDownCell.swift; sourceTree = "<group>"; };
+		684706AF234B4101007892D8 /* RentalPastHistoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RentalPastHistoryCell.swift; sourceTree = "<group>"; };
+		684706B0234B4101007892D8 /* RentalPastHistoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RentalPastHistoryCell.xib; sourceTree = "<group>"; };
+		684706B2234B4101007892D8 /* RentalCurrentHistoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RentalCurrentHistoryCell.xib; sourceTree = "<group>"; };
+		684706B3234B4101007892D8 /* RentalCurrentHistoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RentalCurrentHistoryCell.swift; sourceTree = "<group>"; };
 		684B4609233CDD660066855C /* AppDelegate+PeppeaRental.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+PeppeaRental.swift"; sourceTree = "<group>"; };
 		684B460B233CE8240066855C /* Rental_Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Rental_Main.storyboard; sourceTree = "<group>"; };
 		6863FC72233CCBEC007E1D0F /* Rental_LoginRegister.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Rental_LoginRegister.storyboard; sourceTree = "<group>"; };
@@ -360,6 +369,7 @@
 		688122C52348726500577D6E /* SelectDateTimeViewController+FSCalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SelectDateTimeViewController+FSCalendar.swift"; sourceTree = "<group>"; };
 		688122E8234872B500577D6E /* MyAddsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAddsViewController.swift; sourceTree = "<group>"; };
 		688122EB234873EA00577D6E /* MyAddsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAddsCell.swift; sourceTree = "<group>"; };
+		68959FE4234B090900D6EC2C /* RentalHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RentalHistoryViewController.swift; sourceTree = "<group>"; };
 		68C7BE1E2348845000DDEB10 /* AddDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDetailViewController.swift; sourceTree = "<group>"; };
 		68C7BE2123489C9000DDEB10 /* AddDetailHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDetailHeaderCell.swift; sourceTree = "<group>"; };
 		7A1CC8F02306871F00FB6ECD /* BulkMilePurchaseReqModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulkMilePurchaseReqModel.swift; sourceTree = "<group>"; };
@@ -728,6 +738,24 @@
 			path = InviteFriend;
 			sourceTree = "<group>";
 		};
+		684706AE234B4101007892D8 /* Past */ = {
+			isa = PBXGroup;
+			children = (
+				684706AF234B4101007892D8 /* RentalPastHistoryCell.swift */,
+				684706B0234B4101007892D8 /* RentalPastHistoryCell.xib */,
+			);
+			path = Past;
+			sourceTree = "<group>";
+		};
+		684706B1234B4101007892D8 /* Current */ = {
+			isa = PBXGroup;
+			children = (
+				684706B3234B4101007892D8 /* RentalCurrentHistoryCell.swift */,
+				684706B2234B4101007892D8 /* RentalCurrentHistoryCell.xib */,
+			);
+			path = Current;
+			sourceTree = "<group>";
+		};
 		6863FC71233CCB6B007E1D0F /* Rental */ = {
 			isa = PBXGroup;
 			children = (
@@ -875,9 +903,9 @@
 		688122C12348726500577D6E /* SelectDate */ = {
 			isa = PBXGroup;
 			children = (
-				688122C22348726500577D6E /* SelectDateTimeViewController+RKMultiUnitSegment.swift */,
-				688122C32348726500577D6E /* SelectDateTimeViewController+Conversions.swift */,
 				688122C42348726500577D6E /* SelectDateTimeViewController.swift */,
+				688122C32348726500577D6E /* SelectDateTimeViewController+Conversions.swift */,
+				688122C22348726500577D6E /* SelectDateTimeViewController+RKMultiUnitSegment.swift */,
 				688122C52348726500577D6E /* SelectDateTimeViewController+FSCalendar.swift */,
 			);
 			path = SelectDate;
@@ -887,6 +915,7 @@
 			isa = PBXGroup;
 			children = (
 				688122E42348729700577D6E /* Adds */,
+				68959FE3234B090900D6EC2C /* Trip History */,
 			);
 			path = "Side Menu";
 			sourceTree = "<group>";
@@ -941,6 +970,24 @@
 				688122C62348726500577D6E /* Side Menu */,
 			);
 			path = PeppeaRentalControllers;
+			sourceTree = "<group>";
+		};
+		68959FE3234B090900D6EC2C /* Trip History */ = {
+			isa = PBXGroup;
+			children = (
+				68959FE4234B090900D6EC2C /* RentalHistoryViewController.swift */,
+				68959FF8234B0F6100D6EC2C /* Cells */,
+			);
+			path = "Trip History";
+			sourceTree = "<group>";
+		};
+		68959FF8234B0F6100D6EC2C /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				684706AE234B4101007892D8 /* Past */,
+				684706B1234B4101007892D8 /* Current */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		68C7BE2023489C7000DDEB10 /* Add Detail Cell */ = {
@@ -1510,6 +1557,7 @@
 				EE9D6F9922C6449F00EAD756 /* proxima-nova-semibold-italic.otf in Resources */,
 				463DEFE522D8AEA6002365F8 /* FooterTableViewCell.xib in Resources */,
 				684B460C233CE8240066855C /* Rental_Main.storyboard in Resources */,
+				684706B6234B4102007892D8 /* RentalCurrentHistoryCell.xib in Resources */,
 				B1DE159C22D3647A001045B1 /* MyMileTableViewCell.xib in Resources */,
 				EE9D6F9422C6449F00EAD756 /* proxima-nova-light.otf in Resources */,
 				181DED2523267A5400C66403 /* TransferMileTableViewCell.xib in Resources */,
@@ -1540,6 +1588,7 @@
 				EE9D6F7822C6341300EAD756 /* Loading.json in Resources */,
 				687A0056233E4ACF005C71C5 /* Assets.xcassets in Resources */,
 				EE9D6F9622C6449F00EAD756 /* proxima-nova-condensed-regular-italic.otf in Resources */,
+				684706B5234B4101007892D8 /* RentalPastHistoryCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1613,6 +1662,7 @@
 				688122CA2348726500577D6E /* SelectVehicleViewController+TableView.swift in Sources */,
 				466957E122DD9E4A008A73C0 /* SocketManager.swift in Sources */,
 				EE9F3F5E22C7366900426377 /* RegistrationNewViewController.swift in Sources */,
+				684706B7234B4102007892D8 /* RentalCurrentHistoryCell.swift in Sources */,
 				B1DE159B22D3647A001045B1 /* MyMileTableViewCell.swift in Sources */,
 				4666B47D22D49F180084A230 /* ProfileViewController.swift in Sources */,
 				461A919422E6F3C9002BDCAC /* VehicleListModel.swift in Sources */,
@@ -1641,6 +1691,7 @@
 				7A7227932345B8A40042B491 /* NoDataFoundTblCell.swift in Sources */,
 				EEA454B322CC913D0094941A /* CarsCollectionViewCell.swift in Sources */,
 				18CB7F7C22E841ED004FA66C /* SocketProtocol.swift in Sources */,
+				684706B4234B4101007892D8 /* RentalPastHistoryCell.swift in Sources */,
 				1836EF5022F8428100852EC8 /* temp.swift in Sources */,
 				464CB66022E195E500273F29 /* CheckPromocode.swift in Sources */,
 				182BD24522EF166C00C419B9 /* BulkMileListDataModel.swift in Sources */,
@@ -1763,6 +1814,7 @@
 				46C469B922D70DA3007BA89B /* WalletViewController.swift in Sources */,
 				688122E32348726500577D6E /* SelectDateTimeViewController+FSCalendar.swift in Sources */,
 				688122DB2348726500577D6E /* FindCarTrendingCarsCell.swift in Sources */,
+				68959FEF234B090900D6EC2C /* RentalHistoryViewController.swift in Sources */,
 				182BD24622EF166C00C419B9 /* BulkMileList.swift in Sources */,
 				681265292348A8A400C14AD4 /* AddDetailsDropDownCell.swift in Sources */,
 				688122C82348726500577D6E /* SelectVehicleViewCell.swift in Sources */,

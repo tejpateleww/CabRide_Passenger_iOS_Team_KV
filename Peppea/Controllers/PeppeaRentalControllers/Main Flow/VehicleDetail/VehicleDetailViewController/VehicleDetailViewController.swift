@@ -135,12 +135,13 @@ class VehicleDetailViewController: BaseViewController
     @IBAction func proceedToPaymentButtonClicked(_ sender: Any) {
         
 
-        let PaymentPage = self.storyboard?.instantiateViewController(withIdentifier: "PaymentViewController") as! PaymentViewController
-        PaymentPage.Delegate = self
-        PaymentPage.isFlatRateSelected  = (self.FlatRate != "")
-        PaymentPage.OpenedForPayment = true
-        let NavController = UINavigationController(rootViewController: PaymentPage)
-        self.navigationController?.present(NavController, animated: true, completion: nil)
+//        let storyborad = UIStoryboard(name: "Main", bundle: nil)
+//        let PaymentPage = storyborad.instantiateViewController(withIdentifier: "PaymentViewController") as! PaymentViewController
+//        PaymentPage.Delegate = self
+//        PaymentPage.isFlatRateSelected  = (self.FlatRate != "")
+//        PaymentPage.OpenedForPayment = true
+//        let NavController = UINavigationController(rootViewController: PaymentPage)
+//        self.navigationController?.present(NavController, animated: true, completion: nil)
 
     }
 

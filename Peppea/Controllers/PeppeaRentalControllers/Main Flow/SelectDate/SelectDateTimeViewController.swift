@@ -192,7 +192,8 @@ class SelectDateTimeViewController: BaseViewController, RKMultiUnitRulerDataSour
     //MARK: Button Click
     @IBAction func btnSingleLineDate(_ sender: UIButton) {
         
-        if sender.isSelected == false {
+        if self.CalendarHeight.constant == 250.0 {
+            //sender.isSelected == false {
             UIView.animate(withDuration: 0.5) {
                 self.calendarView.scope = .week
                 self.CalendarHeight.constant = 100.0
@@ -208,7 +209,9 @@ class SelectDateTimeViewController: BaseViewController, RKMultiUnitRulerDataSour
             }
             
         }
-        sender.isSelected = !sender.isSelected
+        ///Note: Not using is selected property here, as we used tint color for button image,
+        //selected state affects button image color so (nt using sleected state)
+        //        sender.isSelected = !sender.isSelected
     }
     
    

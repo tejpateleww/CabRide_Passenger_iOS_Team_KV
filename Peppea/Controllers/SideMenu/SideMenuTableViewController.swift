@@ -125,120 +125,41 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
 
         let HomePage = self.parent?.children.first?.children.first as? HomeViewController
         
-        /*
-        let HomePage = self.parent?.childViewControllers.first?.childViewControllers.first as? HomeViewController
-
-        if arrMenuTitle[indexPath.row] == "New Booking" {
-
-        }
-        else if arrMenuTitle[indexPath.row] == "My Bookings"
-        {
-            //                        NotificationCenter.default.post(name: OpenMyBooking, object: nil)
-            let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "MyBookingViewController") as! MyBookingViewController
-            HomePage?.navigationController?.pushViewController(NextPage, animated: true)
-        }
-        else if arrMenuTitle[indexPath.row] == "Payment Options"
-        {
-
-            if SingletonClass.sharedInstance.CardsVCHaveAryData.count == 0
-            {
-                let next = self.storyboard?.instantiateViewController(withIdentifier: "WalletAddCardsViewController") as! WalletAddCardsViewController
-                HomePage?.navigationController?.pushViewController(next, animated: true)
-            }
-            else
-            {
-                let next = self.storyboard?.instantiateViewController(withIdentifier: "WalletCardsVC") as! WalletCardsVC
-                HomePage?.navigationController?.pushViewController(next, animated: true)
-            }
-
-        }
-        else if arrMenuTitle[indexPath.row] == "Wallet"
-        {
-            if (SingletonClass.sharedInstance.isPasscodeON)
-            {
-
-                if SingletonClass.sharedInstance.setPasscode == ""
-                {
-                    let viewController = self.storyboard?.instantiateViewController(withIdentifier: "SetPasscodeViewController") as! SetPasscodeViewController
-                    viewController.strStatusToNavigate = "Wallet"
-                    HomePage?.navigationController?.pushViewController(viewController, animated: true)
-                }
-                else
-                {
-
-                    let viewController = self.storyboard?.instantiateViewController(withIdentifier: "VerifyPasswordViewController") as! VerifyPasswordViewController
-                    viewController.strStatusToNavigate = "Wallet"
-                    HomePage?.navigationController?.pushViewController(viewController, animated: true)
-                }
-            }
-            else
-            {
-                let next = self.storyboard?.instantiateViewController(withIdentifier: "WalletViewController") as! WalletViewController
-                HomePage?.navigationController?.pushViewController(next, animated: true)
-            }
-        }
-        else if arrMenuTitle[indexPath.row] == "Favourites"
-        {
-
-
-            let next = self.storyboard?.instantiateViewController(withIdentifier: "FavoriteViewController") as! FavoriteViewController
-            HomePage?.navigationController?.pushViewController(next, animated: true)
-        }
-        else if arrMenuTitle[indexPath.row] == "Invite Friends"
-        {
-            //                        NotificationCenter.default.post(name: OpenInviteFriend, object: nil)
-            let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "InviteDriverViewController") as! InviteDriverViewController
-            HomePage?.navigationController?.pushViewController(NextPage, animated: true)
-
-        }else if arrMenuTitle[indexPath.row] == "Pass"
-        {
-
-            //                        NotificationCenter.default.post(name: OpenFavourite, object: nil)
-            let PassStoryBoard = UIStoryboard(name: "Pass", bundle: nil)
-
-            let next = PassStoryBoard.instantiateViewController(withIdentifier: "OffersViewController") as! OffersViewController
-            HomePage?.navigationController?.pushViewController(next, animated: true)
-        }
-        else if arrMenuTitle[indexPath.row] == "Help"
-        {
-            //                        NotificationCenter.default.post(name: OpenHelp, object: nil)
-
-            let HelpStoryBoard = UIStoryboard(name: "Help", bundle: nil)
-            let next = HelpStoryBoard.instantiateViewController(withIdentifier: "HelpViewController") as! HelpViewController
-            HomePage?.navigationController?.pushViewController(next, animated: true)
-        }
-        else if arrMenuTitle[indexPath.row] == "Settings"
-        {
-            //                        NotificationCenter.default.post(name: OpenSetting, object: nil)
-            let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "SettingPasscodeVC") as! SettingPasscodeVC
-            HomePage?.navigationController?.pushViewController(NextPage, animated: true)
-        }
-        else
-        else
-
- */
         
         let storyboardName = self.storyboard?.value(forKey: "name") as? String ?? ""
         
         if storyboardName == "Rental_Main" {
             
-            ///Peppea Rental Flow
+            //MARK: Peppea Rental Flow
             
             if (arrMenuTitle[indexPath.row] == "Profile") {
 
+                //MARK: Profile
                 self.gotoProfileVC()
 
             }
             else if (arrMenuTitle[indexPath.row] == "My Add") {
                 
+                
                 let findCarVC = self.parent?.children.first?.children.first as? FindCarViewController
                 let storyborad = UIStoryboard(name: "Rental_Main", bundle: nil)
                 let myAddsVC = storyborad.instantiateViewController(withIdentifier: "MyAddsViewController") as! MyAddsViewController
                 
+                //self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
+                findCarVC?.navigationController?.pushViewController(myAddsVC, animated: true)
+                sideMenuController?.hideMenu()
+            }
+            else if (arrMenuTitle[indexPath.row] == "Trip History") {
+                ///MARK: Trip History
+                
+                let findCarVC = self.parent?.children.first?.children.first as? FindCarViewController
+                let storyborad = UIStoryboard(name: "Rental_Main", bundle: nil)
+                let rentalHistoryVC = storyborad.instantiateViewController(withIdentifier: "RentalHistoryViewController") as! RentalHistoryViewController
+                
                 //        let NextPage =
                 
                 //self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
-                findCarVC?.navigationController?.pushViewController(myAddsVC, animated: true)
+                findCarVC?.navigationController?.pushViewController(rentalHistoryVC, animated: true)
                 sideMenuController?.hideMenu()
             }
             else if (arrMenuTitle[indexPath.row] == "Logout")
