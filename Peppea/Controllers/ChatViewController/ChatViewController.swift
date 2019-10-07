@@ -42,7 +42,9 @@ class ChatViewController: BaseViewController,UIGestureRecognizerDelegate ,UINavi
     @IBOutlet weak var conVwEmergencyMessageHeight: NSLayoutConstraint!
     
     @IBOutlet weak var btnSend: UIButton!
-    
+    @IBOutlet weak var btnHello: UIButton!
+    @IBOutlet weak var viewEmjncy: UIView!
+    @IBOutlet weak var btnHelloHeight: NSLayoutConstraint!
     
     // ----------------------------------------------------
     // MARK: - Global Declaration
@@ -59,10 +61,9 @@ class ChatViewController: BaseViewController,UIGestureRecognizerDelegate ,UINavi
     var strBookingId = String()
     var strBookingType = String()
     var delegateOfRefreshChatList : DelegatechatListRefresh?
+    var receiver_id = String()
+    var receiver_name = String()
     
-    @IBOutlet weak var btnHello: UIButton!
-    @IBOutlet weak var viewEmjncy: UIView!
-    @IBOutlet weak var btnHelloHeight: NSLayoutConstraint!
     
     //    let socket = (UIApplication.shared.delegate as! AppDelegate).SocketManager
     
@@ -80,8 +81,9 @@ class ChatViewController: BaseViewController,UIGestureRecognizerDelegate ,UINavi
         
         self.setNavBarWithBack(Title: "Thomas", IsNeedRightButton: false)
         //Change by Bhautik
-//        Singletons.sharedInstance.isChatBoxOpen = true
-//        Singletons.sharedInstance.ChatBoxOpenedWithID = self.strTicketID
+        SingletonClass.sharedInstance.isChatBoxOpen = true
+        SingletonClass.sharedInstance.ChatBoxOpenedWithID = self.strTicketID
+        
 //        UtilityClass.setNavigationBarInViewController(controller: self, naviColor: UIColor.clear, naviTitle: "mymatcher".localized, leftImage: "iconBackArrow", rightImage: "",font: UIFont.Bold(ofSize:fontSize.largeTitleFont.rawValue))
 //
 //        self.btnHello.setTitle("hello".localized, for: .normal)
@@ -90,8 +92,6 @@ class ChatViewController: BaseViewController,UIGestureRecognizerDelegate ,UINavi
         
         button1.setImage(UIImage.init(named: "iconDummyProfilePic"), for: .normal)
         button1.addTarget(self, action: #selector(btnFilterClicked(_:)), for: .touchUpInside)
-        
-      
         viewFN.addSubview(button1)
         let rightBarButton = UIBarButtonItem(customView: viewFN)
         self.navigationItem.rightBarButtonItem = rightBarButton
@@ -150,8 +150,8 @@ class ChatViewController: BaseViewController,UIGestureRecognizerDelegate ,UINavi
 //        self.view.backgroundColor = UIColor.red
 //        ViewChatDetails.roundCorners(corners: [.topRight,.topLeft], radius: 20.0)
         //        viewEmjncy.roundCorners(corners: [.topRight,.topLeft], radius: 20.0)
-//        NotificationCenter.default.removeObserver(self, name: NotificationforUpdateChatDetail, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(self.webServiceForFetchData), name: NotificationforUpdateChatDetail, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NotificationsKey.UpdateChatNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.webServiceForGetChatHistory), name: NotificationsKey.UpdateChatNotification, object: nil)
         
         viewChatBottom.layer.cornerRadius = 10
         viewChatBottom.clipsToBounds = true
@@ -421,6 +421,35 @@ class ChatViewController: BaseViewController,UIGestureRecognizerDelegate ,UINavi
     // MARK: = facthDetail
     //===================================
     
+    @objc func webServiceForGetChatHistory() {
+        
+        
+        
+    }
+    
+    @objc func webServiceToSendMessage()  {
+        
+        let SendMessageModel = chatModel()
+        
+        SendMessageModel.booking_id = self.strBookingId
+        SendMessageModel.sender_type = "customer"
+        SendMessageModel.receiver_type = "driver"
+        SendMessageModel.sender_id = (SingletonClass.sharedInstance.loginData.id)!
+        SendMessageModel.receiver_id = self.receiver_id
+        SendMessageModel.message = self.txtMessage.text
+        
+        UserWebserviceSubclass.SendMessageToDriver(SendChat: SendMessageModel) { (Response, status) in
+         
+            if status {
+                
+            }
+            else {
+                
+            }
+        }
+        
+    }
+    
     @objc func webServiceForFetchData()
     {
         
@@ -673,9 +702,6 @@ class MessageCell: UITableViewCell {
     @IBOutlet weak var vwChatBg: UIView!
     @IBOutlet weak var constraintHeightOfImage: NSLayoutConstraint!
     
-    
-    
-    
     override func layoutSubviews() {
         
     }
@@ -691,7 +717,6 @@ class MessageObject  {
     var receiver_id : String? = nil
     var message : String? = nil
     var created_date : String? = nil
-    
     
 }
 

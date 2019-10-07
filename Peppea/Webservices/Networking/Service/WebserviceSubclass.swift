@@ -175,8 +175,10 @@ class UserWebserviceSubclass
         WebService.shared.getMethod(url: URL.init(string: strURLFinal)!, httpMethod: .get, completion: completion)
     }
     
-    
-    
+    class func SendMessageToDriver(SendChat:chatModel , completion: @escaping CompletionResponse) {
+        let  params : [String:String] = SendChat.generatPostParams() as! [String : String]
+        WebService.shared.requestMethod(api: .removeFavouriteAddress, httpMethod: .post, parameters: params, completion: completion)
+    }
     
     
 }

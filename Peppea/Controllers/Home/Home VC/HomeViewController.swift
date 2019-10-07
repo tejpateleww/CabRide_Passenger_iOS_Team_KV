@@ -221,8 +221,9 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
         if let DriverInfoPage = self.children[1] as? DriverInfoPageViewController {
             DriverInfoPage.OpenChatBox = {
                 let viewController = self.storyboard?.instantiateViewController(withIdentifier: "ChatViewController") as! ChatViewController
-//                viewController.strTicketID = dictData["TicketId"] as! String
-//                viewController.strTicketTile = dictData["TicketTitle"] as! String
+                viewController.strBookingId = self.booingInfo.id
+                viewController.receiver_id =  "\(String(describing: self.booingInfo.driverInfo.id))"
+                viewController.receiver_name = "\(String(describing: self.booingInfo.driverInfo.firstName)) \(String(describing: self.booingInfo.driverInfo.lastName))"
                 self.navigationController?.pushViewController(viewController, animated: true)
             }
         }

@@ -22,6 +22,8 @@ class SingletonClass: NSObject
     var myCurrentLocation = CLLocation()
     /// Get device token
     var token = ""
+    var isChatBoxOpen = Bool()
+    var ChatBoxOpenedWithID = String()
     
     func clearSingletonClass() {
         RegisterOTP = ""

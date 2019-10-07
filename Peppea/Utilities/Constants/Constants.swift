@@ -40,3 +40,9 @@ let cellBorderColor: UIColor = UIColor.init(red: 212.0/255.0, green: 212.0/255.0
 let iconCar = "iconCar"
 let iconMarker = "iconMarker"
 let zoomLevel: Float = 16.0
+
+
+// Notifications Observers
+struct NotificationsKey {
+    static let UpdateChatNotification = Notification.Name("UpdateChat")
+}

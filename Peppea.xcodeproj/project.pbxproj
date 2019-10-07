@@ -149,6 +149,7 @@
 		7A7227942345B8A40042B491 /* NoDataFoundTblCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A7227922345B8A40042B491 /* NoDataFoundTblCell.xib */; };
 		7A984494230A6BED004359F3 /* BulkMileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A984492230A6BED004359F3 /* BulkMileData.swift */; };
 		7A984495230A6BED004359F3 /* BulkMileHistoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A984493230A6BED004359F3 /* BulkMileHistoryList.swift */; };
+		7AF06975234B12FA003F5790 /* chatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF06974234B12FA003F5790 /* chatModel.swift */; };
 		B1DE158E22D34818001045B1 /* ChangePwVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DE158D22D34818001045B1 /* ChangePwVC.swift */; };
 		B1DE159822D361D3001045B1 /* MyMileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DE159722D361D3001045B1 /* MyMileVC.swift */; };
 		B1DE159B22D3647A001045B1 /* MyMileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DE159922D3647A001045B1 /* MyMileTableViewCell.swift */; };
@@ -367,6 +368,7 @@
 		7A7227922345B8A40042B491 /* NoDataFoundTblCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoDataFoundTblCell.xib; sourceTree = "<group>"; };
 		7A984492230A6BED004359F3 /* BulkMileData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BulkMileData.swift; sourceTree = "<group>"; };
 		7A984493230A6BED004359F3 /* BulkMileHistoryList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BulkMileHistoryList.swift; sourceTree = "<group>"; };
+		7AF06974234B12FA003F5790 /* chatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatModel.swift; sourceTree = "<group>"; };
 		B1DE158D22D34818001045B1 /* ChangePwVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePwVC.swift; sourceTree = "<group>"; };
 		B1DE159722D361D3001045B1 /* MyMileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMileVC.swift; sourceTree = "<group>"; };
 		B1DE159922D3647A001045B1 /* MyMileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMileTableViewCell.swift; sourceTree = "<group>"; };
@@ -1152,6 +1154,7 @@
 				1882A0AE22EB1801008B5D1A /* ReviewRatingReqModel.swift */,
 				1836EF4322F7F9C600852EC8 /* deleteFavouriteAddressReqAddress.swift */,
 				7A1CC8F02306871F00FB6ECD /* BulkMilePurchaseReqModel.swift */,
+				7AF06974234B12FA003F5790 /* chatModel.swift */,
 			);
 			path = RequestModel;
 			sourceTree = "<group>";
@@ -1745,6 +1748,7 @@
 				468E993022D9F26900072361 /* UpdateAccountData.swift in Sources */,
 				EE9F3F6E22C7756C00426377 /* HomeViewController.swift in Sources */,
 				182BD24C22EF169900C419B9 /* BulkMileVC.swift in Sources */,
+				7AF06975234B12FA003F5790 /* chatModel.swift in Sources */,
 				463DEFE722D8AEA6002365F8 /* MyTripTableViewCell.swift in Sources */,
 				EE9F3F6222C74E5900426377 /* ThemeButton.swift in Sources */,
 				1836EF4C22F80EDD00852EC8 /* favouriteAddressListModel.swift in Sources */,
