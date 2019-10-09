@@ -148,6 +148,8 @@
 		68959FEF234B090900D6EC2C /* RentalHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68959FE4234B090900D6EC2C /* RentalHistoryViewController.swift */; };
 		68C7BE1F2348845000DDEB10 /* AddDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C7BE1E2348845000DDEB10 /* AddDetailViewController.swift */; };
 		68C7BE2223489C9000DDEB10 /* AddDetailHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C7BE2123489C9000DDEB10 /* AddDetailHeaderCell.swift */; };
+		68D8D85D234DA9C800136471 /* PostAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D8D85C234DA9C800136471 /* PostAddViewController.swift */; };
+		68D8D860234DC2C500136471 /* FilterByViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D8D85F234DC2C500136471 /* FilterByViewController.swift */; };
 		7A1CC8F12306871F00FB6ECD /* BulkMilePurchaseReqModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1CC8F02306871F00FB6ECD /* BulkMilePurchaseReqModel.swift */; };
 		7A1CC8F32306DE1300FB6ECD /* BulkMilesHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1CC8F22306DE1300FB6ECD /* BulkMilesHistory.swift */; };
 		7A7227932345B8A40042B491 /* NoDataFoundTblCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7227912345B8A40042B491 /* NoDataFoundTblCell.swift */; };
@@ -372,6 +374,8 @@
 		68959FE4234B090900D6EC2C /* RentalHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RentalHistoryViewController.swift; sourceTree = "<group>"; };
 		68C7BE1E2348845000DDEB10 /* AddDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDetailViewController.swift; sourceTree = "<group>"; };
 		68C7BE2123489C9000DDEB10 /* AddDetailHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDetailHeaderCell.swift; sourceTree = "<group>"; };
+		68D8D85C234DA9C800136471 /* PostAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAddViewController.swift; sourceTree = "<group>"; };
+		68D8D85F234DC2C500136471 /* FilterByViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterByViewController.swift; sourceTree = "<group>"; };
 		7A1CC8F02306871F00FB6ECD /* BulkMilePurchaseReqModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulkMilePurchaseReqModel.swift; sourceTree = "<group>"; };
 		7A1CC8F22306DE1300FB6ECD /* BulkMilesHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulkMilesHistory.swift; sourceTree = "<group>"; };
 		7A7227912345B8A40042B491 /* NoDataFoundTblCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDataFoundTblCell.swift; sourceTree = "<group>"; };
@@ -805,6 +809,7 @@
 			isa = PBXGroup;
 			children = (
 				6881229E2348726500577D6E /* SelectVehicleVC */,
+				68D8D85E234DC2A300136471 /* FilterByVC */,
 			);
 			path = "Select Vehicle";
 			sourceTree = "<group>";
@@ -923,9 +928,9 @@
 		688122E42348729700577D6E /* Adds */ = {
 			isa = PBXGroup;
 			children = (
+				688122E72348729700577D6E /* PostAdd */,
 				688122E52348729700577D6E /* MyAdds */,
 				688122E62348729700577D6E /* AddDetail */,
-				688122E72348729700577D6E /* PostAdd */,
 			);
 			path = Adds;
 			sourceTree = "<group>";
@@ -951,6 +956,7 @@
 		688122E72348729700577D6E /* PostAdd */ = {
 			isa = PBXGroup;
 			children = (
+				68D8D85C234DA9C800136471 /* PostAddViewController.swift */,
 			);
 			path = PostAdd;
 			sourceTree = "<group>";
@@ -997,6 +1003,14 @@
 				681265282348A8A400C14AD4 /* AddDetailsDropDownCell.swift */,
 			);
 			path = "Add Detail Cell";
+			sourceTree = "<group>";
+		};
+		68D8D85E234DC2A300136471 /* FilterByVC */ = {
+			isa = PBXGroup;
+			children = (
+				68D8D85F234DC2C500136471 /* FilterByViewController.swift */,
+			);
+			path = FilterByVC;
 			sourceTree = "<group>";
 		};
 		92BC9B349AE5C1EFF324C378 /* Pods */ = {
@@ -1674,6 +1688,7 @@
 				1836EF4822F8000900852EC8 /* FavouriteAddressViewController.swift in Sources */,
 				EEBF159E22CA0E1F004CB7FB /* CarCollectionViewController.swift in Sources */,
 				181DED212326294300C66403 /* MyMiles.swift in Sources */,
+				68D8D85D234DA9C800136471 /* PostAddViewController.swift in Sources */,
 				46536DFA22E0794D00C538D8 /* AddCardModel.swift in Sources */,
 				468E992922D9F26900072361 /* WalletHistory.swift in Sources */,
 				463DEFD422D877E4002365F8 /* CreditCardValidator.swift in Sources */,
@@ -1764,6 +1779,7 @@
 				688122C72348726500577D6E /* RentalLoginViewController.swift in Sources */,
 				18CB7F9022E89688004FA66C /* DriverInfo.swift in Sources */,
 				688122D42348726500577D6E /* VehicleDetailHeaderCell.swift in Sources */,
+				68D8D860234DC2C500136471 /* FilterByViewController.swift in Sources */,
 				468E991522D9B6EF00072361 /* EmptyTableViewCell.swift in Sources */,
 				181DED2423267A5400C66403 /* TransferMileTableViewCell.swift in Sources */,
 				468E992E22D9F26900072361 /* AddMoney.swift in Sources */,

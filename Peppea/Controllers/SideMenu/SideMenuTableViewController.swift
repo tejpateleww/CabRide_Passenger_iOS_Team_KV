@@ -138,6 +138,17 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
                 self.gotoProfileVC()
 
             }
+            else if (arrMenuTitle[indexPath.row] == "Post a Add") {
+                
+                
+                let findCarVC = self.parent?.children.first?.children.first as? FindCarViewController
+                let storyborad = UIStoryboard(name: "Rental_Main", bundle: nil)
+                let postAddViewController = storyborad.instantiateViewController(withIdentifier: "PostAddViewController") as! PostAddViewController
+                
+                //self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
+                findCarVC?.navigationController?.pushViewController(postAddViewController, animated: true)
+                sideMenuController?.hideMenu()
+            }
             else if (arrMenuTitle[indexPath.row] == "My Add") {
                 
                 
