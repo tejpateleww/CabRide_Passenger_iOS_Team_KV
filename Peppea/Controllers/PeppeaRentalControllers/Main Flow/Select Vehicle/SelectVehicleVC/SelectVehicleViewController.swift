@@ -41,7 +41,11 @@ class SelectVehicleViewController: BaseViewController,BookVehicleDelegate
     
     var NeedToReload:Bool = false
     var PageNumber:Int = 1
+    @IBOutlet weak var filterOkButton: UIButton!
     
+    @IBOutlet weak var shaddowView: UIView!
+    @IBOutlet weak var filterOuterViewBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var filterOuterView: UIView!
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -51,6 +55,7 @@ class SelectVehicleViewController: BaseViewController,BookVehicleDelegate
 //        //            self.startDate
 //        self.lblEndDate.text = self.DisplayDeliveryDate
 
+        self.setUpFilterViewFirstTime()
         
         self.lblPickUpDate.text = self.selectedPickUpDate.convertDateString(inputFormat: .dateWithOutSeconds, outputFormat: .fullDate)
         self.lblDropOffDate.text = self.selectedDropOffDate.convertDateString(inputFormat: .dateWithOutSeconds, outputFormat: .fullDate)
@@ -77,7 +82,7 @@ class SelectVehicleViewController: BaseViewController,BookVehicleDelegate
             //, barColor: .white,titleFontColor: .black,backBarButtonColor: .black)
 
 //        Utilities.setNavigationBarInViewController(controller: self, naviColor: ThemeNaviLightBlueColor, naviTitle: "Select \(VehicalCat_IDName.1)", leftImage: kBack_Icon, rightImage: "", isTranslucent: false)
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "filter"), style: .plain, target: self, action: nil)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "filter"), style: .plain, target: self, action: #selector(self.filterButtonClicked))
         //#selector(self.openFilterView)
         
     }
@@ -92,6 +97,7 @@ class SelectVehicleViewController: BaseViewController,BookVehicleDelegate
 //        self.present(viewController, animated: true, completion: nil)
 //
 //    }
+   
    
     func selectedFilter(byCategory: String, byType: String) {
         self.PageNumber = 1
@@ -114,5 +120,64 @@ class SelectVehicleViewController: BaseViewController,BookVehicleDelegate
         
     }
     
+    
+    //MARK: Filter Button Click
+    
+    func setUpFilterViewFirstTime() {
+        
+        let filterByVC : FilterByViewController = self.storyboard!.instantiateViewController(withIdentifier: "FilterByViewController") as! FilterByViewController
+        
+        ///1.
+        self.filterOuterView.addSubview(filterByVC.view)
+        filterByVC.view.frame = CGRect(x: 0, y: 73.0, width: UIScreen.main.bounds.width, height: 267.0)
+        
+        ///2.
+        self.addChild(filterByVC)
+        
+        ///3.
+        filterByVC.didMove(toParent: self)
+        
+        filterByVC.view.layoutIfNeeded()
+        
+        ///Filter Ok Button
+        self.filterOkButton.layer.cornerRadius = self.filterOkButton.frame.height / 2.0
+        self.filterOkButton.layer.masksToBounds = true
+        
+        ///Filter Bottom Constarint
+        //Here height is 417
+        self.filterOuterViewBottomConstraint.constant = -self.filterOuterView.frame.height
+        
+        ///
+        self.shaddowView.isHidden = true
+        
+    }
+    
+    @objc func filterButtonClicked() {
+        
+        if self.filterOuterViewBottomConstraint.constant == 0.0 {
+
+            ///Hide Filter View
+            self.filterOuterViewBottomConstraint.constant = -self.filterOuterView.frame.height
+            self.shaddowView.isHidden = true
+        }else{
+
+            //Show Filter View
+            self.filterOuterViewBottomConstraint.constant = 0.0
+            self.shaddowView.isHidden = false
+        }
+        
+        
+    }
+    @IBAction func filterOkButtonClicked(_ sender: Any) {
+        
+         self.filterOuterViewBottomConstraint.constant = -self.filterOuterView.frame.height
+        self.shaddowView.isHidden = true
+
+    }
+    
+    
+   
 }
+
+
 

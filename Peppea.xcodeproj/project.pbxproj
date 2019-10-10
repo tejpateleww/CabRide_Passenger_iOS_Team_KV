@@ -108,6 +108,7 @@
 		46CA655722DEFB2900FC6E16 /* Logout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CA655622DEFB2900FC6E16 /* Logout.swift */; };
 		46E8CE9022D9AD6D001BEFCD /* InviteDriverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E8CE8F22D9AD6D001BEFCD /* InviteDriverViewController.swift */; };
 		681265292348A8A400C14AD4 /* AddDetailsDropDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681265282348A8A400C14AD4 /* AddDetailsDropDownCell.swift */; };
+		68189B1F234F6E9E009477C3 /* SelectVehicleViewController+SelectPickUpDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68189B1E234F6E9E009477C3 /* SelectVehicleViewController+SelectPickUpDate.swift */; };
 		684706B4234B4101007892D8 /* RentalPastHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684706AF234B4101007892D8 /* RentalPastHistoryCell.swift */; };
 		684706B5234B4101007892D8 /* RentalPastHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 684706B0234B4101007892D8 /* RentalPastHistoryCell.xib */; };
 		684706B6234B4102007892D8 /* RentalCurrentHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 684706B2234B4101007892D8 /* RentalCurrentHistoryCell.xib */; };
@@ -334,6 +335,7 @@
 		46CA655622DEFB2900FC6E16 /* Logout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logout.swift; sourceTree = "<group>"; };
 		46E8CE8F22D9AD6D001BEFCD /* InviteDriverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteDriverViewController.swift; sourceTree = "<group>"; };
 		681265282348A8A400C14AD4 /* AddDetailsDropDownCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDetailsDropDownCell.swift; sourceTree = "<group>"; };
+		68189B1E234F6E9E009477C3 /* SelectVehicleViewController+SelectPickUpDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SelectVehicleViewController+SelectPickUpDate.swift"; sourceTree = "<group>"; };
 		684706AF234B4101007892D8 /* RentalPastHistoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RentalPastHistoryCell.swift; sourceTree = "<group>"; };
 		684706B0234B4101007892D8 /* RentalPastHistoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RentalPastHistoryCell.xib; sourceTree = "<group>"; };
 		684706B2234B4101007892D8 /* RentalCurrentHistoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RentalCurrentHistoryCell.xib; sourceTree = "<group>"; };
@@ -821,6 +823,7 @@
 				688122A12348726500577D6E /* SelectVehicleViewController.swift */,
 				688122A22348726500577D6E /* SelectVehicleViewController+TableView.swift */,
 				688122A32348726500577D6E /* SelectVehicleViewController+WebService.swift */,
+				68189B1E234F6E9E009477C3 /* SelectVehicleViewController+SelectPickUpDate.swift */,
 			);
 			path = SelectVehicleVC;
 			sourceTree = "<group>";
@@ -1755,6 +1758,7 @@
 				7A1CC8F32306DE1300FB6ECD /* BulkMilesHistory.swift in Sources */,
 				B1E233D222D3109800CEA568 /* PostABidViewController.swift in Sources */,
 				468E993422DA078000072361 /* UpcomingRideConfirmationViewController.swift in Sources */,
+				68189B1F234F6E9E009477C3 /* SelectVehicleViewController+SelectPickUpDate.swift in Sources */,
 				EE9D6F7F22C6435600EAD756 /* Extensions.swift in Sources */,
 				468E992B22D9F26900072361 /* ForgotPassword.swift in Sources */,
 				7A1CC8F12306871F00FB6ECD /* BulkMilePurchaseReqModel.swift in Sources */,
