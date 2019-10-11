@@ -45,20 +45,24 @@ class FindCarPickUpDateCell: UITableViewCell {
         self.btnFindCar.layer.masksToBounds = true
         
         self.viewPickUp.layer.cornerRadius = 8.0
-        self.viewPickUp.layer.masksToBounds = true
+        //Note: As we have added drop shaddow, not to change masks to bounds property
+//        self.viewPickUp.layer.masksToBounds = true
         self.viewPickUp.layer.borderWidth = 1.6
         self.viewPickUp.layer.borderColor = UIColor.lightGray.cgColor
             //Add drop shaddow here
 
         self.viewDropOff.layer.cornerRadius = 8.0
-        self.viewDropOff.layer.masksToBounds = true
+        //Note: As we have added drop shaddow, not to change masks to bounds property
+//        self.viewDropOff.layer.masksToBounds = true
         self.viewDropOff.layer.borderWidth = 1.6
         self.viewDropOff.layer.borderColor = UIColor.lightGray.cgColor
         //Add drop shaddow here
 
         
         self.viewSelectLocation.layer.cornerRadius = 8.0
-        self.viewSelectLocation.layer.masksToBounds = true
+        //Note: As we have added drop shaddow, not to change masks to bounds property
+
+//        self.viewSelectLocation.layer.masksToBounds = true
         self.viewSelectLocation.layer.borderWidth = 1.6
         self.viewSelectLocation.layer.borderColor = UIColor.lightGray.cgColor
         //Add drop shaddow here

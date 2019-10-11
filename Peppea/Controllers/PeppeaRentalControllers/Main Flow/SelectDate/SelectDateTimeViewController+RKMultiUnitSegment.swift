@@ -12,12 +12,22 @@ import RKMultiUnitRuler
 extension SelectDateTimeViewController {
     
     //MARK:- RKMultiUnitRulerDataSource & RKMultiUnitRulerDelegate Methods
-    
     func valueChanged(measurement: NSMeasurement) {
         self.lblTime.text = self.getTimeStringFromHours(Hours: measurement.doubleValue)
         let HourlyBase = "\(measurement.doubleValue)".components(separatedBy: ".")
         
         self.SelectedTimeHourFormat = "\((((HourlyBase[0] == "0") || (HourlyBase[0] == "24")) ? "0" : HourlyBase[0])):\(((HourlyBase[1] != "0") ? "30" : "00"))"
+        
+        ///Specially updationg time component here
+        /*
+         Check List
+         - Pick Up Date String , Drop Off Date String - From previous vc
+         - Select Date - From pickUpDateString
+         - TimeFormat String - assignDateToTimeLabel
+         - Top View date labels - manuall
+         - Ruler View date/time labels - assignDateToTimeLabel
+         */
+        self.updatePickUpDropOffDateLabels()
     }
     
     func createSegments() -> Array<RKSegmentUnit> {

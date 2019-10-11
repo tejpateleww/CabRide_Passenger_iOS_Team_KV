@@ -292,6 +292,22 @@ extension String {
         
     }
     
+    
+    func getDate(inputFormat: DateFormatInputType) -> Date? {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = inputFormat.rawValue
+        
+        if let date = dateFormatter.date(from: self) {
+            return  date
+        }else{
+            print("Could not get the dat string from dateformattere")
+            return nil
+        }
+        
+    }
+    
 //    func Convert_To_dd_MMM_yyyy() -> String {
 //
 //        let dateFormatter = DateFormatter()
@@ -319,4 +335,30 @@ extension String {
 //            return ""
 //        }
 //    }
+}
+
+final class CustomView: UIView {
+    private var shadowLayer: CAShapeLayer!
+    @IBInspectable public var isRounded : Bool = false
+    @IBInspectable public var CornerRadius: CGFloat = 5.0
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.backgroundColor = .clear
+        if shadowLayer == nil {
+            shadowLayer = CAShapeLayer()
+            shadowLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: isRounded ? (self.frame.size.height/2) : CornerRadius).cgPath
+            shadowLayer.fillColor = UIColor.white.cgColor
+            shadowLayer.shadowColor = UIColor.black.cgColor
+            shadowLayer.shadowPath = shadowLayer.path
+            shadowLayer.shadowOffset = CGSize(width: 1.5, height: 1.5)
+            shadowLayer.shadowOpacity = 0.3
+            shadowLayer.shadowRadius = 2
+            layer.insertSublayer(shadowLayer, at: 0)
+
+            //layer.insertSublayer(shadowLayer, below: nil) // also works
+        }
+
+
+    }
+    
 }

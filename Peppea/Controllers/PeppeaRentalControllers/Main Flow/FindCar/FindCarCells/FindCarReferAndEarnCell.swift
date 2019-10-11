@@ -21,7 +21,8 @@ class FindCarReferAndEarnCell: UITableViewCell {
     func setUpUI() {
         
         self.cellView.layer.cornerRadius = 8.0
-        self.cellView.layer.masksToBounds = true
+        //Note: As we have added shaddow by "Custom Class", not to give masks to bounds
+//        self.cellView.layer.masksToBounds = true
         
         self.cellView.borderWidth = 1.5
         self.cellView.borderColor = UIColor.lightGray

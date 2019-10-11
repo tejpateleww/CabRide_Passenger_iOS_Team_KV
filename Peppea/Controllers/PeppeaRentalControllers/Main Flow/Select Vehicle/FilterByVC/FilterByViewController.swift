@@ -17,6 +17,12 @@ class FilterByViewController: UIViewController {
     }
     
 
+    @IBAction func checkBoxTypeButtonClicked(_ sender: Any) {
+        
+        let button = sender as! UIButton
+        
+        button.isSelected = !button.isSelected
+    }
     /*
     // MARK: - Navigation
 

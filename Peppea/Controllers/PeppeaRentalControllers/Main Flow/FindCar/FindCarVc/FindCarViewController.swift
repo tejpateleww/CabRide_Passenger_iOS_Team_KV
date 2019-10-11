@@ -114,7 +114,8 @@ class FindCarViewController: BaseViewController, UITableViewDelegate, UITableVie
 //        parallaxEffect.isFullScreenPanGestureRecognizerEnabled = false
     }
     
-   
+    
+ 
     
     
     func isValidate() -> (Bool,String) {
@@ -171,6 +172,12 @@ class FindCarViewController: BaseViewController, UITableViewDelegate, UITableVie
             cell.setUpUI()
             
             //2. Button Click events
+            cell.chooseLocationButtonClickClosure = {
+                
+                
+                self.openGooglePlacePicker()
+                
+            }
             cell.btnPickUpDate.addTarget(self, action: #selector(self.btnPickupTime(_:)), for: .touchUpInside)
             cell.btnDropOffDate.addTarget(self, action: #selector(self.btnDropOffTime(_:)), for: .touchUpInside)
 
@@ -216,8 +223,8 @@ class FindCarViewController: BaseViewController, UITableViewDelegate, UITableVie
                             let selectVehicleViewController = self.storyboard?.instantiateViewController(withIdentifier: "SelectVehicleViewController") as! SelectVehicleViewController
                             
                             selectVehicleViewController.placeSelected = self.selectedPlace
-                            selectVehicleViewController.selectedPickUpDate = self.selectedPickupDate
-                            selectVehicleViewController.selectedDropOffDate = self.selectedDropOffDate
+                            selectVehicleViewController.selectedPickUpDateString = self.selectedPickupDate
+                            selectVehicleViewController.selectedDropOffDateString = self.selectedDropOffDate
                             
                             self.navigationController?.pushViewController(selectVehicleViewController, animated: true)
                             
@@ -229,13 +236,7 @@ class FindCarViewController: BaseViewController, UITableViewDelegate, UITableVie
                     
                     }
             
-            ///5. Open Google Place Picker
-                    cell.chooseLocationButtonClickClosure = {
-                        
-                        
-                        self.openGooglePlacePicker()
-                        
-                    }
+          
 
             
             return cell
@@ -313,8 +314,8 @@ class FindCarViewController: BaseViewController, UITableViewDelegate, UITableVie
         
         
         //Data to Pass
-        selectDateTime.selectedPickUpDate = self.selectedPickupDate
-        selectDateTime.selectedDropOffdate = self.selectedDropOffDate
+        selectDateTime.selectedPickUpDateString = self.selectedPickupDate
+        selectDateTime.selectedDropOffdateString = self.selectedDropOffDate
         
         let NavSelect = UINavigationController(rootViewController: selectDateTime)
         self.present(NavSelect, animated: true, completion: nil)
@@ -329,26 +330,15 @@ class FindCarViewController: BaseViewController, UITableViewDelegate, UITableVie
         selectDateTime.isForPickUp = false
         
         //Data to Pass
-        selectDateTime.selectedPickUpDate = self.selectedPickupDate
-        selectDateTime.selectedDropOffdate = self.selectedDropOffDate
+        selectDateTime.selectedPickUpDateString = self.selectedPickupDate
+        selectDateTime.selectedDropOffdateString = self.selectedDropOffDate
 
         let NavSelect = UINavigationController(rootViewController: selectDateTime)
         self.present(NavSelect, animated: true, completion: nil)
         
     }
     
-    
-    
-    
-    @IBAction func btnSelectYourLocationClicked(_ sender: Any)
-    {
-        ///TODO:
-//        let  viewController = self.storyboard?.instantiateViewController(withIdentifier: "SearchYourLocationViewController") as! SearchYourLocationViewController
-//        viewController.Delegate = self
-//        self.navigationController?.pushViewController(viewController, animated: true)
-    }
-    
-  
+   
     //MARK:- LocationSelectionDelegate Method
     
     func SelectionLocationDelegate(SelectedLocation: CLLocation?, AddressString: String, LocationType:String) {

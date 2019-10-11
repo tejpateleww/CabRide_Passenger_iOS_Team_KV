@@ -21,8 +21,8 @@ class SelectVehicleViewController: BaseViewController,BookVehicleDelegate
     @IBOutlet weak var lblDropOffDate: UILabel!
     
     var placeSelected: GMSPlace?
-    var selectedPickUpDate: String = ""
-    var selectedDropOffDate: String = ""
+    var selectedPickUpDateString: String = ""
+    var selectedDropOffDateString: String = ""
     
     var VehicalCat_IDName:(String,String) = ("","")
     
@@ -46,6 +46,25 @@ class SelectVehicleViewController: BaseViewController,BookVehicleDelegate
     @IBOutlet weak var shaddowView: UIView!
     @IBOutlet weak var filterOuterViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var filterOuterView: UIView!
+    
+//
+    lazy var filterButton: UIButton = {
+
+        let button = UIButton(type: .system)
+
+        button.frame = CGRect(x: 0.0, y: 0.0, width: 40.0, height: 40.0)
+
+        button.setImage(UIImage(named: "filter"), for: .normal)
+        button.imageView?.contentMode = .scaleAspectFit
+        button.imageEdgeInsets = UIEdgeInsets(top: 8.0, left: 8.0, bottom: 8.0, right: 8.0)
+
+        button.tintColor = UIColor.black
+        
+        button.addTarget(self, action: #selector(self.filterButtonClicked), for: .touchUpInside)
+
+        return button
+    }()
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -57,8 +76,8 @@ class SelectVehicleViewController: BaseViewController,BookVehicleDelegate
 
         self.setUpFilterViewFirstTime()
         
-        self.lblPickUpDate.text = self.selectedPickUpDate.convertDateString(inputFormat: .dateWithOutSeconds, outputFormat: .fullDate)
-        self.lblDropOffDate.text = self.selectedDropOffDate.convertDateString(inputFormat: .dateWithOutSeconds, outputFormat: .fullDate)
+        self.lblPickUpDate.text = self.selectedPickUpDateString.convertDateString(inputFormat: .dateWithOutSeconds, outputFormat: .fullDate)
+        self.lblDropOffDate.text = self.selectedDropOffDateString.convertDateString(inputFormat: .dateWithOutSeconds, outputFormat: .fullDate)
         
 //        self.LoaderBackView.isHidden = true
         self.tblView.tableFooterView = UIView()
@@ -79,11 +98,9 @@ class SelectVehicleViewController: BaseViewController,BookVehicleDelegate
         super.viewWillAppear(animated)
         
         setNavBarWithBack(Title: "Select Car", IsNeedRightButton: false)
-            //, barColor: .white,titleFontColor: .black,backBarButtonColor: .black)
 
-//        Utilities.setNavigationBarInViewController(controller: self, naviColor: ThemeNaviLightBlueColor, naviTitle: "Select \(VehicalCat_IDName.1)", leftImage: kBack_Icon, rightImage: "", isTranslucent: false)
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "filter"), style: .plain, target: self, action: #selector(self.filterButtonClicked))
-        //#selector(self.openFilterView)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: self.filterButton)
+            //UIBarButtonItem(image: UIImage(named: "filter"), style: .plain, target: self, action: #selector(self.filterButtonClicked))
         
     }
     

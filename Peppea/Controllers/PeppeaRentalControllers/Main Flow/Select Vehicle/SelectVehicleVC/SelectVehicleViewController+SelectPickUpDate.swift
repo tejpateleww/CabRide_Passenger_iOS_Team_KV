@@ -22,10 +22,9 @@ extension SelectVehicleViewController: SelectDateDelegate {
         selectDateTime.TypeofSelection = "PICKUP"
         selectDateTime.isForPickUp = true
         
-        
         //Data to Pass
-        selectDateTime.selectedPickUpDate = self.selectedPickUpDate
-        selectDateTime.selectedDropOffdate = self.selectedDropOffDate
+        selectDateTime.selectedPickUpDateString = self.selectedPickUpDateString
+        selectDateTime.selectedDropOffdateString = self.selectedDropOffDateString
         
         let NavSelect = UINavigationController(rootViewController: selectDateTime)
         self.present(NavSelect, animated: true, completion: nil)
@@ -41,8 +40,8 @@ extension SelectVehicleViewController: SelectDateDelegate {
         
         
         //Data to Pass
-        selectDateTime.selectedPickUpDate = self.selectedPickUpDate
-        selectDateTime.selectedDropOffdate = self.selectedDropOffDate
+        selectDateTime.selectedPickUpDateString = self.selectedPickUpDateString
+        selectDateTime.selectedDropOffdateString = self.selectedDropOffDateString
         
         let NavSelect = UINavigationController(rootViewController: selectDateTime)
         self.present(NavSelect, animated: true, completion: nil)
@@ -60,7 +59,7 @@ extension SelectVehicleViewController: SelectDateDelegate {
     func DidSelectStartTripDate(SelectedDate: String, HoursFormat: String, DisplayAmPmFormat: String) {
         
         //        self.pickTimeToDisplay = DisplayAmPmFormat
-        self.selectedPickUpDate = HoursFormat
+        self.selectedPickUpDateString = HoursFormat
         ///yyyy-MM-dd HH:mm
         ///24 hours format
         
@@ -77,7 +76,7 @@ extension SelectVehicleViewController: SelectDateDelegate {
     func DidSelectEndTripDate(SelectedDate: String, HoursFormat: String, DisplayAmPmFormat: String) {
         
         //        self.dropOffTimeToDisplay = DisplayAmPmFormat
-        self.selectedDropOffDate = HoursFormat
+        self.selectedDropOffDateString = HoursFormat
         ///yyyy-MM-dd HH:mm
         ///24 hours format
         

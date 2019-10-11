@@ -20,11 +20,54 @@ extension SelectDateTimeViewController {
         //        print("did select date \(self.dateFormatter.string(from: date))")
         self.lblDate.text = self.dateFormatter.string(from: date)
         self.SelectDate = date
+        
         //        let selectedDates = calendar.selectedDates.map({self.dateFormatter.string(from: $0)})
         //        print("selected dates is \(selectedDates)")
+        
+        
         if monthPosition == .next || monthPosition == .previous {
             calendar.setCurrentPage(date, animated: true)
         }
+        
+        //Updating date related labels
+        self.updatePickUpDropOffDateLabels()
+        
+    }
+
+    /* Updating Labels
+         1. Select Date is updated in this method earlier
+         2. Update selectedPickUpDateString
+         3. Top View Labels pick up and drop off
+     */
+
+    func updatePickUpDropOffDateLabels() {
+        
+        if isForPickUp {
+            //When u are on Pickup date page
+            
+            ///1.
+            let DateformatterFinal = DateFormatter()
+            DateformatterFinal.dateFormat = "yyyy-MM-dd"
+            self.selectedPickUpDateString = "\(DateformatterFinal.string(from: self.SelectDate)) \(self.SelectedTimeHourFormat)"
+            
+            ///2.
+            self.pickUpDateLbl.text = self.selectedPickUpDateString.convertDateString(inputFormat: .dateWithOutSeconds, outputFormat: .onlyDate)
+            self.pickUpTimeLbl.text = self.selectedPickUpDateString.convertDateString(inputFormat: .dateWithOutSeconds, outputFormat: .onlyTime)
+
+            
+        }else{
+            
+            ///1. Basic date to update
+            let DateformatterFinal = DateFormatter()
+            DateformatterFinal.dateFormat = "yyyy-MM-dd"
+            self.selectedDropOffdateString = "\(DateformatterFinal.string(from: self.SelectDate)) \(self.SelectedTimeHourFormat)"
+            
+            ///2. Top View Labels to be updated
+            self.dropOffDateLbl.text = self.selectedDropOffdateString.convertDateString(inputFormat: .dateWithOutSeconds, outputFormat: .onlyDate)
+            self.dropOffTimeLbl.text = self.selectedDropOffdateString.convertDateString(inputFormat: .dateWithOutSeconds, outputFormat: .onlyTime)
+
+        }
+        
     }
     
 }

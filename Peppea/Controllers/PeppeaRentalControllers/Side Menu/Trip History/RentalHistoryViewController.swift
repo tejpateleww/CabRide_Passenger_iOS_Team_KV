@@ -263,11 +263,12 @@ extension RentalHistoryViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       if selectedCell == section {
-
-            return 2
-        }
+//       if selectedCell == section {
+//
+//            return 2
+//        }
         return 1
+        
     }
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         

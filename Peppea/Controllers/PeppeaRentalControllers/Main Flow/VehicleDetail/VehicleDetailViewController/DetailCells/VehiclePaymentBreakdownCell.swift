@@ -48,6 +48,16 @@ class VehiclePaymentBreakdownCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+    }
+    
+    
+    func setUpUI() {
+        
+        self.btnViewOffers.layer.cornerRadius = self.btnViewOffers.frame.height / 2.0
+        self.btnViewOffers.layer.masksToBounds = true
+        
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

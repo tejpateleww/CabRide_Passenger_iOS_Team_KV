@@ -91,53 +91,15 @@ extension VehicleDetailViewController : UITableViewDataSource {
             
             cell.setPinonMap()
             
-            
-            //        cell.viewCell.layer.masksToBounds = true
-            //        cellMenu.imgDetail?.image = UIImage.init(named:  "\(arrMenuIcons[indexPath.row])")
-            //        cellMenu.selectionStyle = .none
-            //
-            //        cellMenu.lblTitle.text = arrMenuTitle[indexPath.row]
-            
             customCell = cell
         }
         else if indexPath.section == 3
         {
             ///PAyment Breakdown cell
             let cell = tableView.dequeueReusableCell(withIdentifier: "VehiclePaymentBreakdownCell") as! VehiclePaymentBreakdownCell
-            //            cell.Delegate = self
-            //            cell.lblFarePriceKM.text = "\(currency) \( (self.Fare != "") ? String(format: "%.2f", (self.Fare as NSString).doubleValue) : "")"
-            //            cell.lblRefundableDeposit.text = "\(currency) \( (self.Fare != "") ? String(format: "%.2f", (self.Fare as NSString).doubleValue) : "")"
-            //            cell.lblSpecialFare.text = "\(currency) \( (self.SpecialFare != "") ? String(format: "%.2f", (self.SpecialFare as NSString).doubleValue) : "")"
-            //            cell.lblDeliveryFare.text = "\(currency) \( (self.DeliveryFare != "") ? String(format: "%.2f", (self.DeliveryFare as NSString).doubleValue) : "")"
-            //            cell.lblTaxAmount.text = "\(currency) \( (self.Tax != "") ? String(format: "%.2f", (self.Tax as NSString).doubleValue) : "")"
-//            cell.PromoView.layer.shadowColor = UIColor.darkGray.cgColor
-//            cell.PromoView.layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
-//            cell.PromoView.layer.shadowOpacity = 0.4
-//            cell.PromoView.layer.shadowRadius = 1
-//            cell.PromoView.layer.cornerRadius = 10
-//
-//            cell.btnApply.layer.cornerRadius = 5.0
-//            cell.btnApply.layer.masksToBounds = true
-//
-//            cell.btnViewOffers.layer.cornerRadius = cell.btnViewOffers.frame.height/2.0
-//            cell.btnViewOffers.layer.masksToBounds = true
             
-//
-//            if self.selectedTripType == "delivery" {
-//                cell.ViewDeliveryFare.isHidden = false
-//            } else {
-//                cell.ViewDeliveryFare.isHidden = true
-//            }
-//
-//            if self.AppliedPromocode  != "" {
-//                cell.txtHavePromoCode.isEnabled = false
-//                cell.btnRemovePromocode.isHidden = false
-//                cell.imgVerified.isHidden = false
-//            } else {
-//                cell.txtHavePromoCode.isEnabled = true
-//                cell.btnRemovePromocode.isHidden = true
-//                cell.imgVerified.isHidden = true
-//            }
+            cell.setUpUI()
+            
             
             customCell = cell
         }
@@ -148,34 +110,10 @@ extension VehicleDetailViewController : UITableViewDataSource {
             
             cell.setUpUI()
             
-//            if self.Discount != "" {
-//                //                cell.lblDiscountAmount.text = "\(currency) \( (self.Discount != "") ? String(format: "%.2f", (self.Discount as NSString).doubleValue) : "")"
-//                cell.promocodeView.isHidden = false
-//
-//                let FinalAmount = Double(Double(self.Total)! - Double(self.Discount)!)
-//                //                cell.lblTotalAmount.text = "\(currency)\(String(format: "%.2f", FinalAmount))"
-//                //                if self.Total != "" {
-//                //
-//                //                    cell.lblTotalAmount.text = "\(currency)\((self.Total.contains(".") ? self.Total : (String(format: "%.2f",Double(self.Total)!))))"
-//                //                }
-//            } else {
-//                cell.lblDiscountAmount.text = ""
-//                cell.promocodeView.isHidden = true
-//                if self.Total != "" {
-//                    //                    cell.lblTotalAmount.text = "\(currency)\((self.Total.contains(".") ? self.Total : (String(format: "%.2f",Double(self.Total)!))))"
-//                }
-//            }
             
             customCell = cell
         }
-//        else if indexPath.section == 4
-//        {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "VehicleDetailExtraChargesCell") as! VehicleDetailExtraChargesCell
-//            cell.viewNotes.layer.cornerRadius = 10
-//            cell.viewNotes.layer.borderColor = UIColor.lightGray.cgColor
-//            cell.viewNotes.layer.borderWidth = 1
-//            customCell = cell
-//        }
+
         customCell.selectionStyle = .none
         return customCell
         
