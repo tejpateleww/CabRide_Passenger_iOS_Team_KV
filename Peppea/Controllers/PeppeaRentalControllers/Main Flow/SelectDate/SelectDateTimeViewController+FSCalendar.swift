@@ -15,7 +15,16 @@ import UIKit
 extension SelectDateTimeViewController {
     
     // MARK:- FSCalendarDataSource &  FSCalendarDelegate Methods
-    
+    /*
+        Changing the date by calendar view
+        - Select Date is updating, so below part is updating
+        1. PickUp and Drop Off date,
+           //1.1 related labels in Top View
+        2. Date Label near to Ruler View
+     
+     //Note: Ruler is only responsible to update time part
+     */
+
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         //        print("did select date \(self.dateFormatter.string(from: date))")
         self.lblDate.text = self.dateFormatter.string(from: date)

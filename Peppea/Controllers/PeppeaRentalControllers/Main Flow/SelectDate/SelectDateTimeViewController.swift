@@ -114,7 +114,7 @@ class SelectDateTimeViewController: BaseViewController, RKMultiUnitRulerDataSour
         self.calendarView.delegate = self
         self.calendarView.select(self.SelectDate)
         
-        self.setUpLabelDataWhenStart()
+        self.loadLabelDataFirstTime()
 
         
 //        self.calendarView.scope = .week
@@ -137,111 +137,12 @@ class SelectDateTimeViewController: BaseViewController, RKMultiUnitRulerDataSour
     }
     
     
-    /*
-     
-     
-        At this time we need to cehk all these things
-            1. First time coming to this vc
-            2. Canging the date by calendar view
-            3. Changing the Time by ruler view
-     
-        In this method
-        * Check List
-            - Pick Up Date String , Drop Off Date String - From previous vc
-            - Select Date - From pickUpDateString
-            - TimeFormat String - assignDateToTimeLabel
-            - Top View date labels - manuall
-            - Ruler View date/time labels - assignDateToTimeLabel
-     */
+   
 
-    func setUpLabelDataWhenStart() {
-        
-        ///1
-        if isForPickUp {
-            
-            self.lblDateTitle.text = "PICKUP DATE"
-            self.lblTimeTitle.text = "PICKUP TIME"
-            
-            ///1. Select Date in Calendar
-            let pickUpDatetoShowInCalendar = self.selectedPickUpDateString.getDate(inputFormat: .dateWithOutSeconds)
-            self.calendarView.select(pickUpDatetoShowInCalendar)
-            
-            //2. If nil then assigning current date
-            self.SelectDate = pickUpDatetoShowInCalendar ?? Date()
-            
-            ///3. Ruler Time
-            self.updateTimeLabelAndRuler(from: self.SelectDate)
-
-        }else{
-            
-            self.lblDateTitle.text = "DROP OFF DATE"
-            self.lblTimeTitle.text = "DROP OFF TIME"
-            
-            ///1. Calendar select
-            let dropOffDatetoShowInCalendar = self.selectedDropOffdateString.getDate(inputFormat: .dateWithOutSeconds)
-            self.calendarView.select(dropOffDatetoShowInCalendar, scrollToDate: true)
-            
-            ///2. Select Date
-            ///If nil then assigning current date
-            self.SelectDate = dropOffDatetoShowInCalendar ?? Date()
-            
-            ///3. Ruler Time Labels select
-            self.updateTimeLabelAndRuler(from: self.SelectDate)
-
-        }
-        
-        
-        ///4.  Top View Date Labels to show
-        if selectedPickUpDateString != "" {
-
-            self.pickUpDateLbl.text = self.selectedPickUpDateString.convertDateString(inputFormat: .dateWithOutSeconds, outputFormat: .onlyDate)
-            self.pickUpTimeLbl.text = self.selectedPickUpDateString.convertDateString(inputFormat: .dateWithOutSeconds, outputFormat: .onlyTime)
-            
-        }else{
-
-            self.pickUpDateLbl.text = "-"
-            self.pickUpTimeLbl.text = ""
-
-        }
-
-
-        ///4.  Top View Date Labels to show
-        if selectedDropOffdateString != "" {
-            
-            self.dropOffDateLbl.text = self.selectedDropOffdateString.convertDateString(inputFormat: .dateWithOutSeconds, outputFormat: .onlyDate)
-            self.dropOffTimeLbl.text = self.selectedDropOffdateString.convertDateString(inputFormat: .dateWithOutSeconds, outputFormat: .onlyTime)
-
-            
-        }else{
-
-            self.dropOffDateLbl.text = "-"
-            self.dropOffTimeLbl.text = ""
-        }
-        
-        
-    }
+   
     
     
-    func updateTimeLabelAndRuler(from date1: Date) {
-        
-        if let currentCalendar = currentCalendar {
-            
-            lblDate.text = self.dateFormatter.string(from: date1)
-            let DateComponents = currentCalendar.dateComponents([.year,.month,.day,.hour,.minute,.second], from: date1)
-
-            ///Note: For 4.30 -- this format we need to device minutes by 100
-            lblTime.text = self.getTimeStringFromHours(Hours: Double(DateComponents.hour!) + (Double(DateComponents.minute!))/100)
-            
-            
-            self.Ruler.measurement = NSMeasurement(
-                doubleValue: Double(DateComponents.hour!),
-                unit: UnitDuration.hours)
-            let HourlyBase = "\(self.Ruler.measurement!.doubleValue)".components(separatedBy: ".")
-            self.SelectedTimeHourFormat = "\((((HourlyBase[0] == "0") || (HourlyBase[0] == "24")) ? "0" : HourlyBase[0])):\(((HourlyBase[1] == "0") ? "00" : HourlyBase[1]))"
-            
-        }
-        
-    }
+   
     
     //MARK: Button Click
     @IBAction func btnSingleLineDate(_ sender: UIButton) {
@@ -326,7 +227,7 @@ class SelectDateTimeViewController: BaseViewController, RKMultiUnitRulerDataSour
                     
                     if timeInterval > 0.0 {
                         
-                        ValidatorMessage = "Pick Up Date must be less than Drop Off Date"
+                        ValidatorMessage = "Pick up date must be less than drop off date"
                         isValid = false
                     }
                     
@@ -354,7 +255,7 @@ class SelectDateTimeViewController: BaseViewController, RKMultiUnitRulerDataSour
                     
                     if timeInterval < 0.0 {
                         
-                        ValidatorMessage = "Drop Off Date must be greater than Pick Up Date"
+                        ValidatorMessage = "Drop off date must be greater than pick up date"
                         isValid = false
                     }
                     
