@@ -22,6 +22,18 @@ class FilterByViewController: UIViewController {
         let button = sender as! UIButton
         
         button.isSelected = !button.isSelected
+        
+//        if button.isSelected {
+//            
+//            //Deselecting
+//            button.isSelected = false
+//            button.tintColor = UIColor.darkGray
+//        }else{
+//            
+//            button.isSelected = true
+//            button.tintColor = ThemeColor
+//            
+//        }
     }
     /*
     // MARK: - Navigation

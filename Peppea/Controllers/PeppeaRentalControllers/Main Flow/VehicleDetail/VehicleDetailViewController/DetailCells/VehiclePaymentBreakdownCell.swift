@@ -89,6 +89,14 @@ class VehiclePaymentBreakdownCell: UITableViewCell {
         self.btnRemovePromocode.isHidden = true
         self.Delegate.didRemovePromoCode()
     }
-
+    
+    @IBAction func payThisAmountCheckBoxClicked(_ sender: Any) {
+    
+        let button = sender as! UIButton
+        
+        button.isSelected = !button.isSelected
+        
+    }
+    
 }
 

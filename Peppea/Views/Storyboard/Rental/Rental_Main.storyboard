@@ -982,7 +982,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pay this amount later" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="l0a-IA-A0E">
-                                                                    <rect key="frame" x="50" y="190" width="128.5" height="26"/>
+                                                                    <rect key="frame" x="45" y="190" width="128.5" height="26"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="26" id="QQb-Fb-j2p"/>
                                                                     </constraints>
@@ -1010,17 +1010,31 @@
                                                                         <constraint firstItem="Lks-0v-WyV" firstAttribute="centerX" secondItem="wRG-jj-jMW" secondAttribute="centerX" id="tAT-1x-Epi"/>
                                                                     </constraints>
                                                                 </view>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GrO-Ca-hiu" userLabel="Button - PAy thsi amount">
+                                                                    <rect key="frame" x="8" y="190.5" width="25" height="25"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="25" id="SuM-kF-uHz"/>
+                                                                        <constraint firstAttribute="height" constant="25" id="Yif-WL-ACc"/>
+                                                                    </constraints>
+                                                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <state key="normal" image="UnSelectedCircle"/>
+                                                                    <state key="selected" image="SelectedCircle"/>
+                                                                    <connections>
+                                                                        <action selector="payThisAmountCheckBoxClicked:" destination="n40-C2-aXm" eventType="touchUpInside" id="oAU-Ux-yeb"/>
+                                                                    </connections>
+                                                                </button>
                                                             </subviews>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstItem="D1N-3U-3aX" firstAttribute="leading" secondItem="HAk-Bp-tw0" secondAttribute="leading" constant="8" id="3fb-fy-6k2"/>
                                                                 <constraint firstItem="f9P-Te-rzi" firstAttribute="trailing" secondItem="RXL-5H-UNv" secondAttribute="trailing" id="6vA-G6-s6I"/>
                                                                 <constraint firstAttribute="trailing" secondItem="RXL-5H-UNv" secondAttribute="trailing" constant="10" id="Abt-o3-Eqc"/>
-                                                                <constraint firstItem="l0a-IA-A0E" firstAttribute="leading" secondItem="HAk-Bp-tw0" secondAttribute="leading" constant="50" id="Aok-Yc-clp"/>
+                                                                <constraint firstItem="l0a-IA-A0E" firstAttribute="leading" secondItem="GrO-Ca-hiu" secondAttribute="trailing" constant="12" id="Aok-Yc-clp"/>
                                                                 <constraint firstItem="FFd-Xz-hix" firstAttribute="top" secondItem="D1N-3U-3aX" secondAttribute="bottom" constant="10" id="EAC-l1-LyN"/>
                                                                 <constraint firstItem="Taj-fg-X08" firstAttribute="leading" secondItem="Z09-rV-pc7" secondAttribute="leading" id="EEJ-Iw-4iq"/>
                                                                 <constraint firstItem="pOg-N2-6AY" firstAttribute="leading" secondItem="FFd-Xz-hix" secondAttribute="leading" id="HeA-sH-W2k"/>
                                                                 <constraint firstAttribute="trailing" secondItem="Gfw-wk-KuY" secondAttribute="trailing" constant="8" id="I8q-Ga-ZvF"/>
+                                                                <constraint firstItem="GrO-Ca-hiu" firstAttribute="centerY" secondItem="l0a-IA-A0E" secondAttribute="centerY" id="JsZ-PI-hxC"/>
                                                                 <constraint firstItem="Z09-rV-pc7" firstAttribute="leading" secondItem="FFd-Xz-hix" secondAttribute="leading" id="LbK-7V-viy"/>
                                                                 <constraint firstItem="f9P-Te-rzi" firstAttribute="top" secondItem="Z09-rV-pc7" secondAttribute="top" id="Mke-Fr-7qY"/>
                                                                 <constraint firstItem="RXL-5H-UNv" firstAttribute="top" secondItem="FFd-Xz-hix" secondAttribute="top" id="Nq5-P0-Qpa"/>
@@ -1041,6 +1055,7 @@
                                                                 <constraint firstItem="xjn-g0-vHr" firstAttribute="top" secondItem="HAk-Bp-tw0" secondAttribute="top" constant="8" id="urr-RA-q8d"/>
                                                                 <constraint firstItem="f9P-Te-rzi" firstAttribute="height" secondItem="Z09-rV-pc7" secondAttribute="height" id="v3D-FC-gB8"/>
                                                                 <constraint firstItem="Z09-rV-pc7" firstAttribute="top" secondItem="Gfw-wk-KuY" secondAttribute="bottom" constant="10" id="vEy-pw-P6b"/>
+                                                                <constraint firstItem="GrO-Ca-hiu" firstAttribute="leading" secondItem="Taj-fg-X08" secondAttribute="leading" id="wZi-5Y-IR2"/>
                                                             </constraints>
                                                         </view>
                                                     </subviews>
@@ -1555,7 +1570,7 @@
                                                 <rect key="frame" x="0.0" y="633" width="375" height="168"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GOp-Fi-nCd" id="fKg-bS-PUX">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="168"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="167.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TRENDING CARS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TCH-IV-fYj">
@@ -1753,7 +1768,7 @@
                                                                         <rect key="frame" x="0.0" y="0.0" width="185.5" height="104"/>
                                                                         <subviews>
                                                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" distribution="fillEqually" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Xc8-iv-faj">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="108.5" height="64"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="102" height="64"/>
                                                                                 <subviews>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pickup:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdp-DR-zH4">
                                                                                         <rect key="frame" x="0.0" y="0.0" width="59" height="18"/>
@@ -1762,13 +1777,13 @@
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="29th May 2019" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IIa-Z5-D3h">
-                                                                                        <rect key="frame" x="0.0" y="23" width="108.5" height="18"/>
+                                                                                        <rect key="frame" x="0.0" y="23" width="102" height="18"/>
                                                                                         <fontDescription key="fontDescription" name="ProximaNova-Light" family="Proxima Nova" pointSize="16"/>
                                                                                         <nil key="textColor"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:00 AM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kQf-14-JL7">
-                                                                                        <rect key="frame" x="0.0" y="46" width="68.5" height="18"/>
+                                                                                        <rect key="frame" x="0.0" y="46" width="64.5" height="18"/>
                                                                                         <fontDescription key="fontDescription" name="ProximaNova-Light" family="Proxima Nova" pointSize="16"/>
                                                                                         <nil key="textColor"/>
                                                                                         <nil key="highlightedColor"/>
@@ -1786,7 +1801,7 @@
                                                                         <rect key="frame" x="188.5" y="0.0" width="186.5" height="104"/>
                                                                         <subviews>
                                                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" distribution="fillEqually" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="QdC-J7-sqU">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="108.5" height="64"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="102" height="64"/>
                                                                                 <subviews>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drop Off:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jEQ-uO-mLb">
                                                                                         <rect key="frame" x="0.0" y="0.0" width="74" height="18"/>
@@ -1795,13 +1810,13 @@
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="29th May 2019" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Prk-ts-0op">
-                                                                                        <rect key="frame" x="0.0" y="23" width="108.5" height="18"/>
+                                                                                        <rect key="frame" x="0.0" y="23" width="102" height="18"/>
                                                                                         <fontDescription key="fontDescription" name="ProximaNova-Light" family="Proxima Nova" pointSize="16"/>
                                                                                         <nil key="textColor"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:00 AM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fie-cm-QAB">
-                                                                                        <rect key="frame" x="0.0" y="46" width="68.5" height="18"/>
+                                                                                        <rect key="frame" x="0.0" y="46" width="64.5" height="18"/>
                                                                                         <fontDescription key="fontDescription" name="ProximaNova-Light" family="Proxima Nova" pointSize="16"/>
                                                                                         <nil key="textColor"/>
                                                                                         <nil key="highlightedColor"/>
@@ -1976,7 +1991,7 @@
                                                         <rect key="frame" x="0.0" y="494" width="375" height="50"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NsV-Wz-VL2">
-                                                                <rect key="frame" x="164" y="0.0" width="47.5" height="24"/>
+                                                                <rect key="frame" x="163.5" y="0.0" width="48.5" height="24"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="20"/>
                                                                 <color key="textColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2065,7 +2080,7 @@
                                 </constraints>
                             </scrollView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconBird" translatesAutoresizingMaskIntoConstraints="NO" id="nyq-pd-aph">
-                                <rect key="frame" x="100" y="252" width="174" height="99"/>
+                                <rect key="frame" x="100.5" y="252" width="174" height="99"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U4x-OT-6gJ">
                                 <rect key="frame" x="16" y="556" width="343" height="40"/>
@@ -3081,6 +3096,8 @@
     <resources>
         <image name="Open_FullCalendar" width="30" height="30"/>
         <image name="RightArrowInCircle" width="19" height="19"/>
+        <image name="SelectedCircle" width="20" height="20"/>
+        <image name="UnSelectedCircle" width="20" height="20"/>
         <image name="calendar" width="170" height="170"/>
         <image name="iconArrowGray" width="26" height="26"/>
         <image name="iconBird" width="174" height="99"/>
