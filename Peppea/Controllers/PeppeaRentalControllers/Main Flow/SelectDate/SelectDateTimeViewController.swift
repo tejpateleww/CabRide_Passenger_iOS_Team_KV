@@ -53,6 +53,7 @@ class SelectDateTimeViewController: BaseViewController, RKMultiUnitRulerDataSour
     var SelectedTimeHourFormat:String = ""
     var SelectedTimeHourWithAmPm:String = ""
     
+    @IBOutlet weak var roundMarkView: UIView!
     @IBOutlet weak var btnContinue: UIButton!
     override func loadView() {
         super.loadView()
@@ -82,10 +83,19 @@ class SelectDateTimeViewController: BaseViewController, RKMultiUnitRulerDataSour
 
 //        self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.navigationBar.barTintColor = .white
+        
         setNavBarWithBack(Title: "Date & Time", IsNeedRightButton: false)
+        //Note: Need to set as, title should not be Capital
+        self.navigationItem.title = "Date & Time"
+        
             //, barColor: .white,titleFontColor: .black,backBarButtonColor: .black)
         setNavigationBarDefault()
         
+
+        self.roundMarkView.layer.cornerRadius = self.roundMarkView.frame.height / 2.0
+        self.roundMarkView.layer.masksToBounds = true
+        self.roundMarkView.layer.borderWidth = 4.0
+        self.roundMarkView.layer.borderColor = UIColor(hex: "FF9300").cgColor
         
         
         self.btnContinue.layer.cornerRadius = self.btnContinue.frame.height / 2.0

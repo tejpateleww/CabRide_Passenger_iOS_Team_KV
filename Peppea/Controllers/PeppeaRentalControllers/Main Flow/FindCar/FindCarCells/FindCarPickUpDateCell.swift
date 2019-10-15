@@ -41,32 +41,36 @@ class FindCarPickUpDateCell: UITableViewCell {
 
     func setUpUI() {
         
-        self.btnFindCar.layer.cornerRadius = 8.0
+        self.btnFindCar.layer.cornerRadius = 5.0
         self.btnFindCar.layer.masksToBounds = true
         
-        self.viewPickUp.layer.cornerRadius = 8.0
+        self.viewPickUp.layer.cornerRadius = 5.0
         //Note: As we have added drop shaddow, not to change masks to bounds property
 //        self.viewPickUp.layer.masksToBounds = true
         self.viewPickUp.layer.borderWidth = 1.6
         self.viewPickUp.layer.borderColor = UIColor.lightGray.cgColor
             //Add drop shaddow here
+        self.viewPickUp.dropShadow(color: .lightGray, opacity: 0.5, offSet: CGSize(width: -1, height: 1), radius: 5.0, scale: true)
 
-        self.viewDropOff.layer.cornerRadius = 8.0
+
+        self.viewDropOff.layer.cornerRadius = 5.0
         //Note: As we have added drop shaddow, not to change masks to bounds property
 //        self.viewDropOff.layer.masksToBounds = true
         self.viewDropOff.layer.borderWidth = 1.6
         self.viewDropOff.layer.borderColor = UIColor.lightGray.cgColor
         //Add drop shaddow here
+        self.viewDropOff.dropShadow(color: .lightGray, opacity: 0.5, offSet: CGSize(width: -1, height: 1), radius: 5.0, scale: true)
 
         
-        self.viewSelectLocation.layer.cornerRadius = 8.0
+        self.viewSelectLocation.layer.cornerRadius = 5.0
         //Note: As we have added drop shaddow, not to change masks to bounds property
 
 //        self.viewSelectLocation.layer.masksToBounds = true
         self.viewSelectLocation.layer.borderWidth = 1.6
         self.viewSelectLocation.layer.borderColor = UIColor.lightGray.cgColor
         //Add drop shaddow here
-        
+        self.viewSelectLocation.dropShadow(color: .lightGray, opacity: 0.5, offSet: CGSize(width: -1, height: 1), radius: 5.0, scale: true)
+
         
         
     }

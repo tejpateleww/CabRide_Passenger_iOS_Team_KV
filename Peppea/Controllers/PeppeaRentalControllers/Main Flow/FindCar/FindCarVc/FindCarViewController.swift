@@ -197,7 +197,7 @@ class FindCarViewController: BaseViewController, UITableViewDelegate, UITableVie
                     ///3.2 Pick Up Date Label
                     if self.pickUpDateToDisplay == "" {
                     
-                        cell.lblPickUpDate.text = "Pick Up Date  & Time"
+                        cell.lblPickUpDate.text = "Pickup Date  & Time"
                         
                     }else {
                          cell.lblPickUpDate.text = self.pickUpDateToDisplay

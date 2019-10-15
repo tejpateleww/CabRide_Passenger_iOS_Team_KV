@@ -27,6 +27,9 @@ class FindCarReferAndEarnCell: UITableViewCell {
         self.cellView.borderWidth = 1.5
         self.cellView.borderColor = UIColor.lightGray
         
+//        self.cellView.dropShadow(color: .lightGray, opacity: 0.5, offSet: CGSize(width: -1, height: 1), radius: 8.0, scale: true)
+
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

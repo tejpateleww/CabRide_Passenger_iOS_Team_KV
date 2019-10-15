@@ -168,7 +168,7 @@ extension SelectDateTimeViewController {
         
         if let currentCalendar = currentCalendar {
             
-            lblDate.text = self.dateFormatter.string(from: date1)
+            lblDate.text = self.dateFormatter.string(from: date1).uppercased()
             let DateComponents = currentCalendar.dateComponents([.year,.month,.day,.hour,.minute,.second], from: date1)
             
             ///Note: For 4.30 -- this format we need to device minutes by 100

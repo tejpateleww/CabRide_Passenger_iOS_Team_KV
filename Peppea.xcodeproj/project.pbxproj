@@ -783,10 +783,10 @@
 			isa = PBXGroup;
 			children = (
 				6881229A2348726500577D6E /* LoginRegister */,
-				6881229D2348726500577D6E /* Select Vehicle */,
-				688122A42348726500577D6E /* VehicleDetail */,
 				688122B02348726500577D6E /* FindCar */,
 				688122C12348726500577D6E /* SelectDate */,
+				6881229D2348726500577D6E /* Select Vehicle */,
+				688122A42348726500577D6E /* VehicleDetail */,
 			);
 			path = "Main Flow";
 			sourceTree = "<group>";
@@ -2004,7 +2004,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.PepPea.passenger;
+				PRODUCT_BUNDLE_IDENTIFIER = com.PepPea.passenger3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Peppea/Resources/Peppea-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -2026,7 +2026,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.PepPea.passenger;
+				PRODUCT_BUNDLE_IDENTIFIER = com.PepPea.passenger3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Peppea/Resources/Peppea-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
