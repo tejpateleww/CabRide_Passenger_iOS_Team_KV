@@ -48,6 +48,7 @@ class RentalHistoryViewController: BaseViewController
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.setNavBarWithBack(Title: "Trip History", IsNeedRightButton: false)
+        self.navigationItem.title = "Trip History"
 
     }
 
@@ -326,10 +327,14 @@ extension RentalHistoryViewController: UITableViewDelegate, UITableViewDataSourc
                 if self.tripType.rawValue.lowercased() == "current" {
 
                     cell.btnTripProceed.setTitle("Complete Trip", for: .normal)
+                    
+                    cell.ratingsView.isHidden = false
 
                 }else{
 
                     cell.btnTripProceed.setTitle("Trip Proceed", for: .normal)
+
+                    cell.ratingsView.isHidden = true
 
                 }
 

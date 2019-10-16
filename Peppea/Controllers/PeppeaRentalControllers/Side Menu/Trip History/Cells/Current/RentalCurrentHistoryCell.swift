@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Cosmos
 
 class RentalCurrentHistoryCell: UITableViewCell {
     @IBOutlet weak var cellContainerView: UIView!
@@ -20,6 +21,7 @@ class RentalCurrentHistoryCell: UITableViewCell {
     @IBOutlet weak var lblVehicleNo: UILabel!
     @IBOutlet weak var btnSendReceipt: UIButton!
     @IBOutlet weak var btnTripProceed: UIButton!
+    @IBOutlet weak var ratingsView: CosmosView!
     
     override func draw(_ rect: CGRect) {
         setup()	

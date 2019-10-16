@@ -8,13 +8,16 @@
 
 import UIKit
 
-class PostAddViewController: BaseViewController {
+class PostAddViewController: BaseViewController, ImagePickerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+   
+    
 
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var btnSelectImage: UIButton!
     @IBOutlet weak var carNameTxtField: UITextField!
     
-    
+    var imagePicker: ImagePicker!
+
     
     @IBOutlet weak var btnAddVehicle: UIButton!
     
@@ -23,6 +26,8 @@ class PostAddViewController: BaseViewController {
         super.viewDidLoad()
 
         self.setUpUI()
+//        self.imagePicker = ImagePicker.present(<#T##ImagePicker#>)
+        self.imagePicker = ImagePicker(presentationController: self, delegate: self)
         
         // Do any additional setup after loading the view.
     }
@@ -31,6 +36,10 @@ class PostAddViewController: BaseViewController {
         super.viewWillAppear(animated)
         
         self.setNavBarWithBack(Title: "Post a Add", IsNeedRightButton: false)
+        self.navigationItem.title = "Post a Add"
+        
+        profileImageView.image = profileImageView.image?.withRenderingMode(.alwaysTemplate)
+        profileImageView.tintColor = ThemeColor
     }
     
     func setUpUI() {
@@ -39,10 +48,19 @@ class PostAddViewController: BaseViewController {
         self.btnAddVehicle.layer.masksToBounds = true
     }
 
-    @IBAction func selectProfilePicButtonClicked(_ sender: Any) {
+    @IBAction func selectProfilePicButtonClicked(_ sender: UIButton) {
         
+        self.imagePicker.present(from: self.view)
+
         
         
     }
     
+    
+    func didSelect(image: UIImage?) {
+        
+        self.profileImageView.image = image
+    }
+    
 }
+

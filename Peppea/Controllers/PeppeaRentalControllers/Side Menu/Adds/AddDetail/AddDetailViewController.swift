@@ -15,6 +15,9 @@ class AddDetailViewController: BaseViewController {
 
     @IBOutlet weak var btnSave: UIButton!
     @IBOutlet weak var tblView: UITableView!
+    
+    @IBOutlet var navigationBarSwitch: UISwitch!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,6 +27,8 @@ class AddDetailViewController: BaseViewController {
         self.btnSave.layer.cornerRadius = self.btnSave.frame.height / 2.0
         self.btnSave.layer.masksToBounds = true
         
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: navigationBarSwitch)
+
     }
     
     
@@ -32,7 +37,7 @@ class AddDetailViewController: BaseViewController {
         
         self.setNavBarWithBack(Title: "Add Details", IsNeedRightButton: false)
         
-        self.title = "Add Details"
+        self.navigationItem.title = "Add Details"
         
         //Transperant
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)

@@ -98,6 +98,7 @@ class SelectVehicleViewController: BaseViewController,BookVehicleDelegate
         super.viewWillAppear(animated)
         
         setNavBarWithBack(Title: "Select Car", IsNeedRightButton: false)
+        self.navigationItem.title = "Select Car"
 
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: self.filterButton)
             //UIBarButtonItem(image: UIImage(named: "filter"), style: .plain, target: self, action: #selector(self.filterButtonClicked))

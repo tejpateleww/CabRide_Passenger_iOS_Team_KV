@@ -94,8 +94,10 @@ class VehicleDetailViewController: BaseViewController
         super.viewWillAppear(animated)
         
         setNavBarWithBack(Title: "Ford Figo", IsNeedRightButton: false)
+        //Above line will make title Capitalised, so we are making text lower case by below line.
+        self.navigationItem.title = "Ford Figo"
         
-//        //Transperant
+//        //Transperant bar
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true

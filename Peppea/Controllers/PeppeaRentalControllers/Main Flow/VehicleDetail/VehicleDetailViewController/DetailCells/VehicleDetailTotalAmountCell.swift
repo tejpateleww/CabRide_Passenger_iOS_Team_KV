@@ -28,11 +28,11 @@ class VehicleDetailTotalAmountCell: UITableViewCell {
     
     func setUpUI() {
         
-        self.noteView.layer.cornerRadius = 8.0
-        self.noteView.layer.masksToBounds = true
-        
-        self.noteView.layer.borderWidth = 0.5
-        self.noteView.layer.borderColor = UIColor.lightGray.cgColor
+//        self.noteView.layer.cornerRadius = 8.0
+//        self.noteView.layer.masksToBounds = true
+//        
+//        self.noteView.layer.borderWidth = 0.5
+//        self.noteView.layer.borderColor = UIColor.lightGray.cgColor
         
     }
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -22,12 +22,14 @@ class MyAddsViewController: BaseViewController {
         
         arrayAdds = self.loadData()
         //Adding more elements
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         setNavBarWithBack(Title: "My Add", IsNeedRightButton: false)
+        self.navigationItem.title = "My Add"
     }
   
     func loadData() -> [Dictionary<String,Any>] {
@@ -69,7 +71,7 @@ extension MyAddsViewController : UITableViewDataSource, UITableViewDelegate  {
             
             
             
-            cell.lblVehicleName.text = VehicleDict["vehiclemodel"] as? String ?? ""
+            cell.lblVehicleName.text = (VehicleDict["vehiclemodel"] as? String ?? "").capitalized
             
             if let capacity = VehicleDict["number_of_people"] as? String {
                 cell.lblSeater.text = "\(capacity) seater"

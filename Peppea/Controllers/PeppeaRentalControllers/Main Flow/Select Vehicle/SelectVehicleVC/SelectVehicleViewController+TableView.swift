@@ -37,10 +37,7 @@ extension SelectVehicleViewController : UITableViewDataSource, UITableViewDelega
             
             let VehicleDict = self.arrVehicles[indexPath.row]
             
-
-
-            
-            cell.lblVehicleName.text = VehicleDict["vehiclemodel"] as? String ?? ""
+            cell.lblVehicleName.text = (VehicleDict["vehiclemodel"] as? String ?? "").capitalized
             
             if let capacity = VehicleDict["number_of_people"] as? String {
                 cell.lblSeater.text = "\(capacity) seater"
