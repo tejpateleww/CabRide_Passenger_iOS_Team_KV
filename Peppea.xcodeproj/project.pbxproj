@@ -115,6 +115,7 @@
 		684706B7234B4102007892D8 /* RentalCurrentHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684706B3234B4101007892D8 /* RentalCurrentHistoryCell.swift */; };
 		684B460A233CDD660066855C /* AppDelegate+PeppeaRental.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684B4609233CDD660066855C /* AppDelegate+PeppeaRental.swift */; };
 		684B460C233CE8240066855C /* Rental_Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 684B460B233CE8240066855C /* Rental_Main.storyboard */; };
+		685BFA8D235843260021D24E /* FilterCheckBoxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685BFA8C235843260021D24E /* FilterCheckBoxButton.swift */; };
 		6863FC73233CCBED007E1D0F /* Rental_LoginRegister.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6863FC72233CCBEC007E1D0F /* Rental_LoginRegister.storyboard */; };
 		687A0056233E4ACF005C71C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 687A0055233E4ACE005C71C5 /* Assets.xcassets */; };
 		688122C72348726500577D6E /* RentalLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6881229C2348726500577D6E /* RentalLoginViewController.swift */; };
@@ -342,6 +343,7 @@
 		684706B3234B4101007892D8 /* RentalCurrentHistoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RentalCurrentHistoryCell.swift; sourceTree = "<group>"; };
 		684B4609233CDD660066855C /* AppDelegate+PeppeaRental.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+PeppeaRental.swift"; sourceTree = "<group>"; };
 		684B460B233CE8240066855C /* Rental_Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Rental_Main.storyboard; sourceTree = "<group>"; };
+		685BFA8C235843260021D24E /* FilterCheckBoxButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCheckBoxButton.swift; sourceTree = "<group>"; };
 		6863FC72233CCBEC007E1D0F /* Rental_LoginRegister.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Rental_LoginRegister.storyboard; sourceTree = "<group>"; };
 		687A0055233E4ACE005C71C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6881229C2348726500577D6E /* RentalLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RentalLoginViewController.swift; sourceTree = "<group>"; };
@@ -762,6 +764,14 @@
 			path = Current;
 			sourceTree = "<group>";
 		};
+		685BFA8B2358430A0021D24E /* FilterCheckBoxButton */ = {
+			isa = PBXGroup;
+			children = (
+				685BFA8C235843260021D24E /* FilterCheckBoxButton.swift */,
+			);
+			path = FilterCheckBoxButton;
+			sourceTree = "<group>";
+		};
 		6863FC71233CCB6B007E1D0F /* Rental */ = {
 			isa = PBXGroup;
 			children = (
@@ -1011,6 +1021,7 @@
 		68D8D85E234DC2A300136471 /* FilterByVC */ = {
 			isa = PBXGroup;
 			children = (
+				685BFA8B2358430A0021D24E /* FilterCheckBoxButton */,
 				68D8D85F234DC2C500136471 /* FilterByViewController.swift */,
 			);
 			path = FilterByVC;
@@ -1786,6 +1797,7 @@
 				68D8D860234DC2C500136471 /* FilterByViewController.swift in Sources */,
 				468E991522D9B6EF00072361 /* EmptyTableViewCell.swift in Sources */,
 				181DED2423267A5400C66403 /* TransferMileTableViewCell.swift in Sources */,
+				685BFA8D235843260021D24E /* FilterCheckBoxButton.swift in Sources */,
 				468E992E22D9F26900072361 /* AddMoney.swift in Sources */,
 				18CE238923229446003901D8 /* NavigationVC.swift in Sources */,
 				B1E233DA22D3123300CEA568 /* OpenBidListViewController.swift in Sources */,

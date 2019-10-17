@@ -23,6 +23,8 @@ class MyAddsViewController: BaseViewController {
         arrayAdds = self.loadData()
         //Adding more elements
         
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "switchMyAdds"), style: .plain, target: self, action: nil)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -2242,12 +2242,21 @@
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CCR-02-D2a">
+                                                                    <rect key="frame" x="322" y="17" width="20" height="22"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="20" id="7DT-MF-gbD"/>
+                                                                        <constraint firstAttribute="height" constant="22" id="uea-Do-Yek"/>
+                                                                    </constraints>
+                                                                    <state key="normal" image="editPenIcon"/>
+                                                                </button>
                                                             </subviews>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstItem="Myp-DA-ixF" firstAttribute="leading" secondItem="OVS-J8-3jY" secondAttribute="trailing" constant="8" id="1Lt-Kf-xIr"/>
                                                                 <constraint firstItem="OVS-J8-3jY" firstAttribute="leading" secondItem="W5F-Vf-DXE" secondAttribute="trailing" constant="16" id="3pA-78-r3v"/>
                                                                 <constraint firstAttribute="bottom" secondItem="W5F-Vf-DXE" secondAttribute="bottom" constant="14" id="8fs-K5-Sye"/>
+                                                                <constraint firstItem="CCR-02-D2a" firstAttribute="top" secondItem="XKX-0j-TvK" secondAttribute="top" constant="17" id="CUa-5X-UT3"/>
                                                                 <constraint firstItem="qxQ-qM-A5s" firstAttribute="top" secondItem="Myp-DA-ixF" secondAttribute="bottom" id="JWE-pI-LB2"/>
                                                                 <constraint firstItem="yj9-b5-RMU" firstAttribute="top" secondItem="qxQ-qM-A5s" secondAttribute="bottom" constant="9" id="Jiy-1u-iOE"/>
                                                                 <constraint firstItem="yj9-b5-RMU" firstAttribute="leading" secondItem="OVS-J8-3jY" secondAttribute="trailing" constant="8" id="Mgc-dG-hL3"/>
@@ -2257,6 +2266,7 @@
                                                                 <constraint firstItem="OVS-J8-3jY" firstAttribute="leading" secondItem="W5F-Vf-DXE" secondAttribute="trailing" constant="16" id="gLP-nl-Ycx"/>
                                                                 <constraint firstItem="qxQ-qM-A5s" firstAttribute="leading" secondItem="OVS-J8-3jY" secondAttribute="trailing" constant="8" id="jkF-wH-z7v"/>
                                                                 <constraint firstItem="gAT-wu-EdW" firstAttribute="leading" secondItem="yj9-b5-RMU" secondAttribute="trailing" constant="8" id="jx8-lh-RHX"/>
+                                                                <constraint firstAttribute="trailing" secondItem="CCR-02-D2a" secondAttribute="trailing" constant="9" id="k4B-xK-Ks8"/>
                                                                 <constraint firstItem="pH6-Bq-lJt" firstAttribute="centerY" secondItem="gAT-wu-EdW" secondAttribute="centerY" id="kBY-gZ-OZ6"/>
                                                                 <constraint firstItem="W5F-Vf-DXE" firstAttribute="leading" secondItem="XKX-0j-TvK" secondAttribute="leading" constant="16" id="pxG-s0-yvr"/>
                                                                 <constraint firstItem="gAT-wu-EdW" firstAttribute="centerY" secondItem="yj9-b5-RMU" secondAttribute="centerY" id="u7t-Hr-yYB"/>
@@ -2341,7 +2351,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="thS-lH-KdI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2804" y="2658"/>
+            <point key="canvasLocation" x="-2924" y="2607"/>
         </scene>
         <!--AddDetailViewController-->
         <scene sceneID="5i7-HF-6M1">
@@ -2563,30 +2573,26 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="528"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="07A-d1-651">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="580"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="599"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="cdT-Z6-O1j">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="580"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="599"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EnW-eS-gss" userLabel="View - Profile Image">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="92"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="111"/>
                                                         <subviews>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgProfilePlaceHolder" translatesAutoresizingMaskIntoConstraints="NO" id="VJA-63-kW6">
-                                                                <rect key="frame" x="159.5" y="18" width="56" height="56"/>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_man" translatesAutoresizingMaskIntoConstraints="NO" id="VJA-63-kW6">
+                                                                <rect key="frame" x="150" y="18" width="75" height="75"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <color key="tintColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="56" id="jhC-IQ-5Cp"/>
-                                                                    <constraint firstAttribute="height" constant="56" id="rnS-CM-LQw"/>
+                                                                    <constraint firstAttribute="width" constant="75" id="jhC-IQ-5Cp"/>
+                                                                    <constraint firstAttribute="height" constant="75" id="rnS-CM-LQw"/>
                                                                 </constraints>
                                                             </imageView>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O1J-Es-dQH" userLabel="Button - Slect Image">
-                                                                <rect key="frame" x="159.5" y="18" width="56" height="56"/>
+                                                                <rect key="frame" x="150" y="18" width="75" height="75"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="56" id="q2f-zm-ib7"/>
-                                                                    <constraint firstAttribute="height" constant="56" id="tyQ-VB-0f8"/>
-                                                                </constraints>
                                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <connections>
                                                                     <action selector="selectProfilePicButtonClicked:" destination="MX7-SE-Tiw" eventType="touchUpInside" id="NRW-n2-j2d"/>
@@ -2596,22 +2602,25 @@
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="bottom" secondItem="VJA-63-kW6" secondAttribute="bottom" constant="18" id="4aZ-wS-eav"/>
+                                                            <constraint firstItem="O1J-Es-dQH" firstAttribute="width" secondItem="VJA-63-kW6" secondAttribute="width" id="5HI-tr-fpx"/>
                                                             <constraint firstItem="O1J-Es-dQH" firstAttribute="centerX" secondItem="EnW-eS-gss" secondAttribute="centerX" id="5kw-Df-Gab"/>
                                                             <constraint firstItem="VJA-63-kW6" firstAttribute="top" secondItem="EnW-eS-gss" secondAttribute="top" constant="18" id="Fug-cB-VZl"/>
                                                             <constraint firstItem="O1J-Es-dQH" firstAttribute="top" secondItem="EnW-eS-gss" secondAttribute="top" constant="18" id="Fxo-6g-SPK"/>
+                                                            <constraint firstItem="O1J-Es-dQH" firstAttribute="height" secondItem="VJA-63-kW6" secondAttribute="height" id="Zx7-A0-HGr"/>
                                                             <constraint firstItem="VJA-63-kW6" firstAttribute="centerX" secondItem="EnW-eS-gss" secondAttribute="centerX" id="d3d-ya-zmq"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vKr-RE-lyx" userLabel="View - Car name">
-                                                        <rect key="frame" x="0.0" y="92" width="375" height="42"/>
+                                                        <rect key="frame" x="0.0" y="111" width="375" height="42"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Car Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z3F-wj-oNE">
                                                                 <rect key="frame" x="25" y="0.0" width="335" height="40"/>
+                                                                <color key="tintColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="40" id="hJo-Fu-TrA"/>
                                                                 </constraints>
-                                                                <nil key="textColor"/>
-                                                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
+                                                                <color key="textColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ieY-eb-hq4" userLabel="View - Line">
@@ -2634,18 +2643,19 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Fl-cf-RbS" userLabel="View - Vehicle Model">
-                                                        <rect key="frame" x="0.0" y="134" width="375" height="61"/>
+                                                        <rect key="frame" x="0.0" y="153" width="375" height="61"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U8H-uH-hnJ" userLabel="View - Model">
                                                                 <rect key="frame" x="15" y="20" width="157.5" height="41"/>
                                                                 <subviews>
                                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="500" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Vehicle Model" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LZr-wr-Fg6">
                                                                         <rect key="frame" x="10" y="0.0" width="147.5" height="40"/>
+                                                                        <color key="tintColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="40" id="vmJ-Gf-2BL"/>
                                                                         </constraints>
-                                                                        <nil key="textColor"/>
-                                                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
+                                                                        <color key="textColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
                                                                         <textInputTraits key="textInputTraits"/>
                                                                     </textField>
                                                                     <view contentMode="scaleToFill" horizontalCompressionResistancePriority="500" translatesAutoresizingMaskIntoConstraints="NO" id="yEg-vV-zLG" userLabel="View - Line">
@@ -2672,11 +2682,12 @@
                                                                 <subviews>
                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Number of people" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V0q-qQ-ybG">
                                                                         <rect key="frame" x="10" y="0.0" width="147.5" height="40"/>
+                                                                        <color key="tintColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="40" id="qZI-y8-iOd"/>
                                                                         </constraints>
-                                                                        <nil key="textColor"/>
-                                                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
+                                                                        <color key="textColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
                                                                         <textInputTraits key="textInputTraits"/>
                                                                     </textField>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k0c-V0-8cr" userLabel="View - Line">
@@ -2711,7 +2722,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RGM-Ji-umS" userLabel="View - VehicleType">
-                                                        <rect key="frame" x="0.0" y="195" width="375" height="61"/>
+                                                        <rect key="frame" x="0.0" y="214" width="375" height="61"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Vehicle Type" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Spf-fc-Paz">
                                                                 <rect key="frame" x="25" y="19" width="335" height="40"/>
@@ -2758,7 +2769,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EUK-Jl-xAE">
-                                                        <rect key="frame" x="0.0" y="256" width="375" height="57"/>
+                                                        <rect key="frame" x="0.0" y="275" width="375" height="57"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facility" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oWK-RB-6Cs">
                                                                 <rect key="frame" x="25" y="20" width="350" height="37"/>
@@ -2779,7 +2790,7 @@
                                                         </constraints>
                                                     </view>
                                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bU2-fy-FQu">
-                                                        <rect key="frame" x="0.0" y="313" width="375" height="267"/>
+                                                        <rect key="frame" x="0.0" y="332" width="375" height="267"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="267" id="zKZ-pY-Krz"/>
                                                         </constraints>
@@ -2880,7 +2891,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="2Uo-bK-p0j" userLabel="Stack View - Hatchback">
                                                 <rect key="frame" x="0.0" y="0.0" width="84.5" height="16"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gTl-dE-IEt">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gTl-dE-IEt" customClass="FilterCheckBoxButton" customModule="Peppea" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="16" id="MmW-fT-Jhj"/>
@@ -2904,7 +2915,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="Bxu-07-Fft" userLabel="Stack View - SUV">
                                                 <rect key="frame" x="139.5" y="0.0" width="48" height="16"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wM1-kw-nYB">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wM1-kw-nYB" customClass="FilterCheckBoxButton" customModule="Peppea" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="16" id="2uX-pa-Fey"/>
@@ -2928,7 +2939,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="Wdt-Fn-x2H" userLabel="Stack View - Sedan">
                                                 <rect key="frame" x="242.5" y="0.0" width="59" height="16"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cj2-aO-Juq">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cj2-aO-Juq" customClass="FilterCheckBoxButton" customModule="Peppea" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="16" id="ZhF-xJ-VuH"/>
@@ -2962,7 +2973,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="AZi-zU-qu3" userLabel="Stack View - Without Fuel">
                                                 <rect key="frame" x="0.0" y="0.0" width="96" height="16"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yFD-LB-Vok">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yFD-LB-Vok" customClass="FilterCheckBoxButton" customModule="Peppea" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="16" id="2rG-xq-GJV"/>
@@ -2986,7 +2997,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="MgY-ZX-WyV" userLabel="Stack View - With Fuel">
                                                 <rect key="frame" x="140" y="0.0" width="77" height="16"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i5h-as-lE5">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i5h-as-lE5" customClass="FilterCheckBoxButton" customModule="Peppea" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="16" id="Nx7-5j-EW0"/>
@@ -3015,7 +3026,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="ji9-CE-B3C" userLabel="Stack View - Without Fuel">
                                                 <rect key="frame" x="0.0" y="0.0" width="60.5" height="16"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LOE-IY-da9">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LOE-IY-da9" customClass="FilterCheckBoxButton" customModule="Peppea" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="16" id="01B-AY-vLG"/>
@@ -3039,7 +3050,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="cwD-C7-P4H" userLabel="Stack View - With Fuel">
                                                 <rect key="frame" x="140.5" y="0.0" width="88.5" height="16"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kv4-7c-h3Y">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kv4-7c-h3Y" customClass="FilterCheckBoxButton" customModule="Peppea" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="16" id="kjE-QX-CeC"/>
@@ -3065,7 +3076,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="1DM-xg-5fU" userLabel="Stack View - With Fuel">
                                         <rect key="frame" x="0.0" y="139" width="123" height="16"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kda-Di-iuw">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kda-Di-iuw" customClass="FilterCheckBoxButton" customModule="Peppea" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="16" id="NdH-Wr-dPc"/>
@@ -3092,15 +3103,15 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="253" translatesAutoresizingMaskIntoConstraints="NO" id="Psh-pV-ZsD">
-                                        <rect key="frame" x="0.0" y="194" width="328" height="10"/>
+                                        <rect key="frame" x="0.0" y="194" width="343" height="10"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$250.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oLm-SV-5vG">
-                                                <rect key="frame" x="0.0" y="0.0" width="32.5" height="10"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="47.5" height="10"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="10"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$1500.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K7F-Aa-CNa">
-                                                <rect key="frame" x="285.5" y="0.0" width="42.5" height="10"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="$1500.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K7F-Aa-CNa">
+                                                <rect key="frame" x="300.5" y="0.0" width="42.5" height="10"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="10"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -3122,6 +3133,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="247" id="1Rf-0p-DBb"/>
                                     <constraint firstItem="4cv-J5-wge" firstAttribute="leading" secondItem="iHS-pu-Rqo" secondAttribute="leading" id="AyM-eR-gwH"/>
+                                    <constraint firstItem="K7F-Aa-CNa" firstAttribute="trailing" secondItem="4cv-J5-wge" secondAttribute="trailing" id="OGU-yg-xVl"/>
                                     <constraint firstAttribute="trailing" secondItem="4cv-J5-wge" secondAttribute="trailing" id="tat-1M-YU0"/>
                                 </constraints>
                             </stackView>
@@ -3147,6 +3159,7 @@
         <image name="SelectedCircle" width="20" height="20"/>
         <image name="UnSelectedCircle" width="20" height="20"/>
         <image name="calendar" width="170" height="170"/>
+        <image name="editPenIcon" width="170" height="170"/>
         <image name="iconArrowGray" width="26" height="26"/>
         <image name="iconBird" width="174" height="99"/>
         <image name="iconCheckboxSelected" width="26" height="26"/>
@@ -3156,10 +3169,10 @@
         <image name="iconDummyProfilePic" width="170" height="170"/>
         <image name="iconMarker" width="85" height="85"/>
         <image name="iconSelectedstar" width="42" height="42"/>
-        <image name="imgProfilePlaceHolder" width="56" height="56"/>
         <image name="imgYellowCar" width="94" height="57"/>
         <image name="locationMarkerDemoIcon" width="100" height="100"/>
         <image name="peppea rental logo" width="204" height="105"/>
+        <image name="placeholder_man" width="75" height="75"/>
         <image name="verified" width="16" height="16"/>
     </resources>
 </document>

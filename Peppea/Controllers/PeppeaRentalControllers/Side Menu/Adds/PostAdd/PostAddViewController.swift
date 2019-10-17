@@ -29,6 +29,8 @@ class PostAddViewController: BaseViewController, ImagePickerDelegate, UINavigati
 //        self.imagePicker = ImagePicker.present(<#T##ImagePicker#>)
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
         
+    
+        
         // Do any additional setup after loading the view.
     }
     
@@ -38,14 +40,20 @@ class PostAddViewController: BaseViewController, ImagePickerDelegate, UINavigati
         self.setNavBarWithBack(Title: "Post a Add", IsNeedRightButton: false)
         self.navigationItem.title = "Post a Add"
         
-        profileImageView.image = profileImageView.image?.withRenderingMode(.alwaysTemplate)
-        profileImageView.tintColor = ThemeColor
+      
     }
     
     func setUpUI() {
         
         self.btnAddVehicle.layer.cornerRadius = self.btnAddVehicle.frame.height / 2.0
         self.btnAddVehicle.layer.masksToBounds = true
+        
+        ///Corner Radius
+        profileImageView.layer.cornerRadius = self.profileImageView.frame.width / 2.0
+        self.profileImageView.layer.masksToBounds = true
+        ///Border Width
+        profileImageView.layer.borderWidth = 1.0
+        profileImageView.layer.borderColor = UIColor.darkGray.cgColor
     }
 
     @IBAction func selectProfilePicButtonClicked(_ sender: UIButton) {
@@ -59,7 +67,14 @@ class PostAddViewController: BaseViewController, ImagePickerDelegate, UINavigati
     
     func didSelect(image: UIImage?) {
         
+        ///Tint color is used, as to support placeholder image,
+        //now we do not need tint color so removing it
+        profileImageView.tintColor = .clear
+        
         self.profileImageView.image = image
+        
+       
+
     }
     
 }
