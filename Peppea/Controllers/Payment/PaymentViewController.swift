@@ -62,6 +62,8 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
     var aryCardData = [CardsList]()//[[String : AnyObject]]()
     var aryOtherPayment = [[String : AnyObject]]()
     
+    var isComingFromPeppeaRental = false
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -150,7 +152,16 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
     override func viewWillAppear(_ animated: Bool)
     {
         super.viewWillAppear(animated)
-         self.webserviceForCardList()
+        
+        if isComingFromPeppeaRental {
+            ///Peppea Rental flow
+            
+        }else{
+
+            ///Normal Peppea flow
+            self.webserviceForCardList()
+
+        }
         self.setNavBarWithBack(Title: "Payment", IsNeedRightButton: false)
         cardNum()
         
@@ -502,6 +513,11 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
     
     @IBAction func btnAddCardClicked(_ sender: Any)
     {
+        
+        if isComingFromPeppeaRental {
+            print("Not processing if coming from Peppea Rental")
+            return
+        }
         self.webserviceforAddnewCard()
     }
     

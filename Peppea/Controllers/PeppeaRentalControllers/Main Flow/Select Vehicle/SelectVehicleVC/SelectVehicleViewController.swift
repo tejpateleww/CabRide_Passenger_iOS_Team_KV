@@ -48,22 +48,22 @@ class SelectVehicleViewController: BaseViewController,BookVehicleDelegate
     @IBOutlet weak var filterOuterView: UIView!
     
 //
-    lazy var filterButton: UIButton = {
-
-        let button = UIButton(type: .system)
-
-        button.frame = CGRect(x: 0.0, y: 0.0, width: 40.0, height: 40.0)
-
-        button.setImage(UIImage(named: "filter"), for: .normal)
-        button.imageView?.contentMode = .scaleAspectFit
-        button.imageEdgeInsets = UIEdgeInsets(top: 8.0, left: 8.0, bottom: 8.0, right: 8.0)
-
-        button.tintColor = UIColor.black
-        
-        button.addTarget(self, action: #selector(self.filterButtonClicked), for: .touchUpInside)
-
-        return button
-    }()
+//    lazy var filterButton: UIButton = {
+//
+//        let button = UIButton(type: .system)
+//
+//        button.frame = CGRect(x: 0.0, y: 0.0, width: 40.0, height: 40.0)
+//
+//        button.setImage(UIImage(named: "filter"), for: .normal)
+//        button.imageView?.contentMode = .scaleAspectFit
+//        button.imageEdgeInsets = UIEdgeInsets(top: 8.0, left: 8.0, bottom: 8.0, right: 8.0)
+//
+//        button.tintColor = UIColor.black
+//
+//        button.addTarget(self, action: #selector(self.filterButtonClicked), for: .touchUpInside)
+//
+//        return button
+//    }()
     
     override func viewDidLoad()
     {
@@ -100,8 +100,11 @@ class SelectVehicleViewController: BaseViewController,BookVehicleDelegate
         setNavBarWithBack(Title: "Select Car", IsNeedRightButton: false)
         self.navigationItem.title = "Select Car"
 
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: self.filterButton)
-            //UIBarButtonItem(image: UIImage(named: "filter"), style: .plain, target: self, action: #selector(self.filterButtonClicked))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "filter"), style: .plain, target: self, action: #selector(self.filterButtonClicked))
+            //UIBarButtonItem(customView: self.filterButton)
+            //
+            //
+            //
         
     }
     

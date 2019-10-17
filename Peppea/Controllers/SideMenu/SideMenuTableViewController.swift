@@ -404,15 +404,31 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
     
     func gotoProfileVC() {
         
-        let findCarVC = self.parent?.children.first?.children.first as? FindCarViewController
-        let storyborad = UIStoryboard(name: "Main", bundle: nil)
-        let profileVC = storyborad.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
+        let storyboardName = self.storyboard?.value(forKey: "name") as? String ?? ""
         
-        //        let NextPage =
-        
-        //self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
-        findCarVC?.navigationController?.pushViewController(profileVC, animated: true)
-        sideMenuController?.hideMenu()
+        if storyboardName == "Main" {
+
+            /// Peppea Main Flow
+            let findCarVC = self.parent?.children.first?.children.first as? FindCarViewController
+            let storyborad = UIStoryboard(name: "Main", bundle: nil)
+            let profileVC = storyborad.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
+            
+            //self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
+            findCarVC?.navigationController?.pushViewController(profileVC, animated: true)
+            sideMenuController?.hideMenu()
+
+        }else{
+
+            ///Rental Main flow
+            let findCarVC = self.parent?.children.first?.children.first as? FindCarViewController
+            let storyborad = UIStoryboard(name: "Rental_Main", bundle: nil)
+            let profileVC = storyborad.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
+            
+            //self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
+            findCarVC?.navigationController?.pushViewController(profileVC, animated: true)
+            sideMenuController?.hideMenu()
+            
+        }
     }
 
 }

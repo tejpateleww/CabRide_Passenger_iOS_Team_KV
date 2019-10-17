@@ -36,6 +36,8 @@ pod 'SwipeCellKit', '2.5.4'
   pod 'FSCalendar'
   pod 'RKMultiUnitRuler'
   pod 'TTSegmentedControl'
+  # pod "CRRulerControl"
+
 
 
 

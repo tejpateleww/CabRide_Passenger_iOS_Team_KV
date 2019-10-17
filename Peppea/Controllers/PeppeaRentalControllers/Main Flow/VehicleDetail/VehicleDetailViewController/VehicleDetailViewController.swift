@@ -135,11 +135,12 @@ class VehicleDetailViewController: BaseViewController
     //MARK: Button Clicks
     
     @IBAction func proceedToPaymentButtonClicked(_ sender: Any) {
-        
 
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let paymentviewController = storyBoard.instantiateViewController(withIdentifier: "PaymentViewController") as! PaymentViewController
+        paymentviewController.isComingFromPeppeaRental = true
+        self.navigationController?.pushViewController(paymentviewController, animated: true)
 
-        
-        
     }
 
     @IBAction func closeCarsAvailabelButtonClicked(_ sender: Any) {
@@ -150,9 +151,6 @@ class VehicleDetailViewController: BaseViewController
     }
     @IBAction func btnBookConfirmClicked(_ sender: Any) {
 //
-//        let  PaymentviewController = self.storyboard?.instantiateViewController(withIdentifier: "SelectPaymentPopUpViewController") as! SelectPaymentPopUpViewController
-//        PaymentviewController.PaymentDelegate = self
-//        self.present(PaymentviewController, animated: true, completion: nil)
         
     }
 }
