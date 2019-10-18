@@ -38,26 +38,37 @@ class ProfileViewController: BaseViewController,UIImagePickerControllerDelegate,
     @IBOutlet weak var iconRadioFemale: UIImageView!
     @IBOutlet weak var btnFemale: UIButton!
     @IBOutlet weak var btnMale: UIButton!
+    @IBOutlet weak var imgvMale: UIImageView!
+    
+    @IBOutlet weak var imgvFemale: UIImageView!
+    
     var didSelectMale: Bool = true
     {
         didSet
         {
             if(didSelectMale)
             {
-                selectGender.first?.image = UIImage(named: "SelectedCircle")
-                selectGender.last?.image = UIImage(named: "UnSelectedCircle")
-                
+//                selectGender.first?.image = UIImage(named: "SelectedCircle")
+//                selectGender.last?.image = UIImage(named: "UnSelectedCircle")
+//
+                imgvMale.image = UIImage(named: "SelectedCircle")
+                imgvFemale.image = UIImage(named: "UnSelectedCircle")
                 
             }
             else
             {
-                selectGender.last?.image = UIImage(named: "SelectedCircle")
-                selectGender.first?.image = UIImage(named: "UnSelectedCircle")
-                
+//                selectGender.first?.image = UIImage(named: "UnSelectedCircle")
+//                selectGender.last?.image = UIImage(named: "SelectedCircle")
+
+                imgvMale.image = UIImage(named: "UnSelectedCircle")
+                imgvFemale.image = UIImage(named: "SelectedCircle")
+
             }
         }
     }
 
+    var isComingFromPeppeaRentalFlow = false
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -70,6 +81,11 @@ class ProfileViewController: BaseViewController,UIImagePickerControllerDelegate,
         selectGender.last?.tintColor = ThemeColor
         
         self.setNavBarWithBack(Title: "Profile", IsNeedRightButton: false)
+        
+        if isComingFromPeppeaRentalFlow {
+            ///To make navigation bar title not capital
+            self.navigationItem.title = "Profile"
+        }
         
          txtFirstName.titleFormatter = { $0 }
          txtLastName.titleFormatter = { $0 }

@@ -372,7 +372,7 @@
                   moduleName = "Peppea"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/eww078/Documents/Arpit/Projects/peppea/Peppea/Webservices/Networking/Socket/SocketManager.swift"
-                  timestampString = "593009084.020758"
+                  timestampString = "593068856.722044"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "69"
@@ -387,7 +387,7 @@
                   moduleName = "Peppea"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/eww078/Documents/Arpit/Projects/peppea/Peppea/Webservices/Networking/Socket/SocketManager.swift"
-                  timestampString = "593009084.022409"
+                  timestampString = "593068856.723863"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "71"
@@ -452,7 +452,7 @@
                   moduleName = "Peppea"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/eww078/Documents/Arpit/Projects/peppea/Peppea/Webservices/Networking/Socket/SocketManager.swift"
-                  timestampString = "593009084.032434"
+                  timestampString = "593068856.735418"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "33"
@@ -467,7 +467,7 @@
                   moduleName = "Peppea"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/eww078/Documents/Arpit/Projects/peppea/Peppea/Webservices/Networking/Socket/SocketManager.swift"
-                  timestampString = "593009084.034078"
+                  timestampString = "593068856.73701"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "34"
@@ -922,17 +922,49 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Peppea/Controllers/Profile/ProfileViewController.swift"
+            timestampString = "593072266.74121"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "237"
+            endingLineNumber = "237"
+            landmarkName = "btnMaleClicked(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Peppea/Controllers/Profile/ProfileViewController.swift"
-            timestampString = "593013105.0492671"
+            timestampString = "593072266.741277"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "221"
-            endingLineNumber = "221"
-            landmarkName = "btnMaleClicked(_:)"
-            landmarkType = "7">
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "didSelectMale"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Peppea/Controllers/Profile/ProfileViewController.swift"
+            timestampString = "593072266.741331"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "didSelectMale"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

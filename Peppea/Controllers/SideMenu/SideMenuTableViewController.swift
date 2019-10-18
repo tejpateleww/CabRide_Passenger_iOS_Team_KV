@@ -179,7 +179,18 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
                 
                 let ok = UIAlertAction(title: "OK", style: .default) { (action) in
                     //                                    (UIApplication.shared.delegate as! AppDelegate).GoToLogout()
-                    self.webserviceForLogout()
+
+                      if storyboardName == "Rental_Main" {
+
+                        ///Do nothing
+                        UserDefaults.standard.set(false, forKey: "isUserLogin")
+                        (UIApplication.shared.delegate as! AppDelegate).goToPeppeaRentalLogin()
+
+                      }else{
+                        ///Peppea flow call web service
+                        self.webserviceForLogout()
+
+                      }
                 }
                 
                 let cancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
