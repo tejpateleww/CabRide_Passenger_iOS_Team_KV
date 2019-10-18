@@ -164,15 +164,15 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
                     if dictOnlineCars.id == vehicleId {
                         self.estimateFare = (FlatRate == "") ? ( ((estimateFare?.contains(".") == true) ? estimateFare  : "\((Double((estimateMinute == "0" ? "0.0" : estimateFare)!)?.rounded(toPlaces: 2)) ?? 0.0)")!  ) : "\((Double((estimateMinute == "0" ? "0.0" : FlatRate))?.rounded(toPlaces: 2)) ?? 0.0)"
                     }
-                    cell.lblPrice.text =  (FlatRate == "") ? ( ((estimateFare?.contains(".") == true) ? "\(Currency) \(estimateFare as! String)"  : "\(Currency) \((Double((estimateMinute == "0" ? "0.0" : estimateFare)!)?.rounded(toPlaces: 2)) ?? 0.0)")  ) : "\((Double((estimateMinute == "0" ? "0.0" : FlatRate))?.rounded(toPlaces: 2)) ?? 0.0)"
+                    cell.lblPrice.text =  (FlatRate == "") ? ( ((estimateFare?.contains(".") == true) ? "\(Currency) \(estimateFare!)"  : "\(Currency) \((Double((estimateMinute == "0" ? "0.0" : estimateFare)!)?.rounded(toPlaces: 2)) ?? 0.0)")  ) : "\((Double((estimateMinute == "0" ? "0.0" : FlatRate))?.rounded(toPlaces: 2)) ?? 0.0)"
                     
                     cell.lblArrivalTime.text = "ETA \(estimateMinute == "0" ? "0" : estimateMinute ?? "0") min."
                 }
             }
 
-            cell.lblModelName.font = UIFont.semiBold(ofSize: 9.5)
-            cell.lblPrice.font = UIFont.regular(ofSize: 9.5)
-            cell.lblArrivalTime.font = UIFont.regular(ofSize: 9.5)
+            cell.lblModelName.font = UIFont.semiBold(ofSize: 14.0)
+            cell.lblPrice.font = UIFont.regular(ofSize: 14.0)
+            cell.lblArrivalTime.font = UIFont.regular(ofSize: 14.0)
         }
 
         return cell

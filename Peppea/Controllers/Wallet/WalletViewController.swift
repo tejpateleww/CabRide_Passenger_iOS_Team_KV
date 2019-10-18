@@ -25,9 +25,32 @@ class WalletViewController: BaseViewController, UIPickerViewDelegate, UIPickerVi
     var cardDetailModel : AddCardModel = AddCardModel()
     var addMoneyReqModel : AddMoney = AddMoney()
     var LoginDetail : LoginModel = LoginModel()
-    
-    
+    var strPaymentType = String()
+    @IBOutlet var selectPaymentType: [UIImageView]!
     @IBOutlet weak var lblTotalWalletBalance: UILabel!
+
+
+    var didSelectPaymentType: Bool = true
+       {
+           didSet
+           {
+               if(didSelectPaymentType)
+               {
+                   strPaymentType = "wallet"
+                   selectPaymentType.first?.image = UIImage(named: "SelectedCircle")
+                   selectPaymentType.last?.image = UIImage(named: "UnSelectedCircle")
+
+
+               }
+               else
+               {
+                   strPaymentType = "mpesa"
+                   selectPaymentType.last?.image = UIImage(named: "SelectedCircle")
+                   selectPaymentType.first?.image = UIImage(named: "UnSelectedCircle")
+
+               }
+           }
+       }
     
     
     override func viewDidLoad() {
@@ -58,45 +81,7 @@ class WalletViewController: BaseViewController, UIPickerViewDelegate, UIPickerVi
         self.lblBankCardName.text = "Select Payment Method"
         self.lblCardNumber.isHidden = true
         iconSelectedPaymentMethod.image = UIImage.init(named: "")
-        /*
-        var dict = [String:AnyObject]()
-        dict["CardNum"] = "HDFC BANK" as AnyObject
-        dict["CardNum2"] = "XXXX XXXX XXXX 8967" as AnyObject
-        dict["Type"] = "iconVisaCard" as AnyObject
-        self.aryCards.append(dict)
-        
-        dict = [String:AnyObject]()
-        dict["CardNum"] = "AXIS BANK" as AnyObject
-        dict["CardNum2"] = "XXXX XXXX XXXX 5534" as AnyObject
-        dict["Type"] = "iconMasterCard" as AnyObject
-        self.aryCards.append(dict)
-        
-        dict = [String:AnyObject]()
-        dict["CardNum"] = "BOB BANK" as AnyObject
-        dict["CardNum2"] = "XXXX XXXX XXXX 2211" as AnyObject
-        dict["Type"] = "iconDiscover" as AnyObject
-        self.aryCards.append(dict)
-        
-        dict = [String:AnyObject]()
-        dict["CardNum"] = "cash" as AnyObject
-        dict["CardNum2"] = "cash" as AnyObject
-        dict["Type"] = "iconCash" as AnyObject
-        self.aryCards.append(dict)
-        
-        var dict2 = [String:AnyObject]()
-        dict2["CardNum"] = "wallet" as AnyObject
-        dict2["CardNum2"] = "wallet" as AnyObject
-        dict2["Type"] = "iconWallet" as AnyObject
-        
-        var dict3 = [String:AnyObject]()
-        dict3["CardNum"] = "pesapal" as AnyObject
-        dict3["CardNum2"] = "pesapal" as AnyObject
-        dict3["Type"] = "iconMPesa" as AnyObject
-        
-        self.aryCards.append(dict2)
-        self.aryCards.append(dict3)
-        
-        */
+
     }
     override func viewWillAppear(_ animated: Bool)
     {
@@ -161,8 +146,8 @@ class WalletViewController: BaseViewController, UIPickerViewDelegate, UIPickerVi
     }
     
     @IBAction func txtSelectPaymentMethod(_ sender: UITextField) {
-        
-        txtSelectPaymentMethod.inputView = pickerView
+//        self.performSegue(withIdentifier: "", sender: <#T##Any?#>)
+//        txtSelectPaymentMethod.inputView = pickerView
     }
     
     
@@ -198,15 +183,7 @@ class WalletViewController: BaseViewController, UIPickerViewDelegate, UIPickerVi
         myImageView.contentMode = .scaleAspectFit
         
         var rowString = String()
-        /*
- "id": "7",
- "card_no": "XoKZoqSXlWRkY21cWFyElw==",
- "formated_card_no": "xxxx xxxx xxxx 4242",
- "card_holder_name": "mayurH",
- "card_type": "visa",
- "exp_date_month": "02",
- "exp_date_year": "20"
- */
+
         
         switch row {
             
@@ -275,5 +252,21 @@ class WalletViewController: BaseViewController, UIPickerViewDelegate, UIPickerVi
             paymentType = "card"
         }        
     }
+
+
+    @IBAction func btnPaymentTypeClicked(_ sender: UIButton)
+     {
+
+         if(sender.tag == 1) // Male
+         {
+             strPaymentType = "card"
+             didSelectPaymentType = true
+         }
+         else if (sender.tag == 2) // Female
+         {
+             strPaymentType = "mpesa"
+             didSelectPaymentType = false
+         }
+     }
     
 }
