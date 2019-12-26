@@ -134,7 +134,7 @@ extension String {
     }
     var isBlank: Bool {
         get {
-            let trimmed = trimmingCharacters(in: CharacterSet.whitespaces)
+            let trimmed = trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
             return trimmed.isEmpty
         }
     }

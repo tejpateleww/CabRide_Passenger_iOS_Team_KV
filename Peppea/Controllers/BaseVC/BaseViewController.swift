@@ -50,7 +50,7 @@ class BaseViewController: UIViewController {
         
     }
     
-    func setNavBarWithBack(Title:String, IsNeedRightButton:Bool) {
+    func setNavBarWithBack(Title:String, IsNeedRightButton:Bool, isNeedBirdIcon: Bool = false) {
         self.navigationController?.navigationBar.isTranslucent = true
         
         if Title == "Home" {
@@ -80,6 +80,17 @@ class BaseViewController: UIViewController {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.hidesBarsOnSwipe = false
         self.navigationController?.navigationBar.isTranslucent = false
+        
+        if IsNeedRightButton {
+            let rightNavBarButton = UIBarButtonItem(image: UIImage(named: "iconEmergencyCall"), style: .plain, target: self, action: #selector(self.btnCallAction))
+            self.navigationItem.rightBarButtonItem = nil
+            self.navigationItem.rightBarButtonItem = rightNavBarButton
+//            self.navigationItem.rightBarButtonItem?.tintColor = .black
+        }
+        if isNeedBirdIcon {
+            let rightNavBarButton = UIBarButtonItem(image: UIImage(named: "iconBirdSmallBar"), style: .plain, target: self, action: #selector(self.btnBirdAction))
+             self.navigationItem.rightBarButtonItems?.append(rightNavBarButton)
+        }
         
         
         if UserDefaults.standard.value(forKey: "i18n_language") != nil {
@@ -123,22 +134,23 @@ class BaseViewController: UIViewController {
         else {
             self.navigationController?.popViewController(animated: true)
         }
+    }
+    
+    @objc func btnBirdAction() {
         
     }
     
     @objc func btnCallAction() {
         
-        //        let contactNumber = helpLineNumber
-        //        if contactNumber == "" {
-        //            UtilityClass.setCustomAlert(title: "\(appName)", message: "Contact number is not available") { (index, title) in
-        //            }
-        //        }
-        //        else
-        //        {
-        //            callNumber(phoneNumber: contactNumber)
-        //        }
+        let contactNumber = helpLine
+        if contactNumber == "" {
+            UtilityClass.showAlert(title: AppName.kAPPName, message: "Contact number is not available", alertTheme: .error)
+        }
+        else
+        {
+            callNumber(phoneNumber: contactNumber)
+        }
     }
-    
     
     private func callNumber(phoneNumber:String) {
         

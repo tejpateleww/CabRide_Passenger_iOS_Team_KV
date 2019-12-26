@@ -35,7 +35,7 @@ class BulkMilesHistory: BaseViewController {
         self.lblAvailableBalance.text = "\(SingletonClass.sharedInstance.BulkMilesBalance) \(MeasurementSign)"
         self.lblPurchasePlan.text = "\(String(format: "%.2f",  Double(self.PurchasePlan)!) ) \(MeasurementSign)"
         self.RegisterNibs()
-        self.setNavBarWithBack(Title: "Bulk Mile History", IsNeedRightButton: false)
+        self.setNavBarWithBack(Title: "Bulk Mile History", IsNeedRightButton: true)
         self.LoadNewData()
         // Do any additional setup after loading the view.
         

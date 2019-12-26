@@ -18,6 +18,7 @@ class MyBidListViewController: UIViewController,UITableViewDelegate,UITableViewD
     {
         super.viewDidLoad()
         tblView.refreshControl = refreshControl
+        tblView.separatorStyle = .none
         refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
 
         // Do any additional setup after loading the view.

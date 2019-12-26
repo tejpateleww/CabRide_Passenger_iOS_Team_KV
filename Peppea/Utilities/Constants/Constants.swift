@@ -32,6 +32,7 @@ let SCREEN_HEIGHT = UIScreen.main.bounds.height
 
 let Currency = "KES"
 let MeasurementSign = "mi"
+let helpLine = "1234567890"
 
 let ThemeColor : UIColor =  UIColor.init(hex: "2e2d2e")
 

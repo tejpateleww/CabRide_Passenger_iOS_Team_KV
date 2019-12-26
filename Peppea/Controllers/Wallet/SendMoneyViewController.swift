@@ -43,6 +43,10 @@ class SendMoneyViewController: BaseViewController, UIPickerViewDelegate, UIPicke
     @IBOutlet weak var iconSelectedPaymentMethod: UIImageView!
     @IBOutlet weak var lblCardNumber: UILabel!
     @IBOutlet weak var lblBankCardName: UILabel!
+    
+    @IBOutlet weak var viewReceiverName: UIView!
+    
+    
     var pickerView = UIPickerView()
     
     @IBOutlet weak var txtSelectPaymentMethod: UITextField!
@@ -74,15 +78,12 @@ class SendMoneyViewController: BaseViewController, UIPickerViewDelegate, UIPicke
                 strUserType = "driver"
                 selectGender.first?.image = UIImage(named: "SelectedCircle")
                 selectGender.last?.image = UIImage(named: "UnSelectedCircle")
-                
-                
             }
             else
             {
                 strUserType = "customer"
                 selectGender.last?.image = UIImage(named: "SelectedCircle")
                 selectGender.first?.image = UIImage(named: "UnSelectedCircle")
-                
             }
         }
     }
@@ -92,11 +93,9 @@ class SendMoneyViewController: BaseViewController, UIPickerViewDelegate, UIPicke
         {
             if(didMaxMobileNumberLimit)
             {
-                
             }
             else
             {
-        
             }
         }
     }
@@ -108,6 +107,8 @@ class SendMoneyViewController: BaseViewController, UIPickerViewDelegate, UIPicke
         txtmobileNumber.textAlignment = .center
         txtmobileNumber.titleLabel.textAlignment = .center
         self.lblReceiverName.text = ""
+        self.lblReceiverName.isHidden = true
+        self.viewReceiverName.isHidden = true
         txtmobileNumber.titleFormatter = { $0 }
         
         if(UserDefaults.standard.object(forKey: "userProfile") == nil)
@@ -129,10 +130,12 @@ class SendMoneyViewController: BaseViewController, UIPickerViewDelegate, UIPicke
         previewView.isHidden = true
         viewPlaceholderQR.isHidden = false
         btnQR.isHidden = false
-        self.setNavBarWithBack(Title: "Send Money", IsNeedRightButton: false)
+        self.setNavBarWithBack(Title: "Send Money", IsNeedRightButton: true)
         self.lblBankCardName.text = "Select Payment Method"
         self.lblCardNumber.isHidden = true
-        iconSelectedPaymentMethod.image = UIImage.init(named: "")
+        iconSelectedPaymentMethod.image = UIImage.init(named: "iconcard")
+        
+        txtAmount.delegate = self
        
     }
     override func viewWillAppear(_ animated: Bool)
@@ -167,6 +170,32 @@ class SendMoneyViewController: BaseViewController, UIPickerViewDelegate, UIPicke
                 return true
             }
         }
+        else if textField == txtAmount {
+            switch string {
+            case "0","1","2","3","4","5","6","7","8","9":
+                return true
+            case ".":
+                let array = Array(textField.text ?? "")
+                var decimalCount = 0
+                for character in array {
+                    if character == "." {
+                        decimalCount += 1
+                    }
+                }
+                
+                if decimalCount == 1 {
+                    return false
+                } else {
+                    return true
+                }
+            default:
+                let array = Array(string)
+                if array.count == 0 {
+                    return true
+                }
+                return false
+            }
+        }
 
         return true
     }
@@ -189,8 +218,6 @@ class SendMoneyViewController: BaseViewController, UIPickerViewDelegate, UIPicke
                 self.didMaxMobileNumberLimit = false
             }
         }
-        
-        
     }
   
     @IBAction func btnDriverCustomerClicked(_ sender: UIButton)
@@ -218,7 +245,10 @@ class SendMoneyViewController: BaseViewController, UIPickerViewDelegate, UIPicke
     }
     @IBAction func btnSelectPaymentMethod(_ sender: Any)
     {
-//        txtSelectPaymentMethod.inputView = pickerView
+//        txtSelectPaymentMethod.inputView = pickerView        
+        let next = self.storyboard?.instantiateViewController(withIdentifier: "WalletCardsVC") as! WalletCardsVC
+        next.delegate = self
+        self.navigationController?.pushViewController(next, animated: true)
     }
     
     @IBAction func txtSelectPaymentMethod(_ sender: UITextField) {
@@ -396,6 +426,8 @@ class SendMoneyViewController: BaseViewController, UIPickerViewDelegate, UIPicke
                 self.QRCodeDetailsResult = QRCodeScannedModel.init(fromJson: json)
                 self.lblReceiverName.text = self.QRCodeDetailsResult.data.firstName + " " + self.QRCodeDetailsResult.data.lastName
                 self.txtmobileNumber.text = self.QRCodeDetailsResult.data.mobileNo
+                self.lblReceiverName.isHidden = false
+                self.viewReceiverName.isHidden = false
             }
             else{
                 UtilityClass.hideHUD()
@@ -486,8 +518,33 @@ class SendMoneyViewController: BaseViewController, UIPickerViewDelegate, UIPicke
                 AlertMessage.showMessageForError(json["message"].stringValue)
             }
         }
-      
-        
     }
 }
 
+
+extension SendMoneyViewController: selectPaymentOptionDelegate {
+    
+    func selectPaymentOption(option: Any) {
+        
+        if let currentData = option as? [String:AnyObject] {
+            if let selectedType = currentData["card_type"] as? String {
+                if selectedType == "MPesa" {
+                    self.lblBankCardName.isHidden = false
+                    self.lblCardNumber.isHidden = true
+//                    self.viewCardPin.isHidden = true
+                    self.lblBankCardName.text = "M-Pesa"
+                    self.iconSelectedPaymentMethod.image = UIImage(named: "iconMPesa")
+                } else {
+                    self.lblBankCardName.isHidden = false
+                    self.lblCardNumber.isHidden = false
+//                    self.viewCardPin.isHidden = false
+                    let type = currentData["card_type"] as! String
+                    self.iconSelectedPaymentMethod.image = UIImage(named: setCreditCardImage(str: type))
+                    
+                    self.lblBankCardName.text = currentData["card_holder_name"] as? String
+                    self.lblCardNumber.text = currentData["formated_card_no"] as? String
+                }
+            }
+        }
+    }
+}

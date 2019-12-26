@@ -1211,7 +1211,48 @@ extension HomeViewController : FlatRateDelegate {
         self.CallForGetEstimate()
         self.routeDrawMethod(origin: "\(pickupLocation.latitude),\(pickupLocation.longitude)", destination: "\(destinationLocation.latitude),\(destinationLocation.longitude)", isTripAccepted: false)
     }
-    
+}
+
+extension HomeViewController: FavouriteLocationDelegate {
+    func didEnterFavouriteDestination(Source: [String : AnyObject]) {
+        txtDropLocation.text = Source["Address"] as? String
+        
+//        strDropoffLocation = Source["Address"] as! String
+//        doubleDropOffLat = Double(Source["Lat"] as! String)!
+//        doubleDropOffLng = Double(Source["Lng"] as! String)!
+        
+        
+        pickupAndDropoffAddress.dropOff = Source["Address"] as! String
+        
+        destinationLocation = CLLocationCoordinate2D(latitude: Double(Source["Lat"] as! String)!, longitude: Double(Source["Lng"] as! String)!)
+        
+        if(txtDropLocation.text?.isEmpty == false)
+        {
+            viewPickupLocation.isHidden = false
+        }
+        
+        if(txtDropLocation.text?.isEmpty == false && txtPickupLocation.text?.isEmpty == false)
+        {
+            hideBookLaterButtonFromDroplocationField = true
+        }
+        else
+        {
+            hideBookLaterButtonFromDroplocationField = false
+        }
+        
+        if let CarCollection = self.children[0] as? CarCollectionViewController {
+            CarCollection.FlatRate  = ""
+            CarCollection.collectionView.reloadData()
+        }
+        
+        if SocketIOManager.shared.socket.status == .connected {
+            self.emitSocket_UpdateCustomerLatLng(param: ["customer_id": SingletonClass.sharedInstance.loginData.id ?? "", "lat": pickupLocation.latitude, "lng": pickupLocation.longitude])
+        }
+        
+        self.CallForGetEstimate()
+        
+        self.routeDrawMethod(origin: "\(pickupLocation.latitude),\(pickupLocation.longitude)", destination: "\(destinationLocation.latitude),\(destinationLocation.longitude)", isTripAccepted: false)
+    }
 }
 
 

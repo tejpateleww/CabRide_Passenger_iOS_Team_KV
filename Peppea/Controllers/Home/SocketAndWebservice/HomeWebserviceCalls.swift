@@ -58,12 +58,12 @@ extension CarCollectionViewController: CarCollectionWebserviceProtocol {
         let model = bookingRequest()
         model.booking_type = bookingType // "book_now" // "book_later"
         model.customer_id = SingletonClass.sharedInstance.loginData.id
-        model.dropoff_lat = "\(dropOff.latitude == 0.0 ? 23.073783 : dropOff.latitude)"
-        model.dropoff_lng = "\(dropOff.longitude == 0.0 ? 72.52645 : dropOff.longitude)"
+        model.dropoff_lat = "\(dropOff.latitude == 0.0 ? 0 : dropOff.latitude)"
+        model.dropoff_lng = "\(dropOff.longitude == 0.0 ? 0 : dropOff.longitude)"
         model.dropoff_location = address.dropOff
         model.no_of_passenger = "1"
-        model.pickup_lat = "\(pickup.latitude == 0.0 ? 23.072622 : pickup.latitude)"//   23.072622, 72.516409
-        model.pickup_lng = "\(pickup.longitude == 0.0 ? 72.516409 : pickup.longitude)"
+        model.pickup_lat = "\(pickup.latitude == 0.0 ? 0 : pickup.latitude)"//   23.072622, 72.516409
+        model.pickup_lng = "\(pickup.longitude == 0.0 ? 0 : pickup.longitude)"
         model.pickup_location = address.pickUp
         model.promocode = self.strPromoCode
         model.vehicle_type_id = vehicleId

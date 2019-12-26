@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TransferToBankVC: BaseViewController
+class TransferToBankVC: BaseViewController, UITextFieldDelegate
 {
 
     
@@ -28,8 +28,11 @@ class TransferToBankVC: BaseViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        self.setNavBarWithBack(Title: "Transfer To Bank", IsNeedRightButton: false)
+        self.setNavBarWithBack(Title: "Transfer To Bank", IsNeedRightButton: true)
         self.lblWalletAmount.text = SingletonClass.sharedInstance.walletBalance
+        
+        txtPrice.delegate = self
+        
         do {
             LoginDetails = try UserDefaults.standard.get(objectType: LoginModel.self, forKey: "userProfile")!
         } catch {
@@ -41,6 +44,38 @@ class TransferToBankVC: BaseViewController
     {
         super.viewWillAppear(animated)
         self.lblWalletAmount.text = SingletonClass.sharedInstance.walletBalance//LoginDetail.loginData.walletBalance
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        if textField == txtPrice {
+            switch string {
+            case "0","1","2","3","4","5","6","7","8","9":
+                return true
+            case ".":
+                let array = Array(textField.text ?? "")
+                var decimalCount = 0
+                for character in array {
+                    if character == "." {
+                        decimalCount += 1
+                    }
+                }
+                
+                if decimalCount == 1 {
+                    return false
+                } else {
+                    return true
+                }
+            default:
+                let array = Array(string)
+                if array.count == 0 {
+                    return true
+                }
+                return false
+            }
+        }
+        
+        return true
     }
 
     /*

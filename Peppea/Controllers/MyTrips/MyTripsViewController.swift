@@ -44,7 +44,7 @@ class MyTripsViewController: BaseViewController
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        self.setNavBarWithBack(Title: "My Trips", IsNeedRightButton: false)
+        self.setNavBarWithBack(Title: "My Trips", IsNeedRightButton: true)
 
     }
 
@@ -278,6 +278,8 @@ extension MyTripsViewController: UITableViewDelegate, UITableViewDataSource{
             let dataResponseHeader = self.pastBookingHistoryModelDetails[indexPath.section]
             cell.lblName.text = "\(dataResponseHeader.driverFirstName ?? "") \(dataResponseHeader.driverLastName ?? "")"
             cell.lblBookin.text = "Booking Id : \(dataResponseHeader.id ?? "")"
+            cell.lblDate.text = UtilityClass.convertTimeStampToFormat(unixtimeInterval: dataResponseHeader.bookingTime, dateFormat: "yyyy/MM/dd HH:mm")
+            
             cell.lblPickup.text = dataResponseHeader.pickupLocation
             cell.lblDropoff.text = dataResponseHeader.dropoffLocation
             cell.btnSendReceipt.isHidden = true
@@ -306,8 +308,20 @@ extension MyTripsViewController: UITableViewDelegate, UITableViewDataSource{
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: MyTripDescriptionTableViewCell.identifier, for: indexPath) as! MyTripDescriptionTableViewCell
 
-            cell.lblTitle.text = data[indexPath.row - 1].0 + ":"
-            cell.lblDescription.text = data[indexPath.row - 1].1
+            if data[indexPath.row - 1].0 == "Other Charges" {
+                cell.lblTitle.text = data[indexPath.row - 1].0
+                cell.lblTitle.font = .bold(ofSize: cell.lblTitle.font.pointSize)
+                cell.lblDescription.text = ""
+            } else {
+                cell.lblTitle.text = data[indexPath.row - 1].0 + ":"
+                if data[indexPath.row - 1].0.lowercased().contains("time") {
+                    cell.lblDescription.text = "\(data[indexPath.row - 1].1)"
+                } else {
+                    cell.lblDescription.text = "\(Currency) \(data[indexPath.row - 1].1)"
+                }
+                
+            }
+            
             let color = indexPath.row == data.count ? UIColor.orange : UIColor.white
             cell.lblDescription.textColor = color
             cell.lblTitle.textColor = color

@@ -18,7 +18,7 @@ class ReceiveMoneyViewController: BaseViewController
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.setNavBarWithBack(Title: "Receive Money", IsNeedRightButton: false)
+        self.setNavBarWithBack(Title: "Receive Money", IsNeedRightButton: true)
         
         
         if(UserDefaults.standard.object(forKey: "userProfile") == nil)
