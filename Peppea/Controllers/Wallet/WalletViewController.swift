@@ -258,7 +258,7 @@ class WalletViewController: BaseViewController, UIPickerViewDelegate, UIPickerVi
         
         myView.addSubview(myLabel)
         myView.addSubview(myImageView)
-        
+       
         return myView
     }
     
@@ -313,6 +313,7 @@ extension WalletViewController: selectPaymentOptionDelegate {
                     self.viewCardPin.isHidden = true
                     self.lblBankCardName.text = "M-Pesa"
                     self.iconSelectedPaymentMethod.image = UIImage(named: "iconMPesa")
+                     self.iconSelectedPaymentMethod.layer.cornerRadius = 10
                 } else {
                     self.lblBankCardName.isHidden = false
                     self.lblCardNumber.isHidden = false
@@ -320,7 +321,7 @@ extension WalletViewController: selectPaymentOptionDelegate {
                     
                     let type = currentData["card_type"] as! String
                     self.iconSelectedPaymentMethod.image = UIImage(named: setCreditCardImage(str: type))
-                    
+                    iconSelectedPaymentMethod.layer.cornerRadius = 10
                     self.lblBankCardName.text = currentData["card_holder_name"] as? String
                     self.lblCardNumber.text = currentData["formated_card_no"] as? String
                 }

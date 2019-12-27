@@ -123,7 +123,8 @@ class ProfileViewController: BaseViewController,UIImagePickerControllerDelegate,
     }
     func setData()
     {
-        
+        btnProfilePic.layer.borderWidth = 1.0
+        btnProfilePic.layer.borderColor = ThemeColor.cgColor
         if(UserDefaults.standard.object(forKey: "userProfile") == nil)
         {
             return
@@ -161,10 +162,20 @@ class ProfileViewController: BaseViewController,UIImagePickerControllerDelegate,
         btnProfilePic.layer.borderWidth = 2
         btnProfilePic.layer.masksToBounds = true
         
+        imgIndividual.image = UIImage(named: "UnSelectedCircle")
+        imgRegisterAsCompany.image = UIImage(named: "UnSelectedCircle")
+        imgRegisterUnderCompany.image = UIImage(named: "UnSelectedCircle")
+        
         if profile?.userType == "individual" {
             imgIndividual.image = UIImage(named: "SelectedCircle")
-            imgRegisterAsCompany.image = UIImage(named: "UnSelectedCircle")
-            imgRegisterUnderCompany.image = UIImage(named: "UnSelectedCircle")
+          
+            
+        }else if profile?.userType == "under_company"{
+           
+            imgRegisterUnderCompany.image = UIImage(named: "SelectedCircle")
+        }else{
+           
+            imgRegisterAsCompany.image = UIImage(named: "SelectedCircle")
             
         }
         
