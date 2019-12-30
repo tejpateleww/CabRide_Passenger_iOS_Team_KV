@@ -60,11 +60,11 @@ enum NetworkEnvironment: String {
     static var environment: NetworkEnvironment{
         //Set environment Here
 
-        #if DEBUG
-        return .developmentBaseUrl
-        #else
+//        #if DEBUG
+//        return .developmentBaseUrl
+//        #else
         return .liveBaseUrl
-        #endif
+//        #endif
 
 
     }
@@ -84,6 +84,7 @@ enum ApiKey: String{
     case fixRateList = "fix_rate_list"
     case transferMoney = "transfer_money"
     case transferMoneyToBank = "transfer_money_to_bank"
+    case withdrawals = "withdrawals"
     case AddCard = "add_card"
     case cardList = "card_list"
     case AddMoney = "add_money"

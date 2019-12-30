@@ -62,6 +62,10 @@ class UserWebserviceSubclass
         let params : [String:String] = transferMoneyToBankModel.generatPostParams() as! [String:String]
         WebService.shared.requestMethod(api: .transferMoneyToBank, httpMethod: .post, parameters: params, completion: completion)
     }
+    class func transferMoneyToMPesa(transferMoneyToMpesaModel : transferMoneyToMpesa, completion: @escaping CompletionResponse) {
+        let params : [String:String] = transferMoneyToMpesaModel.generatPostParams() as! [String:String]
+        WebService.shared.requestMethod(api: .withdrawals, httpMethod: .post, parameters: params, completion: completion)
+    }
     class func updateAccount(transferMoneyModel : UpdateAccountData, completion: @escaping CompletionResponse) {
         let params : [String:String] = transferMoneyModel.generatPostParams() as! [String:String]
         WebService.shared.requestMethod(api: .updateAccount, httpMethod: .post, parameters: params, completion: completion)

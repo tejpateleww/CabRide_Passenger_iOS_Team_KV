@@ -162,6 +162,7 @@
 		7A7227942345B8A40042B491 /* NoDataFoundTblCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A7227922345B8A40042B491 /* NoDataFoundTblCell.xib */; };
 		7A984494230A6BED004359F3 /* BulkMileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A984492230A6BED004359F3 /* BulkMileData.swift */; };
 		7A984495230A6BED004359F3 /* BulkMileHistoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A984493230A6BED004359F3 /* BulkMileHistoryList.swift */; };
+		7ACF73EC23B63A3800632A93 /* WalletWebPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACF73EB23B63A3800632A93 /* WalletWebPageVC.swift */; };
 		7AF06975234B12FA003F5790 /* chatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF06974234B12FA003F5790 /* chatModel.swift */; };
 		B1DE158E22D34818001045B1 /* ChangePwVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DE158D22D34818001045B1 /* ChangePwVC.swift */; };
 		B1DE159822D361D3001045B1 /* MyMileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DE159722D361D3001045B1 /* MyMileVC.swift */; };
@@ -394,6 +395,7 @@
 		7A7227922345B8A40042B491 /* NoDataFoundTblCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoDataFoundTblCell.xib; sourceTree = "<group>"; };
 		7A984492230A6BED004359F3 /* BulkMileData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BulkMileData.swift; sourceTree = "<group>"; };
 		7A984493230A6BED004359F3 /* BulkMileHistoryList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BulkMileHistoryList.swift; sourceTree = "<group>"; };
+		7ACF73EB23B63A3800632A93 /* WalletWebPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletWebPageVC.swift; sourceTree = "<group>"; };
 		7AF06974234B12FA003F5790 /* chatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatModel.swift; sourceTree = "<group>"; };
 		B1DE158D22D34818001045B1 /* ChangePwVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePwVC.swift; sourceTree = "<group>"; };
 		B1DE159722D361D3001045B1 /* MyMileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMileVC.swift; sourceTree = "<group>"; };
@@ -575,6 +577,7 @@
 				46C469B622D70DA3007BA89B /* TransferToBankVC.swift */,
 				46C469B722D70DA3007BA89B /* WalletViewController.swift */,
 				463DEFC822D851E6002365F8 /* SendMoneyViewController.swift */,
+				7ACF73EB23B63A3800632A93 /* WalletWebPageVC.swift */,
 			);
 			path = Wallet;
 			sourceTree = "<group>";
@@ -1771,6 +1774,7 @@
 				466957DE22DD9E4A008A73C0 /* WebserviceSubclass.swift in Sources */,
 				468E993222D9F26900072361 /* UpdatePersonalInfo.swift in Sources */,
 				464CB66222E1961600273F29 /* bookingRequest.swift in Sources */,
+				7ACF73EC23B63A3800632A93 /* WalletWebPageVC.swift in Sources */,
 				EEE2B80622C62929004F1C00 /* SplashViewController.swift in Sources */,
 				688122CE2348726500577D6E /* VehicleDetailViewController.swift in Sources */,
 				1882A0AD22EB1387008B5D1A /* CancelTripRequestModel.swift in Sources */,

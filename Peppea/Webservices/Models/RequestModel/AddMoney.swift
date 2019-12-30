@@ -11,4 +11,7 @@ class AddMoney : RequestModel {
     var customer_id: String = ""
     var card_id: String = ""
     var amount: String = ""
+    var pin: String = ""
+    var payment_type:String = ""
+    
 }

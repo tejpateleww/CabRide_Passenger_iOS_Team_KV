@@ -18,6 +18,8 @@ class WalletViewController: BaseViewController, UIPickerViewDelegate, UIPickerVi
     @IBOutlet weak var txtAmount: UITextField!
     @IBOutlet weak var txtSelectPaymentMethod: UITextField!
     @IBOutlet weak var viewCardPin: UIView!
+    @IBOutlet weak var txtCardPin: UITextField!
+    
     
     var aryCards = [CardsList]()
     
@@ -58,7 +60,8 @@ class WalletViewController: BaseViewController, UIPickerViewDelegate, UIPickerVi
         }
         do {
             LoginDetail = try UserDefaults.standard.get(objectType: LoginModel.self, forKey: "userProfile")!
-            self.lblTotalWalletBalance.text = SingletonClass.sharedInstance.walletBalance//LoginDetail.loginData.walletBalance
+            self.self.lblTotalWalletBalance.text = "\(Currency) " + ((SingletonClass.sharedInstance.walletBalance != "") ? SingletonClass.sharedInstance.walletBalance : "0.0")
+            //LoginDetail.loginData.walletBalance
             cardDetailModel = try UserDefaults.standard.get(objectType: AddCardModel.self, forKey: "cards")!
             self.aryCards = cardDetailModel.cards
         }
@@ -70,18 +73,15 @@ class WalletViewController: BaseViewController, UIPickerViewDelegate, UIPickerVi
         pickerView.delegate = self
         
         self.setNavBarWithBack(Title: "Wallet", IsNeedRightButton: true)
-        
-        self.lblBankCardName.text = "Select Payment Method"
-        self.lblCardNumber.isHidden = true
-        iconSelectedPaymentMethod.image = UIImage.init(named: "iconcard")
-        
-        txtAmount.delegate = self
-        viewCardPin.isHidden = true
+        self.txtAmount.setCurrencyLeftView()
+        self.SetupLayout()
+     
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.lblTotalWalletBalance.text = SingletonClass.sharedInstance.walletBalance//LoginDetail.loginData.walletBalance
+        self.self.lblTotalWalletBalance.text = "\(Currency) " + ((SingletonClass.sharedInstance.walletBalance != "") ? SingletonClass.sharedInstance.walletBalance : "0.0")
+//        LoginDetail.loginData.walletBalance
     }
     
     @IBAction func btnSendMoneyTapped(_ sender: Any) {
@@ -108,34 +108,28 @@ class WalletViewController: BaseViewController, UIPickerViewDelegate, UIPickerVi
     }
     @IBAction func btnTopUpTapped(_ sender: Any)
     {
+//        let WalletWebPage = self.storyboard?.instantiateViewController(withIdentifier: "WalletWebPageVC") as! WalletWebPageVC
+////        WalletWebPage.Balance = json["wallet_balance"].stringValue
+//        WalletWebPage.strURL = "https://www.peppea.com"
+//        WalletWebPage.PaymentDelegate = self
+//        self.navigationController?.pushViewController(WalletWebPage, animated: true)
+//
+//        return
+        
         if txtAmount.text?.count == 0
         {
             AlertMessage.showMessageForError("Please enter amount.")
         }
-        else if self.CardID == "" //|| self.CardID == nil
-        {
-            AlertMessage.showMessageForError("Please select Payment method.")
+        else if self.strPaymentType == "card" && self.txtCardPin.text!.isBlank {
+            AlertMessage.showMessageForError("Please enter card pin.")
         }
+//        else if self.CardID == "" //|| self.CardID == nil
+//        {
+//            AlertMessage.showMessageForError("Please select Payment method.")
+//        }
         else
         {
-            addMoneyReqModel.card_id = self.CardID
-            addMoneyReqModel.amount = self.txtAmount.text ?? ""
-            addMoneyReqModel.customer_id = LoginDetail.loginData.id
-            UtilityClass.showHUD(with: UIApplication.shared.keyWindow)
-            UserWebserviceSubclass.AddMoneytoWallet(addMoneyModel: addMoneyReqModel) { (json, status) in
-                UtilityClass.hideHUD()
-                if status
-                {
-                    self.lblTotalWalletBalance.text = json["wallet_balance"].stringValue
-                    SingletonClass.sharedInstance.walletBalance = json["wallet_balance"].stringValue
-                    AlertMessage.showMessageForSuccess(json["message"].stringValue)
-                    self.txtAmount.text = ""
-                }
-                else
-                {
-                    AlertMessage.showMessageForError("error")
-                }
-            }
+              self.WebserviceToAddMoney()
         }
     }
     
@@ -312,19 +306,89 @@ extension WalletViewController: selectPaymentOptionDelegate {
                     self.lblCardNumber.isHidden = true
                     self.viewCardPin.isHidden = true
                     self.lblBankCardName.text = "M-Pesa"
+                    strPaymentType = "m_pesa"
                     self.iconSelectedPaymentMethod.image = UIImage(named: "iconMPesa")
                      self.iconSelectedPaymentMethod.layer.cornerRadius = 10
                 } else {
                     self.lblBankCardName.isHidden = false
                     self.lblCardNumber.isHidden = false
                     self.viewCardPin.isHidden = false
-                    
+                    strPaymentType = "card"
                     let type = currentData["card_type"] as! String
                     self.iconSelectedPaymentMethod.image = UIImage(named: setCreditCardImage(str: type))
                     iconSelectedPaymentMethod.layer.cornerRadius = 10
                     self.lblBankCardName.text = currentData["card_holder_name"] as? String
                     self.lblCardNumber.text = currentData["formated_card_no"] as? String
+                    self.CardID = (currentData["id"] as? String)!
                 }
+            }
+        }
+    }
+}
+
+//MARK:- PaymentProcessComplete Delegate Methods
+
+extension WalletViewController: ProcessCompleteDelegate {
+    
+    func didFinish(WalletBalance:String, PaymentStatus: Bool) {
+        if PaymentStatus {
+            self.self.lblTotalWalletBalance.text = "\(Currency) " + ((WalletBalance != "") ? WalletBalance : "0.0")
+            AlertMessage.showMessageForSuccess("Money added successfully")
+            SetupLayout()
+        }
+        else {
+            AlertMessage.showMessageForError("Transaction Failed")
+        }
+    }
+    
+}
+
+
+//MARK:- WebService & Custom Methods
+
+extension WalletViewController {
+    
+    func SetupLayout() {
+        self.txtAmount.text = ""
+        self.lblBankCardName.text = "Select Payment Method"
+        self.lblCardNumber.isHidden = true
+        self.iconSelectedPaymentMethod.image = UIImage.init(named: "iconcard")
+        self.txtAmount.delegate = self
+        self.viewCardPin.isHidden = true
+    }
+ 
+    func WebserviceToAddMoney() {
+        
+        if self.strPaymentType == "card" {
+            addMoneyReqModel.card_id = self.CardID
+            addMoneyReqModel.pin = self.txtCardPin.text!
+        }
+        addMoneyReqModel.amount = self.txtAmount.text ?? ""
+        addMoneyReqModel.customer_id = LoginDetail.loginData.id
+        addMoneyReqModel.payment_type = self.strPaymentType
+        UtilityClass.showHUD(with: UIApplication.shared.keyWindow)
+        UserWebserviceSubclass.AddMoneytoWallet(addMoneyModel: addMoneyReqModel) { (json, status) in
+            UtilityClass.hideHUD()
+            if status
+            {
+                if let URL = json["url"].string, URL != "" {
+                    let WalletWebPage = self.storyboard?.instantiateViewController(withIdentifier: "WalletWebPageVC") as! WalletWebPageVC
+                    WalletWebPage.Balance = json["wallet_balance"].stringValue
+                    WalletWebPage.strURL = URL
+                    WalletWebPage.PaymentDelegate = self
+                    self.navigationController?.pushViewController(WalletWebPage, animated: true)
+                }
+                else {
+                    self.self.lblTotalWalletBalance.text = "\(Currency) " + ((json["wallet_balance"].stringValue != "") ? json["wallet_balance"].stringValue : "0.0")
+                    SingletonClass.sharedInstance.walletBalance = json["wallet_balance"].stringValue
+                    AlertMessage.showMessageForSuccess(json["message"].stringValue)
+                    self.SetupLayout()
+                }
+                
+            }
+            else
+            {
+                AlertMessage.showMessageForError("error")
             }
         }
     }
