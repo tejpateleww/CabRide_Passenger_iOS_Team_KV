@@ -41,6 +41,7 @@ enum NetworkEnvironment: String {
                     loginModelDetails = try UserDefaults.standard.get(objectType: LoginModel.self, forKey: "userProfile")!
                     if loginModelDetails.loginData.xApiKey != nil
                     {
+                        print("Header Key : \t\(["key":"Peppea$951", "x-api-key": loginModelDetails.loginData.xApiKey])")
                         return ["key":"Peppea$951", "x-api-key": loginModelDetails.loginData.xApiKey]
                     }
                     else
@@ -119,6 +120,11 @@ enum ApiKey: String{
     case transferCorporateMiles = "transfer_corporate_miles/"
     
     case customerUnderCompanyList = "customer_under_company_list/"
+    
+    case pastDueHistory = "past_due_history/"
+    case pastDuePayment = "past_due_payment"
+    case chat = "chat"
+    case chatHistory = "chat_history/"
 }
 enum ParameterKey
 {
@@ -135,22 +141,53 @@ enum socketApiKeys: String
     
     case kSocketBaseURL = "https://www.peppea.com:8080" // "http://13.127.213.134:8080" //"https://www.tantaxitanzania.com:8081""http://3.120.161.225:8080""http://13.237.0.107:8080/"http://3.120.161.225:8080""https://pickngolk.info:8081" "https://pickngolk.info:8081"   // "http://54.169.67.226:8080"  //
     
+    /// **** Emit Keys ****
     case UpdateCustomerLatLng       = "connect_customer"    // customer_id, lat, lng
+    case ReceiveTips                = "receive_tips"    // booking_id,tips
+    //---------------------------------------------------------------------------------
+    
+    /// **** ON/Emit Keys ****
     case GetEstimateFare            = "get_estimate_fare"   // customer_id : 1, pickup_lng:72.5291184, dropoff_lat:23.0305179, dropoff_lng:72.5053514, pickup_lat:23.0636726
+    case DriverCurrentLocation      = "driver_current_location"
+    case NearByDriver               = "near_by_driver"
+    //---------------------------------------------------------------------------------
+    
+    /// **** On Keys ****
     case AfterDriverAcceptRequest   = "accept_booking_request"
     case StartTrip                  = "start_trip"
     case CompleteTrip               = "complete_trip"
     case OnTheWayBookLater          = "on_the_way_booking_request"
-    
     case AskForTips                 = "ask_for_tips"
-    case ReceiveTips                = "receive_tips"    // booking_id,tips
     case CancelledBookingRequestBySystem = "cancelled_booking_request_by_system"
     case CancelTrip                 = "cancel_trip"
-    case DriverCurrentLocation      = "live_tracking"//"driver_current_location"\
+    case LiveTracking               = "live_tracking"       //"driver_current_location"\
+    case ArrivedAtPickupLocation    = "arrived_at_pickup_location"
+    
+    case VerifyCustomer             = "verify_customer"
+    case CompleteTripCard           = "complete_trip_card"
+    case PaymentFailedMpesa         = "payment_failed_mpesa"
+    case PaymentSuccessMpesa        = "payment_success_mpesa"
+    case WaitingTimeAlert           = "waiting_time_alert"
+    case CancelBookingBeforeAccept  = "cancel_booking_before_accept"
+    //---------------------------------------------------------------------------------
 }
 
-
-
-
-
-
+//Common.socket.on(Socket.EVENT_CONNECT, onConnect);
+//Common.socket.on("accept_booking_request", onAcceptBookingRequestNotification);  // accept booking request
+//Common.socket.on("cancel_trip", onRejectBookingRequestNotification); // cancel trip
+//Common.socket.on("cancelled_booking_request_by_system", onRejectBookingRequestNotification); //Do not accept Any Driver
+//Common.socket.on("complete_trip", completeTrip);                                //Complete Trip
+//Common.socket.on("start_trip", onPickupPassengerNotification);                  //start trip
+//Common.socket.on("ask_for_tips", AskForTipsToPassenger);                        // Ask for tip
+//Common.socket.on("get_estimate_fare", onGetEstimateFare);                                   // get Car models
+//Common.socket.on("on_the_way_booking_request", onAcceptAdvancedBookingRequestNotification);  //  On the Way Book later
+//Common.socket.on("live_tracking"/*"driver_current_location"*/, onGetDriverLocation);  //  Get Driver location
+//Common.socket.on("complete_trip_card", onLoadPayment);  //  if 3D CARD load web page for enter otp
+//Common.socket.on("arrived_at_pickup_location", onArrivedDriver);
+//Common.socket.on("near_by_driver", onReceiveNearByDriver);
+//Common.socket.on("payment_failed_mpesa", onMpesaPaymentFailed);
+//Common.socket.on("payment_success_mpesa", onMpesaPaymentSuccess);
+//Common.socket.on("waiting_time_alert", onWaitting_time_alert);
+//Common.socket.on("cancel_booking_before_accept", onCancelBookingBeforeAccept);
+//Common.socket.on("verify_customer", onVerifyCustomer);
+//Common.socket.on(Socket.EVENT_DISCONNECT, onDisconnect);

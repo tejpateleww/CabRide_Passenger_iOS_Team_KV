@@ -81,6 +81,15 @@ class SplashViewController: UIViewController {
             if status
             {
                 //                (UIApplication.shared.delegate as! AppDelegate).GoToLogin()
+        
+                var cancelReason = [CancelReason]()
+                let cancelReasonArray = json["cancel_reason"].arrayValue
+                for cancelReasonJson in cancelReasonArray{
+                    let value = CancelReason(fromJson: cancelReasonJson)
+                    cancelReason.append(value)
+                }
+                
+                SingletonClass.sharedInstance.cancelReason = cancelReason
                 
                 let VehicleListModelDetails = VehicleListModel.init(fromJson: json)
                 do

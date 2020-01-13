@@ -28,6 +28,7 @@ class BookingInfo : NSObject, NSCoding{
     var driverAmount : String!
     var driverId : Int!
     var driverInfo : DriverInfo!
+    var driverVehicleInfo : DriverVehicleInfo!
     var dropoffLat : String!
     var dropoffLng : String!
     var dropoffLocation : String!
@@ -54,6 +55,68 @@ class BookingInfo : NSObject, NSCoding{
     var vehicleType : VehicleType!
     var vehicleTypeId : String!
     var rentType : String!
+    
+    
+//    var _id : String!
+//    var acceptTime : Int!
+//    var arrivedTime : Int!
+//    var baseFare : String!
+//    var bookingFee : String!
+//    var bookingTime : String!
+//    var bookingType : String!
+//    var cancelBy : String!
+    var canceleReason : String!
+//    var cancellationCharge : String!
+//    var cardId : String!
+//    var companyAmount : String!
+//    var customerId : String!
+//    var customerInfo : CustomerInfo!
+//    var discount : String!
+//    var distance : String!
+//    var distanceFare : String!
+//    var driverAmount : String!
+//    var driverId : Int!
+//    var driverInfo : DriverInfo!
+//    var driverVehicleInfo : DriverVehicleInfo!
+//    var dropoffLat : String!
+//    var dropoffLng : String!
+//    var dropoffLocation : String!
+//    var dropoffTime : String!
+//    var durationFare : String!
+//    var estimatedFare : String!
+    var extraCharge : String!
+    var fareIncrease : String!
+    var fareIncreaseId : String!
+    var fixRateId : String!
+    var forwardType : String!
+//    var grandTotal : String!
+//    var id : String!
+    var isChangedPaymentType : String!
+//    var noOfPassenger : String!
+//    var onTheWay : String!
+    var paymentResponse : String!
+//    var paymentStatus : String!
+//    var paymentType : String!
+//    var pickupDateTime : String!
+//    var pickupLat : String!
+//    var pickupLng : String!
+//    var pickupLocation : String!
+//    var pickupTime : String!
+    var pin : String!
+//    var promocode : String!
+//    var referenceId : String!
+//    var rentType : String!
+    var requestId : String!
+//    var status : String!
+//    var subTotal : String!
+//    var tax : String!
+    var tips : String!
+    var tipsStatus : String!
+//    var tripDuration : String!
+//    var vehicleType : VehicleType!
+//    var vehicleTypeId : String!
+    var waitingTime : String!
+    var waitingTimeCharge : String!
 
     
     override init() {
@@ -91,6 +154,10 @@ class BookingInfo : NSObject, NSCoding{
         if !driverInfoJson.isEmpty{
             driverInfo = DriverInfo(fromJson: driverInfoJson)
         }
+        let driverVehicleInfoJson = json["driver_vehicle_info"]
+        if !driverVehicleInfoJson.isEmpty{
+            driverVehicleInfo = DriverVehicleInfo(fromJson: driverVehicleInfoJson)
+        }
         dropoffLat = json["dropoff_lat"].stringValue
         dropoffLng = json["dropoff_lng"].stringValue
         dropoffLocation = json["dropoff_location"].stringValue
@@ -120,6 +187,26 @@ class BookingInfo : NSObject, NSCoding{
         }
         vehicleTypeId = json["vehicle_type_id"].stringValue
         rentType = json["rent_type"].stringValue
+        
+        
+        
+        
+        
+        
+        canceleReason = json["cancele_reason"].stringValue
+        extraCharge = json["extra_charge"].stringValue
+        fareIncrease = json["fare_increase"].stringValue
+        fareIncreaseId = json["fare_increase_id"].stringValue
+        fixRateId = json["fix_rate_id"].stringValue
+        forwardType = json["forward_type"].stringValue
+        isChangedPaymentType = json["is_changed_payment_type"].stringValue
+        paymentResponse = json["payment_response"].stringValue
+        pin = json["pin"].stringValue
+        requestId = json["request_id"].stringValue
+        tips = json["tips"].stringValue
+        tipsStatus = json["tips_status"].stringValue
+        waitingTime = json["waiting_time"].stringValue
+        waitingTimeCharge = json["waiting_time_charge"].stringValue
 	}
 
 	/**
@@ -184,6 +271,9 @@ class BookingInfo : NSObject, NSCoding{
         }
         if driverInfo != nil{
         	dictionary["driverInfo"] = driverInfo.toDictionary()
+        }
+        if driverVehicleInfo != nil{
+            dictionary["driverVehicleInfo"] = driverVehicleInfo.toDictionary()
         }
         if dropoffLat != nil{
         	dictionary["dropoff_lat"] = dropoffLat
@@ -263,6 +353,48 @@ class BookingInfo : NSObject, NSCoding{
         if rentType != nil {
             dictionary["rent_type"] = rentType
         }
+        
+        if canceleReason != nil{
+            dictionary["cancele_reason"] = canceleReason
+        }
+        if extraCharge != nil{
+            dictionary["extra_charge"] = extraCharge
+        }
+        if fareIncrease != nil{
+            dictionary["fare_increase"] = fareIncrease
+        }
+        if fareIncreaseId != nil{
+            dictionary["fare_increase_id"] = fareIncreaseId
+        }
+        if fixRateId != nil{
+            dictionary["fix_rate_id"] = fixRateId
+        }
+        if forwardType != nil{
+            dictionary["forward_type"] = forwardType
+        }
+        if isChangedPaymentType != nil{
+            dictionary["is_changed_payment_type"] = isChangedPaymentType
+        }
+        if pin != nil{
+            dictionary["pin"] = pin
+        }
+        if requestId != nil{
+            dictionary["request_id"] = requestId
+        }
+        if tips != nil{
+            dictionary["tips"] = tips
+        }
+        if tipsStatus != nil{
+            dictionary["tips_status"] = tipsStatus
+        }
+        if waitingTime != nil{
+            dictionary["waiting_time"] = waitingTime
+        }
+        if waitingTimeCharge != nil{
+            dictionary["waiting_time_charge"] = waitingTimeCharge
+        }
+        
+        
 		return dictionary
 	}
 
@@ -291,6 +423,7 @@ class BookingInfo : NSObject, NSCoding{
 		driverAmount = aDecoder.decodeObject(forKey: "driver_amount") as? String
 		driverId = aDecoder.decodeObject(forKey: "driver_id") as? Int
 		driverInfo = aDecoder.decodeObject(forKey: "driver_info") as? DriverInfo
+        driverVehicleInfo = aDecoder.decodeObject(forKey: "driver_vehicle_info") as? DriverVehicleInfo
 		dropoffLat = aDecoder.decodeObject(forKey: "dropoff_lat") as? String
 		dropoffLng = aDecoder.decodeObject(forKey: "dropoff_lng") as? String
 		dropoffLocation = aDecoder.decodeObject(forKey: "dropoff_location") as? String
@@ -317,6 +450,21 @@ class BookingInfo : NSObject, NSCoding{
 		vehicleType = aDecoder.decodeObject(forKey: "vehicle_type") as? VehicleType
 		vehicleTypeId = aDecoder.decodeObject(forKey: "vehicle_type_id") as? String
         rentType = aDecoder.decodeObject(forKey: "rent_type") as? String
+        
+        canceleReason = aDecoder.decodeObject(forKey: "cancele_reason") as? String
+        extraCharge = aDecoder.decodeObject(forKey: "extra_charge") as? String
+        fareIncrease = aDecoder.decodeObject(forKey: "fare_increase") as? String
+        fareIncreaseId = aDecoder.decodeObject(forKey: "fare_increase_id") as? String
+        fixRateId = aDecoder.decodeObject(forKey: "fix_rate_id") as? String
+        forwardType = aDecoder.decodeObject(forKey: "forward_type") as? String
+        isChangedPaymentType = aDecoder.decodeObject(forKey: "is_changed_payment_type") as? String
+        paymentResponse = aDecoder.decodeObject(forKey: "payment_response") as? String
+        pin = aDecoder.decodeObject(forKey: "pin") as? String
+        requestId = aDecoder.decodeObject(forKey: "request_id") as? String
+        tips = aDecoder.decodeObject(forKey: "tips") as? String
+        tipsStatus = aDecoder.decodeObject(forKey: "tips_status") as? String
+        waitingTime = aDecoder.decodeObject(forKey: "waiting_time") as? String
+        waitingTimeCharge = aDecoder.decodeObject(forKey: "waiting_time_charge") as? String
 	}
 
     /**
@@ -382,6 +530,9 @@ class BookingInfo : NSObject, NSCoding{
 		if driverInfo != nil{
 			aCoder.encode(driverInfo, forKey: "driver_info")
 		}
+        if driverVehicleInfo != nil{
+            aCoder.encode(driverVehicleInfo, forKey: "driver_vehicle_info")
+        }
 		if dropoffLat != nil{
 			aCoder.encode(dropoffLat, forKey: "dropoff_lat")
 		}
@@ -459,6 +610,49 @@ class BookingInfo : NSObject, NSCoding{
 		}
         if rentType != nil {
             aCoder.encode(vehicleTypeId, forKey: "rent_type")
+        }
+        
+        if canceleReason != nil{
+            aCoder.encode(canceleReason, forKey: "cancele_reason")
+        }
+        if extraCharge != nil{
+            aCoder.encode(extraCharge, forKey: "extra_charge")
+        }
+        if fareIncrease != nil{
+            aCoder.encode(fareIncrease, forKey: "fare_increase")
+        }
+        if fareIncreaseId != nil{
+            aCoder.encode(fareIncreaseId, forKey: "fare_increase_id")
+        }
+        if fixRateId != nil{
+            aCoder.encode(fixRateId, forKey: "fix_rate_id")
+        }
+        if forwardType != nil{
+            aCoder.encode(forwardType, forKey: "forward_type")
+        }
+        if isChangedPaymentType != nil{
+            aCoder.encode(isChangedPaymentType, forKey: "is_changed_payment_type")
+        }
+        if paymentResponse != nil{
+            aCoder.encode(paymentResponse, forKey: "payment_response")
+        }
+        if pin != nil{
+            aCoder.encode(pin, forKey: "pin")
+        }
+        if requestId != nil{
+            aCoder.encode(requestId, forKey: "request_id")
+        }
+        if tips != nil{
+            aCoder.encode(tips, forKey: "tips")
+        }
+        if tipsStatus != nil{
+            aCoder.encode(tipsStatus, forKey: "tips_status")
+        }
+        if waitingTime != nil{
+            aCoder.encode(waitingTime, forKey: "waiting_time")
+        }
+        if waitingTimeCharge != nil{
+            aCoder.encode(waitingTimeCharge, forKey: "waiting_time_charge")
         }
 	}
 

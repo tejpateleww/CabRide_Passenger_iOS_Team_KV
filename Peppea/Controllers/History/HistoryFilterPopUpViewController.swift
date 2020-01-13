@@ -16,25 +16,11 @@ protocol delegateFilterWalletHistory
 class HistoryFilterPopUpViewController: BaseViewController,UITextFieldDelegate
 {
 
-    
+    // MARK: - Outlets
     @IBOutlet weak var viewPopup: UIView!
-    var delegateWalletHistory: delegateFilterWalletHistory!
-    
+   
     @IBOutlet weak var txtFromDate: ThemeTextFieldLoginRegister!
-     @IBOutlet weak var txtToDate: ThemeTextFieldLoginRegister!
-    
-    var strSelectedFromDate = String()
-    var strSelectedTODate = String()
-    
-    var FromDate = Date()
-    var TODate = Date()
-    
-    var arrSelectedPaymentType = [String]()
-    var arrSelectedTranscationType = [String]()
-    
-    
-    let datePickerViewFromDate:UIDatePicker = UIDatePicker()
-    let datePickerViewToDate:UIDatePicker = UIDatePicker()
+    @IBOutlet weak var txtToDate: ThemeTextFieldLoginRegister!
     
     @IBOutlet weak var btnCAsh: UIButton!
     @IBOutlet weak var btnWallet: UIButton!
@@ -52,12 +38,74 @@ class HistoryFilterPopUpViewController: BaseViewController,UITextFieldDelegate
     @IBOutlet weak var iconMyTrips: UIImageView!
     @IBOutlet weak var iconCommission: UIImageView!
     
+    // MARK: - Variable declaration
+    var delegateWalletHistory: delegateFilterWalletHistory!
+    
+    var strSelectedFromDate = String()
+    var strSelectedTODate = String()
+    
+    var FromDate = Date()
+    var TODate = Date()
+    
+    var arrSelectedPaymentType = [String]()
+    var arrSelectedTranscationType = [String]()
+    
+    
+    let datePickerViewFromDate:UIDatePicker = UIDatePicker()
+    let datePickerViewToDate:UIDatePicker = UIDatePicker()
+    
+    var from_date = ""
+    var to_date = ""
+    var payment_type = ""
+    var transaction_type = ""
+    
+    // MARK: - Base Methods
     override func viewDidLoad()
     {
         super.viewDidLoad()
 
         self.iconCAsh.tintColor = .black
         
+        print(payment_type)
+        
+        txtToDate.text = to_date
+        strSelectedTODate = to_date
+        
+        txtFromDate.text = from_date
+        strSelectedFromDate = from_date
+       
+        
+        if payment_type.contains("cash") {
+            btnCAsh.isSelected = true
+            self.iconCAsh.image = UIImage.init(named: "iconCheckboxSelected")
+            self.arrSelectedPaymentType.append("cash")
+        }
+        if payment_type.contains("wallet") {
+            btnWallet.isSelected = true
+            self.iconWallet.image = UIImage.init(named: "iconCheckboxSelected")
+            self.arrSelectedPaymentType.append("wallet")
+        }
+        if payment_type.contains("card") {
+            btnCard.isSelected = true
+            self.iconCard.image = UIImage.init(named: "iconCheckboxSelected")
+            self.arrSelectedPaymentType.append("card")
+        }
+        if payment_type.contains("m_pesa") {
+            btnMPesa.isSelected = true
+            self.iconMPesa.image = UIImage.init(named: "iconCheckboxSelected")
+            self.arrSelectedPaymentType.append("m_pesa")
+        }
+       
+        if transaction_type.contains("MyTrips") {
+            btnMyTrips.isSelected = true
+            self.iconMyTrips.image = UIImage.init(named: "iconCheckboxSelected")
+            self.arrSelectedTranscationType.append("MyTrips")
+        }
+        if transaction_type.contains("Commission") {
+            btnCommission.isSelected = true
+            self.iconCommission.image = UIImage.init(named: "iconCheckboxSelected")
+            self.arrSelectedTranscationType.append("Commission")
+        }
         
         // Do any additional setup after loading the view.
     }
@@ -73,7 +121,7 @@ class HistoryFilterPopUpViewController: BaseViewController,UITextFieldDelegate
         viewPopup.roundCorners([.topRight , .topLeft], radius: 10)
     }
     /*
-    // MARK: - Navigation
+    // MARK: - Custom methods
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -86,7 +134,6 @@ class HistoryFilterPopUpViewController: BaseViewController,UITextFieldDelegate
         
         let fromDate = self.txtFromDate.text
         let toDate = self.txtToDate.text
-        
         
         if textField == txtToDate
         {
@@ -102,10 +149,10 @@ class HistoryFilterPopUpViewController: BaseViewController,UITextFieldDelegate
             {
                 self.datePickerViewFromDate.maximumDate = TODate
             }
-            
         }
-     
     }
+    
+    // MARK: - Actions
     
     @IBAction func txtDateFrom(_ sender: SkyFloatingLabelTextField) {
         

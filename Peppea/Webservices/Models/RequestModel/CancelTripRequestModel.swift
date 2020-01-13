@@ -11,4 +11,5 @@ import Foundation
 class CancelTripRequestModel : RequestModel {
 
     var booking_id : String = ""
+    var cancele_reason : String = ""
 }

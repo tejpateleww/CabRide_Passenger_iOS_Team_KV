@@ -222,8 +222,9 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
             DriverInfoPage.OpenChatBox = {
                 let viewController = self.storyboard?.instantiateViewController(withIdentifier: "ChatViewController") as! ChatViewController
                 viewController.strBookingId = self.booingInfo.id
-                viewController.receiver_id =  "\(String(describing: self.booingInfo.driverInfo.id))"
-                viewController.receiver_name = "\(String(describing: self.booingInfo.driverInfo.firstName)) \(String(describing: self.booingInfo.driverInfo.lastName))"
+                viewController.receiver_id =  "\(self.booingInfo.driverInfo.id ?? 0)"
+                viewController.receiver_name = "\(self.booingInfo.driverInfo.firstName ?? "") \(self.booingInfo.driverInfo.lastName ?? "")"
+                viewController.receiverImage = "\(NetworkEnvironment.baseImageURL + self.booingInfo.driverInfo.profileImage)"
                 self.navigationController?.pushViewController(viewController, animated: true)
             }
         }
@@ -482,6 +483,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
             VC.strPromoCode = ""
             VC.vehicleId = ""
             VC.selectedTimeStemp = ""
+            VC.isTripSchedule = false
         }
     
 //        setupAfterComplete()

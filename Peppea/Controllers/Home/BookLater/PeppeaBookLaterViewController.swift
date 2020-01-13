@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 protocol didSelectDateDelegate {
 
     func didSelectDateAndTime(date: String, timeStemp: String)
@@ -83,14 +82,14 @@ class PeppeaBookLaterViewController: UIViewController {
         
 //        UtilityClass
 
-        dateFormatter.dateFormat = "EEEE,dd MMMM"
+        dateFormatter.dateFormat = "EEE dd MMM"
         let selectedDateAndDay = dateFormatter.string(from: date)
 
         let strDate = selectedDateAndDay
 
         self.lblDate.text = strDate
-
-        selectedDateAndTime = "\(strDate) at \(selectedTime1)-\(selectedTime2)"
+ 
+        selectedDateAndTime = "\(strDate) \(selectedTime2)" // "\(strDate) at \(selectedTime1)-\(selectedTime2)"
     }
 
     @IBAction func btnContinue(_ sender: Any) {
@@ -100,14 +99,8 @@ class PeppeaBookLaterViewController: UIViewController {
         }
         delegateOfSelectDateAndTime?.didSelectDateAndTime(date: selectedDateAndTime, timeStemp: selectedTimeStemp)
     }
-    /*
-    // MARK: - Navigation
+   
+    
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }

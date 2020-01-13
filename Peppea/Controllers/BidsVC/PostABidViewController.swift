@@ -13,6 +13,8 @@ import GooglePlaces
 import SDWebImage
 
 class PostABidViewController: BaseViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UITextFieldDelegate,UIPickerViewDelegate, UIPickerViewDataSource, didSelectPaymentDelegate {
+   
+    
     
     @IBOutlet weak var txtShippersName: ThemeTextFieldLoginRegister?
     @IBOutlet weak var txtPickUpLocation: UITextField?
@@ -712,10 +714,11 @@ class PostABidViewController: BaseViewController,UIImagePickerControllerDelegate
     @IBOutlet weak var lblCardName: UILabel!
     @IBOutlet weak var lblCardNumber: UILabel!
     var paymentType = String()
+   
     
-    func didSelectPaymentType(PaymentType: String, PaymentTypeID: String, PaymentNumber: String, PaymentHolderName: String, dictData: [String : Any]?) {
+    func didSelectPaymentType(PaymentTypeTitle: String, PaymentType: String, PaymentTypeID: String, PaymentNumber: String, PaymentHolderName: String, dictData: [String : Any]?) {
         self.txtPayment?.placeholder = ""
-        self.lblCardName.text = PaymentType
+        self.lblCardName.text = PaymentTypeTitle
         self.paymentType = PaymentType
         self.lblCardNumber.isHidden = true
         self.imgPaymentOption.image = UIImage(named: dictData?["Type"] as? String ?? "")

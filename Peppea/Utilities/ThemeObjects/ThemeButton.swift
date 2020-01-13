@@ -27,5 +27,25 @@ class ThemeButton: UIButton {
         self.setTitleColor(.white, for: .normal)
     }
 
+    var isVehicleAvailable: Bool = false {
+        didSet {
+            if isVehicleAvailable {
+                let str = "Book Now".withTextColor(ThemeColor)
+                self.setAttributedTitle(str, for: .normal)
+//                self.setTitle("Book Now", for: .normal)
+//                self.setTitleColor(ThemeColor, for: .normal)
+                self.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
+                
+                self.titleLabel?.font = UIFont.regular(ofSize: 18)
+            } else {
+                let str = "Not Available".withTextColor(.white).withBackgroundColor(ThemeColor)
+                self.setAttributedTitle(str, for: .normal)
+//                self.setTitle("Not Available", for: .normal)
+//                self.setTitleColor(.white, for: .normal)
+                self.backgroundColor = ThemeColor
+                self.titleLabel?.font = UIFont.regular(ofSize: 19)
+            }
+        }
+    }
     
 }

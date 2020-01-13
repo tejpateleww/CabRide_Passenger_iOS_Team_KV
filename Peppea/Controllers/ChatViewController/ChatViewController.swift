@@ -63,6 +63,7 @@ class ChatViewController: BaseViewController,UIGestureRecognizerDelegate ,UINavi
     var delegateOfRefreshChatList : DelegatechatListRefresh?
     var receiver_id = String()
     var receiver_name = String()
+    var receiverImage = String()
     
     
     //    let socket = (UIApplication.shared.delegate as! AppDelegate).SocketManager
@@ -79,7 +80,7 @@ class ChatViewController: BaseViewController,UIGestureRecognizerDelegate ,UINavi
         self.hideKeyboard()
         self.registerForKeyboardNotifications()
         
-        self.setNavBarWithBack(Title: "Thomas", IsNeedRightButton: false)
+        self.setNavBarWithBack(Title: receiver_name, IsNeedRightButton: false)
         //Change by Bhautik
         SingletonClass.sharedInstance.isChatBoxOpen = true
         SingletonClass.sharedInstance.ChatBoxOpenedWithID = self.strTicketID
@@ -89,19 +90,23 @@ class ChatViewController: BaseViewController,UIGestureRecognizerDelegate ,UINavi
 //        self.btnHello.setTitle("hello".localized, for: .normal)
         let viewFN = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 40))//(0, 0, 180,40)
         let button1 = UIButton.init(frame: CGRect(x: 0, y: 0, width: 40, height: 40))//UIButton(frame:CGRect(x: 0, y: 8, width: 40, height: 20))
-        
-        button1.setImage(UIImage.init(named: "iconDummyProfilePic"), for: .normal)
+        button1.layer.cornerRadius = button1.frame.width / 2
+        button1.layer.borderColor = ThemeColor.cgColor
+        button1.layer.borderWidth = 1
+        button1.layer.masksToBounds = true
+//        button1.setImage(UIImage.init(named: "iconDummyProfilePic"), for: .normal)
+        button1.sd_setImage(with: URL(string: receiverImage), for: .normal, completed: nil)
         button1.addTarget(self, action: #selector(btnFilterClicked(_:)), for: .touchUpInside)
         viewFN.addSubview(button1)
         let rightBarButton = UIBarButtonItem(customView: viewFN)
         self.navigationItem.rightBarButtonItem = rightBarButton
     }
     
-    @IBAction func btnFilterClicked(_ sender: Any)
-    {
-        let viewController = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
-        self.navigationController?.pushViewController(viewController, animated: true)
+    @IBAction func btnFilterClicked(_ sender: Any) {
+//        let viewController = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
+//        self.navigationController?.pushViewController(viewController, animated: true)
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -131,11 +136,11 @@ class ChatViewController: BaseViewController,UIGestureRecognizerDelegate ,UINavi
         
         txtMessage.textContainerInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         txtMessage.isScrollEnabled = true
-        
-        
     }
+    
     @IBAction func segmentview(_ sender: UISegmentedControl) {
     }
+    
     @IBOutlet weak var textHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var containerHeightConstraint: NSLayoutConstraint!
     
@@ -166,9 +171,25 @@ class ChatViewController: BaseViewController,UIGestureRecognizerDelegate ,UINavi
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
        
         setImage()
-        webServiceForFetchData()
+        webServiceForGetChatHistory()
+        txtMessage.delegate = self
+        txtMessage.text = "Type a message"
+        txtMessage.textColor = UIColor.lightGray
     }
     
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "Type a message"
+            textView.textColor = UIColor.lightGray
+        }
+    }
     
     func setImage() {
 //        let dataProfile  = userInfo["image"] as? String
@@ -193,7 +214,7 @@ class ChatViewController: BaseViewController,UIGestureRecognizerDelegate ,UINavi
         let fixedWidth = txtMessage.frame.size.width
         
         let newSize = txtMessage.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
-        let numLines = Int(txtMessage.contentSize.height / (txtMessage.font?.lineHeight)! ?? 0)
+        let numLines = Int(txtMessage.contentSize.height / (txtMessage.font?.lineHeight)! )
         print(numLines)
         print("textFieldHeight: \(newSize.height)")
         self.textHeightConstraint?.constant = newSize.height
@@ -209,9 +230,8 @@ class ChatViewController: BaseViewController,UIGestureRecognizerDelegate ,UINavi
             
         }
         self.view.layoutIfNeeded()
-        
-        
     }
+    
     func textViewDidChange(_ textView: UITextView) {
         
     }
@@ -219,7 +239,6 @@ class ChatViewController: BaseViewController,UIGestureRecognizerDelegate ,UINavi
     @IBAction func btnSayHelloAction(_ sender: Any) {
 //        self.txtMessage.text = "hello".localized
     }
-    
     
     @IBAction func btnUserDetail(_ sender: Any) {
         
@@ -246,12 +265,9 @@ class ChatViewController: BaseViewController,UIGestureRecognizerDelegate ,UINavi
         self.present(actionSheetControllerIOS8, animated: true, completion: nil)
     }
     
-    
     //===================================
     // MARK: = Webservice OF Unmatch
     //===================================
-    
-    
     func registerForKeyboardNotifications(){
         //Adding notifies on keyboard appearing
 //        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
@@ -286,17 +302,12 @@ class ChatViewController: BaseViewController,UIGestureRecognizerDelegate ,UINavi
     @IBAction func sendClick(_ sender: UIButton) {
         if (self.txtMessage.text!.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).count != 0) //? true : false
         {
-            
             if txtMessage.text!.isEmpty == false {
-                
-                
-                webserviceOFSendMessage()
-                
-                
+//                webserviceOFSendMessage()
+                webServiceToSendMessage()
+                txtMessage.text = ""
             }
-            
         }
-        
     }
     
     func sendMessage(_ isSender: Bool , dictData : [String:AnyObject]){
@@ -304,13 +315,13 @@ class ChatViewController: BaseViewController,UIGestureRecognizerDelegate ,UINavi
         let objMessage = MessageObject()
         
         
-        objMessage.message = dictData["Message"] as? String
+        objMessage.message = dictData["message"] as? String
         objMessage.isSender = isSender
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        let timeString = formatter.string(from: Date())
+        _ = formatter.string(from: Date())
         
-        objMessage.created_date = dictData["Date"] as? String
+        objMessage.created_date = dictData["created_at"] as? String
         arrData.append(objMessage)
         
         if arrData.count > 0 {
@@ -345,7 +356,7 @@ class ChatViewController: BaseViewController,UIGestureRecognizerDelegate ,UINavi
     func webserviceOFSendMessage()
     {
         
-        var dictdata = [String: AnyObject]()
+//        let dictdata = [String: AnyObject]()
         
 //        "SenderId:4, TicketId:NXSPSR9TCT,
 //        Message:ok"
@@ -421,43 +432,119 @@ class ChatViewController: BaseViewController,UIGestureRecognizerDelegate ,UINavi
     
     @objc func webServiceForGetChatHistory() {
         
-        
-        
+        UserWebserviceSubclass.chatHistoryWithDriver(strURL: strBookingId) { (result, status) in
+            print(result)
+            if status {
+                
+                var aryMessages = [[String:Any]]()
+                let objMessage = MessageObject()
+                self.arrData.removeAll()
+                if let res = result.dictionaryObject {
+//                    if let passenger = res["driver"] as? [[String:Any]] {
+//                        if passenger.count != 0 {
+//                            if let img = passenger.first?["Image"] as? String {
+//
+//                                if img != "" {
+//                                    self.imgPassenger.isHidden = false
+//                                    let imageUrl = NetworkEnvironment.baseImageURL + img
+//                                    self.imgPassenger.sd_setImage(with: URL(string: imageUrl), completed: nil)
+//                                }
+//                            }
+//                            if let name = passenger.first?["Fullname"] as? String {
+//
+//                                if name != "" {
+//                                    self.lblPassengerName.isHidden = false
+//                                    self.lblPassengerName.text = name
+//                                    self.title = name
+//
+//                                    //                                        self.setNavBarWithBack(Title: name, IsNeedRightButton: false)
+//                                }
+//                            }
+//                        }
+//                    }
+                    
+                    if let message = res["data"] as? [[String:Any]] {
+                        if message.count != 0 {
+                            aryMessages = message
+                        }
+                    }
+                    
+                    if aryMessages.count != 0 {
+                        
+                        for (_, value) in aryMessages.enumerated() {
+                            
+                            objMessage.message = value["message"] as? String
+//                            objMessage.isEmergency = false
+//                            objMessage.isImage = false
+                            
+                            if value["sender_id"] as? String == SingletonClass.sharedInstance.loginData.id {
+                                objMessage.isSender = true
+                            }
+                            else {
+                                objMessage.isSender = false
+                            }
+                            
+                            objMessage.id = value["id"] as? String
+                            objMessage.bookingId = value["booking_id"] as? String
+                            objMessage.receiver_type = value["receiver_type"] as? String
+                            objMessage.sender_id = value["sender_id"] as? String
+                            objMessage.sender_type = value["sender_type"] as? String
+                            objMessage.receiver_id = value["receiver_id"] as? String
+                            objMessage.message = value["message"] as? String
+                            objMessage.created_date = value["created_at"] as? String
+                            
+                            self.arrData.append(objMessage)
+                        }
+                        
+                        self.arrData.removeAll()
+                        
+                        aryMessages.map{self.arrData.append(MessageObject(isSender: $0["sender_id"] as? String == SingletonClass.sharedInstance.loginData.id ? true : false, name: "", image: "", id: "", sender_id: "\($0["sender_id"] as? String ?? "")", receiver_id: "\($0["receiver_id"] as? String ?? "")", message: "\($0["message"] as? String ?? "")", created_date: "\($0["created_at"] as? String ?? "")", bookingId: "\($0["booking_id"] as? String ?? "")", sender_type: "\($0["sender_type"] as? String ?? "")", receiver_type: "\($0["receiver_type"] as? String ?? "")"))}
+                        
+                        
+                        self.tblVw.reloadData()
+                        if self.arrData.count > 0  {
+                            let indexPath = IndexPath.init(row: self.arrData.count-1, section: 0)
+                            self.tblVw.scrollToRow(at: indexPath, at: .bottom, animated: true)
+                        }
+                    }
+                }
+            } else {
+                
+            }
+        }
     }
     
     @objc func webServiceToSendMessage()  {
         
         let SendMessageModel = chatModel()
-        
         SendMessageModel.booking_id = self.strBookingId
         SendMessageModel.sender_type = "customer"
         SendMessageModel.receiver_type = "driver"
         SendMessageModel.sender_id = (SingletonClass.sharedInstance.loginData.id)!
         SendMessageModel.receiver_id = self.receiver_id
         SendMessageModel.message = self.txtMessage.text
-        
-        UserWebserviceSubclass.SendMessageToDriver(SendChat: SendMessageModel) { (Response, status) in
-         
+        UserWebserviceSubclass.chatWithDriver(SendChat: SendMessageModel) { (response, status) in
+            print(response)
             if status {
-                
+                self.webServiceForGetChatHistory()
             }
             else {
                 
             }
         }
-        
     }
     
-    @objc func webServiceForFetchData()
-    {
-        
+    
+//    @objc func webServiceForFetchData()
+//    {
+//
 //        var dictdata = [String: AnyObject]()
 //        let data = SingltonClass.sharedInstance.ProfileLoginData!
 //        let IdOfUser =  data.profiledata!.id!
 //        dictdata[keyAllKey.senderUserMember1] = IdOfUser as AnyObject//id
 //        dictdata[keyAllKey.senderReciverMember2] = strSendId as AnyObject
 //        dictdata[keyAllKey.pagenum] = "1" as AnyObject
-        
+//
 //        webserviceForChatHistory(strTicketID as AnyObject) { (result, status) in
 //
 //            if(status)
@@ -513,9 +600,9 @@ class ChatViewController: BaseViewController,UIGestureRecognizerDelegate ,UINavi
 ////                UtilityClass.showMessageForError((result as! [String:AnyObject])["message"] as! String)
 //            }
 //        }
-        
-        
-    }
+//
+//
+//    }
     
     
     
@@ -547,6 +634,7 @@ class ChatViewController: BaseViewController,UIGestureRecognizerDelegate ,UINavi
 //            ProfileViewVc.isFromChatVc = true
 //        }
     }
+    
     @objc private func RefreshChatViewWithNewChat(notification: NSNotification)
     {
         if let MessageDict = notification.userInfo as? [String:Any]
@@ -561,13 +649,13 @@ class ChatViewController: BaseViewController,UIGestureRecognizerDelegate ,UINavi
                 if let jsonResponse = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? Dictionary<String,Any>
                 {
                     
-                    UserDict["Sender"] = jsonResponse["Sender"] as! String
-                    UserDict["ReceiverId"] = jsonResponse["ReceiverId"] as! String
-                    UserDict["TicketId"] = jsonResponse["TicketId"] as! String
-                    UserDict["Message"] = jsonResponse["Message"] as! String
-                    UserDict["Receiver"] = jsonResponse["Receiver"] as! String
-                    UserDict["SenderId"] = jsonResponse["SenderId"] as! String
-                    UserDict["Date"] = jsonResponse["Date"] as! String
+                    UserDict["sender_type"] = jsonResponse["sender_type"] as? String ?? ""
+                    UserDict["receiver_id"] = jsonResponse["receiver_id"] as? String ?? ""
+                    UserDict["booking_id"] = jsonResponse["booking_id"] as? String ?? ""
+                    UserDict["message"] = jsonResponse["message"] as? String ?? ""
+                    UserDict["receiver_type"] = jsonResponse["receiver_type"] as? String ?? ""
+                    UserDict["sender_id"] = jsonResponse["sender_id"] as? String ?? ""
+                    UserDict["created_at"] = jsonResponse["created_at"] as? String ?? ""
                 }
             }
             catch let error as NSError {
@@ -581,7 +669,7 @@ class ChatViewController: BaseViewController,UIGestureRecognizerDelegate ,UINavi
 //            self.lblName.text = ""
 //            self.lblSubjectTitle.text = ""
            
-            self.webServiceForFetchData()
+            self.webServiceForGetChatHistory()
         }
     }
     @objc private func UpdateChat(notification: NSNotification)
@@ -637,10 +725,6 @@ extension ChatViewController: UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return arrData.count
-    }
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: MessageCell, forRowAt indexPath: IndexPath) {
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -715,7 +799,26 @@ class MessageObject  {
     var receiver_id : String? = nil
     var message : String? = nil
     var created_date : String? = nil
+    var bookingId : String? = nil
+    var sender_type : String? = nil
+    var receiver_type : String? = nil
     
+    init() {
+    }
+    
+    init(isSender: Bool, name: String, image: String, id: String, sender_id: String, receiver_id: String, message: String, created_date: String, bookingId: String, sender_type: String, receiver_type: String) {
+        self.isSender = isSender
+        self.name = name
+        self.image = image
+        self.id = id
+        self.sender_id = sender_id
+        self.receiver_id = receiver_id
+        self.message = message
+        self.created_date = created_date
+        self.bookingId = bookingId
+        self.sender_type = sender_type
+        self.receiver_type = receiver_type
+    }
 }
 
 

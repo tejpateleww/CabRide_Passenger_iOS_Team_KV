@@ -38,8 +38,8 @@ pod 'SwipeCellKit', '2.5.4'
   pod 'TTSegmentedControl'
   # pod "CRRulerControl"
 
-
-
+pod 'SwiftyAttributes'
+pod 'DropDown', '2.3.2'
 
 
   

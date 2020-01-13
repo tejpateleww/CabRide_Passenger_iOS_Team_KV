@@ -8,6 +8,7 @@
 
 import UIKit
 import SDWebImage
+import SwiftyJSON
 
 class DriverInfoPageViewController: UIViewController {
 
@@ -30,6 +31,11 @@ class DriverInfoPageViewController: UIViewController {
     @IBOutlet weak var btnMessage: UIButton!
     @IBOutlet weak var lblDriverName: UILabel!
     
+    @IBOutlet weak var lblRating: UILabel!
+    
+    
+    var contactNum = String()
+    var reason = String()
 
     func setData(bookingData: BookingInfo) {
         //        booingInfo
@@ -37,17 +43,20 @@ class DriverInfoPageViewController: UIViewController {
         let driver = bookingData.driverInfo
         _ = bookingData.customerInfo
         let vehicleType = bookingData.vehicleType
+        let driverVehicleType = bookingData.driverVehicleInfo
         
         let esti = Int(Double(bookingData.estimatedFare) ?? 0)
         
         lblCareName.text = vehicleType?.name
-//        lblCarPlateNumber.text = vehicleType.
+        lblCarPlateNumber.text = driverVehicleType?.plateNumber
         lblPickupLocation.text = bookingData.pickupLocation
         lblDropoffLocation.text = bookingData.dropoffLocation
         lblEstimatedFare.text = "\(Currency)\((esti) - 10) - \(Currency)\((esti) + 10)"
         lblDriverName.text = driver?.firstName
+        lblRating.text = driver?.rating
         
         let base = NetworkEnvironment.baseImageURL
+        contactNum = bookingData.driverInfo.mobileNo
         
 //        imgDriver.sd_addActivityIndicator()
 //        imgDriver.sd_setShowActivityIndicatorView(true)
@@ -94,6 +103,14 @@ class DriverInfoPageViewController: UIViewController {
     }
 
     @IBAction func btnCall(_ sender: Any) {
+        
+        let contactNumber = contactNum
+        if contactNumber == "" {
+            UtilityClass.showAlert(title: AppName.kAPPName, message: "Contact number is not available", alertTheme: .error)
+        }
+        else {
+            UtilityClass.callNumber(phoneNumber: contactNumber)
+        }
     }
 
     @IBAction func btnCancel(_ sender: Any) {
@@ -102,11 +119,35 @@ class DriverInfoPageViewController: UIViewController {
 //        homeVC?.setupAfterComplete()
         let AlertController = UIAlertController(title:AppName.kAPPName , message: "Are you sure want to cancel the trip?", preferredStyle: .alert)
         AlertController.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (UIAlertAction) in
-                self.webserviceForCancelTrip()
+            self.ReasonForCancelTheTrip()
         }))
         AlertController.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
         guard let Parentvc = self.parent as? HomeViewController else { return }
         Parentvc.present(AlertController, animated: true, completion: nil)
+    }
+    
+    func ReasonForCancelTheTrip() {
+        
+        let storyboard = UIStoryboard(name: "Popup", bundle: nil)
+        if let vc = storyboard.instantiateViewController(withIdentifier: "CancelTripViewController") as? CancelTripViewController {
+            vc.delegate = self
+            self.present(vc, animated: true, completion: nil)
+        }
+        
+        
+//        let AlertController2 = UIAlertController(title:AppName.kAPPName , message: "Reason for cancel the trip", preferredStyle: .actionSheet)
+//        for item in SingletonClass.sharedInstance.cancelReason {
+//            AlertController2.addAction(UIAlertAction(title: item.reason, style: .default, handler: { (UIAlertAction) in
+//                self.reason = item.reason
+//                self.webserviceForCancelTrip()
+//            }))
+//        }
+//        AlertController2.addAction(UIAlertAction(title: "None of above", style: .cancel, handler: { (UIAlertAction) in
+//            self.reason = ""
+//            self.webserviceForCancelTrip()
+//        }))
+//        guard let Parentvc2 = self.parent as? HomeViewController else { return }
+//        Parentvc2.present(AlertController2, animated: true, completion: nil)
     }
     
     @IBAction func btnWaitingTime(_ sender: Any) {
@@ -127,6 +168,9 @@ class DriverInfoPageViewController: UIViewController {
         
         let model = CancelTripRequestModel()
         model.booking_id = homeVC?.booingInfo.id ?? ""
+        if reason != "" {
+            model.cancele_reason = reason
+        }
         UserWebserviceSubclass.CancelTripBookingRequest(bookingRequestModel: model) { (response, status) in
             
             if status {
@@ -138,4 +182,20 @@ class DriverInfoPageViewController: UIViewController {
     }
     
     
+}
+
+
+extension DriverInfoPageViewController: delegateForCancelTripReason {
+    
+    func didCancelTripFromRider(obj: Any) {
+        self.reason = ""
+        if ((obj as? String) != nil) {
+            self.reason = (obj as? String ?? "")
+        }
+        else if ((obj as? CancelReason) != nil) {
+            self.reason = (obj as? CancelReason)?.reason ?? ""
+        }
+        
+        self.webserviceForCancelTrip()
+    }
 }

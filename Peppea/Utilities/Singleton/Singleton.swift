@@ -25,6 +25,8 @@ class SingletonClass: NSObject
     var isChatBoxOpen = Bool()
     var ChatBoxOpenedWithID = String()
     
+    var cancelReason = [CancelReason]()
+    
     func clearSingletonClass() {
         RegisterOTP = ""
         walletBalance = ""

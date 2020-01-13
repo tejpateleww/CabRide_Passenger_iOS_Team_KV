@@ -144,6 +144,17 @@ class UtilityClass : NSObject
         mainView?.addSubview(obj?.viewBackFull ?? UIView())
     }
     
+    class func callNumber(phoneNumber:String) {
+        
+        if let phoneCallURL = URL(string: "tel://\(phoneNumber)") {
+            
+            let application:UIApplication = UIApplication.shared
+            if (application.canOpenURL(phoneCallURL)) {
+                application.open(phoneCallURL, options: [:], completionHandler: nil)
+            }
+        }
+    }
+    
     class func showHUDWithoutLottie(with mainView: UIView?) {
         
         let obj = DataClass.getInstance()
