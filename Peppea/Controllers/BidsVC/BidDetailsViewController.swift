@@ -43,7 +43,7 @@ class BidDetailsViewController: BaseViewController,UITableViewDelegate,UITableVi
 
         iconLine.image = UIImage.init(named: "iconLine")?.withRenderingMode(.alwaysTemplate)
         iconLine.tintColor = UIColor.black
-        
+        tblView.separatorStyle = .none
         self.setNavBarWithBack(Title: "Bid Detail", IsNeedRightButton: false)
         // Do any additional setup after loading the view.
     }

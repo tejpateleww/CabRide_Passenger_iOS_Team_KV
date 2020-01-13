@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WalletViewController: BaseViewController, UIPickerViewDelegate, UIPickerViewDataSource
+class WalletViewController: BaseViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate
 {
     @IBOutlet weak var iconSelectedPaymentMethod: UIImageView!
     @IBOutlet weak var lblCardNumber: UILabel!
@@ -17,6 +17,9 @@ class WalletViewController: BaseViewController, UIPickerViewDelegate, UIPickerVi
     
     @IBOutlet weak var txtAmount: UITextField!
     @IBOutlet weak var txtSelectPaymentMethod: UITextField!
+    @IBOutlet weak var viewCardPin: UIView!
+    @IBOutlet weak var txtCardPin: UITextField!
+    
     
     var aryCards = [CardsList]()
     
@@ -28,48 +31,41 @@ class WalletViewController: BaseViewController, UIPickerViewDelegate, UIPickerVi
     var strPaymentType = String()
     @IBOutlet var selectPaymentType: [UIImageView]!
     @IBOutlet weak var lblTotalWalletBalance: UILabel!
-
-
-    var didSelectPaymentType: Bool = true
-       {
-           didSet
-           {
-               if(didSelectPaymentType)
-               {
-                   strPaymentType = "wallet"
-                   selectPaymentType.first?.image = UIImage(named: "SelectedCircle")
-                   selectPaymentType.last?.image = UIImage(named: "UnSelectedCircle")
-
-
-               }
-               else
-               {
-                   strPaymentType = "mpesa"
-                   selectPaymentType.last?.image = UIImage(named: "SelectedCircle")
-                   selectPaymentType.first?.image = UIImage(named: "UnSelectedCircle")
-
-               }
-           }
-       }
     
+    
+    var didSelectPaymentType: Bool = true
+    {
+        didSet
+        {
+            if(didSelectPaymentType)
+            {
+                strPaymentType = "wallet"
+                selectPaymentType.first?.image = UIImage(named: "SelectedCircle")
+                selectPaymentType.last?.image = UIImage(named: "UnSelectedCircle")
+            }
+            else
+            {
+                strPaymentType = "mpesa"
+                selectPaymentType.last?.image = UIImage(named: "SelectedCircle")
+                selectPaymentType.first?.image = UIImage(named: "UnSelectedCircle")
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        if(UserDefaults.standard.object(forKey: "userProfile") == nil)
-        {
+        if(UserDefaults.standard.object(forKey: "userProfile") == nil) {
             return
         }
-
-        do{
+        do {
             LoginDetail = try UserDefaults.standard.get(objectType: LoginModel.self, forKey: "userProfile")!
-            self.lblTotalWalletBalance.text = SingletonClass.sharedInstance.walletBalance//LoginDetail.loginData.walletBalance
+            self.self.lblTotalWalletBalance.text = "\(Currency) " + ((SingletonClass.sharedInstance.walletBalance != "") ? SingletonClass.sharedInstance.walletBalance : "0.0")
+            //LoginDetail.loginData.walletBalance
             cardDetailModel = try UserDefaults.standard.get(objectType: AddCardModel.self, forKey: "cards")!
             self.aryCards = cardDetailModel.cards
         }
-        catch
-        {
+        catch {
             AlertMessage.showMessageForError("error")
             return
         }
@@ -77,25 +73,23 @@ class WalletViewController: BaseViewController, UIPickerViewDelegate, UIPickerVi
         pickerView.delegate = self
         
         self.setNavBarWithBack(Title: "Wallet", IsNeedRightButton: true)
-        
-        self.lblBankCardName.text = "Select Payment Method"
-        self.lblCardNumber.isHidden = true
-        iconSelectedPaymentMethod.image = UIImage.init(named: "")
-
+        self.txtAmount.setCurrencyLeftView()
+        self.SetupLayout()
+     
     }
-    override func viewWillAppear(_ animated: Bool)
-    {
+    
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.lblTotalWalletBalance.text = SingletonClass.sharedInstance.walletBalance//LoginDetail.loginData.walletBalance
+        self.self.lblTotalWalletBalance.text = "\(Currency) " + ((SingletonClass.sharedInstance.walletBalance != "") ? SingletonClass.sharedInstance.walletBalance : "0.0")
+//        LoginDetail.loginData.walletBalance
     }
-
-    @IBAction func btnSendMoneyTapped(_ sender: Any)
-    {
+    
+    @IBAction func btnSendMoneyTapped(_ sender: Any) {
         let viewController = self.storyboard?.instantiateViewController(withIdentifier: "SendMoneyViewController") as! SendMoneyViewController
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
-   
+    
     @IBAction func btnReceiveMoney(_ sender: Any)
     {
         let viewController = self.storyboard?.instantiateViewController(withIdentifier: "ReceiveMoneyViewController") as! ReceiveMoneyViewController
@@ -114,47 +108,78 @@ class WalletViewController: BaseViewController, UIPickerViewDelegate, UIPickerVi
     }
     @IBAction func btnTopUpTapped(_ sender: Any)
     {
+//        let WalletWebPage = self.storyboard?.instantiateViewController(withIdentifier: "WalletWebPageVC") as! WalletWebPageVC
+////        WalletWebPage.Balance = json["wallet_balance"].stringValue
+//        WalletWebPage.strURL = "https://www.peppea.com"
+//        WalletWebPage.PaymentDelegate = self
+//        self.navigationController?.pushViewController(WalletWebPage, animated: true)
+//
+//        return
+        
         if txtAmount.text?.count == 0
         {
-             AlertMessage.showMessageForError("Please enter amount.")
+            AlertMessage.showMessageForError("Please enter amount.")
         }
-        else if self.CardID == "" //|| self.CardID == nil
-        {
-            AlertMessage.showMessageForError("Please select Payment method.")
+        else if self.strPaymentType == "card" && self.txtCardPin.text!.isBlank {
+            AlertMessage.showMessageForError("Please enter card pin.")
         }
+//        else if self.CardID == "" //|| self.CardID == nil
+//        {
+//            AlertMessage.showMessageForError("Please select Payment method.")
+//        }
         else
         {
-            addMoneyReqModel.card_id = self.CardID
-            addMoneyReqModel.amount = self.txtAmount.text ?? ""
-            addMoneyReqModel.customer_id = LoginDetail.loginData.id
-            UtilityClass.showHUD(with: UIApplication.shared.keyWindow)
-            UserWebserviceSubclass.AddMoneytoWallet(addMoneyModel: addMoneyReqModel) { (json, status) in
-                UtilityClass.hideHUD()
-                if status
-                {
-                    self.lblTotalWalletBalance.text = json["wallet_balance"].stringValue
-                    SingletonClass.sharedInstance.walletBalance = json["wallet_balance"].stringValue
-                    AlertMessage.showMessageForSuccess(json["message"].stringValue)
-                    self.txtAmount.text = ""
-                }
-                else
-                {
-                    AlertMessage.showMessageForError("error")
-                }
-            }
+              self.WebserviceToAddMoney()
         }
     }
     
-    @IBAction func txtSelectPaymentMethod(_ sender: UITextField) {
-//        self.performSegue(withIdentifier: "", sender: <#T##Any?#>)
-//        txtSelectPaymentMethod.inputView = pickerView
+    @IBAction func btnSelectPaymentOption(_ sender: UIButton) {
+        let next = self.storyboard?.instantiateViewController(withIdentifier: "WalletCardsVC") as! WalletCardsVC
+        next.delegate = self
+        self.navigationController?.pushViewController(next, animated: true)
     }
     
+    
+    @IBAction func txtSelectPaymentMethod(_ sender: UITextField) {
+        //        self.performSegue(withIdentifier: "", sender: <#T##Any?#>)
+        //        txtSelectPaymentMethod.inputView = pickerView
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        if textField == txtAmount {
+            switch string {
+            case "0","1","2","3","4","5","6","7","8","9":
+                return true
+            case ".":
+                let array = Array(textField.text ?? "")
+                var decimalCount = 0
+                for character in array {
+                    if character == "." {
+                        decimalCount += 1
+                    }
+                }
+                
+                if decimalCount == 1 {
+                    return false
+                } else {
+                    return true
+                }
+            default:
+                let array = Array(string)
+                if array.count == 0 {
+                    return true
+                }
+                return false
+            }
+        }
+        
+        return true
+    }
     
     //-------------------------------------------------------------
     // MARK: - PickerView Methods
     //-------------------------------------------------------------
-    
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -167,8 +192,6 @@ class WalletViewController: BaseViewController, UIPickerViewDelegate, UIPickerVi
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         return 60
     }
-    
-    
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         
@@ -183,7 +206,6 @@ class WalletViewController: BaseViewController, UIPickerViewDelegate, UIPickerVi
         myImageView.contentMode = .scaleAspectFit
         
         var rowString = String()
-
         
         switch row {
             
@@ -230,7 +252,7 @@ class WalletViewController: BaseViewController, UIPickerViewDelegate, UIPickerVi
         
         myView.addSubview(myLabel)
         myView.addSubview(myImageView)
-        
+       
         return myView
     }
     
@@ -238,7 +260,6 @@ class WalletViewController: BaseViewController, UIPickerViewDelegate, UIPickerVi
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
-     
         if aryCards.count != 0 {
             let data = aryCards[row]
             
@@ -252,21 +273,123 @@ class WalletViewController: BaseViewController, UIPickerViewDelegate, UIPickerVi
             paymentType = "card"
         }        
     }
-
-
-    @IBAction func btnPaymentTypeClicked(_ sender: UIButton)
-     {
-
-         if(sender.tag == 1) // Male
-         {
-             strPaymentType = "card"
-             didSelectPaymentType = true
-         }
-         else if (sender.tag == 2) // Female
-         {
-             strPaymentType = "mpesa"
-             didSelectPaymentType = false
-         }
-     }
     
+    @IBAction func btnPaymentTypeClicked(_ sender: UIButton)
+    {
+        if(sender.tag == 1) // Male
+        {
+            strPaymentType = "card"
+            didSelectPaymentType = true
+        }
+        else if (sender.tag == 2) // Female
+        {
+            strPaymentType = "mpesa"
+            didSelectPaymentType = false
+        }
+    }
+}
+
+extension WalletViewController: didSelectPaymentDelegate {
+    func didSelectPaymentType(PaymentType: String, PaymentTypeID: String, PaymentNumber: String, PaymentHolderName: String, dictData: [String : Any]?) {
+        
+    }
+}
+
+extension WalletViewController: selectPaymentOptionDelegate {
+    
+    func selectPaymentOption(option: Any) {
+        
+        if let currentData = option as? [String:AnyObject] {
+            if let selectedType = currentData["card_type"] as? String {
+                if selectedType == "MPesa" {
+                    self.lblBankCardName.isHidden = false
+                    self.lblCardNumber.isHidden = true
+                    self.viewCardPin.isHidden = true
+                    self.lblBankCardName.text = "M-Pesa"
+                    strPaymentType = "m_pesa"
+                    self.iconSelectedPaymentMethod.image = UIImage(named: "iconMPesa")
+                     self.iconSelectedPaymentMethod.layer.cornerRadius = 10
+                } else {
+                    self.lblBankCardName.isHidden = false
+                    self.lblCardNumber.isHidden = false
+                    self.viewCardPin.isHidden = false
+                    strPaymentType = "card"
+                    let type = currentData["card_type"] as! String
+                    self.iconSelectedPaymentMethod.image = UIImage(named: setCreditCardImage(str: type))
+                    iconSelectedPaymentMethod.layer.cornerRadius = 10
+                    self.lblBankCardName.text = currentData["card_holder_name"] as? String
+                    self.lblCardNumber.text = currentData["formated_card_no"] as? String
+                    self.CardID = (currentData["id"] as? String)!
+                }
+            }
+        }
+    }
+}
+
+//MARK:- PaymentProcessComplete Delegate Methods
+
+extension WalletViewController: ProcessCompleteDelegate {
+    
+    func didFinish(WalletBalance:String, PaymentStatus: Bool) {
+        if PaymentStatus {
+            self.self.lblTotalWalletBalance.text = "\(Currency) " + ((WalletBalance != "") ? WalletBalance : "0.0")
+            AlertMessage.showMessageForSuccess("Money added successfully")
+            SetupLayout()
+        }
+        else {
+            AlertMessage.showMessageForError("Transaction Failed")
+        }
+    }
+    
+}
+
+
+//MARK:- WebService & Custom Methods
+
+extension WalletViewController {
+    
+    func SetupLayout() {
+        self.txtAmount.text = ""
+        self.lblBankCardName.text = "Select Payment Method"
+        self.lblCardNumber.isHidden = true
+        self.iconSelectedPaymentMethod.image = UIImage.init(named: "iconcard")
+        self.txtAmount.delegate = self
+        self.viewCardPin.isHidden = true
+    }
+ 
+    func WebserviceToAddMoney() {
+        
+        if self.strPaymentType == "card" {
+            addMoneyReqModel.card_id = self.CardID
+            addMoneyReqModel.pin = self.txtCardPin.text!
+        }
+        addMoneyReqModel.amount = self.txtAmount.text ?? ""
+        addMoneyReqModel.customer_id = LoginDetail.loginData.id
+        addMoneyReqModel.payment_type = self.strPaymentType
+        UtilityClass.showHUD(with: UIApplication.shared.keyWindow)
+        UserWebserviceSubclass.AddMoneytoWallet(addMoneyModel: addMoneyReqModel) { (json, status) in
+            UtilityClass.hideHUD()
+            if status
+            {
+                if let URL = json["url"].string, URL != "" {
+                    let WalletWebPage = self.storyboard?.instantiateViewController(withIdentifier: "WalletWebPageVC") as! WalletWebPageVC
+                    WalletWebPage.Balance = json["wallet_balance"].stringValue
+                    WalletWebPage.strURL = URL
+                    WalletWebPage.PaymentDelegate = self
+                    self.navigationController?.pushViewController(WalletWebPage, animated: true)
+                }
+                else {
+                    self.self.lblTotalWalletBalance.text = "\(Currency) " + ((json["wallet_balance"].stringValue != "") ? json["wallet_balance"].stringValue : "0.0")
+                    SingletonClass.sharedInstance.walletBalance = json["wallet_balance"].stringValue
+                    AlertMessage.showMessageForSuccess(json["message"].stringValue)
+                    self.SetupLayout()
+                }
+                
+            }
+            else
+            {
+                AlertMessage.showMessageForError("error")
+            }
+        }
+    }
 }

@@ -134,7 +134,7 @@ extension String {
     }
     var isBlank: Bool {
         get {
-            let trimmed = trimmingCharacters(in: CharacterSet.whitespaces)
+            let trimmed = trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
             return trimmed.isEmpty
         }
     }
@@ -467,4 +467,22 @@ extension UIImageView {
         self.image = templateImage
         self.tintColor = color
     }
+}
+
+
+extension UITextField {
+   
+    func setCurrencyLeftView() {
+        
+        let LeftLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        LeftLabel.font = self.font
+        LeftLabel.textAlignment = .left
+        LeftLabel.text = Currency
+        LeftLabel.textColor = UIColor.black
+        LeftLabel.backgroundColor = UIColor.white
+        LeftLabel.backgroundColor = .clear
+        self.leftView = LeftLabel
+        self.leftViewMode = .always
+    }
+    
 }

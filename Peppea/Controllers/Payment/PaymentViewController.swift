@@ -12,10 +12,10 @@ import SwipeCellKit
 
 protocol didSelectPaymentDelegate {
     
-    func didSelectPaymentType(PaymentType:String, PaymentTypeID:String, PaymentNumber: String, PaymentHolderName:String)
+    func didSelectPaymentType(PaymentType:String, PaymentTypeID:String, PaymentNumber: String, PaymentHolderName:String, dictData: [String:Any]?)
 }
 
-class PaymentViewController: BaseViewController,UITableViewDelegate, UITableViewDataSource,SwipeTableViewCellDelegate
+class PaymentViewController: BaseViewController,UITableViewDelegate, UITableViewDataSource//,SwipeTableViewCellDelegate
 {
 
     
@@ -63,6 +63,7 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
     var aryOtherPayment = [[String : AnyObject]]()
     
     var isComingFromPeppeaRental = false
+    var isFromSideMenu = false
     
     override func viewDidLoad()
     {
@@ -89,6 +90,14 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
         aryYear = aryTempYear
         
         if self.PagefromBulkMiles  == false {
+            
+            var dict5 = [String:AnyObject]()
+            dict5["CardNum"] = "M-Pesa" as AnyObject
+            dict5["CardNum2"] = "m_pesa" as AnyObject
+            dict5["Type"] = "iconMPesa" as AnyObject
+            self.aryOtherPayment.append(dict5)
+            
+            
             var dict2 = [String:AnyObject]()
             dict2["CardNum"] = "Cash" as AnyObject
             dict2["CardNum2"] = "cash" as AnyObject
@@ -96,25 +105,22 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
             self.aryOtherPayment.append(dict2)
             
             var dict4 = [String:AnyObject]()
-            dict4["CardNum"] = "Bulk Mile" as AnyObject
+            dict4["CardNum"] = "My Mile Balance(0.00)" as AnyObject
             dict4["CardNum2"] = "bulk_miles" as AnyObject
             dict4["Type"] = "iconMPesa" as AnyObject
             self.aryOtherPayment.append(dict4)
             
+            var dict3 = [String:AnyObject]()
+            dict3["CardNum"] = "Wallet" as AnyObject
+            dict3["CardNum2"] = "wallet" as AnyObject
+            dict3["Type"] = "iconMPesa" as AnyObject
+            self.aryOtherPayment.append(dict3)
+            
         }
-
-        var dict3 = [String:AnyObject]()
-        dict3["CardNum"] = "Wallet" as AnyObject
-        dict3["CardNum2"] = "wallet" as AnyObject
-        dict3["Type"] = "iconMPesa" as AnyObject
-        self.aryOtherPayment.append(dict3)
         
-        var dict5 = [String:AnyObject]()
-        dict5["CardNum"] = "M-Pesa" as AnyObject
-        dict5["CardNum2"] = "m_pesa" as AnyObject
-        dict5["Type"] = "iconMPesa" as AnyObject
-        self.aryOtherPayment.append(dict5)
-        
+        tblView.reloadData()
+        tblView.layoutIfNeeded()
+        self.constraintHeightOfTableView.constant = self.tblView.contentSize.height
         /*
          
         var dict = [String:AnyObject]()
@@ -157,12 +163,14 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
             ///Peppea Rental flow
             
         }else{
-
-            ///Normal Peppea flow
-            self.webserviceForCardList()
-
+            if isFromSideMenu {
+                ///Normal Peppea flow
+                self.webserviceForCardList()
+            } else {
+                constraintHeightOfTableView.constant = CGFloat(60 * aryOtherPayment.count)
+            }
         }
-        self.setNavBarWithBack(Title: "Payment", IsNeedRightButton: false)
+        self.setNavBarWithBack(Title: "Payment", IsNeedRightButton: true)
         cardNum()
         
     }
@@ -245,7 +253,6 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
         let curYear = yearFormatter.string(from: now as Date)
         print("currentYear : \(curYear)")
         currentYear = curYear
-        
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -257,6 +264,7 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
         }
         return true
     }
+    
     func cardNum()
     {
 //        txtCardNumber.inputType = .integer
@@ -426,7 +434,6 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        
         if indexPath.section == 0
         {
             let cell = tableView.dequeueReusableCell(withIdentifier: "PaymentWalletTypeListCell") as! PaymentWalletTypeListCell
@@ -441,7 +448,7 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
             let cell = tableView.dequeueReusableCell(withIdentifier: "PaymentCardTypeListCell") as! PaymentCardTypeListCell
             let data = aryCardData[indexPath.row]
             cell.selectionStyle = .none
-            cell.delegate = self
+//            cell.delegate = self
 
             cell.iconCard.image = UIImage(named: setCardIcon(str: data.cardType))//UIImage.init(named: data["Type"] as! String)
             cell.lblTitle.text = data.cardHolderName
@@ -449,6 +456,7 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
             return cell
         }
     }
+ /*
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         guard orientation == .right else { return nil }
         
@@ -469,47 +477,48 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
         
         return [deleteAction]
     }
-    
-    
+ */
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         if self.OpenedForPayment {
-        if indexPath.section == 0
-        {
-            let PaymentObject = self.aryOtherPayment[indexPath.row]
-            if (self.isFlatRateSelected == true) && ((PaymentObject["CardNum2"] as! String) != "bulk_miles") {
-                self.dismiss(animated: true) {
-                    self.Delegate.didSelectPaymentType(PaymentType:  PaymentObject["CardNum2"] as! String, PaymentTypeID: "", PaymentNumber: "", PaymentHolderName: "")
+            if indexPath.section == 0
+            {
+                let PaymentObject = self.aryOtherPayment[indexPath.row]
+                if (self.isFlatRateSelected == true) && ((PaymentObject["CardNum2"] as! String) != "bulk_miles") {
+                    self.dismiss(animated: true) {
+                        self.Delegate.didSelectPaymentType(PaymentType:  PaymentObject["CardNum2"] as! String, PaymentTypeID: "", PaymentNumber: "", PaymentHolderName: "", dictData: PaymentObject)
+                    }
+                } else if self.isFlatRateSelected == false {
+                    if self.PagefromBulkMiles == true {
+                        self.Delegate.didSelectPaymentType(PaymentType:  PaymentObject["CardNum2"] as! String, PaymentTypeID: "", PaymentNumber: "", PaymentHolderName: "", dictData: PaymentObject)
+                        self.navigationController?.popViewController(animated: true)
+                    } else {
+                        self.dismiss(animated: true) {
+                            self.Delegate.didSelectPaymentType(PaymentType:  PaymentObject["CardNum2"] as! String, PaymentTypeID: "", PaymentNumber: "", PaymentHolderName: "", dictData: PaymentObject)
+                        }
+                    }
                 }
-            } else if self.isFlatRateSelected == false {
+            }
+            else
+            {
                 if self.PagefromBulkMiles == true {
-                    self.Delegate.didSelectPaymentType(PaymentType:  PaymentObject["CardNum2"] as! String, PaymentTypeID: "", PaymentNumber: "", PaymentHolderName: "")
+                    let card = self.aryCardData[indexPath.row]
+                    self.Delegate.didSelectPaymentType(PaymentType: "card" , PaymentTypeID: card.id, PaymentNumber: card.formatedCardNo, PaymentHolderName: card.cardHolderName, dictData: card.toDictionary())
                     self.navigationController?.popViewController(animated: true)
                 } else {
                     self.dismiss(animated: true) {
-                           self.Delegate.didSelectPaymentType(PaymentType:  PaymentObject["CardNum2"] as! String, PaymentTypeID: "", PaymentNumber: "", PaymentHolderName: "")
+                        let card = self.aryCardData[indexPath.row]
+                        self.Delegate.didSelectPaymentType(PaymentType: "card" , PaymentTypeID: card.id, PaymentNumber: card.formatedCardNo, PaymentHolderName: card.cardHolderName, dictData: card.toDictionary())
                     }
                 }
             }
         }
-        else
-        {
-            
-            if self.PagefromBulkMiles == true {
-                let card = self.aryCardData[indexPath.row]
-                self.Delegate.didSelectPaymentType(PaymentType: "card" , PaymentTypeID: card.id, PaymentNumber: card.formatedCardNo, PaymentHolderName: card.cardHolderName)
-                self.navigationController?.popViewController(animated: true)
-            } else {
-                self.dismiss(animated: true) {
-                    let card = self.aryCardData[indexPath.row]
-                    self.Delegate.didSelectPaymentType(PaymentType: "card" , PaymentTypeID: card.id, PaymentNumber: card.formatedCardNo, PaymentHolderName: card.cardHolderName)
-                }
-            }
-        }
-    }
 //        self.tblView.deselectRow(at: indexPath, animated: true)
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
     
     @IBAction func btnAddCardClicked(_ sender: Any)
     {
@@ -521,10 +530,10 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
         self.webserviceforAddnewCard()
     }
     
-    override func updateViewConstraints() {
-        self.constraintHeightOfTableView.constant = self.tblView.contentSize.height
-        super.updateViewConstraints()
-    }
+//    override func updateViewConstraints() {
+//        super.updateViewConstraints()
+//        self.constraintHeightOfTableView.constant = self.tblView.contentSize.height
+//    }
     
     func webserviceForDeleteCardFromList(_ strCardId : String)
     {
@@ -534,12 +543,10 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
         
         UserWebserviceSubclass.RemoveCardFromList(removeCardModel: RemoveCardReqModel) { (json, status) in
             UtilityClass.hideHUD()
-            if status
-            {
+            if status {
                 self.webserviceForCardList()
             }
-            else
-            {
+            else {
                 AlertMessage.showMessageForError("error")
             }
         }
@@ -556,13 +563,14 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
             {
 //                UtilityClass.hideHUD()
                 let CardListDetails = AddCardModel.init(fromJson: json)
-                do
-                {
+                do {
                     self.aryCardData = CardListDetails.cards
                     try UserDefaults.standard.set(object: CardListDetails, forKey: "cards")
+                    self.constraintHeightOfTableView.constant = self.tblView.contentSize.height
                     self.tblView.reloadData()
-                    self.updateViewConstraints()
                     
+                    self.constraintHeightOfTableView.constant = CGFloat(60 * (self.aryOtherPayment.count + self.aryCardData.count)) //self.tblView.contentSize.height
+//                    self.updateViewConstraints()
                 }
                 catch
                 {
@@ -576,11 +584,9 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
             }
         }
     }
-   
     
     func webserviceforAddnewCard()
     {
-        
         /*
          customer_id:2
          card_no:4242424242424242

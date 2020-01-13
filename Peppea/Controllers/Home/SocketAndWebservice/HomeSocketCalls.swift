@@ -92,7 +92,6 @@ extension HomeViewController: SocketConnected {
             print(#function, "\n ", json)
             self.clearMap()
             self.btnBackButtonWhileBookLater()
-            
             AlertMessage.showMessageForSuccess("Request Accepted")
             self.stopAnimationWhileStartBooking()
             self.acceptRequestData(json: json)
@@ -102,17 +101,16 @@ extension HomeViewController: SocketConnected {
     // Socket On 3
     func onSocket_StartTrip() {
         SocketIOManager.shared.socketCall(for: socketApiKeys.StartTrip.rawValue) { (json) in
-            //            print(#function, "\n ", json)
+            print(#function, "\n ", json)
             AlertMessage.showMessageForSuccess("Trip Started")
             self.startedRequestData(json: json)
-
         }
     }
     
     // Socket On 4
     func onSocket_CompleteTrip() {
         SocketIOManager.shared.socketCall(for: socketApiKeys.CompleteTrip.rawValue) { (json) in
-            //            print(#function, "\n ", json)
+            print(#function, "\n ", json)
             AlertMessage.showMessageForSuccess("Trip Completed")
             
             //            if self.booingInfo.toDictionary().count == 0 {
@@ -132,27 +130,22 @@ extension HomeViewController: SocketConnected {
                     
                     do {
                         try UserDefaults.standard.set(object: balanceLoginData, forKey: "userProfile")
-                        
                     }
                     catch {
-                        
+                        print("ERROR " , #file, "\t Line: ", #line, " \(error.localizedDescription)")
                     }
                 }
             }
-            
-            
             self.hideAndShowView(view: .ratings)
             self.isExpandCategory = true
-
         }
     }
     
     // Socket On 5
     func onSocket_OnTheWayBookLater() {
         SocketIOManager.shared.socketCall(for: socketApiKeys.OnTheWayBookLater.rawValue) { (json) in
-            //            print(#function, "\n ", json)
+            print(#function, "\n ", json)
             AlertMessage.showMessageForSuccess("Driver is on the way")
-            
             self.acceptRequestData(json: json)
         }
     }
@@ -160,9 +153,8 @@ extension HomeViewController: SocketConnected {
     // Socket On 6
     func onSocket_AskForTips() {
         SocketIOManager.shared.socketCall(for: socketApiKeys.AskForTips.rawValue) { (json) in
-            //            print(#function, "\n ", json)
+            print(#function, "\n ", json)
             AlertMessage.showMessageForSuccess("Driver asks for Tips")
-            
             self.hideAndShowView(view: .askForTip)
             self.isExpandCategory = true
         }
@@ -171,9 +163,8 @@ extension HomeViewController: SocketConnected {
     // Socket On 7
     func onSocket_CancelledBookingRequestBySystem() {
         SocketIOManager.shared.socketCall(for: socketApiKeys.CancelledBookingRequestBySystem.rawValue) { (json) in
-            //            print(#function, "\n ", json)
+            print(#function, "\n ", json)
             AlertMessage.showMessageForSuccess("Cancelled Booking Request By System")
-            
             //            self.clearMap()
             self.btnBackButtonWhileBookLater()
             self.stopAnimationWhileStartBooking()
@@ -184,7 +175,7 @@ extension HomeViewController: SocketConnected {
     // Socket On 8
     func onSocket_CancelTrip() {
         SocketIOManager.shared.socketCall(for: socketApiKeys.CancelTrip.rawValue) { (json) in
-            //            print(#function, "\n ", json)
+            print(#function, "\n ", json)
             AlertMessage.showMessageForSuccess("Cancelled Booking Request By Driver")
             self.clearMap()
             self.btnBackButtonWhileBookLater()
@@ -199,8 +190,6 @@ extension HomeViewController: SocketConnected {
             print(#function, "\n ", json)
 
             let arrData =  json.array?.first?["current_location"].array
-
-
             self.liveTrackingForTrip(lat: arrData?.last?.stringValue ?? "0.00", lng: arrData?.first?.stringValue ?? "0.00")
         }
     }

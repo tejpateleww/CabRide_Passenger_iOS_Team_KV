@@ -26,3 +26,11 @@ class transferMoneyToBank : RequestModel
     var account_number : String = ""
 }
 
+
+class transferMoneyToMpesa : RequestModel
+{
+    var customer_id : String = ""
+    var amount : String = ""
+    var type : String = ""
+    var mobile_no : String = ""
+}

@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol FavouriteLocationDelegate {
+    func didEnterFavouriteDestination(Source: [String: AnyObject])
+}
+
 class FavouriteAddressViewController: BaseViewController {
 
     // ----------------------------------------------------
@@ -19,13 +23,14 @@ class FavouriteAddressViewController: BaseViewController {
     // MARK: - Globle Declaration Methods
     // ----------------------------------------------------
     var aryData = [favouriteAddressListModel]()
+    var delegateForFavourite: FavouriteLocationDelegate!
     
     // ----------------------------------------------------
     // MARK: - Base Methods
     // ----------------------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
-        setNavBarWithBack(Title: "Favourites", IsNeedRightButton: false)
+        setNavBarWithBack(Title: "Favourites", IsNeedRightButton: true)
         
         tableView.tableFooterView = UIView()
         tableView.rowHeight = UITableView.automaticDimension
@@ -129,6 +134,19 @@ extension FavouriteAddressViewController: UITableViewDataSource, UITableViewDele
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let dataDict = aryData[indexPath.row]
+        
+        if (dataDict.dropoffLocation) != nil {
+            
+            var dict = [String:AnyObject]()
+            dict["Address"] = dataDict.dropoffLocation as AnyObject
+            dict["Lat"] = dataDict.dropoffLat as AnyObject
+            dict["Lng"] = dataDict.dropoffLng as AnyObject
+            
+            delegateForFavourite?.didEnterFavouriteDestination(Source: dict)
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

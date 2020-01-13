@@ -11,7 +11,7 @@ import Foundation
 enum MyTrips: String, CaseIterable{
     
     case past = "Past"
-    case current = "Current"
+//    case current = "Current"
     case upcoming = "Upcoming"
     
   
@@ -21,8 +21,8 @@ enum MyTrips: String, CaseIterable{
             return setPastDescription(pastBookingHistory: pastBookingHistory)
         case .upcoming:
             return setUpcomingDescription(pastBookingHistory: pastBookingHistory)
-        case .current:
-            return setUpcomingDescription(pastBookingHistory: pastBookingHistory)
+//        case .current:
+//            return setUpcomingDescription(pastBookingHistory: pastBookingHistory)
             
         }
     }
@@ -38,10 +38,13 @@ enum MyTrips: String, CaseIterable{
         } else {
             var tempArray = [("Pick Up Time" , UtilityClass.convertTimeStampToFormat(unixtimeInterval: pastBookingHistory.pickupTime, dateFormat: "dd-MM-YYYY HH:mm:ss") ),
                              ("Drop Off Time" , UtilityClass.convertTimeStampToFormat(unixtimeInterval: pastBookingHistory.dropoffTime, dateFormat: "dd-MM-YYYY HH:mm:ss")),
-                             ("Booking Fee" , pastBookingHistory.bookingFee),
-                             ("Base Fare" , pastBookingHistory.baseFare),
+                             ("Subtotal" , pastBookingHistory.subTotal),
+//                             ("Booking Fee" , pastBookingHistory.bookingFee),
+//                             ("Base Fare" , pastBookingHistory.baseFare),
                              //                ("Time Cost :" , pastBookingHistory.id),
-                ("Subtotal" , pastBookingHistory.subTotal),
+                ("Other Charges" , ""),
+                ("Discount" , pastBookingHistory.discount),
+                
                 //                ("Other Charges" , pastBookingHistory.subTotal),
                 //                ("Cancellation Charges" , pastBookingHistory.cancellationCharge),
                 //                ("Promocode" , pastBookingHistory.promocode),
@@ -70,8 +73,8 @@ enum MyTrips: String, CaseIterable{
     fileprivate func setFutureDescription(section: Int){enum MyTrips: String, CaseIterable{
         
         case past = "Past"
-        case current = "Current"
-        case upcoming = "Upcoming"        
+//        case current = "Current"
+        case upcoming = "Upcoming"
         
         func getDescription(pastBookingHistory : PastBookingHistoryResponse) -> [(String, String)]{
             switch self {
@@ -79,8 +82,8 @@ enum MyTrips: String, CaseIterable{
                 return setPastDescription(pastBookingHistory: pastBookingHistory)
             case .upcoming:
                 return setUpcomingDescription(pastBookingHistory: pastBookingHistory)
-            case .current:
-                return setUpcomingDescription(pastBookingHistory: pastBookingHistory)
+//            case .current:
+//                return setUpcomingDescription(pastBookingHistory: pastBookingHistory)
                 
             }
         }

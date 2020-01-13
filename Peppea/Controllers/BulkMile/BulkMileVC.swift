@@ -11,6 +11,7 @@ import UIKit
 
 class BulkMileVC: BaseViewController, didSelectPaymentDelegate{
     
+    
     //MARK:- Variables
     var tripType = MyMiles.myMile
     var data = [(String, String)]()
@@ -212,7 +213,7 @@ class BulkMileVC: BaseViewController, didSelectPaymentDelegate{
     
     // MARK:- Payment Select Delegate Methods
     
-    func didSelectPaymentType(PaymentType: String, PaymentTypeID: String, PaymentNumber: String, PaymentHolderName: String) {
+    func didSelectPaymentType(PaymentType: String, PaymentTypeID: String, PaymentNumber: String, PaymentHolderName: String, dictData: [String : Any]?) {
         self.PurchaseMile.payment_type = PaymentType
         if PaymentType == "card" {
             self.PurchaseMile.card_id = PaymentTypeID

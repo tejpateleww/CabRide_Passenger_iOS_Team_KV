@@ -22,7 +22,7 @@ class AutomaticExpenseVC: BaseViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setNavBarWithBack(Title: "", IsNeedRightButton: false)
+        self.setNavBarWithBack(Title: "", IsNeedRightButton: true)
         uiSettings()
         
     }

@@ -16,6 +16,8 @@ class NoDataFoundTblCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.selectionStyle = .none
+        self.isUserInteractionEnabled = false
         self.setLocalization()
     }
 

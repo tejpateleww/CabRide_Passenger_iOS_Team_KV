@@ -95,7 +95,7 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
             }
         }
 
-        didSelectPaymentType(PaymentType: "cash", PaymentTypeID: "", PaymentNumber: "", PaymentHolderName: "")
+        didSelectPaymentType(PaymentType: "cash", PaymentTypeID: "", PaymentNumber: "", PaymentHolderName: "", dictData: nil)
     }
 
     func getDataFromJSON()
@@ -202,6 +202,7 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
             }
         }
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
     {
         let numberOfCars = ( self.arrCarLists.vehicleTypeList.count > 3) ? 4 : 3
@@ -279,7 +280,6 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
                                                queue: OperationQueue.main) { (notification) -> Void in
 
                                                 let textFieldName = alertController.textFields?[0] //as! UITextField
-
                                                 saveAction.isEnabled = (textFieldName?.text?.isBlank)! == true ? false : true
         }
         
@@ -327,8 +327,6 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
         }
     }
     
-
-    
     @IBAction func btnBookLater(_ sender: Any)
     {
         let next = self.storyboard?.instantiateViewController(withIdentifier: "PeppeaBookLaterViewController") as! PeppeaBookLaterViewController
@@ -337,16 +335,19 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
     }
 
     
-    func didSelectPaymentType(PaymentType: String, PaymentTypeID: String, PaymentNumber: String, PaymentHolderName: String) {
+    func didSelectPaymentType(PaymentType: String, PaymentTypeID: String, PaymentNumber: String, PaymentHolderName: String, dictData: [String : Any]?) {
         self.lblCardName.text = PaymentType
         self.paymentType = PaymentType
         self.lblCardNumber.isHidden = true
+        self.iconSelectedCard.image = UIImage(named: dictData?["Type"] as? String ?? "")
         if PaymentType == "card" {
             self.lblCardNumber.isHidden = false
             self.CardID = PaymentTypeID
             self.lblCardName.text = PaymentHolderName
             self.lblCardNumber.text = PaymentNumber
         }
+        
+        
     }
     
 }

@@ -91,7 +91,7 @@ class InviteDriverViewController: BaseViewController, MFMailComposeViewControlle
 //        imgProfilePick.layer.borderColor = themeYellowColor.cgColor
         imgProfilePick.layer.borderWidth = 1.0
         
-        self.setNavBarWithBack(Title: "Invite Friends", IsNeedRightButton: false)
+        self.setNavBarWithBack(Title: "Invite Friends", IsNeedRightButton: true)
         // Do any additional setup after loading the view.
     }
 

@@ -15,6 +15,7 @@ class OpenBidListViewController: UIViewController,UITableViewDelegate,UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         tblView.refreshControl = refreshControl
+        tblView.separatorStyle = .none
         refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
         // Do any additional setup after loading the view.
     }

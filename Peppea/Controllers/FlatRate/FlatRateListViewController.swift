@@ -47,7 +47,8 @@ class FlatRateListViewController: BaseViewController,UITableViewDelegate, UITabl
     {
         super.viewWillAppear(animated)
         
-        self.setNavBarWithBack(Title: "Flat Rate", IsNeedRightButton: true)
+//        self.setNavBarWithBack(Title: "Flat Rate", IsNeedRightButton: true)
+        self.setNavBarWithBack(Title: "Flat Rate", IsNeedRightButton: true, isNeedBirdIcon: true)
 //          Utilities.setNavigationBarInViewController(controller: self, naviColor: ThemeNaviBlackColor, naviTitle: "Flat Rate", leftImage: kBack_Icon, rightImage: "")
 //        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
 //        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true

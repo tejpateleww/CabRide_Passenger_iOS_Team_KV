@@ -48,6 +48,9 @@ class LoginViewController: UIViewController {
         
         #endif
 
+        
+        /*Employees login Cred : Email = emp@yahoo.com || Pw = 12345678 */
+        
         setRightViewForPassword(textField: txtPassword)
        
     }

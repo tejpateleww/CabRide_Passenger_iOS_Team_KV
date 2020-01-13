@@ -42,7 +42,7 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
             
         }else{
 
-            arrMenuTitle = ["My Trips", "Payments", "Wallet", "Favourite", "Bulk Mile", "Invite Friends", "Bid My Trip", "Flat Rate","Peppea Business", "Logout"]//["My Bookings","Payment Options","Favourites","Invite Friends","Pass","Help","Logout"]
+            arrMenuTitle = ["My Trips", "Previous Due", "Payments", "Wallet", "Favourite", "Peppea KMS", "Bulk Mile History", "Invite Friends", "Bid My Trip", "Flat Rate", "Help", "Logout"] // ["My Trips", "Payments", "Wallet", "Favourite", "Bulk Mile", "Invite Friends", "Bid My Trip", "Flat Rate","Peppea Business", "Logout"] //["My Bookings","Payment Options","Favourites","Invite Friends","Pass","Help","Logout"]
         }
     }
     
@@ -93,6 +93,8 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         self.imgProfile.layer.cornerRadius = self.imgProfile.frame.size.width/2
+         self.imgProfile.layer.borderWidth = 2
+               self.imgProfile.layer.borderColor = ThemeColor.cgColor
         self.imgProfile.layer.masksToBounds = true
         self.imgProfile.contentMode = .scaleAspectFill
         
@@ -136,7 +138,7 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
 
                 //MARK: Profile
                 self.gotoProfileVC()
-
+             
             }
             else if (arrMenuTitle[indexPath.row] == "Post a Add") {
                 
@@ -228,6 +230,7 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
             {
                 let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "PaymentViewController") as! PaymentViewController
                 NextPage.OpenedForPayment = false
+                NextPage.isFromSideMenu = true
                 HomePage?.navigationController?.pushViewController(NextPage, animated: true)
                 sideMenuController?.hideMenu()
                 return
@@ -270,6 +273,12 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
             if arrMenuTitle[indexPath.row] == "Favourite"
             {
                 let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "FavouriteAddressViewController") as! FavouriteAddressViewController
+                
+                if let homeVC = self.parent?.children.first?.children.first as? HomeViewController {
+                    NextPage.delegateForFavourite = homeVC.self
+                }
+                
+                
                 HomePage?.navigationController?.pushViewController(NextPage, animated: true)
                 sideMenuController?.hideMenu()
                 return
@@ -408,7 +417,14 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
     @IBAction func btnProfilePickClicked(_ sender: Any)
     {
 
-        self.gotoProfileVC()
+//        self.gotoProfileVC()
+        
+        let HomePage = self.parent?.children.first?.children.first as? HomeViewController
+        let myAddsVC = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
+        
+        //self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
+        HomePage?.navigationController?.pushViewController(myAddsVC, animated: true)
+        sideMenuController?.hideMenu()
 
     }
     

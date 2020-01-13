@@ -24,6 +24,13 @@ class ProfileViewController: BaseViewController,UIImagePickerControllerDelegate,
     @IBOutlet weak var txtAddress: SkyFloatingLabelTextField!
     @IBOutlet weak var txtMobile: SkyFloatingLabelTextField!
     @IBOutlet weak var txtDOB: SkyFloatingLabelTextField!
+    
+    @IBOutlet weak var imgIndividual: UIImageView!
+    @IBOutlet weak var imgRegisterAsCompany: UIImageView!
+    @IBOutlet weak var imgRegisterUnderCompany: UIImageView!
+    
+    
+    
     var gender = String()
     
 //    var loginModelDetails: LoginModel = LoginModel()
@@ -39,7 +46,6 @@ class ProfileViewController: BaseViewController,UIImagePickerControllerDelegate,
     @IBOutlet weak var btnFemale: UIButton!
     @IBOutlet weak var btnMale: UIButton!
     @IBOutlet weak var imgvMale: UIImageView!
-    
     @IBOutlet weak var imgvFemale: UIImageView!
     
     var didSelectMale: Bool = true
@@ -117,7 +123,8 @@ class ProfileViewController: BaseViewController,UIImagePickerControllerDelegate,
     }
     func setData()
     {
-        
+        btnProfilePic.layer.borderWidth = 1.0
+        btnProfilePic.layer.borderColor = ThemeColor.cgColor
         if(UserDefaults.standard.object(forKey: "userProfile") == nil)
         {
             return
@@ -133,7 +140,7 @@ class ProfileViewController: BaseViewController,UIImagePickerControllerDelegate,
         }
         var profile = loginModelDetails.loginData
         lblEmail.text = profile!.firstName + " " + profile!.lastName
-        lblMobile.text = profile?.mobileNo
+        lblMobile.text = profile?.email
         
         txtFirstName.text = profile?.firstName
         txtLastName.text = profile?.lastName
@@ -151,9 +158,42 @@ class ProfileViewController: BaseViewController,UIImagePickerControllerDelegate,
         let strImage = imagBaseURL + profile!.profileImage
         btnProfilePic.sd_setImage(with: URL(string: strImage), for: .normal, completed: nil)
 
+        btnProfilePic.layer.borderColor = UIColor.black.cgColor
+        btnProfilePic.layer.borderWidth = 2
+        btnProfilePic.layer.masksToBounds = true
+        
+        imgIndividual.image = UIImage(named: "UnSelectedCircle")
+        imgRegisterAsCompany.image = UIImage(named: "UnSelectedCircle")
+        imgRegisterUnderCompany.image = UIImage(named: "UnSelectedCircle")
+        
+        if profile?.userType == "individual" {
+            imgIndividual.image = UIImage(named: "SelectedCircle")
+          
+            
+        }else if profile?.userType == "under_company"{
+           
+            imgRegisterUnderCompany.image = UIImage(named: "SelectedCircle")
+        }else{
+           
+            imgRegisterAsCompany.image = UIImage(named: "SelectedCircle")
+            
+        }
+        
+        imgIndividual.setImageColor(color: ThemeColor)
+        imgRegisterAsCompany.setImageColor(color: ThemeColor)
+        imgRegisterUnderCompany.setImageColor(color: ThemeColor)
     }
 
-
+    @IBAction func btnIndividual(_ sender: UIButton) {
+    }
+    
+    @IBAction func btnRegisterAsCompanyAction(_ sender: UIButton) {
+    }
+    
+    @IBAction func btnRegisterUnderCompanyAction(_ sender: UIButton) {
+    }
+    
+    
     @IBAction func btnSaveClicked(_ sender: Any)
     {
         updateProfile.first_name = txtFirstName.text ?? ""
@@ -300,8 +340,7 @@ class ProfileViewController: BaseViewController,UIImagePickerControllerDelegate,
         present(picker, animated: true, completion: nil)
     }
     
-    // MARK: - Image Delegate and DataSource Methods
-    
+    // MARK: - Image Delegate and DataSource Methods    
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
@@ -345,5 +384,5 @@ class ProfileViewController: BaseViewController,UIImagePickerControllerDelegate,
         self.navigationController?.pushViewController(ChangePwVC, animated: true)
     }
     
-    
 }
+

@@ -21,6 +21,10 @@ let googlApiKey = "AIzaSyDcug87uBhFLMo1KlqyaO10shE-sNTBCmw" // built from ODDs
 let baseURLDirections = "https://maps.googleapis.com/maps/api/directions/json?"
 let geocodeAddress = "https://maps.googleapis.com/maps/api/geocode/json?latlng="
 
+let PaymentSuccessURL = "https://www.peppea.com/panel/flutterwave/payment_success"
+let PaymentFailureURL = "https://www.peppea.com/panel/flutterwave/payment_failed"
+
+
 var imagBaseURL = "https://www.peppea.com/panel/"
 
 let kAPPVesion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
@@ -30,8 +34,9 @@ let kAPPVesion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionS
 let SCREEN_WIDTH = UIScreen.main.bounds.width
 let SCREEN_HEIGHT = UIScreen.main.bounds.height
 
-let Currency = "KES"
+let Currency = "KSh"
 let MeasurementSign = "mi"
+let helpLine = "1234567890"
 
 let ThemeColor : UIColor =  UIColor.init(hex: "2e2d2e")
 

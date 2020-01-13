@@ -251,8 +251,6 @@ class ChatViewController: BaseViewController,UIGestureRecognizerDelegate ,UINavi
     // MARK: = Webservice OF Unmatch
     //===================================
     
-
-    
     
     func registerForKeyboardNotifications(){
         //Adding notifies on keyboard appearing
