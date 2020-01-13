@@ -27,7 +27,16 @@ extension HomeViewController: SocketConnected {
         onSocket_AskForTips()                       // Socket On 6
         onSocket_CancelledBookingRequestBySystem()  // Socket On 7
         onSocket_CancelTrip()                       // Socket On 8
-        onSocket_DriverCurrentLocation()            // Socket On 9
+        onSocket_LiveTracking()                     // Socket On 9
+        onSocket_DriverCurrentLocation()            // Socket On 10
+        onSocket_NearByDriver()                     // Socket On 11
+        onSocket_ArrivedAtPickupLocation()          // Socket On 12
+        onSocket_VerifyCustomer()                   // Socket On 13
+        onSocket_CompleteTripCard()                 // Socket On 14
+        onSocket_PaymentFailedMpesa()               // Socket On 15
+        onSocket_PaymentSuccessMpesa()              // Socket On 16
+        onSocket_WaitingTimeAlert()                 // Socket On 17
+        onSocket_CancelBookingBeforeAccept()        // Socket On 18
     }
     
     /// Socket Off All
@@ -41,9 +50,19 @@ extension HomeViewController: SocketConnected {
         SocketIOManager.shared.socket.off(socketApiKeys.AskForTips.rawValue)                        // Socket Off 6
         SocketIOManager.shared.socket.off(socketApiKeys.CancelledBookingRequestBySystem.rawValue)   // Socket Off 7
         SocketIOManager.shared.socket.off(socketApiKeys.CancelTrip.rawValue)                        // Socket Off 8
-        SocketIOManager.shared.socket.off(socketApiKeys.DriverCurrentLocation.rawValue)             // Socket Off 9
+        SocketIOManager.shared.socket.off(socketApiKeys.LiveTracking.rawValue)                      // Socket Off 9
+        SocketIOManager.shared.socket.off(socketApiKeys.DriverCurrentLocation.rawValue)             // Socket Off 10
+        SocketIOManager.shared.socket.off(socketApiKeys.NearByDriver.rawValue)                      // Socket Off 11
+        SocketIOManager.shared.socket.off(socketApiKeys.ArrivedAtPickupLocation.rawValue)           // Socket Off 12
+        SocketIOManager.shared.socket.off(socketApiKeys.VerifyCustomer.rawValue)                    // Socket Off 13
+        SocketIOManager.shared.socket.off(socketApiKeys.CompleteTripCard.rawValue)                  // Socket Off 14
+        SocketIOManager.shared.socket.off(socketApiKeys.PaymentFailedMpesa.rawValue)                // Socket Off 15
+        SocketIOManager.shared.socket.off(socketApiKeys.PaymentSuccessMpesa.rawValue)               // Socket Off 16
+        SocketIOManager.shared.socket.off(socketApiKeys.WaitingTimeAlert.rawValue)                  // Socket Off 17
+        SocketIOManager.shared.socket.off(socketApiKeys.CancelBookingBeforeAccept.rawValue)         // Socket Off 18
         SocketIOManager.shared.socket.off(clientEvent: .disconnect)                                 // Socket Disconnect
     }
+    
     
     // ----------------------------------------------------
     // MARK:- --- Socket Emit Methods ---
@@ -68,6 +87,12 @@ extension HomeViewController: SocketConnected {
     func emitSocket_DriverCurrentLocation(param: [String : Any]) {
         SocketIOManager.shared.socketEmit(for: socketApiKeys.DriverCurrentLocation.rawValue, with: param)
     }
+    
+    // Socket Emit 5
+    func emitSocket_NearByDriver(param: [String : Any]) {
+        SocketIOManager.shared.socketEmit(for: socketApiKeys.NearByDriver.rawValue, with: param)
+    }
+    
     // ----------------------------------------------------
     // MARK:- --- Socket On Methods ---
     // ----------------------------------------------------
@@ -92,7 +117,7 @@ extension HomeViewController: SocketConnected {
             print(#function, "\n ", json)
             self.clearMap()
             self.btnBackButtonWhileBookLater()
-            AlertMessage.showMessageForSuccess("Request Accepted")
+            AlertMessage.showMessageForSuccess(json.array?.first?.dictionary?["message"]?.string ?? "Request Accepted")
             self.stopAnimationWhileStartBooking()
             self.acceptRequestData(json: json)
         }
@@ -102,7 +127,8 @@ extension HomeViewController: SocketConnected {
     func onSocket_StartTrip() {
         SocketIOManager.shared.socketCall(for: socketApiKeys.StartTrip.rawValue) { (json) in
             print(#function, "\n ", json)
-            AlertMessage.showMessageForSuccess("Trip Started")
+//            AlertMessage.showMessageForSuccess("Trip Started")
+            AlertMessage.showMessageForSuccess(json.array?.first?.dictionary?["message"]?.string ?? "Trip Started")
             self.startedRequestData(json: json)
         }
     }
@@ -111,7 +137,7 @@ extension HomeViewController: SocketConnected {
     func onSocket_CompleteTrip() {
         SocketIOManager.shared.socketCall(for: socketApiKeys.CompleteTrip.rawValue) { (json) in
             print(#function, "\n ", json)
-            AlertMessage.showMessageForSuccess("Trip Completed")
+            AlertMessage.showMessageForSuccess(json.array?.first?.dictionary?["message"]?.string ?? "Trip Completed")
             
             //            if self.booingInfo.toDictionary().count == 0 {
             let fr = json.array?.first
@@ -122,12 +148,12 @@ extension HomeViewController: SocketConnected {
                 
                 if let SavedLoginData = UserDefaults.standard.value(forKey: "userProfile") as? LoginModel {
                     let balanceLoginData = SavedLoginData
-                    balanceLoginData.loginData.BulkMilesBalance =  self.booingInfo.customerInfo.MilesBalance
+                    balanceLoginData.loginData.BulkMilesBalance =  self.booingInfo.customerInfo.milesBalance
                     balanceLoginData.loginData.walletBalance    = self.booingInfo.customerInfo.walletBalance
                     SingletonClass.sharedInstance.BulkMilesBalance = balanceLoginData.loginData.walletBalance
                     SingletonClass.sharedInstance.walletBalance = balanceLoginData.loginData.walletBalance
                     SingletonClass.sharedInstance.loginData = balanceLoginData.loginData
-                    
+                    SingletonClass.sharedInstance.bookingInfo = self.booingInfo
                     do {
                         try UserDefaults.standard.set(object: balanceLoginData, forKey: "userProfile")
                     }
@@ -145,7 +171,8 @@ extension HomeViewController: SocketConnected {
     func onSocket_OnTheWayBookLater() {
         SocketIOManager.shared.socketCall(for: socketApiKeys.OnTheWayBookLater.rawValue) { (json) in
             print(#function, "\n ", json)
-            AlertMessage.showMessageForSuccess("Driver is on the way")
+//            AlertMessage.showMessageForSuccess("Driver is on the way")
+            AlertMessage.showMessageForSuccess(json.array?.first?.dictionary?["message"]?.string ?? "Driver is on the way")
             self.acceptRequestData(json: json)
         }
     }
@@ -154,7 +181,7 @@ extension HomeViewController: SocketConnected {
     func onSocket_AskForTips() {
         SocketIOManager.shared.socketCall(for: socketApiKeys.AskForTips.rawValue) { (json) in
             print(#function, "\n ", json)
-            AlertMessage.showMessageForSuccess("Driver asks for Tips")
+//            AlertMessage.showMessageForSuccess("Driver asks for Tips")
             self.hideAndShowView(view: .askForTip)
             self.isExpandCategory = true
         }
@@ -164,7 +191,8 @@ extension HomeViewController: SocketConnected {
     func onSocket_CancelledBookingRequestBySystem() {
         SocketIOManager.shared.socketCall(for: socketApiKeys.CancelledBookingRequestBySystem.rawValue) { (json) in
             print(#function, "\n ", json)
-            AlertMessage.showMessageForSuccess("Cancelled Booking Request By System")
+//            AlertMessage.showMessageForSuccess("Cancelled Booking Request By System")
+            AlertMessage.showMessageForSuccess(json.array?.first?.dictionary?["message"]?.string ?? "Cancelled Booking Request By System")
             //            self.clearMap()
             self.btnBackButtonWhileBookLater()
             self.stopAnimationWhileStartBooking()
@@ -176,7 +204,8 @@ extension HomeViewController: SocketConnected {
     func onSocket_CancelTrip() {
         SocketIOManager.shared.socketCall(for: socketApiKeys.CancelTrip.rawValue) { (json) in
             print(#function, "\n ", json)
-            AlertMessage.showMessageForSuccess("Cancelled Booking Request By Driver")
+//            AlertMessage.showMessageForSuccess("Cancelled Booking Request By Driver")
+            AlertMessage.showMessageForSuccess(json.array?.first?.dictionary?["message"]?.string ?? "Cancelled Booking Request By Driver")
             self.clearMap()
             self.btnBackButtonWhileBookLater()
             self.stopAnimationWhileStartBooking()
@@ -185,15 +214,106 @@ extension HomeViewController: SocketConnected {
     }
     
     // Socket On 9
-    func onSocket_DriverCurrentLocation() {
-        SocketIOManager.shared.socketCall(for: socketApiKeys.DriverCurrentLocation.rawValue) { (json) in
+    func onSocket_LiveTracking() {
+        SocketIOManager.shared.socketCall(for: socketApiKeys.LiveTracking.rawValue) { (json) in
             print(#function, "\n ", json)
 
-            let arrData =  json.array?.first?["current_location"].array
+            let arrData = json.array?.first?["current_location"].array
             self.liveTrackingForTrip(lat: arrData?.last?.stringValue ?? "0.00", lng: arrData?.first?.stringValue ?? "0.00")
         }
     }
+    
+    // Socket On 10
+    func onSocket_DriverCurrentLocation() {
+        SocketIOManager.shared.socketCall(for: socketApiKeys.DriverCurrentLocation.rawValue) { (json) in
+            print(#function, "\n ", json)
+            
+        }
+    }
+    
+    // Socket On 11
+    func onSocket_NearByDriver() {
+        SocketIOManager.shared.socketCall(for: socketApiKeys.NearByDriver.rawValue) { (json) in
+            print(#function, "\n ", json)
+            
+        }
+    }
+    
+    // Socket On 12
+    func onSocket_ArrivedAtPickupLocation() {
+        SocketIOManager.shared.socketCall(for: socketApiKeys.ArrivedAtPickupLocation.rawValue) { (json) in
+            print(#function, "\n ", json)
+            
+            let messsage = json.array?.first?.dictionary?["message"]?.string ?? "Arrived at pickup location"
+            UtilityClass.showDefaultAlertView(withTitle: "", message: messsage, buttons: ["Ok"], completion: { (ind) in
+            })
+        }
+    }
 
+    // Socket On 13
+    func onSocket_VerifyCustomer() {
+        SocketIOManager.shared.socketCall(for: socketApiKeys.VerifyCustomer.rawValue) { (json) in
+            print(#function, "\n ", json)
+            
+            let titleMessage = json.array?.first?.dictionary?["message"]?.string ?? ""
+            let msg = json.array?.first?.dictionary?["message2"]?.string ?? ""
+            let otp = json.array?.first?.dictionary?["otp"]?.string ?? ""
+            
+            let storyboard = UIStoryboard(name: "Popup", bundle: nil)
+            if let vc = storyboard.instantiateViewController(withIdentifier: "VerifyCustomerPopupViewController") as? VerifyCustomerPopupViewController {
+                vc.strMessage = msg
+                vc.strTitle = titleMessage
+                vc.strOTP = otp
+                self.present(vc, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    // Socket On 14
+    func onSocket_CompleteTripCard() {
+        SocketIOManager.shared.socketCall(for: socketApiKeys.CompleteTripCard.rawValue) { (json) in
+            print(#function, "\n ", json)
+            let titleMessage = json.array?.first?.dictionary?["message"]?.string ?? ""
+            AlertMessage.showMessageForSuccess(titleMessage)
+        }
+    }
+    
+    // Socket On 15
+    func onSocket_PaymentFailedMpesa() {
+        SocketIOManager.shared.socketCall(for: socketApiKeys.PaymentFailedMpesa.rawValue) { (json) in
+            print(#function, "\n ", json)
+            let titleMessage = json.array?.first?.dictionary?["message"]?.string ?? ""
+            AlertMessage.showMessageForSuccess(titleMessage)
+        }
+    }
+    // Socket On 16
+    func onSocket_PaymentSuccessMpesa() {
+        SocketIOManager.shared.socketCall(for: socketApiKeys.PaymentSuccessMpesa.rawValue) { (json) in
+            print(#function, "\n ", json)
+            let titleMessage = json.array?.first?.dictionary?["message"]?.string ?? ""
+            AlertMessage.showMessageForSuccess(titleMessage)
+        }
+    }
+    
+    // Socket On 17
+    func onSocket_WaitingTimeAlert() {
+        SocketIOManager.shared.socketCall(for: socketApiKeys.WaitingTimeAlert.rawValue) { (json) in
+            print(#function, "\n ", json)
+            let titleMessage = json.array?.first?.dictionary?["message"]?.string ?? ""
+            AlertMessage.showMessageForSuccess(titleMessage)
+        }
+    }
+    
+    // Socket On 18
+    func onSocket_CancelBookingBeforeAccept() {
+        SocketIOManager.shared.socketCall(for: socketApiKeys.CancelBookingBeforeAccept.rawValue) { (json) in
+            print(#function, "\n ", json)
+            let titleMessage = json.array?.first?.dictionary?["message"]?.string ?? ""
+            AlertMessage.showMessageForSuccess(titleMessage)
+        }
+    }
+    
+    
     // -------------------------------------------------------------
     // MARK: - --- Accept Book Now & Later Data and View Setup ---
     // -------------------------------------------------------------
@@ -206,7 +326,7 @@ extension HomeViewController: SocketConnected {
         self.hideAndShowView(view: .requestAccepted)
         self.isExpandCategory = true
         self.routeDrawMethod(origin: "\(res.bookingInfo.driverInfo.lat ?? ""),\(res.bookingInfo.driverInfo.lng ?? "")", destination: "\(res.bookingInfo.pickupLat ?? ""),\(res.bookingInfo.pickupLng ?? "")", isTripAccepted: true)
-        if self.pickupMarker == nil {
+        if self.pickupMarker.map == nil {
 
             var DoubleLat = Double()
             var DoubleLng = Double()

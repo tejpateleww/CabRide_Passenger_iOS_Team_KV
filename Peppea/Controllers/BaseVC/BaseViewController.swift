@@ -148,20 +148,20 @@ class BaseViewController: UIViewController {
         }
         else
         {
-            callNumber(phoneNumber: contactNumber)
+            UtilityClass.callNumber(phoneNumber: contactNumber)
         }
     }
     
-    private func callNumber(phoneNumber:String) {
-        
-        if let phoneCallURL = URL(string: "tel://\(phoneNumber)") {
-            
-            let application:UIApplication = UIApplication.shared
-            if (application.canOpenURL(phoneCallURL)) {
-                application.open(phoneCallURL, options: [:], completionHandler: nil)
-            }
-        }
-    }
+//    private func callNumber(phoneNumber:String) {
+//
+//        if let phoneCallURL = URL(string: "tel://\(phoneNumber)") {
+//
+//            let application:UIApplication = UIApplication.shared
+//            if (application.canOpenURL(phoneCallURL)) {
+//                application.open(phoneCallURL, options: [:], completionHandler: nil)
+//            }
+//        }
+//    }
     
     
     

@@ -35,7 +35,11 @@ class TransferToBankVC: BaseViewController
     @IBOutlet weak var btnOtherOption: UIButton!
     
     @IBOutlet weak var txtPhoneNumber: UITextField!
-
+    @IBOutlet weak var txtPassword: UITextField!
+    @IBOutlet weak var viewPassword: UIView!
+    
+    
+    
     //MARK:- Variables
     
     
@@ -50,9 +54,11 @@ class TransferToBankVC: BaseViewController
             case .My:
                 self.btnMyOption.isSelected = true
                 self.txtPhoneNumber.text = LoginDetails.loginData.mobileNo
+                self.viewPassword.isHidden = true
             case .Other:
                 self.btnOtherOption.isSelected = true
                 self.txtPhoneNumber.text = ""
+                self.viewPassword.isHidden = false
             }
         }
     }

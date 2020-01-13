@@ -44,6 +44,9 @@ extension CarCollectionViewController: CarCollectionWebserviceProtocol {
         {
             return (false, "Estimate fare is not available")
         }
+        else if paymentType == "Select Payment Method" {
+            return (false, "Please select payment method type")
+        }
         return (true, "")
     }
     
@@ -86,6 +89,10 @@ extension CarCollectionViewController: CarCollectionWebserviceProtocol {
         if bookingType == "book_later" {
             model.pickup_date_time = selectedTimeStemp
         }
+        
+//        rent_type  :  fix_rate  OR standard_rate OR bulk_miles OR co_bulk_miles(IF rent_type == 'fix_rate' then 'fix_rate_id' is compulsory )
+//        (if rent_type == bulk_miles then 'distance' is compulsory)
+//        (if rent_type == co_bulk_miles then 'distance' is compulsory)
         
         UserWebserviceSubclass.bookingRequest(bookingRequestModel: model) { (response, status) in
             

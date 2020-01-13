@@ -9,6 +9,7 @@
 import UIKit
 import Cosmos
 import SDWebImage
+import SideMenuSwift
 
 class DriverRatingAndTipViewController: UIViewController {
 
@@ -71,15 +72,14 @@ class DriverRatingAndTipViewController: UIViewController {
                 viewAskForTip.isHidden = true
                 viewRating.isHidden = false
                 viewComments.isHidden = false
-                imgDriverImage.isHidden = true
+//                imgDriverImage.isHidden = true
                 constraintTopOfComments.priority = UILayoutPriority(950)
                 constraintTopOfAskForTip.priority = UILayoutPriority(650)
                 constraintHeightOfViewRating.constant = 30
                 lblGrandTotal.isHidden = false
-                lblGrandTotal.text = "Grand Total: \(Currency) \(bookingData.grandTotal ?? "0")"
+                lblGrandTotal.text = "Grand Total :: \(Currency) \(bookingData.grandTotal ?? "0")"
                 
                 lblDriverName.text = "How was your trip with \((driver?.firstName ?? "") + " " + (driver?.lastName ?? ""))?"
-                
                 
             }
             else if viewType! == .askForTip {
@@ -91,9 +91,10 @@ class DriverRatingAndTipViewController: UIViewController {
                 constraintHeightOfViewRating.constant = 0
                 lblDriverName.text = "Do you want give tip to \((driver?.firstName ?? "") + " " + (driver?.lastName ?? ""))?"
             }
+            
         }
         
-        
+        SideMenuController.preferences.basic.enablePanGesture = false
 //        lblDriverName.text = "How was your trip with \((driver?.firstName ?? "") + " " + (driver?.lastName ?? ""))?"
         
         let base = NetworkEnvironment.baseImageURL
@@ -109,7 +110,10 @@ class DriverRatingAndTipViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
+        
         imgDriverImage.layer.cornerRadius = imgDriverImage.frame.width / 2
+        imgDriverImage.layer.borderWidth = 1
+        imgDriverImage.layer.borderColor = ThemeColor.cgColor
         imgDriverImage.layer.masksToBounds = true                                                                                                                             
         
         for (ind,btn) in self.btnTips.enumerated()
@@ -140,9 +144,18 @@ class DriverRatingAndTipViewController: UIViewController {
     
     func setupView()
     {
-        viewRating.settings.filledImage = UIImage(named: "iconSelectedstar")
-        viewRating.settings.emptyImage = UIImage(named: "iconUnSelectedstar")
-        viewRating.settings.starSize = 30
+//        viewRating.settings.filledImage = UIImage(named: "iconSelectedstar")
+//        viewRating.settings.emptyImage = UIImage(named: "iconUnSelectedstar")
+
+        viewRating.settings.emptyBorderColor = UIColor.init(hex: "2D2D2D")
+        viewRating.settings.emptyBorderWidth = 2
+        viewRating.settings.filledBorderColor = UIColor.init(hex: "2D2D2D")
+        viewRating.settings.filledBorderWidth = 2
+        viewRating.settings.emptyColor = UIColor.white
+        viewRating.settings.filledColor = UIColor.init(hex: "2D2D2D")
+       
+//        2D2D2D
+        viewRating.settings.starSize = 35
         viewRating.settings.starMargin = 5
         
     }
@@ -185,7 +198,7 @@ class DriverRatingAndTipViewController: UIViewController {
             unSelectedButton(btn: btnOther)
         }
         
-        for (ind,btn) in self.btnTips.enumerated()
+        for (_,btn) in self.btnTips.enumerated()
         {
             unSelectedButton(btn: btn)
         }
@@ -193,6 +206,8 @@ class DriverRatingAndTipViewController: UIViewController {
     }
     
     @IBAction func btnDone(_ sender: Any) {
+        
+        SideMenuController.preferences.basic.enablePanGesture = true
         
         if viewType == .ratings {
             webserviceForReviewRating()

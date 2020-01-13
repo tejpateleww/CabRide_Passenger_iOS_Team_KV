@@ -214,27 +214,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         SingletonClass.sharedInstance.clearSingletonClass()
 
         //2. Clear all userdefaults
-        
-        for (key, value) in UserDefaults.standard.dictionaryRepresentation() {
-            print("\(key) = \(value) \n")
-
+        for (key, _) in UserDefaults.standard.dictionaryRepresentation() {
+//            print("\(key) = \(value) \n")
             if key == "Token" || key  == "i18n_language" {
-
             }
             else {
                 UserDefaults.standard.removeObject(forKey: key)
             }
         }
-
         //3. Set isLogin USer Defaults to false
         UserDefaults.standard.set(false, forKey: "isUserLogin")
-
         self.GoToLogin()
     }
-    
-   
-
- 
 
 }
 

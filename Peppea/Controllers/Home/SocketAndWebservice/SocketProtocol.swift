@@ -13,10 +13,9 @@ protocol SocketConnected {
     //    var isSocketConnected: Bool { get set }
     
     func emitSocket_UpdateCustomerLatLng(param: [String:Any])
-    
     func emitSocket_GetEstimateFare(param: [String:Any])
-    
     func emitSocket_DriverCurrentLocation(param: [String:Any])
+    func emitSocket_ReceiveTips(param: [String:Any])
     
     func onSocket_GetEstimateFare()
     
@@ -30,11 +29,27 @@ protocol SocketConnected {
     
     func onSocket_AskForTips()
     
-    func emitSocket_ReceiveTips(param: [String:Any])
-    
     func onSocket_CancelledBookingRequestBySystem()
     
     func onSocket_CancelTrip()
     
     func onSocket_DriverCurrentLocation()
+    
+    func onSocket_LiveTracking()
+    
+    func onSocket_NearByDriver()
+    
+    func onSocket_ArrivedAtPickupLocation()
+    
+    func onSocket_VerifyCustomer()
+    
+    func onSocket_CompleteTripCard()
+    
+    func onSocket_PaymentFailedMpesa()
+    
+    func onSocket_PaymentSuccessMpesa()
+    
+    func onSocket_WaitingTimeAlert()
+    
+    func onSocket_CancelBookingBeforeAccept()
 }

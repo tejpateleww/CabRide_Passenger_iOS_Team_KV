@@ -225,6 +225,13 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
                 sideMenuController?.hideMenu()
                 return
             }
+            if arrMenuTitle[indexPath.row] == "Previous Due" {
+                let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "PreviousDueViewController") as! PreviousDueViewController
+              
+                HomePage?.navigationController?.pushViewController(NextPage, animated: true)
+                sideMenuController?.hideMenu()
+                return
+            }
             
             if arrMenuTitle[indexPath.row] == "Payments"
             {

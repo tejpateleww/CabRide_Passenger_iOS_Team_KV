@@ -8,6 +8,8 @@
 
 import UIKit
 import GoogleMaps
+import SwiftyAttributes
+
 //@objc protocol didSelectBooking {
 //
 //    @objc optional func didSelectBookNow()
@@ -16,6 +18,8 @@ import GoogleMaps
 
 
 class CarCollectionViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,didSelectDateDelegate, didSelectPaymentDelegate {
+   
+    
 
     // ----------------------------------------------------
     // MARK:- --- Outlets ---
@@ -28,6 +32,10 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
     @IBOutlet weak var btnSelectCard: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var txtSelectPaymentMethod: UITextField!
+    
+    @IBOutlet weak var viewPromocode: UIView!
+    
+    
     
     // ----------------------------------------------------
     // MARK: - --- Globle Declaration Methods ---
@@ -49,6 +57,7 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
     var estimateFare = ""
     var selectedTimeStemp = ""
     var strPromoCode = ""
+    var isTripSchedule = false
     
     // ----------------------------------------------------
     // MARK:- --- Base Methods ---
@@ -56,6 +65,8 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
     //    weak var delegateOfbookingSelection : didSelectBooking!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        iconSelectedCard.image = UIImage(named: "iconCash")
 
         getDataFromJSON()
         
@@ -69,33 +80,49 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
             return
         }
         
-        if UserDefaults.standard.object(forKey: "cards") != nil {
-            //
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                do {
-                    
-                    guard let cardData = try UserDefaults.standard.get(objectType: AddCardModel.self, forKey: "cards") else {
-                        return
-                    }
-                    
-                    self.cardDetailModel = cardData
-                    self.aryCards = self.cardDetailModel.cards
-
-                    if(self.aryCards.count != 0)
-                    {
-                        let data = self.aryCards[0]
-                        self.CardID = data.id
-                        self.paymentType = "card"
-                    }
-                    
-                } catch {
-                    AlertMessage.showMessageForError("error")
-                    return
+//        if UserDefaults.standard.object(forKey: "cards") != nil {
+//            //
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+//                do {
+//
+//                    guard let cardData = try UserDefaults.standard.get(objectType: AddCardModel.self, forKey: "cards") else {
+//                        return
+//                    }
+//
+//                    self.cardDetailModel = cardData
+//                    self.aryCards = self.cardDetailModel.cards
+//
+//                    if(self.aryCards.count != 0)
+//                    {
+//                        let data = self.aryCards[0]
+//                        self.CardID = data.id
+//                        self.paymentType = "card"
+//                    }
+//
+//                } catch {
+//                    AlertMessage.showMessageForError("error")
+//                    return
+//                }
+//            }
+//        }
+        
+//        UserDefaults.standard.set(PaymentType, forKey: "PaymentType")
+//        UserDefaults.standard.set(dictData, forKey: "PaymentTypeData")
+        
+        if UserDefaults.standard.object(forKey: "PaymentType") != nil {
+            if let type = UserDefaults.standard.object(forKey: "PaymentType") as? String {
+                self.paymentType = type
+                
+                if let PaymentObject = UserDefaults.standard.object(forKey: "PaymentTypeData") as? [String:Any] {
+                    didSelectPaymentType(PaymentTypeTitle: PaymentObject["CardNum"] as! String, PaymentType:  PaymentObject["CardNum2"] as! String, PaymentTypeID: "", PaymentNumber: "", PaymentHolderName: "", dictData: PaymentObject)
                 }
             }
         }
-
-        didSelectPaymentType(PaymentType: "cash", PaymentTypeID: "", PaymentNumber: "", PaymentHolderName: "", dictData: nil)
+        else {
+            didSelectPaymentType(PaymentTypeTitle: "Select Payment Method", PaymentType: "", PaymentTypeID: "", PaymentNumber: "", PaymentHolderName: "", dictData: nil)
+        }
+        
+        btnBookNow.setTitle("Not Available", for: .normal)
     }
 
     func getDataFromJSON()
@@ -114,9 +141,7 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
             AlertMessage.showMessageForError("error")
             return
         }
-        
     }
-
     
     // Handle Booklater date and time
     func didSelectDateAndTime(date: String, timeStemp: String) 
@@ -126,10 +151,20 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
         self.btnBookNow.titleLabel?.textAlignment = .center
 
         selectedTimeStemp = timeStemp
-        self.btnBookNow.setTitle("Schedule a ride\n\(date)", for: .normal)
+        
+        
+        let strSimpleStringDate = "\(date)".withTextColor(#colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1))
+        self.btnBookNow.backgroundColor = ThemeColor
+        
+        let attriString = "Schedule Premier\n".withFont(UIFont.bold(ofSize: 18)).withTextColor(.white) + strSimpleStringDate
+        
+        self.btnBookNow.setAttributedTitle(attriString, for: .normal)
+//        self.btnBookNow.setTitle("Schedule Premier\n\(date)", for: .normal)
+        self.btnBookNow.titleLabel?.font = UIFont.regular(ofSize: 15)
         let homeVC = self.parent as? HomeViewController
         homeVC?.setBackButtonWhileBookLater()
         homeVC?.selectedTimeStemp = timeStemp
+        isTripSchedule = true
     }
     //MARK:-  --- CollectionView Delegate and Datasource Methods ---
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -170,9 +205,12 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
                 }
             }
 
-            cell.lblModelName.font = UIFont.semiBold(ofSize: 14.0)
-            cell.lblPrice.font = UIFont.regular(ofSize: 14.0)
-            cell.lblArrivalTime.font = UIFont.regular(ofSize: 14.0)
+            cell.lblModelName.font = UIFont.bold(ofSize: 14.0)
+            cell.lblPrice.font = UIFont.semiBold(ofSize: 14.0)
+            cell.lblArrivalTime.font = UIFont.semiBold(ofSize: 14.0)
+            
+            cell.lblPrice.textColor = #colorLiteral(red: 0.7254902124, green: 0.4784313738, blue: 0.09803921729, alpha: 1)
+            cell.lblArrivalTime.textColor = #colorLiteral(red: 0.7254902124, green: 0.4784313738, blue: 0.09803921729, alpha: 1)
         }
 
         return cell
@@ -184,6 +222,31 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
         {
             let dictOnlineCars = arrCarLists.vehicleTypeList[indexPath.row]
             vehicleId = dictOnlineCars.id
+            
+            
+            if let homeVc = self.parent as? HomeViewController {
+                if homeVc.estimateData.count != 0 {
+                    let estimateCurrentData = homeVc.estimateData.filter{$0.vehicleTypeId == dictOnlineCars.id}.first
+                    
+                    let estimateMinute = estimateCurrentData?.driverReachInMinute
+                    let estimateFare = estimateCurrentData?.estimateTripFare
+                    
+                    if dictOnlineCars.id == vehicleId {
+                        self.estimateFare = (FlatRate == "") ? ( ((estimateFare?.contains(".") == true) ? estimateFare  : "\((Double((estimateMinute == "0" ? "0.0" : estimateFare)!)?.rounded(toPlaces: 2)) ?? 0.0)")!  ) : "\((Double((estimateMinute == "0" ? "0.0" : FlatRate))?.rounded(toPlaces: 2)) ?? 0.0)"
+                    } else {
+                        self.estimateFare = "0"
+                    }
+                }
+            }
+            
+            if !isTripSchedule {
+                if Float(self.estimateFare) != 0 {
+                    btnBookNow.isVehicleAvailable = true
+                } else {
+                    btnBookNow.isVehicleAvailable = false
+                }
+            }
+            
             self.collectionView.reloadData()
         }
     }
@@ -320,34 +383,78 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
                 webserviceForBooking(bookingType: "book_later") // "book_now" // "book_later"
             }
         }
-        else
-        {
+        else {
             UtilityClass.hideHUD()
             AlertMessage.showMessageForError(self.validations().1)
         }
     }
     
-    @IBAction func btnBookLater(_ sender: Any)
-    {
+    @IBAction func btnBookLater(_ sender: Any) {
         let next = self.storyboard?.instantiateViewController(withIdentifier: "PeppeaBookLaterViewController") as! PeppeaBookLaterViewController
         next.delegateOfSelectDateAndTime = self
         self.navigationController?.present(next, animated: true, completion: nil)
     }
 
     
-    func didSelectPaymentType(PaymentType: String, PaymentTypeID: String, PaymentNumber: String, PaymentHolderName: String, dictData: [String : Any]?) {
-        self.lblCardName.text = PaymentType
+    
+    func didSelectPaymentType(PaymentTypeTitle: String, PaymentType: String, PaymentTypeID: String, PaymentNumber: String, PaymentHolderName: String, dictData: [String : Any]?) {
+        
+        if UserDefaults.standard.object(forKey: "PaymentType") != nil {
+            if let type = UserDefaults.standard.object(forKey: "PaymentType") as? String {
+                self.paymentType = type
+            }
+        }
+        
+        if UserDefaults.standard.object(forKey: "PaymentType") != nil {
+            if let type = UserDefaults.standard.object(forKey: "PaymentType") as? String {
+                if type == PaymentType {
+                    paymentTypeSelection(PaymentTypeTitle: PaymentTypeTitle, PaymentType: PaymentType, PaymentTypeID: PaymentTypeID, PaymentNumber: PaymentNumber, PaymentHolderName: PaymentHolderName, dictData: dictData)
+                }
+                else {
+                    popupForPaymentType(PaymentTypeTitle: PaymentTypeTitle, PaymentType: PaymentType, PaymentTypeID: PaymentTypeID, PaymentNumber: PaymentNumber, PaymentHolderName: PaymentHolderName, dictData: dictData)
+                }
+            }
+            else {
+                popupForPaymentType(PaymentTypeTitle: PaymentTypeTitle, PaymentType: PaymentType, PaymentTypeID: PaymentTypeID, PaymentNumber: PaymentNumber, PaymentHolderName: PaymentHolderName, dictData: dictData)
+            }
+        }
+        else {
+            popupForPaymentType(PaymentTypeTitle: PaymentTypeTitle, PaymentType: PaymentType, PaymentTypeID: PaymentTypeID, PaymentNumber: PaymentNumber, PaymentHolderName: PaymentHolderName, dictData: dictData)
+        }
+    }
+    
+    func popupForPaymentType(PaymentTypeTitle: String, PaymentType: String, PaymentTypeID: String, PaymentNumber: String, PaymentHolderName: String, dictData: [String : Any]?) {
+        
+        let alert = UIAlertController(title: "Would You Like To Set Mpesa As Your Default Pay Mode?", message: "", preferredStyle: .alert)
+        let useOnce = UIAlertAction(title: "USE ONCE", style: .default) { (ACT) in
+            self.paymentTypeSelection(PaymentTypeTitle: PaymentTypeTitle, PaymentType: PaymentType, PaymentTypeID: PaymentTypeID, PaymentNumber: PaymentNumber, PaymentHolderName: PaymentHolderName, dictData: dictData)
+        }
+        let setAsDefault = UIAlertAction(title: "SET AS DEFAULT", style: .default) { (act) in
+            UserDefaults.standard.set(PaymentType, forKey: "PaymentType")
+            UserDefaults.standard.set(dictData, forKey: "PaymentTypeData")
+            self.paymentTypeSelection(PaymentTypeTitle: PaymentTypeTitle, PaymentType: PaymentType, PaymentTypeID: PaymentTypeID, PaymentNumber: PaymentNumber, PaymentHolderName: PaymentHolderName, dictData: dictData)
+        }
+        alert.addAction(useOnce)
+        alert.addAction(setAsDefault)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func paymentTypeSelection(PaymentTypeTitle: String, PaymentType: String, PaymentTypeID: String, PaymentNumber: String, PaymentHolderName: String, dictData: [String : Any]?) {
+        self.lblCardName.text = PaymentTypeTitle
         self.paymentType = PaymentType
         self.lblCardNumber.isHidden = true
-        self.iconSelectedCard.image = UIImage(named: dictData?["Type"] as? String ?? "")
+        self.iconSelectedCard.image = PaymentTypeTitle.lowercased().contains("my mile") ? UIImage(named: "kms_black") : UIImage(named: dictData?["Type"] as? String ?? "iconcard")
         if PaymentType == "card" {
             self.lblCardNumber.isHidden = false
             self.CardID = PaymentTypeID
             self.lblCardName.text = PaymentHolderName
             self.lblCardNumber.text = PaymentNumber
         }
-        
-        
+        self.viewPromocode.isHidden = false
+        if self.paymentType == "bulk_miles" || self.paymentType == "co_bulk_miles" {
+            self.viewPromocode.isHidden = true
+        }
     }
+    
     
 }

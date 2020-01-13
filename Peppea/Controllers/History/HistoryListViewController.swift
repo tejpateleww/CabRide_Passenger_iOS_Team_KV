@@ -11,8 +11,11 @@ import UIKit
 class HistoryListViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, delegateFilterWalletHistory
 {
 
-    
+    // MARK: - Outlets
      @IBOutlet weak var tableView: UITableView!
+    
+    // MARK: - Variable declaration
+    
 //     var arrHistoryData = [String]()
     var loginModelDetails : LoginModel = LoginModel()
     var walletHistoryRequest : WalletHistory = WalletHistory()
@@ -20,25 +23,23 @@ class HistoryListViewController: BaseViewController, UITableViewDataSource, UITa
     private let refreshControl = UIRefreshControl()
     var isRefresh = Bool()
 
-    var arrHistoryData = [walletHistoryListData]()
-    {
-        didSet
-        {
+    var arrHistoryData = [walletHistoryListData]() {
+        didSet {
             self.tableView.reloadData()
         }
     }
-    
+    // MARK: - Base Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
         do{
             loginModelDetails = try UserDefaults.standard.get(objectType: LoginModel.self, forKey: "userProfile")!
         }
-        catch
-        {
+        catch {
             AlertMessage.showMessageForError("error")
             return
         }
+        
         let profile = loginModelDetails.loginData
         
         walletHistoryRequest.customer_id = profile!.id
@@ -52,10 +53,10 @@ class HistoryListViewController: BaseViewController, UITableViewDataSource, UITa
         refreshControl.addTarget(self, action: #selector(self.refreshWeatherData(_:)), for: .valueChanged)
         refreshControl.tintColor = ThemeColor // UIColor(red:0.25, green:0.72, blue:0.85, alpha:1.0)
         
-        
+        webserviceCallForHistoryList(index: 1)
     }
-    override func viewWillAppear(_ animated: Bool)
-    {
+    
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 //        self.webserviceCallForHistoryList(index: 1)
         let rightNavBarButton = UIBarButtonItem(image: UIImage(named: "iconFilter"), style: .plain, target: self, action: #selector(self.btnFilterClicked(_:)))
@@ -68,18 +69,30 @@ class HistoryListViewController: BaseViewController, UITableViewDataSource, UITa
     @objc private func refreshWeatherData(_ sender: Any) {
         // Fetch Weather Data
         isRefresh = true
+        walletHistoryRequest.from_date = ""
+        walletHistoryRequest.to_date = ""
+        walletHistoryRequest.payment_type = ""
+        walletHistoryRequest.transaction_type = ""
         webserviceCallForHistoryList(index: 1)
     }
-
     
-    @IBAction func btnFilterClicked(_ sender: Any)
-    {
+    @IBAction func btnFilterClicked(_ sender: Any) {
         let viewController = self.storyboard?.instantiateViewController(withIdentifier: "HistoryFilterPopUpViewController") as! HistoryFilterPopUpViewController
         viewController.delegateWalletHistory = self
+        viewController.from_date = walletHistoryRequest.from_date
+        viewController.to_date = walletHistoryRequest.to_date
+        viewController.payment_type = walletHistoryRequest.payment_type
+        viewController.transaction_type = walletHistoryRequest.transaction_type
         self.navigationController?.present(viewController, animated: true, completion: nil)
     }
-    func delegateforFilteringWalletHistory(_ filterParam : [String : AnyObject])
-    {
+    
+    func delegateforFilteringWalletHistory(_ filterParam : [String : AnyObject]) {
+        
+        walletHistoryRequest.from_date = ""
+        walletHistoryRequest.to_date = ""
+        walletHistoryRequest.payment_type = ""
+        walletHistoryRequest.transaction_type = ""        
+        
         if let tempPayment = filterParam["from_date"] as? String
         {
             walletHistoryRequest.from_date = filterParam["from_date"] as! String
@@ -98,10 +111,25 @@ class HistoryListViewController: BaseViewController, UITableViewDataSource, UITa
             walletHistoryRequest.transaction_type = filterParam["transaction_type"] as! String
         }
         
+        
+//        for FILTER
+//        1) date filer
+//        from_date: 2019-07-21
+//        to_date : 2019-07-26
+//        2) payment type filer
+//        payment_type : cash,card,wallet,m_pesa
+//        3) transaction type filter
+//        transaction_type : booking,booking_commission
+//
+//        NOTE : this all are optional
+//        To enable screen reader support, press ⌘+Option+Z To learn about keyboard shortcuts, press ⌘slash
+
+        
      
         self.webserviceCallForHistoryList(index: 1)
         
     }
+    
     // MARK: - Table view data source
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -112,15 +140,12 @@ class HistoryListViewController: BaseViewController, UITableViewDataSource, UITa
         return self.arrHistoryData.count
     }
     
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         
         let cellMenu = tableView.dequeueReusableCell(withIdentifier: "HistoryTableViewCell") as! HistoryTableViewCell
         cellMenu.selectionStyle = .none
         let dictData = self.arrHistoryData[indexPath.row]
 
-        
         cellMenu.lblBookingID.text = "Booking Id #" + dictData.id
         cellMenu.lblAmount.text = Currency + " " + dictData.amount
         cellMenu.lblDateTime.text = dictData.createdAt
@@ -129,34 +154,30 @@ class HistoryListViewController: BaseViewController, UITableViewDataSource, UITa
         return cellMenu
     }
     
-    
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    }
-    
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
-    {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 75
     }
-    func webserviceCallForHistoryList(index: Int)
-    {
+    
+    // MARK: - Custom Methods
+    func webserviceCallForHistoryList(index: Int) {
         
-        if(UserDefaults.standard.object(forKey: "userProfile") == nil)
-        {
+        if(UserDefaults.standard.object(forKey: "userProfile") == nil) {
             return
         }
         
       
         walletHistoryRequest.page = "\(pageNo)"
 
-        if(!isRefresh)
-        {
-            UtilityClass.showHUD(with: UIApplication.shared.keyWindow)
-        }
+//        if(!isRefresh)
+//        {
+//            UtilityClass.showHUD(with: UIApplication.shared.keyWindow)
+//        }
         
         UserWebserviceSubclass.walletHistoryList(WalletHistoryModel: walletHistoryRequest) { (json, status) in
-            UtilityClass.hideHUD()
+            DispatchQueue.main.async {
+                
+                UtilityClass.hideHUD()
+            }
             self.isRefresh = false
             if status{
                 
@@ -169,14 +190,14 @@ class HistoryListViewController: BaseViewController, UITableViewDataSource, UITa
 //                }
 //                catch
 //                {
-                    UtilityClass.hideHUD()
+//                    UtilityClass.hideHUD()
 //                }
                 self.tableView.reloadData()
                 
                 self.refreshControl.endRefreshing()
             }
             else{
-                UtilityClass.hideHUD()
+//                UtilityClass.hideHUD()
                 AlertMessage.showMessageForError(json["message"].stringValue)
             }
         }

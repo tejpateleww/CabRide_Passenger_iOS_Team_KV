@@ -184,5 +184,26 @@ class UserWebserviceSubclass
         WebService.shared.requestMethod(api: .removeFavouriteAddress, httpMethod: .post, parameters: params, completion: completion)
     }
     
+    class func pastDueHistoryList(strURL : String  ,completion: @escaping CompletionResponse ) {
+        let strURLFinal = NetworkEnvironment.baseURL + ApiKey.pastDueHistory.rawValue + strURL
+        WebService.shared.getMethod(url: URL.init(string: strURLFinal)!, httpMethod: .get, completion: completion)
+    }
+    
+    class func PreviousDuePaymentData(SendChat:PreviousDuePayment , completion: @escaping CompletionResponse) {
+        let  params : [String:String] = SendChat.generatPostParams() as! [String : String]
+        WebService.shared.requestMethod(api: .pastDuePayment, httpMethod: .post, parameters: params, completion: completion)
+    }
+    
+    
+    class func chatHistoryWithDriver(strURL : String  ,completion: @escaping CompletionResponse ) {
+        let strURLFinal = NetworkEnvironment.baseURL + ApiKey.chatHistory.rawValue + strURL
+        WebService.shared.getMethod(url: URL.init(string: strURLFinal)!, httpMethod: .get, completion: completion)
+    }
+    
+    class func chatWithDriver(SendChat:chatModel , completion: @escaping CompletionResponse) {
+        let  params : [String:String] = SendChat.generatPostParams() as! [String : String]
+        WebService.shared.requestMethod(api: .chat, httpMethod: .post, parameters: params, completion: completion)
+    }
     
 }
+

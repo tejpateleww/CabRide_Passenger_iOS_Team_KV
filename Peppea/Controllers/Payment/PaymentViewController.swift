@@ -12,7 +12,7 @@ import SwipeCellKit
 
 protocol didSelectPaymentDelegate {
     
-    func didSelectPaymentType(PaymentType:String, PaymentTypeID:String, PaymentNumber: String, PaymentHolderName:String, dictData: [String:Any]?)
+    func didSelectPaymentType(PaymentTypeTitle:String, PaymentType:String, PaymentTypeID:String, PaymentNumber: String, PaymentHolderName:String, dictData: [String:Any]?)
 }
 
 class PaymentViewController: BaseViewController,UITableViewDelegate, UITableViewDataSource//,SwipeTableViewCellDelegate
@@ -97,23 +97,36 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
             dict5["Type"] = "iconMPesa" as AnyObject
             self.aryOtherPayment.append(dict5)
             
-            
             var dict2 = [String:AnyObject]()
             dict2["CardNum"] = "Cash" as AnyObject
             dict2["CardNum2"] = "cash" as AnyObject
             dict2["Type"] = "iconCash" as AnyObject
             self.aryOtherPayment.append(dict2)
             
-            var dict4 = [String:AnyObject]()
-            dict4["CardNum"] = "My Mile Balance(0.00)" as AnyObject
-            dict4["CardNum2"] = "bulk_miles" as AnyObject
-            dict4["Type"] = "iconMPesa" as AnyObject
-            self.aryOtherPayment.append(dict4)
+            if SingletonClass.sharedInstance.loginData.userType == "under_company" {
+                var dict4 = [String:AnyObject]()
+                dict4["CardNum"] = "My Mile Balance" as AnyObject
+                dict4["CardNum2"] = "bulk_miles" as AnyObject
+                dict4["Type"] = "iconMPesa" as AnyObject
+                self.aryOtherPayment.append(dict4)
+                
+                var dict5 = [String:AnyObject]()
+                dict5["CardNum"] = "Corporate Mile Balance(0.00)" as AnyObject
+                dict5["CardNum2"] = "co_bulk_miles" as AnyObject
+                dict5["Type"] = "iconMPesa" as AnyObject
+                self.aryOtherPayment.append(dict5)
+            } else {
+                var dict4 = [String:AnyObject]()
+                dict4["CardNum"] = "My Mile Balance" as AnyObject
+                dict4["CardNum2"] = "bulk_miles" as AnyObject
+                dict4["Type"] = "iconMPesa" as AnyObject
+                self.aryOtherPayment.append(dict4)
+            }
             
             var dict3 = [String:AnyObject]()
             dict3["CardNum"] = "Wallet" as AnyObject
             dict3["CardNum2"] = "wallet" as AnyObject
-            dict3["Type"] = "iconMPesa" as AnyObject
+            dict3["Type"] = "iconWallet" as AnyObject
             self.aryOtherPayment.append(dict3)
             
         }
@@ -486,15 +499,15 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
                 let PaymentObject = self.aryOtherPayment[indexPath.row]
                 if (self.isFlatRateSelected == true) && ((PaymentObject["CardNum2"] as! String) != "bulk_miles") {
                     self.dismiss(animated: true) {
-                        self.Delegate.didSelectPaymentType(PaymentType:  PaymentObject["CardNum2"] as! String, PaymentTypeID: "", PaymentNumber: "", PaymentHolderName: "", dictData: PaymentObject)
+                        self.Delegate.didSelectPaymentType(PaymentTypeTitle: PaymentObject["CardNum"] as! String, PaymentType:  PaymentObject["CardNum2"] as! String, PaymentTypeID: "", PaymentNumber: "", PaymentHolderName: "", dictData: PaymentObject)
                     }
                 } else if self.isFlatRateSelected == false {
                     if self.PagefromBulkMiles == true {
-                        self.Delegate.didSelectPaymentType(PaymentType:  PaymentObject["CardNum2"] as! String, PaymentTypeID: "", PaymentNumber: "", PaymentHolderName: "", dictData: PaymentObject)
+                        self.Delegate.didSelectPaymentType(PaymentTypeTitle: PaymentObject["CardNum"] as! String, PaymentType:  PaymentObject["CardNum2"] as! String, PaymentTypeID: "", PaymentNumber: "", PaymentHolderName: "", dictData: PaymentObject)
                         self.navigationController?.popViewController(animated: true)
                     } else {
                         self.dismiss(animated: true) {
-                            self.Delegate.didSelectPaymentType(PaymentType:  PaymentObject["CardNum2"] as! String, PaymentTypeID: "", PaymentNumber: "", PaymentHolderName: "", dictData: PaymentObject)
+                            self.Delegate.didSelectPaymentType(PaymentTypeTitle: PaymentObject["CardNum"] as! String, PaymentType:  PaymentObject["CardNum2"] as! String, PaymentTypeID: "", PaymentNumber: "", PaymentHolderName: "", dictData: PaymentObject)
                         }
                     }
                 }
@@ -503,12 +516,13 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
             {
                 if self.PagefromBulkMiles == true {
                     let card = self.aryCardData[indexPath.row]
-                    self.Delegate.didSelectPaymentType(PaymentType: "card" , PaymentTypeID: card.id, PaymentNumber: card.formatedCardNo, PaymentHolderName: card.cardHolderName, dictData: card.toDictionary())
+                    
+                    self.Delegate.didSelectPaymentType(PaymentTypeTitle: card.cardHolderName, PaymentType: "card" , PaymentTypeID: card.id, PaymentNumber: card.formatedCardNo, PaymentHolderName: card.cardHolderName, dictData: card.toDictionary())
                     self.navigationController?.popViewController(animated: true)
                 } else {
                     self.dismiss(animated: true) {
                         let card = self.aryCardData[indexPath.row]
-                        self.Delegate.didSelectPaymentType(PaymentType: "card" , PaymentTypeID: card.id, PaymentNumber: card.formatedCardNo, PaymentHolderName: card.cardHolderName, dictData: card.toDictionary())
+                        self.Delegate.didSelectPaymentType(PaymentTypeTitle: card.cardHolderName, PaymentType: "card" , PaymentTypeID: card.id, PaymentNumber: card.formatedCardNo, PaymentHolderName: card.cardHolderName, dictData: card.toDictionary())
                     }
                 }
             }

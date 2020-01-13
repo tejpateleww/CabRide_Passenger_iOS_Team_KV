@@ -290,7 +290,8 @@ class WalletViewController: BaseViewController, UIPickerViewDelegate, UIPickerVi
 }
 
 extension WalletViewController: didSelectPaymentDelegate {
-    func didSelectPaymentType(PaymentType: String, PaymentTypeID: String, PaymentNumber: String, PaymentHolderName: String, dictData: [String : Any]?) {
+    
+    func didSelectPaymentType(PaymentTypeTitle: String, PaymentType: String, PaymentTypeID: String, PaymentNumber: String, PaymentHolderName: String, dictData: [String : Any]?) {
         
     }
 }
