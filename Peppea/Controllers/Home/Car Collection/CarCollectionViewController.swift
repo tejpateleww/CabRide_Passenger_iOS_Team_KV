@@ -58,7 +58,7 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
     var selectedTimeStemp = ""
     var strPromoCode = ""
     var isTripSchedule = false
-    
+    var selectedIndex : IndexPath!
     // ----------------------------------------------------
     // MARK:- --- Base Methods ---
     // ----------------------------------------------------
@@ -119,7 +119,8 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
             }
         }
         else {
-            didSelectPaymentType(PaymentTypeTitle: "Select Payment Method", PaymentType: "", PaymentTypeID: "", PaymentNumber: "", PaymentHolderName: "", dictData: nil)
+            self.paymentType = payment_type.cash.rawValue
+    //        didSelectPaymentType(PaymentTypeTitle: "Select Payment Method", PaymentType: "", PaymentTypeID: "", PaymentNumber: "", PaymentHolderName: "", dictData: nil)
         }
         
         btnBookNow.setTitle("Not Available", for: .normal)
@@ -136,10 +137,48 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
         do {
             let vehiclelist = try UserDefaults.standard.get(objectType: VehicleListModel.self, forKey: "carList")!
             self.arrCarLists = vehiclelist
+            checkAvailabilityOfCar()
             self.collectionView.reloadData()
         } catch {
             AlertMessage.showMessageForError("error")
             return
+        }
+    }
+
+    func checkAvailabilityOfCar()
+    {
+        if(selectedIndex != nil)
+        {
+            if (self.arrCarLists.vehicleTypeList.count != 0 && selectedIndex.row < self.arrCarLists.vehicleTypeList.count)
+            {
+                let dictOnlineCars = arrCarLists.vehicleTypeList[selectedIndex.row]
+                vehicleId = dictOnlineCars.id
+
+
+                if let homeVc = self.parent as? HomeViewController {
+                    if homeVc.estimateData.count != 0 {
+                        let estimateCurrentData = homeVc.estimateData.filter{$0.vehicleTypeId == dictOnlineCars.id}.first
+
+                        let estimateMinute = estimateCurrentData?.driverReachInMinute
+                        let estimateFare = estimateCurrentData?.estimateTripFare
+
+                        if dictOnlineCars.id == vehicleId {
+                            self.estimateFare = (FlatRate == "") ? ( ((estimateFare?.contains(".") == true) ? estimateFare  : "\((Double((estimateMinute == "0" ? "0.0" : estimateFare)!)?.rounded(toPlaces: 2)) ?? 0.0)")!  ) : "\((Double((estimateMinute == "0" ? "0.0" : FlatRate))?.rounded(toPlaces: 2)) ?? 0.0)"
+                        } else {
+                            self.estimateFare = "0"
+                        }
+                    }
+                }
+
+                if !isTripSchedule {
+                    if Float(self.estimateFare) != 0 {
+                        btnBookNow.isVehicleAvailable = true
+                    } else {
+                        btnBookNow.isVehicleAvailable = false
+                    }
+                }
+
+            }
         }
     }
     
@@ -196,11 +235,14 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
                     let estimateMinute = estimateCurrentData?.driverReachInMinute
                     let estimateFare = estimateCurrentData?.estimateTripFare
                     
-                    if dictOnlineCars.id == vehicleId {
-                        self.estimateFare = (FlatRate == "") ? ( ((estimateFare?.contains(".") == true) ? estimateFare  : "\((Double((estimateMinute == "0" ? "0.0" : estimateFare)!)?.rounded(toPlaces: 2)) ?? 0.0)")!  ) : "\((Double((estimateMinute == "0" ? "0.0" : FlatRate))?.rounded(toPlaces: 2)) ?? 0.0)"
-                    }
-                    cell.lblPrice.text =  (FlatRate == "") ? ( ((estimateFare?.contains(".") == true) ? "\(Currency) \(estimateFare!)"  : "\(Currency) \((Double((estimateMinute == "0" ? "0.0" : estimateFare)!)?.rounded(toPlaces: 2)) ?? 0.0)")  ) : "\((Double((estimateMinute == "0" ? "0.0" : FlatRate))?.rounded(toPlaces: 2)) ?? 0.0)"
-                    
+//                    if dictOnlineCars.id == vehicleId {
+//                        self.estimateFare = (FlatRate == "") ? ( ((estimateFare?.contains(".") == true) ? estimateFare  : "\((Double((estimateMinute == "0" ? "0.0" : estimateFare)!)?.rounded(toPlaces: 2)) ?? 0.0)")!  ) : "\((Double((estimateMinute == "0" ? "0.0" : FlatRate))?.rounded(toPlaces: 2)) ?? 0.0)"
+//                    }
+                    self.estimateFare = (FlatRate == "") ? ( ((estimateFare?.contains(".") == true) ? estimateFare  : "\((Double(estimateFare ?? "0.00")?.rounded(toPlaces: 2)) ?? 0.0)")!  ) : "\((Double(FlatRate)?.rounded(toPlaces: 2)) ?? 0.0)"
+//                    cell.lblPrice.text =  (FlatRate == "") ? ( ((estimateFare?.contains(".") == true) ? "\(Currency) \(estimateFare!)"  : "\(Currency) \((Double((estimateMinute == "0" ? "0.0" : estimateFare)!)?.rounded(toPlaces: 2)) ?? 0.0)")  ) : "\((Double((estimateMinute == "0" ? "0.0" : FlatRate))?.rounded(toPlaces: 2)) ?? 0.0)"
+                    cell.lblPrice.text =  (FlatRate == "") ? ( ((estimateFare?.contains(".") == true) ? "\(Currency) \(estimateFare!)"  : "\(Currency) \((Double(estimateFare ?? "0.00")?.rounded(toPlaces: 2)) ?? 0.0)")  ) : "\((Double(FlatRate)?.rounded(toPlaces: 2)) ?? 0.0)"
+
+
                     cell.lblArrivalTime.text = "ETA \(estimateMinute == "0" ? "0" : estimateMinute ?? "0") min."
                 }
             }
@@ -218,37 +260,43 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
-        if (self.arrCarLists.vehicleTypeList.count != 0 && indexPath.row < self.arrCarLists.vehicleTypeList.count)
-        {
-            let dictOnlineCars = arrCarLists.vehicleTypeList[indexPath.row]
-            vehicleId = dictOnlineCars.id
-            
-            
-            if let homeVc = self.parent as? HomeViewController {
-                if homeVc.estimateData.count != 0 {
-                    let estimateCurrentData = homeVc.estimateData.filter{$0.vehicleTypeId == dictOnlineCars.id}.first
-                    
-                    let estimateMinute = estimateCurrentData?.driverReachInMinute
-                    let estimateFare = estimateCurrentData?.estimateTripFare
-                    
-                    if dictOnlineCars.id == vehicleId {
-                        self.estimateFare = (FlatRate == "") ? ( ((estimateFare?.contains(".") == true) ? estimateFare  : "\((Double((estimateMinute == "0" ? "0.0" : estimateFare)!)?.rounded(toPlaces: 2)) ?? 0.0)")!  ) : "\((Double((estimateMinute == "0" ? "0.0" : FlatRate))?.rounded(toPlaces: 2)) ?? 0.0)"
-                    } else {
-                        self.estimateFare = "0"
-                    }
-                }
-            }
-            
-            if !isTripSchedule {
-                if Float(self.estimateFare) != 0 {
-                    btnBookNow.isVehicleAvailable = true
-                } else {
-                    btnBookNow.isVehicleAvailable = false
-                }
-            }
-            
-            self.collectionView.reloadData()
-        }
+        selectedIndex = indexPath
+        checkAvailabilityOfCar()
+         self.collectionView.reloadData()
+        //TODO: - comment
+        //Moved the below code in checkAvailabilityOfCar() function by Rahul
+
+//        if (self.arrCarLists.vehicleTypeList.count != 0 && indexPath.row < self.arrCarLists.vehicleTypeList.count)
+//        {
+//            let dictOnlineCars = arrCarLists.vehicleTypeList[indexPath.row]
+//            vehicleId = dictOnlineCars.id
+//
+//
+//            if let homeVc = self.parent as? HomeViewController {
+//                if homeVc.estimateData.count != 0 {
+//                    let estimateCurrentData = homeVc.estimateData.filter{$0.vehicleTypeId == dictOnlineCars.id}.first
+//
+//                    let estimateMinute = estimateCurrentData?.driverReachInMinute
+//                    let estimateFare = estimateCurrentData?.estimateTripFare
+//
+//                    if dictOnlineCars.id == vehicleId {
+//                        self.estimateFare = (FlatRate == "") ? ( ((estimateFare?.contains(".") == true) ? estimateFare  : "\((Double((estimateMinute == "0" ? "0.0" : estimateFare)!)?.rounded(toPlaces: 2)) ?? 0.0)")!  ) : "\((Double((estimateMinute == "0" ? "0.0" : FlatRate))?.rounded(toPlaces: 2)) ?? 0.0)"
+//                    } else {
+//                        self.estimateFare = "0"
+//                    }
+//                }
+//            }
+//
+//            if !isTripSchedule {
+//                if Float(self.estimateFare) != 0 {
+//                    btnBookNow.isVehicleAvailable = true
+//                } else {
+//                    btnBookNow.isVehicleAvailable = false
+//                }
+//            }
+//
+//            self.collectionView.reloadData()
+//        }
     }
 
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath)
@@ -373,14 +421,21 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
             
             homeVC?.isExpandCategory = false
             homeVC?.setUpCustomMarker()
-            homeVC?.timer?.invalidate()
+//            homeVC?.timer?.invalidate()
             UtilityClass.showHUDWithoutLottie(with: UIApplication.shared.keyWindow)
             animateGoogleMapWhenRotate(homeVC: homeVC)
             
-            if sender.titleLabel?.text == "Book Now" {
-                webserviceForBooking(bookingType: "book_now") // "book_now" // "book_later"
-            } else {
+            if sender.titleLabel?.text?.lowercased().contains("schedule".lowercased()) ?? false {
                 webserviceForBooking(bookingType: "book_later") // "book_now" // "book_later"
+            } else {
+                if(btnBookNow.isVehicleAvailable)
+                {
+                    webserviceForBooking(bookingType: "book_now") // "book_now" // "book_later"
+                }
+                else
+                {
+
+                }
             }
         }
         else {
@@ -425,7 +480,7 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
     
     func popupForPaymentType(PaymentTypeTitle: String, PaymentType: String, PaymentTypeID: String, PaymentNumber: String, PaymentHolderName: String, dictData: [String : Any]?) {
         
-        let alert = UIAlertController(title: "Would You Like To Set Mpesa As Your Default Pay Mode?", message: "", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Would You Like To Set \(PaymentTypeTitle) As Your Default Pay Mode?", message: "", preferredStyle: .alert)
         let useOnce = UIAlertAction(title: "USE ONCE", style: .default) { (ACT) in
             self.paymentTypeSelection(PaymentTypeTitle: PaymentTypeTitle, PaymentType: PaymentType, PaymentTypeID: PaymentTypeID, PaymentNumber: PaymentNumber, PaymentHolderName: PaymentHolderName, dictData: dictData)
         }
@@ -441,9 +496,11 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
     
     func paymentTypeSelection(PaymentTypeTitle: String, PaymentType: String, PaymentTypeID: String, PaymentNumber: String, PaymentHolderName: String, dictData: [String : Any]?) {
         self.lblCardName.text = PaymentTypeTitle
+//        self.lblCardName.textColor = ThemeColor
         self.paymentType = PaymentType
         self.lblCardNumber.isHidden = true
         self.iconSelectedCard.image = PaymentTypeTitle.lowercased().contains("my mile") ? UIImage(named: "kms_black") : UIImage(named: dictData?["Type"] as? String ?? "iconcard")
+        self.iconSelectedCard.tintColor = ThemeColor
         if PaymentType == "card" {
             self.lblCardNumber.isHidden = false
             self.CardID = PaymentTypeID

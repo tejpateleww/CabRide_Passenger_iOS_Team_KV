@@ -12,16 +12,18 @@ class VerifyCustomerPopupViewController: UIViewController {
 
    
     // MARK: - Outlets
-    
+    var redirectToPaymentList : (() -> ())?
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblMessage: UILabel!
     @IBOutlet weak var lblOTP: UILabel!
-    
+    @IBOutlet var btnAction: UIButton!
+    var shouldRedirect = Bool()
     // MARK: - Variables declaration
     var strMessage = String()
     var strTitle = String()
     var strOTP = String()
-    
+    var strBtnTitle = String()
+
     
     // MARK: - Base Methods
     override func viewDidLoad() {
@@ -29,13 +31,20 @@ class VerifyCustomerPopupViewController: UIViewController {
         lblTitle.text = strTitle
         lblMessage.text = strMessage
         lblOTP.text = strOTP
+        btnAction.setTitle(strBtnTitle, for: .normal)
     }
     
     // MARK: - Actions
     
     @IBAction func btnOkAction(_ sender: UIButton) {
-        
-        self.dismiss(animated: true, completion: nil)
+        if(shouldRedirect)
+        {
+            redirectToPaymentList?()
+        }
+        else
+        {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     

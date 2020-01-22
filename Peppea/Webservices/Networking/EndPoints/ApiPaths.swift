@@ -164,6 +164,7 @@ enum socketApiKeys: String
     case ArrivedAtPickupLocation    = "arrived_at_pickup_location"
     
     case VerifyCustomer             = "verify_customer"
+    case VerifyEndTrip              = "request_code_for_complete_trip"
     case CompleteTripCard           = "complete_trip_card"
     case PaymentFailedMpesa         = "payment_failed_mpesa"
     case PaymentSuccessMpesa        = "payment_success_mpesa"

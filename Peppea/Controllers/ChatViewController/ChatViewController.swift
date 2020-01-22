@@ -80,7 +80,7 @@ class ChatViewController: BaseViewController,UIGestureRecognizerDelegate ,UINavi
         self.hideKeyboard()
         self.registerForKeyboardNotifications()
         
-        self.setNavBarWithBack(Title: receiver_name, IsNeedRightButton: false)
+        self.setNavBarWithBack(Title: "\(SingletonClass.sharedInstance.bookingInfo?.driverInfo.firstName ?? "") \(SingletonClass.sharedInstance.bookingInfo?.driverInfo.lastName ?? "")", IsNeedRightButton: false)
         //Change by Bhautik
         SingletonClass.sharedInstance.isChatBoxOpen = true
         SingletonClass.sharedInstance.ChatBoxOpenedWithID = self.strTicketID
@@ -95,7 +95,7 @@ class ChatViewController: BaseViewController,UIGestureRecognizerDelegate ,UINavi
         button1.layer.borderWidth = 1
         button1.layer.masksToBounds = true
 //        button1.setImage(UIImage.init(named: "iconDummyProfilePic"), for: .normal)
-        button1.sd_setImage(with: URL(string: receiverImage), for: .normal, completed: nil)
+        button1.sd_setImage(with: URL(string: "\(NetworkEnvironment.baseImageURL + (SingletonClass.sharedInstance.bookingInfo?.driverInfo.profileImage ?? ""))"), for: .normal, completed: nil)
         button1.addTarget(self, action: #selector(btnFilterClicked(_:)), for: .touchUpInside)
         viewFN.addSubview(button1)
         let rightBarButton = UIBarButtonItem(customView: viewFN)
@@ -106,6 +106,8 @@ class ChatViewController: BaseViewController,UIGestureRecognizerDelegate ,UINavi
 //        let viewController = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
 //        self.navigationController?.pushViewController(viewController, animated: true)
     }
+
+
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -270,8 +272,8 @@ class ChatViewController: BaseViewController,UIGestureRecognizerDelegate ,UINavi
     //===================================
     func registerForKeyboardNotifications(){
         //Adding notifies on keyboard appearing
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown(notification:)), name: UIWindow.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden(notification:)), name: UIWindow.keyboardWillHideNotification, object: nil)
     }
     @objc func keyboardWasShown(notification: NSNotification){
 
@@ -283,7 +285,16 @@ class ChatViewController: BaseViewController,UIGestureRecognizerDelegate ,UINavi
         } else {
             conVwMessageBottom.constant = keyboardSize!.height
         }
-        self.animateConstraintWithDuration()
+
+        DispatchQueue.main.async {
+            self.animateConstraintWithDuration()
+
+            if self.arrData.count > 0  {
+                let indexPath = IndexPath.init(row: self.arrData.count-1, section: 0)
+                self.tblVw.scrollToRow(at: indexPath, at: .bottom, animated: true)
+            }
+        }
+
         
     }
     @objc func keyboardWillBeHidden(notification: NSNotification){
@@ -471,34 +482,34 @@ class ChatViewController: BaseViewController,UIGestureRecognizerDelegate ,UINavi
                     
                     if aryMessages.count != 0 {
                         
-                        for (_, value) in aryMessages.enumerated() {
-                            
-                            objMessage.message = value["message"] as? String
-//                            objMessage.isEmergency = false
-//                            objMessage.isImage = false
-                            
-                            if value["sender_id"] as? String == SingletonClass.sharedInstance.loginData.id {
-                                objMessage.isSender = true
-                            }
-                            else {
-                                objMessage.isSender = false
-                            }
-                            
-                            objMessage.id = value["id"] as? String
-                            objMessage.bookingId = value["booking_id"] as? String
-                            objMessage.receiver_type = value["receiver_type"] as? String
-                            objMessage.sender_id = value["sender_id"] as? String
-                            objMessage.sender_type = value["sender_type"] as? String
-                            objMessage.receiver_id = value["receiver_id"] as? String
-                            objMessage.message = value["message"] as? String
-                            objMessage.created_date = value["created_at"] as? String
-                            
-                            self.arrData.append(objMessage)
-                        }
-                        
+//                        for (_, value) in aryMessages.enumerated() {
+//
+//                            objMessage.message = value["message"] as? String
+////                            objMessage.isEmergency = false
+////                            objMessage.isImage = false
+//
+//                            if value["sender_id"] as? String == SingletonClass.sharedInstance.loginData.id && value["receiver_type"] as? String == "driver" {
+//                                objMessage.isSender = true
+//                            }
+//                            else {
+//                                objMessage.isSender = false
+//                            }
+//
+//                            objMessage.id = value["id"] as? String
+//                            objMessage.bookingId = value["booking_id"] as? String
+//                            objMessage.receiver_type = value["receiver_type"] as? String
+//                            objMessage.sender_id = value["sender_id"] as? String
+//                            objMessage.sender_type = value["sender_type"] as? String
+//                            objMessage.receiver_id = value["receiver_id"] as? String
+//                            objMessage.message = value["message"] as? String
+//                            objMessage.created_date = value["created_at"] as? String
+//
+//                            self.arrData.append(objMessage)
+//                        }
+
                         self.arrData.removeAll()
                         
-                        aryMessages.map{self.arrData.append(MessageObject(isSender: $0["sender_id"] as? String == SingletonClass.sharedInstance.loginData.id ? true : false, name: "", image: "", id: "", sender_id: "\($0["sender_id"] as? String ?? "")", receiver_id: "\($0["receiver_id"] as? String ?? "")", message: "\($0["message"] as? String ?? "")", created_date: "\($0["created_at"] as? String ?? "")", bookingId: "\($0["booking_id"] as? String ?? "")", sender_type: "\($0["sender_type"] as? String ?? "")", receiver_type: "\($0["receiver_type"] as? String ?? "")"))}
+                        aryMessages.map{self.arrData.append(MessageObject(isSender: ($0["sender_id"] as? String == SingletonClass.sharedInstance.loginData.id && $0["receiver_type"] as? String == "driver" ) ? true : false, name: "", image: "", id: "", sender_id: "\($0["sender_id"] as? String ?? "")", receiver_id: "\($0["receiver_id"] as? String ?? "")", message: "\($0["message"] as? String ?? "")", created_date: "\($0["created_at"] as? String ?? "")", bookingId: "\($0["booking_id"] as? String ?? "")", sender_type: "\($0["sender_type"] as? String ?? "")", receiver_type: "\($0["receiver_type"] as? String ?? "")"))}
                         
                         
                         self.tblVw.reloadData()

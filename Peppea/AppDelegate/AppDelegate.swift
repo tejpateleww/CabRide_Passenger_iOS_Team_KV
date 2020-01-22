@@ -44,6 +44,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         locationPermission()
         Fabric.with([Crashlytics.self])
 
+
+        if(UserDefaults.standard.object(forKey: "userProfile") != nil) {
+            do {
+                SingletonClass.sharedInstance.loginData = try UserDefaults.standard.get(objectType: LoginModel.self, forKey: "userProfile")!.loginData
+                SingletonClass.sharedInstance.walletBalance = SingletonClass.sharedInstance.loginData.walletBalance
+                SingletonClass.sharedInstance.BulkMilesBalance = SingletonClass.sharedInstance.loginData.BulkMilesBalance
+            }
+            catch {
+                //            AlertMessage.showMessageForError("error")
+                //            return
+            }
+        }
         return true
     }
 
@@ -125,6 +137,125 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         print(userInfo)
 
         completionHandler(UIBackgroundFetchResult.newData)
+    }
+
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Swift.Void) {
+        print(#function, response)
+
+
+        //        let content = response.notification.request.content
+        let userInfo = response.notification.request.content.userInfo
+        let key = (userInfo as NSDictionary).object(forKey: "gcm.notification.type")!
+
+        print("USER INFo : ",userInfo)
+        print("KEY : ",key)
+
+
+        if userInfo["gcm.notification.type"] as! String == "booking_chat" {
+
+            if let response = userInfo["gcm.notification.data"] as? String {
+                let jsonData = response.data(using: .utf8)!
+                let dictionary = try? JSONSerialization.jsonObject(with: jsonData, options: .mutableLeaves)
+
+                if let dic = (dictionary as? [[String: Any]])?.first{
+                    print(dic)
+
+                    let state = UIApplication.shared.applicationState
+
+                    if let vc = (self.window?.rootViewController as? UINavigationController)?.topViewController?.children.first?.children.last {
+
+                        if let vc : ChatViewController = (vc as? ChatViewController) {
+
+                            if let senderID = dic["sender_id"] as? String {
+                                if senderID == vc.receiver_id {
+                                    vc.webServiceForGetChatHistory()
+                                }
+                            }
+                        } else {
+                                if state == .inactive {
+                                    NotificationCenter.default.addObserver(self, selector: #selector(loadChatVC), name: NotificationSetHomeVC, object: nil)
+                                    SingletonClass.sharedInstance.userInfo = dic
+                                }
+                                if !vc.isKind(of: SplashViewController.self) {
+
+                                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                                    let controller = storyboard.instantiateViewController(withIdentifier: ChatViewController.className) as! ChatViewController
+                                    controller.strBookingId = dic["booking_id"] as? String ?? ""
+                                    vc.navigationController?.pushViewController(controller, animated: false)
+                                }
+                            }
+
+                    }
+                    //                    }
+                } else {
+                    completionHandler()
+                }
+            }
+        }
+    }
+
+    @objc func loadChatVC(){
+        let storyboard = UIStoryboard(name: "ChatStoryboard", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: ChatViewController.className) as! ChatViewController
+        let userinfo = SingletonClass.sharedInstance.userInfo
+        controller.receiver_id = userinfo?["SenderID"] as? String ?? ""
+        (self.window?.rootViewController as? UINavigationController)?.pushViewController(controller, animated: false)
+    }
+
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+
+        print(#function, notification.request.content.userInfo)
+        //        let content = notification.request.content
+        let userInfo = notification.request.content.userInfo
+        let key = (userInfo as NSDictionary).object(forKey: "gcm.notification.type")!
+
+        print("USER INFo : ",userInfo)
+        print("KEY : ",key)
+
+        if userInfo["gcm.notification.type"] as! String == "booking_chat" {
+
+            if let vc = (self.window?.rootViewController as? UINavigationController)?.topViewController?.children.first?.children.last {
+                if let vc : ChatViewController = (vc as? ChatViewController) {
+
+                    if let response = userInfo["gcm.notification.data"] as? String {
+                        let jsonData = response.data(using: .utf8)!
+                        let dictionary = try? JSONSerialization.jsonObject(with: jsonData, options: .mutableLeaves)
+
+                        if let dic = (dictionary as? [[String: Any]])?.first{
+                            print(dic)
+
+                            if let senderID = dic["sender_id"] as? String {
+                                if senderID == vc.receiver_id {
+
+
+                                   let chat = MessageObject(isSender: false, name: dic["sender_name"] as? String ?? "", image: "", id: "", sender_id: dic["sender_id"] as? String ?? "", receiver_id: dic["receiver_id"] as? String ?? "", message: dic["message"] as? String ?? "", created_date: dic["created_at"] as? String ?? "", bookingId: dic["booking_id"] as? String ?? "", sender_type: dic["sender_type"] as? String ?? "", receiver_type: dic["receiver_type"] as? String ?? "")
+
+//                                    let chat = MessageObject(ReceiverID: dic["ReceiverID"] as? String ?? "", Message: dic["Message"] as? String ?? "", SenderNickname: dic["sender_nickname"] as? String ?? "", SenderName: dic["sender_name"] as? String ?? "", SenderID: dic["SenderID"] as? String ?? "", Date: dic["Date"] as? String ?? "", ChatId: dic["chat_id"] as? String ?? "")
+                                    print(chat)
+
+                                    vc.arrData.append(chat)
+                                    let indexPath = IndexPath.init(row: vc.arrData.count-1, section: 0)
+                                    vc.tblVw.insertRows(at: [indexPath], with: .bottom)
+                                    let path = IndexPath.init(row: vc.arrData.count-1, section: 0)
+                                    vc.tblVw.scrollToRow(at: path, at: .bottom, animated: true)
+                                } else{
+                                    //                                    NotificationCenter.default.post(name: NotificationBadges, object: content)
+                                    completionHandler([.alert, .sound])
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    //                    NotificationCenter.default.post(name: NotificationBadges, object: content)
+                    completionHandler([.alert, .sound])
+                }
+            } else {
+                //                NotificationCenter.default.post(name: NotificationBadges, object: content)
+                completionHandler([.alert, .sound])
+            }
+        }
+//            completionHandler([.alert, .sound])
+
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

@@ -15,7 +15,7 @@ protocol didSelectPaymentDelegate {
     func didSelectPaymentType(PaymentTypeTitle:String, PaymentType:String, PaymentTypeID:String, PaymentNumber: String, PaymentHolderName:String, dictData: [String:Any]?)
 }
 
-class PaymentViewController: BaseViewController,UITableViewDelegate, UITableViewDataSource//,SwipeTableViewCellDelegate
+class PaymentViewController: BaseViewController,UITableViewDelegate, UITableViewDataSource,SwipeTableViewCellDelegate
 {
 
     
@@ -126,7 +126,7 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
             var dict3 = [String:AnyObject]()
             dict3["CardNum"] = "Wallet" as AnyObject
             dict3["CardNum2"] = "wallet" as AnyObject
-            dict3["Type"] = "iconWallet" as AnyObject
+            dict3["Type"] = "iconWalletColor" as AnyObject
             self.aryOtherPayment.append(dict3)
             
         }
@@ -180,6 +180,7 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
                 ///Normal Peppea flow
                 self.webserviceForCardList()
             } else {
+                viewPaymentPopup.isHidden = true
                 constraintHeightOfTableView.constant = CGFloat(60 * aryOtherPayment.count)
             }
         }
@@ -453,6 +454,7 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
             cell.selectionStyle = .none
             let data = aryOtherPayment[indexPath.row]
             cell.iconWallet.image = UIImage.init(named: data["Type"] as! String)
+            cell.iconWallet.tintColor = .white
             cell.lblTitle.text = data["CardNum"] as? String
             return cell
         }
@@ -461,15 +463,16 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
             let cell = tableView.dequeueReusableCell(withIdentifier: "PaymentCardTypeListCell") as! PaymentCardTypeListCell
             let data = aryCardData[indexPath.row]
             cell.selectionStyle = .none
-//            cell.delegate = self
+            cell.delegate = self
 
             cell.iconCard.image = UIImage(named: setCardIcon(str: data.cardType))//UIImage.init(named: data["Type"] as! String)
             cell.lblTitle.text = data.cardHolderName
+            cell.iconCard.tintColor = .white
             cell.lblCardNumber.text = data.formatedCardNo
             return cell
         }
     }
- /*
+
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         guard orientation == .right else { return nil }
         
@@ -482,7 +485,12 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
         }
         let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
             // handle action by updating model with deletion
-            self.webserviceForDeleteCardFromList(strCardID)
+            UtilityClass.showDefaultAlertView(withTitle: AppName.kAPPName, message: "Are you sure you want to delete card?", buttons: ["Delete","Cancel"], completion: { (index) in
+                if(index == 0)
+                {
+                    self.webserviceForDeleteCardFromList(strCardID)
+                }
+            })
         }
         
         // customize the action appearance
@@ -490,7 +498,7 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
         
         return [deleteAction]
     }
- */
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         if self.OpenedForPayment {

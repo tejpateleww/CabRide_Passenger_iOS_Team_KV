@@ -19,6 +19,8 @@ class HistoryTableViewCell: UITableViewCell {
     @IBOutlet weak var lblAmount: UILabel!
     
     @IBOutlet weak var lblPaymentType: UILabel!
+    @IBOutlet weak var lblTransactionFailed: UILabel!
+
     
     override func awakeFromNib() {
         super.awakeFromNib()

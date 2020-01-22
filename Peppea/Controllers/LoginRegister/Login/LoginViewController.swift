@@ -169,7 +169,9 @@ class LoginViewController: UIViewController {
             if(dictValue["isDefaultScreen"]!)
             {
                 //redirect to choose service VC
-                (UIApplication.shared.delegate as! AppDelegate).GoToChooseServices()
+//                (UIApplication.shared.delegate as! AppDelegate).GoToChooseServices()
+                (UIApplication.shared.delegate as! AppDelegate).GoToHome()
+
             }
             else
             {
@@ -189,7 +191,9 @@ class LoginViewController: UIViewController {
         }
         else
         {
-             (UIApplication.shared.delegate as! AppDelegate).GoToChooseServices()
+//             (UIApplication.shared.delegate as! AppDelegate).GoToChooseServices()
+            (UIApplication.shared.delegate as! AppDelegate).GoToHome()
+
         }
 
     }

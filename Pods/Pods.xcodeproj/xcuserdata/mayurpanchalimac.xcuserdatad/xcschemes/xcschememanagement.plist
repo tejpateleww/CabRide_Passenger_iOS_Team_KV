@@ -46,10 +46,15 @@
 			<key>orderHint</key>
 			<integer>6</integer>
 		</dict>
-		<key>FSCalendar.xcscheme_^#shared#^_</key>
+		<key>DropDown.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>42</integer>
+		</dict>
+		<key>FSCalendar.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>43</integer>
 		</dict>
 		<key>Fabric.xcscheme</key>
 		<dict>
@@ -222,7 +227,7 @@
 		<key>RKMultiUnitRuler.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>43</integer>
+			<integer>44</integer>
 		</dict>
 		<key>SDWebImage.xcscheme</key>
 		<dict>
@@ -273,6 +278,11 @@
 			<key>orderHint</key>
 			<integer>38</integer>
 		</dict>
+		<key>SwiftyAttributes.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>45</integer>
+		</dict>
 		<key>SwiftyJSON.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -290,7 +300,7 @@
 		<key>TTSegmentedControl.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>44</integer>
+			<integer>46</integer>
 		</dict>
 		<key>lottie-ios.xcscheme</key>
 		<dict>

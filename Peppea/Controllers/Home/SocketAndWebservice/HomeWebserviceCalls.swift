@@ -18,8 +18,8 @@ extension CarCollectionViewController: CarCollectionWebserviceProtocol {
     {
         let pickup = (self.parent as! HomeViewController).pickupLocation
         let dropOff = (self.parent as! HomeViewController).destinationLocation
-        let bookingType = (self.parent as! HomeViewController).bookingType == "" ? "book_now" : (self.parent as! HomeViewController).bookingType
-        
+//        let bookingType = (self.parent as! HomeViewController).bookingType == "" ? "book_now" : (self.parent as! HomeViewController).bookingType
+
         
         if(pickup.latitude == 0 || pickup.longitude == 0)
         {
@@ -29,11 +29,11 @@ extension CarCollectionViewController: CarCollectionWebserviceProtocol {
         {
             return (false, "Please enter dropoff location")
         }
-        else if(bookingType.trimmingCharacters(in: .whitespacesAndNewlines).count == 0)
-        {
-            return (false, "Please select booking type")
-        }
-        else if(vehicleId.trimmingCharacters(in: .whitespacesAndNewlines).count == 0 && self.btnBookNow.titleLabel?.text == "Book Now")
+//        else if(bookingType.trimmingCharacters(in: .whitespacesAndNewlines).count == 0)
+//        {
+//            return (false, "Please select booking type")
+//        }
+        else if(vehicleId.trimmingCharacters(in: .whitespacesAndNewlines).count == 0)
         {
             return (false, "Please select vehicle")
         }
@@ -44,7 +44,7 @@ extension CarCollectionViewController: CarCollectionWebserviceProtocol {
         {
             return (false, "Estimate fare is not available")
         }
-        else if paymentType == "Select Payment Method" {
+        else if paymentType == "Select Payment Method" || paymentType == ""{
             return (false, "Please select payment method type")
         }
         return (true, "")
@@ -98,18 +98,49 @@ extension CarCollectionViewController: CarCollectionWebserviceProtocol {
             
             print("Booking Response: \n", response)
             if status {
-//                 let homeVC = self.parent as? HomeViewController
+                 let homeVC = self.parent as? HomeViewController
 //                 homeVC?.btnBackButtonWhileBookLater()
                 
                 let msg = response.dictionary?["message"]?.stringValue ?? response.dictionary?["message"]?.array?.first?.stringValue ?? ""
                 
-                UtilityClass.showAlert(title: AppName.kAPPName, message: msg, alertTheme: .success)
-                
+//                UtilityClass.showAlert(title: AppName.kAPPName, message: msg, alertTheme: .success)
+                UtilityClass.showDefaultAlertView(withTitle: AppName.kAPPName, message: msg, buttons: ["OK"], completion: { (index) in
+//                    homeVC?.setupAfterComplete()
+                })
+
             } else {
-                let msg = response.dictionary?["message"]?.stringValue ?? response.dictionary?["message"]?.array?.first?.stringValue ?? ""
+                let msg = (response.dictionary?["message"]?.stringValue == "") ? response.dictionary?["message"]?.array?.first?.stringValue ?? "" : response.dictionary?["message"]?.stringValue
                 
-                UtilityClass.showAlert(title: AppName.kAPPName, message: msg, alertTheme: .error)
-                
+                UtilityClass.hideHUD()
+                let storyboard = UIStoryboard(name: "Popup", bundle: nil)
+                if let vc = storyboard.instantiateViewController(withIdentifier: "VerifyCustomerPopupViewController") as? VerifyCustomerPopupViewController {
+                    if(response["past_due"].int != nil)
+                    {
+                        vc.strMessage = msg ?? ""
+                        vc.strTitle = "Dear Customer"
+                        vc.strBtnTitle = "Pay Now"
+                        vc.shouldRedirect = true
+                        vc.redirectToPaymentList = {
+                            vc.dismiss(animated: true, completion: nil)
+                            let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "PreviousDueViewController") as! PreviousDueViewController
+                            self.navigationController?.pushViewController(NextPage, animated: true)
+                        }
+                    }
+                    else
+                    {
+                        vc.strMessage = msg ?? ""
+                        vc.strTitle = "Dear Customer"
+                        vc.strBtnTitle = "OK"
+                        vc.shouldRedirect = true
+                        vc.redirectToPaymentList = {
+                            vc.dismiss(animated: true, completion: nil)
+                        }
+                    }
+
+
+                    self.present(vc, animated: true, completion: nil)
+                }
+
             }
         }
     }

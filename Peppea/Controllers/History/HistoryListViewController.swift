@@ -73,6 +73,7 @@ class HistoryListViewController: BaseViewController, UITableViewDataSource, UITa
         walletHistoryRequest.to_date = ""
         walletHistoryRequest.payment_type = ""
         walletHistoryRequest.transaction_type = ""
+        self.pageNo = 0
         webserviceCallForHistoryList(index: 1)
     }
     
@@ -146,16 +147,23 @@ class HistoryListViewController: BaseViewController, UITableViewDataSource, UITa
         cellMenu.selectionStyle = .none
         let dictData = self.arrHistoryData[indexPath.row]
 
-        cellMenu.lblBookingID.text = "Booking Id #" + dictData.id
-        cellMenu.lblAmount.text = Currency + " " + dictData.amount
+        cellMenu.lblBookingID.text = dictData.descriptionField//"Booking Id #" + dictData.id
+        cellMenu.lblAmount.text = Currency + " " + dictData.type +  dictData.amount
         cellMenu.lblDateTime.text = dictData.createdAt
         cellMenu.lblPaymentType.text = dictData.paymentType
+        cellMenu.lblTransactionFailed.isHidden = true
+        cellMenu.lblAmount.textColor = UIColor.black
+        if(dictData.status == "failed")
+        {
+            cellMenu.lblTransactionFailed.isHidden = false
+            cellMenu.lblAmount.textColor = UIColor.red
+        }
         
         return cellMenu
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 75
+        return UITableView.automaticDimension
     }
     
     // MARK: - Custom Methods

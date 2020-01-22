@@ -13,17 +13,23 @@ protocol delegateForCancelTripReason {
     func didCancelTripFromRider(obj: Any)
 }
 
-class CancelTripViewController: UIViewController {
+class CancelTripViewController: UIViewController,UITextFieldDelegate {
 
     // MARK: - Outlets
     @IBOutlet weak var lblMessage: UILabel!
     @IBOutlet weak var btnSelectReason: UIButton!
     @IBOutlet weak var txtOtherReason: UITextField!
     @IBOutlet weak var btnClose: UIButton!
-    
-    
+    @IBOutlet var viewDropDown: UIView!
+    @IBOutlet var btnOk: UIButton!
+
+    var isDropDownHidden = false
+
+    var strBtnOkText = String()
+    var strTextPlaceHolder = String()
     // MARK: - Variables declaration
     var strMessage = String()
+    var strDescription = String()
     var delegate: delegateForCancelTripReason?
     var reason: CancelReason?
     
@@ -32,6 +38,22 @@ class CancelTripViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         txtOtherReason.isHidden = true
+
+        if(strBtnOkText.count != 0)
+        {
+            txtOtherReason.isHidden = false
+            txtOtherReason.keyboardType = .numberPad
+            txtOtherReason.isSecureTextEntry = true
+            btnOk.setTitle(strBtnOkText, for: .normal)
+        }
+        if(strTextPlaceHolder.count != 0)
+        {
+            txtOtherReason.placeholder = strTextPlaceHolder
+        }
+
+        lblMessage.text = strDescription
+        viewDropDown.isHidden = isDropDownHidden
+        txtOtherReason.delegate = self
     }
     
 
@@ -80,7 +102,20 @@ class CancelTripViewController: UIViewController {
                     self.dismiss(animated: true, completion: nil)
                 } else {
                     txtOtherReason.text = txtOtherReason.text?.trimmingCharacters(in: .whitespacesAndNewlines)
-                    UtilityClass.showAlert(title: "", message: "Please enter reason for cencel trip", alertTheme: .error)
+                     if(isDropDownHidden)
+                    {
+                        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+                        let image = UIImage(named: "iconAlert")
+                        imageView.image = image
+                        txtOtherReason.rightView = imageView
+                        txtOtherReason.rightViewMode = .unlessEditing
+
+                    }
+                    else
+                     {
+                        UtilityClass.showAlert(title: "", message: "Please enter reason for cencel trip", alertTheme: .error)
+
+                    }
                 }
             }
             else if self.strMessage == "Select Reason" {
@@ -88,6 +123,22 @@ class CancelTripViewController: UIViewController {
                 UtilityClass.showAlert(title: "", message: "Please select reason for cencel trip", alertTheme: .error)
             }
         }
+    }
+
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let textFieldText = textField.text,
+            let rangeOfTextToReplace = Range(range, in: textFieldText) else {
+                return false
+        }
+        let substringToReplace = textFieldText[rangeOfTextToReplace]
+        let count = textFieldText.count - substringToReplace.count + string.count
+        return count <= 6
+    }
+
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        txtOtherReason.rightViewMode = .never
+
     }
     
     @IBAction func btnCloseAction(_ sender: UIButton) {

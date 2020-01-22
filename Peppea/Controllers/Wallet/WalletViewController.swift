@@ -60,7 +60,7 @@ class WalletViewController: BaseViewController, UIPickerViewDelegate, UIPickerVi
         }
         do {
             LoginDetail = try UserDefaults.standard.get(objectType: LoginModel.self, forKey: "userProfile")!
-            self.self.lblTotalWalletBalance.text = "\(Currency) " + ((SingletonClass.sharedInstance.walletBalance != "") ? SingletonClass.sharedInstance.walletBalance : "0.0")
+            self.lblTotalWalletBalance.text = "\(Currency) " + ((SingletonClass.sharedInstance.walletBalance != "") ? SingletonClass.sharedInstance.walletBalance : "0.0")
             //LoginDetail.loginData.walletBalance
             cardDetailModel = try UserDefaults.standard.get(objectType: AddCardModel.self, forKey: "cards")!
             self.aryCards = cardDetailModel.cards
@@ -80,7 +80,7 @@ class WalletViewController: BaseViewController, UIPickerViewDelegate, UIPickerVi
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.self.lblTotalWalletBalance.text = "\(Currency) " + ((SingletonClass.sharedInstance.walletBalance != "") ? SingletonClass.sharedInstance.walletBalance : "0.0")
+        self.lblTotalWalletBalance.text = "\(Currency) " + ((SingletonClass.sharedInstance.walletBalance != "") ? SingletonClass.sharedInstance.walletBalance : "0.0")
 //        LoginDetail.loginData.walletBalance
     }
     
@@ -333,7 +333,7 @@ extension WalletViewController: ProcessCompleteDelegate {
     
     func didFinish(WalletBalance:String, PaymentStatus: Bool) {
         if PaymentStatus {
-            self.self.lblTotalWalletBalance.text = "\(Currency) " + ((WalletBalance != "") ? WalletBalance : "0.0")
+            self.lblTotalWalletBalance.text = "\(Currency) " + ((WalletBalance != "") ? WalletBalance : "0.0")
             AlertMessage.showMessageForSuccess("Money added successfully")
             SetupLayout()
         }
@@ -380,7 +380,7 @@ extension WalletViewController {
                     self.navigationController?.pushViewController(WalletWebPage, animated: true)
                 }
                 else {
-                    self.self.lblTotalWalletBalance.text = "\(Currency) " + ((json["wallet_balance"].stringValue != "") ? json["wallet_balance"].stringValue : "0.0")
+                    self.lblTotalWalletBalance.text = "\(Currency) " + ((json["wallet_balance"].stringValue != "") ? json["wallet_balance"].stringValue : "0.0")
                     SingletonClass.sharedInstance.walletBalance = json["wallet_balance"].stringValue
                     AlertMessage.showMessageForSuccess(json["message"].stringValue)
                     self.SetupLayout()

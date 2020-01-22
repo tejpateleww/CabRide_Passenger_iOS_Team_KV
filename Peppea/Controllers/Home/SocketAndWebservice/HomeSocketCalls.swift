@@ -37,6 +37,7 @@ extension HomeViewController: SocketConnected {
         onSocket_PaymentSuccessMpesa()              // Socket On 16
         onSocket_WaitingTimeAlert()                 // Socket On 17
         onSocket_CancelBookingBeforeAccept()        // Socket On 18
+        onSocket_VerifyEndTrip()                    // Socket On 19
     }
     
     /// Socket Off All
@@ -60,6 +61,7 @@ extension HomeViewController: SocketConnected {
         SocketIOManager.shared.socket.off(socketApiKeys.PaymentSuccessMpesa.rawValue)               // Socket Off 16
         SocketIOManager.shared.socket.off(socketApiKeys.WaitingTimeAlert.rawValue)                  // Socket Off 17
         SocketIOManager.shared.socket.off(socketApiKeys.CancelBookingBeforeAccept.rawValue)         // Socket Off 18
+        SocketIOManager.shared.socket.off(socketApiKeys.VerifyEndTrip.rawValue)         // Socket Off 19
         SocketIOManager.shared.socket.off(clientEvent: .disconnect)                                 // Socket Disconnect
     }
     
@@ -264,6 +266,7 @@ extension HomeViewController: SocketConnected {
                 vc.strMessage = msg
                 vc.strTitle = titleMessage
                 vc.strOTP = otp
+                vc.strBtnTitle = "Done"
                 self.present(vc, animated: true, completion: nil)
             }
         }
@@ -312,7 +315,25 @@ extension HomeViewController: SocketConnected {
             AlertMessage.showMessageForSuccess(titleMessage)
         }
     }
-    
+    // Socket On 19
+    func onSocket_VerifyEndTrip() {
+        SocketIOManager.shared.socketCall(for: socketApiKeys.VerifyEndTrip.rawValue) { (json) in
+            print(#function, "\n ", json)
+
+            let titleMessage = json.array?.first?.dictionary?["message"]?.string ?? ""
+            let msg = json.array?.first?.dictionary?["message2"]?.string ?? ""
+            let otp = json.array?.first?.dictionary?["otp"]?.string ?? ""
+
+            let storyboard = UIStoryboard(name: "Popup", bundle: nil)
+            if let vc = storyboard.instantiateViewController(withIdentifier: "VerifyCustomerPopupViewController") as? VerifyCustomerPopupViewController {
+                vc.strMessage = msg
+                vc.strTitle = titleMessage
+                vc.strOTP = otp
+                vc.strBtnTitle = "Done"
+                self.present(vc, animated: true, completion: nil)
+            }
+        }
+    }
     
     // -------------------------------------------------------------
     // MARK: - --- Accept Book Now & Later Data and View Setup ---

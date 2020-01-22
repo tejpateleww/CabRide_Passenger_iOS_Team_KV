@@ -64,7 +64,7 @@ class WebService{
             .responseJSON { (response) in
                // LoaderClass.hideActivityIndicator()
         
-                print("The webservice call is for \(url) and the params are \n \(JSON(parameters))")
+//                print("The webservice call is for \(url) and the params are \n \(JSON(parameters))")
 
                 if let json = response.result.value{
                     let resJson = JSON(json)

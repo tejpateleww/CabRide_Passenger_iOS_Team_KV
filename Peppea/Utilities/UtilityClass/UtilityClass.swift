@@ -31,6 +31,11 @@ class DataClass {
     }
 }
 
+extension NSObject {
+    static var className : String {
+        return String(describing: self)
+    }
+}
 
 let forceLogoutMsg = "Response status code was unacceptable: 403."
 
@@ -88,6 +93,21 @@ class UtilityClass : NSObject
         view.layer.borderColor = borderColor.cgColor
     }
 
+    class func EmptyMessage(message:String, viewController:UIViewController) -> UILabel {
+        let rect = CGRect(origin: CGPoint(x: 0,y :0), size: CGSize(width: viewController.view.bounds.size.width, height: viewController.view.bounds.size.height))
+        let messageLabel = UILabel(frame: rect)
+        messageLabel.text = message
+        messageLabel.textColor = .black
+        messageLabel.numberOfLines = 0;
+        messageLabel.textAlignment = .center;
+//        messageLabel.font = UIFont(name: "TrebuchetMS", size: 15)
+        messageLabel.sizeToFit()
+
+        return messageLabel
+
+//        viewController.tableView.backgroundView = messageLabel;
+//        viewController.tableView.separatorStyle = .none;
+    }
 
     class func showDefaultAlertView(withTitle title: String?, message: String?, buttons buttonArray: [Any]?, completion block: @escaping (_ buttonIndex: Int) -> Void) {
 

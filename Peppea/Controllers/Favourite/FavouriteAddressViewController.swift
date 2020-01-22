@@ -95,7 +95,7 @@ extension FavouriteAddressViewController: UITableViewDataSource, UITableViewDele
         }
         else {
             let noDataLabel: UILabel  = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
-            noDataLabel.text          = "No data available"
+            noDataLabel.text          = "No favourite locations found"
             noDataLabel.textColor     = UIColor.black
             noDataLabel.textAlignment = .center
             tableView.backgroundView  = noDataLabel

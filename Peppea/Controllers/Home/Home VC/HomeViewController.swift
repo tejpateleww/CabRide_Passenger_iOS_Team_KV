@@ -47,6 +47,8 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
 
 
     //MARK:- IBOutles
+    @IBOutlet var imgArrow: UIImageView!
+    @IBOutlet var lblSwipeToBook: UILabel!
     @IBOutlet weak var btnCurrentLocation: UIButton!
 
     @IBOutlet weak var btnViewTop: UIButton!
@@ -88,9 +90,9 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
     /// Pickup and Dropoff Address
     var pickupAndDropoffAddress = (pickUp: "", dropOff: "")
     
-    var vehicleId = String()
-    var estimateFare = String()
-    var bookingType = String()
+//    var vehicleId = String()
+//    var estimateFare = String()
+//    var bookingType = String()
     var estimateData = [EstimateFare]()
 
     //MARk:- PolyLine Variables
@@ -99,11 +101,11 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
     var path = GMSPath()
     var animationPath = GMSMutablePath()
     var i: UInt = 0
-    var timer: Timer!
-    var EstimateTime: Timer!
+//    var timer: Timer!
+//    var EstimateTime: Timer!
 //    var driverMarker: GMSMarker!
     var destinationMarker = GMSMarker()
-    var pickupMarker = GMSMarker()
+    var pickupMarker : GMSMarker!
 
     //MARK:- Location Manager
     let locationManager = CLLocationManager()
@@ -142,8 +144,26 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
     var isExpandCategory:  Bool  = false {
         didSet {
             constraintStackViewBottom.constant = isExpandCategory ? 0 : (-containerHeightConstraint.constant + 135)
-            
+
+            if(isExpandCategory)
+            {
+                self.lblSwipeToBook.text = ""
+                UIView.animate(withDuration: 0.2) {
+                    self.imgArrow.transform = CGAffineTransform.identity
+                }
+            }
+            else
+            {
+                self.lblSwipeToBook.text = "Swipe up to Book"
+                UIView.animate(withDuration: 0.2) {
+                    self.imgArrow.transform = CGAffineTransform(rotationAngle: .pi)
+                }
+            }
+
+
             self.view.endEditing(true)
+
+
             
             UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [.curveEaseInOut, .allowUserInteraction, .beginFromCurrentState], animations: {
                 self.view.layoutIfNeeded()
@@ -164,7 +184,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        lblSwipeToBook.text = ""
         SocketIOManager.shared.establishConnection()
         
         if SingletonClass.sharedInstance.bookingInfo != nil {
@@ -478,12 +498,19 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
         self.navigationItem.leftBarButtonItem = leftNavBarButton
         
         if let VC = self.children.first as? CarCollectionViewController {
-            
-            VC.btnBookNow.setTitle("Book Now", for: .normal)
-            VC.strPromoCode = ""
-            VC.vehicleId = ""
-            VC.selectedTimeStemp = ""
-            VC.isTripSchedule = false
+            DispatchQueue.main.async {
+                VC.btnBookNow.setAttributedTitle(nil, for: .normal)
+                VC.btnBookNow.setTitle("Book Now", for: .normal)
+                VC.strPromoCode = ""
+                VC.vehicleId = ""
+                VC.selectedTimeStemp = ""
+                VC.isTripSchedule = false
+                print("How \(VC)")
+            }
+        }
+        else
+        {
+            print(self.children.first ?? "Hello")
         }
     
 //        setupAfterComplete()
@@ -588,9 +615,11 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
             case UISwipeGestureRecognizer.Direction.down:
                 print("Swiped down")
                 self.isExpandCategory = false
+
             case UISwipeGestureRecognizer.Direction.up:
                 print("Swiped up")
                 self.isExpandCategory = true
+
             default:
                 break
             }
@@ -845,7 +874,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
                                 }
                                 
                                 let pickupCoordinate = CLLocationCoordinate2D(latitude: pickupDoubleLat , longitude: pickupDoubleLng)
-                                self.pickupMarker.map = nil
+                                self.pickupMarker?.map = nil
                                 self.pickupMarker = GMSMarker(position: pickupCoordinate) // self.originCoordinate
                                 self.pickupMarker.icon = isTripAccepted ? UIImage(named: iconCar) : UtilityClass.image(UIImage(named:iconMarker), scaledTo: CGSize(width: 30, height: 30))
                                 self.pickupMarker.map = self.mapView

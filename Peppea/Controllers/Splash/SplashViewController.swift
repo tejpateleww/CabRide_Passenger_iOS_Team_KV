@@ -153,7 +153,9 @@ class SplashViewController: UIViewController {
             else
             {
 
-                (UIApplication.shared.delegate as! AppDelegate).GoToChooseServices()
+//                (UIApplication.shared.delegate as! AppDelegate).GoToChooseServices()
+                (UIApplication.shared.delegate as! AppDelegate).GoToHome()
+
 
             }
         }
@@ -163,7 +165,9 @@ class SplashViewController: UIViewController {
         }
         else
         {
-            (UIApplication.shared.delegate as! AppDelegate).GoToChooseServices()
+//            (UIApplication.shared.delegate as! AppDelegate).GoToChooseServices()
+            (UIApplication.shared.delegate as! AppDelegate).GoToHome()
+
 
         }
 

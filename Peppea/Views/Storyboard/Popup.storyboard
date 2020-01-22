@@ -82,6 +82,9 @@
                                                     </view>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Cancel Reason" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HCT-lu-jHQ">
                                                         <rect key="frame" x="0.0" y="50" width="334" height="40"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="8Y0-7e-UVO"/>
+                                                        </constraints>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
@@ -165,9 +168,11 @@
                     </view>
                     <connections>
                         <outlet property="btnClose" destination="Lp7-dz-gvx" id="RTf-A1-gYd"/>
+                        <outlet property="btnOk" destination="Qwa-ek-EV2" id="qkm-yi-0Sr"/>
                         <outlet property="btnSelectReason" destination="Zvu-Cr-oCu" id="0e8-Fk-8P8"/>
                         <outlet property="lblMessage" destination="NB1-gQ-OtS" id="DBm-gq-BTk"/>
                         <outlet property="txtOtherReason" destination="HCT-lu-jHQ" id="AzW-39-IhI"/>
+                        <outlet property="viewDropDown" destination="bT3-v6-hVk" id="XSb-Hc-ii5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a0J-zf-dnc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -183,7 +188,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Po-jm-qrN">
-                                <rect key="frame" x="20" y="319" width="374" height="258"/>
+                                <rect key="frame" x="20" y="339" width="374" height="218"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="dpQ-Qb-fCB">
                                         <rect key="frame" x="103" y="10" width="168" height="68"/>
@@ -192,63 +197,62 @@
                                             <constraint firstAttribute="width" constant="168" id="yKv-Mz-H19"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mo6-6r-Grk">
-                                        <rect key="frame" x="20" y="108" width="334" height="0.0"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                        <string key="userLabel">Dear Customer. To Keep Our Drivers Motivated. Please Note That Cancelling a Trip 3 Mins After Booking Attracts A Free of Ksh 10 Payable To The Driver. Please Confirm Whether You Still Wish To Cancel?</string>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h9j-h5-YjT">
-                                        <rect key="frame" x="20" y="138" width="334" height="0.0"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                                        <color key="textColor" red="1" green="0.5" blue="0.10205028290136983" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                        <string key="userLabel">Dear Customer. To Keep Our Drivers Motivated. Please Note That Cancelling a Trip 3 Mins After Booking Attracts A Free of Ksh 10 Payable To The Driver. Please Confirm Whether You Still Wish To Cancel?</string>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dmo-Xc-EX6">
-                                        <rect key="frame" x="70" y="198" width="234" height="40"/>
-                                        <color key="backgroundColor" red="0.1764705882" green="0.1764705882" blue="0.1764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="9mw-r4-DEv"/>
-                                        </constraints>
-                                        <state key="normal" title="OK">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="btnOkAction:" destination="iXZ-Bl-bjk" eventType="touchUpInside" id="0xq-4r-CyL"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qMp-M1-uCO">
-                                        <rect key="frame" x="20" y="168" width="334" height="0.0"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                        <string key="userLabel">Dear Customer. To Keep Our Drivers Motivated. Please Note That Cancelling a Trip 3 Mins After Booking Attracts A Free of Ksh 10 Payable To The Driver. Please Confirm Whether You Still Wish To Cancel?</string>
-                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="cDl-Pc-cre">
+                                        <rect key="frame" x="10" y="98" width="354" height="100"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mo6-6r-Grk">
+                                                <rect key="frame" x="0.0" y="0.0" width="354" height="0.0"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                                <string key="userLabel">Dear Customer. To Keep Our Drivers Motivated. Please Note That Cancelling a Trip 3 Mins After Booking Attracts A Free of Ksh 10 Payable To The Driver. Please Confirm Whether You Still Wish To Cancel?</string>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h9j-h5-YjT">
+                                                <rect key="frame" x="0.0" y="20" width="354" height="0.0"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                                <color key="textColor" red="1" green="0.5" blue="0.10205028290136983" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                                <string key="userLabel">Dear Customer. To Keep Our Drivers Motivated. Please Note That Cancelling a Trip 3 Mins After Booking Attracts A Free of Ksh 10 Payable To The Driver. Please Confirm Whether You Still Wish To Cancel?</string>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qMp-M1-uCO">
+                                                <rect key="frame" x="0.0" y="40" width="354" height="0.0"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                                <string key="userLabel">Dear Customer. To Keep Our Drivers Motivated. Please Note That Cancelling a Trip 3 Mins After Booking Attracts A Free of Ksh 10 Payable To The Driver. Please Confirm Whether You Still Wish To Cancel?</string>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dmo-Xc-EX6">
+                                                <rect key="frame" x="0.0" y="60" width="354" height="40"/>
+                                                <color key="backgroundColor" red="0.1764705882" green="0.1764705882" blue="0.1764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="PGQ-J0-d8f"/>
+                                                </constraints>
+                                                <state key="normal" title="OK">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="btnOkAction:" destination="iXZ-Bl-bjk" eventType="touchUpInside" id="0xq-4r-CyL"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="dmo-Xc-EX6" firstAttribute="leading" secondItem="5Po-jm-qrN" secondAttribute="leading" constant="70" id="1vj-Qt-wmW"/>
-                                    <constraint firstItem="Mo6-6r-Grk" firstAttribute="leading" secondItem="5Po-jm-qrN" secondAttribute="leading" constant="20" id="7jQ-7C-IWp"/>
-                                    <constraint firstItem="qMp-M1-uCO" firstAttribute="top" secondItem="h9j-h5-YjT" secondAttribute="bottom" constant="30" id="Ck6-hG-96s"/>
-                                    <constraint firstItem="dmo-Xc-EX6" firstAttribute="top" secondItem="qMp-M1-uCO" secondAttribute="bottom" constant="30" id="E1g-FY-FAL"/>
-                                    <constraint firstItem="qMp-M1-uCO" firstAttribute="leading" secondItem="5Po-jm-qrN" secondAttribute="leading" constant="20" id="EBo-Qf-Y64"/>
+                                    <constraint firstItem="cDl-Pc-cre" firstAttribute="top" secondItem="dpQ-Qb-fCB" secondAttribute="bottom" constant="20" id="4a2-fn-7Uk"/>
+                                    <constraint firstItem="cDl-Pc-cre" firstAttribute="leading" secondItem="5Po-jm-qrN" secondAttribute="leading" constant="10" id="EvN-g1-loS"/>
+                                    <constraint firstAttribute="trailing" secondItem="cDl-Pc-cre" secondAttribute="trailing" constant="10" id="QWl-qQ-IEe"/>
                                     <constraint firstItem="dpQ-Qb-fCB" firstAttribute="top" secondItem="5Po-jm-qrN" secondAttribute="top" constant="10" id="Sia-Xu-AzD"/>
-                                    <constraint firstAttribute="trailing" secondItem="Mo6-6r-Grk" secondAttribute="trailing" constant="20" id="UaI-et-U7W"/>
-                                    <constraint firstItem="h9j-h5-YjT" firstAttribute="leading" secondItem="5Po-jm-qrN" secondAttribute="leading" constant="20" id="g9q-i1-HMg"/>
-                                    <constraint firstItem="h9j-h5-YjT" firstAttribute="top" secondItem="Mo6-6r-Grk" secondAttribute="bottom" constant="30" id="j12-qv-4Bt"/>
+                                    <constraint firstAttribute="bottom" secondItem="cDl-Pc-cre" secondAttribute="bottom" constant="20" id="TcT-uo-Pg5"/>
                                     <constraint firstItem="dpQ-Qb-fCB" firstAttribute="centerX" secondItem="5Po-jm-qrN" secondAttribute="centerX" id="l74-aL-CgI"/>
-                                    <constraint firstAttribute="trailing" secondItem="qMp-M1-uCO" secondAttribute="trailing" constant="20" id="mBa-FA-48u"/>
-                                    <constraint firstAttribute="trailing" secondItem="h9j-h5-YjT" secondAttribute="trailing" constant="20" id="mNk-2b-ZAR"/>
-                                    <constraint firstItem="Mo6-6r-Grk" firstAttribute="top" secondItem="dpQ-Qb-fCB" secondAttribute="bottom" constant="30" id="wV5-U5-Syr"/>
-                                    <constraint firstAttribute="bottom" secondItem="dmo-Xc-EX6" secondAttribute="bottom" constant="20" id="xh1-Aw-GNv"/>
-                                    <constraint firstAttribute="trailing" secondItem="dmo-Xc-EX6" secondAttribute="trailing" constant="70" id="ypJ-ET-zbs"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -266,6 +270,7 @@
                         <viewLayoutGuide key="safeArea" id="77s-Fv-g8h"/>
                     </view>
                     <connections>
+                        <outlet property="btnAction" destination="dmo-Xc-EX6" id="FTk-U5-6oY"/>
                         <outlet property="lblMessage" destination="qMp-M1-uCO" id="Geb-Tr-87H"/>
                         <outlet property="lblOTP" destination="h9j-h5-YjT" id="K1X-Nj-XtC"/>
                         <outlet property="lblTitle" destination="Mo6-6r-Grk" id="tLB-I7-uSz"/>

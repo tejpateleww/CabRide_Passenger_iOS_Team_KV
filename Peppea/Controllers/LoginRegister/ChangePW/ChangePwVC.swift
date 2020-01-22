@@ -76,17 +76,17 @@ class ChangePwVC: BaseViewController
                 
                 if status{
                     
-                    UserDefaults.standard.set(true, forKey: "isUserLogin")
-                    
-                    let loginModelDetails = LoginModel.init(fromJson: json)
-                    do
-                    {
-                        try UserDefaults.standard.set(object: loginModelDetails, forKey: "userProfile")//(loginModelDetails, forKey: "userProfile")
-                    }
-                    catch
-                    {
-                        AlertMessage.showMessageForError("error")
-                    }
+//                    UserDefaults.standard.set(true, forKey: "isUserLogin")
+//
+//                    let loginModelDetails = LoginModel.init(fromJson: json)
+//                    do
+//                    {
+//                        try UserDefaults.standard.set(object: loginModelDetails, forKey: "userProfile")//(loginModelDetails, forKey: "userProfile")
+//                    }
+//                    catch
+//                    {
+//                        AlertMessage.showMessageForError("error")
+//                    }
                     (UIApplication.shared.delegate as! AppDelegate).GoToHome()
                     //                    (UIApplication.shared.delegate as! AppDelegate).setHome()
                 }

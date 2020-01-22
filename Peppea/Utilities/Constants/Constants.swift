@@ -41,6 +41,7 @@ let helpLine = "1234567890"
 let ThemeColor : UIColor =  UIColor.init(hex: "2e2d2e")
 
 let cellBorderColor: UIColor = UIColor.init(red: 212.0/255.0, green: 212.0/255.0, blue: 212.0/255.0, alpha: 1.0)
+let NotificationSetHomeVC = NSNotification.Name(rawValue:"NotificationSetHomeVC")
 
 let iconCar = "iconCar"
 let iconMarker = "iconMarker"
