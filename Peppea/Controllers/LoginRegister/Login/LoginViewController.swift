@@ -47,6 +47,19 @@ class LoginViewController: UIViewController {
         }
         
         #endif
+        /*
+        Peppea Passenger
+         
+        As a company register
+        "email" : "test101@gmail.com",
+        "mobile_no" : "9955114477"
+        Password : 12345678
+        
+        Register under company
+        "email" : "test101@gmail.com"
+        "mobile_no" : "9955114477"
+        Password : 12345678
+        */
 
         
         /*Employees login Cred : Email = emp@yahoo.com || Pw = 12345678 */

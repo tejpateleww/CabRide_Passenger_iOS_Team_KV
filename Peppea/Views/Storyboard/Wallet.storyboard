@@ -1771,6 +1771,9 @@
                                                 <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="btnShareQRCodeAction:" destination="5ew-Fr-qsC" eventType="touchUpInside" id="UX4-Aa-BqW"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Allow The One Paying You To Scan The Above QR Code. You Will Get An Email/SMS Notification Upon Successful Transfer." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Pt-UN-wvH">
                                         <rect key="frame" x="28" y="561.5" width="319" height="57.5"/>

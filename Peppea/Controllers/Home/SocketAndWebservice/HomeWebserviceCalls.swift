@@ -101,12 +101,22 @@ extension CarCollectionViewController: CarCollectionWebserviceProtocol {
                  let homeVC = self.parent as? HomeViewController
 //                 homeVC?.btnBackButtonWhileBookLater()
                 
-                let msg = response.dictionary?["message"]?.stringValue ?? response.dictionary?["message"]?.array?.first?.stringValue ?? ""
+                let bookingType = response.dictionary?["data"]?.dictionary?["booking_type"]?.string ?? ""
+                
+                if bookingType == "book_now" {
+                    homeVC?.viewMainActivityIndicator.isHidden = false
+                    homeVC?.viewActivityAnimation.startAnimating()
+                    homeVC?.dictForRejectCurrentReq.bookingId = response.dictionary?["data"]?.dictionary?["id"]?.string ?? ""
+                    homeVC?.dictForRejectCurrentReq.customerId = SingletonClass.sharedInstance.loginData.id
+                }
+                homeVC?.mapView.clear()
+                homeVC?.setupAfterComplete()
+                _ = response.dictionary?["message"]?.stringValue ?? response.dictionary?["message"]?.array?.first?.stringValue ?? ""
                 
 //                UtilityClass.showAlert(title: AppName.kAPPName, message: msg, alertTheme: .success)
-                UtilityClass.showDefaultAlertView(withTitle: AppName.kAPPName, message: msg, buttons: ["OK"], completion: { (index) in
-//                    homeVC?.setupAfterComplete()
-                })
+//                UtilityClass.showDefaultAlertView(withTitle: AppName.kAPPName, message: msg, buttons: ["OK"], completion: { (index) in
+////                    homeVC?.setupAfterComplete()
+//                })
 
             } else {
                 let msg = (response.dictionary?["message"]?.stringValue == "") ? response.dictionary?["message"]?.array?.first?.stringValue ?? "" : response.dictionary?["message"]?.stringValue

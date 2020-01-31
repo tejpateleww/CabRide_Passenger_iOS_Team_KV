@@ -119,8 +119,8 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
             }
         }
         else {
-            self.paymentType = payment_type.cash.rawValue
-    //        didSelectPaymentType(PaymentTypeTitle: "Select Payment Method", PaymentType: "", PaymentTypeID: "", PaymentNumber: "", PaymentHolderName: "", dictData: nil)
+//            self.paymentType = payment_type.cash.rawValue
+            didSelectPaymentType(PaymentTypeTitle: "Select Payment Method", PaymentType: "", PaymentTypeID: "", PaymentNumber: "", PaymentHolderName: "", dictData: nil)
         }
         
         btnBookNow.setTitle("Not Available", for: .normal)
@@ -422,6 +422,9 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
             homeVC?.isExpandCategory = false
             homeVC?.setUpCustomMarker()
 //            homeVC?.timer?.invalidate()
+            
+            
+            // Bhavesh Comment these 2 lines at 27-Jan-2020
             UtilityClass.showHUDWithoutLottie(with: UIApplication.shared.keyWindow)
             animateGoogleMapWhenRotate(homeVC: homeVC)
             
@@ -499,8 +502,18 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
 //        self.lblCardName.textColor = ThemeColor
         self.paymentType = PaymentType
         self.lblCardNumber.isHidden = true
-        self.iconSelectedCard.image = PaymentTypeTitle.lowercased().contains("my mile") ? UIImage(named: "kms_black") : UIImage(named: dictData?["Type"] as? String ?? "iconcard")
-        self.iconSelectedCard.tintColor = ThemeColor
+        
+        if (dictData?["Type"] as? String ?? "iconcard") == "iconWalletColor" {
+            self.iconSelectedCard.image = UIImage(named: "iconWalletColor")
+//            self.iconSelectedCard.tintColor = ThemeColor
+//            self.iconSelectedCard.backgroundColor = ThemeColor
+    
+        } else {
+            self.iconSelectedCard.image = PaymentTypeTitle.lowercased().contains("my mile") ? UIImage(named: "kms_black") : UIImage(named: dictData?["Type"] as? String ?? "iconcard")
+            self.iconSelectedCard.tintColor = ThemeColor
+//            self.iconSelectedCard.backgroundColor = .clear
+        }
+        
         if PaymentType == "card" {
             self.lblCardNumber.isHidden = false
             self.CardID = PaymentTypeID

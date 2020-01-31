@@ -45,7 +45,11 @@ class WebService{
             return
         }
         
-        print("the url is \(url) and the parameters are \n \(parameters)")
+        if url.absoluteString.contains("https://maps.googleapis") {
+        }else {
+            print("the url is \(url) and the parameters are \n \(parameters)")
+        }
+       
         let method = Alamofire.HTTPMethod.init(rawValue: httpMethod.rawValue)!
 
         var params = parameters
@@ -68,7 +72,7 @@ class WebService{
 
                 if let json = response.result.value{
                     let resJson = JSON(json)
-                    print("the response is \(resJson)")
+//                    print("the response is \(resJson)")
                     let status = resJson["status"].boolValue
                     completion(resJson, status)
                 }
@@ -90,11 +94,16 @@ class WebService{
             .responseJSON { (response) in
                 // LoaderClass.hideActivityIndicator()
                 
-                print("The webservice call is for \(url)")
+//                print("The webservice call is for \(url)")
+                
+                if url.absoluteString.contains("https://maps.googleapis") {
+                }else {
+                    print("The webservice call is for \(url) ")
+                }
                 
                 if let json = response.result.value{
                     let resJson = JSON(json)
-                    print("the response is \(resJson)")
+//                    print("the response is \(resJson)")
                     
                     if "\(url)".contains("geocode/json?latlng=") {
                         let status = resJson["status"].stringValue.lowercased() == "ok"
@@ -188,8 +197,7 @@ class WebService{
                         }
                         else {
                             let resJson = JSON(json)
-                            print(resJson)
-
+                          
                             completion(resJson, true)
                         }
                     }

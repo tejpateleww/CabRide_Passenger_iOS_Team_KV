@@ -125,6 +125,9 @@ enum ApiKey: String{
     case pastDuePayment = "past_due_payment"
     case chat = "chat"
     case chatHistory = "chat_history/"
+    
+    case generateTicket = "generate_ticket"
+    case ticketList = "ticket_list/"
 }
 enum ParameterKey
 {
@@ -150,6 +153,7 @@ enum socketApiKeys: String
     case GetEstimateFare            = "get_estimate_fare"   // customer_id : 1, pickup_lng:72.5291184, dropoff_lat:23.0305179, dropoff_lng:72.5053514, pickup_lat:23.0636726
     case DriverCurrentLocation      = "driver_current_location"
     case NearByDriver               = "near_by_driver"
+    case CancelBookingBeforeAccept  = "cancel_booking_before_accept"
     //---------------------------------------------------------------------------------
     
     /// **** On Keys ****
@@ -169,7 +173,6 @@ enum socketApiKeys: String
     case PaymentFailedMpesa         = "payment_failed_mpesa"
     case PaymentSuccessMpesa        = "payment_success_mpesa"
     case WaitingTimeAlert           = "waiting_time_alert"
-    case CancelBookingBeforeAccept  = "cancel_booking_before_accept"
     //---------------------------------------------------------------------------------
 }
 

@@ -261,22 +261,48 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
             
             if arrMenuTitle[indexPath.row] == "Flat Rate"
             {
-                let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "FlatRateListViewController") as! FlatRateListViewController
-                NextPage.Delegate = HomePage
+//                let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "FlatRateListViewController") as! FlatRateListViewController
+//                NextPage.Delegate = HomePage
+//                HomePage?.navigationController?.pushViewController(NextPage, animated: true)
+//                sideMenuController?.hideMenu()
+//                return
+                
+                let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "ComingSoonViewController") as! ComingSoonViewController
                 HomePage?.navigationController?.pushViewController(NextPage, animated: true)
                 sideMenuController?.hideMenu()
                 return
             }
             if arrMenuTitle[indexPath.row] == "Bid My Trip"
             {
-                let storyboradBid = UIStoryboard(name: "Bid", bundle: nil)
-                let NextPage = storyboradBid.instantiateViewController(withIdentifier: "BidListContainerViewController") as! BidListContainerViewController
+//                let storyboradBid = UIStoryboard(name: "Bid", bundle: nil)
+//                let NextPage = storyboradBid.instantiateViewController(withIdentifier: "BidListContainerViewController") as! BidListContainerViewController
+//                HomePage?.navigationController?.pushViewController(NextPage, animated: true)
+//                sideMenuController?.hideMenu()
+//                return
+                
+                let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "ComingSoonViewController") as! ComingSoonViewController
                 HomePage?.navigationController?.pushViewController(NextPage, animated: true)
                 sideMenuController?.hideMenu()
                 return
-                
-                
             }
+            
+            
+            if arrMenuTitle[indexPath.row] == "Bulk Mile History"
+            {
+                let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "ComingSoonViewController") as! ComingSoonViewController
+                HomePage?.navigationController?.pushViewController(NextPage, animated: true)
+                sideMenuController?.hideMenu()
+                return
+            }
+            
+            if arrMenuTitle[indexPath.row] == "Peppea KMS"
+            {
+                let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "ComingSoonViewController") as! ComingSoonViewController
+                HomePage?.navigationController?.pushViewController(NextPage, animated: true)
+                sideMenuController?.hideMenu()
+                return
+            }
+            
             if arrMenuTitle[indexPath.row] == "Favourite"
             {
                 let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "FavouriteAddressViewController") as! FavouriteAddressViewController
@@ -294,6 +320,14 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
             if arrMenuTitle[indexPath.row] == "Bulk Mile"
             {
                 let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "BulkMileVC") as! BulkMileVC
+                HomePage?.navigationController?.pushViewController(NextPage, animated: true)
+                sideMenuController?.hideMenu()
+                return
+            }
+            
+            if arrMenuTitle[indexPath.row] == "Help"
+            {
+                let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "HelpViewController") as! HelpViewController
                 HomePage?.navigationController?.pushViewController(NextPage, animated: true)
                 sideMenuController?.hideMenu()
                 return

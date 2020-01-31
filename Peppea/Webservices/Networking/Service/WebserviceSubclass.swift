@@ -194,7 +194,6 @@ class UserWebserviceSubclass
         WebService.shared.requestMethod(api: .pastDuePayment, httpMethod: .post, parameters: params, completion: completion)
     }
     
-    
     class func chatHistoryWithDriver(strURL : String  ,completion: @escaping CompletionResponse ) {
         let strURLFinal = NetworkEnvironment.baseURL + ApiKey.chatHistory.rawValue + strURL
         WebService.shared.getMethod(url: URL.init(string: strURLFinal)!, httpMethod: .get, completion: completion)
@@ -205,5 +204,14 @@ class UserWebserviceSubclass
         WebService.shared.requestMethod(api: .chat, httpMethod: .post, parameters: params, completion: completion)
     }
     
+    class func GenerateTicketService(param:GenerateTicketModel , completion: @escaping CompletionResponse) {
+        let  params : [String:String] = param.generatPostParams() as! [String : String]
+        WebService.shared.requestMethod(api: .generateTicket, httpMethod: .post, parameters: params, completion: completion)
+    }
+    
+    class func TicketListService(strURL : String  ,completion: @escaping CompletionResponse ) {
+        let strURLFinal = NetworkEnvironment.baseURL + ApiKey.ticketList.rawValue + strURL
+        WebService.shared.getMethod(url: URL.init(string: strURLFinal)!, httpMethod: .get, completion: completion)
+    }
 }
 

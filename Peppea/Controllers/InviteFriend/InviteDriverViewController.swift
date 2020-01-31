@@ -124,8 +124,11 @@ class InviteDriverViewController: BaseViewController, MFMailComposeViewControlle
 //            strName = (decodeResults.object(forKey: "Fullname") as? String)!
 //        }
         
-        let strInvitation1 = "has invited you to become a Peppea Passenger"//.localized
-        let strInvitation2 = "Your invite code is: \(lblReferralCode.text ?? "")"//.localized
+        let lginData = SingletonClass.sharedInstance.loginData
+        
+        let strInvitation1 = "\(lginData.firstName ?? "") \(lginData.lastName ?? "") has invited you to become a Peppea Passenger."//.localized
+        let strInvitation2 = "Click here"
+        let strInvitation3 = "Your invite code is: \(lblReferralCode.text ?? "")"//.localized
         
         let strContent = ""//\(strName) \(strInvitation1)\n \n click here \("https://itunes.apple.com/us/app/TanTaxi/id1445179460?ls=1&mt=8") \n\n \(strInvitation2) \(strReferralCode)"
         // \n https://www.facebook.com/tesluxe \n https://www.instagram.com/teslux3 \n https://www.instagram.com/teslux3 \n https://twitter.com/TESLUX3"
@@ -134,7 +137,7 @@ class InviteDriverViewController: BaseViewController, MFMailComposeViewControlle
         //        click here (https://play.google.com/store/apps/details?id=com.Tesluxe) + "\n\n Your invite code is: "+ iniviteCode + "\n" + https://www.facebook.com/tesluxe
         //            + "\n" + https://www.instagram.com/teslux3
         //            + "\n" +https://twitter.com/TESLUX3
-        let share = [strInvitation1,strInvitation2]
+        let share = [strInvitation1,strInvitation2,strInvitation3]
         
         let activityViewController = UIActivityViewController(activityItems: share, applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view

@@ -8,13 +8,16 @@
 
 import UIKit
 
-class ReceiveMoneyViewController: BaseViewController
-{
+class ReceiveMoneyViewController: BaseViewController {
 
-    
-    var loginModelDetails : LoginModel = LoginModel()
+    // MARK:- Outlets
     @IBOutlet weak var lblUserName: UILabel!
     @IBOutlet weak var imgQRCode: UIImageView!
+    
+    // MARK:- Variables
+    var loginModelDetails : LoginModel = LoginModel()
+    
+    // MARK:- View Base Methods
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -39,4 +42,28 @@ class ReceiveMoneyViewController: BaseViewController
         self.imgQRCode.sd_setImage(with: URL(string: finalStrImg), completed: nil)//https://parksmart.online/
         self.lblUserName.text = profile!.firstName + " " + profile!.lastName
     }
+    
+    // MARK:- Actions
+    
+    @IBAction func btnShareQRCodeAction(_ sender: UIButton) {
+        shareingQRCode()
+    }
+    
+    // MARK:- Custom Methods
+    func shareingQRCode() {
+        
+        guard let myQRCode = imgQRCode.takeScreenshot() else { return }
+        
+        let items = [myQRCode]
+        let ac = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        present(ac, animated: true)
+        
+    }
+    
 }
+
+//extension ReceiveMoneyViewController: UIActivityItemSource {
+//
+//
+//
+//}

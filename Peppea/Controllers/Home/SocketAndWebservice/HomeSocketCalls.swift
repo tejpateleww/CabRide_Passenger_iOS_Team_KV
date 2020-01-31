@@ -11,6 +11,7 @@ import SwiftyJSON
 import GoogleMaps
 
 extension HomeViewController: SocketConnected {
+   
 
     
     // ----------------------------------------------------
@@ -61,7 +62,7 @@ extension HomeViewController: SocketConnected {
         SocketIOManager.shared.socket.off(socketApiKeys.PaymentSuccessMpesa.rawValue)               // Socket Off 16
         SocketIOManager.shared.socket.off(socketApiKeys.WaitingTimeAlert.rawValue)                  // Socket Off 17
         SocketIOManager.shared.socket.off(socketApiKeys.CancelBookingBeforeAccept.rawValue)         // Socket Off 18
-        SocketIOManager.shared.socket.off(socketApiKeys.VerifyEndTrip.rawValue)         // Socket Off 19
+        SocketIOManager.shared.socket.off(socketApiKeys.VerifyEndTrip.rawValue)                     // Socket Off 19
         SocketIOManager.shared.socket.off(clientEvent: .disconnect)                                 // Socket Disconnect
     }
     
@@ -95,6 +96,12 @@ extension HomeViewController: SocketConnected {
         SocketIOManager.shared.socketEmit(for: socketApiKeys.NearByDriver.rawValue, with: param)
     }
     
+    // Socket Emit 6
+    func emitSocket_CancelBookingBeforeAccept(param: [String : Any]) {
+        SocketIOManager.shared.socketEmit(for: socketApiKeys.CancelBookingBeforeAccept.rawValue, with: param)
+    }
+    
+    
     // ----------------------------------------------------
     // MARK:- --- Socket On Methods ---
     // ----------------------------------------------------
@@ -117,6 +124,8 @@ extension HomeViewController: SocketConnected {
     func onSocket_AfterDriverAcceptRequest() {
         SocketIOManager.shared.socketCall(for: socketApiKeys.AfterDriverAcceptRequest.rawValue) { (json) in
             print(#function, "\n ", json)
+            self.viewMainActivityIndicator.isHidden = true
+            self.viewActivityAnimation.stopAnimating()
             self.clearMap()
             self.btnBackButtonWhileBookLater()
             AlertMessage.showMessageForSuccess(json.array?.first?.dictionary?["message"]?.string ?? "Request Accepted")
@@ -198,7 +207,9 @@ extension HomeViewController: SocketConnected {
             //            self.clearMap()
             self.btnBackButtonWhileBookLater()
             self.stopAnimationWhileStartBooking()
-            //            self.setupAfterComplete()
+            self.setupAfterComplete()
+            self.viewMainActivityIndicator.isHidden = true
+            self.viewActivityAnimation.stopAnimating()
         }
     }
     
@@ -211,7 +222,9 @@ extension HomeViewController: SocketConnected {
             self.clearMap()
             self.btnBackButtonWhileBookLater()
             self.stopAnimationWhileStartBooking()
-            //            self.setupAfterComplete()
+            self.setupAfterComplete()
+            self.viewMainActivityIndicator.isHidden = true
+            self.viewActivityAnimation.stopAnimating()
         }
     }
     
@@ -313,6 +326,8 @@ extension HomeViewController: SocketConnected {
             print(#function, "\n ", json)
             let titleMessage = json.array?.first?.dictionary?["message"]?.string ?? ""
             AlertMessage.showMessageForSuccess(titleMessage)
+            self.viewMainActivityIndicator.isHidden = true
+            self.viewActivityAnimation.stopAnimating()
         }
     }
     // Socket On 19

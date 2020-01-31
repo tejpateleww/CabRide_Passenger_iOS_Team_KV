@@ -9,6 +9,7 @@
 import UIKit
 import GoogleMaps
 import GooglePlaces
+import NVActivityIndicatorView
 
 enum locationType: String {
     case pickUp = "pickUp"
@@ -72,6 +73,10 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
     @IBOutlet weak var markerContainerView: UIView!
     @IBOutlet weak var lblBuildNumber: UILabel!
     @IBOutlet weak var locationView: UIView!
+    @IBOutlet weak var viewMainActivityIndicator: UIView!
+    @IBOutlet weak var viewActivityAnimation: NVActivityIndicatorView!
+    
+    
     
     let window = UIApplication.shared.keyWindow
 
@@ -113,6 +118,8 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
     var pickupLocation = CLLocationCoordinate2D()
     var destinationLocation = CLLocationCoordinate2D()
 //    var zoomLevel: Float = 16.0
+    var dictForRejectCurrentReq = (bookingId: "",customerId: "")
+ 
 
 
     //MARK:- Container viewcontrollers views
@@ -183,6 +190,8 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.viewMainActivityIndicator.isHidden = true
 
         lblSwipeToBook.text = ""
         SocketIOManager.shared.establishConnection()
@@ -222,6 +231,10 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
             lblBuildNumber.text = "Build : \(Bundle.main.buildVersionNumber ?? "") \t\t Booking ID: \(self.booingInfo.id ?? "")"
         }
         #endif
+        
+       
+        
+        
         self.setupNavigationController()
 
 
@@ -258,6 +271,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        viewMainActivityIndicator.layer.zPosition = 1
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -289,6 +303,16 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
 //        self.timer.invalidate()
     }
 
+    
+    @IBAction func btnBookingRequestCancelAction(_ sender: UIButton) {
+        
+        viewMainActivityIndicator.isHidden = true
+        viewActivityAnimation.stopAnimating()
+        
+        let param = ["customer_id":dictForRejectCurrentReq.customerId, "booking_id":dictForRejectCurrentReq.bookingId]        
+        emitSocket_CancelBookingBeforeAccept(param: param)
+    }
+    
 
     // ----------------------------------------------------
     // MARK:- Live Tracking of car methods
@@ -761,9 +785,11 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
             mapView.camera = camera
         }
         
+        locationManager.startUpdatingLocation()
+        
         UtilityClass.hideHUD()
-
     }
+    
     @IBAction func txtLocation(_ sender: ThemeTextField)
     {
         if(sender.tag == 1)

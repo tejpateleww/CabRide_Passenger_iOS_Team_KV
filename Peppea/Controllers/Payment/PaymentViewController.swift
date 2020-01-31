@@ -107,7 +107,7 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
                 var dict4 = [String:AnyObject]()
                 dict4["CardNum"] = "My Mile Balance" as AnyObject
                 dict4["CardNum2"] = "bulk_miles" as AnyObject
-                dict4["Type"] = "iconMPesa" as AnyObject
+                dict4["Type"] = "iconMilesText" as AnyObject
                 self.aryOtherPayment.append(dict4)
                 
                 var dict5 = [String:AnyObject]()
@@ -119,7 +119,7 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
                 var dict4 = [String:AnyObject]()
                 dict4["CardNum"] = "My Mile Balance" as AnyObject
                 dict4["CardNum2"] = "bulk_miles" as AnyObject
-                dict4["Type"] = "iconMPesa" as AnyObject
+                dict4["Type"] = "iconMilesText" as AnyObject
                 self.aryOtherPayment.append(dict4)
             }
             
@@ -455,6 +455,7 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
             let data = aryOtherPayment[indexPath.row]
             cell.iconWallet.image = UIImage.init(named: data["Type"] as! String)
             cell.iconWallet.tintColor = .white
+//            cell.iconWallet.setImageColor(color: .white)
             cell.lblTitle.text = data["CardNum"] as? String
             return cell
         }

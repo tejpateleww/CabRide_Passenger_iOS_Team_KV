@@ -254,6 +254,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
                 completionHandler([.alert, .sound])
             }
         }
+        else if userInfo["gcm.notification.type"] as! String == "verify_customer" {
+            completionHandler([.alert, .sound])
+        }
+        else if userInfo["gcm.notification.type"] as! String == "request_code_for_complete_trip" {
+            completionHandler([.alert, .sound])
+        }
 //            completionHandler([.alert, .sound])
 
     }

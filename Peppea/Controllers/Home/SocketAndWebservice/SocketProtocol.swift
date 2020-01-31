@@ -16,6 +16,9 @@ protocol SocketConnected {
     func emitSocket_GetEstimateFare(param: [String:Any])
     func emitSocket_DriverCurrentLocation(param: [String:Any])
     func emitSocket_ReceiveTips(param: [String:Any])
+    func emitSocket_NearByDriver(param: [String:Any])
+    func emitSocket_CancelBookingBeforeAccept(param: [String:Any])
+    
     
     func onSocket_GetEstimateFare()
     
