@@ -91,7 +91,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
     var booingInfo = BookingInfo()
     var selectedTimeStemp = ""
     var moveMent: ARCarMovement!
-    var oldCoordinate : CLLocationCoordinate2D!
+    var oldCoordinate : CLLocationCoordinate2D?
     /// Pickup and Dropoff Address
     var pickupAndDropoffAddress = (pickUp: "", dropOff: "")
     
@@ -110,7 +110,8 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
 //    var EstimateTime: Timer!
 //    var driverMarker: GMSMarker!
     var destinationMarker = GMSMarker()
-    var pickupMarker : GMSMarker!
+    var pickupMarker : GMSMarker?
+    var arrivedRoutePath: GMSPath?
 
     //MARK:- Location Manager
     let locationManager = CLLocationManager()
@@ -322,12 +323,20 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
         if let myLocation = LocationTracker.shared.lastLocation,
             pickupMarker == nil {
             pickupMarker = GMSMarker(position: myLocation.coordinate)
-            pickupMarker.icon = UIImage(named: iconCar)
-            pickupMarker.map = self.mapView
+            pickupMarker?.icon = UIImage(named: iconCar)
+            pickupMarker?.map = self.mapView
             self.mapView.updateMap(toLocation: myLocation, zoomLevel: 16)
         } else if let myLocation = LocationTracker.shared.lastLocation, let myLastLocation = LocationTracker.shared.previousLocation {
             let degrees = myLastLocation.coordinate.bearing(to: myLocation.coordinate)
-            updateMarker(marker: pickupMarker, coordinates: myLocation.coordinate, degrees: degrees, duration: 0.3)
+            
+            if pickupMarker == nil {
+                pickupMarker = GMSMarker(position: myLocation.coordinate)
+                pickupMarker?.icon = UIImage(named: iconCar)
+                pickupMarker?.map = self.mapView
+                self.mapView.updateMap(toLocation: myLocation, zoomLevel: 16)
+            }
+            
+            updateMarker(marker: pickupMarker!, coordinates: myLocation.coordinate, degrees: degrees, duration: 0.3)
         }
     }
 
@@ -356,7 +365,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
     //-------------------------------------------------------------
     func arCarMovementMoved(_ Marker: GMSMarker) {
         pickupMarker = Marker
-        pickupMarker.map = mapView
+        pickupMarker?.map = mapView
     }
 
 
@@ -847,6 +856,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
 
     func routeDrawMethod(origin: String?, destination: String?, isTripAccepted : Bool)
     {
+        arrivedRoutePath = nil
         if let originLocation = origin {
             if let destinationLocation = destination {
                 var directionsURLString = baseURLDirections + "origin=" + originLocation + "&destination=" + destinationLocation + "&key=" + googlApiKey
@@ -902,8 +912,8 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
                                 let pickupCoordinate = CLLocationCoordinate2D(latitude: pickupDoubleLat , longitude: pickupDoubleLng)
                                 self.pickupMarker?.map = nil
                                 self.pickupMarker = GMSMarker(position: pickupCoordinate) // self.originCoordinate
-                                self.pickupMarker.icon = isTripAccepted ? UIImage(named: iconCar) : UtilityClass.image(UIImage(named:iconMarker), scaledTo: CGSize(width: 30, height: 30))
-                                self.pickupMarker.map = self.mapView
+                                self.pickupMarker?.icon = isTripAccepted ? UIImage(named: iconCar) : UtilityClass.image(UIImage(named:iconMarker), scaledTo: CGSize(width: 30, height: 30))
+                                self.pickupMarker?.map = self.mapView
                                  self.mapView.isMyLocationEnabled = true
                                 if isTripAccepted
                                 {
@@ -958,7 +968,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
             self.polyline.strokeColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
             self.polyline.strokeWidth = 3.0
             self.polyline.map = self.mapView
-
+            self.arrivedRoutePath = GMSPath(fromEncodedPath: points as! String)!
             let bounds = GMSCoordinateBounds(path: path)
             mapView.animate(with: GMSCameraUpdate.fit(bounds, withPadding: 140))
         }
@@ -1115,8 +1125,25 @@ extension HomeViewController: CLLocationManagerDelegate {
     func liveTrackingForTrip(lat : String , lng : String)
     {
         let newCoordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(exactly: Double(lat) ?? 0.00) ?? 0.00, longitude:CLLocationDegrees(exactly: Double(lng) ?? 0.00) ?? 0.00)
-        self.moveMent.arCarMovement(marker: pickupMarker, oldCoordinate: oldCoordinate ?? defaultLocation.coordinate, newCoordinate: newCoordinate, mapView: self.mapView)
-        oldCoordinate = defaultLocation.coordinate
+        
+        if pickupMarker == nil {
+            self.pickupMarker = GMSMarker(position: newCoordinate) // self.originCoordinate
+            self.pickupMarker?.icon = UIImage(named: iconCar) // isTripAccepted ? UIImage(named: iconCar) : UtilityClass.image(UIImage(named:iconMarker), scaledTo: CGSize(width: 30, height: 30))
+            self.pickupMarker?.map = self.mapView
+        }
+        
+        if self.arrivedRoutePath != nil {
+            if !GMSGeometryIsLocationOnPathTolerance(pickupMarker!.position, self.arrivedRoutePath!, true, 200) {
+                if self.booingInfo.status == "traveling" {
+                    self.routeDrawMethod(origin: "\(lat),\(lng)", destination: "\(self.booingInfo.dropoffLat ?? ""),\(self.booingInfo.dropoffLng ?? "")", isTripAccepted: true)
+                } else {
+                    self.routeDrawMethod(origin: "\(lat),\(lng)", destination: "\(self.booingInfo.pickupLat ?? ""),\(self.booingInfo.pickupLng ?? "")", isTripAccepted: true)
+                }
+            }
+        }
+       
+        self.moveMent.arCarMovement(marker: pickupMarker!, oldCoordinate: oldCoordinate ?? newCoordinate, newCoordinate: newCoordinate, mapView: self.mapView)
+        oldCoordinate = newCoordinate
     }
 }
 

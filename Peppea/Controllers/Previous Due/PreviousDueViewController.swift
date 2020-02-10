@@ -95,8 +95,6 @@ extension PreviousDueViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-
-
         let cell = tableView.dequeueReusableCell(withIdentifier: "PreviousDueTableViewCell", for: indexPath) as! PreviousDueTableViewCell
         cell.selectionStyle = .none
         let currentItem = aryData[indexPath.row]

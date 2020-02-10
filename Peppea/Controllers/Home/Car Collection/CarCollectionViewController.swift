@@ -413,11 +413,15 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
     }
     
     @IBAction func btnBookNow(_ sender: UIButton) {
-
+        
         let homeVC = self.parent as? HomeViewController
 
         if(self.validations().0)
         {
+            
+            if btnBookNow.titleLabel?.text == "Not Available" {
+                return
+            }
             
             homeVC?.isExpandCategory = false
             homeVC?.setUpCustomMarker()
@@ -425,8 +429,8 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
             
             
             // Bhavesh Comment these 2 lines at 27-Jan-2020
-            UtilityClass.showHUDWithoutLottie(with: UIApplication.shared.keyWindow)
-            animateGoogleMapWhenRotate(homeVC: homeVC)
+//            UtilityClass.showHUDWithoutLottie(with: UIApplication.shared.keyWindow)
+//            animateGoogleMapWhenRotate(homeVC: homeVC)
             
             if sender.titleLabel?.text?.lowercased().contains("schedule".lowercased()) ?? false {
                 webserviceForBooking(bookingType: "book_later") // "book_now" // "book_later"
@@ -437,7 +441,7 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
                 }
                 else
                 {
-
+                    print("\n\n\n NOT AVAILABLE \n\n\n")
                 }
             }
         }

@@ -52,6 +52,9 @@ extension CarCollectionViewController: CarCollectionWebserviceProtocol {
     
     func webserviceForBooking(bookingType: String) {
         
+        let homeVC = self.parent as? HomeViewController
+        
+        
         let address = (self.parent as! HomeViewController).pickupAndDropoffAddress
         let pickup = (self.parent as! HomeViewController).pickupLocation
         let dropOff = (self.parent as! HomeViewController).destinationLocation
@@ -96,18 +99,27 @@ extension CarCollectionViewController: CarCollectionWebserviceProtocol {
         
         UserWebserviceSubclass.bookingRequest(bookingRequestModel: model) { (response, status) in
             
+             homeVC?.btnBackButtonWhileBookLater()
+            
             print("Booking Response: \n", response)
             if status {
-                 let homeVC = self.parent as? HomeViewController
-//                 homeVC?.btnBackButtonWhileBookLater()
                 
                 let bookingType = response.dictionary?["data"]?.dictionary?["booking_type"]?.string ?? ""
                 
                 if bookingType == "book_now" {
-                    homeVC?.viewMainActivityIndicator.isHidden = false
-                    homeVC?.viewActivityAnimation.startAnimating()
+//                    homeVC?.viewMainActivityIndicator.isHidden = false
+//                    homeVC?.viewActivityAnimation.startAnimating()
                     homeVC?.dictForRejectCurrentReq.bookingId = response.dictionary?["data"]?.dictionary?["id"]?.string ?? ""
                     homeVC?.dictForRejectCurrentReq.customerId = SingletonClass.sharedInstance.loginData.id
+                    
+                    
+                    let activityVC = self.storyboard?.instantiateViewController(withIdentifier: "RequestLodingViewController") as! RequestLodingViewController
+                    activityVC.bookingId = response.dictionary?["data"]?.dictionary?["id"]?.string ?? ""
+                    activityVC.customerId = SingletonClass.sharedInstance.loginData.id
+                    activityVC.parentVc = homeVC
+                    activityVC.modalPresentationStyle = .overCurrentContext
+                    self.present(activityVC, animated: false, completion: nil)
+                    
                 }
                 homeVC?.mapView.clear()
                 homeVC?.setupAfterComplete()

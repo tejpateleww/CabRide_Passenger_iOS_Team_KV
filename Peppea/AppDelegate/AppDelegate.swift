@@ -11,8 +11,8 @@ import SideMenuSwift
 import IQKeyboardManagerSwift
 import GoogleMaps
 import GooglePlaces
-import Fabric
-import Crashlytics
+//import Fabric
+//import Crashlytics
 import Firebase
 import FirebaseMessaging
 import UserNotifications
@@ -42,7 +42,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         FirebaseApp.configure()
         setupPushNotification(application: application)
         locationPermission()
-        Fabric.with([Crashlytics.self])
+//        Fabric.with([Crashlytics.self])
+
 
 
         if(UserDefaults.standard.object(forKey: "userProfile") != nil) {
@@ -145,12 +146,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
 
         //        let content = response.notification.request.content
         let userInfo = response.notification.request.content.userInfo
+        if userInfo["gcm.notification.type"] == nil { return }
         let key = (userInfo as NSDictionary).object(forKey: "gcm.notification.type")!
 
         print("USER INFo : ",userInfo)
         print("KEY : ",key)
-
-
+        
         if userInfo["gcm.notification.type"] as! String == "booking_chat" {
 
             if let response = userInfo["gcm.notification.data"] as? String {
@@ -175,13 +176,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
                                 if state == .inactive {
                                     NotificationCenter.default.addObserver(self, selector: #selector(loadChatVC), name: NotificationSetHomeVC, object: nil)
                                     SingletonClass.sharedInstance.userInfo = dic
+                                    UtilityClass.showAlert(title: "sender_id", message: dic["sender_id"] as? String ?? "\(dic["sender_id"] as? Int ?? 0)", alertTheme: .info)
                                 }
                                 if !vc.isKind(of: SplashViewController.self) {
 
                                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                                    let controller = storyboard.instantiateViewController(withIdentifier: ChatViewController.className) as! ChatViewController
-                                    controller.strBookingId = dic["booking_id"] as? String ?? ""
-                                    vc.navigationController?.pushViewController(controller, animated: false)
+                                    if let controller = storyboard.instantiateViewController(withIdentifier: ChatViewController.className) as? ChatViewController {
+                                        controller.strBookingId = dic["booking_id"] as? String ?? ""
+                                        controller.receiver_id =  dic["sender_id"] as? String ?? "\(dic["sender_id"] as? Int ?? 0)"
+                                        
+                                        
+                                        
+                                       UtilityClass.showAlert(title: "sender_id", message: dic["sender_id"] as? String ?? "\(dic["sender_id"] as? Int ?? 0)", alertTheme: .info)
+                                        vc.navigationController?.pushViewController(controller, animated: false)
+                                    }
                                 }
                             }
 
@@ -196,21 +204,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
 
     @objc func loadChatVC(){
         let storyboard = UIStoryboard(name: "ChatStoryboard", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: ChatViewController.className) as! ChatViewController
-        let userinfo = SingletonClass.sharedInstance.userInfo
-        controller.receiver_id = userinfo?["SenderID"] as? String ?? ""
-        (self.window?.rootViewController as? UINavigationController)?.pushViewController(controller, animated: false)
+        if let controller = storyboard.instantiateViewController(withIdentifier: ChatViewController.className) as? ChatViewController {
+            let userinfo = SingletonClass.sharedInstance.userInfo
+            controller.receiver_id = userinfo?["SenderID"] as? String ?? ""
+            (self.window?.rootViewController as? UINavigationController)?.pushViewController(controller, animated: false)
+        }
     }
 
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
 
         print(#function, notification.request.content.userInfo)
         //        let content = notification.request.content
+        
+        
         let userInfo = notification.request.content.userInfo
+         if userInfo["gcm.notification.type"] == nil { return }
+        
+        
         let key = (userInfo as NSDictionary).object(forKey: "gcm.notification.type")!
 
         print("USER INFo : ",userInfo)
         print("KEY : ",key)
+        
+        
 
         if userInfo["gcm.notification.type"] as! String == "booking_chat" {
 
@@ -225,7 +241,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
                             print(dic)
 
                             if let senderID = dic["sender_id"] as? String {
-                                if senderID == vc.receiver_id {
+                                if senderID == vc.receiver_id || dic["booking_id"] as? String ==  vc.strBookingId {
 
 
                                    let chat = MessageObject(isSender: false, name: dic["sender_name"] as? String ?? "", image: "", id: "", sender_id: dic["sender_id"] as? String ?? "", receiver_id: dic["receiver_id"] as? String ?? "", message: dic["message"] as? String ?? "", created_date: dic["created_at"] as? String ?? "", bookingId: dic["booking_id"] as? String ?? "", sender_type: dic["sender_type"] as? String ?? "", receiver_type: dic["receiver_type"] as? String ?? "")

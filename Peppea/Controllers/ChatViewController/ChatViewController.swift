@@ -448,7 +448,7 @@ class ChatViewController: BaseViewController,UIGestureRecognizerDelegate ,UINavi
             if status {
                 
                 var aryMessages = [[String:Any]]()
-                let objMessage = MessageObject()
+                _ = MessageObject()
                 self.arrData.removeAll()
                 if let res = result.dictionaryObject {
 //                    if let passenger = res["driver"] as? [[String:Any]] {
@@ -509,7 +509,9 @@ class ChatViewController: BaseViewController,UIGestureRecognizerDelegate ,UINavi
 
                         self.arrData.removeAll()
                         
-                        aryMessages.map{self.arrData.append(MessageObject(isSender: ($0["sender_id"] as? String == SingletonClass.sharedInstance.loginData.id && $0["receiver_type"] as? String == "driver" ) ? true : false, name: "", image: "", id: "", sender_id: "\($0["sender_id"] as? String ?? "")", receiver_id: "\($0["receiver_id"] as? String ?? "")", message: "\($0["message"] as? String ?? "")", created_date: "\($0["created_at"] as? String ?? "")", bookingId: "\($0["booking_id"] as? String ?? "")", sender_type: "\($0["sender_type"] as? String ?? "")", receiver_type: "\($0["receiver_type"] as? String ?? "")"))}
+//                        self.receiver_id = "\(res["sender_id"]!)"// as? String ?? "\(res["sender_id"] as? Int ?? 0)"
+                        
+                        _ = aryMessages.map{self.arrData.append(MessageObject(isSender: ($0["sender_id"] as? String == SingletonClass.sharedInstance.loginData.id && $0["receiver_type"] as? String == "driver" ) ? true : false, name: "", image: "", id: "", sender_id: "\($0["sender_id"] as? String ?? "")", receiver_id: "\($0["receiver_id"] as? String ?? "")", message: "\($0["message"] as? String ?? "")", created_date: "\($0["created_at"] as? String ?? "")", bookingId: "\($0["booking_id"] as? String ?? "")", sender_type: "\($0["sender_type"] as? String ?? "")", receiver_type: "\($0["receiver_type"] as? String ?? "")"))}
                         
                         
                         self.tblVw.reloadData()

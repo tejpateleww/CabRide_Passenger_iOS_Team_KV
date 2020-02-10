@@ -109,7 +109,7 @@ extension HomeViewController: SocketConnected {
     // Socket On 1
     func onSocket_GetEstimateFare() {
         SocketIOManager.shared.socketCall(for: socketApiKeys.GetEstimateFare.rawValue) { (json) in
-            //            print(#function, "\n ", json)
+//                        print(#function, "\n ", json)
 
             let model = GetEstimateFareModel(fromJson: json.array?.first)
             guard model.estimateFare != nil else  { return }
@@ -124,8 +124,13 @@ extension HomeViewController: SocketConnected {
     func onSocket_AfterDriverAcceptRequest() {
         SocketIOManager.shared.socketCall(for: socketApiKeys.AfterDriverAcceptRequest.rawValue) { (json) in
             print(#function, "\n ", json)
-            self.viewMainActivityIndicator.isHidden = true
-            self.viewActivityAnimation.stopAnimating()
+//            self.viewMainActivityIndicator.isHidden = true
+//            self.viewActivityAnimation.stopAnimating()
+            
+            if let preserntVC = self.presentedViewController as? RequestLodingViewController {
+                preserntVC.dismiss(animated: true, completion: nil)
+            }
+            
             self.clearMap()
             self.btnBackButtonWhileBookLater()
             AlertMessage.showMessageForSuccess(json.array?.first?.dictionary?["message"]?.string ?? "Request Accepted")
@@ -210,6 +215,10 @@ extension HomeViewController: SocketConnected {
             self.setupAfterComplete()
             self.viewMainActivityIndicator.isHidden = true
             self.viewActivityAnimation.stopAnimating()
+            
+            if let preserntVC = self.presentedViewController as? RequestLodingViewController {
+                preserntVC.dismiss(animated: true, completion: nil)
+            }
         }
     }
     
@@ -225,6 +234,9 @@ extension HomeViewController: SocketConnected {
             self.setupAfterComplete()
             self.viewMainActivityIndicator.isHidden = true
             self.viewActivityAnimation.stopAnimating()
+            if let preserntVC = self.presentedViewController as? RequestLodingViewController {
+                preserntVC.dismiss(animated: true, completion: nil)
+            }
         }
     }
     
@@ -328,6 +340,9 @@ extension HomeViewController: SocketConnected {
             AlertMessage.showMessageForSuccess(titleMessage)
             self.viewMainActivityIndicator.isHidden = true
             self.viewActivityAnimation.stopAnimating()
+            if let preserntVC = self.presentedViewController as? RequestLodingViewController {
+                preserntVC.dismiss(animated: true, completion: nil)
+            }
         }
     }
     // Socket On 19
@@ -362,7 +377,7 @@ extension HomeViewController: SocketConnected {
         self.hideAndShowView(view: .requestAccepted)
         self.isExpandCategory = true
         self.routeDrawMethod(origin: "\(res.bookingInfo.driverInfo.lat ?? ""),\(res.bookingInfo.driverInfo.lng ?? "")", destination: "\(res.bookingInfo.pickupLat ?? ""),\(res.bookingInfo.pickupLng ?? "")", isTripAccepted: true)
-        if self.pickupMarker.map == nil {
+        if self.pickupMarker?.map == nil {
 
             var DoubleLat = Double()
             var DoubleLng = Double()
@@ -377,11 +392,11 @@ extension HomeViewController: SocketConnected {
             
             let DriverCordinate = CLLocationCoordinate2D(latitude: DoubleLat , longitude: DoubleLng)
             self.pickupMarker = GMSMarker(position: DriverCordinate) // self.originCoordinate
-            self.pickupMarker.icon = UIImage(named: iconCar)
-            self.pickupMarker.map = self.mapView
+            self.pickupMarker?.icon = UIImage(named: iconCar)
+            self.pickupMarker?.map = self.mapView
         }
         else {
-            self.pickupMarker.icon = UIImage.init(named: iconCar)
+            self.pickupMarker?.icon = UIImage.init(named: iconCar)
         }
         markerContainerView.isHidden = true
         lblBuildNumber.text = "Build : \(Bundle.main.buildVersionNumber ?? "") \t\t Booking ID: \(self.booingInfo.id ?? "")"

@@ -32,25 +32,28 @@ enum NetworkEnvironment: String {
     static var headers : [String:String]
     {
         
-        if UserDefaults.standard.object(forKey: "isUserLogin") != nil {
-            
-            if UserDefaults.standard.object(forKey: "isUserLogin") as? Bool == true {
+        if UserDefaults.standard.object(forKey: "userProfile") != nil {
+            if UserDefaults.standard.object(forKey: "isUserLogin") != nil {
                 
-                var loginModelDetails: LoginModel = LoginModel()
-                do {
-                    loginModelDetails = try UserDefaults.standard.get(objectType: LoginModel.self, forKey: "userProfile")!
-                    if loginModelDetails.loginData.xApiKey != nil
-                    {
-                        print("Header Key : \t\(["key":"Peppea$951", "x-api-key": loginModelDetails.loginData.xApiKey])")
-                        return ["key":"Peppea$951", "x-api-key": loginModelDetails.loginData.xApiKey]
-                    }
-                    else
-                    {
+                if UserDefaults.standard.object(forKey: "isUserLogin") as? Bool == true {
+                    
+                    var loginModelDetails: LoginModel = LoginModel()
+                    
+                    do {
+                        loginModelDetails = try UserDefaults.standard.get(objectType: LoginModel.self, forKey: "userProfile")!
+                        if loginModelDetails.loginData.xApiKey != nil
+                        {
+                            print("Header Key : \t\(["key":"Peppea$951", "x-api-key": loginModelDetails.loginData.xApiKey])")
+                            return ["key":"Peppea$951", "x-api-key": loginModelDetails.loginData.xApiKey]
+                        }
+                        else
+                        {
+                            return ["key":"Peppea$951"]
+                        }
+                    } catch {
+                        AlertMessage.showMessageForError("error")
                         return ["key":"Peppea$951"]
                     }
-                } catch {
-                    AlertMessage.showMessageForError("error")
-                    return ["key":"Peppea$951"]
                 }
             }
         }

@@ -17,7 +17,7 @@ import UIKit
 let peppeaAppNameString = "Peppea"
 let peppeaRentalAppNameString = "PeppeaRental"
 
-let googlApiKey = "AIzaSyDcug87uBhFLMo1KlqyaO10shE-sNTBCmw" // built from ODDs
+let googlApiKey = "AIzaSyBljwkxcq9BemGT2xZfagE6AY9QhBCN4I8" // "AIzaSyAU93jU-DaBHNEI0m-goQ5yB8-B8GZVDTs"//given by Mayur panchal//"AIzaSyD5Z5jg7XlOwdC_Cd0HYa4LWJl9pPyEpnY" // "AIzaSyDcug87uBhFLMo1KlqyaO10shE-sNTBCmw" // built from ODDs
 let baseURLDirections = "https://maps.googleapis.com/maps/api/directions/json?"
 let geocodeAddress = "https://maps.googleapis.com/maps/api/geocode/json?latlng="
 
