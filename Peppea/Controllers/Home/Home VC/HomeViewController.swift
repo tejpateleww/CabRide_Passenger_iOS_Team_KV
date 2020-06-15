@@ -11,6 +11,9 @@ import GoogleMaps
 import GooglePlaces
 import NVActivityIndicatorView
 
+import Alamofire
+import SwiftyJSON
+
 enum locationType: String {
     case pickUp = "pickUp"
     case dropOff = "dropOff"
@@ -224,6 +227,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
         #if targetEnvironment(simulator)
         lblBuildNumber.isHidden = false
         lblBuildNumber.text = "Build : \(Bundle.main.buildVersionNumber ?? "") \t\t Booking ID: \(self.booingInfo.id ?? "")"
+        tempPolyLine()
         #else
         lblBuildNumber.isHidden = true
         
@@ -852,6 +856,23 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
     }
 
     //MARK:- PolyLine Methods
+    
+    func tempPolyLine()
+    {
+        let geocoder = CLGeocoder()
+
+        geocoder.geocodeAddressString("SURAT", completionHandler: { placemarks, error in
+            if error == nil {
+                if (placemarks?.count ?? 0) > 0 {
+                    let placemark = placemarks?[0] as? CLPlacemark
+                    let location = placemark?.location
+                    let coordinate = location?.coordinate
+                    print("the coordinates are \(coordinate)")
+                }
+            }
+        })
+
+    }
 
 
     func routeDrawMethod(origin: String?, destination: String?, isTripAccepted : Bool)
