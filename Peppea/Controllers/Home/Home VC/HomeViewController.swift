@@ -791,6 +791,8 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
             let camera = GMSCameraPosition.camera(withLatitude: defaultLocation.coordinate.latitude,
                                                   longitude: defaultLocation.coordinate.longitude,
                                                   zoom: zoomLevel)
+            
+           
             mapView.camera = camera
         }
         
@@ -965,7 +967,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
             let points = routeOverviewPolyline["points"]
             self.path = GMSPath.init(fromEncodedPath: points as! String)!
             self.polyline.path = path
-            self.polyline.strokeColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+            self.polyline.strokeColor = ThemeOrange // UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
             self.polyline.strokeWidth = 3.0
             self.polyline.map = self.mapView
             self.arrivedRoutePath = GMSPath(fromEncodedPath: points as! String)!
@@ -980,7 +982,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
             if (self.i < self.path.count()) {
                 self.animationPath.add(self.path.coordinate(at: self.i))
                 self.animationPolyline.path = self.animationPath
-                self.animationPolyline.strokeColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1.0)
+                self.animationPolyline.strokeColor = ThemeOrange //UIColor(red: 0, green: 0, blue: 0, alpha: 1.0)
                 self.animationPolyline.strokeWidth = 3
                 self.animationPolyline.map = self.mapView
                 self.i += 1
@@ -1141,6 +1143,10 @@ extension HomeViewController: CLLocationManagerDelegate {
                 }
             }
         }
+        
+        let camera = GMSCameraPosition.camera(withLatitude: newCoordinate.latitude, longitude: newCoordinate.longitude, zoom: 18.0)
+        
+        mapView.animate(to: camera)
        
         self.moveMent.arCarMovement(marker: pickupMarker!, oldCoordinate: oldCoordinate ?? newCoordinate, newCoordinate: newCoordinate, mapView: self.mapView)
         oldCoordinate = newCoordinate
