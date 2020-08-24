@@ -566,8 +566,10 @@ open class SideMenuController: UIViewController {
     }
 
     /// Changes the content view controller to the cached one with given `identifier`.
-    ///
-    /// - Parameter identifier: the identifier that associates with a cache view controller or generator.
+    /// - Parameters:
+    ///   - identifier: the identifier that associates with a cache view controller or generator.
+    ///   - animated: whether the transition should be animated, default is `false`.
+    ///   - completion: the completion closure will be called when the transition  complete. Notice that if the caller is the current content view controller, once the transition completed, the caller will be removed from the parent view controller, and it will have no access to the side menu controller via `sideMenuController`
     open func setContentViewController(with identifier: String,
                                        animated: Bool = false,
                                        completion: (() -> Void)? = nil) {
@@ -582,6 +584,11 @@ open class SideMenuController: UIViewController {
         }
     }
 
+    /// Change the content view controller to `viewController`
+    /// - Parameters:
+    ///   - viewController: the view controller which will become the content view controller
+    ///   - animated: whether the transition should be animated, default is `false`.
+    ///   - completion: the completion closure will be called when the transition  complete. Notice that if the caller is the current content view controller, once the transition completed, the caller will be removed from the parent view
     open func setContentViewController(to viewController: UIViewController,
                                        animated: Bool = false,
                                        completion: (() -> Void)? = nil) {
@@ -660,11 +667,11 @@ open class SideMenuController: UIViewController {
 
     // MARK: - Helper Methods
 
-    private func sideMenuFrame(visibility: Bool) -> CGRect {
+    private func sideMenuFrame(visibility: Bool, targetSize: CGSize? = nil) -> CGRect {
         let position = preferences.basic.position
         switch position {
         case .above, .sideBySide:
-            var baseFrame = view.frame
+            var baseFrame = CGRect(origin: view.frame.origin, size: targetSize ?? view.frame.size)
             if visibility {
                 baseFrame.origin.x = preferences.basic.menuWidth - baseFrame.width
             } else {
@@ -672,32 +679,42 @@ open class SideMenuController: UIViewController {
             }
             let factor: CGFloat = adjustedDirection == .left ? 1 : -1
             baseFrame.origin.x *= factor
-            return baseFrame
+            return CGRect(origin: baseFrame.origin, size: targetSize ?? baseFrame.size)
         case .under:
-            return view.frame
+            return CGRect(origin: view.frame.origin, size: targetSize ?? view.frame.size)
         }
     }
 
-    private func contentFrame(visibility: Bool) -> CGRect {
+    private func contentFrame(visibility: Bool, targetSize: CGSize? = nil) -> CGRect {
         let position = preferences.basic.position
         switch position {
         case .above:
-            return view.frame
+            return CGRect(origin: view.frame.origin, size: targetSize ?? view.frame.size)
         case .under, .sideBySide:
-            var baseFrame = view.frame
+            var baseFrame = CGRect(origin: view.frame.origin, size: targetSize ?? view.frame.size)
             if visibility {
                 let factor: CGFloat = adjustedDirection == .left ? 1 : -1
                 baseFrame.origin.x = preferences.basic.menuWidth * factor
             } else {
                 baseFrame.origin.x = 0
             }
-            return baseFrame
+            return CGRect(origin: baseFrame.origin, size: targetSize ?? baseFrame.size)
         }
     }
 
     // MARK: Orientation
 
+    open override var shouldAutorotate: Bool {
+        if preferences.basic.shouldUseContentSupportedOrientations {
+            return contentViewController.shouldAutorotate
+        }
+        return preferences.basic.shouldAutorotate
+    }
+    
     open override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        if preferences.basic.shouldUseContentSupportedOrientations {
+            return contentViewController.supportedInterfaceOrientations
+        }
         return preferences.basic.supportedOrientations
     }
 
@@ -705,11 +722,11 @@ open class SideMenuController: UIViewController {
         hideMenu(animated: false, completion: { _ in
             // Temporally hide the menu container view for smooth animation
             self.menuContainerView.isHidden = true
-            coordinator.animate(alongsideTransition: { (_) in
-                self.contentContainerView.frame = self.contentFrame(visibility: self.isMenuRevealed)
+            coordinator.animate(alongsideTransition: { _ in
+                self.contentContainerView.frame = self.contentFrame(visibility: self.isMenuRevealed, targetSize: size)
             }, completion: { (_) in
                 self.menuContainerView.isHidden = false
-                self.menuContainerView.frame = self.sideMenuFrame(visibility: self.isMenuRevealed)
+                self.menuContainerView.frame = self.sideMenuFrame(visibility: self.isMenuRevealed, targetSize: size)
             })
         })
 
@@ -733,7 +750,7 @@ extension SideMenuController: UIGestureRecognizerDelegate {
             return false
         }
 
-        // If the view is scrollable in horizon direciton, don't receive the touch
+        // If the view is scrollable in horizon direction, don't receive the touch
         if let scrollView = touch.view as? UIScrollView, scrollView.frame.width > scrollView.contentSize.width {
             return false
         }
@@ -750,14 +767,16 @@ extension SideMenuController: UIGestureRecognizerDelegate {
 
     private func isViewControllerInsideNavigationStack(for view: UIView?) -> Bool {
         guard let view = view,
-            let viewController = view.parentViewController,
-            !(viewController is UINavigationController),
-            let navigationController = viewController.navigationController else {
+            let viewController = view.parentViewController else {
                 return false
         }
-
-        if let index = navigationController.viewControllers.firstIndex(of: viewController) {
-            return index > 0
+        
+        if let navigationController = viewController as? UINavigationController {
+            return navigationController.viewControllers.count > 1
+        } else if let navigationController = viewController.navigationController {
+            if let index = navigationController.viewControllers.firstIndex(of: viewController) {
+                return index > 0
+            }
         }
         return false
     }

@@ -325,7 +325,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         SideMenuController.preferences.basic.menuWidth = SCREEN_WIDTH - 60 //((SCREEN_WIDTH * 25) / 100)
         SideMenuController.preferences.basic.defaultCacheKey = "0"
         SideMenuController.preferences.basic.position = .above
-        SideMenuController.preferences.basic.statusBarBehavior = .none
+        SideMenuController.preferences.basic.statusBarBehavior = .slide
         SideMenuController.preferences.basic.direction = .left
 
     }
