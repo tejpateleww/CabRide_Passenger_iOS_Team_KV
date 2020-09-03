@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>$(PRODUCT_NAME)</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>$(PRODUCT_NAME)</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0.0</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>prefs</string>
+			</array>
+		</dict>
+	</array>
+	<key>CFBundleVersion</key>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>tel</string>
+		<string>googlechromes</string>
+		<string>comgooglemaps</string>
+	</array>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>You can capture photos to upload your profile picture and car photos.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>App would like to use your current location to journal places you go.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>App would like to use your current location to journal places you go.</string>
+	<key>NSLocationUsageDescription</key>
+	<string>We use location to get you nearby taxis</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We use location to get you nearby taxis</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>You can select photos to upload your profile picture and car photos.</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>proxima-nova-black.otf</string>
+		<string>proxima-nova-bold-italic.otf</string>
+		<string>proxima-nova-bold.otf</string>
+		<string>proxima-nova-condensed-light-italic.otf</string>
+		<string>proxima-nova-condensed-light.otf</string>
+		<string>proxima-nova-condensed-regular-italic.otf</string>
+		<string>proxima-nova-condensed-semibold-italic.otf</string>
+		<string>proxima-nova-condensed-semibold.otf</string>
+		<string>proxima-nova-condensed.otf</string>
+		<string>proxima-nova-extrabold.otf</string>
+		<string>proxima-nova-light-italic.otf</string>
+		<string>proxima-nova-light.otf</string>
+		<string>proxima-nova-regular-italic.otf</string>
+		<string>proxima-nova-semibold-italic.otf</string>
+		<string>proxima-nova-semibold.otf</string>
+		<string>proxima-nova.otf</string>
+	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>location</string>
+		<string>remote-notification</string>
+	</array>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+	<key>UIMainStoryboardFile</key>
+	<string>LoginRegister</string>
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>armv7</string>
+	</array>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+</dict>
+</plist>
