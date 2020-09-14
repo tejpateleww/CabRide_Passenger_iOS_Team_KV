@@ -16,7 +16,6 @@
 		182BD24C22EF169900C419B9 /* BulkMileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182BD24922EF169800C419B9 /* BulkMileVC.swift */; };
 		182BD24D22EF169900C419B9 /* BulkMileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 182BD24A22EF169800C419B9 /* BulkMileTableViewCell.xib */; };
 		182BD25022EF175100C419B9 /* ARCarMovement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182BD24F22EF175100C419B9 /* ARCarMovement.swift */; };
-		182BD25222EF3E9E00C419B9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 182BD25122EF3E9D00C419B9 /* GoogleService-Info.plist */; };
 		1830C47B22E74235004F107F /* dummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1830C47A22E74235004F107F /* dummyData.swift */; };
 		1836EF4222F7F93500852EC8 /* addFavouriteAddressReqModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1836EF4122F7F93500852EC8 /* addFavouriteAddressReqModel.swift */; };
 		1836EF4422F7F9C600852EC8 /* deleteFavouriteAddressReqAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1836EF4322F7F9C600852EC8 /* deleteFavouriteAddressReqAddress.swift */; };
@@ -107,6 +106,7 @@
 		46CA655722DEFB2900FC6E16 /* Logout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CA655622DEFB2900FC6E16 /* Logout.swift */; };
 		46E8CE9022D9AD6D001BEFCD /* InviteDriverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E8CE8F22D9AD6D001BEFCD /* InviteDriverViewController.swift */; };
 		6458B82624F8BF7A00CC0200 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6458B82524F8BF7A00CC0200 /* SettingsViewController.swift */; };
+		647E5FD22507ACE3005D57DF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 647E5FD12507ACE2005D57DF /* GoogleService-Info.plist */; };
 		681265292348A8A400C14AD4 /* AddDetailsDropDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681265282348A8A400C14AD4 /* AddDetailsDropDownCell.swift */; };
 		68189B1F234F6E9E009477C3 /* SelectVehicleViewController+SelectPickUpDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68189B1E234F6E9E009477C3 /* SelectVehicleViewController+SelectPickUpDate.swift */; };
 		684706B4234B4101007892D8 /* RentalPastHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684706AF234B4101007892D8 /* RentalPastHistoryCell.swift */; };
@@ -264,7 +264,6 @@
 		182BD24922EF169800C419B9 /* BulkMileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BulkMileVC.swift; sourceTree = "<group>"; };
 		182BD24A22EF169800C419B9 /* BulkMileTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BulkMileTableViewCell.xib; sourceTree = "<group>"; };
 		182BD24F22EF175100C419B9 /* ARCarMovement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARCarMovement.swift; sourceTree = "<group>"; };
-		182BD25122EF3E9D00C419B9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1830C47A22E74235004F107F /* dummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dummyData.swift; sourceTree = "<group>"; };
 		1836EF4122F7F93500852EC8 /* addFavouriteAddressReqModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addFavouriteAddressReqModel.swift; sourceTree = "<group>"; };
 		1836EF4322F7F9C600852EC8 /* deleteFavouriteAddressReqAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = deleteFavouriteAddressReqAddress.swift; sourceTree = "<group>"; };
@@ -358,6 +357,7 @@
 		6458B82524F8BF7A00CC0200 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		6469355824F680A60046D89F /* Chick Pick.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Chick Pick.entitlements"; sourceTree = "<group>"; };
 		646CD76324F619CA007E4DF3 /* ChickPick-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ChickPick-Bridging-Header.h"; sourceTree = "<group>"; };
+		647E5FD12507ACE2005D57DF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		681265282348A8A400C14AD4 /* AddDetailsDropDownCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDetailsDropDownCell.swift; sourceTree = "<group>"; };
 		68189B1E234F6E9E009477C3 /* SelectVehicleViewController+SelectPickUpDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SelectVehicleViewController+SelectPickUpDate.swift"; sourceTree = "<group>"; };
 		684706AF234B4101007892D8 /* RentalPastHistoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RentalPastHistoryCell.swift; sourceTree = "<group>"; };
@@ -1253,8 +1253,8 @@
 		EE9D6F7622C633FE00EAD756 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				647E5FD12507ACE2005D57DF /* GoogleService-Info.plist */,
 				EE9F3F7222C7845300426377 /* JSON Files */,
-				182BD25122EF3E9D00C419B9 /* GoogleService-Info.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1731,7 +1731,6 @@
 				EEE2B7F822C6234B004F1C00 /* LoginRegister.storyboard in Resources */,
 				EE9D6F7A22C6366D00EAD756 /* car.json in Resources */,
 				EE9D6F9D22C6449F00EAD756 /* proxima-nova.otf in Resources */,
-				182BD25222EF3E9E00C419B9 /* GoogleService-Info.plist in Resources */,
 				EE9D6F9A22C6449F00EAD756 /* proxima-nova-bold.otf in Resources */,
 				463DEFE322D8AEA6002365F8 /* MyTripDescriptionTableViewCell.xib in Resources */,
 				EEE2B7EB22C62304004F1C00 /* Main.storyboard in Resources */,
@@ -1740,6 +1739,7 @@
 				687A0056233E4ACF005C71C5 /* Assets.xcassets in Resources */,
 				EE9D6F9622C6449F00EAD756 /* proxima-nova-condensed-regular-italic.otf in Resources */,
 				684706B5234B4101007892D8 /* RentalPastHistoryCell.xib in Resources */,
+				647E5FD22507ACE3005D57DF /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2174,7 +2174,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0.0;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = LNR2265795;
+				DEVELOPMENT_TEAM = S3CGZRZDL7;
 				GCC_NO_COMMON_BLOCKS = NO;
 				INFOPLIST_FILE = "Chick Pick/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -2182,7 +2182,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.PepPea.passenger1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.chickpick.passenger.eww;
 				PRODUCT_NAME = "Chick Pick";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/ChickPick-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -2198,7 +2198,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Chick Pick/Chick Pick.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0.0;
-				DEVELOPMENT_TEAM = LNR2265795;
+				DEVELOPMENT_TEAM = S3CGZRZDL7;
 				GCC_NO_COMMON_BLOCKS = NO;
 				INFOPLIST_FILE = "Chick Pick/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -2206,7 +2206,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.PepPea.passenger1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.chickpick.passenger.eww;
 				PRODUCT_NAME = "Chick Pick";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/ChickPick-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

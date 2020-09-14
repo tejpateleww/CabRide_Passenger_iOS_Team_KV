@@ -222,7 +222,10 @@ extension TransferToBankVC {
             else
             {
                 UtilityClass.hideHUD()
-                AlertMessage.showMessageForError(json["message"].stringValue)
+                UtilityClass.hideHUD()
+                if json["message"].stringValue.count != 0 {
+                    AlertMessage.showMessageForError(json["message"].stringValue)
+                }
             }
         }
     }
@@ -244,7 +247,10 @@ extension TransferToBankVC {
             else
             {
                 UtilityClass.hideHUD()
-                AlertMessage.showMessageForError(json["message"].stringValue)
+                UtilityClass.hideHUD()
+                if json["message"].stringValue.count != 0 {
+                    AlertMessage.showMessageForError(json["message"].stringValue)
+                }
             }
         }
         

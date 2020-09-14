@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>534293113254-t36t4c8uqi18sgn8pskv498d7oog0r9l.apps.googleusercontent.com</string>
+	<string>304450185062-9l3bie48fokosfonliec2je8cajbkhsb.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.534293113254-t36t4c8uqi18sgn8pskv498d7oog0r9l</string>
+	<string>com.googleusercontent.apps.304450185062-9l3bie48fokosfonliec2je8cajbkhsb</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBljwkxcq9BemGT2xZfagE6AY9QhBCN4I8</string>
+	<string>AIzaSyAl1UCU6Ygwn3zkNnSq77w7DWrNgy8eFjQ</string>
 	<key>GCM_SENDER_ID</key>
-	<string>534293113254</string>
+	<string>304450185062</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.PepPea.passenger</string>
+	<string>com.chickpick.passenger.eww</string>
 	<key>PROJECT_ID</key>
-	<string>peppea-driver</string>
+	<string>chick-pick</string>
 	<key>STORAGE_BUCKET</key>
-	<string>peppea-driver.appspot.com</string>
+	<string>chick-pick.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:534293113254:ios:346a5db49143c29b</string>
+	<string>1:304450185062:ios:ffd1493859f2ab7dea0aa7</string>
 	<key>DATABASE_URL</key>
-	<string>https://peppea-driver.firebaseio.com</string>
+	<string>https://chick-pick.firebaseio.com</string>
 </dict>
 </plist>

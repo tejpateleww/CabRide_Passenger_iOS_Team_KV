@@ -174,13 +174,13 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
             ///Peppea Rental flow
             
         }else{
-            if isFromSideMenu {
+//            if isFromSideMenu {
                 ///Normal Peppea flow
                 self.webserviceForCardList()
-            } else {
-                viewPaymentPopup.isHidden = true
-                constraintHeightOfTableView.constant = CGFloat(60 * aryOtherPayment.count)
-            }
+//            } else {
+//                viewPaymentPopup.isHidden = true
+//                constraintHeightOfTableView.constant = CGFloat(60 * aryOtherPayment.count)
+//            }
         }
 //        self.setNavBarWithBack(Title: "Payment", IsNeedRightButton: true)
         self.setNavBarWithBack(Title: "Payment", IsNeedRightButton: false)
@@ -465,7 +465,7 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
             cell.selectionStyle = .none
             cell.delegate = self
 
-            cell.iconCard.image = UIImage(named: setCardIcon(str: data.cardType))//UIImage.init(named: data["Type"] as! String)
+            cell.iconCard.image = UIImage(named: setCardIcon(str: data.cardType.lowercased()))//UIImage.init(named: data["Type"] as! String)
             cell.lblTitle.text = data.cardHolderName
             cell.iconCard.tintColor = .white
             cell.lblCardNumber.text = data.formatedCardNo
@@ -646,7 +646,10 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
                 }
                 else
                 {
-                    AlertMessage.showMessageForError("error")
+                    UtilityClass.hideHUD()
+                    if json["message"].stringValue.count != 0 {
+                        AlertMessage.showMessageForError(json["message"].stringValue)
+                    }
                 }
             }
         }
@@ -665,14 +668,47 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
         }
         else if(addCardReqModel.exp_date_year.isBlank)
         {
-            return (false,"Please enter ex. date")
+            return (false,"Please enter expiry date")
         }
         else if(addCardReqModel.cvv.isBlank)
         {
             return (false,"Please enter your CVV")
         }
-
+        else if !expDateValidation(dateStr: txtValidThrough.text ?? "")
+        {
+            return (false,"Please enter valid expiry date")
+        }
         
         return (true,"")
+    }
+    
+    func expDateValidation(dateStr:String) -> Bool {
+
+        let currentYear = Calendar.current.component(.year, from: Date()) % 100   // This will give you current year (i.e. if 2019 then it will be 19)
+        let currentMonth = Calendar.current.component(.month, from: Date()) // This will give you current month (i.e if June then it will be 6)
+
+        let enterdYr = Int(dateStr.suffix(2)) ?? 0   // get last two digit from entered string as year
+        let enterdMonth = Int(dateStr.prefix(2)) ?? 0  // get first two digit from entered string as month
+        print(dateStr) // This is MM/YY Entered by user
+
+        if enterdYr > currentYear{
+            if (1 ... 12).contains(enterdMonth){
+                return true
+            } else{
+                return false
+            }
+        } else  if currentYear == enterdYr {
+            if enterdMonth >= currentMonth{
+                if (1 ... 12).contains(enterdMonth) {
+                    return true
+                } else{
+                    return false
+                }
+            } else {
+                return false
+            }
+        } else {
+            return true
+        }
     }
 }

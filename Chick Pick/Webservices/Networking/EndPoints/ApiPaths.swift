@@ -80,6 +80,7 @@ enum NetworkEnvironment: String {
 enum ApiKey: String{
     case Init = "init/"
     case login = "login"
+    case socialMedia = "social_login"
     case logout = "logout/"
     case otp = "register_otp"
     case register = "register"

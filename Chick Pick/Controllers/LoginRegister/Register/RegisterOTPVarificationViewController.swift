@@ -89,7 +89,10 @@ class RegisterOTPVarificationViewController: UIViewController {
             }
             else
             {
-                AlertMessage.showMessageForError(json["message"].stringValue)
+                UtilityClass.hideHUD()
+                if json["message"].stringValue.count != 0 {
+                    AlertMessage.showMessageForError(json["message"].stringValue)
+                }
             }
             //            completion(status)
         }
@@ -103,13 +106,20 @@ class RegisterOTPVarificationViewController: UIViewController {
         RegistrationGetOTPModel.password = SingletonRegistration.sharedRegistration.Password
         RegistrationGetOTPModel.first_name = SingletonRegistration.sharedRegistration.FirstName
         RegistrationGetOTPModel.last_name = SingletonRegistration.sharedRegistration.LastName
-        //        RegistrationGetOTPModel.RefarralCode = txtRafarralCode.text ?? ""
-        //        RegistrationGetOTPModel.dob = txtDateOfBirth.text ?? ""
-        //        RegistrationGetOTPModel.gender = gender
         RegistrationGetOTPModel.device_type = "ios"
         RegistrationGetOTPModel.lat = "\(myLocation.coordinate.latitude)" //"23.75821"
         RegistrationGetOTPModel.lng = "\(myLocation.coordinate.longitude)" //"23.75821"
-        RegistrationGetOTPModel.device_token = ""
+        
+        if let parentVC = self.parent as? RegisterContainerViewController {
+            if let data = parentVC.userSocialData {
+                self.RegistrationGetOTPModel.social_id = data.userId
+                self.RegistrationGetOTPModel.social_type = data.socialType
+            }
+        }
+        
+        //        RegistrationGetOTPModel.RefarralCode = txtRafarralCode.text ?? ""
+               //        RegistrationGetOTPModel.dob = txtDateOfBirth.text ?? ""
+               //        RegistrationGetOTPModel.gender = gender
         //        RegistrationGetOTPModel.user_type = self.getSelectedType()
         //        RegistrationGetOTPModel.company_name = (RegistrationGetOTPModel.user_type == "company") ? self.txtSelectCompany.text! : ""
         if let token = UserDefaults.standard.object(forKey: "Token") as? String
@@ -120,7 +130,7 @@ class RegisterOTPVarificationViewController: UIViewController {
         
         if let vc = self.parent as? RegisterContainerViewController
         {
-            vc.webServiceCallForRegister(RegistrationGetOTPModel)
+            vc.webServiceCallForRegister(RegistrationGetOTPModel, image: SingletonRegistration.sharedRegistration.Document)
         }
     }
 }

@@ -8,6 +8,16 @@
 
 import UIKit
 import SkyFloatingLabelTextField
+import FBSDKLoginKit
+
+struct UserSocialData {
+    var userId: String
+    var firstName: String
+    var lastName: String
+    var userEmail: String
+    var socialType: String
+    var Profile : String
+}
 
 class LoginViewController: UIViewController {
 
@@ -29,6 +39,7 @@ class LoginViewController: UIViewController {
     // ----------------------------------------------------
     
     var LogInModel : loginModel = loginModel()
+    var userSocialData: UserSocialData?
 
     // ----------------------------------------------------
     // MARK: - Base Methods
@@ -126,10 +137,129 @@ class LoginViewController: UIViewController {
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 
+    @IBAction func btnFBTapped(_ sender: Any) {
+        
+        if !WebService.shared.isConnected {
+            AlertMessage.showMessageForError("Please check your internet")
+            return
+        }
+        let login = LoginManager()
+        login.logOut()
+        login.logIn(permissions: ["public_profile","email"], from: self) { (result, error) in
+            
+            if error != nil {
+                //                UIApplication.shared.statusBarStyle = .lightContent
+            }
+            else if (result?.isCancelled)! {
+                //                UIApplication.shared.statusBarStyle = .lightContent
+            }else {
+                if (result?.grantedPermissions.contains("email"))! {
+                    //                    UIApplication.shared.statusBarStyle = .lightContent
+                    self.getFBUserData()
+                }else {
+                    print("you don't have permission")
+                }
+            }
+        }
+    }
+    
+    func getFBUserData() {
+        
+        var parameters = [AnyHashable: Any]()
+        parameters["fields"] = "first_name, last_name, email, id, picture.type(large)"
+        
+        GraphRequest.init(graphPath: "me", parameters: parameters as! [String : Any]).start { (connection, result, error) in
+            if error == nil {
+                
+                print("\(#function) \(result!)")
+                let dictData = result as! [String : AnyObject]
+                let strFirstName = String(describing: dictData["first_name"]!)
+                let strLastName = String(describing: dictData["last_name"]!)
+                let strEmail = String(describing: dictData["email"]!)
+                let strUserId = String(describing: dictData["id"]!)
+                
+                let profile = ((dictData["picture"] as! [String:AnyObject])["data"]  as! [String:AnyObject])["url"] as! String
+                print(profile)
+                
+                self.userSocialData = UserSocialData(userId: strUserId, firstName: strFirstName, lastName: strLastName, userEmail: strEmail, socialType: "facebook", Profile: profile)
+                
+                let socialModel = SocialLoginModel()
+                socialModel.social_id = strUserId
+                socialModel.first_name = strFirstName
+                socialModel.last_name = strLastName
+                socialModel.email = strEmail
+                socialModel.social_type = "facebook"
+                socialModel.device_type = "ios"
+                if let token = UserDefaults.standard.object(forKey: "Token") as? String
+                {
+                    socialModel.device_token = token
+                }
+               
+               let myLocation = SingletonClass.sharedInstance.myCurrentLocation
+    
+                socialModel.lat = "\(myLocation.coordinate.latitude)" // "23.75821"
+                socialModel.lng = "\(myLocation.coordinate.longitude)" // "72.75821"
+                
+                #if targetEnvironment(simulator)
+                // 23.0732727,72.5181843
+                socialModel.lat = "23.0732727"
+                socialModel.lng = "72.5181843"
+                #endif
+                
+                self.webserviceCallForSocialLogin(socialModel: socialModel)
+            }
+            else{
+                print(error?.localizedDescription ?? "")
+            }
+        }
+    }
     
     // ----------------------------------------------------
     // MARK: - Webservice Methods
     // ----------------------------------------------------
+    
+    func webserviceCallForSocialLogin(socialModel : SocialLoginModel) {
+        
+          UtilityClass.showHUD(with: UIApplication.shared.keyWindow)
+        
+           UserWebserviceSubclass.socialModel(socialModel: socialModel) { (json, status) in
+               
+            UtilityClass.hideHUD()
+            
+            if status{
+                UserDefaults.standard.set(true, forKey: "isUserLogin")
+                
+                let loginModelDetails = LoginModel.init(fromJson: json)
+                let Vehiclelist = VehicleListModel(fromJson: json)
+                do
+                {
+                    UserDefaults.standard.set(loginModelDetails.loginData.xApiKey, forKey: "X_API_KEY")
+                    SingletonClass.sharedInstance.walletBalance = loginModelDetails.loginData.walletBalance
+                    SingletonClass.sharedInstance.BulkMilesBalance = loginModelDetails.loginData.BulkMilesBalance
+                    try UserDefaults.standard.set(object: loginModelDetails, forKey: "userProfile") //(loginModelDetails, forKey: "userProfile")
+                    SingletonClass.sharedInstance.loginData = loginModelDetails.loginData
+                    try UserDefaults.standard.set(object: Vehiclelist, forKey: "carList")
+                    if json.dictionary?["booking_info"] != nil {
+                        let info = BookingInfo(fromJson: json.dictionary?["booking_info"])
+                        SingletonClass.sharedInstance.bookingInfo = info
+                    }
+                }
+                catch
+                {
+                    UtilityClass.hideHUD()
+                    AlertMessage.showMessageForError("error")
+                }
+                
+                //                (UIApplication.shared.delegate as! AppDelegate).GoToHome() // Commented by Rahul for Choose services Option i.e. Hire a Car or Book a taxi option
+                self.redirectToChooseServicesVC()
+            }
+            else{
+                let viewController = self.storyboard?.instantiateViewController(withIdentifier: "RegisterContainerViewController") as! RegisterContainerViewController
+                viewController.userSocialData = self.userSocialData
+                self.navigationController?.pushViewController(viewController, animated: true)
+            }
+        }
+    }
 
     func webserviceCallForLogin()
     {
@@ -162,7 +292,7 @@ class LoginViewController: UIViewController {
                 catch
                 {
                     UtilityClass.hideHUD()
-                    AlertMessage.showMessageForError("error")
+                    AlertMessage.showMessageForError("error, try again")
                 }
 
 //                (UIApplication.shared.delegate as! AppDelegate).GoToHome() // Commented by Rahul for Choose services Option i.e. Hire a Car or Book a taxi option
@@ -171,7 +301,9 @@ class LoginViewController: UIViewController {
              }
             else{
                 UtilityClass.hideHUD()
-                AlertMessage.showMessageForError(json["message"].stringValue)
+                if json["message"].stringValue.count != 0 {
+                    AlertMessage.showMessageForError(json["message"].stringValue)
+                }
             }
         }
     }
@@ -217,11 +349,11 @@ class LoginViewController: UIViewController {
 
         if(LogInModel.username.isBlank)
         {
-            return (false,"Please enter Mobile Number/Email")
+            return (false,"Please enter mobile number/email")
         }
         else if(LogInModel.password.isBlank)
         {
-            return (false,"Please enter Password")
+            return (false,"Please enter password")
         }
         else if(LogInModel.lat.isBlank)
         {

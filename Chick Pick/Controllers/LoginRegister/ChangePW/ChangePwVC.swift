@@ -86,7 +86,10 @@ class ChangePwVC: BaseViewController
                     //                    (UIApplication.shared.delegate as! AppDelegate).setHome()
                 }
                 else{
-                    AlertMessage.showMessageForError(json["message"].stringValue)
+                    UtilityClass.hideHUD()
+                    if json["message"].stringValue.count != 0 {
+                        AlertMessage.showMessageForError(json["message"].stringValue)
+                    }
                 }
             }
         }
@@ -96,31 +99,31 @@ class ChangePwVC: BaseViewController
     {
         if(ChangePasswordModel.old_password.isBlank)
         {
-            return (false,"Please enter old password")
+            return (false,"Please enter current password")
         }
-        else if(txtOldPw.text!.count < 6)
-        {
-            return (false,"Old Password length should be  minimum 6 character")
-        }
+//        else if(txtOldPw.text!.count < 6)
+//        {
+//            return (false,"Current password length should be  minimum 6 character")
+//        }
         else if(ChangePasswordModel.new_password.isBlank)
         {
             return (false,"Please enter new password")
         }
-        else if(txtNewPw.text!.count < 6)
+        else if(txtNewPw.text!.count < 8)
         {
-            return (false,"New Password length should be  minimum 6 character")
+            return (false,"New password length should be minimum 8 characters")
         }
         else if(txtConfirmPw.text!.isBlank)
         {
-            return (false,"Please enter confirm password")
+            return (false,"Please confirm the password")
         }
-        else if(txtConfirmPw.text!.count < 6)
+        else if(txtConfirmPw.text!.count < 8)
         {
-            return (false,"Confirm Password length should be  minimum 6 character")
+            return (false,"Confirm password length should be minimum 8 characters")
         }
         else if(txtNewPw.text! != txtConfirmPw.text!)
         {
-            return (false,"Confirm Password must be same like new password")
+            return (false,"Confirm password must be same like new password")
         }
          return (true,"")
     }

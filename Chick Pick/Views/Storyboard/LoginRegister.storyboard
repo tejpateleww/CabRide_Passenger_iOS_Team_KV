@@ -224,7 +224,7 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-ios" translatesAutoresizingMaskIntoConstraints="NO" id="Drx-yS-EBE">
                                         <rect key="frame" x="48" y="65.5" width="224" height="544"/>
                                     </imageView>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Email id" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iUJ-SD-fas" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Id" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iUJ-SD-fas" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick" customModuleProvider="target">
                                         <rect key="frame" x="16" y="654.5" width="288" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
@@ -317,7 +317,7 @@
                                             <constraint firstAttribute="width" secondItem="Cv6-Hm-xCn" secondAttribute="height" multiplier="2:1" id="r9D-hP-0Uw"/>
                                         </constraints>
                                     </imageView>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Old Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e83-Fp-mNo" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Current Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e83-Fp-mNo" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick" customModuleProvider="target">
                                         <rect key="frame" x="16" y="197.5" width="288" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -921,96 +921,147 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="wKY-YC-cJT">
-                                        <rect key="frame" x="20" y="35" width="280" height="400"/>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="34l-24-UFc">
+                                        <rect key="frame" x="0.0" y="10" width="320" height="283"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eEM-vV-XJP" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="280" height="50"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jAg-2Q-mOs" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="70" width="280" height="50"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3AN-gm-QGU" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="140" width="280" height="50"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
-                                            </textField>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="V5L-OQ-hnE">
-                                                <rect key="frame" x="0.0" y="210" width="280" height="50"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="wKY-YC-cJT">
+                                                <rect key="frame" x="20" y="20" width="280" height="400"/>
                                                 <subviews>
-                                                    <view hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="46n-eI-XAJ">
-                                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="50"/>
-                                                        <subviews>
-                                                            <textField hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nG6-na-Y0B" customClass="ThemeTextField" customModule="Chick_Pick" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="50"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <color key="tintColor" red="0.94901960780000005" green="0.08235294118" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
-                                                            </textField>
-                                                        </subviews>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mn8-JN-3gn">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eEM-vV-XJP" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="280" height="50"/>
-                                                        <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mobile Number" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oQn-Wh-Zgj" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="280" height="50"/>
-                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
-                                                            </textField>
-                                                        </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jAg-2Q-mOs" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="70" width="280" height="50"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Id" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3AN-gm-QGU" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="140" width="280" height="50"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                                    </textField>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="V5L-OQ-hnE">
+                                                        <rect key="frame" x="0.0" y="210" width="280" height="50"/>
+                                                        <subviews>
+                                                            <view hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="46n-eI-XAJ">
+                                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="50"/>
+                                                                <subviews>
+                                                                    <textField hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nG6-na-Y0B" customClass="ThemeTextField" customModule="Chick_Pick" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="50"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <color key="tintColor" red="0.94901960780000005" green="0.08235294118" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                        <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                                                    </textField>
+                                                                </subviews>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mn8-JN-3gn">
+                                                                <rect key="frame" x="0.0" y="0.0" width="280" height="50"/>
+                                                                <subviews>
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mobile Number" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oQn-Wh-Zgj" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="280" height="50"/>
+                                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                        <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                                                    </textField>
+                                                                </subviews>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <constraints>
+                                                                    <constraint firstItem="oQn-Wh-Zgj" firstAttribute="leading" secondItem="mn8-JN-3gn" secondAttribute="leading" id="M58-nX-WxE"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="oQn-Wh-Zgj" secondAttribute="bottom" id="jYd-FL-T9j"/>
+                                                                    <constraint firstItem="oQn-Wh-Zgj" firstAttribute="top" secondItem="mn8-JN-3gn" secondAttribute="top" id="oGE-Oo-MdR"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="oQn-Wh-Zgj" secondAttribute="trailing" id="r6v-fx-MFb"/>
+                                                                </constraints>
+                                                            </view>
+                                                        </subviews>
                                                         <constraints>
-                                                            <constraint firstItem="oQn-Wh-Zgj" firstAttribute="leading" secondItem="mn8-JN-3gn" secondAttribute="leading" id="M58-nX-WxE"/>
-                                                            <constraint firstAttribute="bottom" secondItem="oQn-Wh-Zgj" secondAttribute="bottom" id="jYd-FL-T9j"/>
-                                                            <constraint firstItem="oQn-Wh-Zgj" firstAttribute="top" secondItem="mn8-JN-3gn" secondAttribute="top" id="oGE-Oo-MdR"/>
-                                                            <constraint firstAttribute="trailing" secondItem="oQn-Wh-Zgj" secondAttribute="trailing" id="r6v-fx-MFb"/>
+                                                            <constraint firstAttribute="bottom" secondItem="mn8-JN-3gn" secondAttribute="bottom" id="1oD-cH-Z7c"/>
+                                                            <constraint firstItem="mn8-JN-3gn" firstAttribute="top" secondItem="V5L-OQ-hnE" secondAttribute="top" id="A9m-hU-ue4"/>
+                                                            <constraint firstAttribute="trailing" secondItem="mn8-JN-3gn" secondAttribute="trailing" id="p37-X2-kpB"/>
                                                         </constraints>
-                                                    </view>
+                                                    </stackView>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HhL-wb-j0x" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="280" width="280" height="50"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="25Q-dQ-K2B" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="350" width="280" height="50"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                    </textField>
+                                                    <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Ued-GJ-20Q">
+                                                        <rect key="frame" x="0.0" y="400" width="280" height="50"/>
+                                                        <subviews>
+                                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Licence/Passport" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="hVb-nw-M6o" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="3" width="236" height="44"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="44" id="rdL-kd-wfm"/>
+                                                                </constraints>
+                                                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="lineErrorColor">
+                                                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
+                                                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </textField>
+                                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="phO-de-OWJ">
+                                                                <rect key="frame" x="240" y="5" width="40" height="40"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="phO-de-OWJ" secondAttribute="height" multiplier="1:1" id="Lpa-Lg-D1B"/>
+                                                                    <constraint firstAttribute="height" constant="40" id="wBq-mS-jGO"/>
+                                                                </constraints>
+                                                                <state key="normal" image="camera-icon"/>
+                                                                <connections>
+                                                                    <action selector="openPicImage:" destination="pp2-7o-Pib" eventType="touchDragInside" id="hci-Fk-Cg3"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="2Cb-EF-xkN"/>
+                                                        </constraints>
+                                                    </stackView>
                                                 </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="bottom" secondItem="mn8-JN-3gn" secondAttribute="bottom" id="1oD-cH-Z7c"/>
-                                                    <constraint firstItem="mn8-JN-3gn" firstAttribute="top" secondItem="V5L-OQ-hnE" secondAttribute="top" id="A9m-hU-ue4"/>
-                                                    <constraint firstAttribute="trailing" secondItem="mn8-JN-3gn" secondAttribute="trailing" id="p37-X2-kpB"/>
-                                                </constraints>
                                             </stackView>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HhL-wb-j0x" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="280" width="280" height="50"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                            </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="25Q-dQ-K2B" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="350" width="280" height="50"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                            </textField>
                                         </subviews>
-                                    </stackView>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="wKY-YC-cJT" secondAttribute="bottom" constant="20" id="99b-YE-akV"/>
+                                            <constraint firstItem="wKY-YC-cJT" firstAttribute="width" secondItem="34l-24-UFc" secondAttribute="width" multiplier="0.875" id="D1M-S0-HNA"/>
+                                            <constraint firstItem="wKY-YC-cJT" firstAttribute="top" secondItem="34l-24-UFc" secondAttribute="top" constant="20" id="I74-Yi-XA5"/>
+                                            <constraint firstItem="wKY-YC-cJT" firstAttribute="leading" secondItem="34l-24-UFc" secondAttribute="leading" constant="20" id="eQL-oT-eI8"/>
+                                            <constraint firstAttribute="trailing" secondItem="wKY-YC-cJT" secondAttribute="trailing" constant="20" id="yLv-gq-Q5K"/>
+                                        </constraints>
+                                    </scrollView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rT3-0l-Lea" customClass="ThemeButton" customModule="Chick_Pick" customModuleProvider="target">
                                         <rect key="frame" x="20" y="313" width="280" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1028,14 +1079,16 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="wKY-YC-cJT" firstAttribute="top" secondItem="To8-wW-XZ0" secondAttribute="bottom" constant="25" id="1q5-ax-4LC"/>
-                                    <constraint firstItem="rT3-0l-Lea" firstAttribute="trailing" secondItem="wKY-YC-cJT" secondAttribute="trailing" id="BOr-lY-DHo"/>
-                                    <constraint firstAttribute="trailing" secondItem="wKY-YC-cJT" secondAttribute="trailing" constant="20" id="DdT-yc-FCF"/>
-                                    <constraint firstItem="wKY-YC-cJT" firstAttribute="leading" secondItem="G2h-2m-jaK" secondAttribute="leading" constant="20" id="IXN-4l-Ipr"/>
+                                    <constraint firstItem="34l-24-UFc" firstAttribute="leading" secondItem="G2h-2m-jaK" secondAttribute="leading" id="0xD-Cr-UQY"/>
+                                    <constraint firstItem="rT3-0l-Lea" firstAttribute="top" secondItem="34l-24-UFc" secondAttribute="bottom" constant="20" id="3e0-ND-PDq"/>
+                                    <constraint firstItem="34l-24-UFc" firstAttribute="top" secondItem="To8-wW-XZ0" secondAttribute="top" id="9uQ-5u-6cv"/>
+                                    <constraint firstItem="rT3-0l-Lea" firstAttribute="leading" secondItem="G2h-2m-jaK" secondAttribute="leading" constant="20" id="EEQ-Ld-NPS"/>
+                                    <constraint firstAttribute="trailing" secondItem="34l-24-UFc" secondAttribute="trailing" id="IGC-t7-eeI"/>
                                     <constraint firstItem="To8-wW-XZ0" firstAttribute="centerX" secondItem="G2h-2m-jaK" secondAttribute="centerX" id="NKU-PL-iBK"/>
-                                    <constraint firstItem="rT3-0l-Lea" firstAttribute="leading" secondItem="wKY-YC-cJT" secondAttribute="leading" id="Y4K-IA-BLT"/>
+                                    <constraint firstAttribute="trailing" secondItem="rT3-0l-Lea" secondAttribute="trailing" constant="20" id="WT6-XS-UTb"/>
                                     <constraint firstAttribute="bottom" secondItem="rT3-0l-Lea" secondAttribute="bottom" constant="10" id="dBb-UG-JaE"/>
                                     <constraint firstItem="To8-wW-XZ0" firstAttribute="top" secondItem="G2h-2m-jaK" secondAttribute="top" constant="10" id="efO-iM-Ish"/>
+                                    <constraint firstItem="34l-24-UFc" firstAttribute="width" secondItem="G2h-2m-jaK" secondAttribute="width" id="pFG-AK-zcW"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1049,6 +1102,7 @@
                         <viewLayoutGuide key="safeArea" id="fW7-m0-urz"/>
                     </view>
                     <connections>
+                        <outlet property="btnDocument" destination="phO-de-OWJ" id="IEX-AS-F43"/>
                         <outlet property="txtConfirmPassword" destination="25Q-dQ-K2B" id="zoF-up-mqF"/>
                         <outlet property="txtContoryNum" destination="nG6-na-Y0B" id="vYs-l4-i5M"/>
                         <outlet property="txtEmail" destination="3AN-gm-QGU" id="EPs-tx-XkK"/>
@@ -1769,13 +1823,13 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IJK-1W-T7h" customClass="IQPreviousNextView" customModule="IQKeyboardManagerSwift">
-                                                <rect key="frame" x="0.0" y="0.0" width="320" height="888.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="1160.5"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-ios" translatesAutoresizingMaskIntoConstraints="NO" id="dJd-2h-R2b">
-                                                        <rect key="frame" x="30" y="60" width="260" height="272"/>
+                                                        <rect key="frame" x="30" y="60" width="260" height="544"/>
                                                     </imageView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="sit-Te-ryF">
-                                                        <rect key="frame" x="20" y="372" width="280" height="100"/>
+                                                        <rect key="frame" x="20" y="644" width="280" height="100"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mobile Number/Email Id" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CBx-ij-mZU" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="280" height="37.5"/>
@@ -1815,7 +1869,7 @@
                                                         </constraints>
                                                     </stackView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x8l-EH-OGv">
-                                                        <rect key="frame" x="186" y="480" width="114" height="28"/>
+                                                        <rect key="frame" x="186" y="752" width="114" height="28"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                                                         <state key="normal" title="Forgot Password?">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1825,7 +1879,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="15L-y5-uyY" customClass="ThemeButton" customModule="Chick_Pick" customModuleProvider="target">
-                                                        <rect key="frame" x="60" y="538" width="200" height="50"/>
+                                                        <rect key="frame" x="60" y="810" width="200" height="50"/>
                                                         <color key="backgroundColor" red="0.21176470589999999" green="0.20392156859999999" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="gNb-Qu-LHs"/>
@@ -1839,24 +1893,27 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x7V-L2-zRb">
-                                                        <rect key="frame" x="70.5" y="623" width="179" height="20.5"/>
+                                                        <rect key="frame" x="70.5" y="895" width="179" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="omx-Ay-Lle">
-                                                        <rect key="frame" x="130" y="678.5" width="60" height="60"/>
+                                                        <rect key="frame" x="130" y="950.5" width="60" height="60"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G7P-ZE-DWn">
                                                                 <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                                                                 <subviews>
-                                                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GgR-wq-ChY">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
-                                                                    </imageView>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qc6-iy-bg9">
                                                                         <rect key="frame" x="10" y="10" width="40" height="40"/>
                                                                         <state key="normal" image="facebook"/>
+                                                                        <connections>
+                                                                            <action selector="btnFBTapped:" destination="7N9-T9-nqT" eventType="touchUpInside" id="go5-N7-h1d"/>
+                                                                        </connections>
                                                                     </button>
+                                                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GgR-wq-ChY">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                                                    </imageView>
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
@@ -1901,7 +1958,7 @@
                                                         </constraints>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="sWx-No-vLL">
-                                                        <rect key="frame" x="91.5" y="773.5" width="137" height="30"/>
+                                                        <rect key="frame" x="93" y="1045.5" width="134" height="30"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New User?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6iT-bE-FK4" customClass="LocalizLabel" customModule="Chick_Pick" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="75" height="30"/>
@@ -1912,9 +1969,9 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QRM-8a-Ype">
-                                                                <rect key="frame" x="78" y="0.0" width="59" height="30"/>
+                                                                <rect key="frame" x="78" y="0.0" width="56" height="30"/>
                                                                 <fontDescription key="fontDescription" name="Nunito-Bold" family="Nunito" pointSize="15"/>
-                                                                <state key="normal" title="Reigister">
+                                                                <state key="normal" title="Register">
                                                                     <color key="titleColor" red="0.1137254902" green="0.12549019610000001" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 </state>
                                                                 <connections>
@@ -2020,6 +2077,7 @@
         <image name="Logo" width="298" height="154"/>
         <image name="SelectedCircle" width="20" height="20"/>
         <image name="UnSelectedCircle" width="20" height="20"/>
+        <image name="camera-icon" width="170" height="170"/>
         <image name="facebook" width="170" height="170"/>
         <image name="iconBird" width="174" height="99"/>
         <image name="iconLeftArrow" width="29" height="29"/>

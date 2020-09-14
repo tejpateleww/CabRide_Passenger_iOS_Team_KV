@@ -269,6 +269,8 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+         self.containerView.isHidden = false
+         (self.children.first as! CarCollectionViewController).getDataFromJSON()
         viewMainActivityIndicator.layer.zPosition = 1
     }
 
@@ -981,7 +983,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
             let points = routeOverviewPolyline["points"]
             self.path = GMSPath.init(fromEncodedPath: points as! String)!
             self.polyline.path = path
-            self.polyline.strokeColor = ThemeColor // UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+            self.polyline.strokeColor = ThemeOrange // UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
             self.polyline.strokeWidth = 3.0
             self.polyline.map = self.mapView
             self.arrivedRoutePath = GMSPath(fromEncodedPath: points as! String)!
@@ -996,7 +998,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
             if (self.i < self.path.count()) {
                 self.animationPath.add(self.path.coordinate(at: self.i))
                 self.animationPolyline.path = self.animationPath
-                self.animationPolyline.strokeColor = ThemeColor //UIColor(red: 0, green: 0, blue: 0, alpha: 1.0)
+                self.animationPolyline.strokeColor = ThemeOrange //UIColor(red: 0, green: 0, blue: 0, alpha: 1.0)
                 self.animationPolyline.strokeWidth = 3
                 self.animationPolyline.map = self.mapView
                 self.i += 1
@@ -1242,9 +1244,9 @@ extension HomeViewController: GMSAutocompleteViewControllerDelegate {
         self.carListContainerView.isHidden = false
         self.driverInfoContainerView.isHidden = true
         self.driverRatingContainerView.isHidden = true
-        self.viewPickupLocation.isHidden = true
+//        self.viewPickupLocation.isHidden = true
         self.viewDropOffLocation.isHidden = false
-        self.containerView.isHidden = true
+//        self.containerView.isHidden = true
         self.hideBookLaterButtonFromDroplocationField = false
         
         locationView.isHidden = false
@@ -1392,5 +1394,4 @@ extension CLLocationCoordinate2D {
         let degree = radiansToDegrees(radiansBearing)
         return (degree >= 0) ? degree : (360 + degree)
     }
-
 }

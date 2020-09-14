@@ -42,7 +42,7 @@ pod 'SwipeCellKit', '2.5.4'
 pod 'SwiftyAttributes'
 pod 'DropDown', '2.3.2'
 pod 'NVActivityIndicatorView'
-
+pod 'FBSDKLoginKit'
   
   
 end

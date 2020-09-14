@@ -11,13 +11,13 @@ import SideMenuSwift
 import IQKeyboardManagerSwift
 import GoogleMaps
 import GooglePlaces
+import FBSDKCoreKit
 //import Fabric
 //import Crashlytics
 import Firebase
 import FirebaseMessaging
 import UserNotifications
 import CoreLocation
-
 
 
 
@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         setupPushNotification(application: application)
         locationPermission()
 //        Fabric.with([Crashlytics.self])
-
+        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
 
 
         if(UserDefaults.standard.object(forKey: "userProfile") != nil) {

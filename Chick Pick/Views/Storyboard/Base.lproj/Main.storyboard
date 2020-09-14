@@ -184,6 +184,7 @@
                                                 </stackView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rE6-GC-0TK">
                                                     <rect key="frame" x="97.5" y="32" width="120" height="30"/>
+                                                    <color key="tintColor" red="0.90588235289999997" green="0.58431372550000005" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <connections>
                                                         <action selector="btnLogoutAction:" destination="RqZ-PG-p3O" eventType="touchUpInside" id="v88-Mq-z4n"/>
                                                     </connections>
@@ -470,16 +471,23 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yy9-FD-GtO" userLabel="LocationView">
-                                <rect key="frame" x="10" y="20" width="355" height="45"/>
+                                <rect key="frame" x="10" y="20" width="355" height="87"/>
                                 <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconToAndFromAddress" translatesAutoresizingMaskIntoConstraints="NO" id="YtN-jK-sV9">
+                                        <rect key="frame" x="2" y="13.5" width="20" height="60"/>
+                                        <color key="tintColor" red="0.0039215686269999999" green="0.0039215686269999999" blue="0.043137254899999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="VZG-km-6zt"/>
+                                        </constraints>
+                                    </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="H3o-CR-BMt">
-                                        <rect key="frame" x="5" y="0.0" width="345" height="45"/>
+                                        <rect key="frame" x="20" y="0.0" width="330" height="87"/>
                                         <subviews>
-                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LIs-xb-zmt">
-                                                <rect key="frame" x="0.0" y="0.0" width="345" height="45"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LIs-xb-zmt">
+                                                <rect key="frame" x="0.0" y="0.0" width="330" height="45"/>
                                                 <subviews>
                                                     <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Pickup Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="agg-2Q-FJd" customClass="ThemeTextField" customModule="Chick_Pick" customModuleProvider="target">
-                                                        <rect key="frame" x="5" y="0.0" width="335" height="45"/>
+                                                        <rect key="frame" x="5" y="0.0" width="320" height="45"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
@@ -488,7 +496,7 @@
                                                         </connections>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8d7-BS-sAg">
-                                                        <rect key="frame" x="0.0" y="44" width="345" height="1"/>
+                                                        <rect key="frame" x="0.0" y="44" width="330" height="1"/>
                                                         <color key="backgroundColor" red="0.70980392156862748" green="0.70980392156862748" blue="0.70980392156862748" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="Qeu-7s-ZIF"/>
@@ -508,13 +516,13 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m37-1Q-2jx">
-                                                <rect key="frame" x="0.0" y="0.0" width="345" height="45"/>
+                                                <rect key="frame" x="0.0" y="50" width="330" height="37"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fd2-cd-Mfq">
-                                                        <rect key="frame" x="5" y="0.0" width="335" height="45"/>
+                                                        <rect key="frame" x="5" y="0.0" width="320" height="37"/>
                                                         <subviews>
                                                             <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Where To?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o1w-cW-IXL" customClass="ThemeTextField" customModule="Chick_Pick" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="290" height="45"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="320" height="37"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
@@ -522,8 +530,8 @@
                                                                     <action selector="txtLocation:" destination="HiZ-DG-Tal" eventType="touchDown" id="5HM-Rg-ciH"/>
                                                                 </connections>
                                                             </textField>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gFM-f5-W52">
-                                                                <rect key="frame" x="290" y="0.0" width="45" height="45"/>
+                                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gFM-f5-W52">
+                                                                <rect key="frame" x="0.0" y="0.0" width="37" height="37"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="gFM-f5-W52" secondAttribute="height" multiplier="1:1" id="kda-SJ-AYn"/>
                                                                 </constraints>
@@ -544,7 +552,7 @@
                                                     <constraint firstAttribute="trailing" secondItem="fd2-cd-Mfq" secondAttribute="trailing" constant="5" id="3tp-Z1-U9k"/>
                                                     <constraint firstItem="fd2-cd-Mfq" firstAttribute="top" secondItem="m37-1Q-2jx" secondAttribute="top" id="D9c-xy-pQv"/>
                                                     <constraint firstAttribute="bottom" secondItem="fd2-cd-Mfq" secondAttribute="bottom" id="PIo-1b-ZM8"/>
-                                                    <constraint firstAttribute="height" constant="45" id="jaA-l6-0NX"/>
+                                                    <constraint firstAttribute="height" constant="37" id="jaA-l6-0NX"/>
                                                     <constraint firstItem="fd2-cd-Mfq" firstAttribute="leading" secondItem="m37-1Q-2jx" secondAttribute="leading" constant="5" id="xZE-si-uKU"/>
                                                 </constraints>
                                             </view>
@@ -555,8 +563,10 @@
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="H3o-CR-BMt" secondAttribute="bottom" id="3OV-bJ-dFJ"/>
                                     <constraint firstAttribute="trailing" secondItem="H3o-CR-BMt" secondAttribute="trailing" constant="5" id="O0D-hm-oTy"/>
-                                    <constraint firstItem="H3o-CR-BMt" firstAttribute="leading" secondItem="Yy9-FD-GtO" secondAttribute="leading" constant="5" id="bsA-V7-tw9"/>
+                                    <constraint firstItem="YtN-jK-sV9" firstAttribute="centerY" secondItem="Yy9-FD-GtO" secondAttribute="centerY" id="TRe-xv-EGp"/>
+                                    <constraint firstItem="H3o-CR-BMt" firstAttribute="leading" secondItem="Yy9-FD-GtO" secondAttribute="leading" constant="20" id="bsA-V7-tw9"/>
                                     <constraint firstItem="H3o-CR-BMt" firstAttribute="top" secondItem="Yy9-FD-GtO" secondAttribute="top" id="kLP-SO-X9v"/>
+                                    <constraint firstItem="YtN-jK-sV9" firstAttribute="leading" secondItem="Yy9-FD-GtO" secondAttribute="leading" constant="2" id="mj0-5j-6ha"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
@@ -580,16 +590,16 @@
                                 <rect key="frame" x="0.0" y="273" width="375" height="350"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N2Z-oD-ekl" userLabel="ViewTop">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="68"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="42"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5an-Mc-dv8">
-                                                <rect key="frame" x="143.5" y="2" width="88" height="64"/>
+                                                <rect key="frame" x="143.5" y="2" width="88" height="38"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconDownArrow" translatesAutoresizingMaskIntoConstraints="NO" id="SAb-Oy-2a0">
-                                                        <rect key="frame" x="0.0" y="0.0" width="88" height="52"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="88" height="26"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe up to Book" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Al-oe-KNe">
-                                                        <rect key="frame" x="2" y="52" width="84" height="12"/>
+                                                        <rect key="frame" x="2" y="26" width="84" height="12"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -613,7 +623,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hQA-fv-2PZ">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="68"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="42"/>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -629,11 +639,11 @@
                                         </constraints>
                                     </view>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconBird" translatesAutoresizingMaskIntoConstraints="NO" id="lvH-oD-UgG">
-                                        <rect key="frame" x="0.0" y="68" width="375" height="310"/>
+                                        <rect key="frame" x="0.0" y="42" width="375" height="310"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </imageView>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mKo-HA-bFM" userLabel="Car List Container View">
-                                        <rect key="frame" x="0.0" y="68" width="375" height="310"/>
+                                        <rect key="frame" x="0.0" y="42" width="375" height="310"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="310" id="Rju-Wg-iEB"/>
@@ -643,13 +653,13 @@
                                         </connections>
                                     </containerView>
                                     <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m4i-j9-WMt" userLabel="Driver Info Container View">
-                                        <rect key="frame" x="0.0" y="68" width="375" height="310"/>
+                                        <rect key="frame" x="0.0" y="42" width="375" height="310"/>
                                         <connections>
                                             <segue destination="6Vm-KD-DNP" kind="embed" id="cZ1-WG-9Pk"/>
                                         </connections>
                                     </containerView>
                                     <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="raS-eE-gCS" userLabel="Driver Rating Container View">
-                                        <rect key="frame" x="0.0" y="48" width="375" height="330"/>
+                                        <rect key="frame" x="0.0" y="22" width="375" height="330"/>
                                         <connections>
                                             <segue destination="C5a-Ul-jbN" kind="embed" id="EaF-LB-ZeN"/>
                                         </connections>
@@ -679,7 +689,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4nS-zn-KUk">
-                                <rect key="frame" x="325" y="75" width="40" height="40"/>
+                                <rect key="frame" x="325" y="117" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="2A0-Wg-gYx"/>
                                     <constraint firstAttribute="height" constant="40" id="ah8-pr-4NW"/>
@@ -849,11 +859,11 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconUpArrowColored" translatesAutoresizingMaskIntoConstraints="NO" id="mng-CM-4Pj">
-                                                <rect key="frame" x="32" y="81" width="52" height="52"/>
+                                                <rect key="frame" x="45" y="81" width="26" height="26"/>
                                                 <color key="tintColor" red="0.8901960784313725" green="0.51764705882352935" blue="0.15686274509803921" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconDownArrowColored" translatesAutoresizingMaskIntoConstraints="NO" id="hWn-ix-6q3">
-                                                <rect key="frame" x="32" y="287" width="52" height="52"/>
+                                                <rect key="frame" x="45" y="313" width="26" height="26"/>
                                                 <color key="tintColor" red="0.8901960784313725" green="0.51764705882352935" blue="0.15686274509803921" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Book Taxi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pk1-qO-GhQ">
@@ -1522,7 +1532,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gos-gp-cuC">
                                                 <rect key="frame" x="0.0" y="140" width="375" height="70"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pay For This Trip Via :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0G6-rT-S2W">
+                                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pay For This Trip Via :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0G6-rT-S2W">
                                                         <rect key="frame" x="15" y="-8.5" width="114" height="13.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                         <nil key="textColor"/>
@@ -2049,10 +2059,10 @@ automatic expense for warding</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="vTD-f0-9th">
-                                <rect key="frame" x="175" y="10" width="190" height="90"/>
+                                <rect key="frame" x="265" y="10" width="100" height="45"/>
                                 <subviews>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rMx-iK-BlB">
-                                        <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <inset key="imageEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
@@ -2069,7 +2079,7 @@ automatic expense for warding</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QO6-4L-PVI">
-                                        <rect key="frame" x="100" y="0.0" width="90" height="90"/>
+                                        <rect key="frame" x="55" y="0.0" width="45" height="45"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" image="iconCall">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2086,16 +2096,16 @@ automatic expense for warding</string>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="tyb-me-JOH">
-                                <rect key="frame" x="64" y="12" width="101" height="32.5"/>
+                                <rect key="frame" x="64" y="13" width="191" height="30"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rahul Patel" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yJh-Su-hlF">
-                                        <rect key="frame" x="0.0" y="0.0" width="76.5" height="17.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="77" height="15"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4cr-3a-zcN">
-                                        <rect key="frame" x="0.0" y="17.5" width="70" height="15"/>
+                                        <rect key="frame" x="0.0" y="15" width="70" height="15"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconSelectedstar" translatesAutoresizingMaskIntoConstraints="NO" id="B6q-Dv-6GZ">
                                                 <rect key="frame" x="0.0" y="0.0" width="15" height="15"/>
@@ -2122,7 +2132,7 @@ automatic expense for warding</string>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Zac-lY-aqJ">
-                                <rect key="frame" x="258" y="322" width="101" height="39"/>
+                                <rect key="frame" x="258" y="176" width="101" height="39"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Estimated Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k83-hX-31q">
                                         <rect key="frame" x="0.0" y="0.0" width="101" height="17"/>
@@ -2139,7 +2149,7 @@ automatic expense for warding</string>
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mwt-bZ-WeE">
-                                <rect key="frame" x="16" y="105" width="343" height="207"/>
+                                <rect key="frame" x="16" y="60" width="343" height="106"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pickup Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cuJ-WZ-ybH">
                                         <rect key="frame" x="5" y="5" width="333" height="20"/>
@@ -2150,11 +2160,11 @@ automatic expense for warding</string>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dPc-wr-HgW">
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dPc-wr-HgW">
                                         <rect key="frame" x="0.0" y="30.5" width="0.0" height="69.5"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconToAndFromAddress" translatesAutoresizingMaskIntoConstraints="NO" id="Dag-Et-hGF">
-                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="120"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="69.5"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </imageView>
                                         </subviews>
@@ -2167,20 +2177,20 @@ automatic expense for warding</string>
                                             <constraint firstAttribute="width" id="SHM-3H-vuV"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Iscon Mega mall" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vn0-Qq-dhY">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Iscon Mega mall" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vn0-Qq-dhY">
                                         <rect key="frame" x="5" y="30" width="338" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lqj-jz-vHV">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lqj-jz-vHV">
                                         <rect key="frame" x="7" y="52" width="334" height="1"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="u5t-zj-Luf"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Where To?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2T0-5o-IUu">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where To?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2T0-5o-IUu">
                                         <rect key="frame" x="5" y="58" width="333" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="iBa-ke-uPt"/>
@@ -2189,7 +2199,7 @@ automatic expense for warding</string>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Vastrapur lake" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xgo-tH-xVd">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vastrapur lake" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xgo-tH-xVd">
                                         <rect key="frame" x="5" y="83" width="338" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <nil key="textColor"/>
@@ -2220,7 +2230,7 @@ automatic expense for warding</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xcN-b8-6Z7">
-                                <rect key="frame" x="16" y="322" width="130" height="42"/>
+                                <rect key="frame" x="16" y="176" width="130" height="42"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ford Figo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ph5-ag-ZUv">
                                         <rect key="frame" x="56.5" y="0.0" width="73.5" height="17"/>
@@ -2262,7 +2272,7 @@ automatic expense for warding</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5bR-ED-qD4">
-                                <rect key="frame" x="16" y="364" width="343" height="90"/>
+                                <rect key="frame" x="16" y="218" width="343" height="90"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ouz-NP-DMA">
                                         <rect key="frame" x="0.0" y="10" width="343" height="40"/>
@@ -3646,11 +3656,11 @@ automatic expense for warding</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dFZ-b0-9DK">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dFZ-b0-9DK">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7wz-ZT-UUa" customClass="IQPreviousNextView" customModule="IQKeyboardManagerSwift">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="696"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7wz-ZT-UUa">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="531"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V1N-yj-axD">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="395"/>
@@ -3662,13 +3672,16 @@ automatic expense for warding</string>
                                                             <constraint firstAttribute="height" constant="1" id="gAe-6u-gIX"/>
                                                         </constraints>
                                                     </view>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconDummyProfilePic" translatesAutoresizingMaskIntoConstraints="NO" id="5Lq-Y2-y9P">
+                                                        <rect key="frame" x="20" y="20" width="95" height="95"/>
+                                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </imageView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nIR-yM-cJp">
                                                         <rect key="frame" x="20" y="20" width="95" height="95"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="95" id="Q4D-ND-rE0"/>
                                                             <constraint firstAttribute="width" secondItem="nIR-yM-cJp" secondAttribute="height" multiplier="1:1" id="XYf-Qd-IjJ"/>
                                                         </constraints>
-                                                        <state key="normal" image="iconDummyProfilePic"/>
                                                         <connections>
                                                             <action selector="btnProfilePicClicked:" destination="5mH-gN-Dtc" eventType="touchUpInside" id="Vts-hh-ELV"/>
                                                         </connections>
@@ -3717,172 +3730,75 @@ automatic expense for warding</string>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="SmR-35-bAz">
                                                         <rect key="frame" x="20" y="135" width="335" height="260"/>
                                                         <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bEH-7C-Mg8" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bEH-7C-Mg8" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="40"/>
                                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="40" id="FCQ-7v-rq9"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
-                                                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
-                                                                        <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
-                                                                        <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
-                                                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
-                                                                        <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
-                                                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="lineHeight">
-                                                                        <real key="value" value="0.29999999999999999"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="selectedLineHeight">
-                                                                        <real key="value" value="0.29999999999999999"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                </userDefinedRuntimeAttributes>
+                                                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                                             </textField>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RcB-TD-08z" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RcB-TD-08z" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="55" width="335" height="40"/>
                                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
-                                                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
-                                                                        <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
-                                                                        <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
-                                                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
-                                                                        <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
-                                                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="lineHeight">
-                                                                        <real key="value" value="0.29999999999999999"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="selectedLineHeight">
-                                                                        <real key="value" value="0.29999999999999999"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                </userDefinedRuntimeAttributes>
+                                                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                                             </textField>
-                                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mobile Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k26-oi-ul1" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                                <rect key="frame" x="0.0" y="165" width="335" height="40"/>
+                                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mobile Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k26-oi-ul1" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="110" width="335" height="40"/>
                                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
-                                                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
-                                                                        <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
-                                                                        <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
-                                                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
-                                                                        <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
-                                                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="lineHeight">
-                                                                        <real key="value" value="0.29999999999999999"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="selectedLineHeight">
-                                                                        <real key="value" value="0.29999999999999999"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                </userDefinedRuntimeAttributes>
                                                             </textField>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Birth Date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lFo-S5-2ea" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                                <rect key="frame" x="0.0" y="220" width="335" height="40"/>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Birth Date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lFo-S5-2ea" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="165" width="335" height="40"/>
                                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
-                                                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
-                                                                        <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
-                                                                        <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
-                                                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
-                                                                        <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
-                                                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="lineHeight">
-                                                                        <real key="value" value="0.29999999999999999"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="selectedLineHeight">
-                                                                        <real key="value" value="0.29999999999999999"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                </userDefinedRuntimeAttributes>
                                                                 <connections>
                                                                     <action selector="txtDateOfBirth:" destination="5mH-gN-Dtc" eventType="editingDidBegin" id="SvC-iU-Tqr"/>
                                                                 </connections>
                                                             </textField>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mmv-Bs-4BJ" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                                <rect key="frame" x="0.0" y="110" width="335" height="40"/>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mmv-Bs-4BJ" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="220" width="335" height="40"/>
                                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
-                                                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
-                                                                        <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
-                                                                        <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
-                                                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
-                                                                        <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
-                                                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="lineHeight">
-                                                                        <real key="value" value="0.29999999999999999"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="selectedLineHeight">
-                                                                        <real key="value" value="0.29999999999999999"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                </userDefinedRuntimeAttributes>
                                                             </textField>
+                                                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="GJH-hs-x87">
+                                                                <rect key="frame" x="0.0" y="260" width="335" height="40"/>
+                                                                <subviews>
+                                                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Licence/Passport" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="SKq-D2-Klv" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="12.5" width="291" height="15.5"/>
+                                                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
+                                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                                                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="color" keyPath="lineErrorColor">
+                                                                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
+                                                                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                    </textField>
+                                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dJV-hp-ELa">
+                                                                        <rect key="frame" x="295" y="0.0" width="40" height="40"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" secondItem="dJV-hp-ELa" secondAttribute="height" multiplier="1:1" id="P5V-qH-IiM"/>
+                                                                            <constraint firstAttribute="height" constant="40" id="WFu-c4-fss"/>
+                                                                        </constraints>
+                                                                        <state key="normal" image="camera-icon"/>
+                                                                        <connections>
+                                                                            <action selector="btnProfilePicClicked:" destination="5mH-gN-Dtc" eventType="touchDragInside" id="81P-WI-j2V"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                            </stackView>
                                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3d1-rM-iSj">
                                                                 <rect key="frame" x="0.0" y="260" width="335" height="21"/>
                                                                 <subviews>
@@ -3997,11 +3913,15 @@ automatic expense for warding</string>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="KDs-xE-F7C" firstAttribute="centerY" secondItem="nIR-yM-cJp" secondAttribute="centerY" id="57R-JY-DLf"/>
+                                                    <constraint firstItem="5Lq-Y2-y9P" firstAttribute="bottom" secondItem="nIR-yM-cJp" secondAttribute="bottom" id="6HU-CA-Xv8"/>
                                                     <constraint firstItem="nIR-yM-cJp" firstAttribute="top" secondItem="V1N-yj-axD" secondAttribute="top" constant="20" id="7Sn-NV-wEA"/>
                                                     <constraint firstItem="SmR-35-bAz" firstAttribute="leading" secondItem="V1N-yj-axD" secondAttribute="leading" constant="20" id="CPi-yK-oRh"/>
                                                     <constraint firstAttribute="trailing" secondItem="KDs-xE-F7C" secondAttribute="trailing" constant="20" id="Enj-Mh-bxJ"/>
+                                                    <constraint firstItem="5Lq-Y2-y9P" firstAttribute="top" secondItem="nIR-yM-cJp" secondAttribute="top" id="JBj-hu-LfH"/>
                                                     <constraint firstItem="pwi-4u-XHO" firstAttribute="leading" secondItem="V1N-yj-axD" secondAttribute="leading" id="TGB-hI-keg"/>
                                                     <constraint firstAttribute="bottom" secondItem="SmR-35-bAz" secondAttribute="bottom" id="TyB-2o-Zqc"/>
+                                                    <constraint firstItem="5Lq-Y2-y9P" firstAttribute="leading" secondItem="nIR-yM-cJp" secondAttribute="leading" id="XAU-3U-dZl"/>
+                                                    <constraint firstItem="5Lq-Y2-y9P" firstAttribute="trailing" secondItem="nIR-yM-cJp" secondAttribute="trailing" id="gVF-xs-0xj"/>
                                                     <constraint firstAttribute="trailing" secondItem="SmR-35-bAz" secondAttribute="trailing" constant="20" id="hLV-r2-2jO"/>
                                                     <constraint firstAttribute="trailing" secondItem="pwi-4u-XHO" secondAttribute="trailing" constant="2" id="ids-tc-p8j"/>
                                                     <constraint firstItem="SmR-35-bAz" firstAttribute="top" secondItem="nIR-yM-cJp" secondAttribute="bottom" constant="20" id="oy5-q3-oKg"/>
@@ -4011,7 +3931,7 @@ automatic expense for warding</string>
                                                 </constraints>
                                             </view>
                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R3R-9i-Uc7">
-                                                <rect key="frame" x="20" y="405" width="345" height="165"/>
+                                                <rect key="frame" x="20" y="405" width="345" height="0.0"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Passenger Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fkg-ND-HVq">
                                                         <rect key="frame" x="0.0" y="10" width="345" height="25"/>
@@ -4095,7 +4015,7 @@ automatic expense for warding</string>
                                                                 <rect key="frame" x="0.0" y="80" width="345" height="30"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UnSelectedCircle" translatesAutoresizingMaskIntoConstraints="NO" id="cU0-Dg-KiG">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="40" height="30"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="20" height="30"/>
                                                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     </imageView>
                                                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="716-NO-stj">
@@ -4132,7 +4052,6 @@ automatic expense for warding</string>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="AE5-Y5-sQq" secondAttribute="trailing" id="9lZ-dR-Z16"/>
                                                     <constraint firstItem="AE5-Y5-sQq" firstAttribute="leading" secondItem="R3R-9i-Uc7" secondAttribute="leading" id="PM4-rF-2ho"/>
-                                                    <constraint firstAttribute="bottom" secondItem="AE5-Y5-sQq" secondAttribute="bottom" constant="10" id="bw7-kc-0Nd"/>
                                                     <constraint firstItem="AE5-Y5-sQq" firstAttribute="top" secondItem="fkg-ND-HVq" secondAttribute="bottom" constant="10" id="kq5-64-0ky"/>
                                                     <constraint firstItem="fkg-ND-HVq" firstAttribute="top" secondItem="R3R-9i-Uc7" secondAttribute="top" constant="10" id="lLb-CM-n4O"/>
                                                     <constraint firstAttribute="trailing" secondItem="fkg-ND-HVq" secondAttribute="trailing" id="oO1-Uq-Fcs"/>
@@ -4141,7 +4060,7 @@ automatic expense for warding</string>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W1r-Bx-nDd">
-                                                <rect key="frame" x="0.0" y="580" width="375" height="107"/>
+                                                <rect key="frame" x="0.0" y="415" width="375" height="107"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ebW-At-i0O" customClass="ThemeButton" customModule="Chick_Pick" customModuleProvider="target">
                                                         <rect key="frame" x="97.5" y="20" width="180" height="0.0"/>
@@ -4227,10 +4146,12 @@ automatic expense for warding</string>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
+                        <outlet property="btnDocument" destination="dJV-hp-ELa" id="uIk-Ho-3ln"/>
                         <outlet property="btnFemale" destination="PHm-3k-9Y1" id="YbR-u6-aYe"/>
                         <outlet property="btnMale" destination="i8k-me-kw3" id="o7f-KI-oxS"/>
                         <outlet property="btnProfilePic" destination="nIR-yM-cJp" id="6L7-vc-wTM"/>
                         <outlet property="imgIndividual" destination="TuT-T2-DdB" id="dBb-m2-FnE"/>
+                        <outlet property="imgProfilePic" destination="5Lq-Y2-y9P" id="Ic8-e4-eS8"/>
                         <outlet property="imgRegisterAsCompany" destination="m3F-bC-hU0" id="C91-j9-izO"/>
                         <outlet property="imgRegisterUnderCompany" destination="cU0-Dg-KiG" id="yVG-Sk-Ee5"/>
                         <outlet property="imgvFemale" destination="cEA-h3-i2n" id="Qfh-oe-7S1"/>
@@ -4281,13 +4202,13 @@ automatic expense for warding</string>
                                                             <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OSE-Vk-m5k">
-                                                                    <rect key="frame" x="10" y="7" width="355" height="54"/>
+                                                                    <rect key="frame" x="10" y="7" width="355" height="60"/>
                                                                     <subviews>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XWw-OB-fSq">
-                                                                            <rect key="frame" x="5" y="5" width="345" height="44"/>
+                                                                            <rect key="frame" x="5" y="5" width="345" height="50"/>
                                                                             <subviews>
                                                                                 <view contentMode="scaleToFill" verticalHuggingPriority="241" translatesAutoresizingMaskIntoConstraints="NO" id="g8Z-Sw-mZy">
-                                                                                    <rect key="frame" x="0.0" y="4" width="10" height="33"/>
+                                                                                    <rect key="frame" x="0.0" y="4" width="10" height="39"/>
                                                                                     <subviews>
                                                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconPickupRound" translatesAutoresizingMaskIntoConstraints="NO" id="SJy-Wv-FGr">
                                                                                             <rect key="frame" x="0.0" y="0.0" width="10" height="10"/>
@@ -4297,13 +4218,13 @@ automatic expense for warding</string>
                                                                                             </constraints>
                                                                                         </imageView>
                                                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconLine" translatesAutoresizingMaskIntoConstraints="NO" id="M4j-cb-56V">
-                                                                                            <rect key="frame" x="4.5" y="10" width="1" height="13"/>
+                                                                                            <rect key="frame" x="4.5" y="10" width="1" height="19"/>
                                                                                             <constraints>
                                                                                                 <constraint firstAttribute="width" constant="1" id="EaQ-Or-dDt"/>
                                                                                             </constraints>
                                                                                         </imageView>
                                                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconDropoffPinRound" translatesAutoresizingMaskIntoConstraints="NO" id="qYd-m6-ipe">
-                                                                                            <rect key="frame" x="0.0" y="23" width="10" height="10"/>
+                                                                                            <rect key="frame" x="0.0" y="29" width="10" height="10"/>
                                                                                         </imageView>
                                                                                     </subviews>
                                                                                     <constraints>
@@ -4322,12 +4243,12 @@ automatic expense for warding</string>
                                                                                     </constraints>
                                                                                 </view>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="First Description  Description  Description Description Description Description Description " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WXH-pP-W2q">
-                                                                                    <rect key="frame" x="15" y="2" width="325" height="14.5"/>
+                                                                                    <rect key="frame" x="15" y="2" width="325" height="17.5"/>
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5jN-UT-BPt">
-                                                                                    <rect key="frame" x="15" y="21.5" width="320" height="1"/>
+                                                                                    <rect key="frame" x="15" y="24.5" width="320" height="1"/>
                                                                                     <color key="backgroundColor" red="0.41176470590000003" green="0.41176470590000003" blue="0.41176470590000003" alpha="0.13" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="height" constant="1" id="rZ7-ga-aN2"/>
@@ -4337,7 +4258,7 @@ automatic expense for warding</string>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Second Description Description Description Description Description Description " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TKU-3d-iuJ">
-                                                                                    <rect key="frame" x="15" y="27.5" width="325" height="11.5"/>
+                                                                                    <rect key="frame" x="15" y="30.5" width="325" height="14.5"/>
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
@@ -4392,10 +4313,10 @@ automatic expense for warding</string>
                                                                     </userDefinedRuntimeAttributes>
                                                                 </view>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qr6-ZB-ZT6">
-                                                                    <rect key="frame" x="10" y="61" width="355" height="24"/>
+                                                                    <rect key="frame" x="10" y="67" width="355" height="18"/>
                                                                     <subviews>
                                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QNe-2x-3VH">
-                                                                            <rect key="frame" x="0.0" y="-2" width="355" height="26"/>
+                                                                            <rect key="frame" x="0.0" y="-2" width="355" height="20"/>
                                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                                             <state key="normal" title="$ 210"/>
                                                                         </button>
@@ -4492,7 +4413,7 @@ automatic expense for warding</string>
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconBird" translatesAutoresizingMaskIntoConstraints="NO" id="zO0-Wd-Hp5">
-                                        <rect key="frame" x="13.5" y="194.5" width="348" height="198"/>
+                                        <rect key="frame" x="100.5" y="244" width="174" height="99"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconInviteFriendsBanner" translatesAutoresizingMaskIntoConstraints="NO" id="uZo-qB-rva">
                                         <rect key="frame" x="0.0" y="20" width="375" height="300"/>
@@ -5556,6 +5477,7 @@ automatic expense for warding</string>
         <image name="Suitcase" width="100" height="100"/>
         <image name="UnSelectedCircle" width="20" height="20"/>
         <image name="camera" width="16" height="16"/>
+        <image name="camera-icon" width="170" height="170"/>
         <image name="chat-imaage" width="16" height="16"/>
         <image name="ic_close" width="16" height="16"/>
         <image name="iconArrowGray" width="26" height="26"/>

@@ -249,8 +249,8 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
                 
                 let storyboradTrip = UIStoryboard(name: "MyTrips", bundle: nil)
                 let NextPage = storyboradTrip.instantiateViewController(withIdentifier: "MyTripsViewController") as! MyTripsViewController
-                HomePage?.navigationController?.pushViewController(NextPage, animated: true)
-                sideMenuController?.hideMenu()
+//                HomePage?.navigationController?.pushViewController(NextPage, animated: true)
+//                sideMenuController?.hideMenu()
                 return
             }
             
@@ -429,7 +429,9 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
             else
             {
                 UtilityClass.hideHUD()
-                AlertMessage.showMessageForError(json["message"].stringValue)
+                if json["message"].stringValue.count != 0 {
+                    AlertMessage.showMessageForError(json["message"].stringValue)
+                }
             }
         }
     }
@@ -499,16 +501,12 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
      */
     @IBAction func btnProfilePickClicked(_ sender: Any)
     {
+        let HomePage = self.parent?.children.first?.children.first as? HomeViewController
+        let myAddsVC = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
         
-        //        self.gotoProfileVC()
-        
-//        let HomePage = self.parent?.children.first?.children.first as? HomeViewController
-//        let myAddsVC = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
-//        
-//        //self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
-//        HomePage?.navigationController?.pushViewController(myAddsVC, animated: true)
-//        sideMenuController?.hideMenu()
-        
+        //self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
+        HomePage?.navigationController?.pushViewController(myAddsVC, animated: true)
+        sideMenuController?.hideMenu()
     }
     
     

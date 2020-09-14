@@ -14,6 +14,8 @@ class RegisterContainerViewController: UIViewController,UIScrollViewDelegate,Sea
     @IBOutlet weak var firstStep: UIImageView!
     @IBOutlet weak var secondStep: UIImageView!
     @IBOutlet weak var thirdStep: UIImageView!
+    
+    var userSocialData : UserSocialData?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,12 +88,12 @@ class RegisterContainerViewController: UIViewController,UIScrollViewDelegate,Sea
     
     // MARK: - WebserviceCall
     
-    func webServiceCallForRegister(_ RegistrationGetOTPModel : RegistrationModel, image : UIImage? = nil)
+    func webServiceCallForRegister(_ RegistrationGetOTPModel : RegistrationModel, image : UIImage)
     {
         UtilityClass.showHUD(with: UIApplication.shared.keyWindow)
         
         //        UserWebserviceSubclass.register(registerModel: RegistrationGetOTPModel, image: image, imageParamName: "profile_image", completion: { (json, status) in
-        UserWebserviceSubclass.register(registerModel: RegistrationGetOTPModel, completion: { (json, status) in
+        UserWebserviceSubclass.register(registerModel: RegistrationGetOTPModel, image: image, imageParamName: "passport_licence_image", completion: { (json, status) in
             UtilityClass.hideHUD()
             
             if status {
@@ -99,10 +101,12 @@ class RegisterContainerViewController: UIViewController,UIScrollViewDelegate,Sea
                 UserDefaults.standard.set(true, forKey: "isUserLogin")
                 
                 let registerModelDetails = LoginModel.init(fromJson: json)
+                let Vehiclelist = VehicleListModel(fromJson: json)
                 do
                 {
                     SingletonClass.sharedInstance.walletBalance = registerModelDetails.loginData.walletBalance
                     try UserDefaults.standard.set(object: registerModelDetails, forKey: "userProfile")//(loginModelDetails, forKey: "userProfile")
+                    try UserDefaults.standard.set(object: Vehiclelist, forKey: "carList")
                     SingletonClass.sharedInstance.loginData = registerModelDetails.loginData
                 }
                 catch
@@ -112,7 +116,10 @@ class RegisterContainerViewController: UIViewController,UIScrollViewDelegate,Sea
                 (UIApplication.shared.delegate as! AppDelegate).GoToHome()
             }
             else{
-                AlertMessage.showMessageForError(json["message"].stringValue)
+                UtilityClass.hideHUD()
+                if json["message"].stringValue.count != 0 {
+                    AlertMessage.showMessageForError(json["message"].stringValue)
+                }
             }
         })
     }

@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreLocation
+import UIKit
 
 class SingletonClass: NSObject
 {
@@ -46,4 +47,5 @@ class SingletonRegistration: NSObject
     var Password = String()
     var FirstName = String()
     var LastName = String()
+    var Document = UIImage()
 }

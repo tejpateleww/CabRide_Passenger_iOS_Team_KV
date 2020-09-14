@@ -27,7 +27,10 @@ class WebService{
     
     func requestMethod(api: ApiKey, httpMethod:Method,parameters: Any, completion: @escaping CompletionResponse){
         
-        guard isConnected else { completion(JSON(), false); return }
+        guard isConnected else {
+            completion(JSON(), false);
+            return
+        }
         
         var parameterString = "/"
         if httpMethod == .get{
@@ -238,7 +241,7 @@ extension Encodable {
 extension WebService{
     var isConnected : Bool{
         guard isConnectedToInternet() else {
-            AlertMessage.showMessageForError("Please Connect to Internet")
+            AlertMessage.showMessageForError("Please connect to internet")
             //  LoaderClass.hideActivityIndicator()
             return false
         }

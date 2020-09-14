@@ -453,9 +453,9 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
     }
     
     @IBAction func btnBookLater(_ sender: Any) {
-        let next = self.storyboard?.instantiateViewController(withIdentifier: "PeppeaBookLaterViewController") as! PeppeaBookLaterViewController
-        next.delegateOfSelectDateAndTime = self
-        self.navigationController?.present(next, animated: true, completion: nil)
+//        let next = self.storyboard?.instantiateViewController(withIdentifier: "PeppeaBookLaterViewController") as! PeppeaBookLaterViewController
+//        next.delegateOfSelectDateAndTime = self
+//        self.navigationController?.present(next, animated: true, completion: nil)
     }
 
     
@@ -525,9 +525,9 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
             self.lblCardName.text = PaymentHolderName
             self.lblCardNumber.text = PaymentNumber
         }
-        self.viewPromocode.isHidden = false
+//        self.viewPromocode.isHidden = false
         if self.paymentType == "bulk_miles" || self.paymentType == "co_bulk_miles" {
-            self.viewPromocode.isHidden = true
+//            self.viewPromocode.isHidden = true
         }
     }
     

@@ -108,6 +108,7 @@ class LoginData : Codable
     var xApiKey : String!
     var BulkMilesBalance : String!
     var MileExpDate : String!
+    var passportLicenceImage : String!
     
     init() {
     }
@@ -144,6 +145,7 @@ class LoginData : Codable
         xApiKey = json["x-api-key"].stringValue
         BulkMilesBalance = json["miles_balance"].stringValue
         MileExpDate = json["miles_exp_date"].stringValue
+        passportLicenceImage = json["passport_licence_image"].stringValue
     }
     
     /**
@@ -224,6 +226,9 @@ class LoginData : Codable
         if xApiKey != nil{
             dictionary["x-api-key"] = xApiKey
         }
+        if passportLicenceImage != nil{
+            dictionary["passport_licence_image"] = passportLicenceImage
+        }
         return dictionary
     }
     
@@ -257,6 +262,7 @@ class LoginData : Codable
         userType = aDecoder.decodeObject(forKey: "user_type") as? String
         walletBalance = aDecoder.decodeObject(forKey: "wallet_balance") as? String
         xApiKey = aDecoder.decodeObject(forKey: "x-api-key") as? String
+        passportLicenceImage = aDecoder.decodeObject(forKey: "passport_licence_image") as? String
     }
     
     /**
@@ -337,7 +343,9 @@ class LoginData : Codable
         if xApiKey != nil{
             aCoder.encode(xApiKey, forKey: "x-api-key")
         }
-        
+        if passportLicenceImage != nil{
+            aCoder.encode(passportLicenceImage, forKey: "passport_licence_image")
+        }
     }
     
 }

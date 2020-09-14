@@ -34,7 +34,7 @@ class ThemeButton: UIButton {
                 self.setAttributedTitle(str, for: .normal)
 //                self.setTitle("Book Now", for: .normal)
 //                self.setTitleColor(ThemeColor, for: .normal)
-                self.backgroundColor = ThemeOrange
+                self.backgroundColor = ThemeColor
                 
                 self.titleLabel?.font = UIFont.regular(ofSize: 18)
             } else {

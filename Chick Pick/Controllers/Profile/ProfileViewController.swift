@@ -25,11 +25,13 @@ class ProfileViewController: BaseViewController,UIImagePickerControllerDelegate,
     @IBOutlet weak var txtMobile: SkyFloatingLabelTextField!
     @IBOutlet weak var txtDOB: SkyFloatingLabelTextField!
     
+    @IBOutlet weak var btnDocument: UIButton!
     @IBOutlet weak var imgIndividual: UIImageView!
     @IBOutlet weak var imgRegisterAsCompany: UIImageView!
     @IBOutlet weak var imgRegisterUnderCompany: UIImageView!
     
     var gender = String()
+    var isForProfilePicture = false
     
 //    var loginModelDetails: LoginModel = LoginModel()
     var loginModelDetails : LoginModel = LoginModel()
@@ -38,7 +40,7 @@ class ProfileViewController: BaseViewController,UIImagePickerControllerDelegate,
     var strDateOfBirth = String()
     
     @IBOutlet weak var iconRadioMale: UIImageView!
-    
+    @IBOutlet weak var imgProfilePic: UIImageView!
     @IBOutlet weak var btnProfilePic: UIButton!
     @IBOutlet weak var iconRadioFemale: UIImageView!
     @IBOutlet weak var btnFemale: UIButton!
@@ -114,11 +116,11 @@ class ProfileViewController: BaseViewController,UIImagePickerControllerDelegate,
         self.btnProfilePic.layer.cornerRadius = self.btnProfilePic.frame.size.width/2
         self.btnProfilePic.layer.masksToBounds = true
         self.btnProfilePic.contentMode = .scaleAspectFill
+        self.imgProfilePic.layer.cornerRadius = self.imgProfilePic.frame.size.width/2
+        self.imgProfilePic.layer.masksToBounds = true
     }
     func setData()
     {
-        btnProfilePic.layer.borderWidth = 3.0
-        btnProfilePic.layer.borderColor = UIColor.lightGray.cgColor
         if(UserDefaults.standard.object(forKey: "userProfile") == nil)
         {
             return
@@ -140,7 +142,9 @@ class ProfileViewController: BaseViewController,UIImagePickerControllerDelegate,
         txtLastName.text = profile?.lastName
         txtAddress.text = profile?.address
         txtMobile.text = profile?.mobileNo
-        txtDOB.text = profile?.dob
+        if profile?.dob != "0000-00-00" {
+           txtDOB.text = profile?.dob
+        }
         
         if profile?.gender.lowercased() == "male" {
             didSelectMale = true
@@ -149,12 +153,18 @@ class ProfileViewController: BaseViewController,UIImagePickerControllerDelegate,
             didSelectMale = false
             gender = "female"
         }
+        
+        let strImageDocument = NetworkEnvironment.baseImageURL + profile!.passportLicenceImage
+        btnDocument.sd_setImage(with: URL(string: strImageDocument), for: .normal)
+        
+        
         let strImage = NetworkEnvironment.baseImageURL + profile!.profileImage
-        btnProfilePic.sd_setImage(with: URL(string: strImage), for: .normal, placeholderImage: UIImage(named: "imgProfilePlaceHolder"))
+//        btnProfilePic.sd_setImage(with: URL(string: strImage), for: .normal, placeholderImage: UIImage(named: "imgProfilePlaceHolder"))
+        imgProfilePic.sd_setImage(with: URL(string: strImage), placeholderImage: UIImage(named: "imgProfilePlaceHolder"))
 
-        btnProfilePic.layer.borderColor = UIColor.lightGray.cgColor
-        btnProfilePic.layer.borderWidth = 3
-        btnProfilePic.layer.masksToBounds = true
+        imgProfilePic.layer.borderColor = UIColor.lightGray.cgColor
+        imgProfilePic.layer.borderWidth = 3
+        imgProfilePic.layer.masksToBounds = true
         
         imgIndividual.image = UIImage(named: "UnSelectedCircle")
         imgRegisterAsCompany.image = UIImage(named: "UnSelectedCircle")
@@ -200,7 +210,16 @@ class ProfileViewController: BaseViewController,UIImagePickerControllerDelegate,
         }
         else
         {
-            self.webserviceForUpdateProfile(updateProfile: updateProfile, image: self.btnProfilePic.imageView!.image!)
+            if let sourceImage = imgProfilePic.image {
+                if let defaultImage = UIImage(named: "imgProfilePlaceHolder") {
+                    let isDefaultImage = sourceImage.isEqualToImage(defaultImage)
+                    if (!isDefaultImage) {
+                       self.webserviceForUpdateProfile(updateProfile: updateProfile, image: sourceImage)
+                    } else {
+                        self.webserviceForUpdateProfile(updateProfile: updateProfile, image: nil)
+                    }
+                }
+            }
         }
     }
     func validations() -> (Bool,String)
@@ -225,13 +244,13 @@ class ProfileViewController: BaseViewController,UIImagePickerControllerDelegate,
         return (true,"")
     }
 
-    func webserviceForUpdateProfile(updateProfile : UpdatePersonalInfo, image : UIImage)
+    func webserviceForUpdateProfile(updateProfile : UpdatePersonalInfo, image : UIImage?)
     {
         UtilityClass.showHUD(with: UIApplication.shared.keyWindow)
         let profile = loginModelDetails.loginData
         
         updateProfile.customer_id = profile!.id
-        UserWebserviceSubclass.updatePersonal(updateProfile: updateProfile, image: image, imageParamName: "profile_image") { (json, status) in
+        UserWebserviceSubclass.updatePersonal(updateProfile: updateProfile, image: image) { (json, status) in
             
             
             UtilityClass.hideHUD()
@@ -255,15 +274,17 @@ class ProfileViewController: BaseViewController,UIImagePickerControllerDelegate,
             }
             else
             {
-                AlertMessage.showMessageForError(json["message"].stringValue)
+                UtilityClass.hideHUD()
+                if json["message"].stringValue.count != 0 {
+                    AlertMessage.showMessageForError(json["message"].stringValue)
+                }
             }
         }
-
-     
     }
     
-    @IBAction func btnProfilePicClicked(_ sender: Any)
+    @IBAction func btnProfilePicClicked(_ sender: UIButton)
     {
+        isForProfilePicture = sender.tag == 0 ? true : false
         self.TapToProfilePicture()
     }
     
@@ -277,7 +298,7 @@ class ProfileViewController: BaseViewController,UIImagePickerControllerDelegate,
         }
         else if (sender.tag == 2) // Female
         {
-             gender = "female"
+            gender = "female"
             didSelectMale = false
         }
     }
@@ -338,9 +359,15 @@ class ProfileViewController: BaseViewController,UIImagePickerControllerDelegate,
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            self.isImageSelected = true
-            btnProfilePic.imageView?.contentMode = .scaleToFill
-            btnProfilePic.setImage(pickedImage, for: .normal)
+            
+            if isForProfilePicture {
+                self.isImageSelected = true
+                imgProfilePic.image = pickedImage
+                
+            } else {
+                btnDocument.imageView?.contentMode = .scaleToFill
+                btnDocument.setImage(pickedImage, for: .normal)
+            }
         }
         setNavigationClear()
         

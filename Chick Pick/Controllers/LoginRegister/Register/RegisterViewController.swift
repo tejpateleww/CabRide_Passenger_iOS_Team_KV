@@ -9,7 +9,7 @@
 import UIKit
 import SkyFloatingLabelTextField
 
-class RegisterViewController: UIViewController, UITextFieldDelegate,UIPickerViewDataSource,UIPickerViewDelegate {
+class RegisterViewController: UIViewController, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var txtFirstName: ThemeTextFieldLoginRegister!
     @IBOutlet weak var txtLastName: ThemeTextFieldLoginRegister!
@@ -18,7 +18,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate,UIPickerView
     @IBOutlet weak var txtPassword: ThemeTextFieldLoginRegister!
     @IBOutlet weak var txtConfirmPassword: ThemeTextFieldLoginRegister!
     @IBOutlet var txtContoryNum: ThemeTextFieldLoginRegister!
-    
+    @IBOutlet weak var btnDocument: UIButton!
     
     var RegistrationGetOTPModel : RegistrationModel = RegistrationModel()
     
@@ -26,7 +26,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate,UIPickerView
     let countoryz : Int = 0
     var imgflag = UIImageView()
     var countoryPicker = UIPickerView()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,50 +35,125 @@ class RegisterViewController: UIViewController, UITextFieldDelegate,UIPickerView
         setUp()
         // Do any additional setup after loading the view.
     }
-
-
+    
+    
     func setUpCountryTextField()
     {
         aryContoryNum = [["countoryCode" : "+1","countoryName" : "USA","countoryID" : "US", "countoryimage" : "US_Flag"]] as [[String : AnyObject]]
-
+        
         let data = aryContoryNum[0]
         if let CountryCode:String = data["countoryCode"] as? String, let CountryId:String = data["countoryID"] as? String {
             self.txtContoryNum.text = "\(CountryId) \(CountryCode)"
         }
-
+        
         txtContoryNum.inputView = countoryPicker
-
+        
         let leftView = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 40))
         leftView.backgroundColor = UIColor.clear
-
+        
         imgflag = UIImageView(frame: CGRect(x: 10, y: 10, width: 25, height: 25))
         imgflag.image = UIImage(named:  data["countoryimage"] as? String ?? "")
         leftView.addSubview(imgflag)
         self.txtContoryNum.leftView = leftView
         self.txtContoryNum.leftViewMode = .always
     }
-
+    
     func setUp()
     {
         countoryPicker.delegate = self
         countoryPicker.dataSource = self
         txtPhoneNumber.delegate = self
-
-
+        
         txtPassword.tag = 0
         txtConfirmPassword.tag = 1
-
-//        setRightViewForPassword(textField: txtPassword)
-//        setRightViewForPassword(textField: txtConfirmPassword)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            if let parentVC = self.parent as? RegisterContainerViewController {
+                if let data = parentVC.userSocialData {
+                    self.txtEmail.isUserInteractionEnabled = false
+                    self.txtEmail.text = data.userEmail
+                    self.txtFirstName.text = data.firstName
+                    self.txtLastName.text = data.lastName
+                }
+            }
+        }
+        
+        
+        
+        //        setRightViewForPassword(textField: txtPassword)
+        //        setRightViewForPassword(textField: txtConfirmPassword)
     }
-
-
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.countoryPicker.reloadAllComponents()
     }
-
-
+    
+    
+    @IBAction func openPicImage(_ sender : UIButton) {
+        
+        let alert = UIAlertController(title: "Choose Options", message: nil, preferredStyle: .alert)
+        
+        let Gallery = UIAlertAction(title: "Gallery", style: .default, handler: { ACTION in
+            self.PickingImageFromGallery()
+        })
+        let Camera  = UIAlertAction(title: "Camera", style: .default, handler: { ACTION in
+            self.PickingImageFromCamera()
+        })
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alert.addAction(Gallery)
+        alert.addAction(Camera)
+        alert.addAction(cancel)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func PickingImageFromGallery()
+        {
+            let picker = UIImagePickerController()
+            picker.delegate = self
+            picker.allowsEditing = false
+            picker.sourceType = .photoLibrary
+            // picker.stopVideoCapture()
+    //        picker.mediaTypes = [kUTTypeImage as String]
+            //UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+            
+            setNavigationFontBlack()
+            present(picker, animated: true, completion: nil)
+        }
+    
+    func PickingImageFromCamera()
+    {
+        let picker = UIImagePickerController()
+        
+        picker.delegate = self
+        picker.allowsEditing = false
+        picker.sourceType = .camera
+        picker.cameraCaptureMode = .photo
+        setNavigationFontBlack()
+        present(picker, animated: true, completion: nil)
+    }
+    
+    // MARK: - Image Delegate and DataSource Methods
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+//            self.isImageSelected = true
+            btnDocument.setImage(pickedImage, for: .normal)
+        }
+        setNavigationClear()
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        setNavigationClear()
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
     //-------------------------------------------------------------
     // MARK: - TextField Delegate Method
     //-------------------------------------------------------------
@@ -92,7 +167,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate,UIPickerView
                 if string == "0" {
                     return false
                 }
-
+                
             }
             if resultText!.count >= 11 {
                 return false
@@ -164,7 +239,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate,UIPickerView
         if let CountryName:String = dictCountry["countoryName"] as? String, let CountryId:String = dictCountry["countoryID"] as? String {
             lblCountryName.text = "\(CountryName) \(CountryId)"
         }
-
+        
         
         return viewOfContryCode
     }
@@ -186,7 +261,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate,UIPickerView
     
     @IBAction func btnNext(_ sender: Any) {
         let Validator = self.isvalidateAllFields()
-
+        
         if Validator.0 == true
         {
             self.webserviceForGetOTP()
@@ -209,11 +284,12 @@ class RegisterViewController: UIViewController, UITextFieldDelegate,UIPickerView
         SingletonRegistration.sharedRegistration.Password = txtPassword.text ?? ""
         SingletonRegistration.sharedRegistration.FirstName = txtFirstName.text ?? ""
         SingletonRegistration.sharedRegistration.LastName = txtLastName.text ?? ""
+        SingletonRegistration.sharedRegistration.Document = btnDocument.imageView?.image ?? UIImage()
         
         var paramter = [String : AnyObject]()
         paramter["email"] = txtEmail!.text as AnyObject
         paramter["mobile_no"] = txtPhoneNumber!.text as AnyObject
-
+        
         UtilityClass.showHUD(with: UIApplication.shared.keyWindow)
         
         WebService.shared.requestMethod(api: .otp, httpMethod: .post, parameters: paramter){ json,status in
@@ -230,7 +306,10 @@ class RegisterViewController: UIViewController, UITextFieldDelegate,UIPickerView
             }
             else
             {
-                AlertMessage.showMessageForError(json["message"].stringValue)
+                UtilityClass.hideHUD()
+                if json["message"].stringValue.count != 0 {
+                    AlertMessage.showMessageForError(json["message"].stringValue)
+                }
             }
             //            completion(status)
         }
@@ -261,48 +340,57 @@ class RegisterViewController: UIViewController, UITextFieldDelegate,UIPickerView
         if self.txtFirstName.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) == "" {
             
             isValid = false
-            ValidatorMessage = "Please enter first name."
+            ValidatorMessage = "Please enter first name"
         }
         else if self.txtLastName.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) == "" {
             
             isValid = false
-            ValidatorMessage = "Please enter last name."
+            ValidatorMessage = "Please enter last name"
         }
         else if self.txtEmail.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) == "" {
             
             isValid = false
-            ValidatorMessage = "Please enter email."
+            ValidatorMessage = "Please enter email"
         }
         else if self.isValidEmailAddress(emailID: (self.txtEmail.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines))!) == false {
             
             isValid = false
-            ValidatorMessage = "Please enter valid email."
+            ValidatorMessage = "Please enter a valid email"
         }
         else if self.txtPhoneNumber.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) == "" {
             
             isValid = false
             ValidatorMessage = "Please enter mobile number"
         }
+        else if (self.txtPhoneNumber.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).count)! < 10 {
+            
+            isValid = false
+            ValidatorMessage = "Please enter a valid mobile number"
+        }
         else if (self.txtPassword.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).count)! < 8 {
             
             isValid = false
-            ValidatorMessage = "Please enter minimum 8 characters in password."
+            ValidatorMessage = "Please enter minimum 8 characters in password"
         }
         else if self.txtPassword.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) == "" {
             
             isValid = false
-            ValidatorMessage = "Please enter password."
+            ValidatorMessage = "Please enter password"
         }
         else if self.txtConfirmPassword.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) == "" {
             
             isValid = false
-            ValidatorMessage = "Please enter confirm password."
+            ValidatorMessage = "Please confirm the password"
         }
         else if self.txtConfirmPassword.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) != self.txtPassword.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) {
             
             isValid = false
-            ValidatorMessage = "Password and confirm password must be same."
+            ValidatorMessage = "Password and confirm password must be same"
         }
+//        else if (btnDocument.imageView?.image!.isEqualToImage(UIImage(named: "camera-icon")!)) ?? true {
+//            isValid = false
+//            ValidatorMessage = "Please select licence/passport"
+//        }
         
         return (isValid,ValidatorMessage)
     }
@@ -330,8 +418,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate,UIPickerView
         
         return returnValue
     }
-
-
+    
+    
     func setRightViewForPassword(textField: UITextField)
     {
         let button = UIButton(type: .custom)
@@ -343,13 +431,13 @@ class RegisterViewController: UIViewController, UITextFieldDelegate,UIPickerView
         button.addTarget(self, action: #selector(self.showHidePassword), for: .touchUpInside)
         textField.rightView = button
         textField.rightViewMode = .always
-
+        
     }
-
+    
     @objc func showHidePassword(sender : UIButton)
     {
         sender.isSelected = !sender.isSelected
-
+        
         if(sender.tag == 0)
         {
             txtPassword.isSecureTextEntry = !sender.isSelected
@@ -359,29 +447,29 @@ class RegisterViewController: UIViewController, UITextFieldDelegate,UIPickerView
             txtConfirmPassword.isSecureTextEntry = !sender.isSelected
         }
         //        txtPassword.isSecureTextEntry = !sender.isSelected
-
+        
     }
-
+    
     /*
      func webserviceForGetOTPCode(email: String, mobile: String) {
-
+     
      //        Param : MobileNo,Email
-
-
+     
+     
      var param = [String:AnyObject]()
      param["MobileNo"] = mobile as AnyObject
      param["Email"] = email as AnyObject
-
+     
      //        var boolForOTP = Bool()
-
+     
      webserviceForOTPRegister(param as AnyObject) { (result, status) in
-
+     
      if (status) {
      print(result)
-
+     
      let datas = (result as! [String:AnyObject])
-
-
+     
+     
      
      UtilityClass.setCustomAlert(title: "OTP Code", message: datas["message"] as! String) { (index, title) in
      if let otp = datas["otp"] as? String {
@@ -392,19 +480,19 @@ class RegisterViewController: UIViewController, UITextFieldDelegate,UIPickerView
      SingletonClass.sharedInstance.otpCode = "\(otp)"
      print("OTP is \(otp)")
      }
-
-
+     
+     
      let registrationContainerVC = self.navigationController?.viewControllers[1] as! RegistrationContainerViewController
      registrationContainerVC.scrollObject.setContentOffset(CGPoint(x: self.view.frame.size.width, y: 0), animated: true)
      registrationContainerVC.selectPageControlIndex(Index: 1)
      }
-
-
-
+     
+     
+     
      }
      else {
      print(result)
-
+     
      if let res = result as? String {
      UtilityClass.setCustomAlert(title: "Error", message: res) { (index, title) in
      }
@@ -417,10 +505,10 @@ class RegisterViewController: UIViewController, UITextFieldDelegate,UIPickerView
      UtilityClass.setCustomAlert(title: "Error", message: (resAry.object(at: 0) as! NSDictionary).object(forKey: "message") as! String) { (index, title) in
      }
      }
-
+     
      }
      }
      }
-
+     
      */
 }

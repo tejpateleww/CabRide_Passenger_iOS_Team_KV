@@ -60,7 +60,9 @@ class ForgotPasswordViewController: BaseViewController
             }
             else{
                 UtilityClass.hideHUD()
-                AlertMessage.showMessageForError(json["message"].stringValue)
+                if json["message"].stringValue.count != 0 {
+                    AlertMessage.showMessageForError(json["message"].stringValue)
+                }
             }
         }
     }
@@ -73,7 +75,7 @@ class ForgotPasswordViewController: BaseViewController
         }
         else if(!ForgotPasswordModel.email.isEmail)
         {
-            return (false,"Please enter valid email")
+            return (false,"Please enter a valid email")
         }
        
         return (true,"")

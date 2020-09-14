@@ -21,6 +21,7 @@ class RegistrationModel : RequestModel {
     device_token:sadfdfs65c4dwfvwdv6edbv16efbef1b165165
     device_type:android OR ios OR web
     password:123456"
+     passport_licence_image
      */
     
 
@@ -33,6 +34,9 @@ class RegistrationModel : RequestModel {
     var device_token : String = ""
     var device_type : String = ""
     var password : String = ""
+    var social_id : String = ""
+    var social_type : String = ""
+    
     
 //    var address : String = ""
 //    var dob : String = ""

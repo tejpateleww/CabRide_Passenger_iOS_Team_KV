@@ -14,20 +14,26 @@ class UserWebserviceSubclass
     class func initApi( strURL : String  ,completion: @escaping CompletionResponse ) {
         WebService.shared.getMethod(url: URL.init(string: strURL)!, httpMethod: .get, completion: completion)//requestMethod(api: .update, httpMethod: .get, parameters: strType, completion: completion)
     }
-//    class func register( registerModel : RegistrationModel , image: UIImage, imageParamName: String ,completion: @escaping CompletionResponse ) {
-//        let  params : [String:String] = registerModel.generatPostParams() as! [String : String]
-//        WebService.shared.postDataWithImage(api: .register, parameter: params, image: image, imageParamName: imageParamName, completion: completion)
-//    }
-    
-    class func register( registerModel : RegistrationModel ,completion: @escaping CompletionResponse ) {
+    class func register( registerModel : RegistrationModel , image: UIImage, imageParamName: String ,completion: @escaping CompletionResponse ) {
         let  params : [String:String] = registerModel.generatPostParams() as! [String : String]
-        WebService.shared.requestMethod(api: .register, httpMethod: .post, parameters: params, completion: completion)
+        WebService.shared.postDataWithImage(api: .register, parameter: params, image: image, imageParamName: imageParamName, completion: completion)
     }
+    
+//    class func register( registerModel : RegistrationModel ,completion: @escaping CompletionResponse ) {
+//        let  params : [String:String] = registerModel.generatPostParams() as! [String : String]
+//        WebService.shared.requestMethod(api: .register, httpMethod: .post, parameters: params, completion: completion)
+//    }
     
     class func login( loginModel : loginModel  ,completion: @escaping CompletionResponse ) {
         let  params : [String:String] = loginModel.generatPostParams() as! [String : String]
         WebService.shared.requestMethod(api: .login, httpMethod: .post, parameters: params, completion: completion)
     }
+    
+    class func socialModel( socialModel : SocialLoginModel  ,completion: @escaping CompletionResponse ) {
+        let  params : [String:String] = socialModel.generatPostParams() as! [String : String]
+        WebService.shared.requestMethod(api: .socialMedia, httpMethod: .post, parameters: params, completion: completion)
+    }
+    
     class func forgotPassword( ForgotPasswordModel : ForgotPassword  ,completion: @escaping CompletionResponse ) {
         let  params : [String:String] = ForgotPasswordModel.generatPostParams() as! [String : String]
         WebService.shared.requestMethod(api: .forgotPassword, httpMethod: .post, parameters: params, completion: completion)
@@ -37,10 +43,14 @@ class UserWebserviceSubclass
         WebService.shared.requestMethod(api: .changePassword, httpMethod: .post, parameters: params, completion: completion)
     }
     
-    class func updatePersonal(updateProfile : UpdatePersonalInfo, image: UIImage, imageParamName: String, completion: @escaping CompletionResponse)
+    class func updatePersonal(updateProfile : UpdatePersonalInfo, image: UIImage?, imageParamName: String? = "profile_image", completion: @escaping CompletionResponse)
     {
         let params : [String: String] = updateProfile.generatPostParams() as! [String:String]
-        WebService.shared.postDataWithImage(api: .profileUpdate, parameter: params, image: image, imageParamName: imageParamName, completion: completion)
+        if let img = image, let imgName = imageParamName {
+            WebService.shared.postDataWithImage(api: .profileUpdate, parameter: params, image: img, imageParamName: imgName, completion: completion)
+        }else{
+            WebService.shared.requestMethod(api: .profileUpdate, httpMethod: .post, parameters: params, completion: completion)
+        }
     }
     
     class func addCardInList(addCardModel : AddCard, completion: @escaping CompletionResponse) {

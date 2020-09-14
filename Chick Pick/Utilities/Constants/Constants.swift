@@ -19,7 +19,7 @@ let headerKey = "Chickpick$951"
 let peppeaAppNameString = "Chick Pick"
 let peppeaRentalAppNameString = "PeppeaRental"
 
-let googlApiKey = "AIzaSyDbeyMFesrTnaEqiiHsuRMPLaVbT_ZhVe8"
+let googlApiKey = "AIzaSyDbeyMFesrTnaEqiiHsuRMPLaVbT_ZhVe8" // -> Chick Pick
 //let googlApiKey = "AIzaSyBljwkxcq9BemGT2xZfagE6AY9QhBCN4I8" -> Peppea
 
 // "AIzaSyAU93jU-DaBHNEI0m-goQ5yB8-B8GZVDTs"//given by Mayur panchal//"AIzaSyD5Z5jg7XlOwdC_Cd0HYa4LWJl9pPyEpnY" // "AIzaSyDcug87uBhFLMo1KlqyaO10shE-sNTBCmw" // built from ODDs

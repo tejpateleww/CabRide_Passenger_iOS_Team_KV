@@ -431,7 +431,10 @@ class SendMoneyViewController: BaseViewController, UIPickerViewDelegate, UIPicke
             }
             else{
                 UtilityClass.hideHUD()
-                AlertMessage.showMessageForError(json["message"].stringValue)
+                UtilityClass.hideHUD()
+                if json["message"].stringValue.count != 0 {
+                    AlertMessage.showMessageForError(json["message"].stringValue)
+                }
             }
         }
     
@@ -461,7 +464,10 @@ class SendMoneyViewController: BaseViewController, UIPickerViewDelegate, UIPicke
             }
             else{
                 UtilityClass.hideHUD()
-                AlertMessage.showMessageForError(json["message"].stringValue)
+                UtilityClass.hideHUD()
+                if json["message"].stringValue.count != 0 {
+                    AlertMessage.showMessageForError(json["message"].stringValue)
+                }
             }
         }
        
@@ -515,7 +521,10 @@ class SendMoneyViewController: BaseViewController, UIPickerViewDelegate, UIPicke
             }
             else{
                 UtilityClass.hideHUD()
-                AlertMessage.showMessageForError(json["message"].stringValue)
+                UtilityClass.hideHUD()
+                if json["message"].stringValue.count != 0 {
+                    AlertMessage.showMessageForError(json["message"].stringValue)
+                }
             }
         }
     }

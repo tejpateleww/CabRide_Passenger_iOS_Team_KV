@@ -473,6 +473,12 @@ extension UIImageView {
     }
 }
 
+extension UIImage {
+
+    func isEqualToImage(_ image: UIImage) -> Bool {
+        return self.pngData() == image.pngData()
+    }
+}
 
 extension UITextField {
    
