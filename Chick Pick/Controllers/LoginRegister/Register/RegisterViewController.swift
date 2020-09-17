@@ -160,7 +160,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIPickerVie
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-        if textField == txtPhoneNumber {
+/*        if textField == txtPhoneNumber {
             let resultText: String? = (textField.text as NSString?)?.replacingCharacters(in: range, with: string)
             if textField == txtPhoneNumber && range.location == 0 {
                 
@@ -176,7 +176,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIPickerVie
                 return true
             }
         }
-        
+  */
         return true
     }
     func removeZeros(from anyString: String?) -> String? {
@@ -209,7 +209,6 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIPickerVie
     }
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         
-        
         //        if pickerView == countoryPicker
         //        {
         //mainview
@@ -239,8 +238,6 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIPickerVie
         if let CountryName:String = dictCountry["countoryName"] as? String, let CountryId:String = dictCountry["countoryID"] as? String {
             lblCountryName.text = "\(CountryName) \(CountryId)"
         }
-        
-        
         return viewOfContryCode
     }
     
@@ -264,7 +261,11 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIPickerVie
         
         if Validator.0 == true
         {
-            self.webserviceForGetOTP()
+            UtilityClass.showDefaultAlertView(withTitle: AppName.kAPPName, message: "I confirm that I am a female passenger", buttons: ["Ok", "Cancel"], completion: { (ind) in
+                if ind == 0 {
+                    self.webserviceForGetOTP()
+                }
+            })
         }
         else
         {
@@ -293,6 +294,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIPickerVie
         UtilityClass.showHUD(with: UIApplication.shared.keyWindow)
         
         WebService.shared.requestMethod(api: .otp, httpMethod: .post, parameters: paramter){ json,status in
+                     
             UtilityClass.hideHUD()
             print(json)
             if status
@@ -362,11 +364,11 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIPickerVie
             isValid = false
             ValidatorMessage = "Please enter mobile number"
         }
-        else if (self.txtPhoneNumber.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).count)! < 10 {
-            
-            isValid = false
-            ValidatorMessage = "Please enter a valid mobile number"
-        }
+//        else if (self.txtPhoneNumber.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).count)! < 10 {
+//
+//            isValid = false
+//            ValidatorMessage = "Please enter a valid mobile number"
+//        }
         else if (self.txtPassword.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).count)! < 8 {
             
             isValid = false

@@ -25,7 +25,7 @@ class WebService{
     // MARK:- Method for Get, post..
     //-------------------------------------
     
-    func requestMethod(api: ApiKey, httpMethod:Method,parameters: Any, completion: @escaping CompletionResponse){
+    func requestMethod(api: ApiKey, httpMethod:Method, parameters: Any, completion: @escaping CompletionResponse){
         
         guard isConnected else {
             completion(JSON(), false);
@@ -220,7 +220,71 @@ class WebService{
     }
     
     
-    
+    func postDataWithImages(api: ApiKey, parameter dictParams: [String: Any], images: [UIImage], imageParamNames: [String], completion: @escaping CompletionResponse) {
+        
+        guard isConnected else { completion(JSON(), false); return }
+        
+        Alamofire.upload(multipartFormData: { (multipartFormData) in
+            
+            var index = 0
+            
+            for imageName in imageParamNames {
+                
+                if let imageData = images[index].jpegData(compressionQuality: 0.6) {
+                    
+                    multipartFormData.append(imageData, withName: imageName, fileName: "image.jpeg", mimeType: "image/jpeg")
+                }
+                index += 1
+            }
+            
+            for (key, value) in dictParams {
+                if JSONSerialization.isValidJSONObject(value) {
+                    let array = value as! [String]
+                    
+                    for string in array {
+                        if let stringData = string.data(using: .utf8) {
+                            multipartFormData.append(stringData, withName: key+"[]")
+                        }
+                    }
+                } else {
+                    multipartFormData.append(String(describing: value).data(using: .utf8)!, withName: key)
+                }
+            }
+        }, usingThreshold: 10 *  1024 * 1024, to: (NetworkEnvironment.baseURL + api.rawValue),
+           method: .post, headers: NetworkEnvironment.headers) { (encodingResult) in
+            switch encodingResult
+            {
+            case .success(let upload,_,_):
+                
+                upload.responseJSON {
+                    response in
+                    
+                    print("Response : ", response)
+                    
+                    if let json = response.result.value {
+                        
+                        if (json as AnyObject).object(forKey:("status")) as! Bool == false {
+                            let resJson = JSON(json)
+                            completion(resJson, false)
+                        }
+                        else {
+                            let resJson = JSON(json)
+                            
+                            completion(resJson, true)
+                        }
+                    }
+                    else {
+                        if let error = response.result.error {
+                            print("Error = \(error.localizedDescription)")
+                        }
+                    }
+                }
+            case .failure( _):
+                print("failure")
+                break
+            }
+        }
+    }
 }
 
 extension Encodable {

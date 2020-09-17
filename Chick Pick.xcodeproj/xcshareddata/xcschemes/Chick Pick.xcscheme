@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "EEE2B7E122C62304004F1C00"
-               BuildableName = "Chick Pick.app"
+               BuildableName = "Chick Pick Ride.app"
                BlueprintName = "Chick Pick"
                ReferencedContainer = "container:Chick Pick.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EEE2B7E122C62304004F1C00"
-            BuildableName = "Chick Pick.app"
+            BuildableName = "Chick Pick Ride.app"
             BlueprintName = "Chick Pick"
             ReferencedContainer = "container:Chick Pick.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EEE2B7E122C62304004F1C00"
-            BuildableName = "Chick Pick.app"
+            BuildableName = "Chick Pick Ride.app"
             BlueprintName = "Chick Pick"
             ReferencedContainer = "container:Chick Pick.xcodeproj">
          </BuildableReference>

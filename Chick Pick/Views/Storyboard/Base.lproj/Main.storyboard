@@ -25,7 +25,7 @@
         <!--Settings View Controller-->
         <scene sceneID="jcX-ND-sUQ">
             <objects>
-                <viewController storyboardIdentifier="SettingsViewController" id="cTV-A2-cuj" customClass="SettingsViewController" customModule="Chick_Pick" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingsViewController" id="cTV-A2-cuj" customClass="SettingsViewController" customModule="Chick_Pick_Ride" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tOY-xe-x6e">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -35,7 +35,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ContentTableViewCell" rowHeight="70" id="zA9-zA-2RK" customClass="ContentTableViewCell" customModule="Chick_Pick" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ContentTableViewCell" rowHeight="70" id="zA9-zA-2RK" customClass="ContentTableViewCell" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zA9-zA-2RK" id="ELF-hJ-dOn">
@@ -96,7 +96,7 @@
         <!--Side Menu Table View Controller-->
         <scene sceneID="Mav-Ig-Bbb">
             <objects>
-                <viewController storyboardIdentifier="SideMenuTableViewController" id="RqZ-PG-p3O" customClass="SideMenuTableViewController" customModule="Chick_Pick" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SideMenuTableViewController" id="RqZ-PG-p3O" customClass="SideMenuTableViewController" customModule="Chick_Pick_Ride" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aDP-gN-VpL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -201,7 +201,7 @@
                                             </constraints>
                                         </view>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ContentTableViewCell" rowHeight="70" id="0SU-xr-ziQ" customClass="ContentTableViewCell" customModule="Chick_Pick" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ContentTableViewCell" rowHeight="70" id="0SU-xr-ziQ" customClass="ContentTableViewCell" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="208" width="315" height="70"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0SU-xr-ziQ" id="N7a-FC-46F">
@@ -327,7 +327,7 @@
         <!--Request Loding View Controller-->
         <scene sceneID="3NM-Tp-Ad8">
             <objects>
-                <viewController storyboardIdentifier="RequestLodingViewController" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="H2B-GI-BBQ" customClass="RequestLodingViewController" customModule="Chick_Pick" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RequestLodingViewController" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="H2B-GI-BBQ" customClass="RequestLodingViewController" customModule="Chick_Pick_Ride" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MWc-Z9-lAu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -436,7 +436,7 @@
         <!--Home View Controller-->
         <scene sceneID="bZa-EA-Hfo">
             <objects>
-                <viewController storyboardIdentifier="HomeViewController" id="HiZ-DG-Tal" customClass="HomeViewController" customModule="Chick_Pick" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" id="HiZ-DG-Tal" customClass="HomeViewController" customModule="Chick_Pick_Ride" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zwR-fF-bfS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -486,7 +486,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LIs-xb-zmt">
                                                 <rect key="frame" x="0.0" y="0.0" width="330" height="45"/>
                                                 <subviews>
-                                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Pickup Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="agg-2Q-FJd" customClass="ThemeTextField" customModule="Chick_Pick" customModuleProvider="target">
+                                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Pickup Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="agg-2Q-FJd" customClass="ThemeTextField" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                                         <rect key="frame" x="5" y="0.0" width="320" height="45"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -521,7 +521,7 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fd2-cd-Mfq">
                                                         <rect key="frame" x="5" y="0.0" width="320" height="37"/>
                                                         <subviews>
-                                                            <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Where To?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o1w-cW-IXL" customClass="ThemeTextField" customModule="Chick_Pick" customModuleProvider="target">
+                                                            <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Where To?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o1w-cW-IXL" customClass="ThemeTextField" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="37"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -841,7 +841,7 @@
         <!--Choose Service View Controller-->
         <scene sceneID="4gO-Sa-gUd">
             <objects>
-                <viewController storyboardIdentifier="ChooseServiceViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5GS-8Y-6g1" customClass="ChooseServiceViewController" customModule="Chick_Pick" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChooseServiceViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5GS-8Y-6g1" customClass="ChooseServiceViewController" customModule="Chick_Pick_Ride" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dSW-6A-T0X">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -985,7 +985,7 @@
         <!--Favourite Address View Controller-->
         <scene sceneID="JGn-li-ZWv">
             <objects>
-                <viewController storyboardIdentifier="FavouriteAddressViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="suP-AH-taB" customClass="FavouriteAddressViewController" customModule="Chick_Pick" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FavouriteAddressViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="suP-AH-taB" customClass="FavouriteAddressViewController" customModule="Chick_Pick_Ride" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LHw-Tk-8bU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -998,7 +998,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="favouriteAddressTableViewCell" rowHeight="68" id="uE4-d5-GW1" customClass="favouriteAddressTableViewCell" customModule="Chick_Pick" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="favouriteAddressTableViewCell" rowHeight="68" id="uE4-d5-GW1" customClass="favouriteAddressTableViewCell" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="375" height="68"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uE4-d5-GW1" id="DRS-9R-Hig">
@@ -1057,7 +1057,7 @@
                                                     <outlet property="lblAddressTitle" destination="4pR-Og-NBg" id="2Kb-Nc-NcK"/>
                                                 </connections>
                                             </tableViewCell>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="favouriteAddressNotFound" rowHeight="47" id="qDf-1Y-rMA" customClass="favouriteAddressTableViewCell" customModule="Chick_Pick" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="favouriteAddressNotFound" rowHeight="47" id="qDf-1Y-rMA" customClass="favouriteAddressTableViewCell" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="96" width="375" height="47"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qDf-1Y-rMA" id="Kyd-xS-agY">
@@ -1113,7 +1113,7 @@
         <!--Previous Due View Controller-->
         <scene sceneID="ZpC-nR-TKh">
             <objects>
-                <viewController storyboardIdentifier="PreviousDueViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0DH-S7-bA0" customClass="PreviousDueViewController" customModule="Chick_Pick" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PreviousDueViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0DH-S7-bA0" customClass="PreviousDueViewController" customModule="Chick_Pick_Ride" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hw7-jy-G9L">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1125,7 +1125,7 @@
                                         <rect key="frame" x="0.0" y="10" width="375" height="657"/>
                                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PreviousDueTableViewCell" rowHeight="210" id="m3j-UN-YTc" customClass="PreviousDueTableViewCell" customModule="Chick_Pick" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PreviousDueTableViewCell" rowHeight="210" id="m3j-UN-YTc" customClass="PreviousDueTableViewCell" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="375" height="210"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="m3j-UN-YTc" id="zjR-Yj-FGt">
@@ -1391,7 +1391,7 @@
         <!--Car Collection View Controller-->
         <scene sceneID="Kl2-ur-RHe">
             <objects>
-                <viewController storyboardIdentifier="CarCollectionViewController" automaticallyAdjustsScrollViewInsets="NO" id="bfC-L5-iDG" customClass="CarCollectionViewController" customModule="Chick_Pick" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CarCollectionViewController" automaticallyAdjustsScrollViewInsets="NO" id="bfC-L5-iDG" customClass="CarCollectionViewController" customModule="Chick_Pick_Ride" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2ou-nF-QhC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="310"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1415,7 +1415,7 @@
                                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                         </collectionViewFlowLayout>
                                                         <cells>
-                                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CarsCollectionViewCell" id="YMC-rR-FDD" customClass="CarsCollectionViewCell" customModule="Chick_Pick" customModuleProvider="target">
+                                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CarsCollectionViewCell" id="YMC-rR-FDD" customClass="CarsCollectionViewCell" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="-0.5" width="104" height="114.66666666666667"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -1715,7 +1715,7 @@
                                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N18-Xr-NLw">
                                                                 <rect key="frame" x="20" y="0.0" width="335" height="50"/>
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="soa-kd-6m1" customClass="ThemeButton" customModule="Chick_Pick" customModuleProvider="target">
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="soa-kd-6m1" customClass="ThemeButton" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="0.0" width="335" height="50"/>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -1786,7 +1786,7 @@
         <!--AutomaticExpenseVC-->
         <scene sceneID="a7Q-mc-XuR">
             <objects>
-                <viewController storyboardIdentifier="AutomaticExpenseVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ch0-SX-53T" userLabel="AutomaticExpenseVC" customClass="AutomaticExpenseVC" customModule="Chick_Pick" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AutomaticExpenseVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ch0-SX-53T" userLabel="AutomaticExpenseVC" customClass="AutomaticExpenseVC" customModule="Chick_Pick_Ride" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MI0-cB-J4k">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1830,22 +1830,22 @@ the payment method when you request a ride</string>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="7MY-se-Yab">
                                         <rect key="frame" x="19" y="325" width="337.5" height="196"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Business ride receipts" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WzK-zv-3fz" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Business ride receipts" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WzK-zv-3fz" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="337.5" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Business ride payment" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="til-uy-hph" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Business ride payment" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="til-uy-hph" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="54" width="337.5" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Travel reports" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hdi-3Y-3LG" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Travel reports" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hdi-3Y-3LG" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="108" width="337.5" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Expense provide" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h41-m1-z11" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Expense provide" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h41-m1-z11" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="162" width="337.5" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -1939,7 +1939,7 @@ automatic expense for warding</string>
         <!--BulkMileVC-->
         <scene sceneID="9eI-gk-Tzv">
             <objects>
-                <viewController storyboardIdentifier="BulkMileVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DP0-8X-oNs" userLabel="BulkMileVC" customClass="BulkMileVC" customModule="Chick_Pick" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BulkMileVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DP0-8X-oNs" userLabel="BulkMileVC" customClass="BulkMileVC" customModule="Chick_Pick_Ride" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZLI-LY-wVl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1965,7 +1965,7 @@ automatic expense for warding</string>
                                             <outlet property="delegate" destination="DP0-8X-oNs" id="t6A-Dr-ukt"/>
                                         </connections>
                                     </tableView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4cp-YP-0BJ" customClass="HeaderTableViewController" customModule="Chick_Pick" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4cp-YP-0BJ" customClass="HeaderTableViewController" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
@@ -2006,7 +2006,7 @@ automatic expense for warding</string>
         <!--MyMileVC-->
         <scene sceneID="1CB-hN-NbZ">
             <objects>
-                <viewController storyboardIdentifier="MyMileVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cWf-17-Pc3" userLabel="MyMileVC" customClass="MyMileVC" customModule="Chick_Pick" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyMileVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cWf-17-Pc3" userLabel="MyMileVC" customClass="MyMileVC" customModule="Chick_Pick_Ride" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WKf-NB-Kh4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2053,7 +2053,7 @@ automatic expense for warding</string>
         <!--Driver Info Page View Controller-->
         <scene sceneID="D9L-j9-fsM">
             <objects>
-                <viewController storyboardIdentifier="DriverInfoPageViewController" id="6Vm-KD-DNP" customClass="DriverInfoPageViewController" customModule="Chick_Pick" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DriverInfoPageViewController" id="6Vm-KD-DNP" customClass="DriverInfoPageViewController" customModule="Chick_Pick_Ride" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SWB-ki-T5E">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="310"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2404,7 +2404,7 @@ automatic expense for warding</string>
         <!--Driver Rating And Tip View Controller-->
         <scene sceneID="dqe-9W-dhS">
             <objects>
-                <viewController storyboardIdentifier="DriverRatingAndTipViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="C5a-Ul-jbN" customClass="DriverRatingAndTipViewController" customModule="Chick_Pick" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DriverRatingAndTipViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="C5a-Ul-jbN" customClass="DriverRatingAndTipViewController" customModule="Chick_Pick_Ride" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NN4-ky-f3H">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="330"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2551,7 +2551,7 @@ automatic expense for warding</string>
                                             <constraint firstItem="hgY-04-R6x" firstAttribute="centerX" secondItem="Xt8-e6-WsO" secondAttribute="centerX" id="yda-VG-A2S"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mhb-ZO-9k2" customClass="ThemeButton" customModule="Chick_Pick" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mhb-ZO-9k2" customClass="ThemeButton" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                         <rect key="frame" x="10" y="173" width="335" height="40"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -2633,7 +2633,7 @@ automatic expense for warding</string>
         <!--PaymentViewController-->
         <scene sceneID="wzS-hm-1hu">
             <objects>
-                <viewController storyboardIdentifier="PaymentViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="v7H-2o-Jfs" userLabel="PaymentViewController" customClass="PaymentViewController" customModule="Chick_Pick" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PaymentViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="v7H-2o-Jfs" userLabel="PaymentViewController" customClass="PaymentViewController" customModule="Chick_Pick_Ride" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ak7-sP-NAv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2652,7 +2652,7 @@ automatic expense for warding</string>
                                                 </constraints>
                                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PaymentWalletTypeListCell" rowHeight="55" id="bjX-N8-4AN" customClass="PaymentWalletTypeListCell" customModule="Chick_Pick" customModuleProvider="target">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PaymentWalletTypeListCell" rowHeight="55" id="bjX-N8-4AN" customClass="PaymentWalletTypeListCell" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="28" width="375" height="55"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bjX-N8-4AN" id="xEG-aO-oSt">
@@ -2744,7 +2744,7 @@ automatic expense for warding</string>
                                                             <outlet property="lblTitle" destination="A4x-iv-n9d" id="ChD-J0-mug"/>
                                                         </connections>
                                                     </tableViewCell>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PaymentCardTypeListCell" rowHeight="60" id="c6o-6p-GfE" userLabel="PaymentCardTypeListCell" customClass="PaymentCardTypeListCell" customModule="Chick_Pick" customModuleProvider="target">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PaymentCardTypeListCell" rowHeight="60" id="c6o-6p-GfE" userLabel="PaymentCardTypeListCell" customClass="PaymentCardTypeListCell" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="83" width="375" height="60"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="c6o-6p-GfE" id="DWT-oC-7vX">
@@ -2840,7 +2840,7 @@ automatic expense for warding</string>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fmi-J3-YmJ">
                                                                 <rect key="frame" x="0.0" y="0.0" width="355" height="50"/>
                                                                 <subviews>
-                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Card Holder" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F6e-yw-vaM" customClass="ThemeTextField" customModule="Chick_Pick" customModuleProvider="target">
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Card Holder" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F6e-yw-vaM" customClass="ThemeTextField" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                                                         <rect key="frame" x="8" y="0.0" width="347" height="44"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="44" id="UlS-cP-S9c"/>
@@ -2974,7 +2974,7 @@ automatic expense for warding</string>
                                                             <constraint firstAttribute="trailing" secondItem="x54-sS-1z1" secondAttribute="trailing" id="gB0-gz-Uwa"/>
                                                         </constraints>
                                                     </stackView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u8c-cw-iSq" customClass="ThemeButton" customModule="Chick_Pick" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u8c-cw-iSq" customClass="ThemeButton" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                                         <rect key="frame" x="18" y="201" width="339" height="40"/>
                                                         <color key="backgroundColor" red="0.0039215686269999999" green="0.0078431372550000003" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
@@ -3059,7 +3059,7 @@ automatic expense for warding</string>
         <!--Coming Soon View Controller-->
         <scene sceneID="5vS-QA-pJb">
             <objects>
-                <viewController storyboardIdentifier="ComingSoonViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="O4O-3W-cIz" customClass="ComingSoonViewController" customModule="Chick_Pick" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ComingSoonViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="O4O-3W-cIz" customClass="ComingSoonViewController" customModule="Chick_Pick_Ride" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="T6e-nw-LR7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3099,7 +3099,7 @@ automatic expense for warding</string>
         <!--Help View Controller-->
         <scene sceneID="71I-07-nqZ">
             <objects>
-                <viewController storyboardIdentifier="HelpViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8qg-zA-cXH" customClass="HelpViewController" customModule="Chick_Pick" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HelpViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8qg-zA-cXH" customClass="HelpViewController" customModule="Chick_Pick_Ride" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eQO-Vu-Vvg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3167,7 +3167,7 @@ automatic expense for warding</string>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="aoO-BU-XaI">
                                         <rect key="frame" x="20" y="547" width="335" height="100"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GCw-Ih-hCU" customClass="ThemeButton" customModule="Chick_Pick" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GCw-Ih-hCU" customClass="ThemeButton" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="40"/>
                                                 <color key="backgroundColor" red="0.0039215686269999999" green="0.0078431372550000003" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -3186,7 +3186,7 @@ automatic expense for warding</string>
                                                     <action selector="btnDoneAction:" destination="8qg-zA-cXH" eventType="touchUpInside" id="Q7t-1w-eag"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G9v-vL-bAM" customClass="ThemeButton" customModule="Chick_Pick" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G9v-vL-bAM" customClass="ThemeButton" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="60" width="335" height="40"/>
                                                 <color key="backgroundColor" red="0.0039215686269999999" green="0.0078431372550000003" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -3243,7 +3243,7 @@ automatic expense for warding</string>
         <!--Tickets View Controller-->
         <scene sceneID="TwT-DS-4Ka">
             <objects>
-                <viewController storyboardIdentifier="TicketsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nut-j1-nVF" customClass="TicketsViewController" customModule="Chick_Pick" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TicketsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nut-j1-nVF" customClass="TicketsViewController" customModule="Chick_Pick_Ride" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BWl-co-6WF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3255,7 +3255,7 @@ automatic expense for warding</string>
                                         <rect key="frame" x="0.0" y="10" width="375" height="657"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TicketsCell" rowHeight="82" id="uHh-BT-j3a" customClass="TicketsCell" customModule="Chick_Pick" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TicketsCell" rowHeight="82" id="uHh-BT-j3a" customClass="TicketsCell" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="375" height="82"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uHh-BT-j3a" id="A2D-Zv-bO6">
@@ -3353,7 +3353,7 @@ automatic expense for warding</string>
         <!--UpcomingRideConfirmationViewController-->
         <scene sceneID="HMl-pD-Gqm">
             <objects>
-                <viewController storyboardIdentifier="UpcomingRideConfirmationViewController" id="uN3-r6-8aw" userLabel="UpcomingRideConfirmationViewController" customClass="UpcomingRideConfirmationViewController" customModule="Chick_Pick" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UpcomingRideConfirmationViewController" id="uN3-r6-8aw" userLabel="UpcomingRideConfirmationViewController" customClass="UpcomingRideConfirmationViewController" customModule="Chick_Pick_Ride" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4g2-T3-ghw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3491,7 +3491,7 @@ automatic expense for warding</string>
         <!--Bulk Miles History-->
         <scene sceneID="QGd-bG-Y9I">
             <objects>
-                <viewController storyboardIdentifier="BulkMilesHistory" id="5gp-Pc-iuU" customClass="BulkMilesHistory" customModule="Chick_Pick" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BulkMilesHistory" id="5gp-Pc-iuU" customClass="BulkMilesHistory" customModule="Chick_Pick_Ride" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mwd-Jg-LMc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3651,7 +3651,7 @@ automatic expense for warding</string>
         <!--ProfileViewController-->
         <scene sceneID="bHp-Xg-e4d">
             <objects>
-                <viewController storyboardIdentifier="ProfileViewController" id="5mH-gN-Dtc" userLabel="ProfileViewController" customClass="ProfileViewController" customModule="Chick_Pick" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileViewController" id="5mH-gN-Dtc" userLabel="ProfileViewController" customClass="ProfileViewController" customModule="Chick_Pick_Ride" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="W2E-Gh-Ye9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3660,10 +3660,10 @@ automatic expense for warding</string>
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7wz-ZT-UUa">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="531"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="586"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V1N-yj-axD">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="395"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="450"/>
                                                 <subviews>
                                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pwi-4u-XHO">
                                                         <rect key="frame" x="0.0" y="0.0" width="373" height="1"/>
@@ -3728,9 +3728,9 @@ automatic expense for warding</string>
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="SmR-35-bAz">
-                                                        <rect key="frame" x="20" y="135" width="335" height="260"/>
+                                                        <rect key="frame" x="20" y="135" width="335" height="315"/>
                                                         <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bEH-7C-Mg8" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick" customModuleProvider="target">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bEH-7C-Mg8" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="40"/>
                                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
@@ -3739,19 +3739,19 @@ automatic expense for warding</string>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                                             </textField>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RcB-TD-08z" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick" customModuleProvider="target">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RcB-TD-08z" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="55" width="335" height="40"/>
                                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                                             </textField>
-                                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mobile Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k26-oi-ul1" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick" customModuleProvider="target">
+                                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mobile Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k26-oi-ul1" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="110" width="335" height="40"/>
                                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                             </textField>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Birth Date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lFo-S5-2ea" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick" customModuleProvider="target">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Birth Date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lFo-S5-2ea" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="165" width="335" height="40"/>
                                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -3760,16 +3760,16 @@ automatic expense for warding</string>
                                                                     <action selector="txtDateOfBirth:" destination="5mH-gN-Dtc" eventType="editingDidBegin" id="SvC-iU-Tqr"/>
                                                                 </connections>
                                                             </textField>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mmv-Bs-4BJ" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick" customModuleProvider="target">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mmv-Bs-4BJ" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="220" width="335" height="40"/>
                                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
-                                                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="GJH-hs-x87">
-                                                                <rect key="frame" x="0.0" y="260" width="335" height="40"/>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="GJH-hs-x87">
+                                                                <rect key="frame" x="0.0" y="275" width="335" height="40"/>
                                                                 <subviews>
-                                                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Licence/Passport" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="SKq-D2-Klv" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick" customModuleProvider="target">
+                                                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Licence/Passport" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="SKq-D2-Klv" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="12.5" width="291" height="15.5"/>
                                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
@@ -3800,7 +3800,7 @@ automatic expense for warding</string>
                                                                 </subviews>
                                                             </stackView>
                                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3d1-rM-iSj">
-                                                                <rect key="frame" x="0.0" y="260" width="335" height="21"/>
+                                                                <rect key="frame" x="0.0" y="315" width="335" height="21"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JDc-NG-Gtt">
                                                                         <rect key="frame" x="0.0" y="0.0" width="335" height="21"/>
@@ -3931,7 +3931,7 @@ automatic expense for warding</string>
                                                 </constraints>
                                             </view>
                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R3R-9i-Uc7">
-                                                <rect key="frame" x="20" y="405" width="345" height="0.0"/>
+                                                <rect key="frame" x="20" y="460" width="345" height="0.0"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Passenger Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fkg-ND-HVq">
                                                         <rect key="frame" x="0.0" y="10" width="345" height="25"/>
@@ -4060,9 +4060,9 @@ automatic expense for warding</string>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W1r-Bx-nDd">
-                                                <rect key="frame" x="0.0" y="415" width="375" height="107"/>
+                                                <rect key="frame" x="0.0" y="470" width="375" height="107"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ebW-At-i0O" customClass="ThemeButton" customModule="Chick_Pick" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ebW-At-i0O" customClass="ThemeButton" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                                         <rect key="frame" x="97.5" y="20" width="180" height="0.0"/>
                                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
@@ -4174,7 +4174,7 @@ automatic expense for warding</string>
         <!--FlatRateListViewController-->
         <scene sceneID="peJ-zY-KVg">
             <objects>
-                <viewController storyboardIdentifier="FlatRateListViewController" id="5Cr-00-HJP" userLabel="FlatRateListViewController" customClass="FlatRateListViewController" customModule="Chick_Pick" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FlatRateListViewController" id="5Cr-00-HJP" userLabel="FlatRateListViewController" customClass="FlatRateListViewController" customModule="Chick_Pick_Ride" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IfC-5e-qCe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -4188,7 +4188,7 @@ automatic expense for warding</string>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FlatRateViewCell" rowHeight="90" id="7Qz-Aw-7XK" userLabel="FlatRateViewCell" customClass="FlatRateViewCell" customModule="Chick_Pick" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FlatRateViewCell" rowHeight="90" id="7Qz-Aw-7XK" userLabel="FlatRateViewCell" customClass="FlatRateViewCell" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7Qz-Aw-7XK" id="w1W-qa-r3G">
@@ -4400,7 +4400,7 @@ automatic expense for warding</string>
         <!--Invite Driver View Controller-->
         <scene sceneID="mi4-vr-1e1">
             <objects>
-                <viewController storyboardIdentifier="InviteDriverViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8Ko-Uy-KSJ" customClass="InviteDriverViewController" customModule="Chick_Pick" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InviteDriverViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8Ko-Uy-KSJ" customClass="InviteDriverViewController" customModule="Chick_Pick_Ride" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Vnj-Vr-6gm"/>
                         <viewControllerLayoutGuide type="bottom" id="GUh-Go-1Do"/>
@@ -4926,7 +4926,7 @@ automatic expense for warding</string>
         <!--ChatViewController-->
         <scene sceneID="NLT-vO-Brs">
             <objects>
-                <viewController storyboardIdentifier="ChatViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7yW-yO-MNP" userLabel="ChatViewController" customClass="ChatViewController" customModule="Chick_Pick" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChatViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7yW-yO-MNP" userLabel="ChatViewController" customClass="ChatViewController" customModule="Chick_Pick_Ride" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nCv-CH-TwJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -4962,7 +4962,7 @@ automatic expense for warding</string>
                                         <rect key="frame" x="0.0" y="10" width="365" height="578"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecieverCell" rowHeight="76" id="eHg-Ht-tlB" userLabel="MessageCell" customClass="MessageCell" customModule="Chick_Pick" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecieverCell" rowHeight="76" id="eHg-Ht-tlB" userLabel="MessageCell" customClass="MessageCell" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="365" height="76"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eHg-Ht-tlB" id="yth-fe-kNA">
@@ -5024,7 +5024,7 @@ automatic expense for warding</string>
                                                     <outlet property="vwChatBg" destination="p4G-J3-Nis" id="GcR-kD-dFt"/>
                                                 </connections>
                                             </tableViewCell>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SenderCell" rowHeight="67" id="weZ-vW-fXv" userLabel="MessageCell" customClass="MessageCell" customModule="Chick_Pick" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SenderCell" rowHeight="67" id="weZ-vW-fXv" userLabel="MessageCell" customClass="MessageCell" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="104" width="365" height="67"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="weZ-vW-fXv" id="svx-QM-KH4">
@@ -5310,7 +5310,7 @@ automatic expense for warding</string>
         <!--Peppea Book Later View Controller-->
         <scene sceneID="8rz-i6-YzJ">
             <objects>
-                <viewController storyboardIdentifier="PeppeaBookLaterViewController" modalPresentationStyle="overCurrentContext" id="wtC-1I-86U" customClass="PeppeaBookLaterViewController" customModule="Chick_Pick" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PeppeaBookLaterViewController" modalPresentationStyle="overCurrentContext" id="wtC-1I-86U" customClass="PeppeaBookLaterViewController" customModule="Chick_Pick_Ride" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gp8-vf-KTL"/>
                         <viewControllerLayoutGuide type="bottom" id="3vR-Ck-xrD"/>
@@ -5328,7 +5328,7 @@ automatic expense for warding</string>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="os1-Yc-G65">
                                                 <rect key="frame" x="0.0" y="308" width="355" height="40"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eiE-hZ-PCp" customClass="ThemeButton" customModule="Chick_Pick" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eiE-hZ-PCp" customClass="ThemeButton" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="157.5" height="40"/>
                                                         <color key="backgroundColor" red="0.99982124569999997" green="0.63837134839999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Cancel">
@@ -5348,7 +5348,7 @@ automatic expense for warding</string>
                                                             <constraint firstAttribute="width" secondItem="x0V-Tt-Xgj" secondAttribute="height" multiplier="1:1" id="1C0-hl-AKl"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WH0-DY-zFf" customClass="ThemeButton" customModule="Chick_Pick" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WH0-DY-zFf" customClass="ThemeButton" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                                         <rect key="frame" x="197.5" y="0.0" width="157.5" height="40"/>
                                                         <color key="backgroundColor" red="0.99982124569999997" green="0.63837134839999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Continue">

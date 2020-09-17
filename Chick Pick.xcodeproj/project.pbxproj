@@ -493,7 +493,7 @@
 		EEA454B522CCE8510094941A /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		EEA454B822CCEC390094941A /* DriverInfoPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriverInfoPageViewController.swift; sourceTree = "<group>"; };
 		EEBF159D22CA0E1F004CB7FB /* CarCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarCollectionViewController.swift; sourceTree = "<group>"; };
-		EEE2B7E222C62304004F1C00 /* Chick Pick.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Chick Pick.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EEE2B7E222C62304004F1C00 /* Chick Pick Ride.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Chick Pick Ride.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEE2B7E522C62304004F1C00 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EEE2B7EA22C62304004F1C00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EEE2B7EF22C62305004F1C00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -1465,7 +1465,7 @@
 		EEE2B7E322C62304004F1C00 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EEE2B7E222C62304004F1C00 /* Chick Pick.app */,
+				EEE2B7E222C62304004F1C00 /* Chick Pick Ride.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1650,7 +1650,7 @@
 			);
 			name = "Chick Pick";
 			productName = Peppea;
-			productReference = EEE2B7E222C62304004F1C00 /* Chick Pick.app */;
+			productReference = EEE2B7E222C62304004F1C00 /* Chick Pick Ride.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -2183,7 +2183,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.chickpick.passenger.eww;
-				PRODUCT_NAME = "Chick Pick";
+				PRODUCT_NAME = "Chick Pick Ride";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/ChickPick-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -2207,7 +2207,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.chickpick.passenger.eww;
-				PRODUCT_NAME = "Chick Pick";
+				PRODUCT_NAME = "Chick Pick Ride";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/ChickPick-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

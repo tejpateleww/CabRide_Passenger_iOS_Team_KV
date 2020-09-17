@@ -155,7 +155,7 @@ class ProfileViewController: BaseViewController,UIImagePickerControllerDelegate,
         }
         
         let strImageDocument = NetworkEnvironment.baseImageURL + profile!.passportLicenceImage
-        btnDocument.sd_setImage(with: URL(string: strImageDocument), for: .normal)
+        btnDocument.sd_setImage(with: URL(string: strImageDocument), for: .normal, placeholderImage: UIImage(named: "camera-icon"))
         
         
         let strImage = NetworkEnvironment.baseImageURL + profile!.profileImage
@@ -214,9 +214,9 @@ class ProfileViewController: BaseViewController,UIImagePickerControllerDelegate,
                 if let defaultImage = UIImage(named: "imgProfilePlaceHolder") {
                     let isDefaultImage = sourceImage.isEqualToImage(defaultImage)
                     if (!isDefaultImage) {
-                       self.webserviceForUpdateProfile(updateProfile: updateProfile, image: sourceImage)
+                        self.webserviceForUpdateProfile(updateProfile: updateProfile, images: [sourceImage, btnDocument.image(for: .normal)!], imageNames: ["profile_image", "passport_licence_image"])
                     } else {
-                        self.webserviceForUpdateProfile(updateProfile: updateProfile, image: nil)
+                        self.webserviceForUpdateProfile(updateProfile: updateProfile, images: [btnDocument.image(for: .normal)!], imageNames: ["passport_licence_image"])
                     }
                 }
             }
@@ -244,13 +244,13 @@ class ProfileViewController: BaseViewController,UIImagePickerControllerDelegate,
         return (true,"")
     }
 
-    func webserviceForUpdateProfile(updateProfile : UpdatePersonalInfo, image : UIImage?)
+    func webserviceForUpdateProfile(updateProfile : UpdatePersonalInfo, images : [UIImage], imageNames : [String])
     {
         UtilityClass.showHUD(with: UIApplication.shared.keyWindow)
         let profile = loginModelDetails.loginData
         
         updateProfile.customer_id = profile!.id
-        UserWebserviceSubclass.updatePersonal(updateProfile: updateProfile, image: image) { (json, status) in
+        UserWebserviceSubclass.updatePersonal(updateProfile: updateProfile, images: images, imageParamNames: imageNames) { (json, status) in
             
             
             UtilityClass.hideHUD()

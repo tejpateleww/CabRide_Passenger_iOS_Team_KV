@@ -45,6 +45,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
 //        Fabric.with([Crashlytics.self])
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
 
+        // Forcefully light mode
+        if #available(iOS 13.0, *) {
+            window?.overrideUserInterfaceStyle = .light
+        }
 
         if(UserDefaults.standard.object(forKey: "userProfile") != nil) {
             do {

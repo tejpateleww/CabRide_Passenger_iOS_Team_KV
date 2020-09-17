@@ -43,14 +43,21 @@ class UserWebserviceSubclass
         WebService.shared.requestMethod(api: .changePassword, httpMethod: .post, parameters: params, completion: completion)
     }
     
-    class func updatePersonal(updateProfile : UpdatePersonalInfo, image: UIImage?, imageParamName: String? = "profile_image", completion: @escaping CompletionResponse)
+//    class func updatePersonal(updateProfile : UpdatePersonalInfo, image: UIImage?, imageParamName: String? = "profile_image", completion: @escaping CompletionResponse)
+//    {
+//        let params : [String: String] = updateProfile.generatPostParams() as! [String:String]
+//        if let img = image, let imgName = imageParamName {
+//            WebService.shared.postDataWithImage(api: .profileUpdate, parameter: params, image: img, imageParamName: imgName, completion: completion)
+//        }else{
+//            WebService.shared.requestMethod(api: .profileUpdate, httpMethod: .post, parameters: params, completion: completion)
+//        }
+//    }
+    
+    class func updatePersonal(updateProfile : UpdatePersonalInfo, images: [UIImage], imageParamNames : [String], completion: @escaping CompletionResponse)
     {
         let params : [String: String] = updateProfile.generatPostParams() as! [String:String]
-        if let img = image, let imgName = imageParamName {
-            WebService.shared.postDataWithImage(api: .profileUpdate, parameter: params, image: img, imageParamName: imgName, completion: completion)
-        }else{
-            WebService.shared.requestMethod(api: .profileUpdate, httpMethod: .post, parameters: params, completion: completion)
-        }
+        
+        WebService.shared.postDataWithImages(api: .profileUpdate, parameter: params, images: images, imageParamNames: imageParamNames, completion: completion)
     }
     
     class func addCardInList(addCardModel : AddCard, completion: @escaping CompletionResponse) {
