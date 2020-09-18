@@ -244,7 +244,10 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
                     cell.lblPrice.text =  (FlatRate == "") ? ( ((estimateFare?.contains(".") == true) ? "\(Currency) \(estimateFare!)"  : "\(Currency) \((Double(estimateFare ?? "0.00")?.rounded(toPlaces: 2)) ?? 0.0)")  ) : "\((Double(FlatRate)?.rounded(toPlaces: 2)) ?? 0.0)"
 
 
-                    cell.lblArrivalTime.text = "ETA \(estimateMinute == "0" ? "0" : estimateMinute ?? "0") min."
+                    cell.lblArrivalTime.text = "ETA \(estimateMinute == "0" ? "0" : estimateMinute ?? "0") min"
+                } else {
+                     cell.lblPrice.text =  "\(Currency) 0"
+                    cell.lblArrivalTime.text = "ETA 0 min"
                 }
             }
 

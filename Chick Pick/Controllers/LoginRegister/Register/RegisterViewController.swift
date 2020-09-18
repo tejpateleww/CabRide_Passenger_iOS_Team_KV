@@ -261,7 +261,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIPickerVie
         
         if Validator.0 == true
         {
-            UtilityClass.showDefaultAlertView(withTitle: AppName.kAPPName, message: "I confirm that I am a female passenger", buttons: ["Ok", "Cancel"], completion: { (ind) in
+            UtilityClass.showDefaultAlertView(withTitle: AppName.kAPPName, message: "I confirm that I am a female passenger", buttons: ["OK", "Cancel"], completion: { (ind) in
                 if ind == 0 {
                     self.webserviceForGetOTP()
                 }
