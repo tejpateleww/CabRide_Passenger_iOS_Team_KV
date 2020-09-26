@@ -249,8 +249,8 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
                 
                 let storyboradTrip = UIStoryboard(name: "MyTrips", bundle: nil)
                 let NextPage = storyboradTrip.instantiateViewController(withIdentifier: "MyTripsViewController") as! MyTripsViewController
-//                HomePage?.navigationController?.pushViewController(NextPage, animated: true)
-//                sideMenuController?.hideMenu()
+                HomePage?.navigationController?.pushViewController(NextPage, animated: true)
+                sideMenuController?.hideMenu()
                 return
             }
             

@@ -109,7 +109,7 @@ extension HomeViewController: SocketConnected {
     // Socket On 1
     func onSocket_GetEstimateFare() {
         SocketIOManager.shared.socketCall(for: socketApiKeys.GetEstimateFare.rawValue) { (json) in
-//                        print(#function, "\n ", json)
+                        print(#function, "\n ", json)
 
             let model = GetEstimateFareModel(fromJson: json.array?.first)
             guard model.estimateFare != nil else  { return }

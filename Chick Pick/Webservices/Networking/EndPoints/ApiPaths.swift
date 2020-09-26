@@ -153,7 +153,7 @@ enum ParameterKey
 enum socketApiKeys: String
 {
     
-    case kSocketBaseURL = "https://www.peppea.com:8080" // "http://13.127.213.134:8080" //"https://www.tantaxitanzania.com:8081""http://3.120.161.225:8080""http://13.237.0.107:8080/"http://3.120.161.225:8080""https://pickngolk.info:8081" "https://pickngolk.info:8081"   // "http://54.169.67.226:8080"  //
+    case kSocketBaseURL = "http://18.133.15.111:8080/" //"https://www.peppea.com:8080"
     
     /// **** Emit Keys ****
     case UpdateCustomerLatLng       = "connect_customer"    // customer_id, lat, lng

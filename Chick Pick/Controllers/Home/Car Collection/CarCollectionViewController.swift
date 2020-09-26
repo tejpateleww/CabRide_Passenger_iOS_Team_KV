@@ -114,7 +114,7 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
                 self.paymentType = type
                 
                 if let PaymentObject = UserDefaults.standard.object(forKey: "PaymentTypeData") as? [String:Any] {
-                    didSelectPaymentType(PaymentTypeTitle: PaymentObject["CardNum"] as! String, PaymentType:  PaymentObject["CardNum2"] as! String, PaymentTypeID: "", PaymentNumber: "", PaymentHolderName: "", dictData: PaymentObject)
+//                    didSelectPaymentType(PaymentTypeTitle: PaymentObject["CardNum"] as! String, PaymentType:  PaymentObject["CardNum2"] as! String, PaymentTypeID: "", PaymentNumber: "", PaymentHolderName: "", dictData: PaymentObject)
                 }
             }
         }
