@@ -32,7 +32,7 @@ enum MyTrips: String, CaseIterable{
     fileprivate func setPastDescription(pastBookingHistory : PastBookingHistoryResponse) -> [(String, String)]{
 
         if pastBookingHistory.status == "canceled" {
-            let tempArray = [("Status" , pastBookingHistory.status)]  as! [(String,String)]
+            let tempArray = [("Status" , "Cancelled")]
             
             return tempArray
         } else {
@@ -92,7 +92,7 @@ enum MyTrips: String, CaseIterable{
         fileprivate func setPastDescription(pastBookingHistory : PastBookingHistoryResponse) -> [(String, String)]{
             
             if pastBookingHistory.status == "canceled" {
-                let tempArray = [("Status" , pastBookingHistory.status)]  as! [(String,String)]
+                let tempArray = [("Status" , "Cancelled")]
                 
                 return tempArray
             } else {

@@ -99,7 +99,7 @@ class DriverRatingAndTipViewController: UIViewController {
         
         let base = NetworkEnvironment.baseImageURL
         
-        imgDriverImage.sd_setImage(with: URL(string: base + driver!.profileImage), placeholderImage: UIImage(contentsOfFile: "iconDummyProfilePic")) // sd_setImage(with: URL(string: base + driver!.profileImage), completed: nil)
+        imgDriverImage.sd_setImage(with: URL(string: base + driver!.profileImage), placeholderImage: UIImage(named: "imgProfilePlaceHolder")) 
         
         viewRating.didFinishTouchingCosmos = { rating in
             self.myRating = rating
@@ -147,12 +147,12 @@ class DriverRatingAndTipViewController: UIViewController {
 //        viewRating.settings.filledImage = UIImage(named: "iconSelectedstar")
 //        viewRating.settings.emptyImage = UIImage(named: "iconUnSelectedstar")
 
-        viewRating.settings.emptyBorderColor = UIColor.init(hex: "2D2D2D")
+        viewRating.settings.emptyBorderColor = ThemeOrange  //UIColor.init(hex: "2D2D2D")
         viewRating.settings.emptyBorderWidth = 2
-        viewRating.settings.filledBorderColor = UIColor.init(hex: "2D2D2D")
+        viewRating.settings.filledBorderColor = ThemeOrange //UIColor.init(hex: "2D2D2D")
         viewRating.settings.filledBorderWidth = 2
         viewRating.settings.emptyColor = UIColor.white
-        viewRating.settings.filledColor = UIColor.init(hex: "2D2D2D")
+        viewRating.settings.filledColor = ThemeOrange //UIColor.init(hex: "2D2D2D")
        
 //        2D2D2D
         viewRating.settings.starSize = 35
@@ -179,7 +179,7 @@ class DriverRatingAndTipViewController: UIViewController {
     
     func selectedButton(btn: UIButton) {
        
-        btn.backgroundColor = UIColor.orange
+        btn.backgroundColor = ThemeOrange
 //        btn.layer.masksToBounds = true
         btn.setTitleColor(UIColor.black, for: .normal)
     }

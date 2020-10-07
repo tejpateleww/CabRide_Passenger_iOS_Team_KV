@@ -291,7 +291,7 @@ extension MyTripsViewController: UITableViewDelegate, UITableViewDataSource{
                 cell.btnSendReceipt.tag = indexPath.section
                 cell.btnSendReceipt.addTarget(self, action: #selector(self.cancelTrip(_:)), for: .touchUpInside)
                 
-                UtilityClass.viewCornerRadius(view: cell.btnSendReceipt, borderWidth: 1, borderColor: .white)
+                UtilityClass.viewCornerRadius(view: cell.btnSendReceipt, borderWidth: 1, borderColor: .black)
                 
 //                cell.btnSendReceipt.layer.cornerRadius = view.frame.height/2
 //                cell.btnSendReceipt.layer.masksToBounds = true
@@ -313,18 +313,19 @@ extension MyTripsViewController: UITableViewDelegate, UITableViewDataSource{
                 cell.lblTitle.font = .bold(ofSize: cell.lblTitle.font.pointSize)
                 cell.lblDescription.text = ""
             } else {
+                let upcoming = data.map{$0.1}.contains("Upcoming")
+                cell.lblTitle.font = .regular(ofSize: cell.lblTitle.font.pointSize)
                 cell.lblTitle.text = data[indexPath.row - 1].0 + ":"
-                if data[indexPath.row - 1].0.lowercased().contains("time") {
+                if data[indexPath.row - 1].0.lowercased().contains("time") || upcoming || data[indexPath.row - 1].0.lowercased().contains("status") {
                     cell.lblDescription.text = "\(data[indexPath.row - 1].1)"
                 } else {
                     cell.lblDescription.text = "\(Currency) \(data[indexPath.row - 1].1)"
                 }
-                
             }
             
-            let color = indexPath.row == data.count ? UIColor.orange : UIColor.white
-            cell.lblDescription.textColor = color
-            cell.lblTitle.textColor = color
+//            let color = indexPath.row == data.count ? ThemeOrange : UIColor.black
+            cell.lblDescription.textColor = .black
+            cell.lblTitle.textColor = .black
             cell.setup()
         
             return cell

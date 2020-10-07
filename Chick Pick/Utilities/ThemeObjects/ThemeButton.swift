@@ -30,20 +30,20 @@ class ThemeButton: UIButton {
     var isVehicleAvailable: Bool = false {
         didSet {
             if isVehicleAvailable {
-                let str = "Book Now".withTextColor(ThemeColor)
+                let str = "Book Now".withTextColor(.white).withBackgroundColor(ThemeColor)
                 self.setAttributedTitle(str, for: .normal)
 //                self.setTitle("Book Now", for: .normal)
 //                self.setTitleColor(ThemeColor, for: .normal)
                 self.backgroundColor = ThemeColor
                 
-                self.titleLabel?.font = UIFont.regular(ofSize: 18)
+                self.titleLabel?.font = UIFont.bold(ofSize: 18)
             } else {
                 let str = "Not Available".withTextColor(.white).withBackgroundColor(ThemeColor)
                 self.setAttributedTitle(str, for: .normal)
 //                self.setTitle("Not Available", for: .normal)
 //                self.setTitleColor(.white, for: .normal)
                 self.backgroundColor = ThemeColor
-                self.titleLabel?.font = UIFont.regular(ofSize: 19)
+                self.titleLabel?.font = UIFont.bold(ofSize: 18)
             }
         }
     }

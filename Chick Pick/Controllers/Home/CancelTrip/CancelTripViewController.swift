@@ -113,14 +113,14 @@ class CancelTripViewController: UIViewController,UITextFieldDelegate {
                     }
                     else
                      {
-                        UtilityClass.showAlert(title: "", message: "Please enter reason for cencel trip", alertTheme: .error)
+                        UtilityClass.showAlert(title: "", message: "Please enter reason for cancel trip", alertTheme: .error)
 
                     }
                 }
             }
             else if self.strMessage == "Select Reason" {
                 
-                UtilityClass.showAlert(title: "", message: "Please select reason for cencel trip", alertTheme: .error)
+                UtilityClass.showAlert(title: "", message: "Please select reason for cancel trip", alertTheme: .error)
             }
         }
     }
@@ -149,9 +149,4 @@ class CancelTripViewController: UIViewController,UITextFieldDelegate {
     }
     
     // MARK: - Custom Methods
-   
-
-   
-    
-
 }

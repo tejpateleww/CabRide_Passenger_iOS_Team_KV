@@ -192,14 +192,14 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
         selectedTimeStemp = timeStemp
         
         
-        let strSimpleStringDate = "\(date)".withTextColor(#colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1))
+        let strSimpleStringDate = "\(date)".withTextColor(#colorLiteral(red: 0.9058823529, green: 0.5843137255, blue: 0.8745098039, alpha: 1))
         self.btnBookNow.backgroundColor = ThemeColor
         
         let attriString = "Schedule Premier\n".withFont(UIFont.bold(ofSize: 18)).withTextColor(.white) + strSimpleStringDate
         
         self.btnBookNow.setAttributedTitle(attriString, for: .normal)
 //        self.btnBookNow.setTitle("Schedule Premier\n\(date)", for: .normal)
-        self.btnBookNow.titleLabel?.font = UIFont.regular(ofSize: 15)
+        self.btnBookNow.titleLabel?.font = UIFont.bold(ofSize: 18)
         let homeVC = self.parent as? HomeViewController
         homeVC?.setBackButtonWhileBookLater()
         homeVC?.selectedTimeStemp = timeStemp
@@ -456,9 +456,9 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
     }
     
     @IBAction func btnBookLater(_ sender: Any) {
-//        let next = self.storyboard?.instantiateViewController(withIdentifier: "PeppeaBookLaterViewController") as! PeppeaBookLaterViewController
-//        next.delegateOfSelectDateAndTime = self
-//        self.navigationController?.present(next, animated: true, completion: nil)
+        let next = self.storyboard?.instantiateViewController(withIdentifier: "PeppeaBookLaterViewController") as! PeppeaBookLaterViewController
+        next.delegateOfSelectDateAndTime = self
+        self.navigationController?.present(next, animated: true, completion: nil)
     }
 
     
@@ -485,7 +485,8 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
             }
         }
         else {
-            popupForPaymentType(PaymentTypeTitle: PaymentTypeTitle, PaymentType: PaymentType, PaymentTypeID: PaymentTypeID, PaymentNumber: PaymentNumber, PaymentHolderName: PaymentHolderName, dictData: dictData)
+             self.paymentTypeSelection(PaymentTypeTitle: PaymentTypeTitle, PaymentType: PaymentType, PaymentTypeID: PaymentTypeID, PaymentNumber: PaymentNumber, PaymentHolderName: PaymentHolderName, dictData: dictData)
+//            popupForPaymentType(PaymentTypeTitle: PaymentTypeTitle, PaymentType: PaymentType, PaymentTypeID: PaymentTypeID, PaymentNumber: PaymentNumber, PaymentHolderName: PaymentHolderName, dictData: dictData)
         }
     }
     

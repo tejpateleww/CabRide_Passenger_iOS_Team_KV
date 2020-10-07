@@ -48,12 +48,12 @@ class LoginViewController: UIViewController {
     {
         super.viewDidLoad()
         #if targetEnvironment(simulator)
-            txtMobileEmail.text = "bhavesh@gmail.com"
+            txtMobileEmail.text = "bhumi.jani123@gmail.com"
             txtPassword.text = "12345678"
         #else
         
         if UIDevice.current.name == "iPad red" || UIDevice.current.name == "EWW iPhone 7 Plus" {
-            txtMobileEmail.text = "bhavesh@gmail.com"
+            txtMobileEmail.text = "bhumi.jani123@gmail.com"
             txtPassword.text = "12345678"
         }
         

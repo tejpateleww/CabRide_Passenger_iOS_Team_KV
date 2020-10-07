@@ -61,7 +61,7 @@ class DriverInfoPageViewController: UIViewController {
 //        imgDriver.sd_addActivityIndicator()
 //        imgDriver.sd_setShowActivityIndicatorView(true)
 //        imgDriver.sd_setIndicatorStyle(.gray)
-        imgDriver.sd_setImage(with: URL(string: base + driver!.profileImage), completed: nil)
+        imgDriver.sd_setImage(with: URL(string: base + driver!.profileImage), placeholderImage: UIImage(named: "imgProfilePlaceHolder"))
         imgCar.sd_setImage(with: URL(string: base + vehicleType!.image), completed: nil)
         
     }
@@ -131,7 +131,7 @@ class DriverInfoPageViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Popup", bundle: nil)
         if let vc = storyboard.instantiateViewController(withIdentifier: "CancelTripViewController") as? CancelTripViewController {
             vc.delegate = self
-            vc.strDescription = "Dear Customer. To Keep Our Drivers Motivated. Please Note That Cancelling a Trip 3 Mins After Booking Attracts A Free of Ksh 10 Payable To The Driver. Please Confirm Whether You Still Wish To Cancel?"
+            vc.strDescription = "Dear Customer. To Keep Our Drivers Motivated. Please Note That Cancelling a Trip 3 Mins After Booking Attracts A Free of £10 Payable To The Driver. Please Confirm Whether You Still Wish To Cancel?"
             self.present(vc, animated: true, completion: nil)
         }
         
