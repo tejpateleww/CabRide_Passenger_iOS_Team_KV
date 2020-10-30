@@ -135,7 +135,7 @@ extension HomeViewController: SocketConnected {
             self.btnBackButtonWhileBookLater()
             AlertMessage.showMessageForSuccess(json.array?.first?.dictionary?["message"]?.string ?? "Request Accepted")
             self.stopAnimationWhileStartBooking()
-            self.acceptRequestData(json: json)
+            self.acceptRequestData(json: json, isBookLaterAccept: true)
         }
     }
     
@@ -189,7 +189,7 @@ extension HomeViewController: SocketConnected {
             print(#function, "\n ", json)
 //            AlertMessage.showMessageForSuccess("Driver is on the way")
             AlertMessage.showMessageForSuccess(json.array?.first?.dictionary?["message"]?.string ?? "Driver is on the way")
-            self.acceptRequestData(json: json)
+            self.acceptRequestData(json: json, isBookLaterAccept: false)
         }
     }
     
@@ -368,13 +368,26 @@ extension HomeViewController: SocketConnected {
     // -------------------------------------------------------------
     // MARK: - --- Accept Book Now & Later Data and View Setup ---
     // -------------------------------------------------------------
-    func acceptRequestData(json: JSON) {
+    func acceptRequestData(json: JSON, isBookLaterAccept: Bool) {
         
         let fr = json.array?.first
         let res = RequestAcceptedDataModel(fromJson: fr)
         
         self.booingInfo = res.bookingInfo // BookingInfo(fromJson: json.arrayValue.first)
-        self.hideAndShowView(view: .requestAccepted)
+        if isBookLaterAccept && self.booingInfo.bookingType == "book_later" {
+            self.hideAndShowView(view: .booking)
+            UtilityClass.showDefaultAlertView(withTitle: "", message: "Your booking request has been confirmed", buttons: ["Ok"], completion: { (ind) in
+            })
+            print("Book Later Ride accepted")
+        } else if self.booingInfo.bookingType == "book_later" && self.booingInfo.status == "accepted" {
+            UtilityClass.showDefaultAlertView(withTitle: "", message: "Your driver is on the way for trip (ID: \(self.booingInfo.id ?? ""))", buttons: ["Ok"], completion: { (ind) in
+            })
+            self.hideAndShowView(view: .requestAccepted)
+            print("Driver is On The Way")
+        } else {
+            self.hideAndShowView(view: .requestAccepted)
+        }
+       
         self.isExpandCategory = true
         self.routeDrawMethod(origin: "\(res.bookingInfo.driverInfo.lat ?? ""),\(res.bookingInfo.driverInfo.lng ?? "")", destination: "\(res.bookingInfo.pickupLat ?? ""),\(res.bookingInfo.pickupLng ?? "")", isTripAccepted: true)
         if self.pickupMarker?.map == nil {

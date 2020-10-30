@@ -145,7 +145,6 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
             {
                 self.containerView.isHidden = false
                 (self.children.first as! CarCollectionViewController).getDataFromJSON()
-                
             }
         }
     }
@@ -210,7 +209,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
         
         if self.booingInfo.status == "pending" {
             setupTripStatu(status: .pending)
-        } else if self.booingInfo.status == "accepted" {
+        } else if self.booingInfo.status == "accepted" && self.booingInfo.bookingType == "book_now"{
             self.routeDrawMethod(origin: "\(self.booingInfo.pickupLat ?? ""),\(self.booingInfo.pickupLng ?? "")", destination: "\(self.booingInfo.dropoffLat ?? ""),\(self.booingInfo.dropoffLng ?? "")", isTripAccepted: true)
              setupTripStatu(status: .accepted)
         } else if self.booingInfo.status == "traveling" {
@@ -218,6 +217,8 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
              setupTripStatu(status: .traveling)
         } else if self.booingInfo.status == "completed" {
             setupTripStatu(status: .completed)
+        } else {
+            setupTripStatu(status: .pending)
         }
         
         #if targetEnvironment(simulator)
@@ -550,17 +551,18 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
     
     
     func CallForGetEstimate() {
-        if self.txtPickupLocation.text != "" && self.txtDropLocation.text != "" && self.booingInfo.id == "" {
+        if self.txtPickupLocation.text != "" && self.txtDropLocation.text != "" { //&& self.booingInfo.id == "" { Commented by Bhumi jani as After complete trip emit call for estimate fare was not working and need to restart app everytime
             let param: [String: Any] = ["customer_id" : SingletonClass.sharedInstance.loginData.id ?? "",
                                         "pickup_lng":pickupLocation.longitude,
                                         "pickup_lat":pickupLocation.latitude,
                                         "dropoff_lat":destinationLocation.latitude,
                                         "dropoff_lng":destinationLocation.longitude]
             
-            
             self.emitSocket_GetEstimateFare(param: param)
             DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-                    self.CallForGetEstimate()
+                if self.booingInfo.id == nil || self.booingInfo.id == "" {
+                     self.CallForGetEstimate()
+                }
             }
         }
     }
@@ -1012,8 +1014,8 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
     
     // MARK: - Navigation
     func hideAndShowView(view: HomeViews){
-        locationView.isHidden = true
-        //        containerRideConfirmation.isHidden = !(view == .rideConfirmation)
+        locationView.isHidden = view == .booking ? false : true
+//        containerRideConfirmation.isHidden = !(view == .rideConfirmation)
         driverInfoContainerView.isHidden = !(view == .requestAccepted || view == .waiting || view == .rideStart)
         driverRatingContainerView.isHidden = !(view == .ratings || view == .askForTip)
         carListContainerView.isHidden = !(view == .booking)
@@ -1247,17 +1249,17 @@ extension HomeViewController: GMSAutocompleteViewControllerDelegate {
 //        self.viewPickupLocation.isHidden = true
         self.viewDropOffLocation.isHidden = false
 //        self.containerView.isHidden = true
-        self.hideBookLaterButtonFromDroplocationField = false
+//        self.hideBookLaterButtonFromDroplocationField = false
         
         locationView.isHidden = false
         mapView.isMyLocationEnabled = true
-        
         
         if let VC = self.children.first as? CarCollectionViewController {
     
             VC.btnBookNow.setTitle("Book Now", for: .normal)
             VC.strPromoCode = ""
             VC.vehicleId = ""
+            VC.stackViewPromoCode.isHidden = true
         }
     }
 }

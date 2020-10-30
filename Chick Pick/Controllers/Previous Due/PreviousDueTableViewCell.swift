@@ -26,8 +26,8 @@ class PreviousDueTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        btnPay.setTitleColor(#colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1), for: .normal)
-        btnPay.imageView?.setImageColor(color: #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1))
+        btnPay.setTitleColor(#colorLiteral(red: 0.9058823529, green: 0.5843137255, blue: 0.8745098039, alpha: 1), for: .normal)
+        btnPay.imageView?.setImageColor(color: #colorLiteral(red: 0.9058823529, green: 0.5843137255, blue: 0.8745098039, alpha: 1))
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

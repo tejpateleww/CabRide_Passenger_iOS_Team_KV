@@ -123,7 +123,9 @@ extension CarCollectionViewController: CarCollectionWebserviceProtocol {
                 }
                 homeVC?.mapView.clear()
                 homeVC?.setupAfterComplete()
-                _ = response.dictionary?["message"]?.stringValue ?? response.dictionary?["message"]?.array?.first?.stringValue ?? ""
+                let msg = response.dictionary?["message"]?.stringValue ?? response.dictionary?["message"]?.array?.first?.stringValue ?? ""
+                
+                AlertMessage.showMessageForSuccess(msg)
                 
 //                UtilityClass.showAlert(title: AppName.kAPPName, message: msg, alertTheme: .success)
 //                UtilityClass.showDefaultAlertView(withTitle: AppName.kAPPName, message: msg, buttons: ["OK"], completion: { (index) in
@@ -176,7 +178,18 @@ extension CarCollectionViewController: CarCollectionWebserviceProtocol {
             print(response)
             if status {
                 self.strPromoCode = promoCode
-                AlertMessage.showMessageForSuccess(response.dictionary?["message"]?.string ?? "")
+                //                AlertMessage.showMessageForSuccess(response.dictionary?["message"]?.string ?? "")
+                UtilityClass.showDefaultAlertView(withTitle: "Congratulations!!", message: "Promo-Code Applied Successfully! \n Thank You For Choosing Chick Pick!", buttons: ["Ok"], completion: { (ind) in
+                })
+                self.stackViewPromoCode.isHidden = false
+                
+                let attrs1 = [NSAttributedString.Key.foregroundColor : UIColor.black]
+                let attrs2 = [NSAttributedString.Key.foregroundColor : UIColor.init(hex: "#2fa918")]
+                let attributedString1 = NSMutableAttributedString(string:"Promo Code Applied ", attributes:attrs1)
+                let attributedString2 = NSMutableAttributedString(string:"\(promoCode)", attributes:attrs2)
+                
+                attributedString1.append(attributedString2)
+                self.lblPromo.attributedText = attributedString1
             } else {
                 self.strPromoCode = ""
                 AlertMessage.showMessageForError(response.dictionary?["message"]?.string ?? "")

@@ -34,6 +34,8 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
     @IBOutlet weak var txtSelectPaymentMethod: UITextField!
     
     @IBOutlet weak var viewPromocode: UIView!
+    @IBOutlet weak var stackViewPromoCode: UIStackView!
+    @IBOutlet weak var lblPromo: UILabel!
     
     
     
@@ -375,6 +377,11 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
     // MARK:- --- Actions ---
     // ----------------------------------------------------
     
+    @IBAction func btnRemovePromo(_ sender: Any) {
+        stackViewPromoCode.isHidden = true
+        self.strPromoCode = ""
+    }
+    
     @IBAction func btnPromoCodeAction(_ sender: UIButton) {
         let alertController = UIAlertController(title: AppName.kAPPName, message: "Enter promo code", preferredStyle: .alert)
         alertController.addTextField { (textField : UITextField!) -> Void in
@@ -423,11 +430,11 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
         if(self.validations().0)
         {
             
-            if btnBookNow.titleLabel?.text == "Not Available" {
+            if btnBookNow.titleLabel?.text == "Not Available" || homeVC?.txtPickupLocation.text == "" || homeVC?.txtDropLocation.text == "" {
                 return
             }
             
-            homeVC?.isExpandCategory = false
+//            homeVC?.isExpandCategory = false
             homeVC?.setUpCustomMarker()
 //            homeVC?.timer?.invalidate()
             

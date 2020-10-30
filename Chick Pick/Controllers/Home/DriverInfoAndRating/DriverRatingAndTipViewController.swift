@@ -157,6 +157,7 @@ class DriverRatingAndTipViewController: UIViewController {
 //        2D2D2D
         viewRating.settings.starSize = 35
         viewRating.settings.starMargin = 5
+        viewRating.rating = 0
         
     }
 
@@ -251,6 +252,7 @@ class DriverRatingAndTipViewController: UIViewController {
                 
                 let alert = UIAlertController(title: AppName.kAPPName, message: "Your trip has been completed", preferredStyle: .alert)
                 let ok = UIAlertAction(title: "OK", style: .default) { (action) in
+                    self.txtComments.text = ""
                     let homeVC = self.parent as? HomeViewController
                     homeVC?.clearMap()
                     homeVC?.setupAfterComplete()

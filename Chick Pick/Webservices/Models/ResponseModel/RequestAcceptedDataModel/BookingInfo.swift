@@ -188,11 +188,6 @@ class BookingInfo : NSObject, NSCoding{
         vehicleTypeId = json["vehicle_type_id"].stringValue
         rentType = json["rent_type"].stringValue
         
-        
-        
-        
-        
-        
         canceleReason = json["cancele_reason"].stringValue
         extraCharge = json["extra_charge"].stringValue
         fareIncrease = json["fare_increase"].stringValue

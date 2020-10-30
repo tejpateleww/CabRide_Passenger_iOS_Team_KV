@@ -10,8 +10,6 @@ import UIKit
 import SwiftyJSON
 
 class PreviousDueViewController: BaseViewController {
-    
-    
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -22,7 +20,7 @@ class PreviousDueViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setNavBarWithBack(Title: "Previous Due", IsNeedRightButton: true)
+        setNavBarWithBack(Title: "Previous Due", IsNeedRightButton: false)
         tableView.separatorStyle = .none
         tableView.tableFooterView = UIView()
         tableView.rowHeight = UITableView.automaticDimension

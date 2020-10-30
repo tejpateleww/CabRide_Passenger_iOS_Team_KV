@@ -47,7 +47,7 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
             
             //            arrMenuTitle = ["My Trips", "Previous Due", "Payments", "Wallet", "Favourite", "Peppea KMS", "Bulk Mile History", "Invite Friends", "Bid My Trip", "Flat Rate", "Help", "Logout"]
             
-            arrMenuTitle = ["My Trips", "Payments", "Settings"]
+            arrMenuTitle = ["My Trips", "Previous Due", "Payments", "Settings"]
         }
     }
     
@@ -249,6 +249,15 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
                 
                 let storyboradTrip = UIStoryboard(name: "MyTrips", bundle: nil)
                 let NextPage = storyboradTrip.instantiateViewController(withIdentifier: "MyTripsViewController") as! MyTripsViewController
+                HomePage?.navigationController?.pushViewController(NextPage, animated: true)
+                sideMenuController?.hideMenu()
+                return
+            }
+            
+            if arrMenuTitle[indexPath.row] == "Previous Due"
+            {
+                
+                let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "PreviousDueViewController") as! PreviousDueViewController
                 HomePage?.navigationController?.pushViewController(NextPage, animated: true)
                 sideMenuController?.hideMenu()
                 return
