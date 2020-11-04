@@ -30,11 +30,20 @@ class SingletonClass: NSObject
     var userInfo : [String: Any]?
 
     func clearSingletonClass() {
-        RegisterOTP = ""
-        walletBalance = ""
+        RegisterOTP = String()
+        walletBalance = String()
+        BulkMilesBalance = String()
         loginData = LoginData()
-        bookingInfo = nil
-       
+        
+        bookingInfo = BookingInfo()
+        myCurrentLocation = CLLocation()
+        /// Get device token
+        token = ""
+        isChatBoxOpen = Bool()
+        ChatBoxOpenedWithID = String()
+        
+        cancelReason = [CancelReason]()
+        userInfo = [:]
     }
 }
 

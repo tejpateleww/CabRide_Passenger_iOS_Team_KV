@@ -32,6 +32,9 @@ class VerifyCustomerPopupViewController: UIViewController {
         lblMessage.text = strMessage
         lblOTP.text = strOTP
         btnAction.setTitle(strBtnTitle, for: .normal)
+        
+        lblTitle.isHidden = lblTitle.text?.count == 0 ? true : false
+        lblOTP.isHidden = lblOTP.text?.count == 0 ? true : false
     }
     
     // MARK: - Actions
@@ -46,7 +49,4 @@ class VerifyCustomerPopupViewController: UIViewController {
             self.dismiss(animated: true, completion: nil)
         }
     }
-    
-    
-
 }

@@ -99,6 +99,7 @@ extension PreviousDueViewController: UITableViewDelegate, UITableViewDataSource 
         cell.setupData(object: currentItem)
         model.booking_id = currentItem.bookingId
         model.customer_id = currentItem.customerId
+        
         cell.btnPay.addTarget(self, action: #selector(self.btnPayAction(sender:)), for: .touchUpInside)
         return cell
     }

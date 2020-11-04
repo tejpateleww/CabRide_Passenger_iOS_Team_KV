@@ -16,8 +16,7 @@ class MyTripsViewController: BaseViewController
     
     var tripType = MyTrips.past
     var data = [(String, String)]()
-    var pageNoPastBooking: Int = 1
-    var pageNoPastUpcoming: Int = 1
+  
     private let refreshControl = UIRefreshControl()
     var isRefresh = Bool()
     
@@ -54,7 +53,7 @@ class MyTripsViewController: BaseViewController
     }
     
     func LoadMoreData() {
-        
+        selectedCell = -1
         self.PageNumber += 1
         if self.tripType.rawValue.lowercased() == "past" {
             self.webserviceCallForGettingPastHistory(pageNo: self.PageNumber)
@@ -98,10 +97,17 @@ class MyTripsViewController: BaseViewController
         collectionTableView.cellInset = UIEdgeInsets.zero
         collectionTableView.spacing = 0
         
+        if self.tripType == .upcoming {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                self.collectionTableView.loadTheSection(ofNumber: 1)
+            }
+        }
+        
         collectionTableView.didSelectItemAt = {
             indexpaths in
             if indexpaths.indexPath != indexpaths.previousIndexPath {
                 self.tripType = MyTrips.allCases[indexpaths.indexPath.item]
+                self.pastBookingHistoryModelDetails = []
                 self.selectedCell = -1
                 self.LoadNewData()
                 self.collectionTableView.tableView.removeAllSubviews()
@@ -197,7 +203,7 @@ class MyTripsViewController: BaseViewController
              self.didEndReached = false
          }
         
-        if self.pageNoPastBooking == 1 {
+        if self.PageNumber == 1 {
             self.pastBookingHistoryModelDetails = arrResponseData
         } else {
             self.pastBookingHistoryModelDetails.append(contentsOf: arrResponseData)
@@ -264,21 +270,15 @@ extension MyTripsViewController: UITableViewDelegate, UITableViewDataSource{
                 cell.lblDropoff.text = dataResponseHeader.dropoffLocation
                 cell.btnSendReceipt.isHidden = true
                 cell.lblKM.isHidden = true
-                if self.tripType.rawValue.lowercased() != "past" {
-                    cell.btnSendReceipt.isHidden = false
-                    cell.btnSendReceipt.setTitle("Cancel request", for: .normal)
-                    cell.btnSendReceipt.titleLabel?.font = UIFont.regular(ofSize: 14)
-                    cell.btnSendReceipt.tag = indexPath.section
-                    cell.btnSendReceipt.addTarget(self, action: #selector(self.cancelTrip(_:)), for: .touchUpInside)
-                    
-                    UtilityClass.viewCornerRadius(view: cell.btnSendReceipt, borderWidth: 1, borderColor: .black)
-                    
-                    //                cell.btnSendReceipt.layer.cornerRadius = view.frame.height/2
-                    //                cell.btnSendReceipt.layer.masksToBounds = true
-                    //                cell.btnSendReceipt.layer.borderWidth = borderWidth
-                    //                cell.btnSendReceipt.layer.borderColor = borderColor.cgColor
-                    
-                }
+//                if self.tripType.rawValue.lowercased() != "past" {
+//                    cell.btnSendReceipt.isHidden = false
+//                    cell.btnSendReceipt.setTitle("Cancel", for: .normal)
+//                    cell.btnSendReceipt.titleLabel?.font = UIFont.regular(ofSize: 14)
+//                    cell.btnSendReceipt.tag = indexPath.section
+//                    cell.btnSendReceipt.addTarget(self, action: #selector(self.cancelTrip(_:)), for: .touchUpInside)
+//                    
+//                    UtilityClass.viewCornerRadius(view: cell.btnSendReceipt, borderWidth: 1, borderColor: .black)
+//                }
                 
                 cell.setup()
                 return cell

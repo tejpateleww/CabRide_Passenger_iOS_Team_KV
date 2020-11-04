@@ -39,7 +39,7 @@ class PreviousDueTableViewCell: UITableViewCell {
     
     func setupData(object: PreviousDueModel) {
         
-        lblBookingId.text = "Booking Id : \(object.id ?? notAvailable)"
+        lblBookingId.text = "Booking Id : \(object.bookingId ?? notAvailable)"
         lblPickUpLocation.text = object.pickupLocation
         lbDropOffLocation.text = object.dropoffLocation
         
@@ -56,6 +56,4 @@ class PreviousDueTableViewCell: UITableViewCell {
         
         lblPreviousDue.attributedText = str
     }
-    
-
 }

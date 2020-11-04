@@ -80,11 +80,21 @@ class WebService{
                     completion(resJson, status)
                 }
                 else {
-                    //  LoaderClass.hideActivityIndicator()
                     if let error = response.result.error {
-                        print("Error = \(error.localizedDescription)")
-                        completion(JSON(), false)
-                        AlertMessage.showMessageForError(error.localizedDescription)
+                        
+                        if(response.response?.statusCode == 403)
+                        {
+                            (UIApplication.shared.delegate as! AppDelegate).GoToLogout()
+                            UserDefaults.standard.set(false, forKey: "isUserLogin")
+                            AlertMessage.showMessageForError("Session expired")
+                        }
+                        else
+                        {
+                            print("Error = \(error.localizedDescription)")
+                            completion(JSON(), false)
+                            AlertMessage.showMessageForError(error.localizedDescription)
+                            
+                        }
                     }
                 }
         }
@@ -120,9 +130,20 @@ class WebService{
                 else {
                     //  LoaderClass.hideActivityIndicator()
                     if let error = response.result.error {
-                        print("Error = \(error.localizedDescription)")
-                        completion(JSON(), false)
-                        AlertMessage.showMessageForError(error.localizedDescription)
+                        
+                        if(response.response?.statusCode == 403)
+                        {
+                            (UIApplication.shared.delegate as! AppDelegate).GoToLogout()
+                            UserDefaults.standard.set(false, forKey: "isUserLogin")
+                            AlertMessage.showMessageForError("Session expired")
+                        }
+                        else
+                        {
+                            print("Error = \(error.localizedDescription)")
+                            completion(JSON(), false)
+                            AlertMessage.showMessageForError(error.localizedDescription)
+                            
+                        }
                     }
                 }
         }

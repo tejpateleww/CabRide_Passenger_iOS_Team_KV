@@ -130,7 +130,7 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
 
     func getDataFromJSON()
     {
-
+        btnBookNow.isUserInteractionEnabled = true
         if(UserDefaults.standard.object(forKey: "carList") == nil)
         {
             return
@@ -383,10 +383,16 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
     }
     
     @IBAction func btnPromoCodeAction(_ sender: UIButton) {
-        let alertController = UIAlertController(title: AppName.kAPPName, message: "Enter promo code", preferredStyle: .alert)
+        
+        let attributedString = NSAttributedString(string: AppName.kAPPName, attributes: [
+            NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 16), //your font here
+            NSAttributedString.Key.foregroundColor : ThemeOrange
+        ])
+        let alertController = UIAlertController(title: "", message: "Enter promo code", preferredStyle: .alert)
         alertController.addTextField { (textField : UITextField!) -> Void in
             textField.placeholder = "Enter promo code"
         }
+        alertController.setValue(attributedString, forKey: "attributedTitle")
         let saveAction = UIAlertAction(title: "Apply", style: .default, handler: { alert -> Void in
             let firstTextField = alertController.textFields![0] as UITextField
             print("firstName \(firstTextField.text ?? "")")
@@ -394,7 +400,6 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
             if !firstTextField.text!.isBlank {
                 self.webserviceForCheckPromocodeService(promoCode: firstTextField.text ?? "")
             }
-
         })
         saveAction.isEnabled = false
         
@@ -406,8 +411,9 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: { (action : UIAlertAction!) -> Void in })
-        alertController.addAction(saveAction)
+        
         alertController.addAction(cancelAction)
+        alertController.addAction(saveAction)
         
         self.present(alertController, animated: true, completion: nil)
     }
@@ -429,7 +435,7 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
 
         if(self.validations().0)
         {
-            
+            btnBookNow.isUserInteractionEnabled = false
             if btnBookNow.titleLabel?.text == "Not Available" || homeVC?.txtPickupLocation.text == "" || homeVC?.txtDropLocation.text == "" {
                 return
             }

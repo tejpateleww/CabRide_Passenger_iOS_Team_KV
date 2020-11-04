@@ -77,8 +77,6 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
     @IBOutlet weak var viewMainActivityIndicator: UIView!
     @IBOutlet weak var viewActivityAnimation: NVActivityIndicatorView!
     
-    
-    
     let window = UIApplication.shared.keyWindow
 
     //MARK:- Variables
@@ -792,13 +790,9 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
             let camera = GMSCameraPosition.camera(withLatitude: defaultLocation.coordinate.latitude,
                                                   longitude: defaultLocation.coordinate.longitude,
                                                   zoom: zoomLevel)
-            
-           
             mapView.camera = camera
         }
-        
         locationManager.startUpdatingLocation()
-        
         UtilityClass.hideHUD()
     }
     
@@ -828,7 +822,6 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
         if let error = error
         {
             print("Unable to Reverse Geocode Location (\(error))")
-
         }
         else
         {
@@ -848,7 +841,6 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
                     txtDropLocation.text = addressString
                     pickupAndDropoffAddress.dropOff = txtDropLocation.text ?? ""
                 }
-                
                self.pickupLocation = placemark.location!.coordinate
             }
         }
@@ -870,9 +862,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
                 }
             }
         })
-
     }
-
 
     func routeDrawMethod(origin: String?, destination: String?, isTripAccepted : Bool)
     {
@@ -910,9 +900,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
                                 {
                                     return
                                 }
-
                             }
-
                             let status = dictionary["status"] as! String
 
                             if status == "OK" {
@@ -941,7 +929,6 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
 //                                    self.pickupMarker.map = nil
                                     self.mapView.isMyLocationEnabled = false
                                 }
-
 
                                 var strDestinationCoordinate = destination?.components(separatedBy: ",")
                                 var DoubleLat = Double()
@@ -1253,6 +1240,7 @@ extension HomeViewController: GMSAutocompleteViewControllerDelegate {
         
         locationView.isHidden = false
         mapView.isMyLocationEnabled = true
+        self.estimateData = []
         
         if let VC = self.children.first as? CarCollectionViewController {
     
@@ -1260,6 +1248,7 @@ extension HomeViewController: GMSAutocompleteViewControllerDelegate {
             VC.strPromoCode = ""
             VC.vehicleId = ""
             VC.stackViewPromoCode.isHidden = true
+            VC.collectionView.reloadData()
         }
     }
 }

@@ -140,8 +140,8 @@ extension CarCollectionViewController: CarCollectionWebserviceProtocol {
                 if let vc = storyboard.instantiateViewController(withIdentifier: "VerifyCustomerPopupViewController") as? VerifyCustomerPopupViewController {
                     if(response["past_due"].int != nil)
                     {
-                        vc.strMessage = msg ?? ""
-                        vc.strTitle = "Dear Customer"
+                        vc.strMessage = "Dear Customer\n\(msg ?? "")"
+//                        vc.strTitle = "Dear Customer"
                         vc.strBtnTitle = "Pay Now"
                         vc.shouldRedirect = true
                         vc.redirectToPaymentList = {
@@ -152,8 +152,8 @@ extension CarCollectionViewController: CarCollectionWebserviceProtocol {
                     }
                     else
                     {
-                        vc.strMessage = msg ?? ""
-                        vc.strTitle = "Dear Customer"
+                        vc.strMessage = "Dear Customer\n\(msg ?? "")"
+//                        vc.strTitle = "Dear Customer"
                         vc.strBtnTitle = "OK"
                         vc.shouldRedirect = true
                         vc.redirectToPaymentList = {

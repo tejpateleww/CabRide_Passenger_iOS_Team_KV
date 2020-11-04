@@ -119,6 +119,8 @@ enum ApiKey: String{
     
     case ReviewRating = "review_rating"
     case CancelTrip = "cancel_trip"
+    case cancellationCharges = "cancellation_charges/"
+   
     case upcomingBookingHistory = "upcoming_booking_history/"
     case GetBulkMileList = "bulk_miles_list"
     case PurchaseBulkMile = "bulk_miles_purchase"

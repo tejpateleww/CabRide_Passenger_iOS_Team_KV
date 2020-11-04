@@ -2140,16 +2140,16 @@ automatic expense for warding</string>
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="tyb-me-JOH">
-                                <rect key="frame" x="64" y="12" width="191" height="32.5"/>
+                                <rect key="frame" x="64" y="13" width="191" height="30"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rahul Patel" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yJh-Su-hlF">
-                                        <rect key="frame" x="0.0" y="0.0" width="76.5" height="17.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="77" height="15"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4cr-3a-zcN">
-                                        <rect key="frame" x="0.0" y="17.5" width="70" height="15"/>
+                                        <rect key="frame" x="0.0" y="15" width="70" height="15"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconSelectedstar" translatesAutoresizingMaskIntoConstraints="NO" id="B6q-Dv-6GZ">
                                                 <rect key="frame" x="0.0" y="0.0" width="15" height="15"/>
@@ -2159,7 +2159,7 @@ automatic expense for warding</string>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y1t-9A-aSA">
-                                                <rect key="frame" x="20" y="-1.5" width="19.5" height="16.5"/>
+                                                <rect key="frame" x="20" y="1" width="19.5" height="14"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -2445,7 +2445,7 @@ automatic expense for warding</string>
             <objects>
                 <viewController storyboardIdentifier="DriverRatingAndTipViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="C5a-Ul-jbN" customClass="DriverRatingAndTipViewController" customModule="Chick_Pick_Ride" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NN4-ky-f3H">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="342"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="368"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QsH-gC-UEP">
@@ -2470,16 +2470,16 @@ automatic expense for warding</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FE1-XC-SNi">
-                                <rect key="frame" x="10" y="90" width="355" height="235"/>
+                                <rect key="frame" x="10" y="90" width="355" height="232"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How was your trip with Thomas?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MIw-li-p0c">
-                                        <rect key="frame" x="10" y="5" width="335" height="20"/>
+                                        <rect key="frame" x="10" y="5" width="335" height="17"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qhz-3b-BLb" customClass="CosmosView" customModule="Cosmos">
-                                        <rect key="frame" x="92.5" y="30" width="170" height="30"/>
+                                        <rect key="frame" x="92.5" y="27" width="170" height="30"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="170" id="jez-PQ-hUg"/>
@@ -2487,7 +2487,7 @@ automatic expense for warding</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nYc-f9-dx3">
-                                        <rect key="frame" x="5" y="70" width="345" height="50"/>
+                                        <rect key="frame" x="5" y="67" width="345" height="50"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Add Comments" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wGf-dl-N5B">
                                                 <rect key="frame" x="0.0" y="5" width="345" height="40"/>
@@ -2517,10 +2517,10 @@ automatic expense for warding</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xt8-e6-WsO">
-                                        <rect key="frame" x="75" y="70" width="205" height="95"/>
+                                        <rect key="frame" x="75" y="67" width="205" height="95"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add a tip" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VLz-sp-uV3">
-                                                <rect key="frame" x="76" y="0.0" width="53" height="0.0"/>
+                                                <rect key="frame" x="77" y="0.0" width="51.5" height="0.0"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="13"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -2591,7 +2591,7 @@ automatic expense for warding</string>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mhb-ZO-9k2" customClass="ThemeButton" customModule="Chick_Pick_Ride" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="185" width="335" height="40"/>
+                                        <rect key="frame" x="10" y="182" width="335" height="40"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="chW-eD-ibI"/>
@@ -2681,7 +2681,7 @@ automatic expense for warding</string>
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OSc-uF-ldZ">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="473"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="471"/>
                                         <subviews>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4Le-XH-onM">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
@@ -2865,16 +2865,16 @@ automatic expense for warding</string>
                                                 </connections>
                                             </tableView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I5c-4l-pWj" customClass="IQPreviousNextView" customModule="IQKeyboardManagerSwift">
-                                                <rect key="frame" x="0.0" y="210" width="375" height="263"/>
+                                                <rect key="frame" x="0.0" y="210" width="375" height="261"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Payment Methods" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LOD-1s-LJm">
-                                                        <rect key="frame" x="20" y="5" width="345" height="16"/>
+                                                        <rect key="frame" x="20" y="5" width="345" height="14"/>
                                                         <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="XMD-3J-joD">
-                                                        <rect key="frame" x="10" y="26" width="355" height="162"/>
+                                                        <rect key="frame" x="10" y="24" width="355" height="162"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fmi-J3-YmJ">
                                                                 <rect key="frame" x="0.0" y="0.0" width="355" height="50"/>
@@ -3014,7 +3014,7 @@ automatic expense for warding</string>
                                                         </constraints>
                                                     </stackView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u8c-cw-iSq" customClass="ThemeButton" customModule="Chick_Pick_Ride" customModuleProvider="target">
-                                                        <rect key="frame" x="18" y="203" width="339" height="40"/>
+                                                        <rect key="frame" x="18" y="201" width="339" height="40"/>
                                                         <color key="backgroundColor" red="0.0039215686269999999" green="0.0078431372550000003" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="FFO-JS-m62"/>
@@ -3809,7 +3809,7 @@ automatic expense for warding</string>
                                                                 <rect key="frame" x="0.0" y="275" width="335" height="40"/>
                                                                 <subviews>
                                                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Licence/Passport" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="SKq-D2-Klv" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick_Ride" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="11" width="291" height="18"/>
+                                                                        <rect key="frame" x="0.0" y="12.5" width="291" height="15.5"/>
                                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>

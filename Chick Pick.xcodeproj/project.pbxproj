@@ -106,6 +106,7 @@
 		46CA655722DEFB2900FC6E16 /* Logout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CA655622DEFB2900FC6E16 /* Logout.swift */; };
 		46E8CE9022D9AD6D001BEFCD /* InviteDriverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E8CE8F22D9AD6D001BEFCD /* InviteDriverViewController.swift */; };
 		6458B82624F8BF7A00CC0200 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6458B82524F8BF7A00CC0200 /* SettingsViewController.swift */; };
+		64751FC225528BE4000D9321 /* echo_ringtone.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 64751FC125528BE3000D9321 /* echo_ringtone.mp3 */; };
 		647E5FD22507ACE3005D57DF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 647E5FD12507ACE2005D57DF /* GoogleService-Info.plist */; };
 		681265292348A8A400C14AD4 /* AddDetailsDropDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681265282348A8A400C14AD4 /* AddDetailsDropDownCell.swift */; };
 		68189B1F234F6E9E009477C3 /* SelectVehicleViewController+SelectPickUpDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68189B1E234F6E9E009477C3 /* SelectVehicleViewController+SelectPickUpDate.swift */; };
@@ -357,6 +358,7 @@
 		6458B82524F8BF7A00CC0200 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		6469355824F680A60046D89F /* Chick Pick.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Chick Pick.entitlements"; sourceTree = "<group>"; };
 		646CD76324F619CA007E4DF3 /* ChickPick-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ChickPick-Bridging-Header.h"; sourceTree = "<group>"; };
+		64751FC125528BE3000D9321 /* echo_ringtone.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = echo_ringtone.mp3; sourceTree = "<group>"; };
 		647E5FD12507ACE2005D57DF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		681265282348A8A400C14AD4 /* AddDetailsDropDownCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDetailsDropDownCell.swift; sourceTree = "<group>"; };
 		68189B1E234F6E9E009477C3 /* SelectVehicleViewController+SelectPickUpDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SelectVehicleViewController+SelectPickUpDate.swift"; sourceTree = "<group>"; };
@@ -1473,6 +1475,7 @@
 		EEE2B7E422C62304004F1C00 /* Chick Pick */ = {
 			isa = PBXGroup;
 			children = (
+				64751FC125528BE3000D9321 /* echo_ringtone.mp3 */,
 				6469355824F680A60046D89F /* Chick Pick.entitlements */,
 				687A0054233E4ACE005C71C5 /* Assets */,
 				1830C47922E741F6004F107F /* New Group */,
@@ -1716,6 +1719,7 @@
 				463DEFEA22D8AEA6002365F8 /* MyTrips.storyboard in Resources */,
 				EE9D6FA022C6449F00EAD756 /* proxima-nova-black.otf in Resources */,
 				468E993822DA103D00072361 /* Bid.storyboard in Resources */,
+				64751FC225528BE4000D9321 /* echo_ringtone.mp3 in Resources */,
 				EE9D6F9722C6449F00EAD756 /* proxima-nova-regular-italic.otf in Resources */,
 				6ED1AACA23C6FCB000CF5DB3 /* Popup.storyboard in Resources */,
 				EE9D6F9222C6449F00EAD756 /* proxima-nova-condensed-semibold-italic.otf in Resources */,
@@ -2172,7 +2176,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Chick Pick/Chick Pick.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.2;
+				CURRENT_PROJECT_VERSION = 1.0.3;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = S3CGZRZDL7;
 				GCC_NO_COMMON_BLOCKS = NO;
@@ -2197,7 +2201,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Chick Pick/Chick Pick.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.2;
+				CURRENT_PROJECT_VERSION = 1.0.3;
 				DEVELOPMENT_TEAM = S3CGZRZDL7;
 				GCC_NO_COMMON_BLOCKS = NO;
 				INFOPLIST_FILE = "Chick Pick/Info.plist";

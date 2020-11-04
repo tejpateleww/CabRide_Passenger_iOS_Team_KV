@@ -146,8 +146,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Swift.Void) {
         print(#function, response)
-        
-        
+
         //        let content = response.notification.request.content
         let userInfo = response.notification.request.content.userInfo
         if userInfo["gcm.notification.type"] == nil { return }
@@ -156,7 +155,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         print("USER INFo : ",userInfo)
         print("KEY : ",key)
         
-        if userInfo["gcm.notification.type"] as! String == "booking_chat" {
+        
+        if userInfo["gcm.notification.type"] as! String == "Logout" {
+            self.GoToLogout()
+        }
+        else if userInfo["gcm.notification.type"] as! String == "accepted_trip" {
+            let storyboard = UIStoryboard(name: "MyTrips", bundle: nil)
+            if let controller = storyboard.instantiateViewController(withIdentifier: "MyTripsViewController") as? MyTripsViewController {
+                
+                controller.tripType = .upcoming
+                
+//                (self.window?.rootViewController as? UINavigationController)?.pushViewController(controller, animated: false)
+                
+//                if let vc = self.window?.rootViewController?.children.first as? NavigationController {
+//                    vc.pushViewController(controller, animated: true)
+//                }
+            }
+        }
+        else if userInfo["gcm.notification.type"] as! String == "booking_chat" {
             
             if let response = userInfo["gcm.notification.data"] as? String {
                 let jsonData = response.data(using: .utf8)!
@@ -194,7 +210,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
                                 }
                             }
                         }
-                        
                     }
                     //                    }
                 } else {
@@ -217,20 +232,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         
         print(#function, notification.request.content.userInfo)
         //        let content = notification.request.content
-        
-        
+
         let userInfo = notification.request.content.userInfo
         if userInfo["gcm.notification.type"] == nil { return }
-        
-        
+ 
         let key = (userInfo as NSDictionary).object(forKey: "gcm.notification.type")!
         
         print("USER INFo : ",userInfo)
         print("KEY : ",key)
-        
-        
-        
-        if userInfo["gcm.notification.type"] as! String == "booking_chat" {
+
+        if userInfo["gcm.notification.type"] as! String == "Logout" {
+            completionHandler([.alert, .sound])
+            self.GoToLogout()
+        }
+        else if userInfo["gcm.notification.type"] as! String == "verify_customer" {
+            completionHandler([.alert, .sound])
+        }
+        else if userInfo["gcm.notification.type"] as! String == "request_code_for_complete_trip" {
+            completionHandler([.alert, .sound])
+        }
+        else if userInfo["gcm.notification.type"] as! String == "accepted_trip" {
+            let storyboard = UIStoryboard(name: "MyTrips", bundle: nil)
+            if let controller = storyboard.instantiateViewController(withIdentifier: "MyTripsViewController") as? MyTripsViewController {
+                
+                controller.tripType = .upcoming
+                
+//                (self.window?.rootViewController as? UINavigationController)?.pushViewController(controller, animated: true)
+                
+//                if let vc = self.window?.rootViewController?.children.first as? NavigationController {
+//                    vc.pushViewController(controller, animated: true)
+//                }
+            }
+            completionHandler([.alert, .sound])
+        }
+        else if userInfo["gcm.notification.type"] as! String == "booking_chat" {
             
             if let vc = (self.window?.rootViewController as? UINavigationController)?.topViewController?.children.first?.children.last {
                 if let vc : ChatViewController = (vc as? ChatViewController) {
@@ -244,8 +279,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
                             
                             if let senderID = dic["sender_id"] as? String {
                                 if senderID == vc.receiver_id || dic["booking_id"] as? String ==  vc.strBookingId {
-                                    
-                                    
+           
                                     let chat = MessageObject(isSender: false, name: dic["sender_name"] as? String ?? "", image: "", id: "", sender_id: dic["sender_id"] as? String ?? "", receiver_id: dic["receiver_id"] as? String ?? "", message: dic["message"] as? String ?? "", created_date: dic["created_at"] as? String ?? "", bookingId: dic["booking_id"] as? String ?? "", sender_type: dic["sender_type"] as? String ?? "", receiver_type: dic["receiver_type"] as? String ?? "")
                                     
                                     //                                    let chat = MessageObject(ReceiverID: dic["ReceiverID"] as? String ?? "", Message: dic["Message"] as? String ?? "", SenderNickname: dic["sender_nickname"] as? String ?? "", SenderName: dic["sender_name"] as? String ?? "", SenderID: dic["SenderID"] as? String ?? "", Date: dic["Date"] as? String ?? "", ChatId: dic["chat_id"] as? String ?? "")
@@ -272,14 +306,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
                 completionHandler([.alert, .sound])
             }
         }
-        else if userInfo["gcm.notification.type"] as! String == "verify_customer" {
-            completionHandler([.alert, .sound])
-        }
-        else if userInfo["gcm.notification.type"] as! String == "request_code_for_complete_trip" {
-            completionHandler([.alert, .sound])
-        }
-        //            completionHandler([.alert, .sound])
         
+        completionHandler([.alert, .sound])
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
@@ -379,9 +407,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         }
         //3. Set isLogin USer Defaults to false
         UserDefaults.standard.set(false, forKey: "isUserLogin")
+        
+        //4. Remove all sockets from memory
+        if let homeVC = (self.window?.rootViewController as? UINavigationController)?.topViewController?.children.first?.children.first as? HomeViewController {
+            homeVC.allSocketOffMethods()
+        }
         self.GoToLogin()
     }
-    
 }
 
 
@@ -430,6 +462,5 @@ extension AppDelegate: CLLocationManagerDelegate {
         defaultLocation = location
         
         SingletonClass.sharedInstance.myCurrentLocation = defaultLocation
-        
     }
 }

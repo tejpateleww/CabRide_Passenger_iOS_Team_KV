@@ -14,7 +14,7 @@ class HeaderTableViewController: UIView {
     //-------------------------------------
     
     var titles = [String]()
-   
+    
     var parentVC : (UIViewController & UITableViewDelegate & UITableViewDataSource)!
     
     var didSelectItemAt: ((( previousIndexPath : IndexPath, indexPath: IndexPath)) -> ())?
@@ -33,7 +33,7 @@ class HeaderTableViewController: UIView {
     
     var spacing = CGFloat(0)
     
-
+    
     var isHeaderVisible = true{
         didSet{
             headerHeight = isHeaderVisible ? headerHeight : 0
@@ -44,7 +44,6 @@ class HeaderTableViewController: UIView {
                 indicatorView.removeFromSuperview()
             }
             pageCollectionSetup()
-        
         }
     }
     
@@ -78,11 +77,9 @@ class HeaderTableViewController: UIView {
         return CGFloat(titles.count)
     }
     
- 
-   
     private lazy var headerCollectionView : UICollectionView = {
         let layout  = UICollectionViewFlowLayout()
-       let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
+        let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         collectionView.showsHorizontalScrollIndicator = false
         layout.scrollDirection = .horizontal
         collectionView.backgroundColor = headerBgColor
@@ -117,7 +114,6 @@ class HeaderTableViewController: UIView {
         scrollIndicatorView(offset: realCenter)
     }
     
-    
     private var indexPath = IndexPath(item: 0, section: 0){
         willSet{
             previousIndexPath = indexPath
@@ -127,7 +123,7 @@ class HeaderTableViewController: UIView {
     
     override func draw(_ rect: CGRect) {
         customInitialiser()
-       
+        
     }
     
     // //-------------------------------------
@@ -136,11 +132,11 @@ class HeaderTableViewController: UIView {
     
     var leadingConstraint : NSLayoutConstraint?
     var widthConstraint : NSLayoutConstraint?
-  
+    
     private func scrollIndicatorView(offset: CGPoint){
         widthConstraint?.isActive = false
         leadingConstraint?.isActive = false
-       
+        
         if isSizeToFitCellNeeded {
             cellWidth = frame.width / floatCount
         }
@@ -153,17 +149,16 @@ class HeaderTableViewController: UIView {
             self.leadingConstraint!.isActive = true
             self.layoutIfNeeded()
         }
-        
     }
     private func indicatorViewSetup() {
         
-       guard  isIndicatorLineVisible,isHeaderVisible, !headerCollectionView.contains(indicatorView) else { return }
+        guard  isIndicatorLineVisible,isHeaderVisible, !headerCollectionView.contains(indicatorView) else { return }
         headerCollectionView.addSubview(indicatorView)
         indicatorView.backgroundColor = indicatorColor
         if isSizeToFitCellNeeded {
             cellWidth = frame.width / floatCount
         }
-
+        
         self.indicatorView.translatesAutoresizingMaskIntoConstraints = false
         leadingConstraint = NSLayoutConstraint(item: indicatorView, attribute: .leading, relatedBy: .equal, toItem: headerCollectionView, attribute: .leading, multiplier: 1, constant: cellInset?.left ?? 10)
         widthConstraint = NSLayoutConstraint(item: indicatorView, attribute: .width, relatedBy: .equal, toItem: headerCollectionView, attribute: .width, multiplier: 0, constant: self.cellWidth)
@@ -180,21 +175,17 @@ class HeaderTableViewController: UIView {
         
         headerCollectionView.register(TitleHeaderCollectionViewCell.self, forCellWithReuseIdentifier: TitleHeaderCollectionViewCell.identifier)
         addSubview(headerCollectionView)
-       
+        
         self.headerCollectionView.translatesAutoresizingMaskIntoConstraints = false
-       let leadingConstraint = NSLayoutConstraint(item: headerCollectionView, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1, constant: 0)
-       let trailingConstraint = NSLayoutConstraint(item: headerCollectionView, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1, constant: 0)
+        let leadingConstraint = NSLayoutConstraint(item: headerCollectionView, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1, constant: 0)
+        let trailingConstraint = NSLayoutConstraint(item: headerCollectionView, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1, constant: 0)
         let heightConstraint = NSLayoutConstraint(item: headerCollectionView, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: headerHeight)
         let topConstraint = NSLayoutConstraint(item: headerCollectionView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 0)
-       
         
         trailingConstraint.isActive = true
         topConstraint.isActive = true
         heightConstraint.isActive = true
         leadingConstraint.isActive = true
-        
-        
-        
     }
     private func addHeaderShadow(){
         guard isHeaderShadowEnabled, isHeaderVisible else { return }
@@ -222,6 +213,13 @@ class HeaderTableViewController: UIView {
         leadingConstraint.isActive = true
     }
     
+    func loadTheSection(ofNumber : Int) {
+        let indexPathForFirstRow = IndexPath(row: ofNumber, section: 0)
+        self.indexPath = indexPathForFirstRow
+        scrollToIndexPath(indexPath: indexPath)
+        if didSelectItemAt != nil {  didSelectItemAt!((previousIndexPath, indexPath ))
+        }
+    }
 }
 
 // //-------------------------------------
@@ -231,10 +229,9 @@ class HeaderTableViewController: UIView {
 extension HeaderTableViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,UICollectionViewDelegate{
     
     private func customInitialiser(){
-      backgroundColor = pageBgColor
+        backgroundColor = pageBgColor
         pageCollectionSetup()
-          headerCollectionSetup()
-        
+        headerCollectionSetup()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -242,27 +239,24 @@ extension HeaderTableViewController: UICollectionViewDataSource, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TitleHeaderCollectionViewCell.identifier, for: indexPath) as! TitleHeaderCollectionViewCell
-            cell.setTitle(title: titles[indexPath.item],
-                          textColor : textColor,
-                          font: UIFont.boldSystemFont(ofSize: 13))
-            return cell
-     }
-
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TitleHeaderCollectionViewCell.identifier, for: indexPath) as! TitleHeaderCollectionViewCell
+        cell.setTitle(title: titles[indexPath.item],
+                      textColor : textColor,
+                      font: UIFont.boldSystemFont(ofSize: 13))
+        return cell
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-            guard !isSizeToFitCellNeeded else {
-                cellWidth = bounds.width / floatCount - spacing
-                return CGSize(width: cellWidth, height: headerHeight)
-                
-            }
-            cellWidth = widthOfString(usingFont: textFont, string: titles[indexPath.item]) + 10
+        guard !isSizeToFitCellNeeded else {
+            cellWidth = bounds.width / floatCount - spacing
             return CGSize(width: cellWidth, height: headerHeight)
-      
-       
+        }
+        cellWidth = widthOfString(usingFont: textFont, string: titles[indexPath.item]) + 10
+        return CGSize(width: cellWidth, height: headerHeight)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return spacing
-      
+        
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return spacing
@@ -277,25 +271,25 @@ extension HeaderTableViewController: UICollectionViewDataSource, UICollectionVie
         scrollToIndexPath(indexPath: indexPath)
         if didSelectItemAt != nil {  didSelectItemAt!((previousIndexPath, indexPath ))
         }
-     }
+    }
     
-   
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         guard let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout else { return UIEdgeInsets()}
         guard !isSizeToFitCellNeeded else {return flowLayout.sectionInset }
         return centerHorizontalCollection(collectionViewLayout: collectionViewLayout, insetForSectionAt: section)
     }
-   
+    
     
     private func centerHorizontalCollection(collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int)  -> UIEdgeInsets{
-      
+        
         guard let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout,
             let dataSourceCount = headerCollectionView.dataSource?.collectionView(headerCollectionView, numberOfItemsInSection: section),
             dataSourceCount > 0 else {
                 return .zero
         }
         cellWidth = titles.first != nil ? widthOfString(usingFont: textFont, string: titles[0]) + 10 : 50
-       
+        
         var insets = flowLayout.sectionInset
         var totalCellWidth: CGFloat = 0
         for index in titles.indices{
@@ -317,7 +311,7 @@ extension HeaderTableViewController: UICollectionViewDataSource, UICollectionVie
         cellInset = insets
         return insets
     }
-   
+    
     
     func widthOfString(usingFont font: UIFont, string: String) -> CGFloat {
         let fontAttributes = [NSAttributedString.Key.font: font]

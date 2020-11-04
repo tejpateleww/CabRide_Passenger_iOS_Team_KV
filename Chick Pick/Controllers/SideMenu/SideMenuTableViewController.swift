@@ -19,7 +19,6 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
     var ProfileData = NSDictionary()
     var arrMenuTitle = [String]()
     
-    
     var selectedIndex = 0
     var loginModelDetails : LoginModel = LoginModel()
     var logoutRequestModel : logoutModel = logoutModel()
@@ -227,7 +226,6 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
                     }else{
                         ///Peppea flow call web service
                         self.webserviceForLogout()
-                        
                     }
                 }
                 
@@ -246,7 +244,6 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
             
             if arrMenuTitle[indexPath.row] == "My Trips"
             {
-                
                 let storyboradTrip = UIStoryboard(name: "MyTrips", bundle: nil)
                 let NextPage = storyboradTrip.instantiateViewController(withIdentifier: "MyTripsViewController") as! MyTripsViewController
                 HomePage?.navigationController?.pushViewController(NextPage, animated: true)
@@ -256,7 +253,6 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
             
             if arrMenuTitle[indexPath.row] == "Previous Due"
             {
-                
                 let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "PreviousDueViewController") as! PreviousDueViewController
                 HomePage?.navigationController?.pushViewController(NextPage, animated: true)
                 sideMenuController?.hideMenu()
@@ -413,7 +409,6 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
     
     func webserviceForLogout()
     {
-        
         let profile = loginModelDetails.loginData
         logoutRequestModel.customer_id = (profile?.id)!
         logoutRequestModel.device_token = ""
@@ -421,9 +416,7 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
         {
             logoutRequestModel.device_token = token
         }
-        
-        
-        
+    
         UtilityClass.showHUD(with: UIApplication.shared.keyWindow)
         let strURL = logoutRequestModel.customer_id + "/" + logoutRequestModel.device_token
         UserWebserviceSubclass.Logout(strURL: strURL) { (json, status) in
@@ -432,7 +425,7 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
             if status{
                 
                 UserDefaults.standard.set(false, forKey: "isUserLogin")
-                self.removeAllSocketFromMemory()
+//                self.removeAllSocketFromMemory()
                 (UIApplication.shared.delegate as! AppDelegate).GoToLogout()
             }
             else

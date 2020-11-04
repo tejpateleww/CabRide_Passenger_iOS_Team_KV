@@ -51,7 +51,8 @@ class DriverInfoPageViewController: UIViewController {
         lblCarPlateNumber.text = driverVehicleType?.plateNumber
         lblPickupLocation.text = bookingData.pickupLocation
         lblDropoffLocation.text = bookingData.dropoffLocation
-        lblEstimatedFare.text = "\(Currency)\((esti) - 10) - \(Currency)\((esti) + 10)"
+//        lblEstimatedFare.text = "\(Currency)\((esti) - 10) - \(Currency)\((esti) + 10)"
+        lblEstimatedFare.text = "\(Currency)\(esti)"
         lblDriverName.text = driver?.firstName
         lblRating.text = driver?.rating
         
@@ -119,19 +120,20 @@ class DriverInfoPageViewController: UIViewController {
 //        homeVC?.setupAfterComplete()
         let AlertController = UIAlertController(title:AppName.kAPPName , message: "Are you sure want to cancel the trip?", preferredStyle: .alert)
         AlertController.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (UIAlertAction) in
-            self.ReasonForCancelTheTrip()
+//            self.ReasonForCancelTheTrip()
+            self.webserviceForCancellationCharges()
         }))
         AlertController.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
         guard let Parentvc = self.parent as? HomeViewController else { return }
         Parentvc.present(AlertController, animated: true, completion: nil)
     }
     
-    func ReasonForCancelTheTrip() {
+    func ReasonForCancelTheTrip(charges : String) {
         
         let storyboard = UIStoryboard(name: "Popup", bundle: nil)
         if let vc = storyboard.instantiateViewController(withIdentifier: "CancelTripViewController") as? CancelTripViewController {
             vc.delegate = self
-            vc.strDescription = "Dear Customer. To Keep Our Drivers Motivated. Please Note That Cancelling a Trip 3 Mins After Booking Attracts A Free of £10 Payable To The Driver. Please Confirm Whether You Still Wish To Cancel?"
+            vc.strDescription = "Dear Customer. To Keep Our Drivers Motivated. Please Note That Cancelling a Trip 3 Mins After Booking Attracts A Free of \(Currency)\(charges) Payable To The Driver. Please Confirm Whether You Still Wish To Cancel?"
             self.present(vc, animated: true, completion: nil)
         }
         
@@ -163,6 +165,29 @@ class DriverInfoPageViewController: UIViewController {
     // ----------------------------------------------------
     // MARK: - Webservice Methods
     // ----------------------------------------------------
+    
+    func webserviceForCancellationCharges() {
+        UtilityClass.showHUD(with: self.parent?.view)
+        
+        let homeVC = self.parent as? HomeViewController
+        let param = homeVC?.booingInfo.vehicleType.id ?? ""
+        
+        UserWebserviceSubclass.CancellationCharges(strURL: param) { (response, status) in
+            //            print(response)
+            UtilityClass.hideHUD()
+           
+            if(status) {
+                let data = response["data"].dictionaryValue
+                let charges = data["customer_cancellation_fee"]?.stringValue
+                self.ReasonForCancelTheTrip(charges: charges ?? "")
+            }
+            else {
+                UtilityClass.hideHUD()
+                AlertMessage.showMessageForError(response["message"].stringValue)
+            }
+        }
+    }
+
     func webserviceForCancelTrip() {
         
         let homeVC = self.parent as? HomeViewController
@@ -181,8 +206,6 @@ class DriverInfoPageViewController: UIViewController {
             }
         }
     }
-    
-    
 }
 
 
