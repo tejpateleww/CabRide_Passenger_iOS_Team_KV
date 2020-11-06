@@ -22,11 +22,14 @@ class CancelTripViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var btnClose: UIButton!
     @IBOutlet var viewDropDown: UIView!
     @IBOutlet var btnOk: UIButton!
+    @IBOutlet var viewLine: UIView!
 
     var isDropDownHidden = false
+    var isCancelReason = Bool()
 
     var strBtnOkText = String()
     var strTextPlaceHolder = String()
+    
     // MARK: - Variables declaration
     var strMessage = String()
     var strDescription = String()
@@ -38,7 +41,12 @@ class CancelTripViewController: UIViewController,UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         txtOtherReason.isHidden = true
-
+        
+        if isCancelReason {
+            viewLine.isHidden = true
+            reason = CancelReason()
+        }
+    
         if(strBtnOkText.count != 0)
         {
             txtOtherReason.isHidden = false
@@ -109,12 +117,10 @@ class CancelTripViewController: UIViewController,UITextFieldDelegate {
                         imageView.image = image
                         txtOtherReason.rightView = imageView
                         txtOtherReason.rightViewMode = .unlessEditing
-
                     }
                     else
                      {
                         UtilityClass.showAlert(title: "", message: "Please enter reason for cancel trip", alertTheme: .error)
-
                     }
                 }
             }
@@ -142,9 +148,9 @@ class CancelTripViewController: UIViewController,UITextFieldDelegate {
     }
     
     @IBAction func btnCloseAction(_ sender: UIButton) {
-        if delegate != nil {
-            delegate?.didCancelTripFromRider(obj: "")
-        }
+//        if delegate != nil {
+//            delegate?.didCancelTripFromRider(obj: "")
+//        }
         self.dismiss(animated: true, completion: nil)
     }
     

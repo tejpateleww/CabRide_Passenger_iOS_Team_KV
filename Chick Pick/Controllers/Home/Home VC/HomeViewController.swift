@@ -207,30 +207,34 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
         
         if self.booingInfo.status == "pending" {
             setupTripStatu(status: .pending)
+            
         } else if self.booingInfo.status == "accepted" && self.booingInfo.bookingType == "book_now"{
-            self.routeDrawMethod(origin: "\(self.booingInfo.pickupLat ?? ""),\(self.booingInfo.pickupLng ?? "")", destination: "\(self.booingInfo.dropoffLat ?? ""),\(self.booingInfo.dropoffLng ?? "")", isTripAccepted: true)
+            self.routeDrawMethod(origin: "\(self.booingInfo.driverInfo.lat ?? ""),\(self.booingInfo.driverInfo.lng ?? "")", destination: "\(self.booingInfo.customerInfo.lat ?? ""),\(self.booingInfo.customerInfo.lng ?? "")", isTripAccepted: true)
              setupTripStatu(status: .accepted)
+            
         } else if self.booingInfo.status == "traveling" {
             self.routeDrawMethod(origin: "\(self.booingInfo.pickupLat ?? ""),\(self.booingInfo.pickupLng ?? "")", destination: "\(self.booingInfo.dropoffLat ?? ""),\(self.booingInfo.dropoffLng ?? "")", isTripAccepted: true)
              setupTripStatu(status: .traveling)
+            
         } else if self.booingInfo.status == "completed" {
             setupTripStatu(status: .completed)
+            
         } else {
             setupTripStatu(status: .pending)
         }
         
-        #if targetEnvironment(simulator)
-        lblBuildNumber.isHidden = false
-        lblBuildNumber.text = "Build : \(Bundle.main.buildVersionNumber ?? "") \t\t Booking ID: \(self.booingInfo.id ?? "")"
-        tempPolyLine()
-        #else
-        lblBuildNumber.isHidden = true
-        
-        if UIDevice.current.name == "iPad red" || UIDevice.current.name == "Eww’s iPhone 7" || UIDevice.current.name == "Administrator’s iPhone" {
-            lblBuildNumber.isHidden = false
-            lblBuildNumber.text = "Build : \(Bundle.main.buildVersionNumber ?? "") \t\t Booking ID: \(self.booingInfo.id ?? "")"
-        }
-        #endif
+//        #if targetEnvironment(simulator)
+//        lblBuildNumber.isHidden = false
+//        lblBuildNumber.text = "Build : \(Bundle.main.buildVersionNumber ?? "") \t\t Booking ID: \(self.booingInfo.id ?? "")"
+//        tempPolyLine()
+//        #else
+//        lblBuildNumber.isHidden = true
+//
+//        if UIDevice.current.name == "iPad red" || UIDevice.current.name == "Eww’s iPhone 7" || UIDevice.current.name == "Administrator’s iPhone" {
+//            lblBuildNumber.isHidden = false
+//            lblBuildNumber.text = "Build : \(Bundle.main.buildVersionNumber ?? "") \t\t Booking ID: \(self.booingInfo.id ?? "")"
+//        }
+//        #endif
         
         self.setupNavigationController()
 
@@ -533,6 +537,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
                 VC.btnBookNow.setAttributedTitle(nil, for: .normal)
                 VC.btnBookNow.setTitle("Book Now", for: .normal)
                 VC.strPromoCode = ""
+                VC.promoCodeId = ""
                 VC.vehicleId = ""
                 VC.selectedTimeStemp = ""
                 VC.isTripSchedule = false
@@ -550,17 +555,26 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
     
     func CallForGetEstimate() {
         if self.txtPickupLocation.text != "" && self.txtDropLocation.text != "" { //&& self.booingInfo.id == "" { Commented by Bhumi jani as After complete trip emit call for estimate fare was not working and need to restart app everytime
+            
+            var promocode = "0"
+            
+            if let CarCollection = self.children[0] as? CarCollectionViewController {
+                if CarCollection.promoCodeId.count > 0 {
+                    promocode = CarCollection.promoCodeId
+                }
+            }
             let param: [String: Any] = ["customer_id" : SingletonClass.sharedInstance.loginData.id ?? "",
                                         "pickup_lng":pickupLocation.longitude,
                                         "pickup_lat":pickupLocation.latitude,
                                         "dropoff_lat":destinationLocation.latitude,
-                                        "dropoff_lng":destinationLocation.longitude]
+                                        "dropoff_lng":destinationLocation.longitude,
+                                        "promocode_id":promocode]
             
             self.emitSocket_GetEstimateFare(param: param)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-                if self.booingInfo.id == nil || self.booingInfo.id == "" {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
+//                if self.booingInfo.id == nil || self.booingInfo.id == "" {
                      self.CallForGetEstimate()
-                }
+//                }
             }
         }
     }
@@ -1246,6 +1260,7 @@ extension HomeViewController: GMSAutocompleteViewControllerDelegate {
     
             VC.btnBookNow.setTitle("Book Now", for: .normal)
             VC.strPromoCode = ""
+            VC.promoCodeId = ""
             VC.vehicleId = ""
             VC.stackViewPromoCode.isHidden = true
             VC.collectionView.reloadData()

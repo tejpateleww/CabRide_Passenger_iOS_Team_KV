@@ -63,7 +63,5 @@ class CancelReason : NSObject, NSCoding{
 		if reason != nil{
 			aCoder.encode(reason, forKey: "reason")
 		}
-
 	}
-
 }

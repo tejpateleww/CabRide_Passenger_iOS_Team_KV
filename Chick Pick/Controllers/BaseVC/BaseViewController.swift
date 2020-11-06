@@ -59,7 +59,7 @@ class BaseViewController: UIViewController {
             titleImage.image = UIImage(named: "Title_logo")
             self.navigationItem.titleView = titleImage
         } else {
-            self.navigationItem.title = Title.uppercased().localizedUppercase
+            self.navigationItem.title = Title //.uppercased().localizedUppercase
         }
         
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : ThemeColor]

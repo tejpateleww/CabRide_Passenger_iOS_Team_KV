@@ -16,4 +16,5 @@ class UpdatePersonalInfo : RequestModel
     var gender: String = ""
     var address: String = ""
     var dob: String = ""
+    var mobile: String = ""
 }

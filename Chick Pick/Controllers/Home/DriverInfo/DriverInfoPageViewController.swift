@@ -133,6 +133,8 @@ class DriverInfoPageViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Popup", bundle: nil)
         if let vc = storyboard.instantiateViewController(withIdentifier: "CancelTripViewController") as? CancelTripViewController {
             vc.delegate = self
+            vc.isDropDownHidden = true
+            vc.isCancelReason = true
             vc.strDescription = "Dear Customer. To Keep Our Drivers Motivated. Please Note That Cancelling a Trip 3 Mins After Booking Attracts A Free of \(Currency)\(charges) Payable To The Driver. Please Confirm Whether You Still Wish To Cancel?"
             self.present(vc, animated: true, completion: nil)
         }

@@ -27,7 +27,7 @@ extension CarCollectionViewController: CarCollectionWebserviceProtocol {
         }
         else if(dropOff.latitude == 0 || dropOff.longitude == 0)
         {
-            return (false, "Please enter dropoff location")
+            return (false, "Please enter where to location")
         }
 //        else if(bookingType.trimmingCharacters(in: .whitespacesAndNewlines).count == 0)
 //        {
@@ -53,7 +53,6 @@ extension CarCollectionViewController: CarCollectionWebserviceProtocol {
     func webserviceForBooking(bookingType: String) {
         
         let homeVC = self.parent as? HomeViewController
-        
         
         let address = (self.parent as! HomeViewController).pickupAndDropoffAddress
         let pickup = (self.parent as! HomeViewController).pickupLocation
@@ -100,6 +99,7 @@ extension CarCollectionViewController: CarCollectionWebserviceProtocol {
         UserWebserviceSubclass.bookingRequest(bookingRequestModel: model) { (response, status) in
             
              homeVC?.btnBackButtonWhileBookLater()
+//            self.btnBookNow.isUserInteractionEnabled = true
             
             print("Booking Response: \n", response)
             if status {
@@ -112,14 +112,12 @@ extension CarCollectionViewController: CarCollectionWebserviceProtocol {
                     homeVC?.dictForRejectCurrentReq.bookingId = response.dictionary?["data"]?.dictionary?["id"]?.string ?? ""
                     homeVC?.dictForRejectCurrentReq.customerId = SingletonClass.sharedInstance.loginData.id
                     
-                    
                     let activityVC = self.storyboard?.instantiateViewController(withIdentifier: "RequestLodingViewController") as! RequestLodingViewController
                     activityVC.bookingId = response.dictionary?["data"]?.dictionary?["id"]?.string ?? ""
                     activityVC.customerId = SingletonClass.sharedInstance.loginData.id
                     activityVC.parentVc = homeVC
                     activityVC.modalPresentationStyle = .overCurrentContext
                     self.present(activityVC, animated: false, completion: nil)
-                    
                 }
                 homeVC?.mapView.clear()
                 homeVC?.setupAfterComplete()
@@ -160,11 +158,8 @@ extension CarCollectionViewController: CarCollectionWebserviceProtocol {
                             vc.dismiss(animated: true, completion: nil)
                         }
                     }
-
-
                     self.present(vc, animated: true, completion: nil)
                 }
-
             }
         }
     }
@@ -178,9 +173,23 @@ extension CarCollectionViewController: CarCollectionWebserviceProtocol {
             print(response)
             if status {
                 self.strPromoCode = promoCode
-                //                AlertMessage.showMessageForSuccess(response.dictionary?["message"]?.string ?? "")
-                UtilityClass.showDefaultAlertView(withTitle: "Congratulations!!", message: "Promo-Code Applied Successfully! \n Thank You For Choosing Chick Pick!", buttons: ["Ok"], completion: { (ind) in
-                })
+                self.promoCodeId = response.dictionary?["promocode_id"]?.string ?? ""
+                
+                let attributedString = NSAttributedString(string: promoCode, attributes: [
+                    NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 16), //your font here
+                    NSAttributedString.Key.foregroundColor : ThemeOrange
+                ])
+                
+                let SuccessAlert = UIAlertController(title: "", message: "Thanks Chick, All Done!", preferredStyle: .alert)
+                SuccessAlert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (UIAlertAction) in
+                    
+                }))
+                SuccessAlert.setValue(attributedString, forKey: "attributedTitle")
+                self.present(SuccessAlert, animated: true, completion: nil)
+                
+        
+//                UtilityClass.showDefaultAlertView(withTitle: "Congratulations!!", message: "Thanks Chick, All Done!", buttons: ["Ok"], completion: { (ind) in
+//                })
                 self.stackViewPromoCode.isHidden = false
                 
                 let attrs1 = [NSAttributedString.Key.foregroundColor : UIColor.black]
@@ -192,6 +201,7 @@ extension CarCollectionViewController: CarCollectionWebserviceProtocol {
                 self.lblPromo.attributedText = attributedString1
             } else {
                 self.strPromoCode = ""
+                self.promoCodeId = ""
                 AlertMessage.showMessageForError(response.dictionary?["message"]?.string ?? "")
             }
         }

@@ -15,5 +15,5 @@ class CarsCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var lblModelName : UILabel!
     @IBOutlet weak var lblPrice : UILabel!
     @IBOutlet weak var lblArrivalTime : UILabel!
-    
+    @IBOutlet weak var lblDiscountedPrice : UILabel!
 }

@@ -59,6 +59,7 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
     var estimateFare = ""
     var selectedTimeStemp = ""
     var strPromoCode = ""
+    var promoCodeId = ""
     var isTripSchedule = false
     var selectedIndex : IndexPath!
     // ----------------------------------------------------
@@ -242,20 +243,37 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
 //                        self.estimateFare = (FlatRate == "") ? ( ((estimateFare?.contains(".") == true) ? estimateFare  : "\((Double((estimateMinute == "0" ? "0.0" : estimateFare)!)?.rounded(toPlaces: 2)) ?? 0.0)")!  ) : "\((Double((estimateMinute == "0" ? "0.0" : FlatRate))?.rounded(toPlaces: 2)) ?? 0.0)"
 //                    }
                     self.estimateFare = (FlatRate == "") ? ( ((estimateFare?.contains(".") == true) ? estimateFare  : "\((Double(estimateFare ?? "0.00")?.rounded(toPlaces: 2)) ?? 0.0)")!  ) : "\((Double(FlatRate)?.rounded(toPlaces: 2)) ?? 0.0)"
+                    
 //                    cell.lblPrice.text =  (FlatRate == "") ? ( ((estimateFare?.contains(".") == true) ? "\(Currency) \(estimateFare!)"  : "\(Currency) \((Double((estimateMinute == "0" ? "0.0" : estimateFare)!)?.rounded(toPlaces: 2)) ?? 0.0)")  ) : "\((Double((estimateMinute == "0" ? "0.0" : FlatRate))?.rounded(toPlaces: 2)) ?? 0.0)"
-                    cell.lblPrice.text =  (FlatRate == "") ? ( ((estimateFare?.contains(".") == true) ? "\(Currency) \(estimateFare!)"  : "\(Currency) \((Double(estimateFare ?? "0.00")?.rounded(toPlaces: 2)) ?? 0.0)")  ) : "\((Double(FlatRate)?.rounded(toPlaces: 2)) ?? 0.0)"
+                    
+                    let price =  (FlatRate == "") ? ( ((estimateFare?.contains(".") == true) ? "\(Currency) \(estimateFare!)"  : "\(Currency) \((Double(estimateFare ?? "0.00")?.rounded(toPlaces: 2)) ?? 0.0)")  ) : "\((Double(FlatRate)?.rounded(toPlaces: 2)) ?? 0.0)"
 
-
-                    cell.lblArrivalTime.text = "ETA \(estimateMinute == "0" ? "0" : estimateMinute ?? "0") min"
+                    if estimateCurrentData?.isPromoCodeApplied == "0" { // Promocode not applied
+                        cell.lblPrice.attributedText = nil
+                        cell.lblPrice.text = price
+                        cell.lblDiscountedPrice.isHidden = true
+                        
+                    } else if estimateCurrentData?.isPromoCodeApplied == "1" { // promocode applied
+                        
+                        let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: price)
+                                           attributeString.addAttributes([.strikethroughColor(ThemeOrange), .strikethroughStyle(.thick)], range: NSRange(location: 0, length: attributeString.length))
+                        cell.lblPrice.attributedText = attributeString
+                        cell.lblDiscountedPrice.isHidden = false
+                        cell.lblDiscountedPrice.text = ( ((estimateCurrentData?.promocodeTripFare?.contains(".") == true) ? "\(Currency) \(estimateCurrentData?.promocodeTripFare ?? "0")"  : "\(Currency) \((Double(estimateCurrentData?.promocodeTripFare ?? "0.00")?.rounded(toPlaces: 2)) ?? 0.0)")  )
+                    }
+                    
+//                    cell.lblArrivalTime.text = "ETA \(estimateMinute == "0" ? "0" : estimateMinute ?? "0") min"
+                    cell.lblArrivalTime.text = "\(estimateMinute == "0" ? "0" : estimateMinute ?? "0") min"
                 } else {
                      cell.lblPrice.text =  "\(Currency) 0"
-                    cell.lblArrivalTime.text = "ETA 0 min"
+//                    cell.lblArrivalTime.text = "ETA 0 min"
+                    cell.lblArrivalTime.text = "0 min"
                 }
             }
 
             cell.lblModelName.font = UIFont.bold(ofSize: 14.0)
             cell.lblPrice.font = UIFont.regular(ofSize: 14.0)
-            cell.lblArrivalTime.font = UIFont.regular(ofSize: 14.0)
+            cell.lblArrivalTime.font = UIFont.boldSystemFont(ofSize: 14.0)
             
             cell.lblPrice.textColor = ThemeColor
             cell.lblArrivalTime.textColor = ThemeColor
@@ -380,6 +398,10 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
     @IBAction func btnRemovePromo(_ sender: Any) {
         stackViewPromoCode.isHidden = true
         self.strPromoCode = ""
+        promoCodeId = ""
+        if let homeVc = self.parent as? HomeViewController {
+            homeVc.CallForGetEstimate()
+        }
     }
     
     @IBAction func btnPromoCodeAction(_ sender: UIButton) {
@@ -388,17 +410,26 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
             NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 16), //your font here
             NSAttributedString.Key.foregroundColor : ThemeOrange
         ])
+//        let attributedMsgString = NSAttributedString(string: "Enter promo code", attributes: [
+//            NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 15), //your font here
+//            NSAttributedString.Key.foregroundColor : ThemeOrange
+//        ])
         let alertController = UIAlertController(title: "", message: "Enter promo code", preferredStyle: .alert)
         alertController.addTextField { (textField : UITextField!) -> Void in
-            textField.placeholder = "Enter promo code"
+            textField.placeholder = "Chick, Enter The Code!"
+            textField.textColor = ThemeOrange
         }
         alertController.setValue(attributedString, forKey: "attributedTitle")
+//        alertController.setValue(attributedMsgString, forKey: "attributedMessage")
         let saveAction = UIAlertAction(title: "Apply", style: .default, handler: { alert -> Void in
             let firstTextField = alertController.textFields![0] as UITextField
             print("firstName \(firstTextField.text ?? "")")
             
             if !firstTextField.text!.isBlank {
                 self.webserviceForCheckPromocodeService(promoCode: firstTextField.text ?? "")
+                if let homeVc = self.parent as? HomeViewController {
+                    homeVc.CallForGetEstimate()
+                }
             }
         })
         saveAction.isEnabled = false
@@ -435,10 +466,11 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
 
         if(self.validations().0)
         {
-            btnBookNow.isUserInteractionEnabled = false
             if btnBookNow.titleLabel?.text == "Not Available" || homeVC?.txtPickupLocation.text == "" || homeVC?.txtDropLocation.text == "" {
                 return
             }
+            
+//            btnBookNow.isUserInteractionEnabled = false
             
 //            homeVC?.isExpandCategory = false
             homeVC?.setUpCustomMarker()

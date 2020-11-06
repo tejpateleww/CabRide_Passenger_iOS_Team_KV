@@ -113,7 +113,14 @@ class LoginViewController: UIViewController {
         
         let myLocation = SingletonClass.sharedInstance.myCurrentLocation
 
-        LogInModel.username = txtMobileEmail.text ?? ""
+        let emailText = txtMobileEmail.text ?? ""
+        
+        if emailText.isEmail {
+            LogInModel.username = emailText
+        } else {
+            LogInModel.username = "+44" + emailText
+        }
+        
         LogInModel.password = txtPassword.text ?? ""
         LogInModel.device_type = "ios"
         LogInModel.lat = "\(myLocation.coordinate.latitude)" // "23.75821"

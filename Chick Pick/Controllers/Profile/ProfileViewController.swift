@@ -203,6 +203,7 @@ class ProfileViewController: BaseViewController,UIImagePickerControllerDelegate,
         updateProfile.address = txtAddress.text ?? ""
         updateProfile.dob = txtDOB.text ?? ""
         updateProfile.gender = gender
+        updateProfile.mobile = txtMobile.text ?? ""
         
         if(self.validations().0 == false)
         {
@@ -210,6 +211,7 @@ class ProfileViewController: BaseViewController,UIImagePickerControllerDelegate,
         }
         else
         {
+//            updateProfile.mobile = "+44" + (txtMobile.text ?? "")
             if let sourceImage = imgProfilePic.image {
                 if let defaultImage = UIImage(named: "imgProfilePlaceHolder") {
                     let isDefaultImage = sourceImage.isEqualToImage(defaultImage)
@@ -233,6 +235,10 @@ class ProfileViewController: BaseViewController,UIImagePickerControllerDelegate,
         {
             return (false,"Please enter last name")
         }
+//        else if(updateProfile.mobile.isBlank)
+//        {
+//            return (false,"Please enter mobile number")
+////        }
         else if(updateProfile.dob.isBlank)
         {
             return (false,"Please enter date of birth")
@@ -262,8 +268,8 @@ class ProfileViewController: BaseViewController,UIImagePickerControllerDelegate,
                 {
                     try UserDefaults.standard.set(object: registerModelDetails, forKey: "userProfile")//(loginModelDetails, forKey: "userProfile")
                     SingletonClass.sharedInstance.walletBalance = registerModelDetails.loginData.walletBalance
-                    self.lblEmail.text = registerModelDetails.loginData.firstName + " " + registerModelDetails.loginData.lastName
-                    self.lblMobile.text = registerModelDetails.loginData.mobileNo
+//                    self.lblEmail.text = registerModelDetails.loginData.firstName + " " + registerModelDetails.loginData.lastName
+//                    self.lblMobile.text = registerModelDetails.loginData.email
                     AlertMessage.showMessageForSuccess(json["message"].stringValue)
                     self.navigationController?.popViewController(animated: true)
                 }

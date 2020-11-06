@@ -246,10 +246,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
             self.GoToLogout()
         }
         else if userInfo["gcm.notification.type"] as! String == "verify_customer" {
-            completionHandler([.alert, .sound])
+//            completionHandler([.alert, .sound])
         }
         else if userInfo["gcm.notification.type"] as! String == "request_code_for_complete_trip" {
-            completionHandler([.alert, .sound])
+//            completionHandler([.alert, .sound])
         }
         else if userInfo["gcm.notification.type"] as! String == "accepted_trip" {
             let storyboard = UIStoryboard(name: "MyTrips", bundle: nil)
@@ -263,7 +263,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
 //                    vc.pushViewController(controller, animated: true)
 //                }
             }
-            completionHandler([.alert, .sound])
+//            completionHandler([.alert, .sound])
         }
         else if userInfo["gcm.notification.type"] as! String == "booking_chat" {
             
@@ -307,7 +307,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
             }
         }
         
-        completionHandler([.alert, .sound])
+//        completionHandler([.alert, .sound])
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

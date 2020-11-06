@@ -170,6 +170,7 @@
                         <outlet property="lblMessage" destination="NB1-gQ-OtS" id="DBm-gq-BTk"/>
                         <outlet property="txtOtherReason" destination="HCT-lu-jHQ" id="AzW-39-IhI"/>
                         <outlet property="viewDropDown" destination="bT3-v6-hVk" id="XSb-Hc-ii5"/>
+                        <outlet property="viewLine" destination="ANZ-05-vnK" id="gsk-7y-cz1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a0J-zf-dnc" userLabel="First Responder" sceneMemberID="firstResponder"/>
