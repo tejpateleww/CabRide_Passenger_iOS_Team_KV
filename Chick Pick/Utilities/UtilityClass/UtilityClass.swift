@@ -82,7 +82,7 @@ class UtilityClass : NSObject
     
     static var messageBar = MessageBarController()
 
-    class func showAlert(title:String,message:String,alertTheme:Theme) {
+    class func showAlert(title:String, message:String, alertTheme:Theme) {
         
         forceLogout.forcefullyLogout(strTitle: message)
         messageBar.MessageShow(title: message as NSString, alertType: MessageView.Layout.cardView, alertTheme: alertTheme, TopBottom: true)

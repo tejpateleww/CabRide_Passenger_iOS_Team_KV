@@ -253,7 +253,8 @@ extension MessageView {
         let iconImage = iconStyle.image(theme: theme)
         switch theme {
         case .info:
-            let backgroundColor = UIColor(red: 225.0/255.0, green: 225.0/255.0, blue: 225.0/255.0, alpha: 1.0)
+//            let backgroundColor = UIColor(red: 225.0/255.0, green: 225.0/255.0, blue: 225.0/255.0, alpha: 1.0)
+            let backgroundColor = UIColor(red: 231.0/255.0, green: 149.0/255.0, blue: 223.0/255.0, alpha: 1.0) // Theme Pink
             let foregroundColor = UIColor.darkText
             configureTheme(backgroundColor: backgroundColor, foregroundColor: foregroundColor, iconImage: iconImage)
         case .success:

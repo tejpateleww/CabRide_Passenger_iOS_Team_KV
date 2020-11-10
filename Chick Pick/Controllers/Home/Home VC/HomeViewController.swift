@@ -208,10 +208,13 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
         if self.booingInfo.status == "pending" {
             setupTripStatu(status: .pending)
             
-        } else if self.booingInfo.status == "accepted" && self.booingInfo.bookingType == "book_now"{
-            self.routeDrawMethod(origin: "\(self.booingInfo.driverInfo.lat ?? ""),\(self.booingInfo.driverInfo.lng ?? "")", destination: "\(self.booingInfo.customerInfo.lat ?? ""),\(self.booingInfo.customerInfo.lng ?? "")", isTripAccepted: true)
-             setupTripStatu(status: .accepted)
+        } else if self.booingInfo.status == "accepted" {
             
+            if (self.booingInfo.bookingType == "book_now" || (self.booingInfo.bookingType == "book_later" && self.booingInfo.onTheWay == "1")) {
+                
+                self.routeDrawMethod(origin: "\(self.booingInfo.driverInfo.lat ?? ""),\(self.booingInfo.driverInfo.lng ?? "")", destination: "\(self.booingInfo.customerInfo.lat ?? ""),\(self.booingInfo.customerInfo.lng ?? "")", isTripAccepted: true)
+                setupTripStatu(status: .accepted)
+            }
         } else if self.booingInfo.status == "traveling" {
             self.routeDrawMethod(origin: "\(self.booingInfo.pickupLat ?? ""),\(self.booingInfo.pickupLng ?? "")", destination: "\(self.booingInfo.dropoffLat ?? ""),\(self.booingInfo.dropoffLng ?? "")", isTripAccepted: true)
              setupTripStatu(status: .traveling)
@@ -262,7 +265,6 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
                 self.navigationController?.pushViewController(viewController, animated: true)
             }
         }
-        
     }
 
     override func viewDidLayoutSubviews() {

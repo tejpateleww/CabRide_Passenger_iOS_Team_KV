@@ -101,6 +101,10 @@ class MyTripsViewController: BaseViewController
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                 self.collectionTableView.loadTheSection(ofNumber: 1)
             }
+        } else if self.tripType == .past {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                self.collectionTableView.loadTheSection(ofNumber: 0)
+            }
         }
         
         collectionTableView.didSelectItemAt = {
@@ -270,15 +274,15 @@ extension MyTripsViewController: UITableViewDelegate, UITableViewDataSource{
                 cell.lblDropoff.text = dataResponseHeader.dropoffLocation
                 cell.btnSendReceipt.isHidden = true
                 cell.lblKM.isHidden = true
-//                if self.tripType.rawValue.lowercased() != "past" {
-//                    cell.btnSendReceipt.isHidden = false
-//                    cell.btnSendReceipt.setTitle("Cancel", for: .normal)
-//                    cell.btnSendReceipt.titleLabel?.font = UIFont.regular(ofSize: 14)
-//                    cell.btnSendReceipt.tag = indexPath.section
-//                    cell.btnSendReceipt.addTarget(self, action: #selector(self.cancelTrip(_:)), for: .touchUpInside)
-//                    
-//                    UtilityClass.viewCornerRadius(view: cell.btnSendReceipt, borderWidth: 1, borderColor: .black)
-//                }
+                if self.tripType.rawValue.lowercased() != "past" {
+                    cell.btnSendReceipt.isHidden = false
+                    cell.btnSendReceipt.setTitle("Cancel", for: .normal)
+                    cell.btnSendReceipt.titleLabel?.font = UIFont.regular(ofSize: 14)
+                    cell.btnSendReceipt.tag = indexPath.section
+                    cell.btnSendReceipt.addTarget(self, action: #selector(self.cancelTrip(_:)), for: .touchUpInside)
+                    
+                    UtilityClass.viewCornerRadius(view: cell.btnSendReceipt, borderWidth: 1, borderColor: .black)
+                }
                 
                 cell.setup()
                 return cell

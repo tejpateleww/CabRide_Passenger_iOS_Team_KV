@@ -123,7 +123,7 @@ extension CarCollectionViewController: CarCollectionWebserviceProtocol {
                 homeVC?.setupAfterComplete()
                 let msg = response.dictionary?["message"]?.stringValue ?? response.dictionary?["message"]?.array?.first?.stringValue ?? ""
                 
-                AlertMessage.showMessageForSuccess(msg)
+//                AlertMessage.showMessageForSuccess(msg)
                 
 //                UtilityClass.showAlert(title: AppName.kAPPName, message: msg, alertTheme: .success)
 //                UtilityClass.showDefaultAlertView(withTitle: AppName.kAPPName, message: msg, buttons: ["OK"], completion: { (index) in

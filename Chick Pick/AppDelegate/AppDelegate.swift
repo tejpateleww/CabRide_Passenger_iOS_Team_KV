@@ -146,7 +146,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Swift.Void) {
         print(#function, response)
-
+        
         //        let content = response.notification.request.content
         let userInfo = response.notification.request.content.userInfo
         if userInfo["gcm.notification.type"] == nil { return }
@@ -160,16 +160,51 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
             self.GoToLogout()
         }
         else if userInfo["gcm.notification.type"] as! String == "accepted_trip" {
-            let storyboard = UIStoryboard(name: "MyTrips", bundle: nil)
-            if let controller = storyboard.instantiateViewController(withIdentifier: "MyTripsViewController") as? MyTripsViewController {
-                
-                controller.tripType = .upcoming
-                
-//                (self.window?.rootViewController as? UINavigationController)?.pushViewController(controller, animated: false)
-                
-//                if let vc = self.window?.rootViewController?.children.first as? NavigationController {
-//                    vc.pushViewController(controller, animated: true)
-//                }
+            
+            if let myTripVC = (self.window?.rootViewController as? UINavigationController)?.topViewController?.children.first?.children.last as? MyTripsViewController {
+                myTripVC.tripType = .upcoming
+                myTripVC.collectionTableView.loadTheSection(ofNumber: 1)
+                myTripVC.LoadNewData()
+            }
+            else {
+                let storyboard = UIStoryboard(name: "MyTrips", bundle: nil)
+                if let controller = storyboard.instantiateViewController(withIdentifier: "MyTripsViewController") as? MyTripsViewController {
+                    
+                    controller.tripType = .upcoming
+                    
+                    if let homeVC = (self.window?.rootViewController as? UINavigationController)?.topViewController?.children.first?.children.first as? HomeViewController {
+                        homeVC.navigationController?.pushViewController(controller, animated: false)
+                    }
+                }
+            }
+        }
+        else if userInfo["gcm.notification.type"] as! String == "on_the_way" || userInfo["gcm.notification.type"] as! String == "start_trip" {
+            
+            if ((self.window?.rootViewController as? UINavigationController)?.topViewController?.children.first?.children.last as? HomeViewController) != nil {
+               ThemeOrange 
+            } else {
+                if let homeVC = (self.window?.rootViewController as? UINavigationController)?.topViewController?.children.first?.children.first as? HomeViewController {
+                    homeVC.navigationController?.popViewController(animated: false)
+                }
+            }
+        }
+        else if userInfo["gcm.notification.type"] as! String == "canceled_trip" || userInfo["gcm.notification.type"] as! String == "complete_trip" {
+            
+            if let myTripVC = (self.window?.rootViewController as? UINavigationController)?.topViewController?.children.first?.children.last as? MyTripsViewController {
+                myTripVC.tripType = .past
+                myTripVC.collectionTableView.loadTheSection(ofNumber: 0)
+                myTripVC.LoadNewData()
+            }
+            else {
+                let storyboard = UIStoryboard(name: "MyTrips", bundle: nil)
+                if let controller = storyboard.instantiateViewController(withIdentifier: "MyTripsViewController") as? MyTripsViewController {
+                    
+                    controller.tripType = .past
+                    
+                    if let homeVC = (self.window?.rootViewController as? UINavigationController)?.topViewController?.children.first?.children.first as? HomeViewController {
+                        homeVC.navigationController?.pushViewController(controller, animated: false)
+                    }
+                }
             }
         }
         else if userInfo["gcm.notification.type"] as! String == "booking_chat" {
@@ -232,38 +267,52 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         
         print(#function, notification.request.content.userInfo)
         //        let content = notification.request.content
-
+        
         let userInfo = notification.request.content.userInfo
         if userInfo["gcm.notification.type"] == nil { return }
- 
+        
         let key = (userInfo as NSDictionary).object(forKey: "gcm.notification.type")!
         
         print("USER INFo : ",userInfo)
         print("KEY : ",key)
-
+        
         if userInfo["gcm.notification.type"] as! String == "Logout" {
             completionHandler([.alert, .sound])
             self.GoToLogout()
         }
         else if userInfo["gcm.notification.type"] as! String == "verify_customer" {
-//            completionHandler([.alert, .sound])
+            //            completionHandler([.alert, .sound])
         }
         else if userInfo["gcm.notification.type"] as! String == "request_code_for_complete_trip" {
-//            completionHandler([.alert, .sound])
+            //            completionHandler([.alert, .sound])
         }
         else if userInfo["gcm.notification.type"] as! String == "accepted_trip" {
-            let storyboard = UIStoryboard(name: "MyTrips", bundle: nil)
-            if let controller = storyboard.instantiateViewController(withIdentifier: "MyTripsViewController") as? MyTripsViewController {
-                
-                controller.tripType = .upcoming
-                
-//                (self.window?.rootViewController as? UINavigationController)?.pushViewController(controller, animated: true)
-                
-//                if let vc = self.window?.rootViewController?.children.first as? NavigationController {
-//                    vc.pushViewController(controller, animated: true)
-//                }
-            }
-//            completionHandler([.alert, .sound])
+            //            let storyboard = UIStoryboard(name: "MyTrips", bundle: nil)
+            //            if let controller = storyboard.instantiateViewController(withIdentifier: "MyTripsViewController") as? MyTripsViewController {
+            //
+            //                controller.tripType = .upcoming
+            //
+            //                (self.window?.rootViewController as? UINavigationController)?.pushViewController(controller, animated: true)
+            //
+            //                if let vc = self.window?.rootViewController?.children.first as? NavigationController {
+            //                    vc.pushViewController(controller, animated: true)
+            //                }
+            //            }
+            completionHandler([.alert, .sound])
+        }
+        else if userInfo["gcm.notification.type"] as! String == "canceled_trip" || userInfo["gcm.notification.type"] as! String == "complete_trip" {
+            //            let storyboard = UIStoryboard(name: "MyTrips", bundle: nil)
+            //            if let controller = storyboard.instantiateViewController(withIdentifier: "MyTripsViewController") as? MyTripsViewController {
+            //
+            //                controller.tripType = .past
+            //
+            //                (self.window?.rootViewController as? UINavigationController)?.pushViewController(controller, animated: true)
+            //
+            //                if let vc = self.window?.rootViewController?.children.first as? NavigationController {
+            //                    vc.pushViewController(controller, animated: true)
+            //                }
+            //            }
+            completionHandler([.alert, .sound])
         }
         else if userInfo["gcm.notification.type"] as! String == "booking_chat" {
             
@@ -279,7 +328,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
                             
                             if let senderID = dic["sender_id"] as? String {
                                 if senderID == vc.receiver_id || dic["booking_id"] as? String ==  vc.strBookingId {
-           
+                                    
                                     let chat = MessageObject(isSender: false, name: dic["sender_name"] as? String ?? "", image: "", id: "", sender_id: dic["sender_id"] as? String ?? "", receiver_id: dic["receiver_id"] as? String ?? "", message: dic["message"] as? String ?? "", created_date: dic["created_at"] as? String ?? "", bookingId: dic["booking_id"] as? String ?? "", sender_type: dic["sender_type"] as? String ?? "", receiver_type: dic["receiver_type"] as? String ?? "")
                                     
                                     //                                    let chat = MessageObject(ReceiverID: dic["ReceiverID"] as? String ?? "", Message: dic["Message"] as? String ?? "", SenderNickname: dic["sender_nickname"] as? String ?? "", SenderName: dic["sender_name"] as? String ?? "", SenderID: dic["SenderID"] as? String ?? "", Date: dic["Date"] as? String ?? "", ChatId: dic["chat_id"] as? String ?? "")
@@ -307,7 +356,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
             }
         }
         
-//        completionHandler([.alert, .sound])
+        completionHandler([.alert, .sound])
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
