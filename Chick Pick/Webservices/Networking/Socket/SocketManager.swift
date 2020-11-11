@@ -64,6 +64,7 @@ class SocketIOManager: NSObject {
     
     func closeConnection() {
         socket.disconnect()
+        self.isSocketOn = false
     }
     
     func socketCall(for key: String, completion: CompletionBlock = nil)
@@ -77,7 +78,7 @@ class SocketIOManager: NSObject {
    
     func socketEmit(for key: String, with parameter: [String:Any]){
         socket.emit(key, with: [parameter])
-//        print ("Parameter Emitted for key - \(key) :: \(parameter)")
+        print ("Parameter Emitted for key - \(key) :: \(parameter)")
     }
     
     

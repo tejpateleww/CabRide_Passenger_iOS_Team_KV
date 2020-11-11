@@ -84,6 +84,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
     lazy var geocoder = CLGeocoder()
     var driverInfoVC : DriverInfoPageViewController?
     var ratingInfoVC : DriverRatingAndTipViewController?
+    var completeVC : CompleteViewController?
     var stopAnimatingCamera = Bool()
     var mapView = GMSMapView()
     var pulseArray = [CAShapeLayer]()
@@ -126,6 +127,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
     @IBOutlet weak var carListContainerView: UIView!
     @IBOutlet weak var driverInfoContainerView: UIView!
     @IBOutlet weak var driverRatingContainerView: UIView!
+    @IBOutlet weak var completeContainerView: UIView!
 
 
     //MARK:- DidSet Methods
@@ -427,7 +429,8 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
                 self.hideAndShowView(view: .rideStart)
                 self.isExpandCategory = true
             case .completed:
-                self.hideAndShowView(view: .ratings)
+//                self.hideAndShowView(view: .ratings)
+                self.hideAndShowView(view: .completeTrip)
                 self.isExpandCategory = true
         }
     }
@@ -573,9 +576,14 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
                                         "promocode_id":promocode]
             
             self.emitSocket_GetEstimateFare(param: param)
+            let isLogin = UserDefaults.standard.bool(forKey: "isUserLogin")
+            
+            
             DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
 //                if self.booingInfo.id == nil || self.booingInfo.id == "" {
-                     self.CallForGetEstimate()
+                if isLogin {
+                    self.CallForGetEstimate()
+                }
 //                }
             }
         }
@@ -1022,6 +1030,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
         driverInfoContainerView.isHidden = !(view == .requestAccepted || view == .waiting || view == .rideStart)
         driverRatingContainerView.isHidden = !(view == .ratings || view == .askForTip)
         carListContainerView.isHidden = !(view == .booking)
+        completeContainerView.isHidden = !(view == .completeTrip)
         containerView.isHidden = (view == .none)
         viewSetup(view: view)
     }
@@ -1043,14 +1052,17 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
             driverVC.viewWaiting.isHidden = true
             driverVC.cancelBtn.isHidden = true
             driverVC.setData(bookingData: self.booingInfo)
+        case .completeTrip:
+            guard let vc = self.completeVC else { return }
+            vc.setTotal(strTotal: self.booingInfo.grandTotal) 
         case .ratings:
-            guard let driverVC = self.ratingInfoVC else { return }
-            driverVC.viewType = .ratings
-            driverVC.setData(bookingData: self.booingInfo)
+            guard let ratingVC = self.ratingInfoVC else { return }
+            ratingVC.viewType = .ratings
+            ratingVC.setData(bookingData: self.booingInfo)
         case .askForTip:
-            guard let driverVC = self.ratingInfoVC else { return }
-            driverVC.viewType = .askForTip
-            driverVC.setData(bookingData: self.booingInfo)
+            guard let ratingVC = self.ratingInfoVC else { return }
+            ratingVC.viewType = .askForTip
+            ratingVC.setData(bookingData: self.booingInfo)
         default:
             break
         }
@@ -1067,6 +1079,11 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
         
         if let vc = segue.destination as? DriverRatingAndTipViewController{
             ratingInfoVC = vc
+            return
+        }
+        
+        if let vc = segue.destination as? CompleteViewController{
+            completeVC = vc
             return
         }
     }
@@ -1249,6 +1266,7 @@ extension HomeViewController: GMSAutocompleteViewControllerDelegate {
         self.carListContainerView.isHidden = false
         self.driverInfoContainerView.isHidden = true
         self.driverRatingContainerView.isHidden = true
+        self.completeContainerView.isHidden = true
 //        self.viewPickupLocation.isHidden = true
         self.viewDropOffLocation.isHidden = false
 //        self.containerView.isHidden = true

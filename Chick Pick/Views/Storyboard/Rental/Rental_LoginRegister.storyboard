@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Oxz-R4-M5h">
-    <device id="retina5_5" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Oxz-R4-M5h">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,7 +16,7 @@
         <!--Register Container View Controller-->
         <scene sceneID="wMk-Hq-nMf">
             <objects>
-                <viewController storyboardIdentifier="RegisterContainerViewController" id="VHM-q8-ZO2" customClass="RegisterContainerViewController" customModule="Peppea" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegisterContainerViewController" id="VHM-q8-ZO2" customClass="RegisterContainerViewController" customModule="Chick_Pick_Ride" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CEb-fG-nup">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -27,7 +25,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="odC-MN-XJF">
-                                <rect key="frame" x="10" y="25" width="30" height="30"/>
+                                <rect key="frame" x="10" y="5" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="odC-MN-XJF" secondAttribute="height" multiplier="1:1" id="R5u-8K-cXw"/>
                                     <constraint firstAttribute="height" constant="30" id="isN-9Q-U6q"/>
@@ -41,34 +39,34 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="8bK-kF-3Qh">
-                                <rect key="frame" x="41.333333333333343" y="60" width="331.33333333333326" height="154"/>
+                                <rect key="frame" x="41.333333333333343" y="40" width="331.33333333333326" height="154"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="154" id="P0P-UO-SVw"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CK4-Ri-0v7">
-                                <rect key="frame" x="0.0" y="219" width="414" height="517"/>
+                                <rect key="frame" x="0.0" y="199" width="414" height="537"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RnP-Sq-J4g">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="517"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="537"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e0l-mY-4oq">
-                                                <rect key="frame" x="0.0" y="0.0" width="1242" height="517"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="1242" height="537"/>
                                                 <subviews>
                                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RgN-LE-aFu">
-                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="517"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="537"/>
                                                         <connections>
                                                             <segue destination="pp2-7o-Pib" kind="embed" id="vbA-nO-ZB5"/>
                                                         </connections>
                                                     </containerView>
                                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O8T-Lz-1zy">
-                                                        <rect key="frame" x="414" y="0.0" width="414" height="517"/>
+                                                        <rect key="frame" x="414" y="0.0" width="414" height="537"/>
                                                         <connections>
                                                             <segue destination="FAY-bV-OS8" kind="embed" id="BT7-MD-C1C"/>
                                                         </connections>
                                                     </containerView>
                                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EdH-lV-em7">
-                                                        <rect key="frame" x="828" y="0.0" width="414" height="517"/>
+                                                        <rect key="frame" x="828" y="0.0" width="414" height="537"/>
                                                         <connections>
                                                             <segue destination="RD4-df-zYc" kind="embed" id="phy-Wk-Kqy"/>
                                                         </connections>
@@ -115,7 +113,6 @@
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="SYS-Vh-K8J">
                                         <rect key="frame" x="0.0" y="0.0" width="75" height="15"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HDn-KT-DDf">
                                                 <rect key="frame" x="0.0" y="0.0" width="15" height="15"/>
@@ -187,7 +184,7 @@
         <!--Forgot Password View Controller-->
         <scene sceneID="vBQ-zK-dsj">
             <objects>
-                <viewController storyboardIdentifier="ForgotPasswordViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zAi-Fq-jbR" customClass="ForgotPasswordViewController" customModule="Peppea" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ForgotPasswordViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zAi-Fq-jbR" customClass="ForgotPasswordViewController" customModule="Chick_Pick_Ride" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="e03-6h-H6L">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -218,14 +215,13 @@
                                             <constraint firstAttribute="width" secondItem="Drx-yS-EBE" secondAttribute="height" multiplier="2:1" id="TIS-FA-zSn"/>
                                         </constraints>
                                     </imageView>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Email id" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iUJ-SD-fas" customClass="ThemeTextFieldLoginRegister" customModule="Peppea" customModuleProvider="target">
-                                        <rect key="frame" x="20.666666666666657" y="275.33333333333331" width="372.66666666666674" height="30"/>
-                                        <nil key="textColor"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Email id" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iUJ-SD-fas" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick_Ride" customModuleProvider="target">
+                                        <rect key="frame" x="20.666666666666657" y="275.33333333333331" width="372.66666666666674" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Byy-pd-A7g">
-                                        <rect key="frame" x="62" y="355.33333333333331" width="290" height="34"/>
+                                        <rect key="frame" x="62" y="359.33333333333331" width="290" height="34"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" title="Reset Password">
@@ -281,7 +277,7 @@
         <!--Change PwVC-->
         <scene sceneID="LMc-Xq-Uvx">
             <objects>
-                <viewController storyboardIdentifier="ChangePwVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lRL-0D-3ga" customClass="ChangePwVC" customModule="Peppea" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChangePwVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lRL-0D-3ga" customClass="ChangePwVC" customModule="Chick_Pick_Ride" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PhT-zb-V2H">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -309,26 +305,23 @@
                                             <constraint firstAttribute="width" secondItem="Cv6-Hm-xCn" secondAttribute="height" multiplier="2:1" id="r9D-hP-0Uw"/>
                                         </constraints>
                                     </imageView>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Old Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e83-Fp-mNo" customClass="ThemeTextFieldLoginRegister" customModule="Peppea" customModuleProvider="target">
-                                        <rect key="frame" x="20.666666666666657" y="250.33333333333337" width="372.66666666666674" height="30"/>
-                                        <nil key="textColor"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Old Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e83-Fp-mNo" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick_Ride" customModuleProvider="target">
+                                        <rect key="frame" x="20.666666666666657" y="250.33333333333337" width="372.66666666666674" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pus-26-OJK" customClass="ThemeTextFieldLoginRegister" customModule="Peppea" customModuleProvider="target">
-                                        <rect key="frame" x="20.666666666666657" y="305.33333333333331" width="372.66666666666674" height="30"/>
-                                        <nil key="textColor"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pus-26-OJK" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick_Ride" customModuleProvider="target">
+                                        <rect key="frame" x="20.666666666666657" y="309.33333333333331" width="372.66666666666674" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yg6-Of-qYw" customClass="ThemeTextFieldLoginRegister" customModule="Peppea" customModuleProvider="target">
-                                        <rect key="frame" x="20.666666666666657" y="360.33333333333331" width="372.66666666666674" height="30"/>
-                                        <nil key="textColor"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yg6-Of-qYw" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick_Ride" customModuleProvider="target">
+                                        <rect key="frame" x="20.666666666666657" y="368.33333333333331" width="372.66666666666674" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hTb-L0-tPK">
-                                        <rect key="frame" x="62" y="440.33333333333331" width="290" height="34"/>
+                                        <rect key="frame" x="62" y="452.33333333333331" width="290" height="34"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" title="Submit">
@@ -392,7 +385,7 @@
         <!--PeppeaBusinessBannerViewController-->
         <scene sceneID="13G-Jl-Sd7">
             <objects>
-                <viewController storyboardIdentifier="PeppeaBusinessBannerViewController" id="RES-Gf-mPs" userLabel="PeppeaBusinessBannerViewController" customClass="PeppeaBusinessBannerViewController" customModule="Peppea" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PeppeaBusinessBannerViewController" id="RES-Gf-mPs" userLabel="PeppeaBusinessBannerViewController" customClass="PeppeaBusinessBannerViewController" customModule="Chick_Pick_Ride" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TDp-RU-AA3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -434,7 +427,7 @@
                                         <rect key="frame" x="0.0" y="394.33333333333326" width="414" height="263"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconBird" translatesAutoresizingMaskIntoConstraints="NO" id="PHI-WQ-LY5">
-                                                <rect key="frame" x="192" y="123.33333333333331" width="30" height="16"/>
+                                                <rect key="frame" x="21.333333333333343" y="32.333333333333371" width="371.33333333333326" height="198"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="PHI-WQ-LY5" secondAttribute="height" multiplier="15:8" id="JnN-np-qxL"/>
                                                 </constraints>
@@ -602,7 +595,7 @@
         <!--PeppeaBusinessSetupViewController-->
         <scene sceneID="Im9-7X-3Re">
             <objects>
-                <viewController storyboardIdentifier="PeppeaBusinessSetupViewController" id="iT3-33-PyS" userLabel="PeppeaBusinessSetupViewController" customClass="PeppeaBusinessSetupViewController" customModule="Peppea" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PeppeaBusinessSetupViewController" id="iT3-33-PyS" userLabel="PeppeaBusinessSetupViewController" customClass="PeppeaBusinessSetupViewController" customModule="Chick_Pick_Ride" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="C19-5q-QSd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -611,23 +604,23 @@
                                 <rect key="frame" x="114.33333333333333" y="318.66666666666669" width="185.33333333333337" height="99"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Business Setup" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JuK-RN-aH4">
-                                <rect key="frame" x="10" y="50" width="138.66666666666666" height="24"/>
+                                <rect key="frame" x="10" y="30" width="138.66666666666666" height="24"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How would you like top pay when you ride for business?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yu6-jD-M3H">
-                                <rect key="frame" x="10" y="89" width="394" height="40.666666666666657"/>
+                                <rect key="frame" x="10" y="69" width="394" height="40.666666666666657"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jRT-ho-Kiv">
-                                <rect key="frame" x="0.0" y="139.66666666666666" width="414" height="410.33333333333337"/>
+                                <rect key="frame" x="0.0" y="119.66666666666666" width="414" height="430.33333333333337"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PaymentWalletTypeListCell" rowHeight="55" id="pgw-JB-afG" customClass="PaymentWalletTypeListCell" customModule="Peppea" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PaymentWalletTypeListCell" rowHeight="55" id="pgw-JB-afG" customClass="PaymentWalletTypeListCell" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pgw-JB-afG" id="gOv-v6-3xZ">
@@ -691,7 +684,7 @@
                                             <outlet property="lblTitle" destination="Fy1-ay-dEv" id="Rfg-my-cjF"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PaymentCardTypeListCell" rowHeight="60" id="ZTE-vI-FLk" userLabel="PaymentCardTypeListCell" customClass="PaymentCardTypeListCell" customModule="Peppea" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PaymentCardTypeListCell" rowHeight="60" id="ZTE-vI-FLk" userLabel="PaymentCardTypeListCell" customClass="PaymentCardTypeListCell" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="83" width="414" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZTE-vI-FLk" id="yUQ-UZ-MbS">
@@ -896,7 +889,7 @@
         <!--Register View Controller-->
         <scene sceneID="MhA-Hn-3pm">
             <objects>
-                <viewController storyboardIdentifier="RegisterViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="pp2-7o-Pib" customClass="RegisterViewController" customModule="Peppea" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegisterViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="pp2-7o-Pib" customClass="RegisterViewController" customModule="Chick_Pick_Ride" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DQ7-OL-ISQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="517"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -922,7 +915,7 @@
                                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="46n-eI-XAJ">
                                                         <rect key="frame" x="0.0" y="0.0" width="0.0" height="50"/>
                                                         <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nG6-na-Y0B" customClass="ThemeTextField" customModule="Peppea" customModuleProvider="target">
+                                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nG6-na-Y0B" customClass="ThemeTextField" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="0.0" height="50"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -937,7 +930,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mn8-JN-3gn">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
                                                         <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mobile Number" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oQn-Wh-Zgj" customClass="ThemeTextFieldLoginRegister" customModule="Peppea" customModuleProvider="target">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mobile Number" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oQn-Wh-Zgj" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -961,7 +954,7 @@
                                                     <constraint firstAttribute="trailing" secondItem="mn8-JN-3gn" secondAttribute="trailing" id="p37-X2-kpB"/>
                                                 </constraints>
                                             </stackView>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3AN-gm-QGU" customClass="ThemeTextFieldLoginRegister" customModule="Peppea" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3AN-gm-QGU" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="70" width="374" height="50"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -969,7 +962,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HhL-wb-j0x" customClass="ThemeTextFieldLoginRegister" customModule="Peppea" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HhL-wb-j0x" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="140" width="374" height="50"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -977,7 +970,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="25Q-dQ-K2B" customClass="ThemeTextFieldLoginRegister" customModule="Peppea" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="25Q-dQ-K2B" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="210" width="374" height="50"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -987,7 +980,7 @@
                                             </textField>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rT3-0l-Lea" customClass="ThemeButton" customModule="Peppea" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rT3-0l-Lea" customClass="ThemeButton" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                         <rect key="frame" x="20" y="457" width="374" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -1047,7 +1040,7 @@
         <!--Registration New View Controller-->
         <scene sceneID="ylf-Gu-fMr">
             <objects>
-                <viewController storyboardIdentifier="RegistrationNewViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RD4-df-zYc" customClass="RegistrationNewViewController" customModule="Peppea" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegistrationNewViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RD4-df-zYc" customClass="RegistrationNewViewController" customModule="Chick_Pick_Ride" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ndw-ZI-9Jh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="517"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1083,7 +1076,7 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="6OX-dl-chD">
                                                         <rect key="frame" x="10" y="95" width="394" height="330"/>
                                                         <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S9m-C3-QC4" customClass="ThemeTextFieldLoginRegister" customModule="Peppea" customModuleProvider="target">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S9m-C3-QC4" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="394" height="50"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1094,7 +1087,7 @@
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                                             </textField>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B0E-KC-YPb" customClass="ThemeTextFieldLoginRegister" customModule="Peppea" customModuleProvider="target">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B0E-KC-YPb" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="70" width="394" height="50"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1102,7 +1095,7 @@
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                                             </textField>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IyW-Et-eXc" customClass="ThemeTextFieldLoginRegister" customModule="Peppea" customModuleProvider="target">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IyW-Et-eXc" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="140" width="394" height="50"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1110,7 +1103,7 @@
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                                             </textField>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Refferal Code" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l2t-9B-kW7" customClass="ThemeTextFieldLoginRegister" customModule="Peppea" customModuleProvider="target">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Refferal Code" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l2t-9B-kW7" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="210" width="394" height="50"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1118,7 +1111,7 @@
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Date of Birth" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3UD-iJ-QgM" customClass="ThemeTextFieldLoginRegister" customModule="Peppea" customModuleProvider="target">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Date of Birth" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3UD-iJ-QgM" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="280" width="394" height="50"/>
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1330,9 +1323,8 @@
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nfR-q0-II0">
                                                                         <rect key="frame" x="0.0" y="160" width="394" height="40"/>
                                                                         <subviews>
-                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Select Company" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e9F-SP-ofd" customClass="ThemeTextFieldLoginRegister" customModule="Peppea" customModuleProvider="target">
+                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Select Company" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e9F-SP-ofd" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="394" height="40"/>
-                                                                                <nil key="textColor"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <textInputTraits key="textInputTraits"/>
                                                                                 <connections>
@@ -1386,7 +1378,7 @@
                                             <constraint firstItem="YY5-fe-5zv" firstAttribute="leading" secondItem="dnH-0m-hXy" secondAttribute="leading" id="k9i-Eq-hf6"/>
                                         </constraints>
                                     </scrollView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UV2-ta-NdV" customClass="ThemeButton" customModule="Peppea" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UV2-ta-NdV" customClass="ThemeButton" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                         <rect key="frame" x="10" y="457" width="394" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -1452,20 +1444,20 @@
         <!--Search For Company View Controller-->
         <scene sceneID="VZD-or-Zhd">
             <objects>
-                <viewController storyboardIdentifier="SearchForCompanyViewController" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bYK-6L-cF3" customClass="SearchForCompanyViewController" customModule="Peppea" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchForCompanyViewController" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bYK-6L-cF3" customClass="SearchForCompanyViewController" customModule="Chick_Pick_Ride" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="C9w-fv-OWX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uZn-iC-Lqg">
-                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="692"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="hmN-YT-PtL">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hmN-YT-PtL" id="HV4-Z6-z0F">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1497,7 +1489,7 @@
         <!--RegisterOTP Varification View Controller-->
         <scene sceneID="A7y-zl-hIm">
             <objects>
-                <viewController storyboardIdentifier="RegisterOTPVarificationViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="FAY-bV-OS8" customClass="RegisterOTPVarificationViewController" customModule="Peppea" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegisterOTPVarificationViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="FAY-bV-OS8" customClass="RegisterOTPVarificationViewController" customModule="Chick_Pick_Ride" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hUn-KZ-VL9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="517"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1508,7 +1500,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gOb-bu-4qk">
                                         <rect key="frame" x="20" y="70.666666666666671" width="374" height="40"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="OTP Code" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bSb-xE-hWf" customClass="ThemeTextFieldLoginRegister" customModule="Peppea" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="OTP Code" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bSb-xE-hWf" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -1520,7 +1512,7 @@
                                             </textField>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uug-LS-YoZ" customClass="ThemeButton" customModule="Peppea" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uug-LS-YoZ" customClass="ThemeButton" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                         <rect key="frame" x="20" y="457" width="374" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -1585,7 +1577,7 @@
         <!--Splash View Controller-->
         <scene sceneID="nSH-c2-s7f">
             <objects>
-                <viewController storyboardIdentifier="SplashViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ljd-ew-QGU" customClass="SplashViewController" customModule="Peppea" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SplashViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ljd-ew-QGU" customClass="SplashViewController" customModule="Chick_Pick_Ride" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" tag="1" contentMode="scaleToFill" id="flW-4o-7wC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1631,7 +1623,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m9P-yz-PJb">
-                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fsh-Uf-wEc">
                                         <rect key="frame" x="18" y="0.0" width="30" height="30"/>
@@ -1651,7 +1643,7 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="2KI-G4-dei">
                                         <rect key="frame" x="30" y="100" width="354" height="154"/>
                                     </imageView>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mobile Number/Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zhq-7I-sWQ" customClass="ThemeTextFieldLoginRegister" customModule="Peppea" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mobile Number/Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zhq-7I-sWQ" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                         <rect key="frame" x="10" y="273" width="394" height="40"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" red="0.94901960780000005" green="0.08235294118" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1670,7 +1662,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QpQ-cO-04A" customClass="ThemeButton" customModule="Peppea" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QpQ-cO-04A" customClass="ThemeButton" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                         <rect key="frame" x="50" y="353" width="314" height="50"/>
                                         <color key="backgroundColor" red="0.21176470589999999" green="0.20392156859999999" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -1718,7 +1710,7 @@
         <!--Rental Login View Controller-->
         <scene sceneID="EcJ-lR-QsX">
             <objects>
-                <viewController storyboardIdentifier="RentalLoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7N9-T9-nqT" customClass="RentalLoginViewController" customModule="Peppea" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RentalLoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7N9-T9-nqT" customClass="RentalLoginViewController" customModule="Chick_Pick_Ride" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nhv-bW-EU1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1742,7 +1734,7 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="sit-Te-ryF">
                                                         <rect key="frame" x="20" y="254" width="374" height="54"/>
                                                         <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mobile Number/Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CBx-ij-mZU" customClass="ThemeTextFieldLoginRegister" customModule="Peppea" customModuleProvider="target">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mobile Number/Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CBx-ij-mZU" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="17"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <color key="tintColor" red="0.94901960780000005" green="0.08235294118" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1758,7 +1750,7 @@
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </textField>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nQn-R2-0H7" customClass="ThemeTextFieldLoginRegister" customModule="Peppea" customModuleProvider="target">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nQn-R2-0H7" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="37" width="374" height="17"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <color key="tintColor" red="0.94901960780000005" green="0.08235294118" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1786,7 +1778,7 @@
                                                             <action selector="btnForgotPassword:" destination="7N9-T9-nqT" eventType="touchUpInside" id="Udq-HH-jiM"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="15L-y5-uyY" customClass="ThemeButton" customModule="Peppea" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="15L-y5-uyY" customClass="ThemeButton" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                                         <rect key="frame" x="50" y="366" width="314" height="50"/>
                                                         <color key="backgroundColor" red="0.21176470589999999" green="0.20392156859999999" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
@@ -1968,7 +1960,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="i8h-gW-m3K" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="BaM-UF-BWG">
-                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

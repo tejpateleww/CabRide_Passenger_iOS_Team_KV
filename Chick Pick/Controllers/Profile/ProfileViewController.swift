@@ -395,6 +395,16 @@ class ProfileViewController: BaseViewController,UIImagePickerControllerDelegate,
         datePickerView.addTarget(self, action: #selector(self.pickupdateMethod(_:)), for: UIControl.Event.valueChanged)
     }
     
+    @IBAction func txtPhoneNumber(_ sender: SkyFloatingLabelTextField) {
+        sender.resignFirstResponder()
+        let storyborad = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyborad.instantiateViewController(withIdentifier: "UpdateMobileEmailVC") as! UpdateMobileEmailVC
+        vc.isFromEmail = false
+        vc.strEmailOrMobile = txtMobile.text!
+        vc.delegate = self
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     @objc func pickupdateMethod(_ sender: UIDatePicker)
     {
         let dateFormaterView = DateFormatter()
@@ -410,5 +420,17 @@ class ProfileViewController: BaseViewController,UIImagePickerControllerDelegate,
         self.navigationController?.pushViewController(ChangePwVC, animated: true)
     }
     
+}
+
+
+extension ProfileViewController : updateMobileOrEmailDataSource {
+    func updateData(update: String, isEmail: Bool) {
+        if isEmail {
+//            lblEmail.text = update
+        }else {
+            txtMobile.text = update
+//            lblMobile.text = update
+        }
+    }
 }
 

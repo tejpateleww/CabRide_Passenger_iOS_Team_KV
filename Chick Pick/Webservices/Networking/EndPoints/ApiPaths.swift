@@ -87,6 +87,7 @@ enum ApiKey: String{
     case changePassword = "change_password"
     case forgotPassword = "forgot_password"
     case profileUpdate = "profile_update"
+    case updateNumberOrMail = "update_email_mobile"
     
     case AddCard = "add_card"
     case cardList = "card_list"

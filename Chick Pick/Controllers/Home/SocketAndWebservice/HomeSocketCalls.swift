@@ -159,6 +159,7 @@ extension HomeViewController: SocketConnected {
             let fr = json.array?.first
             let res = RequestAcceptedDataModel(fromJson: fr)
             self.booingInfo = res.bookingInfo
+            self.clearMap()
             //            }
             if self.booingInfo.rentType == "bulk_miles" {
                 
@@ -178,7 +179,8 @@ extension HomeViewController: SocketConnected {
                     }
                 }
             }
-            self.hideAndShowView(view: .ratings)
+//            self.hideAndShowView(view: .ratings)
+            self.hideAndShowView(view: .completeTrip)
             self.isExpandCategory = true
         }
     }

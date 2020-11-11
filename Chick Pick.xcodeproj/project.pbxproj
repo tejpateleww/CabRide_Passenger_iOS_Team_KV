@@ -105,9 +105,12 @@
 		46CA655522DE02B800FC6E16 /* RegisterResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CA655422DE02B800FC6E16 /* RegisterResponseModel.swift */; };
 		46CA655722DEFB2900FC6E16 /* Logout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CA655622DEFB2900FC6E16 /* Logout.swift */; };
 		46E8CE9022D9AD6D001BEFCD /* InviteDriverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E8CE8F22D9AD6D001BEFCD /* InviteDriverViewController.swift */; };
+		6424E128255A9A5700EDB072 /* CompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6424E127255A9A5700EDB072 /* CompleteViewController.swift */; };
+		6424E12A255ABB1100EDB072 /* UpdateMobileEmailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6424E129255ABB1100EDB072 /* UpdateMobileEmailVC.swift */; };
 		6458B82624F8BF7A00CC0200 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6458B82524F8BF7A00CC0200 /* SettingsViewController.swift */; };
 		64751FC225528BE4000D9321 /* echo_ringtone.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 64751FC125528BE3000D9321 /* echo_ringtone.mp3 */; };
 		647E5FD22507ACE3005D57DF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 647E5FD12507ACE2005D57DF /* GoogleService-Info.plist */; };
+		64D15893255BFA7C00B8CCE1 /* Playball-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 64D15892255BFA7C00B8CCE1 /* Playball-Regular.ttf */; };
 		681265292348A8A400C14AD4 /* AddDetailsDropDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681265282348A8A400C14AD4 /* AddDetailsDropDownCell.swift */; };
 		68189B1F234F6E9E009477C3 /* SelectVehicleViewController+SelectPickUpDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68189B1E234F6E9E009477C3 /* SelectVehicleViewController+SelectPickUpDate.swift */; };
 		684706B4234B4101007892D8 /* RentalPastHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684706AF234B4101007892D8 /* RentalPastHistoryCell.swift */; };
@@ -355,11 +358,14 @@
 		46CA655422DE02B800FC6E16 /* RegisterResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterResponseModel.swift; sourceTree = "<group>"; };
 		46CA655622DEFB2900FC6E16 /* Logout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logout.swift; sourceTree = "<group>"; };
 		46E8CE8F22D9AD6D001BEFCD /* InviteDriverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteDriverViewController.swift; sourceTree = "<group>"; };
+		6424E127255A9A5700EDB072 /* CompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteViewController.swift; sourceTree = "<group>"; };
+		6424E129255ABB1100EDB072 /* UpdateMobileEmailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateMobileEmailVC.swift; sourceTree = "<group>"; };
 		6458B82524F8BF7A00CC0200 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		6469355824F680A60046D89F /* Chick Pick.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Chick Pick.entitlements"; sourceTree = "<group>"; };
 		646CD76324F619CA007E4DF3 /* ChickPick-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ChickPick-Bridging-Header.h"; sourceTree = "<group>"; };
 		64751FC125528BE3000D9321 /* echo_ringtone.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = echo_ringtone.mp3; sourceTree = "<group>"; };
 		647E5FD12507ACE2005D57DF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		64D15892255BFA7C00B8CCE1 /* Playball-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Playball-Regular.ttf"; sourceTree = "<group>"; };
 		681265282348A8A400C14AD4 /* AddDetailsDropDownCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDetailsDropDownCell.swift; sourceTree = "<group>"; };
 		68189B1E234F6E9E009477C3 /* SelectVehicleViewController+SelectPickUpDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SelectVehicleViewController+SelectPickUpDate.swift"; sourceTree = "<group>"; };
 		684706AF234B4101007892D8 /* RentalPastHistoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RentalPastHistoryCell.swift; sourceTree = "<group>"; };
@@ -714,6 +720,7 @@
 			isa = PBXGroup;
 			children = (
 				4666B47C22D49F180084A230 /* ProfileViewController.swift */,
+				6424E129255ABB1100EDB072 /* UpdateMobileEmailVC.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1368,6 +1375,7 @@
 				EE35158622CE34A50035D0AC /* DriverInfoAndRating */,
 				468E993322DA078000072361 /* UpcomingRideConfirmationViewController.swift */,
 				6ED1AACE23C72A5700CF5DB3 /* VerifyCustomerPopupViewController.swift */,
+				6424E127255A9A5700EDB072 /* CompleteViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1475,6 +1483,7 @@
 		EEE2B7E422C62304004F1C00 /* Chick Pick */ = {
 			isa = PBXGroup;
 			children = (
+				64D15892255BFA7C00B8CCE1 /* Playball-Regular.ttf */,
 				64751FC125528BE3000D9321 /* echo_ringtone.mp3 */,
 				6469355824F680A60046D89F /* Chick Pick.entitlements */,
 				687A0054233E4ACE005C71C5 /* Assets */,
@@ -1742,6 +1751,7 @@
 				EE9D6F7822C6341300EAD756 /* Loading.json in Resources */,
 				687A0056233E4ACF005C71C5 /* Assets.xcassets in Resources */,
 				EE9D6F9622C6449F00EAD756 /* proxima-nova-condensed-regular-italic.otf in Resources */,
+				64D15893255BFA7C00B8CCE1 /* Playball-Regular.ttf in Resources */,
 				684706B5234B4101007892D8 /* RentalPastHistoryCell.xib in Resources */,
 				647E5FD22507ACE3005D57DF /* GoogleService-Info.plist in Resources */,
 			);
@@ -1924,6 +1934,7 @@
 				7A1CC8F32306DE1300FB6ECD /* BulkMilesHistory.swift in Sources */,
 				6E023CC823A7AE63006D7027 /* WalletCardsVC.swift in Sources */,
 				B1E233D222D3109800CEA568 /* PostABidViewController.swift in Sources */,
+				6424E128255A9A5700EDB072 /* CompleteViewController.swift in Sources */,
 				468E993422DA078000072361 /* UpcomingRideConfirmationViewController.swift in Sources */,
 				68189B1F234F6E9E009477C3 /* SelectVehicleViewController+SelectPickUpDate.swift in Sources */,
 				EE9D6F7F22C6435600EAD756 /* Extensions.swift in Sources */,
@@ -1962,6 +1973,7 @@
 				468E992E22D9F26900072361 /* AddMoney.swift in Sources */,
 				18CE238923229446003901D8 /* NavigationVC.swift in Sources */,
 				B1E233DA22D3123300CEA568 /* OpenBidListViewController.swift in Sources */,
+				6424E12A255ABB1100EDB072 /* UpdateMobileEmailVC.swift in Sources */,
 				463DEFF122D8C13A002365F8 /* HistoryFilterPopUpViewController.swift in Sources */,
 				EE61012A22E8787C00B3B4D7 /* PastBookingHistoryResponse.swift in Sources */,
 				464CB66622E19FDB00273F29 /* QRCodeScannedModel.swift in Sources */,
@@ -2176,7 +2188,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Chick Pick/Chick Pick.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.5;
+				CURRENT_PROJECT_VERSION = 1.0.7;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = S3CGZRZDL7;
 				GCC_NO_COMMON_BLOCKS = NO;
@@ -2201,7 +2213,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Chick Pick/Chick Pick.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.5;
+				CURRENT_PROJECT_VERSION = 1.0.7;
 				DEVELOPMENT_TEAM = S3CGZRZDL7;
 				GCC_NO_COMMON_BLOCKS = NO;
 				INFOPLIST_FILE = "Chick Pick/Info.plist";

@@ -43,6 +43,11 @@ class UserWebserviceSubclass
         WebService.shared.requestMethod(api: .changePassword, httpMethod: .post, parameters: params, completion: completion)
     }
     
+    class func updateEmailOrMobile(emailNumberModel : UpdateMailOrNumber, completion: @escaping CompletionResponse) {
+           let params : [String:String] = emailNumberModel.generatPostParams() as! [String:String]
+           WebService.shared.requestMethod(api: .updateNumberOrMail, httpMethod: .post, parameters: params, completion: completion)
+       }
+    
 //    class func updatePersonal(updateProfile : UpdatePersonalInfo, image: UIImage?, imageParamName: String? = "profile_image", completion: @escaping CompletionResponse)
 //    {
 //        let params : [String: String] = updateProfile.generatPostParams() as! [String:String]

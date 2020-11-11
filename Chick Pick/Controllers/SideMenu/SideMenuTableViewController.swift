@@ -426,6 +426,7 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
                 
                 UserDefaults.standard.set(false, forKey: "isUserLogin")
 //                self.removeAllSocketFromMemory()
+                SocketIOManager.shared.closeConnection()
                 (UIApplication.shared.delegate as! AppDelegate).GoToLogout()
             }
             else

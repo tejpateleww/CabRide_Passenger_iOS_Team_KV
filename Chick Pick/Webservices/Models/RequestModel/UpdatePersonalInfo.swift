@@ -18,3 +18,9 @@ class UpdatePersonalInfo : RequestModel
     var dob: String = ""
     var mobile: String = ""
 }
+
+class UpdateMailOrNumber: RequestModel {
+    var customer_id = ""
+    var update_type = ""
+    var update_value = ""
+}

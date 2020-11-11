@@ -448,7 +448,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         //2. Clear all userdefaults
         for (key, _) in UserDefaults.standard.dictionaryRepresentation() {
             //            print("\(key) = \(value) \n")
-            if key == "Token" || key  == "i18n_language" {
+            if key == "Token" || key  == "i18n_language" || key == "carList" {
             }
             else {
                 UserDefaults.standard.removeObject(forKey: key)
