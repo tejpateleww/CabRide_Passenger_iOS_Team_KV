@@ -481,6 +481,8 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
 //            UtilityClass.showHUDWithoutLottie(with: UIApplication.shared.keyWindow)
 //            animateGoogleMapWhenRotate(homeVC: homeVC)
             
+            UtilityClass.showHUD(with: UIApplication.shared.keyWindow)
+            
             if sender.titleLabel?.text?.lowercased().contains("schedule".lowercased()) ?? false {
                 webserviceForBooking(bookingType: "book_later") // "book_now" // "book_later"
             } else {

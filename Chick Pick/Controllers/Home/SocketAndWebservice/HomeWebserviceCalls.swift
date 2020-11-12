@@ -98,6 +98,7 @@ extension CarCollectionViewController: CarCollectionWebserviceProtocol {
         
         UserWebserviceSubclass.bookingRequest(bookingRequestModel: model) { (response, status) in
             
+            UtilityClass.hideHUD()
              homeVC?.btnBackButtonWhileBookLater()
 //            self.btnBookNow.isUserInteractionEnabled = true
             

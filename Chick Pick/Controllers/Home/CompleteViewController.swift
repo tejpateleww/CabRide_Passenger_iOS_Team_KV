@@ -19,7 +19,7 @@ class CompleteViewController: UIViewController {
     }
     
     func setTotal(strTotal: String) {
-        lblTotal.text = "Total: \(strTotal)"
+        lblTotal.text = "Total: \(Currency)\(strTotal)"
     }
     @IBAction func btnOkAction(_ sender: Any) {
         let homeVC = self.parent as? HomeViewController

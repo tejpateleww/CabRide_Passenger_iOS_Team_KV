@@ -1180,6 +1180,10 @@ extension HomeViewController: CLLocationManagerDelegate {
                     self.routeDrawMethod(origin: "\(lat),\(lng)", destination: "\(self.booingInfo.pickupLat ?? ""),\(self.booingInfo.pickupLng ?? "")", isTripAccepted: true)
                 }
             }
+            //TODO:-  Added by Bhumi Jani for Rerouting
+            else if self.booingInfo.status == "traveling" {
+                self.routeDrawMethod(origin: "\(lat),\(lng)", destination: "\(self.booingInfo.dropoffLat ?? ""),\(self.booingInfo.dropoffLng ?? "")", isTripAccepted: true)
+            }
         }
         
         let camera = GMSCameraPosition.camera(withLatitude: newCoordinate.latitude, longitude: newCoordinate.longitude, zoom: 18.0)
