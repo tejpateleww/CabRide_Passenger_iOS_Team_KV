@@ -118,15 +118,15 @@ extension PreviousDueViewController: didSelectPaymentDelegate,delegateForCancelT
             }
             else
             {
-                let storyboard = UIStoryboard(name: "Popup", bundle: nil)
-                if let vc = storyboard.instantiateViewController(withIdentifier: "CancelTripViewController") as? CancelTripViewController {
-                    vc.delegate = self
-                    vc.isDropDownHidden = true
-                    vc.strBtnOkText = "Done"
-                    vc.strTextPlaceHolder = "Enter Card Pin"
-                    self.present(vc, animated: true, completion: nil)
-                    return
-                }
+//                let storyboard = UIStoryboard(name: "Popup", bundle: nil)
+//                if let vc = storyboard.instantiateViewController(withIdentifier: "CancelTripViewController") as? CancelTripViewController {
+//                    vc.delegate = self
+//                    vc.isDropDownHidden = true
+//                    vc.strBtnOkText = "Done"
+//                    vc.strTextPlaceHolder = "Enter Card Pin"
+//                    self.present(vc, animated: true, completion: nil)
+//                    return
+//                }
             }
         }
         
