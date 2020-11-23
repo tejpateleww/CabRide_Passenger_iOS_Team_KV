@@ -17,9 +17,9 @@ extension VehicleDetailViewController: didSelectPaymentDelegate {
         
     }
     
-    
-    
-    
+    func removeCard(PaymentTypeID: String) {
+        print("Remove Card")
+    }
 }
 /*
  extension VehicleDetailViewController:SelectCardDelegate {

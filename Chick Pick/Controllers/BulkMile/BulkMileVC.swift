@@ -11,9 +11,6 @@ import UIKit
 
 class BulkMileVC: BaseViewController, didSelectPaymentDelegate{
     
-    
-    
-    
     //MARK:- Variables
     var tripType = MyMiles.myMile
     var data = [(String, String)]()
@@ -221,6 +218,10 @@ class BulkMileVC: BaseViewController, didSelectPaymentDelegate{
             self.PurchaseMile.card_id = PaymentTypeID
         }
         self.WebServiceCallForMilePurchase()
+    }
+    
+    func removeCard(PaymentTypeID: String) {
+        print("Remove Card")
     }
 }
 

@@ -17,9 +17,7 @@ import SwiftyAttributes
 //}
 
 
-class CarCollectionViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,didSelectDateDelegate, didSelectPaymentDelegate {
-   
-    
+class CarCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, didSelectDateDelegate, didSelectPaymentDelegate {
 
     // ----------------------------------------------------
     // MARK:- --- Outlets ---
@@ -508,7 +506,14 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
         self.navigationController?.present(next, animated: true, completion: nil)
     }
 
-    
+    func removeCard(PaymentTypeID: String) {
+        print("card removed")
+        if self.CardID == PaymentTypeID {
+            didSelectPaymentType(PaymentTypeTitle: "Select Payment Method", PaymentType: "", PaymentTypeID: "", PaymentNumber: "", PaymentHolderName: "", dictData: nil)
+            CardID = ""
+//            paymentType = ""
+        }
+    }
     
     func didSelectPaymentType(PaymentTypeTitle: String, PaymentType: String, PaymentTypeID: String, PaymentNumber: String, PaymentHolderName: String, dictData: [String : Any]?) {
         
@@ -581,6 +586,4 @@ class CarCollectionViewController: UIViewController,UICollectionViewDataSource,U
 //            self.viewPromocode.isHidden = true
         }
     }
-    
-    
 }

@@ -12,7 +12,7 @@ import MobileCoreServices
 
 //import TransitionButton
 
-class RegistrationNewViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate,UITextFieldDelegate {
+class RegistrationNewViewController: BaseViewController, UIImagePickerControllerDelegate,  UINavigationControllerDelegate, UITextFieldDelegate {
 
     //-------------------------------------------------------------
     // MARK: - Outlets
@@ -138,7 +138,9 @@ class RegistrationNewViewController: UIViewController,UIImagePickerControllerDel
             self.PickingImageFromGallery()
         })
         let Camera  = UIAlertAction(title: "Camera", style: .default, handler: { ACTION in
-            self.PickingImageFromCamera()
+            if self.isCameraAllow() {
+                 self.PickingImageFromCamera()
+            }
         })
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         

@@ -21,11 +21,11 @@ extension CarCollectionViewController: CarCollectionWebserviceProtocol {
 //        let bookingType = (self.parent as! HomeViewController).bookingType == "" ? "book_now" : (self.parent as! HomeViewController).bookingType
 
         
-        if(pickup.latitude == 0 || pickup.longitude == 0)
+        if(pickup.latitude == 0 || pickup.longitude == 0 || pickup.latitude == 0.0 || pickup.longitude == 0.0)
         {
             return (false, "Please enter pickup location")
         }
-        else if(dropOff.latitude == 0 || dropOff.longitude == 0)
+        else if(dropOff.latitude == 0 || dropOff.longitude == 0 || dropOff.latitude == 0.0 || dropOff.longitude == 0.0)
         {
             return (false, "Please enter where to location")
         }
@@ -124,7 +124,7 @@ extension CarCollectionViewController: CarCollectionWebserviceProtocol {
                 homeVC?.setupAfterComplete()
                 let msg = response.dictionary?["message"]?.stringValue ?? response.dictionary?["message"]?.array?.first?.stringValue ?? ""
                 
-//                AlertMessage.showMessageForSuccess(msg)
+                AlertMessage.showMessageForSuccess(msg)
                 
 //                UtilityClass.showAlert(title: AppName.kAPPName, message: msg, alertTheme: .success)
 //                UtilityClass.showDefaultAlertView(withTitle: AppName.kAPPName, message: msg, buttons: ["OK"], completion: { (index) in

@@ -106,7 +106,10 @@ extension PreviousDueViewController: UITableViewDelegate, UITableViewDataSource 
 }
 
 extension PreviousDueViewController: didSelectPaymentDelegate,delegateForCancelTripReason {
-
+   
+    func removeCard(PaymentTypeID: String) {
+        print("Remove Card")
+    }
 
     func didSelectPaymentType(PaymentTypeTitle: String, PaymentType: String, PaymentTypeID: String, PaymentNumber: String, PaymentHolderName: String, dictData: [String : Any]?) {
         

@@ -13,9 +13,11 @@ import SwipeCellKit
 protocol didSelectPaymentDelegate {
     
     func didSelectPaymentType(PaymentTypeTitle:String, PaymentType:String, PaymentTypeID:String, PaymentNumber: String, PaymentHolderName:String, dictData: [String:Any]?)
+    
+    func removeCard(PaymentTypeID: String)
 }
 
-class PaymentViewController: BaseViewController,UITableViewDelegate, UITableViewDataSource,SwipeTableViewCellDelegate
+class PaymentViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource, SwipeTableViewCellDelegate, UITextFieldDelegate
 {
     @IBOutlet weak var tblView: UITableView!
     @IBOutlet weak var viewPaymentPopup: UIView!
@@ -46,7 +48,7 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
     @IBOutlet weak var txtCardNumber: FormTextField!
     @IBOutlet weak var txtValidThrough: FormTextField!
     @IBOutlet weak var txtCVVNumber: FormTextField!
-    @IBOutlet weak var txtCArdHolderName: UITextField!
+    @IBOutlet weak var txtCArdHolderName: FormTextField!
     
     var LoginDetail : LoginModel = LoginModel()
     var addCardReqModel : AddCard = AddCard()
@@ -66,14 +68,13 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        txtValidThrough.delegate = self
 
         creditCardValidator = CreditCardValidator()
         
         aryMonth = ["01","02","03","04","05","06","07","08","09","10","11","12"]
         
         aryTempMonth = ["01","02","03","04","05","06","07","08","09","10","11","12"]
-        
-      
         
         let date = Date()
         let calendar = Calendar.current
@@ -126,7 +127,6 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
             dict3["CardNum2"] = "wallet" as AnyObject
             dict3["Type"] = "iconWalletColor" as AnyObject
 //            self.aryOtherPayment.append(dict3)
-            
         }
         
         tblView.reloadData()
@@ -184,8 +184,8 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
         }
 //        self.setNavBarWithBack(Title: "Payment", IsNeedRightButton: true)
         self.setNavBarWithBack(Title: "Payment", IsNeedRightButton: false)
-        cardNum()
-        
+//        cardNum()
+        cardHolder()
     }
     
     
@@ -269,13 +269,32 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let countdots = (textField.text?.components(separatedBy: ".").count)! - 1
+//        let countdots = (textField.text?.components(separatedBy: ".").count)! - 1
+//
+//        if countdots > 0 && string == "."
+//        {
+//            return false
+//        }
         
-        if countdots > 0 && string == "."
-        {
-            return false
+        if textField == txtValidThrough && string == "" {
+            textField.text = txtValidThrough.formatter?.formatString(textField.text ?? string, reverse: true)
         }
         return true
+    }
+    
+    func cardHolder()
+    {
+        txtCArdHolderName.inputType = .name
+        txtCArdHolderName.placeholder = "Card Holder"
+        
+        let characterSet = NSMutableCharacterSet.letter()
+        characterSet.addCharacters(in: " ")
+        validation.characterSet = characterSet as CharacterSet
+        inputValidator = InputValidator(validation: validation)
+        
+        txtCArdHolderName.inputValidator = inputValidator
+        
+        cardNum()
     }
     
     func cardNum()
@@ -283,7 +302,6 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
 //        txtCardNumber.inputType = .integer
         txtCardNumber.formatter = CardNumberFormatter()
         txtCardNumber.placeholder = "Card Number"
-        
         
         validation.maximumLength = 19
         validation.minimumLength = 14
@@ -302,15 +320,13 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
         txtValidThrough.inputType = .integer
         txtValidThrough.formatter = CardExpirationDateFormatter()
         txtValidThrough.placeholder = "Exp. Date (MM/YY)"
-        
+       
         //        var validation = Validation()
         validation.minimumLength = 1
         let inputValidator = CardExpirationDateInputValidator(validation: validation)
         txtValidThrough.inputValidator = inputValidator
         
         cardCVV()
-        print("")
-        
     }
     
     func cardCVV() {
@@ -566,6 +582,7 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
         UserWebserviceSubclass.RemoveCardFromList(removeCardModel: RemoveCardReqModel) { (json, status) in
             UtilityClass.hideHUD()
             if status {
+                self.Delegate.removeCard(PaymentTypeID: strCardId)
                 self.webserviceForCardList()
             }
             else {
@@ -637,7 +654,6 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
                 UtilityClass.hideHUD()
                 if status
                 {
-                    
                     self.txtCardNumber.text = ""
                     self.txtCArdHolderName.text = ""
                     self.txtValidThrough.text = ""

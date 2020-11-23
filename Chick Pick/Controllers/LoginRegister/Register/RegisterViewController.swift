@@ -9,7 +9,7 @@
 import UIKit
 import SkyFloatingLabelTextField
 
-class RegisterViewController: UIViewController, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class RegisterViewController: BaseViewController, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var txtFirstName: ThemeTextFieldLoginRegister!
     @IBOutlet weak var txtLastName: ThemeTextFieldLoginRegister!
@@ -99,7 +99,9 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIPickerVie
             self.PickingImageFromGallery()
         })
         let Camera  = UIAlertAction(title: "Camera", style: .default, handler: { ACTION in
-            self.PickingImageFromCamera()
+            if self.isCameraAllow() {
+                 self.PickingImageFromCamera()
+            }
         })
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         

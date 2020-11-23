@@ -194,6 +194,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
 
         lblSwipeToBook.text = ""
         SocketIOManager.shared.establishConnection()
+//        self.allSocketOnMethods()  // Added by Bhumi Jani
         
         if SingletonClass.sharedInstance.bookingInfo != nil {
             self.booingInfo = SingletonClass.sharedInstance.bookingInfo!
@@ -1186,7 +1187,7 @@ extension HomeViewController: CLLocationManagerDelegate {
             }
         }
         
-        let camera = GMSCameraPosition.camera(withLatitude: newCoordinate.latitude, longitude: newCoordinate.longitude, zoom: 18.0)
+        let camera = GMSCameraPosition.camera(withLatitude: newCoordinate.latitude, longitude: newCoordinate.longitude, zoom: zoomLevel)
         
         mapView.animate(to: camera)
        
@@ -1209,7 +1210,6 @@ extension HomeViewController: GMSAutocompleteViewControllerDelegate {
         {
             txtPickupLocation.text = "\(place.name ?? "") \(place.formattedAddress ?? "")"
             pickupLocation = place.coordinate
-            
             pickupAndDropoffAddress.pickUp = txtPickupLocation.text ?? ""
         }
         else
@@ -1231,7 +1231,7 @@ extension HomeViewController: GMSAutocompleteViewControllerDelegate {
         }
         else
         {
-            hideBookLaterButtonFromDroplocationField = false
+//            hideBookLaterButtonFromDroplocationField = false
         }
         
        
@@ -1243,7 +1243,6 @@ extension HomeViewController: GMSAutocompleteViewControllerDelegate {
         if SocketIOManager.shared.socket.status == .connected {
             self.emitSocket_UpdateCustomerLatLng(param: ["customer_id": SingletonClass.sharedInstance.loginData.id ?? "", "lat": pickupLocation.latitude, "lng": pickupLocation.longitude])
         }
-        
         self.CallForGetEstimate()
         
         self.routeDrawMethod(origin: "\(pickupLocation.latitude),\(pickupLocation.longitude)", destination: "\(destinationLocation.latitude),\(destinationLocation.longitude)", isTripAccepted: false)
@@ -1266,6 +1265,7 @@ extension HomeViewController: GMSAutocompleteViewControllerDelegate {
     func setupAfterComplete() {
         self.booingInfo = BookingInfo()
         self.txtDropLocation.text = ""
+        self.destinationLocation = CLLocationCoordinate2D()
         self.currentLocationAction()
         self.carListContainerView.isHidden = false
         self.driverInfoContainerView.isHidden = true

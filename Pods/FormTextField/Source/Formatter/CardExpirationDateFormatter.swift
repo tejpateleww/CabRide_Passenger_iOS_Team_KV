@@ -17,7 +17,6 @@ public struct CardExpirationDateFormatter: Formattable {
                 if idx == 1 {
                     formattedString.append("/")
                 }
-
                 idx += 1
             }
         }

@@ -13,7 +13,6 @@ import GooglePlaces
 import SDWebImage
 
 class PostABidViewController: BaseViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UITextFieldDelegate,UIPickerViewDelegate, UIPickerViewDataSource, didSelectPaymentDelegate {
-   
     
     
     @IBOutlet weak var txtShippersName: ThemeTextFieldLoginRegister?
@@ -282,8 +281,6 @@ class PostABidViewController: BaseViewController,UIImagePickerControllerDelegate
                     //              cell.imgOfCarModels.sd_setShowActivityIndicatorView(false)
                 })
             }
-            
-         
             
             // cell.lblCarType.text = (dictOnlineCarData["Name"] as? String)?.uppercased()
             
@@ -730,6 +727,10 @@ class PostABidViewController: BaseViewController,UIImagePickerControllerDelegate
         }
     }
     
+    func removeCard(PaymentTypeID: String) {
+        print("Remove Card")
+    }
+    
     //-------------------------------------------------------------
     // MARK: - Webservice Methods
     //-------------------------------------------------------------
@@ -835,7 +836,7 @@ func setCardIcon(str: String) -> String {
         CardIcon = "iconMasterCard"
         return CardIcon
     case "amex":
-        CardIcon = "Amex"
+        CardIcon = "iconAmex"
         return CardIcon
     case "diners":
         CardIcon = "Diners Club"
@@ -844,7 +845,7 @@ func setCardIcon(str: String) -> String {
         CardIcon = "iconDiscover"
         return CardIcon
     case "jcb":
-        CardIcon = "JCB"
+        CardIcon = "iconJCB"
         return CardIcon
     case "iconCashBlack":
         CardIcon = "iconCashBlack"

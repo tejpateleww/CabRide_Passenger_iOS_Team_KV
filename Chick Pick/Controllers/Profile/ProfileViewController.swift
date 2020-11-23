@@ -11,7 +11,7 @@ import SkyFloatingLabelTextField
 import SDWebImage
 
 
-class ProfileViewController: BaseViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ProfileViewController: BaseViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
     
     @IBOutlet weak var lblEmail: UILabel!
@@ -47,6 +47,8 @@ class ProfileViewController: BaseViewController,UIImagePickerControllerDelegate,
     @IBOutlet weak var btnMale: UIButton!
     @IBOutlet weak var imgvMale: UIImageView!
     @IBOutlet weak var imgvFemale: UIImageView!
+    
+    var isValueSelected = Bool()
     
     var didSelectMale: Bool = true
     {
@@ -96,6 +98,7 @@ class ProfileViewController: BaseViewController,UIImagePickerControllerDelegate,
          txtAddress.titleFormatter = { $0 }
          txtMobile.titleFormatter = { $0 }
          txtDOB.titleFormatter = { $0 }
+        txtDOB.delegate = self
         
         if(UserDefaults.standard.object(forKey: "userProfile") == nil)
         {
@@ -322,7 +325,9 @@ class ProfileViewController: BaseViewController,UIImagePickerControllerDelegate,
             self.PickingImageFromGallery()
         })
         let Camera  = UIAlertAction(title: "Camera", style: .default, handler: { ACTION in
-            self.PickingImageFromCamera()
+            if self.isCameraAllow() {
+                 self.PickingImageFromCamera()
+            }
         })
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
@@ -411,6 +416,18 @@ class ProfileViewController: BaseViewController,UIImagePickerControllerDelegate,
         dateFormaterView.dateFormat = "yyyy-MM-dd"
         txtDOB.text = dateFormaterView.string(from: sender.date)
         strDateOfBirth = txtDOB.text!
+        isValueSelected = true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == txtDOB && !isValueSelected {
+            let dateFormaterView = DateFormatter()
+            dateFormaterView.dateFormat = "dd-MM-yyyy"
+            let view = textField.inputView as? UIDatePicker
+            txtDOB.text = dateFormaterView.string(from: view?.maximumDate ?? Date())
+            strDateOfBirth = txtDOB.text!
+        }
+        isValueSelected = false
     }
     
     @IBAction func btnChangePasswordClicked(_ sender: Any)
