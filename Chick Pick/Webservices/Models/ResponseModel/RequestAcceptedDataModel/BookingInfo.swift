@@ -55,6 +55,8 @@ class BookingInfo : NSObject, NSCoding{
     var vehicleType : VehicleType!
     var vehicleTypeId : String!
     var rentType : String!
+    var tripFare : String!
+    var pastDuePayment : String!
     
     
 //    var _id : String!
@@ -202,6 +204,8 @@ class BookingInfo : NSObject, NSCoding{
         tipsStatus = json["tips_status"].stringValue
         waitingTime = json["waiting_time"].stringValue
         waitingTimeCharge = json["waiting_time_charge"].stringValue
+        tripFare = json["trip_fare"].stringValue
+        pastDuePayment = json["past_due_payment"].stringValue
 	}
 
 	/**
@@ -388,6 +392,12 @@ class BookingInfo : NSObject, NSCoding{
         if waitingTimeCharge != nil{
             dictionary["waiting_time_charge"] = waitingTimeCharge
         }
+        if tripFare != nil{
+            dictionary["trip_fare"] = tripFare
+        }
+        if pastDuePayment != nil{
+            dictionary["past_due_payment"] = pastDuePayment
+        }
         
         
 		return dictionary
@@ -460,6 +470,8 @@ class BookingInfo : NSObject, NSCoding{
         tipsStatus = aDecoder.decodeObject(forKey: "tips_status") as? String
         waitingTime = aDecoder.decodeObject(forKey: "waiting_time") as? String
         waitingTimeCharge = aDecoder.decodeObject(forKey: "waiting_time_charge") as? String
+        tripFare = aDecoder.decodeObject(forKey: "trip_fare") as? String
+        pastDuePayment = aDecoder.decodeObject(forKey: "past_due_payment") as? String
 	}
 
     /**
@@ -649,6 +661,11 @@ class BookingInfo : NSObject, NSCoding{
         if waitingTimeCharge != nil{
             aCoder.encode(waitingTimeCharge, forKey: "waiting_time_charge")
         }
+        if tripFare != nil{
+            aCoder.encode(tripFare, forKey: "trip_fare")
+        }
+        if pastDuePayment != nil{
+            aCoder.encode(pastDuePayment, forKey: "past_due_payment")
+        }
 	}
-
 }

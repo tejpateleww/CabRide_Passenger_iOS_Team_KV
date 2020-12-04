@@ -8,13 +8,14 @@
 
 import UIKit
 
-class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class SideMenuTableViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var imgProfile: UIImageView!
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblRating: UILabel!
     @IBOutlet weak var btnLogout: UIButton!
+    @IBOutlet weak var btnEmergencyHelp: UIButton!
     
     var ProfileData = NSDictionary()
     var arrMenuTitle = [String]()
@@ -46,7 +47,7 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
             
             //            arrMenuTitle = ["My Trips", "Previous Due", "Payments", "Wallet", "Favourite", "Peppea KMS", "Bulk Mile History", "Invite Friends", "Bid My Trip", "Flat Rate", "Help", "Logout"]
             
-            arrMenuTitle = ["My Trips", "Previous Due", "Payments", "Settings"]
+            arrMenuTitle = ["My Trips", "Payments", "Settings"]
         }
     }
     
@@ -59,6 +60,8 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
         
         lblName.font = UIFont.bold(ofSize: 18)
         lblRating.font = UIFont.light(ofSize: 14)
+        
+        UtilityClass.viewCornerRadius(view: btnEmergencyHelp, borderWidth: 1, borderColor: ThemeOrange)
     }
     
     override func didReceiveMemoryWarning() {
@@ -133,6 +136,22 @@ class SideMenuTableViewController: UIViewController, UITableViewDataSource, UITa
         sideMenuController?.hideMenu()
         return
         
+    }
+    @IBAction func btnEmergencyHelp(_ sender: Any) {
+        let alert = UIAlertController(title: AppName.kAPPName, message: "IF THIS IS A LIFE-THREATENING EMERGENCY, DIAL 999 IMMEDIATELY!", preferredStyle: .alert)
+        
+        let ok = UIAlertAction(title: "Call", style: .default) { (action) in
+            self.callNumber(phoneNumber: "999")
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        
+        alert.addAction(ok)
+        alert.addAction(cancel)
+        
+        self.present(alert, animated: true, completion: nil)
+        sideMenuController?.hideMenu()
+        return
     }
     
     // MARK: - Table view data source

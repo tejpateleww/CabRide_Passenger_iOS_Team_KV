@@ -192,6 +192,7 @@ class DriverInfoPageViewController: UIViewController {
 
     func webserviceForCancelTrip() {
         
+        UtilityClass.showHUD(with: self.parent?.view)
         let homeVC = self.parent as? HomeViewController
         
         let model = CancelTripRequestModel()
@@ -201,6 +202,7 @@ class DriverInfoPageViewController: UIViewController {
         }
         UserWebserviceSubclass.CancelTripBookingRequest(bookingRequestModel: model) { (response, status) in
             
+            UtilityClass.hideHUD()
             if status {
                   homeVC?.setupAfterComplete()
             } else {

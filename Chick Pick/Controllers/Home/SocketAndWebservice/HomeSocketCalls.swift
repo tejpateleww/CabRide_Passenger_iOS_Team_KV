@@ -94,6 +94,7 @@ extension HomeViewController: SocketConnected {
     // Socket Emit 5
     func emitSocket_NearByDriver(param: [String : Any]) {
         SocketIOManager.shared.socketEmit(for: socketApiKeys.NearByDriver.rawValue, with: param)
+         print(#function)
     }
     
     // Socket Emit 6

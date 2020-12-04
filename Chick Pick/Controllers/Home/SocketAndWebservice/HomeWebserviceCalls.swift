@@ -144,9 +144,19 @@ extension CarCollectionViewController: CarCollectionWebserviceProtocol {
                         vc.strBtnTitle = "Pay Now"
                         vc.shouldRedirect = true
                         vc.redirectToPaymentList = {
+                            // TODO:- Commented by Bhumi Jani for stop redirecting to Previous Due Screen
                             vc.dismiss(animated: true, completion: nil)
-                            let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "PreviousDueViewController") as! PreviousDueViewController
-                            self.navigationController?.pushViewController(NextPage, animated: true)
+//                            let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "PreviousDueViewController") as! PreviousDueViewController
+//                            self.navigationController?.pushViewController(NextPage, animated: true)
+                            
+                            if let payment = self.storyboard?.instantiateViewController(withIdentifier: "PaymentViewController") as? PaymentViewController {
+                                payment.Delegate = self
+                                payment.isFromSideMenu = true
+                                payment.OpenedForPayment = true
+                                payment.isForPaymentDue = true
+                                let NavController = UINavigationController(rootViewController: payment)
+                                self.navigationController?.present(NavController, animated: true, completion: nil)
+                            }
                         }
                     }
                     else
@@ -206,7 +216,25 @@ extension CarCollectionViewController: CarCollectionWebserviceProtocol {
                 AlertMessage.showMessageForError(response.dictionary?["message"]?.string ?? "")
             }
         }
-        
     }
     
+    func webserviceForBulkPaymentPreviousDue() {
+        UtilityClass.showHUD(with: UIApplication.shared.keyWindow)
+        UserWebserviceSubclass.BulkPreviousDuePaymentData(SendChat: previousDuePaymentModel) { (response, status) in
+            UtilityClass.hideHUD()
+            if status {
+                
+                UtilityClass.showDefaultAlertView(withTitle: "", message: response.dictionary?["message"]?.string ?? "", buttons: ["Ok"], completion: { (ind) in
+                    self.navigationController?.popViewController(animated: true)
+                })
+                
+            } else {
+                UtilityClass.showDefaultAlertView(withTitle: "", message: response.dictionary?["message"]?.string ?? "", buttons: ["Ok"], completion: { (ind) in
+                    
+                })
+            }
+        }
+    }
 }
+
+

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -258,17 +258,30 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gJv-nX-CrH">
+                                <rect key="frame" x="187" y="279" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="gJv-nX-CrH" secondAttribute="height" multiplier="1:1" id="akU-NK-yKY"/>
+                                </constraints>
+                                <state key="normal" image="iconCloseAlert"/>
+                                <connections>
+                                    <action selector="btnCloseAction:" destination="iXZ-Bl-bjk" eventType="touchDragInside" id="Bq7-of-gS3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.60158925513698636" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="5Po-jm-qrN" firstAttribute="leading" secondItem="77s-Fv-g8h" secondAttribute="leading" constant="20" id="3Rd-AX-chM"/>
+                            <constraint firstItem="gJv-nX-CrH" firstAttribute="centerX" secondItem="gLg-Yg-Ux0" secondAttribute="centerX" id="4Ve-v4-IdC"/>
                             <constraint firstItem="77s-Fv-g8h" firstAttribute="trailing" secondItem="5Po-jm-qrN" secondAttribute="trailing" constant="20" id="4qw-ay-f2t"/>
+                            <constraint firstItem="5Po-jm-qrN" firstAttribute="top" secondItem="gJv-nX-CrH" secondAttribute="bottom" constant="20" id="STb-f0-CbO"/>
                             <constraint firstItem="5Po-jm-qrN" firstAttribute="centerY" secondItem="gLg-Yg-Ux0" secondAttribute="centerY" id="m6g-Y6-512"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="77s-Fv-g8h"/>
                     </view>
                     <connections>
                         <outlet property="btnAction" destination="dmo-Xc-EX6" id="FTk-U5-6oY"/>
+                        <outlet property="btnClose" destination="gJv-nX-CrH" id="l67-2e-lG8"/>
                         <outlet property="lblMessage" destination="qMp-M1-uCO" id="Geb-Tr-87H"/>
                         <outlet property="lblOTP" destination="h9j-h5-YjT" id="K1X-Nj-XtC"/>
                         <outlet property="lblTitle" destination="Mo6-6r-Grk" id="tLB-I7-uSz"/>

@@ -12,7 +12,7 @@ import GoogleMaps
 import GooglePlaces
 import SDWebImage
 
-class PostABidViewController: BaseViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UITextFieldDelegate,UIPickerViewDelegate, UIPickerViewDataSource, didSelectPaymentDelegate {
+class PostABidViewController: BaseViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, didSelectPaymentDelegate {
     
     
     @IBOutlet weak var txtShippersName: ThemeTextFieldLoginRegister?
@@ -713,7 +713,7 @@ class PostABidViewController: BaseViewController,UIImagePickerControllerDelegate
     var paymentType = String()
    
     
-    func didSelectPaymentType(PaymentTypeTitle: String, PaymentType: String, PaymentTypeID: String, PaymentNumber: String, PaymentHolderName: String, dictData: [String : Any]?) {
+    func didSelectPaymentType(PaymentTypeTitle: String, PaymentType: String, PaymentTypeID: String, PaymentNumber: String, PaymentHolderName: String, dictData: [String : Any]?, isForPaymentDue: Bool?) {
         self.txtPayment?.placeholder = ""
         self.lblCardName.text = PaymentTypeTitle
         self.paymentType = PaymentType

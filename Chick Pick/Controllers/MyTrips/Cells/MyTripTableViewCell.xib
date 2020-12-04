@@ -1,21 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MyTripTableViewCell" customModule="Chick_Pick_Ride" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="170"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="214"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IGa-BP-2Uv">
-                    <rect key="frame" x="10" y="13" width="355" height="157"/>
+                    <rect key="frame" x="10" y="13" width="355" height="201"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CDD-uw-fhj">
                             <rect key="frame" x="5" y="8" width="345" height="30"/>
@@ -170,6 +175,17 @@
                                 <constraint firstItem="aDk-rD-cPu" firstAttribute="top" secondItem="eZw-2V-1Zt" secondAttribute="top" id="x2e-1u-hqo"/>
                             </constraints>
                         </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EpS-S6-qEt">
+                            <rect key="frame" x="102.5" y="157" width="150" height="35"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="35" id="gBs-In-EjW"/>
+                                <constraint firstAttribute="width" constant="150" id="rB2-SK-SDT"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                            <state key="normal" title="PAYMENT DUE">
+                                <color key="titleColor" red="0.90588235289999997" green="0.58431372550000005" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" red="0.81960784310000001" green="0.81960784310000001" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
@@ -177,10 +193,12 @@
                         <constraint firstItem="prJ-Dc-weo" firstAttribute="top" secondItem="O0F-Cu-OXP" secondAttribute="bottom" constant="13" id="EwQ-Kh-eY5"/>
                         <constraint firstItem="prJ-Dc-weo" firstAttribute="leading" secondItem="IGa-BP-2Uv" secondAttribute="leading" constant="5" id="IhY-9V-o7f"/>
                         <constraint firstAttribute="trailing" secondItem="O0F-Cu-OXP" secondAttribute="trailing" constant="10" id="Oo9-46-ao6"/>
-                        <constraint firstAttribute="bottom" secondItem="prJ-Dc-weo" secondAttribute="bottom" id="XEf-vA-z9q"/>
+                        <constraint firstAttribute="bottom" secondItem="EpS-S6-qEt" secondAttribute="bottom" constant="9" id="cdi-5l-WJG"/>
                         <constraint firstItem="CDD-uw-fhj" firstAttribute="leading" secondItem="IGa-BP-2Uv" secondAttribute="leading" constant="5" id="eG4-ZP-gcj"/>
                         <constraint firstItem="CDD-uw-fhj" firstAttribute="top" secondItem="IGa-BP-2Uv" secondAttribute="top" constant="8" id="pJ7-FC-PAj"/>
                         <constraint firstItem="O0F-Cu-OXP" firstAttribute="leading" secondItem="IGa-BP-2Uv" secondAttribute="leading" constant="10" id="sww-hn-XET"/>
+                        <constraint firstItem="EpS-S6-qEt" firstAttribute="centerX" secondItem="IGa-BP-2Uv" secondAttribute="centerX" id="u30-Ni-UI3"/>
+                        <constraint firstItem="EpS-S6-qEt" firstAttribute="top" secondItem="prJ-Dc-weo" secondAttribute="bottom" id="vrv-IB-oz5"/>
                         <constraint firstAttribute="trailing" secondItem="prJ-Dc-weo" secondAttribute="trailing" constant="5" id="wA2-Oi-UoJ"/>
                         <constraint firstItem="O0F-Cu-OXP" firstAttribute="top" secondItem="CDD-uw-fhj" secondAttribute="bottom" constant="12" id="xcf-Xx-ZcZ"/>
                     </constraints>
@@ -196,6 +214,8 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="btnHeightConstraint" destination="gBs-In-EjW" id="q8S-lS-ddY"/>
+                <outlet property="btnPaymentDue" destination="EpS-S6-qEt" id="4XX-JL-Phi"/>
                 <outlet property="btnSendReceipt" destination="faz-YB-aCJ" id="wl7-sp-fjS"/>
                 <outlet property="cellContainerView" destination="IGa-BP-2Uv" id="8pG-X8-wBt"/>
                 <outlet property="lblBookin" destination="Z8Z-3K-AXl" id="qmh-s4-Hel"/>
@@ -205,7 +225,7 @@
                 <outlet property="lblName" destination="dTM-La-xA2" id="DbV-AJ-p2f"/>
                 <outlet property="lblPickup" destination="eZw-2V-1Zt" id="ax9-pf-5mR"/>
             </connections>
-            <point key="canvasLocation" x="-66.400000000000006" y="-127.736131934033"/>
+            <point key="canvasLocation" x="-695" y="-83"/>
         </view>
     </objects>
     <resources>

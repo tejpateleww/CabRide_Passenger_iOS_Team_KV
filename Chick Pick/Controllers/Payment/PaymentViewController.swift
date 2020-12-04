@@ -12,7 +12,7 @@ import SwipeCellKit
 
 protocol didSelectPaymentDelegate {
     
-    func didSelectPaymentType(PaymentTypeTitle:String, PaymentType:String, PaymentTypeID:String, PaymentNumber: String, PaymentHolderName:String, dictData: [String:Any]?)
+    func didSelectPaymentType(PaymentTypeTitle:String, PaymentType:String, PaymentTypeID:String, PaymentNumber: String, PaymentHolderName:String, dictData: [String:Any]?, isForPaymentDue: Bool?)
     
     func removeCard(PaymentTypeID: String)
 }
@@ -39,6 +39,7 @@ class PaymentViewController: BaseViewController, UITableViewDelegate, UITableVie
     var isFlatRateSelected:Bool = false
     var PagefromBulkMiles:Bool = false
     var OpenedForPayment:Bool = false
+    var isForPaymentDue:Bool = false
     var Delegate:didSelectPaymentDelegate!
     
     @IBOutlet weak var btnAddCard: ThemeButton!
@@ -523,15 +524,15 @@ class PaymentViewController: BaseViewController, UITableViewDelegate, UITableVie
                 let PaymentObject = self.aryOtherPayment[indexPath.row]
                 if (self.isFlatRateSelected == true) && ((PaymentObject["CardNum2"] as! String) != "bulk_miles") {
                     self.dismiss(animated: true) {
-                        self.Delegate.didSelectPaymentType(PaymentTypeTitle: PaymentObject["CardNum"] as! String, PaymentType:  PaymentObject["CardNum2"] as! String, PaymentTypeID: "", PaymentNumber: "", PaymentHolderName: "", dictData: PaymentObject)
+                        self.Delegate.didSelectPaymentType(PaymentTypeTitle: PaymentObject["CardNum"] as! String, PaymentType:  PaymentObject["CardNum2"] as! String, PaymentTypeID: "", PaymentNumber: "", PaymentHolderName: "", dictData: PaymentObject, isForPaymentDue: false)
                     }
                 } else if self.isFlatRateSelected == false {
                     if self.PagefromBulkMiles == true {
-                        self.Delegate.didSelectPaymentType(PaymentTypeTitle: PaymentObject["CardNum"] as! String, PaymentType:  PaymentObject["CardNum2"] as! String, PaymentTypeID: "", PaymentNumber: "", PaymentHolderName: "", dictData: PaymentObject)
+                        self.Delegate.didSelectPaymentType(PaymentTypeTitle: PaymentObject["CardNum"] as! String, PaymentType:  PaymentObject["CardNum2"] as! String, PaymentTypeID: "", PaymentNumber: "", PaymentHolderName: "", dictData: PaymentObject, isForPaymentDue: false)
                         self.navigationController?.popViewController(animated: true)
                     } else {
                         self.dismiss(animated: true) {
-                            self.Delegate.didSelectPaymentType(PaymentTypeTitle: PaymentObject["CardNum"] as! String, PaymentType:  PaymentObject["CardNum2"] as! String, PaymentTypeID: "", PaymentNumber: "", PaymentHolderName: "", dictData: PaymentObject)
+                            self.Delegate.didSelectPaymentType(PaymentTypeTitle: PaymentObject["CardNum"] as! String, PaymentType:  PaymentObject["CardNum2"] as! String, PaymentTypeID: "", PaymentNumber: "", PaymentHolderName: "", dictData: PaymentObject, isForPaymentDue: false)
                         }
                     }
                 }
@@ -541,12 +542,12 @@ class PaymentViewController: BaseViewController, UITableViewDelegate, UITableVie
                 if self.PagefromBulkMiles == true {
                     let card = self.aryCardData[indexPath.row]
                     
-                    self.Delegate.didSelectPaymentType(PaymentTypeTitle: card.cardHolderName, PaymentType: "card" , PaymentTypeID: card.id, PaymentNumber: card.formatedCardNo, PaymentHolderName: card.cardHolderName, dictData: card.toDictionary())
+                    self.Delegate.didSelectPaymentType(PaymentTypeTitle: card.cardHolderName, PaymentType: "card" , PaymentTypeID: card.id, PaymentNumber: card.formatedCardNo, PaymentHolderName: card.cardHolderName, dictData: card.toDictionary(), isForPaymentDue: false)
                     self.navigationController?.popViewController(animated: true)
                 } else {
                     self.dismiss(animated: true) {
                         let card = self.aryCardData[indexPath.row]
-                        self.Delegate.didSelectPaymentType(PaymentTypeTitle: card.cardHolderName, PaymentType: "card" , PaymentTypeID: card.id, PaymentNumber: card.formatedCardNo, PaymentHolderName: card.cardHolderName, dictData: card.toDictionary())
+                        self.Delegate.didSelectPaymentType(PaymentTypeTitle: card.cardHolderName, PaymentType: "card" , PaymentTypeID: card.id, PaymentNumber: card.formatedCardNo, PaymentHolderName: card.cardHolderName, dictData: card.toDictionary(), isForPaymentDue: self.isForPaymentDue)
                     }
                 }
             }

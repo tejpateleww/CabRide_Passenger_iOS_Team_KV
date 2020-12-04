@@ -212,7 +212,7 @@ class BulkMileVC: BaseViewController, didSelectPaymentDelegate{
     
     // MARK:- Payment Select Delegate Methods
        
-    func didSelectPaymentType(PaymentTypeTitle: String, PaymentType: String, PaymentTypeID: String, PaymentNumber: String, PaymentHolderName: String, dictData: [String : Any]?) {
+    func didSelectPaymentType(PaymentTypeTitle: String, PaymentType: String, PaymentTypeID: String, PaymentNumber: String, PaymentHolderName: String, dictData: [String : Any]?, isForPaymentDue: Bool?) {
         self.PurchaseMile.payment_type = PaymentType
         if PaymentType == "card" {
             self.PurchaseMile.card_id = PaymentTypeID

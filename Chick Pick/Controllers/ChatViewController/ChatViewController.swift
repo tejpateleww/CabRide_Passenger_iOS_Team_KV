@@ -16,7 +16,7 @@ protocol DelegatechatListRefresh {
 
 let windowWidth: CGFloat = CGFloat(UIScreen.main.bounds.size.width)
 
-class ChatViewController: BaseViewController,UIGestureRecognizerDelegate ,UINavigationControllerDelegate,UIActionSheetDelegate,UITextViewDelegate{//,UITableViewDataSource,UITableViewDelegate {
+class ChatViewController: BaseViewController, UIGestureRecognizerDelegate , UINavigationControllerDelegate, UIActionSheetDelegate, UITextViewDelegate { //,UITableViewDataSource,UITableViewDelegate {
     
     // ----------------------------------------------------
     // MARK: - Outlets

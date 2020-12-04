@@ -13,7 +13,7 @@ import Foundation
 
 extension VehicleDetailViewController: didSelectPaymentDelegate {
     
-    func didSelectPaymentType(PaymentTypeTitle: String, PaymentType: String, PaymentTypeID: String, PaymentNumber: String, PaymentHolderName: String, dictData: [String : Any]?) {
+    func didSelectPaymentType(PaymentTypeTitle: String, PaymentType: String, PaymentTypeID: String, PaymentNumber: String, PaymentHolderName: String, dictData: [String : Any]?, isForPaymentDue: Bool?) {
         
     }
     

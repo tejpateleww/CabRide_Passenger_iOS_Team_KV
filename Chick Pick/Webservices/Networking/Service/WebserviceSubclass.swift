@@ -86,6 +86,46 @@ class UserWebserviceSubclass
         WebService.shared.getMethod(url: URL.init(string: strURLFinal)!, httpMethod: .get, completion: completion)
     }
     
+    class func pastBookingHistory( strURL : String  ,completion: @escaping CompletionResponse ) {
+        let strURLFinal = NetworkEnvironment.baseURL + ApiKey.PastBookingHistory.rawValue + strURL
+        WebService.shared.getMethod(url: URL.init(string: strURLFinal)!, httpMethod: .get, completion: completion)
+    }
+    
+    class func CancelTripBookingRequest( bookingRequestModel : CancelTripRequestModel  ,completion: @escaping CompletionResponse ) {
+        let  params : [String:String] = bookingRequestModel.generatPostParams() as! [String : String]
+        WebService.shared.requestMethod(api: .CancelTrip, httpMethod: .post, parameters: params, completion: completion)
+    }
+    
+    class func CancellationCharges(strURL : String  ,completion: @escaping CompletionResponse ) {
+        let strURLFinal = NetworkEnvironment.baseURL + ApiKey.cancellationCharges.rawValue + strURL
+        WebService.shared.getMethod(url: URL.init(string: strURLFinal)!, httpMethod: .get, completion: completion)
+    }
+
+    class func ReviewRatingToDriver( bookingRequestModel : ReviewRatingReqModel  ,completion: @escaping CompletionResponse ) {
+        let  params : [String:String] = bookingRequestModel.generatPostParams() as! [String : String]
+        WebService.shared.requestMethod(api: .ReviewRating, httpMethod: .post, parameters: params, completion: completion)
+    }
+    
+    class func upcomingBookingHistory(strURL : String  ,completion: @escaping CompletionResponse ) {
+        let strURLFinal = NetworkEnvironment.baseURL + ApiKey.upcomingBookingHistory.rawValue + strURL
+        WebService.shared.getMethod(url: URL.init(string: strURLFinal)!, httpMethod: .get, completion: completion)
+    }
+    
+    class func currentBookingList(strURL : String  ,completion: @escaping CompletionResponse ) {
+        let strURLFinal = NetworkEnvironment.baseURL + ApiKey.CurrentTripDetails.rawValue + strURL
+        WebService.shared.getMethod(url: URL.init(string: strURLFinal)!, httpMethod: .get, completion: completion)
+    }
+    
+    class func checkPromocodeService(Promocode : CheckPromocode  ,completion: @escaping CompletionResponse ) {
+        let  params : [String:String] = Promocode.generatPostParams() as! [String : String]
+        WebService.shared.requestMethod(api: .checkPromocode, httpMethod: .post, parameters: params, completion: completion)
+    }
+    
+    class func getAPIcall(strURL : String  ,completion: @escaping CompletionResponse ) {
+        let strURLFinal = NetworkEnvironment.baseURL + strURL
+        WebService.shared.getMethod(url: URL.init(string: strURLFinal)!, httpMethod: .get, completion: completion)
+    }
+    
     // ----------------------------------------  Peppea API ----------------------------------------------
     
     
@@ -128,7 +168,6 @@ class UserWebserviceSubclass
         WebService.shared.requestMethod(api: .MobileNoDetail, httpMethod: .post, parameters: params, completion: completion)
     }
     
-    
     class func walletHistoryList( WalletHistoryModel : WalletHistory  ,completion: @escaping CompletionResponse ) {
         let  params : [String:String] = WalletHistoryModel.generatPostParams() as! [String : String]
         WebService.shared.requestMethod(api: .walletHistory, httpMethod: .post, parameters: params, completion: completion)
@@ -144,44 +183,6 @@ class UserWebserviceSubclass
         let  params : [String:String] = bookingRequestModel.generatPostParams() as! [String : String]
         WebService.shared.requestMethod(api: .BookingRequest, httpMethod: .post, parameters: params, completion: completion)
     }
-    
-    class func pastBookingHistory( strURL : String  ,completion: @escaping CompletionResponse ) {
-        let strURLFinal = NetworkEnvironment.baseURL + ApiKey.PastBookingHistory.rawValue + strURL
-        WebService.shared.getMethod(url: URL.init(string: strURLFinal)!, httpMethod: .get, completion: completion)
-    }
-    
-    class func CancelTripBookingRequest( bookingRequestModel : CancelTripRequestModel  ,completion: @escaping CompletionResponse ) {
-        let  params : [String:String] = bookingRequestModel.generatPostParams() as! [String : String]
-        WebService.shared.requestMethod(api: .CancelTrip, httpMethod: .post, parameters: params, completion: completion)
-    }
-    
-    class func CancellationCharges(strURL : String  ,completion: @escaping CompletionResponse ) {
-        let strURLFinal = NetworkEnvironment.baseURL + ApiKey.cancellationCharges.rawValue + strURL
-        WebService.shared.getMethod(url: URL.init(string: strURLFinal)!, httpMethod: .get, completion: completion)
-    }
-
-    class func ReviewRatingToDriver( bookingRequestModel : ReviewRatingReqModel  ,completion: @escaping CompletionResponse ) {
-        let  params : [String:String] = bookingRequestModel.generatPostParams() as! [String : String]
-        WebService.shared.requestMethod(api: .ReviewRating, httpMethod: .post, parameters: params, completion: completion)
-    }
-    
-    class func upcomingBookingHistory(strURL : String  ,completion: @escaping CompletionResponse ) {
-        let strURLFinal = NetworkEnvironment.baseURL + ApiKey.upcomingBookingHistory.rawValue + strURL
-        WebService.shared.getMethod(url: URL.init(string: strURLFinal)!, httpMethod: .get, completion: completion)
-    }
-    
-    
-    class func currentBookingList(strURL : String  ,completion: @escaping CompletionResponse ) {
-        let strURLFinal = NetworkEnvironment.baseURL + ApiKey.CurrentTripDetails.rawValue + strURL
-        WebService.shared.getMethod(url: URL.init(string: strURLFinal)!, httpMethod: .get, completion: completion)
-    }
-    
-    
-    class func checkPromocodeService(Promocode : CheckPromocode  ,completion: @escaping CompletionResponse ) {
-        let  params : [String:String] = Promocode.generatPostParams() as! [String : String]
-        WebService.shared.requestMethod(api: .checkPromocode, httpMethod: .post, parameters: params, completion: completion)
-    }
-    
     
     class func getBulkMile( strURL : String  ,completion: @escaping CompletionResponse ) {
         let strURLFinal = NetworkEnvironment.baseURL + ApiKey.GetBulkMileList.rawValue + strURL
@@ -237,6 +238,11 @@ class UserWebserviceSubclass
     class func PreviousDuePaymentData(SendChat:PreviousDuePayment , completion: @escaping CompletionResponse) {
         let  params : [String:String] = SendChat.generatPostParams() as! [String : String]
         WebService.shared.requestMethod(api: .pastDuePayment, httpMethod: .post, parameters: params, completion: completion)
+    }
+    
+    class func BulkPreviousDuePaymentData(SendChat:PreviousDuePayment , completion: @escaping CompletionResponse) {
+        let  params : [String:String] = SendChat.generatPostParams() as! [String : String]
+        WebService.shared.requestMethod(api: .bulkPastDuePayment, httpMethod: .post, parameters: params, completion: completion)
     }
     
     class func chatHistoryWithDriver(strURL : String  ,completion: @escaping CompletionResponse ) {

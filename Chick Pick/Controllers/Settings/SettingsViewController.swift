@@ -67,13 +67,15 @@ extension SettingsViewController : UITableViewDelegate, UITableViewDataSource {
         
         if arrMenuTitle[indexPath.row] == "Help"
         {
-            
+            let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "HelpViewController") as! HelpViewController
+            self.navigationController?.pushViewController(NextPage, animated: true)
             return
         }
         
         if arrMenuTitle[indexPath.row] == "FAQ"
         {
-           
+            let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "FAQViewController") as! FAQViewController
+            self.navigationController?.pushViewController(NextPage, animated: true)
             return
         }
     }

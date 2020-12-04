@@ -118,6 +118,23 @@ class BaseViewController: UIViewController {
         self.navigationController?.navigationBar.isTranslucent = false
     }
     
+    func callNumber(phoneNumber:String) {
+
+        if let phoneCallURL = URL(string: "telprompt://\(phoneNumber)") {
+
+            let application:UIApplication = UIApplication.shared
+            if (application.canOpenURL(phoneCallURL)) {
+                if #available(iOS 10.0, *) {
+                    application.open(phoneCallURL, options: [:], completionHandler: nil)
+                } else {
+                    // Fallback on earlier versions
+                     application.openURL(phoneCallURL as URL)
+
+                }
+            }
+        }
+    }
+    
     
     // MARK:- Navigation Bar Button Action Methods
     

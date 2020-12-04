@@ -110,8 +110,12 @@ enum ApiKey: String{
    
     case walletHistory = "wallet_history"
     
-    
     case QRCodeDetail = "qr_code_detail"
+ 
+    case FAQList = "help_categories"
+    case FAQSubCategories = "help_subcategories/"
+    case FAQ = "helps_faq/"
+    
     case BookingRequest = "booking_request"
     case PastBookingHistory = "past_booking_history/"
     case CurrentTripDetails = "ongoing_booking_history/"
@@ -137,6 +141,8 @@ enum ApiKey: String{
     
     case pastDueHistory = "past_due_history/"
     case pastDuePayment = "past_due_payment"
+    case bulkPastDuePayment = "bulk_past_due_payment"
+    
     case chat = "chat"
     case chatHistory = "chat_history/"
     

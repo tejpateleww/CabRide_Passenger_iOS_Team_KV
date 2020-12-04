@@ -38,6 +38,10 @@
 		18CB7F9122E89688004FA66C /* VehicleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CB7F8C22E89688004FA66C /* VehicleType.swift */; };
 		18CB7F9222E89688004FA66C /* CustomerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CB7F8D22E89688004FA66C /* CustomerInfo.swift */; };
 		18CE238923229446003901D8 /* NavigationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CE238823229446003901D8 /* NavigationVC.swift */; };
+		37C7AD9E25751ABE0000F882 /* FAQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C7AD9A25751ABE0000F882 /* FAQViewController.swift */; };
+		37C7AD9F25751ABE0000F882 /* FAQSubTypesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C7AD9B25751ABE0000F882 /* FAQSubTypesViewController.swift */; };
+		37C7ADA025751ABE0000F882 /* FAQDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C7AD9C25751ABE0000F882 /* FAQDetailsViewController.swift */; };
+		37C7ADA125751ABE0000F882 /* FAQQuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C7AD9D25751ABE0000F882 /* FAQQuestionsViewController.swift */; };
 		4600BEFD22D5E24F00306486 /* ReceiveMoneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4600BEFC22D5E24F00306486 /* ReceiveMoneyViewController.swift */; };
 		4600BF0022D613B000306486 /* HistoryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4600BEFF22D613B000306486 /* HistoryListViewController.swift */; };
 		4600BF0222D6140200306486 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4600BF0122D6140200306486 /* HistoryTableViewCell.swift */; };
@@ -291,6 +295,10 @@
 		18CB7F8D22E89688004FA66C /* CustomerInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerInfo.swift; sourceTree = "<group>"; };
 		18CE238823229446003901D8 /* NavigationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationVC.swift; sourceTree = "<group>"; };
 		3113B5679CB8CBDE7AAC41BE /* Pods-Peppea.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Peppea.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Peppea/Pods-Peppea.debug.xcconfig"; sourceTree = "<group>"; };
+		37C7AD9A25751ABE0000F882 /* FAQViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAQViewController.swift; sourceTree = "<group>"; };
+		37C7AD9B25751ABE0000F882 /* FAQSubTypesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAQSubTypesViewController.swift; sourceTree = "<group>"; };
+		37C7AD9C25751ABE0000F882 /* FAQDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAQDetailsViewController.swift; sourceTree = "<group>"; };
+		37C7AD9D25751ABE0000F882 /* FAQQuestionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAQQuestionsViewController.swift; sourceTree = "<group>"; };
 		4600BEFC22D5E24F00306486 /* ReceiveMoneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveMoneyViewController.swift; sourceTree = "<group>"; };
 		4600BEFF22D613B000306486 /* HistoryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryListViewController.swift; sourceTree = "<group>"; };
 		4600BF0122D6140200306486 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
@@ -612,6 +620,17 @@
 				18CB7F8D22E89688004FA66C /* CustomerInfo.swift */,
 			);
 			path = RequestAcceptedDataModel;
+			sourceTree = "<group>";
+		};
+		37C7AD9925751AA40000F882 /* FAQ */ = {
+			isa = PBXGroup;
+			children = (
+				37C7AD9C25751ABE0000F882 /* FAQDetailsViewController.swift */,
+				37C7AD9D25751ABE0000F882 /* FAQQuestionsViewController.swift */,
+				37C7AD9B25751ABE0000F882 /* FAQSubTypesViewController.swift */,
+				37C7AD9A25751ABE0000F882 /* FAQViewController.swift */,
+			);
+			path = FAQ;
 			sourceTree = "<group>";
 		};
 		4600BEFB22D5E1EB00306486 /* Wallet */ = {
@@ -1536,6 +1555,7 @@
 		EEE2B7FC22C62376004F1C00 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				37C7AD9925751AA40000F882 /* FAQ */,
 				6E3222FF23D82BFE00FDAC10 /* Help */,
 				6EDE254E23BF3E010042165A /* Previous Due */,
 				6882F5D823420DFA00934C04 /* PeppeaRentalControllers */,
@@ -1923,6 +1943,7 @@
 				688122CE2348726500577D6E /* VehicleDetailViewController.swift in Sources */,
 				6E994DF923CC45E00026524A /* PreviousDueModelParent.swift in Sources */,
 				1882A0AD22EB1387008B5D1A /* CancelTripRequestModel.swift in Sources */,
+				37C7ADA025751ABE0000F882 /* FAQDetailsViewController.swift in Sources */,
 				6458B82624F8BF7A00CC0200 /* SettingsViewController.swift in Sources */,
 				466957DC22DD9E4A008A73C0 /* ApiPaths.swift in Sources */,
 				688122CC2348726500577D6E /* VehicleDetailViewController+TableView.swift in Sources */,
@@ -1964,6 +1985,7 @@
 				6E32230A23D84D6500FDAC10 /* Ticket.swift in Sources */,
 				688122C72348726500577D6E /* RentalLoginViewController.swift in Sources */,
 				18CB7F9022E89688004FA66C /* DriverInfo.swift in Sources */,
+				37C7AD9F25751ABE0000F882 /* FAQSubTypesViewController.swift in Sources */,
 				688122D42348726500577D6E /* VehicleDetailHeaderCell.swift in Sources */,
 				68D8D860234DC2C500136471 /* FilterByViewController.swift in Sources */,
 				468E991522D9B6EF00072361 /* EmptyTableViewCell.swift in Sources */,
@@ -1981,6 +2003,7 @@
 				463DEFD522D877E4002365F8 /* CreditCardValidationType.swift in Sources */,
 				463DEFD022D86E15002365F8 /* PaymentCardTypeListCell.swift in Sources */,
 				688122E22348726500577D6E /* SelectDateTimeViewController.swift in Sources */,
+				37C7ADA125751ABE0000F882 /* FAQQuestionsViewController.swift in Sources */,
 				468E991A22D9DBDA00072361 /* PeppeaBusinessSetupViewController.swift in Sources */,
 				EE9F3F6A22C76B4A00426377 /* Register.swift in Sources */,
 				18CB7F8E22E89688004FA66C /* RequestAcceptedDataModel.swift in Sources */,
@@ -2014,6 +2037,7 @@
 				18CB7F8F22E89688004FA66C /* BookingInfo.swift in Sources */,
 				EEE2B80F22C62A27004F1C00 /* UtilityClass.swift in Sources */,
 				46CA655122DDCB9600FC6E16 /* UserDefaultsEx.swift in Sources */,
+				37C7AD9E25751ABE0000F882 /* FAQViewController.swift in Sources */,
 				18CB7F9222E89688004FA66C /* CustomerInfo.swift in Sources */,
 				463DEFC922D851E6002365F8 /* SendMoneyViewController.swift in Sources */,
 				EE8A61C822C652F5000718ED /* RegisterViewController.swift in Sources */,

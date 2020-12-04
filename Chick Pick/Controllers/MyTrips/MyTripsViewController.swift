@@ -16,6 +16,8 @@ class MyTripsViewController: BaseViewController
     
     var tripType = MyTrips.past
     var data = [(String, String)]()
+    
+    let model = PreviousDuePayment()
   
     private let refreshControl = UIRefreshControl()
     var isRefresh = Bool()
@@ -218,7 +220,25 @@ class MyTripsViewController: BaseViewController
     
     @objc func cancelTrip(_ sender: UIButton) {
         let dataResponseHeader = self.pastBookingHistoryModelDetails[sender.tag]
+        UtilityClass.showHUD(with: UIApplication.shared.keyWindow)
         webserviceForCancelTrip(bookingId: dataResponseHeader.id)
+    }
+    
+    @objc func paymentDueAction(_ sender: UIButton) {
+        let dataResponseHeader = self.pastBookingHistoryModelDetails[sender.tag]
+        model.booking_id = dataResponseHeader.id
+        model.customer_id = dataResponseHeader.customerId
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let payment = storyboard.instantiateViewController(withIdentifier: "PaymentViewController") as? PaymentViewController {
+            payment.Delegate = self
+            payment.isFromSideMenu = true
+            payment.OpenedForPayment = true
+            let NavController = UINavigationController(rootViewController: payment)
+            self.navigationController?.present(NavController, animated: true, completion: nil)
+
+            //            self.present(payment, animated: true, completion: nil)//navigationController?.pushViewController(payment, animated: true)
+        }
     }
     
     func webserviceForCancelTrip(bookingId: String) {
@@ -227,12 +247,30 @@ class MyTripsViewController: BaseViewController
         let model = CancelTripRequestModel()
         model.booking_id = bookingId
         UserWebserviceSubclass.CancelTripBookingRequest(bookingRequestModel: model) { (response, status) in
-            
+            UtilityClass.hideHUD()
             if status {
                 homeVC?.setupAfterComplete()
                 self.webserviceForUpcommingBooking(pageNo: 1)
             } else {
                 AlertMessage.showMessageForError(response.dictionary?["message"]?.stringValue ?? "Something went wrong")
+            }
+        }
+    }
+    
+    func webserviceForPaymentPreviousDue() {
+        UtilityClass.showHUD(with: UIApplication.shared.keyWindow)
+        UserWebserviceSubclass.PreviousDuePaymentData(SendChat: model) { (response, status) in
+            UtilityClass.hideHUD()
+            if status {
+                
+                UtilityClass.showDefaultAlertView(withTitle: "", message: response.dictionary?["message"]?.string ?? "", buttons: ["Ok"], completion: { (ind) in
+                    self.navigationController?.popViewController(animated: true)
+                })
+                
+            } else {
+                UtilityClass.showDefaultAlertView(withTitle: "", message: response.dictionary?["message"]?.string ?? "", buttons: ["Ok"], completion: { (ind) in
+                    
+                })
             }
         }
     }
@@ -282,6 +320,21 @@ extension MyTripsViewController: UITableViewDelegate, UITableViewDataSource{
                     cell.btnSendReceipt.addTarget(self, action: #selector(self.cancelTrip(_:)), for: .touchUpInside)
                     
                     UtilityClass.viewCornerRadius(view: cell.btnSendReceipt, borderWidth: 1, borderColor: .black)
+                }
+                
+                if self.tripType.rawValue.lowercased() == "past" && dataResponseHeader.paymentStatus.lowercased() == "failed" {
+                    cell.btnPaymentDue.tag = indexPath.section
+                    cell.btnPaymentDue.isHidden = false
+                    cell.btnHeightConstraint.constant = 35
+                    cell.btnPaymentDue.addTarget(self, action: #selector(self.paymentDueAction(_:)), for: .touchUpInside)
+                    
+//                    cell.btnPaymentDue.layer.borderWidth = 1
+//                    cell.btnPaymentDue.layer.borderColor = ThemeOrange.cgColor
+                    
+//                    UtilityClass.viewCornerRadius(view: cell.btnPaymentDue, borderWidth: 1, borderColor: ThemeOrange)
+                } else {
+                    cell.btnPaymentDue.isHidden = true
+                    cell.btnHeightConstraint.constant = 0
                 }
                 
                 cell.setup()
@@ -370,6 +423,62 @@ extension MyTripsViewController: UITableViewDelegate, UITableViewDataSource{
 //                self.pageNoPastBooking = self.pageNoPastBooking + 1
 //                webserviceCallForGettingPastHistory(pageNo: self.pageNoPastBooking)
             }
+        }
+    }
+}
+
+extension MyTripsViewController: didSelectPaymentDelegate,delegateForCancelTripReason {
+   
+    func removeCard(PaymentTypeID: String) {
+        print("Remove Card")
+    }
+
+    func didSelectPaymentType(PaymentTypeTitle: String, PaymentType: String, PaymentTypeID: String, PaymentNumber: String, PaymentHolderName: String, dictData: [String : Any]?, isForPaymentDue: Bool?) {
+        
+        model.payment_type = PaymentType
+        if PaymentType.lowercased() == "card" {
+            model.card_id = PaymentTypeID
+            if model.card_id == "" {
+                UtilityClass.showAlert(title: "", message: "Please select card id", alertTheme: .error)
+            }
+            else
+            {
+//                let storyboard = UIStoryboard(name: "Popup", bundle: nil)
+//                if let vc = storyboard.instantiateViewController(withIdentifier: "CancelTripViewController") as? CancelTripViewController {
+//                    vc.delegate = self
+//                    vc.isDropDownHidden = true
+//                    vc.strBtnOkText = "Done"
+//                    vc.strTextPlaceHolder = "Enter Card Pin"
+//                    self.present(vc, animated: true, completion: nil)
+//                    return
+//                }
+            }
+        }
+        
+
+        if model.booking_id == "" {
+            UtilityClass.showAlert(title: "", message: "Please select booking", alertTheme: .error)
+        } else if model.customer_id == "" {
+            UtilityClass.showAlert(title: "", message: "Please select customer", alertTheme: .error)
+        }
+        else if model.payment_type == "" {
+            UtilityClass.showAlert(title: "", message: "Please select payment type", alertTheme: .error)
+        } else {
+            webserviceForPaymentPreviousDue()
+        }
+    }
+
+
+    func didCancelTripFromRider(obj: Any) {
+        if model.booking_id == "" {
+            UtilityClass.showAlert(title: "", message: "Please select booking", alertTheme: .error)
+        } else if model.customer_id == "" {
+            UtilityClass.showAlert(title: "", message: "Please select customer", alertTheme: .error)
+        }
+        else if model.payment_type == "" {
+            UtilityClass.showAlert(title: "", message: "Please select payment type", alertTheme: .error)
+        } else {
+            webserviceForPaymentPreviousDue()
         }
     }
 }

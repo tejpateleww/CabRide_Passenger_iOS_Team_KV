@@ -45,7 +45,7 @@ enum payment_type: String {
     case bulk_miles = "bulk_miles"
 }
 
-class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDelegate,ARCarMovementDelegate
+class HomeViewController: BaseViewController, GMSMapViewDelegate, didSelectDateDelegate, ARCarMovementDelegate
 {
 
     //MARK:- IBOutles
@@ -106,7 +106,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
     var path = GMSPath()
     var animationPath = GMSMutablePath()
     var i: UInt = 0
-//    var timer: Timer!
+    var NearByDriverTimer: Timer?
 //    var EstimateTime: Timer!
 //    var driverMarker: GMSMarker!
     var destinationMarker = GMSMarker()
@@ -218,6 +218,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
                 self.routeDrawMethod(origin: "\(self.booingInfo.driverInfo.lat ?? ""),\(self.booingInfo.driverInfo.lng ?? "")", destination: "\(self.booingInfo.customerInfo.lat ?? ""),\(self.booingInfo.customerInfo.lng ?? "")", isTripAccepted: true)
                 setupTripStatu(status: .accepted)
             }
+            
         } else if self.booingInfo.status == "traveling" {
             self.routeDrawMethod(origin: "\(self.booingInfo.pickupLat ?? ""),\(self.booingInfo.pickupLng ?? "")", destination: "\(self.booingInfo.dropoffLat ?? ""),\(self.booingInfo.dropoffLng ?? "")", isTripAccepted: true)
              setupTripStatu(status: .traveling)
@@ -252,7 +253,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
         moveMent.delegate = self
 
         self.perform(#selector(self.btnCurrentLocation(_:)), with: self, afterDelay: 1)
-        let rightNavBarButton = UIBarButtonItem(image: UIImage(named: "iconFavorite"), style: .plain, target: self, action: #selector(self.btnFavouriteAddress(_:)))
+        _ = UIBarButtonItem(image: UIImage(named: "iconFavorite"), style: .plain, target: self, action: #selector(self.btnFavouriteAddress(_:)))
         self.navigationItem.rightBarButtonItem = nil
 //        self.navigationItem.rightBarButtonItem = rightNavBarButton
         
@@ -319,6 +320,26 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
         
         let param = ["customer_id":dictForRejectCurrentReq.customerId, "booking_id":dictForRejectCurrentReq.bookingId]        
         emitSocket_CancelBookingBeforeAccept(param: param)
+    }
+    
+    // ----------------------------------------------------
+    // MARK:- Timer methods
+    // ----------------------------------------------------
+    
+    @objc func nearByDriversList() {
+        let myLocation = SingletonClass.sharedInstance.myCurrentLocation
+        
+        let param = ["customer_id": SingletonClass.sharedInstance.loginData.id ?? "", "current_lng": "\(myLocation.coordinate.latitude)", "current_lat": "\(myLocation.coordinate.longitude)"]
+        emitSocket_NearByDriver(param: param)
+    }
+    
+    func startNearByDriverTimer() {
+        NearByDriverTimer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(nearByDriversList), userInfo: nil, repeats: true)
+    }
+    
+    func stopNearByDriverTimer() {
+        NearByDriverTimer?.invalidate()
+        NearByDriverTimer = nil
     }
     
 
@@ -421,18 +442,19 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
     func setupTripStatu(status: TripStauts) {
         
         switch status {
-            case .pending:
-                print("")
-            case .accepted:
-                self.hideAndShowView(view: .requestAccepted)
-                self.isExpandCategory = true
-            case .traveling:
-                self.hideAndShowView(view: .rideStart)
-                self.isExpandCategory = true
-            case .completed:
-//                self.hideAndShowView(view: .ratings)
-                self.hideAndShowView(view: .completeTrip)
-                self.isExpandCategory = true
+        case .pending:
+            print("")
+            startNearByDriverTimer()
+        case .accepted:
+            self.hideAndShowView(view: .requestAccepted)
+            self.isExpandCategory = true
+        case .traveling:
+            self.hideAndShowView(view: .rideStart)
+            self.isExpandCategory = true
+        case .completed:
+            //                self.hideAndShowView(view: .ratings)
+            self.hideAndShowView(view: .completeTrip)
+            self.isExpandCategory = true
         }
     }
 
@@ -873,21 +895,21 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
 
     //MARK:- PolyLine Methods
     
-    func tempPolyLine()
-    {
-        let geocoder = CLGeocoder()
-
-        geocoder.geocodeAddressString("SURAT", completionHandler: { placemarks, error in
-            if error == nil {
-                if (placemarks?.count ?? 0) > 0 {
-                    let placemark = placemarks?[0] as? CLPlacemark
-                    let location = placemark?.location
-                    let coordinate = location?.coordinate
-                    print("the coordinates are \(coordinate)")
-                }
-            }
-        })
-    }
+//    func tempPolyLine()
+//    {
+//        let geocoder = CLGeocoder()
+//
+//        geocoder.geocodeAddressString("SURAT", completionHandler: { placemarks, error in
+//            if error == nil {
+//                if (placemarks?.count ?? 0) > 0 {
+//                    let placemark = placemarks?[0] as? CLPlacemark
+//                    let location = placemark?.location
+//                    let coordinate = location?.coordinate
+//                    print("the coordinates are \(coordinate)")
+//                }
+//            }
+//        })
+//    }
 
     func routeDrawMethod(origin: String?, destination: String?, isTripAccepted : Bool)
     {
@@ -896,6 +918,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
             if let destinationLocation = destination {
                 var directionsURLString = baseURLDirections + "origin=" + originLocation + "&destination=" + destinationLocation + "&key=" + googlApiKey
                 directionsURLString = directionsURLString.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+                print("The direction URL is \(directionsURLString)")
                 let directionsURL = NSURL(string: directionsURLString)
                 DispatchQueue.main.async(execute: {
                     if let directionsData = NSData(contentsOf: directionsURL! as URL)
@@ -930,7 +953,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
 
                             if status == "OK" {
                                 
-                                var strPickupCoordinate = origin?.components(separatedBy: ",")
+                                let strPickupCoordinate = origin?.components(separatedBy: ",")
                                 var pickupDoubleLat = Double()
                                 var pickupDoubleLng = Double()
                                 
@@ -955,7 +978,7 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
                                     self.mapView.isMyLocationEnabled = false
                                 }
 
-                                var strDestinationCoordinate = destination?.components(separatedBy: ",")
+                                let strDestinationCoordinate = destination?.components(separatedBy: ",")
                                 var DoubleLat = Double()
                                 var DoubleLng = Double()
                                 
@@ -1043,28 +1066,41 @@ class HomeViewController: BaseViewController,GMSMapViewDelegate,didSelectDateDel
             driverVC.viewWaiting.isHidden = true
             driverVC.cancelBtn.isHidden = false
             driverVC.setData(bookingData: self.booingInfo)
+            stopNearByDriverTimer()
+            
         case .waiting :
             guard let driverVC = self.driverInfoVC else { return }
             driverVC.viewWaiting.isHidden = false
             driverVC.cancelBtn.isHidden = true
             driverVC.setData(bookingData: self.booingInfo)
+            stopNearByDriverTimer()
+            
         case .rideStart:
             guard let driverVC = self.driverInfoVC else { return }
             driverVC.viewWaiting.isHidden = true
             driverVC.cancelBtn.isHidden = true
             driverVC.setData(bookingData: self.booingInfo)
+            stopNearByDriverTimer()
+            
         case .completeTrip:
             guard let vc = self.completeVC else { return }
-            vc.setTotal(strTotal: self.booingInfo.grandTotal) 
+            vc.setTotal(strTotal: self.booingInfo.grandTotal, strFair: self.booingInfo.tripFare, strCahrge: self.booingInfo.pastDuePayment)
+            stopNearByDriverTimer()
+            
         case .ratings:
             guard let ratingVC = self.ratingInfoVC else { return }
             ratingVC.viewType = .ratings
             ratingVC.setData(bookingData: self.booingInfo)
+            stopNearByDriverTimer()
+            
         case .askForTip:
             guard let ratingVC = self.ratingInfoVC else { return }
             ratingVC.viewType = .askForTip
             ratingVC.setData(bookingData: self.booingInfo)
+            stopNearByDriverTimer()
+            
         default:
+            startNearByDriverTimer()
             break
         }
     }
@@ -1181,10 +1217,6 @@ extension HomeViewController: CLLocationManagerDelegate {
                     self.routeDrawMethod(origin: "\(lat),\(lng)", destination: "\(self.booingInfo.pickupLat ?? ""),\(self.booingInfo.pickupLng ?? "")", isTripAccepted: true)
                 }
             }
-            //TODO:-  Added by Bhumi Jani for Rerouting
-            else if self.booingInfo.status == "traveling" {
-                self.routeDrawMethod(origin: "\(lat),\(lng)", destination: "\(self.booingInfo.dropoffLat ?? ""),\(self.booingInfo.dropoffLng ?? "")", isTripAccepted: true)
-            }
         }
         
         let camera = GMSCameraPosition.camera(withLatitude: newCoordinate.latitude, longitude: newCoordinate.longitude, zoom: zoomLevel)
@@ -1288,6 +1320,7 @@ extension HomeViewController: GMSAutocompleteViewControllerDelegate {
             VC.vehicleId = ""
             VC.stackViewPromoCode.isHidden = true
             VC.collectionView.reloadData()
+            startNearByDriverTimer()
         }
     }
 }

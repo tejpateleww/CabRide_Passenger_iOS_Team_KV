@@ -111,7 +111,7 @@ extension PreviousDueViewController: didSelectPaymentDelegate,delegateForCancelT
         print("Remove Card")
     }
 
-    func didSelectPaymentType(PaymentTypeTitle: String, PaymentType: String, PaymentTypeID: String, PaymentNumber: String, PaymentHolderName: String, dictData: [String : Any]?) {
+    func didSelectPaymentType(PaymentTypeTitle: String, PaymentType: String, PaymentTypeID: String, PaymentNumber: String, PaymentHolderName: String, dictData: [String : Any]?, isForPaymentDue: Bool?) {
         
         model.payment_type = PaymentType
         if PaymentType.lowercased() == "card" {
@@ -133,7 +133,6 @@ extension PreviousDueViewController: didSelectPaymentDelegate,delegateForCancelT
             }
         }
         
-
         if model.booking_id == "" {
             UtilityClass.showAlert(title: "", message: "Please select booking", alertTheme: .error)
         } else if model.customer_id == "" {

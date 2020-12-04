@@ -17,6 +17,8 @@ class VerifyCustomerPopupViewController: UIViewController {
     @IBOutlet weak var lblMessage: UILabel!
     @IBOutlet weak var lblOTP: UILabel!
     @IBOutlet var btnAction: UIButton!
+    @IBOutlet weak var btnClose: UIButton!
+    
     var shouldRedirect = Bool()
     // MARK: - Variables declaration
     var strMessage = String()
@@ -48,5 +50,9 @@ class VerifyCustomerPopupViewController: UIViewController {
         {
             self.dismiss(animated: true, completion: nil)
         }
+    }
+    
+    @IBAction func btnCloseAction(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
     }
 }

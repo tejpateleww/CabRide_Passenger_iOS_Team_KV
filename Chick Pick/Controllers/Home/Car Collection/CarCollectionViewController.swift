@@ -46,6 +46,7 @@ class CarCollectionViewController: UIViewController, UICollectionViewDataSource,
     var aryCards = [CardsList]()
     var LoginDetail : LoginModel = LoginModel()
     var cardDetailModel : AddCardModel = AddCardModel()
+    let previousDuePaymentModel = PreviousDuePayment()
 
     var FlatRate = String()
     var FlatRateId = String()
@@ -60,6 +61,7 @@ class CarCollectionViewController: UIViewController, UICollectionViewDataSource,
     var promoCodeId = ""
     var isTripSchedule = false
     var selectedIndex : IndexPath!
+    
     // ----------------------------------------------------
     // MARK:- --- Base Methods ---
     // ----------------------------------------------------
@@ -121,7 +123,7 @@ class CarCollectionViewController: UIViewController, UICollectionViewDataSource,
         }
         else {
 //            self.paymentType = payment_type.cash.rawValue
-            didSelectPaymentType(PaymentTypeTitle: "Select Payment Method", PaymentType: "", PaymentTypeID: "", PaymentNumber: "", PaymentHolderName: "", dictData: nil)
+            didSelectPaymentType(PaymentTypeTitle: "Select Payment Method", PaymentType: "", PaymentTypeID: "", PaymentNumber: "", PaymentHolderName: "", dictData: nil, isForPaymentDue: false)
         }
         
         btnBookNow.setTitle("Not Available", for: .normal)
@@ -509,13 +511,13 @@ class CarCollectionViewController: UIViewController, UICollectionViewDataSource,
     func removeCard(PaymentTypeID: String) {
         print("card removed")
         if self.CardID == PaymentTypeID {
-            didSelectPaymentType(PaymentTypeTitle: "Select Payment Method", PaymentType: "", PaymentTypeID: "", PaymentNumber: "", PaymentHolderName: "", dictData: nil)
+            didSelectPaymentType(PaymentTypeTitle: "Select Payment Method", PaymentType: "", PaymentTypeID: "", PaymentNumber: "", PaymentHolderName: "", dictData: nil, isForPaymentDue: false)
             CardID = ""
 //            paymentType = ""
         }
     }
     
-    func didSelectPaymentType(PaymentTypeTitle: String, PaymentType: String, PaymentTypeID: String, PaymentNumber: String, PaymentHolderName: String, dictData: [String : Any]?) {
+    func didSelectPaymentType(PaymentTypeTitle: String, PaymentType: String, PaymentTypeID: String, PaymentNumber: String, PaymentHolderName: String, dictData: [String : Any]?, isForPaymentDue: Bool?) {
         
         if UserDefaults.standard.object(forKey: "PaymentType") != nil {
             if let type = UserDefaults.standard.object(forKey: "PaymentType") as? String {
@@ -537,7 +539,14 @@ class CarCollectionViewController: UIViewController, UICollectionViewDataSource,
             }
         }
         else {
-             self.paymentTypeSelection(PaymentTypeTitle: PaymentTypeTitle, PaymentType: PaymentType, PaymentTypeID: PaymentTypeID, PaymentNumber: PaymentNumber, PaymentHolderName: PaymentHolderName, dictData: dictData)
+            if isForPaymentDue! {
+                self.previousDuePaymentModel.customer_id = SingletonClass.sharedInstance.loginData.id
+                self.previousDuePaymentModel.card_id = PaymentTypeID
+                self.webserviceForBulkPaymentPreviousDue()
+            } else {
+                 self.paymentTypeSelection(PaymentTypeTitle: PaymentTypeTitle, PaymentType: PaymentType, PaymentTypeID: PaymentTypeID, PaymentNumber: PaymentNumber, PaymentHolderName: PaymentHolderName, dictData: dictData)
+            }
+            
 //            popupForPaymentType(PaymentTypeTitle: PaymentTypeTitle, PaymentType: PaymentType, PaymentTypeID: PaymentTypeID, PaymentNumber: PaymentNumber, PaymentHolderName: PaymentHolderName, dictData: dictData)
         }
     }
