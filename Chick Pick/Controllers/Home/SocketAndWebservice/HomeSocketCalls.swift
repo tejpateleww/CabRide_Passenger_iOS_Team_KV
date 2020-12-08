@@ -137,6 +137,7 @@ extension HomeViewController: SocketConnected {
             AlertMessage.showMessageForSuccess(json.array?.first?.dictionary?["message"]?.string ?? "Request Accepted")
             self.stopAnimationWhileStartBooking()
             self.acceptRequestData(json: json, isBookLaterAccept: true)
+            self.stopNearByDriverTimer()
         }
     }
     
@@ -147,6 +148,7 @@ extension HomeViewController: SocketConnected {
 //            AlertMessage.showMessageForSuccess("Trip Started")
             AlertMessage.showMessageForSuccess(json.array?.first?.dictionary?["message"]?.string ?? "Trip Started")
             self.startedRequestData(json: json)
+            self.stopNearByDriverTimer()
         }
     }
     
@@ -240,6 +242,7 @@ extension HomeViewController: SocketConnected {
             if let preserntVC = self.presentedViewController as? RequestLodingViewController {
                 preserntVC.dismiss(animated: true, completion: nil)
             }
+            self.startNearByDriverTimer()
         }
     }
     
@@ -265,7 +268,8 @@ extension HomeViewController: SocketConnected {
     func onSocket_NearByDriver() {
         SocketIOManager.shared.socketCall(for: socketApiKeys.NearByDriver.rawValue) { (json) in
             print(#function, "\n ", json)
-            
+            let model = NearByDriversModel(fromJson: json)
+            self.nearByDrivers = model.drivers
         }
     }
     

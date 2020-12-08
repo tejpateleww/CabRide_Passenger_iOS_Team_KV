@@ -42,6 +42,8 @@
 		37C7AD9F25751ABE0000F882 /* FAQSubTypesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C7AD9B25751ABE0000F882 /* FAQSubTypesViewController.swift */; };
 		37C7ADA025751ABE0000F882 /* FAQDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C7AD9C25751ABE0000F882 /* FAQDetailsViewController.swift */; };
 		37C7ADA125751ABE0000F882 /* FAQQuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C7AD9D25751ABE0000F882 /* FAQQuestionsViewController.swift */; };
+		37D5925D257FAB140095DC1D /* NearByDriversModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D5925B257FAB130095DC1D /* NearByDriversModel.swift */; };
+		37D5925E257FAB140095DC1D /* Driver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D5925C257FAB130095DC1D /* Driver.swift */; };
 		4600BEFD22D5E24F00306486 /* ReceiveMoneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4600BEFC22D5E24F00306486 /* ReceiveMoneyViewController.swift */; };
 		4600BF0022D613B000306486 /* HistoryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4600BEFF22D613B000306486 /* HistoryListViewController.swift */; };
 		4600BF0222D6140200306486 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4600BF0122D6140200306486 /* HistoryTableViewCell.swift */; };
@@ -299,6 +301,8 @@
 		37C7AD9B25751ABE0000F882 /* FAQSubTypesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAQSubTypesViewController.swift; sourceTree = "<group>"; };
 		37C7AD9C25751ABE0000F882 /* FAQDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAQDetailsViewController.swift; sourceTree = "<group>"; };
 		37C7AD9D25751ABE0000F882 /* FAQQuestionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAQQuestionsViewController.swift; sourceTree = "<group>"; };
+		37D5925B257FAB130095DC1D /* NearByDriversModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearByDriversModel.swift; sourceTree = "<group>"; };
+		37D5925C257FAB130095DC1D /* Driver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Driver.swift; sourceTree = "<group>"; };
 		4600BEFC22D5E24F00306486 /* ReceiveMoneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveMoneyViewController.swift; sourceTree = "<group>"; };
 		4600BEFF22D613B000306486 /* HistoryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryListViewController.swift; sourceTree = "<group>"; };
 		4600BF0122D6140200306486 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
@@ -633,6 +637,15 @@
 			path = FAQ;
 			sourceTree = "<group>";
 		};
+		37D5925A257FAACF0095DC1D /* NearByDriversSocketModel */ = {
+			isa = PBXGroup;
+			children = (
+				37D5925C257FAB130095DC1D /* Driver.swift */,
+				37D5925B257FAB130095DC1D /* NearByDriversModel.swift */,
+			);
+			path = NearByDriversSocketModel;
+			sourceTree = "<group>";
+		};
 		4600BEFB22D5E1EB00306486 /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
@@ -784,6 +797,7 @@
 		466957E422DDB151008A73C0 /* ResponseModel */ = {
 			isa = PBXGroup;
 			children = (
+				37D5925A257FAACF0095DC1D /* NearByDriversSocketModel */,
 				6E32230623D84D6500FDAC10 /* TicketListingModel */,
 				6EF7A5A923C33A4A00088E3E /* CancelReason.swift */,
 				6EDE255523BF59690042165A /* Previous Due */,
@@ -1925,6 +1939,7 @@
 				B1DE159822D361D3001045B1 /* MyMileVC.swift in Sources */,
 				463DEFEF22D8B01B002365F8 /* HeaderTableViewController.swift in Sources */,
 				EE1365952316A117001AFF6A /* LocationTracker.swift in Sources */,
+				37D5925D257FAB140095DC1D /* NearByDriversModel.swift in Sources */,
 				EEE2B80422C628F2004F1C00 /* RegisterContainerViewController.swift in Sources */,
 				466957E022DD9E4A008A73C0 /* WebServices.swift in Sources */,
 				EE9F3F6522C769CA00426377 /* RequestModel.swift in Sources */,
@@ -1977,6 +1992,7 @@
 				688122E02348726500577D6E /* SelectDateTimeViewController+RKMultiUnitSegment.swift in Sources */,
 				18CB7F8222E85AC4004FA66C /* HomeWebserviceCalls.swift in Sources */,
 				464CB65E22E1947A00273F29 /* MobileNoDetail.swift in Sources */,
+				37D5925E257FAB140095DC1D /* Driver.swift in Sources */,
 				18CB7F8622E86584004FA66C /* GetEstimateFareModel.swift in Sources */,
 				B1E233D822D3120000CEA568 /* MyBidListViewController.swift in Sources */,
 				468E992722D9F26900072361 /* QRCodeDetails.swift in Sources */,

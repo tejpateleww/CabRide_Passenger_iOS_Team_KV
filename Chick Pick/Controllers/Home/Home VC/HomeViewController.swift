@@ -85,6 +85,8 @@ class HomeViewController: BaseViewController, GMSMapViewDelegate, didSelectDateD
     var driverInfoVC : DriverInfoPageViewController?
     var ratingInfoVC : DriverRatingAndTipViewController?
     var completeVC : CompleteViewController?
+    var nearByDrivers : [Driver]?
+
     var stopAnimatingCamera = Bool()
     var mapView = GMSMapView()
     var pulseArray = [CAShapeLayer]()
@@ -329,7 +331,7 @@ class HomeViewController: BaseViewController, GMSMapViewDelegate, didSelectDateD
     @objc func nearByDriversList() {
         let myLocation = SingletonClass.sharedInstance.myCurrentLocation
         
-        let param = ["customer_id": SingletonClass.sharedInstance.loginData.id ?? "", "current_lng": "\(myLocation.coordinate.latitude)", "current_lat": "\(myLocation.coordinate.longitude)"]
+        let param = ["customer_id": SingletonClass.sharedInstance.loginData.id ?? "", "current_lng": myLocation.coordinate.longitude, "current_lat": myLocation.coordinate.latitude] as [String : Any]
         emitSocket_NearByDriver(param: param)
     }
     
