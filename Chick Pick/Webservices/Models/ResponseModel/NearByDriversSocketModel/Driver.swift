@@ -33,7 +33,7 @@ class Driver : NSObject, NSCoding{
         createdAt = json["created_at"].stringValue
         deviceToken = json["device_token"].stringValue
         driverId = json["driver_id"].intValue
-        location = [Int]()
+        location = [Float]()
         let locationArray = json["location"].arrayValue
         for locationJson in locationArray{
             location.append(locationJson.floatValue)
@@ -41,7 +41,7 @@ class Driver : NSObject, NSCoding{
         start = json["start"].intValue
         status = json["status"].intValue
         updatedTime = json["updated_time"].intValue
-        vehicleTypeId = [Int]()
+        vehicleTypeId = [String]()
         let vehicleTypeIdArray = json["vehicle_type_id"].arrayValue
         for vehicleTypeIdJson in vehicleTypeIdArray{
             vehicleTypeId.append(vehicleTypeIdJson.stringValue)

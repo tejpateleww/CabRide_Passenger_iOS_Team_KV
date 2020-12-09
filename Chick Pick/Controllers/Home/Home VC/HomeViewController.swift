@@ -86,6 +86,7 @@ class HomeViewController: BaseViewController, GMSMapViewDelegate, didSelectDateD
     var ratingInfoVC : DriverRatingAndTipViewController?
     var completeVC : CompleteViewController?
     var nearByDrivers : [Driver]?
+    var nearByDriversMarkerPins : [GMSMarker]?
 
     var stopAnimatingCamera = Bool()
     var mapView = GMSMapView()
@@ -336,10 +337,18 @@ class HomeViewController: BaseViewController, GMSMapViewDelegate, didSelectDateD
     }
     
     func startNearByDriverTimer() {
-        NearByDriverTimer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(nearByDriversList), userInfo: nil, repeats: true)
+        if NearByDriverTimer == nil {
+             NearByDriverTimer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(nearByDriversList), userInfo: nil, repeats: true)
+        }
     }
     
     func stopNearByDriverTimer() {
+        for marker in nearByDriversMarkerPins ?? [] {
+            marker.map = nil
+        }
+        nearByDriversMarkerPins?.removeAll()
+        
+//        clearMap()
         NearByDriverTimer?.invalidate()
         NearByDriverTimer = nil
     }
@@ -1048,6 +1057,32 @@ class HomeViewController: BaseViewController, GMSMapViewDelegate, didSelectDateD
             }
         })
     }
+    
+    //MARK:- Map Methods
+    
+    func setNearByDriversOnMap() {
+        
+        for marker in nearByDriversMarkerPins ?? [] {
+            marker.map = nil
+        }
+        nearByDriversMarkerPins?.removeAll()
+        nearByDriversMarkerPins = [GMSMarker]()
+        
+        for data in nearByDrivers ?? [] {
+            let lat = CLLocationDegrees(exactly: data.location.last!) ?? 0.0
+            let lng = CLLocationDegrees(exactly: data.location.first!) ?? 0.0
+            let location = CLLocationCoordinate2D(latitude: lat, longitude: lng)
+            print("location: \(location)")
+            let marker = GMSMarker()
+            marker.position = location
+//            marker.snippet = data.name!
+            marker.icon = UIImage(named: iconCar)
+            marker.map = mapView
+            
+            nearByDriversMarkerPins?.append(marker)
+        }
+    }
+    
     
     // MARK: - Navigation
     func hideAndShowView(view: HomeViews){

@@ -131,13 +131,12 @@ extension HomeViewController: SocketConnected {
             if let preserntVC = self.presentedViewController as? RequestLodingViewController {
                 preserntVC.dismiss(animated: true, completion: nil)
             }
-            
+            self.stopNearByDriverTimer()
             self.clearMap()
             self.btnBackButtonWhileBookLater()
             AlertMessage.showMessageForSuccess(json.array?.first?.dictionary?["message"]?.string ?? "Request Accepted")
             self.stopAnimationWhileStartBooking()
             self.acceptRequestData(json: json, isBookLaterAccept: true)
-            self.stopNearByDriverTimer()
         }
     }
     
@@ -146,9 +145,9 @@ extension HomeViewController: SocketConnected {
         SocketIOManager.shared.socketCall(for: socketApiKeys.StartTrip.rawValue) { (json) in
             print(#function, "\n ", json)
 //            AlertMessage.showMessageForSuccess("Trip Started")
+            self.stopNearByDriverTimer()
             AlertMessage.showMessageForSuccess(json.array?.first?.dictionary?["message"]?.string ?? "Trip Started")
             self.startedRequestData(json: json)
-            self.stopNearByDriverTimer()
         }
     }
     
@@ -242,7 +241,7 @@ extension HomeViewController: SocketConnected {
             if let preserntVC = self.presentedViewController as? RequestLodingViewController {
                 preserntVC.dismiss(animated: true, completion: nil)
             }
-            self.startNearByDriverTimer()
+//            self.startNearByDriverTimer()
         }
     }
     
@@ -250,7 +249,8 @@ extension HomeViewController: SocketConnected {
     func onSocket_LiveTracking() {
         SocketIOManager.shared.socketCall(for: socketApiKeys.LiveTracking.rawValue) { (json) in
             print(#function, "\n ", json)
-
+            
+            self.stopNearByDriverTimer()
             let arrData = json.array?.first?["current_location"].array
             self.liveTrackingForTrip(lat: arrData?.last?.stringValue ?? "0.00", lng: arrData?.first?.stringValue ?? "0.00")
         }
@@ -270,6 +270,7 @@ extension HomeViewController: SocketConnected {
             print(#function, "\n ", json)
             let model = NearByDriversModel(fromJson: json)
             self.nearByDrivers = model.drivers
+            self.setNearByDriversOnMap()
         }
     }
     

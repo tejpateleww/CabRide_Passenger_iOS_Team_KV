@@ -19,10 +19,11 @@ class NearByDriversModel : NSObject, NSCoding{
 			return
 		}
         drivers = [Driver]()
-        let driversArray = json["drivers"].arrayValue
-        for driversJson in driversArray{
-            let value = Driver(fromJson: custArrayJson)
-            custArray.append(value)
+        if let driversArray = json?.array?.first?.dictionary?["drivers"]?.arrayValue {
+            for driversJson in driversArray{
+                let value = Driver(fromJson: driversJson)
+                drivers.append(value)
+            }
         }
 	}
 

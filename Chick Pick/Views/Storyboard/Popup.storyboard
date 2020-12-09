@@ -265,7 +265,7 @@
                                 </constraints>
                                 <state key="normal" image="iconCloseAlert"/>
                                 <connections>
-                                    <action selector="btnCloseAction:" destination="iXZ-Bl-bjk" eventType="touchDragInside" id="Bq7-of-gS3"/>
+                                    <action selector="btnCloseAction:" destination="iXZ-Bl-bjk" eventType="touchUpInside" id="39d-GF-Vxo"/>
                                 </connections>
                             </button>
                         </subviews>

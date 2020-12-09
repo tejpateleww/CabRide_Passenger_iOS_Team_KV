@@ -20,6 +20,7 @@ class VerifyCustomerPopupViewController: UIViewController {
     @IBOutlet weak var btnClose: UIButton!
     
     var shouldRedirect = Bool()
+    
     // MARK: - Variables declaration
     var strMessage = String()
     var strTitle = String()
