@@ -233,22 +233,7 @@ class HomeViewController: BaseViewController, GMSMapViewDelegate, didSelectDateD
             setupTripStatu(status: .pending)
         }
         
-//        #if targetEnvironment(simulator)
-//        lblBuildNumber.isHidden = false
-//        lblBuildNumber.text = "Build : \(Bundle.main.buildVersionNumber ?? "") \t\t Booking ID: \(self.booingInfo.id ?? "")"
-//        tempPolyLine()
-//        #else
-//        lblBuildNumber.isHidden = true
-//
-//        if UIDevice.current.name == "iPad red" || UIDevice.current.name == "Eww’s iPhone 7" || UIDevice.current.name == "Administrator’s iPhone" {
-//            lblBuildNumber.isHidden = false
-//            lblBuildNumber.text = "Build : \(Bundle.main.buildVersionNumber ?? "") \t\t Booking ID: \(self.booingInfo.id ?? "")"
-//        }
-//        #endif
-        
         self.setupNavigationController()
-
-
 //        LocationTracker.shared.locateMeOnLocationChange { [weak self]  _  in
 //            self?.moveCar()
 //        }
@@ -281,8 +266,8 @@ class HomeViewController: BaseViewController, GMSMapViewDelegate, didSelectDateD
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-         self.containerView.isHidden = false
-         (self.children.first as! CarCollectionViewController).getDataFromJSON()
+        self.containerView.isHidden = false
+        (self.children.first as! CarCollectionViewController).getDataFromJSON()
         viewMainActivityIndicator.layer.zPosition = 1
     }
 

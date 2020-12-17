@@ -26,15 +26,9 @@ class SplashViewController: UIViewController {
             //Rental_LoginRegister - storyboard name
             //Peppea Rental
             self.redirectToPeppeaRentalFlow()
-        
         }
-        
-
         // Do any additional setup after loading the view.
     }
-
-   
-
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -125,10 +119,7 @@ class SplashViewController: UIViewController {
                 
             }
         }
-
     }
-
-
 
     func redirectToChooseServicesVC()
     {
@@ -136,7 +127,6 @@ class SplashViewController: UIViewController {
         {
             if(dictValue["isDefaultScreen"]!)
             {
-
                 if(dictValue["didSelectTaxi"]!)
                 {
                     (UIApplication.shared.delegate as! AppDelegate).GoToHome()
@@ -144,19 +134,14 @@ class SplashViewController: UIViewController {
                 }
                 else
                 {
-
                     //redirect to hire a car in future
                     (UIApplication.shared.delegate as! AppDelegate).GoToHome()
-
                 }
             }
             else
             {
-
 //                (UIApplication.shared.delegate as! AppDelegate).GoToChooseServices()
                 (UIApplication.shared.delegate as! AppDelegate).GoToHome()
-
-
             }
         }
         else if(UserDefaults.standard.bool(forKey: "isUserLogin") == false)
@@ -167,12 +152,8 @@ class SplashViewController: UIViewController {
         {
 //            (UIApplication.shared.delegate as! AppDelegate).GoToChooseServices()
             (UIApplication.shared.delegate as! AppDelegate).GoToHome()
-
-
         }
-
     }
-
 }
 
 
@@ -190,9 +171,5 @@ extension SplashViewController {
 //            (UIApplication.shared.delegate as! AppDelegate).GoToChooseServices()
 //
 //        }
-        
-        
-        
-        
     }
 }
