@@ -183,7 +183,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         else if userInfo["gcm.notification.type"] as! String == "on_the_way" || userInfo["gcm.notification.type"] as! String == "start_trip" {
             
             if ((self.window?.rootViewController as? UINavigationController)?.topViewController?.children.first?.children.last as? HomeViewController) != nil {
-               ThemeOrange 
+                
             } else {
                 if let homeVC = (self.window?.rootViewController as? UINavigationController)?.topViewController?.children.first?.children.first as? HomeViewController {
                     homeVC.navigationController?.popViewController(animated: false)

@@ -391,10 +391,10 @@ class RegisterViewController: BaseViewController, UITextFieldDelegate, UIPickerV
             isValid = false
             ValidatorMessage = "Password and confirm password must be same"
         }
-//        else if (btnDocument.imageView?.image!.isEqualToImage(UIImage(named: "camera-icon")!)) ?? true {
-//            isValid = false
-//            ValidatorMessage = "Please select licence/passport"
-//        }
+        else if (btnDocument.imageView?.image!.isEqualToImage(UIImage(named: "camera-icon")!)) ?? true {
+            isValid = false
+            ValidatorMessage = "Please select licence/passport"
+        }
         
         return (isValid,ValidatorMessage)
     }
