@@ -160,10 +160,10 @@ class CarCollectionViewController: UIViewController, UICollectionViewDataSource,
 
                 if let homeVc = self.parent as? HomeViewController {
                     if homeVc.estimateData.count != 0 {
-                        let estimateCurrentData = homeVc.estimateData.filter{$0.vehicleTypeId == dictOnlineCars.id}.first
+                        guard let estimateCurrentData = homeVc.estimateData.filter({$0.vehicleTypeId == dictOnlineCars.id}).first else { return }
 
-                        let estimateMinute = estimateCurrentData?.driverReachInMinute
-                        let estimateFare = estimateCurrentData?.estimateTripFare
+                        let estimateMinute = estimateCurrentData.driverReachInMinute
+                        let estimateFare = estimateCurrentData.estimateTripFare
 
                         if dictOnlineCars.id == vehicleId {
                             self.estimateFare = (FlatRate == "") ? ( ((estimateFare?.contains(".") == true) ? estimateFare  : "\((Double((estimateMinute == "0" ? "0.0" : estimateFare)!)?.rounded(toPlaces: 2)) ?? 0.0)")!  ) : "\((Double((estimateMinute == "0" ? "0.0" : FlatRate))?.rounded(toPlaces: 2)) ?? 0.0)"

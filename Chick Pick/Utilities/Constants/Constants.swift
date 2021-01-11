@@ -34,7 +34,7 @@ let PaymentFailureURL = "https://www.peppea.com/panel/flutterwave/payment_failed
 //var imagBaseURL = "https://www.peppea.com/panel/"
 
 let kAPPVesion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
-
+let kAppBuildNumber = Bundle.main.infoDictionary?["CFBundleVersion"]  as! String
 
 
 let SCREEN_WIDTH = UIScreen.main.bounds.width
