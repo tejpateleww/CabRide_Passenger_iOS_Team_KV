@@ -583,7 +583,9 @@ class PaymentViewController: BaseViewController, UITableViewDelegate, UITableVie
         UserWebserviceSubclass.RemoveCardFromList(removeCardModel: RemoveCardReqModel) { (json, status) in
             UtilityClass.hideHUD()
             if status {
-                self.Delegate.removeCard(PaymentTypeID: strCardId)
+                if (self.navigationController?.children.first as? PaymentViewController) != nil {
+                     self.Delegate.removeCard(PaymentTypeID: strCardId)
+                }
                 self.webserviceForCardList()
             }
             else {
@@ -724,6 +726,8 @@ class PaymentViewController: BaseViewController, UITableViewDelegate, UITableVie
             } else {
                 return false
             }
+        } else if enterdYr < currentYear {
+            return false
         } else {
             return true
         }

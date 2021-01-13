@@ -317,6 +317,8 @@ class HomeViewController: BaseViewController, GMSMapViewDelegate, didSelectDateD
     @objc func nearByDriversList() {
         let myLocation = SingletonClass.sharedInstance.myCurrentLocation
         
+//        pickupLocation
+        
         let param = ["customer_id": SingletonClass.sharedInstance.loginData.id ?? "", "current_lng": myLocation.coordinate.longitude, "current_lat": myLocation.coordinate.latitude] as [String : Any]
         emitSocket_NearByDriver(param: param)
     }
