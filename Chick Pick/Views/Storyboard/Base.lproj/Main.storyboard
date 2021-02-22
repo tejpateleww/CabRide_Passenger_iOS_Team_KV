@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hie-4Z-Tl3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hie-4Z-Tl3">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -76,14 +77,14 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Yde-3P-yoI"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="NMP-tU-r6z" firstAttribute="bottom" secondItem="Yde-3P-yoI" secondAttribute="bottom" id="DQN-Cb-FhZ"/>
                             <constraint firstItem="NMP-tU-r6z" firstAttribute="top" secondItem="Yde-3P-yoI" secondAttribute="top" constant="10" id="HIr-sA-JnE"/>
                             <constraint firstItem="NMP-tU-r6z" firstAttribute="leading" secondItem="Yde-3P-yoI" secondAttribute="leading" id="laW-1y-WmX"/>
                             <constraint firstItem="Yde-3P-yoI" firstAttribute="trailing" secondItem="NMP-tU-r6z" secondAttribute="trailing" id="t65-II-ovn"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Yde-3P-yoI"/>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="NMP-tU-r6z" id="QzJ-r5-7ma"/>
@@ -128,17 +129,17 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Johna Smith" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QDp-iJ-mst">
-                                                    <rect key="frame" x="106.5" y="120" width="102.5" height="20.5"/>
+                                                    <rect key="frame" x="106.5" y="120" width="102" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="johnasmith@gmail.com" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfp-J1-khh">
-                                                    <rect key="frame" x="83.5" y="145.5" width="148" height="17"/>
+                                                    <rect key="frame" x="83.5" y="145.5" width="148.5" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iW5-b3-nGy">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iW5-b3-nGy">
                                                     <rect key="frame" x="85" y="0.0" width="145" height="150"/>
                                                     <connections>
                                                         <action selector="btnProfilePickClicked:" destination="RqZ-PG-p3O" eventType="touchUpInside" id="Xj6-LO-NTw"/>
@@ -167,7 +168,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LzE-vN-HvW">
                                                     <rect key="frame" x="97.5" y="32" width="120" height="30"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ltM-os-1dT">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ltM-os-1dT">
                                                             <rect key="frame" x="0.0" y="0.0" width="80" height="30"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="80" id="k4I-9R-wJg"/>
@@ -182,7 +183,7 @@
                                                         <constraint firstAttribute="height" constant="30" id="gmn-8h-mmh"/>
                                                     </constraints>
                                                 </stackView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rE6-GC-0TK">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rE6-GC-0TK">
                                                     <rect key="frame" x="97.5" y="32" width="120" height="30"/>
                                                     <color key="tintColor" red="0.90588235289999997" green="0.58431372550000005" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <connections>
@@ -245,7 +246,7 @@
                                             <outlet property="delegate" destination="RqZ-PG-p3O" id="c32-5u-dss"/>
                                         </connections>
                                     </tableView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jQn-Cs-umZ">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jQn-Cs-umZ">
                                         <rect key="frame" x="82.5" y="615" width="150" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="150" id="RYD-l4-fs6"/>
@@ -273,6 +274,7 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="qIO-e9-fiI"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="MHl-ee-7lM" firstAttribute="trailing" secondItem="qIO-e9-fiI" secondAttribute="trailing" id="21L-QR-Xrd"/>
@@ -280,7 +282,6 @@
                             <constraint firstItem="MHl-ee-7lM" firstAttribute="leading" secondItem="qIO-e9-fiI" secondAttribute="leading" constant="60" id="a69-Do-NBE"/>
                             <constraint firstItem="MHl-ee-7lM" firstAttribute="bottom" secondItem="qIO-e9-fiI" secondAttribute="bottom" id="aow-aw-Usx"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="qIO-e9-fiI"/>
                     </view>
                     <connections>
                         <outlet property="btnEmergencyHelp" destination="jQn-Cs-umZ" id="rce-xO-e2B"/>
@@ -307,8 +308,8 @@
                     <view key="view" contentMode="scaleToFill" id="2Ye-Qm-MXx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="bOg-WA-PJk"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="contentSegueID" value="SideMenu.Content"/>
@@ -356,19 +357,19 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Booking Request Processing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q1Q-Ig-13H">
-                                                <rect key="frame" x="15" y="10" width="243.5" height="23"/>
+                                                <rect key="frame" x="15" y="10" width="241.5" height="23"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cancel Booking Request" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xCn-fd-snm">
-                                                <rect key="frame" x="15" y="58" width="213" height="24"/>
+                                                <rect key="frame" x="15" y="58" width="214" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fbc-3C-yYi" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
-                                                <rect key="frame" x="277" y="-3.5" width="50" height="50"/>
+                                                <rect key="frame" x="275" y="-3.5" width="50" height="50"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="bxY-1l-o4B"/>
@@ -382,21 +383,21 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aGe-15-p4Z">
-                                                <rect key="frame" x="248" y="54" width="32" height="32"/>
+                                                <rect key="frame" x="249" y="54" width="32" height="32"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="32" id="5R1-Eg-8jN"/>
                                                     <constraint firstAttribute="width" secondItem="aGe-15-p4Z" secondAttribute="height" multiplier="1:1" id="FSP-os-1Lb"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                                                 <state key="normal" image="close">
-                                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" systemColor="systemRedColor"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                         <real key="value" value="2"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="value" systemColor="systemRedColor"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <real key="value" value="16"/>
@@ -429,6 +430,7 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="rvL-k6-fbW"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="rvL-k6-fbW" firstAttribute="top" secondItem="atH-6u-aEs" secondAttribute="top" id="4Wx-dG-45u"/>
@@ -437,7 +439,6 @@
                             <constraint firstAttribute="bottom" secondItem="18B-AB-HOV" secondAttribute="bottom" id="eeX-Nu-x6P"/>
                             <constraint firstItem="18B-AB-HOV" firstAttribute="leading" secondItem="rvL-k6-fbW" secondAttribute="leading" id="q39-b7-xWi"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="rvL-k6-fbW"/>
                     </view>
                     <connections>
                         <outlet property="viewActivity" destination="18B-AB-HOV" id="y1R-YQ-bkr"/>
@@ -637,7 +638,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hQA-fv-2PZ">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hQA-fv-2PZ">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="42"/>
                                             </button>
                                         </subviews>
@@ -742,7 +743,7 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                                                 <state key="normal" title="X">
-                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="titleColor" systemColor="darkTextColor"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
@@ -804,6 +805,7 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="grQ-8m-FpI"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="m4s-5R-lg3" firstAttribute="leading" secondItem="grQ-8m-FpI" secondAttribute="leading" id="3Ly-tI-Mgy"/>
@@ -829,7 +831,6 @@
                             <constraint firstItem="COt-MM-lJA" firstAttribute="leading" secondItem="Yy9-FD-GtO" secondAttribute="leading" id="wVZ-nO-6gm"/>
                             <constraint firstItem="grQ-8m-FpI" firstAttribute="trailing" secondItem="4au-ym-yQ9" secondAttribute="trailing" id="yhQ-MO-iS0"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="grQ-8m-FpI"/>
                     </view>
                     <navigationItem key="navigationItem" id="fbM-4y-o23"/>
                     <connections>
@@ -891,7 +892,7 @@
                                                 <color key="tintColor" red="0.8901960784313725" green="0.51764705882352935" blue="0.15686274509803921" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Book Taxi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pk1-qO-GhQ">
-                                                <rect key="frame" x="21.5" y="359" width="73.5" height="21"/>
+                                                <rect key="frame" x="21.5" y="359" width="73" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -982,6 +983,7 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="ioN-78-wbX"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="fEj-7p-JnR" firstAttribute="leading" secondItem="ioN-78-wbX" secondAttribute="leading" id="A29-V6-H4U"/>
@@ -991,7 +993,6 @@
                             <constraint firstAttribute="bottom" secondItem="fEj-7p-JnR" secondAttribute="bottom" id="sVX-SJ-3x1"/>
                             <constraint firstItem="fEj-7p-JnR" firstAttribute="top" secondItem="dSW-6A-T0X" secondAttribute="top" id="wFw-oA-gnl"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="ioN-78-wbX"/>
                     </view>
                     <navigationItem key="navigationItem" id="Y6H-yA-QcD"/>
                     <nil key="simulatedTopBarMetrics"/>
@@ -1089,7 +1090,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No favourite locations found" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RxT-MQ-ZRE">
-                                                            <rect key="frame" x="80" y="13.5" width="215" height="20.5"/>
+                                                            <rect key="frame" x="80.5" y="13.5" width="214" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -1117,6 +1118,7 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="yR6-LQ-I4z"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="yR6-LQ-I4z" firstAttribute="trailing" secondItem="Nff-Ru-q8J" secondAttribute="trailing" id="IlL-Ik-SOi"/>
@@ -1124,7 +1126,6 @@
                             <constraint firstItem="Nff-Ru-q8J" firstAttribute="leading" secondItem="yR6-LQ-I4z" secondAttribute="leading" id="QIU-fx-tUk"/>
                             <constraint firstItem="Nff-Ru-q8J" firstAttribute="top" secondItem="yR6-LQ-I4z" secondAttribute="top" id="eH0-cr-NFG"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="yR6-LQ-I4z"/>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="Ulh-o1-pqO" id="Wb1-XB-fpO"/>
@@ -1406,6 +1407,7 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="fld-AP-LuD"/>
                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="fld-AP-LuD" firstAttribute="trailing" secondItem="uwc-3L-rAX" secondAttribute="trailing" id="VcJ-Fb-bAB"/>
@@ -1413,7 +1415,6 @@
                             <constraint firstItem="uwc-3L-rAX" firstAttribute="leading" secondItem="fld-AP-LuD" secondAttribute="leading" id="s8L-kJ-a13"/>
                             <constraint firstItem="fld-AP-LuD" firstAttribute="bottom" secondItem="uwc-3L-rAX" secondAttribute="bottom" id="y5k-gQ-jiy"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="fld-AP-LuD"/>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="OAp-GE-MSG" id="0WO-L4-pk9"/>
@@ -1594,16 +1595,16 @@
                                                         </constraints>
                                                     </imageView>
                                                     <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uJG-Oi-xZT">
-                                                        <rect key="frame" x="15" y="58" width="202.5" height="30"/>
+                                                        <rect key="frame" x="15" y="58" width="204" height="30"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Promo Code Applied Test_dr" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yw7-SV-prF">
-                                                                <rect key="frame" x="0.0" y="0.0" width="172.5" height="30"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="174" height="30"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bKV-aR-rgQ">
-                                                                <rect key="frame" x="172.5" y="0.0" width="30" height="30"/>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bKV-aR-rgQ">
+                                                                <rect key="frame" x="174" y="0.0" width="30" height="30"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
                                                                 <state key="normal" title="X">
                                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1631,7 +1632,7 @@
                                                             </label>
                                                         </subviews>
                                                     </stackView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5QR-JT-CJK">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5QR-JT-CJK">
                                                         <rect key="frame" x="70" y="10" width="185" height="50"/>
                                                         <connections>
                                                             <action selector="btnSelectPayment:" destination="bfC-L5-iDG" eventType="touchUpInside" id="PbD-PN-Uta"/>
@@ -1829,13 +1830,13 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="949-Bb-Kz9"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="949-Bb-Kz9" firstAttribute="trailing" secondItem="0Yh-u7-IrF" secondAttribute="trailing" id="B6Z-LF-hck"/>
                             <constraint firstItem="0Yh-u7-IrF" firstAttribute="top" secondItem="2ou-nF-QhC" secondAttribute="top" id="ICo-TV-LDX"/>
                             <constraint firstItem="0Yh-u7-IrF" firstAttribute="leading" secondItem="949-Bb-Kz9" secondAttribute="leading" id="fdE-Se-950"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="949-Bb-Kz9"/>
                     </view>
                     <connections>
                         <outlet property="btnBookNow" destination="soa-kd-6m1" id="3TE-B2-7wZ"/>
@@ -1935,7 +1936,7 @@ automatic expense for warding</string>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ktw-Q0-Zas">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ktw-Q0-Zas">
                                         <rect key="frame" x="54.5" y="614" width="266" height="33"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Ktw-Q0-Zas" secondAttribute="height" multiplier="169:21" id="RPd-2g-WVE"/>
@@ -1981,6 +1982,7 @@ automatic expense for warding</string>
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="mWa-8S-pAr"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="1Lj-83-HBd" firstAttribute="top" secondItem="MI0-cB-J4k" secondAttribute="top" id="2kd-9a-lhl"/>
@@ -1990,7 +1992,6 @@ automatic expense for warding</string>
                             <constraint firstItem="3Sf-vP-IFA" firstAttribute="centerY" secondItem="MI0-cB-J4k" secondAttribute="centerY" id="fDP-eM-MQL"/>
                             <constraint firstItem="mWa-8S-pAr" firstAttribute="trailing" secondItem="1Lj-83-HBd" secondAttribute="trailing" id="myD-Pd-aOK"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="mWa-8S-pAr"/>
                     </view>
                     <connections>
                         <outlet property="btnDone" destination="Ktw-Q0-Zas" id="3uU-LM-sOC"/>
@@ -2054,6 +2055,7 @@ automatic expense for warding</string>
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="f5G-zk-vrk"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="FyK-FV-ym6" firstAttribute="top" secondItem="ZLI-LY-wVl" secondAttribute="top" id="Ml4-Jh-1bD"/>
@@ -2063,7 +2065,6 @@ automatic expense for warding</string>
                             <constraint firstItem="Bd3-nV-4rU" firstAttribute="centerX" secondItem="ZLI-LY-wVl" secondAttribute="centerX" id="wGr-Y5-hkK"/>
                             <constraint firstItem="f5G-zk-vrk" firstAttribute="bottom" secondItem="FyK-FV-ym6" secondAttribute="bottom" id="wi0-WU-2tY"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="f5G-zk-vrk"/>
                     </view>
                     <connections>
                         <outlet property="cardTableView" destination="zUd-B0-P8v" id="RMZ-u8-hA9"/>
@@ -2103,6 +2104,7 @@ automatic expense for warding</string>
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="ik3-d9-m17"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="gDf-9F-Qf2" firstAttribute="top" secondItem="ik3-d9-m17" secondAttribute="top" id="0XJ-Uc-qUj"/>
@@ -2110,7 +2112,6 @@ automatic expense for warding</string>
                             <constraint firstItem="ik3-d9-m17" firstAttribute="bottom" secondItem="gDf-9F-Qf2" secondAttribute="bottom" id="jm8-qK-VKS"/>
                             <constraint firstItem="ik3-d9-m17" firstAttribute="trailing" secondItem="gDf-9F-Qf2" secondAttribute="trailing" id="l4n-eL-Ymw"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="ik3-d9-m17"/>
                     </view>
                     <navigationItem key="navigationItem" title="My Mile" id="TBv-VD-gZh"/>
                     <connections>
@@ -2178,16 +2179,16 @@ automatic expense for warding</string>
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="tyb-me-JOH">
-                                <rect key="frame" x="64" y="13" width="191" height="30"/>
+                                <rect key="frame" x="64" y="12" width="191" height="32.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rahul Patel" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yJh-Su-hlF">
-                                        <rect key="frame" x="0.0" y="0.0" width="77" height="15"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="76.5" height="17.5"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4cr-3a-zcN">
-                                        <rect key="frame" x="0.0" y="15" width="70" height="15"/>
+                                        <rect key="frame" x="0.0" y="17.5" width="70" height="15"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconSelectedstar" translatesAutoresizingMaskIntoConstraints="NO" id="B6q-Dv-6GZ">
                                                 <rect key="frame" x="0.0" y="0.0" width="15" height="15"/>
@@ -2197,7 +2198,7 @@ automatic expense for warding</string>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y1t-9A-aSA">
-                                                <rect key="frame" x="20" y="1" width="19.5" height="14"/>
+                                                <rect key="frame" x="20" y="-1.5" width="19.5" height="16.5"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -2360,7 +2361,7 @@ automatic expense for warding</string>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ouz-NP-DMA">
                                         <rect key="frame" x="0.0" y="10" width="343" height="40"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="82b-G7-bvo">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="82b-G7-bvo">
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="40"/>
                                                 <color key="backgroundColor" red="0.0039215686269999999" green="0.0078431372550000003" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -2432,6 +2433,7 @@ automatic expense for warding</string>
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="3mG-0Y-zyo"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="EDI-9t-eST" firstAttribute="top" secondItem="SWB-ki-T5E" secondAttribute="top" constant="8" id="2Km-uQ-X6r"/>
@@ -2454,7 +2456,6 @@ automatic expense for warding</string>
                             <constraint firstItem="tyb-me-JOH" firstAttribute="centerY" secondItem="EDI-9t-eST" secondAttribute="centerY" id="uxP-Ko-bEb"/>
                             <constraint firstItem="EDI-9t-eST" firstAttribute="leading" secondItem="SWB-ki-T5E" secondAttribute="leadingMargin" id="yF6-3K-jj3"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="3mG-0Y-zyo"/>
                     </view>
                     <connections>
                         <outlet property="btnCall" destination="QO6-4L-PVI" id="n3O-Qp-9wh"/>
@@ -2569,7 +2570,7 @@ automatic expense for warding</string>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="do0-AI-zz1">
                                                         <rect key="frame" x="0.0" y="0.0" width="205" height="40"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zTj-Oa-emD">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zTj-Oa-emD">
                                                                 <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="40" id="BCv-FS-k3c"/>
@@ -2577,15 +2578,15 @@ automatic expense for warding</string>
                                                                 </constraints>
                                                                 <state key="normal" title="K 20"/>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A79-MO-p6g">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A79-MO-p6g">
                                                                 <rect key="frame" x="55" y="0.0" width="40" height="40"/>
                                                                 <state key="normal" title="K 30"/>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BOe-h7-fAt">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BOe-h7-fAt">
                                                                 <rect key="frame" x="110" y="0.0" width="40" height="40"/>
                                                                 <state key="normal" title="K 40"/>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6pX-Wa-myo">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6pX-Wa-myo">
                                                                 <rect key="frame" x="165" y="0.0" width="40" height="40"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <state key="normal" title="Other"/>
@@ -2664,6 +2665,7 @@ automatic expense for warding</string>
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="piW-p0-Tni"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="FE1-XC-SNi" firstAttribute="centerX" secondItem="piW-p0-Tni" secondAttribute="centerX" id="40f-rY-Wi8"/>
@@ -2678,7 +2680,6 @@ automatic expense for warding</string>
                             <constraint firstItem="FE1-XC-SNi" firstAttribute="top" secondItem="KJC-eR-F3p" secondAttribute="bottom" constant="50" id="oAZ-DT-WF0"/>
                             <constraint firstItem="KJC-eR-F3p" firstAttribute="centerY" secondItem="NN4-ky-f3H" secondAttribute="top" constant="5" id="x8v-ME-Y9K"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="piW-p0-Tni"/>
                     </view>
                     <connections>
                         <outlet property="btnDone" destination="mhb-ZO-9k2" id="0IT-J0-59J"/>
@@ -2719,7 +2720,7 @@ automatic expense for warding</string>
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OSc-uF-ldZ">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="453"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="455.5"/>
                                         <subviews>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4Le-XH-onM">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
@@ -2903,16 +2904,16 @@ automatic expense for warding</string>
                                                 </connections>
                                             </tableView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I5c-4l-pWj" customClass="IQPreviousNextView" customModule="IQKeyboardManagerSwift">
-                                                <rect key="frame" x="0.0" y="210" width="375" height="243"/>
+                                                <rect key="frame" x="0.0" y="210" width="375" height="245.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Payment Methods" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LOD-1s-LJm">
-                                                        <rect key="frame" x="10" y="5" width="355" height="14"/>
+                                                        <rect key="frame" x="10" y="5" width="355" height="16.5"/>
                                                         <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="XMD-3J-joD">
-                                                        <rect key="frame" x="10" y="24" width="355" height="144"/>
+                                                        <rect key="frame" x="10" y="26.5" width="355" height="144"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fmi-J3-YmJ">
                                                                 <rect key="frame" x="0.0" y="0.0" width="355" height="44"/>
@@ -3043,8 +3044,8 @@ automatic expense for warding</string>
                                                             <constraint firstAttribute="trailing" secondItem="x54-sS-1z1" secondAttribute="trailing" id="gB0-gz-Uwa"/>
                                                         </constraints>
                                                     </stackView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u8c-cw-iSq" customClass="ThemeButton" customModule="Chick_Pick_Ride" customModuleProvider="target">
-                                                        <rect key="frame" x="18" y="183" width="339" height="40"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u8c-cw-iSq" customClass="ThemeButton" customModule="Chick_Pick_Ride" customModuleProvider="target">
+                                                        <rect key="frame" x="18" y="185.5" width="339" height="40"/>
                                                         <color key="backgroundColor" red="0.0039215686269999999" green="0.0078431372550000003" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="FFO-JS-m62"/>
@@ -3100,6 +3101,7 @@ automatic expense for warding</string>
                                 </constraints>
                             </scrollView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="RAW-uB-gaF"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="D0e-0p-OFi" firstAttribute="leading" secondItem="ak7-sP-NAv" secondAttribute="leading" id="OpI-iy-Olq"/>
@@ -3108,7 +3110,6 @@ automatic expense for warding</string>
                             <constraint firstItem="RAW-uB-gaF" firstAttribute="bottom" secondItem="D0e-0p-OFi" secondAttribute="bottom" id="vXi-UI-8aP"/>
                             <constraint firstItem="D0e-0p-OFi" firstAttribute="top" secondItem="RAW-uB-gaF" secondAttribute="top" id="ykZ-gi-6z8"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="RAW-uB-gaF"/>
                     </view>
                     <connections>
                         <outlet property="btnAddCard" destination="u8c-cw-iSq" id="vk5-wU-hpV"/>
@@ -3151,6 +3152,7 @@ automatic expense for warding</string>
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="NDn-c3-uTQ"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="NDn-c3-uTQ" firstAttribute="bottom" secondItem="77M-fN-aCV" secondAttribute="bottom" id="EJd-LY-iDF"/>
@@ -3158,7 +3160,6 @@ automatic expense for warding</string>
                             <constraint firstItem="77M-fN-aCV" firstAttribute="leading" secondItem="NDn-c3-uTQ" secondAttribute="leading" id="cHT-4u-FqH"/>
                             <constraint firstItem="77M-fN-aCV" firstAttribute="top" secondItem="NDn-c3-uTQ" secondAttribute="top" id="zom-QX-MPr"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="NDn-c3-uTQ"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8qa-lk-bCb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3236,7 +3237,7 @@ automatic expense for warding</string>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="aoO-BU-XaI">
                                         <rect key="frame" x="20" y="547" width="335" height="100"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GCw-Ih-hCU" customClass="ThemeButton" customModule="Chick_Pick_Ride" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GCw-Ih-hCU" customClass="ThemeButton" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="40"/>
                                                 <color key="backgroundColor" red="0.0039215686269999999" green="0.0078431372550000003" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -3255,7 +3256,7 @@ automatic expense for warding</string>
                                                     <action selector="btnDoneAction:" destination="8qg-zA-cXH" eventType="touchUpInside" id="Q7t-1w-eag"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G9v-vL-bAM" customClass="ThemeButton" customModule="Chick_Pick_Ride" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G9v-vL-bAM" customClass="ThemeButton" customModule="Chick_Pick_Ride" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="60" width="335" height="40"/>
                                                 <color key="backgroundColor" red="0.0039215686269999999" green="0.0078431372550000003" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -3291,6 +3292,7 @@ automatic expense for warding</string>
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="QeZ-oM-9nO"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="562-m4-axL" firstAttribute="top" secondItem="QeZ-oM-9nO" secondAttribute="top" id="C8m-Cd-W6Z"/>
@@ -3298,7 +3300,6 @@ automatic expense for warding</string>
                             <constraint firstItem="562-m4-axL" firstAttribute="leading" secondItem="QeZ-oM-9nO" secondAttribute="leading" id="kVR-MN-9pL"/>
                             <constraint firstItem="QeZ-oM-9nO" firstAttribute="bottom" secondItem="562-m4-axL" secondAttribute="bottom" id="rtr-A9-LAK"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="QeZ-oM-9nO"/>
                     </view>
                     <connections>
                         <outlet property="txtSubject" destination="2W4-DV-MBX" id="fYx-8T-PgF"/>
@@ -3335,13 +3336,13 @@ automatic expense for warding</string>
                                                             <rect key="frame" x="10" y="5" width="355" height="72"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Ticket ID:- N/A" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wrf-3m-N44">
-                                                                    <rect key="frame" x="15" y="10" width="106.5" height="26.5"/>
+                                                                    <rect key="frame" x="15" y="10" width="106" height="26.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zji-VZ-ATZ">
-                                                                    <rect key="frame" x="131.5" y="10" width="213.5" height="19.5"/>
+                                                                    <rect key="frame" x="131" y="10" width="214" height="19.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -3402,6 +3403,7 @@ automatic expense for warding</string>
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="Net-4q-fpC"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Net-4q-fpC" firstAttribute="bottom" secondItem="V8D-D4-d22" secondAttribute="bottom" id="Cnm-Wd-kr4"/>
@@ -3409,7 +3411,6 @@ automatic expense for warding</string>
                             <constraint firstItem="V8D-D4-d22" firstAttribute="top" secondItem="Net-4q-fpC" secondAttribute="top" id="g17-DE-3Yw"/>
                             <constraint firstItem="Net-4q-fpC" firstAttribute="trailing" secondItem="V8D-D4-d22" secondAttribute="trailing" id="k6c-7L-p1c"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Net-4q-fpC"/>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="AtO-0u-FKV" id="L0G-hn-yP8"/>
@@ -3434,7 +3435,7 @@ automatic expense for warding</string>
                                         <rect key="frame" x="0.0" y="343.5" width="375" height="323.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From : Ahmedabad Airport" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9JF-EU-QGw">
-                                                <rect key="frame" x="86" y="50" width="203" height="25"/>
+                                                <rect key="frame" x="86.5" y="50" width="202" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="tVg-8S-huI"/>
                                                 </constraints>
@@ -3451,7 +3452,7 @@ automatic expense for warding</string>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wq5-i2-BDD">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wq5-i2-BDD">
                                                 <rect key="frame" x="20" y="258.5" width="335" height="45"/>
                                                 <color key="backgroundColor" red="0.1764705882352941" green="0.1764705882352941" blue="0.1764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -3471,7 +3472,7 @@ automatic expense for warding</string>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To : Nishan Residensy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Np-kz-e1J">
-                                                <rect key="frame" x="104" y="80" width="167.5" height="25"/>
+                                                <rect key="frame" x="104.5" y="80" width="166.5" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="JQm-NU-07m"/>
                                                 </constraints>
@@ -3480,7 +3481,7 @@ automatic expense for warding</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mon, 28 May at 11:05 AM - 12:10 PM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ccd-xF-Gqg">
-                                                <rect key="frame" x="48" y="115" width="279" height="25"/>
+                                                <rect key="frame" x="49" y="115" width="277.5" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="F59-xk-OSg"/>
                                                 </constraints>
@@ -3489,7 +3490,7 @@ automatic expense for warding</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KES 121 - 148" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lsd-wV-6fS">
-                                                <rect key="frame" x="135" y="143" width="105.5" height="25"/>
+                                                <rect key="frame" x="135" y="143" width="105" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="Qdi-Eo-7mQ"/>
                                                 </constraints>
@@ -3536,6 +3537,7 @@ automatic expense for warding</string>
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="kyB-uZ-Q1M"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="r7Y-vq-g5X" firstAttribute="top" secondItem="4g2-T3-ghw" secondAttribute="top" id="696-nt-cEU"/>
@@ -3543,7 +3545,6 @@ automatic expense for warding</string>
                             <constraint firstAttribute="trailing" secondItem="r7Y-vq-g5X" secondAttribute="trailing" id="UgG-yB-eWo"/>
                             <constraint firstItem="kyB-uZ-Q1M" firstAttribute="bottom" secondItem="r7Y-vq-g5X" secondAttribute="bottom" id="yqX-lB-uBr"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="kyB-uZ-Q1M"/>
                     </view>
                     <connections>
                         <outlet property="lblBookingDate" destination="ccd-xF-Gqg" id="HMz-wg-XyU"/>
@@ -3583,7 +3584,7 @@ automatic expense for warding</string>
                                                 <rect key="frame" x="0.0" y="0.0" width="156.5" height="70"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Purchase" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0y2-dE-W14">
-                                                        <rect key="frame" x="35.5" y="10" width="86" height="20"/>
+                                                        <rect key="frame" x="35" y="10" width="86.5" height="20"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="20" id="5Zz-2c-pcy"/>
                                                         </constraints>
@@ -3592,7 +3593,7 @@ automatic expense for warding</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100 mi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FWS-Xv-UiA">
-                                                        <rect key="frame" x="43" y="35" width="70.5" height="25"/>
+                                                        <rect key="frame" x="43.5" y="35" width="69.5" height="25"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="25" id="oXo-zR-W05"/>
                                                         </constraints>
@@ -3601,7 +3602,7 @@ automatic expense for warding</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E2s-QQ-9Ig">
-                                                        <rect key="frame" x="33" y="62" width="90.5" height="1"/>
+                                                        <rect key="frame" x="33.5" y="62" width="89.5" height="1"/>
                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="9YS-OL-sGP"/>
@@ -3626,7 +3627,7 @@ automatic expense for warding</string>
                                                 <rect key="frame" x="176.5" y="0.0" width="156.5" height="70"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ih9-9c-9PU">
-                                                        <rect key="frame" x="36.5" y="10" width="83.5" height="20"/>
+                                                        <rect key="frame" x="37" y="10" width="82.5" height="20"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="20" id="wwv-gd-zrZ"/>
                                                         </constraints>
@@ -3635,7 +3636,7 @@ automatic expense for warding</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100 mi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XoP-5O-AUa">
-                                                        <rect key="frame" x="43" y="35" width="70.5" height="25"/>
+                                                        <rect key="frame" x="43.5" y="35" width="69.5" height="25"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="25" id="QGf-kR-O7j"/>
                                                         </constraints>
@@ -3644,7 +3645,7 @@ automatic expense for warding</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Vb-fk-7k9">
-                                                        <rect key="frame" x="33" y="62" width="90.5" height="1"/>
+                                                        <rect key="frame" x="33.5" y="62" width="89.5" height="1"/>
                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="8RD-A6-lQm"/>
@@ -3695,6 +3696,7 @@ automatic expense for warding</string>
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="TLX-2A-i6K"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="TLX-2A-i6K" firstAttribute="trailing" secondItem="bew-hE-vd4" secondAttribute="trailing" constant="16" id="13w-DX-Etb"/>
@@ -3705,7 +3707,6 @@ automatic expense for warding</string>
                             <constraint firstItem="bew-hE-vd4" firstAttribute="leading" secondItem="TLX-2A-i6K" secondAttribute="leading" constant="16" id="mLb-ee-DiZ"/>
                             <constraint firstItem="Qzl-4h-jMo" firstAttribute="top" secondItem="bew-hE-vd4" secondAttribute="bottom" constant="8" id="qaR-F1-rRa"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="TLX-2A-i6K"/>
                     </view>
                     <connections>
                         <outlet property="lblAvailableBalance" destination="XoP-5O-AUa" id="f4w-nZ-Pew"/>
@@ -3842,7 +3843,7 @@ automatic expense for warding</string>
                                                                 <rect key="frame" x="0.0" y="275" width="335" height="40"/>
                                                                 <subviews>
                                                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Licence/Passport" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="SKq-D2-Klv" customClass="ThemeTextFieldLoginRegister" customModule="Chick_Pick_Ride" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="12.5" width="291" height="15.5"/>
+                                                                        <rect key="frame" x="0.0" y="11" width="291" height="18"/>
                                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
@@ -4206,6 +4207,7 @@ automatic expense for warding</string>
                                 </constraints>
                             </scrollView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="tSr-iz-uSy"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="tSr-iz-uSy" firstAttribute="bottom" secondItem="dFZ-b0-9DK" secondAttribute="bottom" id="Fb2-BX-DbC"/>
@@ -4214,7 +4216,6 @@ automatic expense for warding</string>
                             <constraint firstItem="tSr-iz-uSy" firstAttribute="trailing" secondItem="dFZ-b0-9DK" secondAttribute="trailing" id="m51-to-8h9"/>
                             <constraint firstItem="7wz-ZT-UUa" firstAttribute="width" secondItem="W2E-Gh-Ye9" secondAttribute="width" id="ymU-kI-kMa"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="tSr-iz-uSy"/>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
@@ -4448,6 +4449,7 @@ automatic expense for warding</string>
                                 </connections>
                             </tableView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="sj5-zS-jG1"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="KvO-rd-RwO" firstAttribute="leading" secondItem="sj5-zS-jG1" secondAttribute="leading" id="2iL-hW-9D9"/>
@@ -4459,7 +4461,6 @@ automatic expense for warding</string>
                             <constraint firstAttribute="bottom" secondItem="d9i-HV-5H8" secondAttribute="bottom" id="icN-ZN-OIF"/>
                             <constraint firstAttribute="trailing" secondItem="d9i-HV-5H8" secondAttribute="trailing" id="pXv-J6-Lbz"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="sj5-zS-jG1"/>
                     </view>
                     <connections>
                         <outlet property="tblView" destination="KvO-rd-RwO" id="1db-Ib-c5K"/>
@@ -4518,7 +4519,7 @@ automatic expense for warding</string>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hoj-dX-R59">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hoj-dX-R59">
                                                 <rect key="frame" x="0.0" y="80" width="315" height="35"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="rhQ-Zf-MYs"/>
@@ -4574,6 +4575,7 @@ automatic expense for warding</string>
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="aGz-L5-9eN"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="tYU-uH-EPL" secondAttribute="trailing" id="bYM-4W-7dN"/>
@@ -4582,7 +4584,6 @@ automatic expense for warding</string>
                             <constraint firstAttribute="bottom" secondItem="tYU-uH-EPL" secondAttribute="bottom" id="hJm-Wm-oZe"/>
                             <constraint firstItem="tYU-uH-EPL" firstAttribute="top" secondItem="aGz-L5-9eN" secondAttribute="top" id="vhD-I1-c72"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="aGz-L5-9eN"/>
                     </view>
                     <connections>
                         <outlet property="btnShare" destination="hoj-dX-R59" id="P9G-oe-lex"/>
@@ -4611,7 +4612,7 @@ automatic expense for warding</string>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IFZ-Mf-9Vc">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IFZ-Mf-9Vc">
                             <rect key="frame" x="0.0" y="0.0" width="160" height="50"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="68d-6r-VgB"/>
@@ -4623,6 +4624,7 @@ automatic expense for warding</string>
                             </userDefinedRuntimeAttributes>
                         </button>
                     </subviews>
+                    <viewLayoutGuide key="safeArea" id="kYZ-JW-dcN"/>
                     <color key="backgroundColor" red="0.3803921569" green="0.50980392159999999" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="gPs-aA-iaV" secondAttribute="trailing" constant="5" id="4xJ-LP-cjm"/>
@@ -4639,7 +4641,6 @@ automatic expense for warding</string>
                         <constraint firstAttribute="bottom" secondItem="IFZ-Mf-9Vc" secondAttribute="bottom" id="qzS-Qj-4GY"/>
                         <constraint firstItem="IFZ-Mf-9Vc" firstAttribute="leading" secondItem="Nqs-Yn-U10" secondAttribute="leading" id="sso-LW-pgA"/>
                     </constraints>
-                    <viewLayoutGuide key="safeArea" id="kYZ-JW-dcN"/>
                 </view>
                 <view contentMode="scaleToFill" id="s7U-b3-Jcc">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="484"/>
@@ -4777,7 +4778,7 @@ automatic expense for warding</string>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nIa-df-Aqm">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nIa-df-Aqm">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
                                                     <connections>
                                                         <action selector="btnFacebook:" destination="8Ko-Uy-KSJ" eventType="touchUpInside" id="U7J-GL-cfW"/>
@@ -4817,7 +4818,7 @@ automatic expense for warding</string>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r3h-wn-USG">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r3h-wn-USG">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
                                                     <connections>
                                                         <action selector="btnTwitter:" destination="8Ko-Uy-KSJ" eventType="touchUpInside" id="UjQ-re-dQ5"/>
@@ -4857,7 +4858,7 @@ automatic expense for warding</string>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5BR-ga-bRF">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5BR-ga-bRF">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
                                                     <connections>
                                                         <action selector="btnEmail:" destination="8Ko-Uy-KSJ" eventType="touchUpInside" id="JjX-GW-APl"/>
@@ -4897,7 +4898,7 @@ automatic expense for warding</string>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="57B-BV-7Pg">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="57B-BV-7Pg">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
                                                     <connections>
                                                         <action selector="btnWhatsApp:" destination="8Ko-Uy-KSJ" eventType="touchUpInside" id="JnL-J0-Zm4"/>
@@ -4937,7 +4938,7 @@ automatic expense for warding</string>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LcZ-bb-udS">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LcZ-bb-udS">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
                                                     <connections>
                                                         <action selector="btnSMS:" destination="8Ko-Uy-KSJ" eventType="touchUpInside" id="nMb-Av-vvQ"/>
@@ -4972,6 +4973,7 @@ automatic expense for warding</string>
                             </constraints>
                         </view>
                     </subviews>
+                    <viewLayoutGuide key="safeArea" id="h3K-VG-Wsv"/>
                     <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="tdO-cG-ltW" firstAttribute="leading" secondItem="s7U-b3-Jcc" secondAttribute="leading" id="3Tb-5e-1hz"/>
@@ -4982,15 +4984,14 @@ automatic expense for warding</string>
                         <constraint firstItem="Uvg-o3-Ym4" firstAttribute="top" secondItem="tdO-cG-ltW" secondAttribute="bottom" constant="20" id="FVZ-vF-33I"/>
                         <constraint firstAttribute="trailing" secondItem="Uvg-o3-Ym4" secondAttribute="trailing" id="UyS-cU-Uuu"/>
                     </constraints>
-                    <viewLayoutGuide key="safeArea" id="h3K-VG-Wsv"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vBs-cl-O2s">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                    <viewLayoutGuide key="safeArea" id="Dwx-tE-BLd"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="TzA-Y5-7Pn"/>
                     </constraints>
-                    <viewLayoutGuide key="safeArea" id="Dwx-tE-BLd"/>
                 </view>
             </objects>
             <point key="canvasLocation" x="2954" y="1872"/>
@@ -5276,6 +5277,7 @@ automatic expense for warding</string>
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="d8V-PO-VmT"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="oko-5K-oh8" firstAttribute="leading" secondItem="d8V-PO-VmT" secondAttribute="leading" constant="5" id="2b8-zl-cVl"/>
@@ -5284,7 +5286,6 @@ automatic expense for warding</string>
                             <constraint firstItem="d8V-PO-VmT" firstAttribute="bottom" secondItem="VlF-jg-Mcr" secondAttribute="bottom" constant="15" id="WAR-tL-bGZ"/>
                             <constraint firstItem="d8V-PO-VmT" firstAttribute="trailing" secondItem="oko-5K-oh8" secondAttribute="trailing" constant="5" id="emo-7c-vQ3"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="d8V-PO-VmT"/>
                     </view>
                     <navigationItem key="navigationItem" id="Ok9-1w-K9J"/>
                     <nil key="simulatedTopBarMetrics"/>
@@ -5336,6 +5337,7 @@ automatic expense for warding</string>
                             </constraints>
                         </view>
                     </subviews>
+                    <viewLayoutGuide key="safeArea" id="Nxd-lN-eOT"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="75" id="1zP-Pq-lF0"/>
@@ -5347,7 +5349,6 @@ automatic expense for warding</string>
                         <constraint firstAttribute="bottom" secondItem="jlO-12-3hB" secondAttribute="bottom" constant="7.1054273576010019e-15" id="lfM-D0-reo"/>
                         <constraint firstItem="zGs-8L-9ld" firstAttribute="top" secondItem="lU4-yo-V5v" secondAttribute="bottom" constant="10" id="q1e-1W-kSa"/>
                     </constraints>
-                    <viewLayoutGuide key="safeArea" id="Nxd-lN-eOT"/>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F0a-rE-V1e">
                     <rect key="frame" x="0.0" y="0.0" width="30" height="39.5"/>
@@ -5515,13 +5516,13 @@ automatic expense for warding</string>
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="YaO-np-1nb"/>
                         <color key="backgroundColor" white="0.0" alpha="0.31" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Y4d-B1-4kA" secondAttribute="trailing" id="2Mo-Ef-I1B"/>
                             <constraint firstItem="Y4d-B1-4kA" firstAttribute="leading" secondItem="4dS-Fg-lCM" secondAttribute="leading" id="aEG-Ue-be9"/>
                             <constraint firstAttribute="bottom" secondItem="Y4d-B1-4kA" secondAttribute="bottom" id="rle-d3-5EE"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="YaO-np-1nb"/>
                     </view>
                     <connections>
                         <outlet property="datePicker" destination="5fb-Kf-niN" id="B3H-t6-AMm"/>
@@ -5585,7 +5586,7 @@ Stay Safe.
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trip Completed!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0D1-9K-AVt">
-                                <rect key="frame" x="120" y="92.5" width="135.5" height="23"/>
+                                <rect key="frame" x="120" y="92.5" width="135" height="23"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="23" id="rwq-no-85d"/>
                                 </constraints>
@@ -5593,7 +5594,7 @@ Stay Safe.
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hNT-SS-IZ2">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hNT-SS-IZ2">
                                 <rect key="frame" x="112.5" y="261.5" width="150" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -5613,7 +5614,8 @@ Stay Safe.
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="lEy-e4-2AW"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="hNT-SS-IZ2" firstAttribute="top" secondItem="KvQ-Gp-5Kr" secondAttribute="bottom" constant="10" id="0MY-Ko-uSR"/>
                             <constraint firstItem="nyP-5Y-EQU" firstAttribute="centerX" secondItem="MYp-gN-4pd" secondAttribute="centerX" id="2Vu-jg-vyQ"/>
@@ -5627,7 +5629,6 @@ Stay Safe.
                             <constraint firstItem="KvQ-Gp-5Kr" firstAttribute="top" secondItem="e0c-x4-r33" secondAttribute="bottom" constant="10" id="niB-9T-dHt"/>
                             <constraint firstItem="0D1-9K-AVt" firstAttribute="centerX" secondItem="MYp-gN-4pd" secondAttribute="centerX" id="spP-sv-iTq"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="lEy-e4-2AW"/>
                     </view>
                     <connections>
                         <outlet property="lblCharge" destination="Qtg-Gg-agr" id="7sv-Z8-Uo8"/>
@@ -5650,7 +5651,7 @@ Stay Safe.
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9Y8-aK-DYl">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DK1-Kp-cvJ">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DK1-Kp-cvJ">
                                 <rect key="frame" x="20" y="587" width="335" height="40"/>
                                 <color key="backgroundColor" red="0.0039215686274509803" green="0.0039215686274509803" blue="0.043137254901960784" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -5802,7 +5803,7 @@ Stay Safe.
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </textField>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eRB-Q0-l23">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eRB-Q0-l23">
                                                                 <rect key="frame" x="0.0" y="150" width="335" height="50"/>
                                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <state key="normal">
@@ -5889,6 +5890,7 @@ Stay Safe.
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="fUM-nA-f1q"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ETr-fF-jyT" firstAttribute="top" secondItem="5U4-Q9-5kz" secondAttribute="top" id="70p-KC-1nt"/>
@@ -5903,7 +5905,6 @@ Stay Safe.
                             <constraint firstItem="fUM-nA-f1q" firstAttribute="bottom" secondItem="DK1-Kp-cvJ" secondAttribute="bottom" constant="40" id="gRq-DE-HwN"/>
                             <constraint firstAttribute="trailing" secondItem="9Y8-aK-DYl" secondAttribute="trailing" id="hCz-9l-hd4"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="fUM-nA-f1q"/>
                     </view>
                     <connections>
                         <outlet property="btnResendOTP" destination="eRB-Q0-l23" id="m8I-6v-hCD"/>
@@ -5975,6 +5976,7 @@ Stay Safe.
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="xJJ-rA-J4g"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="d3E-Y9-B9G" firstAttribute="top" secondItem="xJJ-rA-J4g" secondAttribute="top" id="1Ni-zD-HRM"/>
@@ -5982,7 +5984,6 @@ Stay Safe.
                             <constraint firstItem="xJJ-rA-J4g" firstAttribute="trailing" secondItem="d3E-Y9-B9G" secondAttribute="trailing" id="gf7-Jy-rs5"/>
                             <constraint firstItem="d3E-Y9-B9G" firstAttribute="leading" secondItem="xJJ-rA-J4g" secondAttribute="leading" id="wov-7j-gvS"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="xJJ-rA-J4g"/>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="Tah-5h-4Eq" id="qFd-Ff-3UX"/>
@@ -6086,6 +6087,7 @@ Stay Safe.
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="lLM-qF-B7L"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="iOe-eC-Nck" firstAttribute="top" secondItem="lLM-qF-B7L" secondAttribute="top" id="9r4-MD-ZAQ"/>
@@ -6093,7 +6095,6 @@ Stay Safe.
                             <constraint firstItem="lLM-qF-B7L" firstAttribute="bottom" secondItem="iOe-eC-Nck" secondAttribute="bottom" id="cL5-H6-LJN"/>
                             <constraint firstItem="lLM-qF-B7L" firstAttribute="trailing" secondItem="iOe-eC-Nck" secondAttribute="trailing" id="kWK-v2-Uqa"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="lLM-qF-B7L"/>
                     </view>
                     <connections>
                         <outlet property="imgNoDataFound" destination="bnp-Cg-YQO" id="Tlw-Ib-agb"/>
@@ -6180,6 +6181,7 @@ Stay Safe.
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="2jz-N2-ePc"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="2jz-N2-ePc" firstAttribute="bottom" secondItem="ilZ-GA-8yC" secondAttribute="bottom" id="8CQ-oE-sIH"/>
@@ -6187,7 +6189,6 @@ Stay Safe.
                             <constraint firstItem="ilZ-GA-8yC" firstAttribute="top" secondItem="2jz-N2-ePc" secondAttribute="top" id="LFA-TJ-88h"/>
                             <constraint firstItem="ilZ-GA-8yC" firstAttribute="leading" secondItem="2jz-N2-ePc" secondAttribute="leading" id="sg5-bk-Tbq"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="2jz-N2-ePc"/>
                     </view>
                     <connections>
                         <outlet property="imgNoDataFound" destination="vkP-Pb-syy" id="p60-KZ-h9d"/>
@@ -6274,6 +6275,7 @@ Stay Safe.
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="NWp-8O-fkh"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="qfR-e3-Tcr" firstAttribute="top" secondItem="NWp-8O-fkh" secondAttribute="top" id="5ul-AQ-74x"/>
@@ -6281,7 +6283,6 @@ Stay Safe.
                             <constraint firstItem="qfR-e3-Tcr" firstAttribute="leading" secondItem="NWp-8O-fkh" secondAttribute="leading" id="SrZ-bD-ZZ6"/>
                             <constraint firstItem="NWp-8O-fkh" firstAttribute="bottom" secondItem="qfR-e3-Tcr" secondAttribute="bottom" id="kkL-cf-Ehu"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="NWp-8O-fkh"/>
                     </view>
                     <connections>
                         <outlet property="imgNoDataFound" destination="2pp-xH-7kW" id="fjZ-JL-Mip"/>
@@ -6294,6 +6295,50 @@ Stay Safe.
             <point key="canvasLocation" x="889" y="3608"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="Nbb-up-z13">
+            <size key="intrinsicContentSize" width="34.5" height="18.5"/>
+        </designable>
+        <designable name="PAS-8r-08d">
+            <size key="intrinsicContentSize" width="27" height="18.5"/>
+        </designable>
+        <designable name="RcB-TD-08z">
+            <size key="intrinsicContentSize" width="69" height="18.5"/>
+        </designable>
+        <designable name="SKq-D2-Klv">
+            <size key="intrinsicContentSize" width="110" height="18"/>
+        </designable>
+        <designable name="WzK-zv-3fz">
+            <size key="intrinsicContentSize" width="170.5" height="34"/>
+        </designable>
+        <designable name="afN-Gy-VGQ">
+            <size key="intrinsicContentSize" width="149" height="18.5"/>
+        </designable>
+        <designable name="bEH-7C-Mg8">
+            <size key="intrinsicContentSize" width="70" height="18.5"/>
+        </designable>
+        <designable name="h41-m1-z11">
+            <size key="intrinsicContentSize" width="135" height="34"/>
+        </designable>
+        <designable name="hdi-3Y-3LG">
+            <size key="intrinsicContentSize" width="117.5" height="34"/>
+        </designable>
+        <designable name="k26-oi-ul1">
+            <size key="intrinsicContentSize" width="99" height="18.5"/>
+        </designable>
+        <designable name="lFo-S5-2ea">
+            <size key="intrinsicContentSize" width="65.5" height="18.5"/>
+        </designable>
+        <designable name="mmv-Bs-4BJ">
+            <size key="intrinsicContentSize" width="53" height="18.5"/>
+        </designable>
+        <designable name="til-uy-hph">
+            <size key="intrinsicContentSize" width="174" height="34"/>
+        </designable>
+        <designable name="z15-gs-oc7">
+            <size key="intrinsicContentSize" width="99" height="18.5"/>
+        </designable>
+    </designables>
     <resources>
         <image name="MiniSelect" width="170" height="170"/>
         <image name="PreviousDue42" width="21" height="21"/>
@@ -6339,5 +6384,14 @@ Stay Safe.
         <image name="logo-ios" width="245" height="272"/>
         <image name="logout" width="40" height="40"/>
         <image name="send" width="16" height="16"/>
+        <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

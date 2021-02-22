@@ -19,6 +19,8 @@ class RegisterViewController: BaseViewController, UITextFieldDelegate, UIPickerV
     @IBOutlet weak var txtConfirmPassword: ThemeTextFieldLoginRegister!
     @IBOutlet var txtContoryNum: ThemeTextFieldLoginRegister!
     @IBOutlet weak var btnDocument: UIButton!
+    @IBOutlet weak var btnCheckBox: UIButton!
+    @IBOutlet weak var btnTermsAndConditiond: UIButton!
     
     var RegistrationGetOTPModel : RegistrationModel = RegistrationModel()
     
@@ -78,7 +80,12 @@ class RegisterViewController: BaseViewController, UITextFieldDelegate, UIPickerV
             }
         }
         
-        
+        let yourAttributes: [NSAttributedString.Key: Any] = [
+              .font: UIFont.systemFont(ofSize: 12),
+              .foregroundColor: ThemeOrange,
+              .underlineStyle: NSUnderlineStyle.single.rawValue]
+        let attributeString = NSMutableAttributedString(string: "Terms and Conditions", attributes: yourAttributes)
+             btnTermsAndConditiond.setAttributedTitle(attributeString, for: .normal)
         
         //        setRightViewForPassword(textField: txtPassword)
         //        setRightViewForPassword(textField: txtConfirmPassword)
@@ -257,17 +264,26 @@ class RegisterViewController: BaseViewController, UITextFieldDelegate, UIPickerV
     
     // MARK: - Navigation
     
+    @IBAction func btnTermsAndConditionsAction(_ sender: Any) {
+        if let url = URL(string: "http://18.133.15.111/terms-conditions") {
+            UIApplication.shared.open(url)
+        }
+    }
+    
+    @IBAction func btnCheckBoxAction(_ sender: Any) {
+        btnCheckBox.isSelected = !btnCheckBox.isSelected
+    }
     
     @IBAction func btnNext(_ sender: Any) {
         let Validator = self.isvalidateAllFields()
         
         if Validator.0 == true
         {
-            UtilityClass.showDefaultAlertView(withTitle: AppName.kAPPName, message: "I confirm that I am a female passenger", buttons: ["OK", "Cancel"], completion: { (ind) in
-                if ind == 0 {
+//            UtilityClass.showDefaultAlertView(withTitle: AppName.kAPPName, message: "I confirm that I am a female passenger", buttons: ["OK", "Cancel"], completion: { (ind) in
+//                if ind == 0 {
                     self.webserviceForGetOTP()
-                }
-            })
+//                }
+//            })
         }
         else
         {
@@ -394,6 +410,9 @@ class RegisterViewController: BaseViewController, UITextFieldDelegate, UIPickerV
         else if (btnDocument.imageView?.image!.isEqualToImage(UIImage(named: "camera-icon")!)) ?? true {
             isValid = false
             ValidatorMessage = "Please select licence/passport"
+        } else if !btnCheckBox.isSelected {
+            isValid = false
+            ValidatorMessage = "Please accept the terms and conditions!"
         }
         
         return (isValid,ValidatorMessage)
