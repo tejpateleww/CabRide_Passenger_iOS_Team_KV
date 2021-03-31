@@ -190,7 +190,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
                 }
             }
         }
-        else if userInfo["gcm.notification.type"] as! String == "canceled_trip" || userInfo["gcm.notification.type"] as! String == "complete_trip" {
+        else if userInfo["gcm.notification.type"] as! String == "canceled_trip" || userInfo["gcm.notification.type"] as! String == "complete_trip" || userInfo["gcm.notification.type"] as! String == " mpesa_payment_failed" {
             
             if let myTripVC = (self.window?.rootViewController as? UINavigationController)?.topViewController?.children.first?.children.last as? MyTripsViewController {
                 myTripVC.tripType = .past
