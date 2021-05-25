@@ -686,6 +686,7 @@ class HomeViewController: BaseViewController, GMSMapViewDelegate, didSelectDateD
     }
     
     //MARK:- Other Methods
+    
     @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
             switch swipeGesture.direction {
@@ -1072,6 +1073,7 @@ class HomeViewController: BaseViewController, GMSMapViewDelegate, didSelectDateD
     
     
     // MARK: - Navigation
+    
     func hideAndShowView(view: HomeViews){
         locationView.isHidden = view == .booking ? false : true
 //        containerRideConfirmation.isHidden = !(view == .rideConfirmation)
@@ -1254,6 +1256,7 @@ extension HomeViewController: CLLocationManagerDelegate {
 
 
 // MARK: - GMSAutocompleteViewControllerDelegate
+
 extension HomeViewController: GMSAutocompleteViewControllerDelegate {
     
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
@@ -1352,6 +1355,7 @@ extension HomeViewController: GMSAutocompleteViewControllerDelegate {
 
 
 //MARK:- Fix Rates Delegate Method
+
 extension HomeViewController : FlatRateDelegate {
     
     func RemoveFlatRate() {
@@ -1407,6 +1411,7 @@ extension HomeViewController : FlatRateDelegate {
 }
 
 extension HomeViewController: FavouriteLocationDelegate {
+    
     func didEnterFavouriteDestination(Source: [String : AnyObject]) {
         txtDropLocation.text = Source["Address"] as? String
         
@@ -1450,6 +1455,7 @@ extension HomeViewController: FavouriteLocationDelegate {
 
 
 extension GMSMapView {
+    
     func updateMap(toLocation location: CLLocation, zoomLevel: Float? = nil) {
         if let zoomLevel = zoomLevel {
             let cameraUpdate = GMSCameraUpdate.setTarget(location.coordinate, zoom: zoomLevel)

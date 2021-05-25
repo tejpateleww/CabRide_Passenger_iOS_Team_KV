@@ -23,7 +23,7 @@ class SettingsViewController: BaseViewController {
         tableView.delegate = self
         tableView.dataSource = self
 
-        arrMenuTitle = ["Profile", "Change Password", "Help", "FAQ"]
+        arrMenuTitle = ["Profile", "Change Password", "Help", "FAQ", "Terms and Conditions"]
     }
 }
 
@@ -76,6 +76,14 @@ extension SettingsViewController : UITableViewDelegate, UITableViewDataSource {
         {
             let NextPage = self.storyboard?.instantiateViewController(withIdentifier: "FAQViewController") as! FAQViewController
             self.navigationController?.pushViewController(NextPage, animated: true)
+            return
+        }
+        
+        if arrMenuTitle[indexPath.row] == "Terms and Conditions"
+        {
+            if let url = URL(string: "http://18.133.15.111/terms-conditions") {
+                UIApplication.shared.open(url)
+            }
             return
         }
     }
